@@ -4,6 +4,7 @@
 (global-set-key "\C-m" 'newline-and-indent) ;; 改行とインデント
 (global-set-key "\C-x\C-i" 'indent-region) ;; 選択範囲をインデント
 
+(global-set-key "\C-x\C-l" 'recenter) ;; 現在行を中央に
 (global-set-key "\C-l" 'goto-line) ;; 指定した行へジャンプ
 
 (global-set-key "\C-cc" 'comment-region) ;; 選択範囲をコメントアウト

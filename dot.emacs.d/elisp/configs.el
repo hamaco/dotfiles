@@ -31,6 +31,10 @@
 ; 最後に改行を付加
 (setq require-final-newline t)
 
+; タブ長の設定
+(setq tab-width 2)
+(setq default-tab-width 2)
+
 ; iswitchb
 (iswitchb-mode 1)
 (iswitchb-default-keybindings)
@@ -53,7 +57,7 @@
 			'(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t)
 
-; GC間隔を大きくしてEmacsの動作を速くする
+; GCの頻度を減らしてEmacsを速くする
 (setq gc-cons-threshold 5242880)
 
 ; 検索で大文字・小文字を区別しない
@@ -61,13 +65,6 @@
 (setq search-highlight nil)
 (setq query-replace-highlight t)
 (setq lazy-highlight-initial-delay 0)
-
-; M-x woman
-(setq woman-cache-filename "~/.emacs.d/woman-cache")
-(setq woman-manpth '(
-										 "/usr/share/man"
-										 "/usr/local/man"
-										 "/usr/local/share/man"))
 
 ; 1行ずつスクロールする
 (setq scroll-conservatively 1)
@@ -89,5 +86,3 @@
 ; Regionを選択後 C-x n n か C-x n w
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page'disabled nil)
-
-(load "keyconfig")

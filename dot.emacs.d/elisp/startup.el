@@ -16,4 +16,6 @@
 (setq user-mail-address "hamanaka.kazuhiro@gmail.com")
 
 
+(load "configs")
+(load "keyconfig")
 (load "autoloads")
