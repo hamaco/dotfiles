@@ -54,10 +54,8 @@ set autowrite
 set backspace=indent,eol,start
 set backup
 set backupcopy&
-set backupdir=~/.vim/backup
 set backupskip&
 set cinoptions=:0,(0,W1s
-set directory=~/.vim/swap
 set formatoptions=tcroqnlM1
 set history=100
 set hlsearch
