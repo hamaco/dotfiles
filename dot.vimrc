@@ -1,5 +1,14 @@
 " 基本オプション {{{1
 set nocompatible
+filetype plugin indent on
+
+if has("syntax")
+	syntax enable
+	set t_Co=256
+	if !exists("g:colors_name")
+		colorscheme desert256
+	endif
+endif
 
 " Encoding {{{2
 set encoding=utf-8
@@ -39,15 +48,6 @@ if has('iconv')
 	unlet s:enc_jis
 endif "}}}
 
-if has("syntax")
-	syntax on
-	if !exists("g:colors_name")
-		colorscheme desert
-	endif
-endif
-
-filetype plugin indent on
-
 set ambiwidth=double
 set autoindent
 set autowrite
@@ -83,19 +83,20 @@ set visualbell t_vb=
 set wildmenu
 set wildmode=list:longest
 
-
 let &statusline = ''
 let &statusline .= '%<%f %y%m%r'
 let &statusline .= '%='
 let &statusline .= '[%{&l:fileencoding == "" ? &encoding : &l:fileencoding}:%{&ff}]'
 let &statusline .= '  %-14.(%l,%c%V%) %P'
 
-
 let mapleader = ","
 let maplocalleader = "."
 
 
-" 文字コード {{{1
+" command {{{1
+command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
+
+" 文字コード {{{2
 command! -bang -complete=file -nargs=? Utf8
 \ edit<bang> ++enc=utf-8 <args>
 
@@ -104,10 +105,6 @@ command! -bang -complete=file -nargs=? Eucjp
 
 command! -bang -complete=file -nargs=? Sjis
 \ edit<bang> ++enc=cp932 <args>
-
-
-" command {{{1
-command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
 
 
 " autocmd {{{1
@@ -141,16 +138,32 @@ noremap! <C-BS> <C-w>
 nnoremap <C-t> <Nop>
 nnoremap <C-t>n :<C-u>tabnew<Return>
 nnoremap <C-t>c :<C-u>tabclose<Return>
+nnoremap <C-t>o :<C-u>tabonly<Return>
 nnoremap <C-n> :<C-u>tabnext<Return>
 nnoremap <C-p> :<C-u>tabprevious<Return>
 
 
-" tmp {{{1
+" Plugin {{{1
 
+" neocomplcache.vim
+let g:NeoComplCache_EnableAtStartup = 1
+let g:NeoComplCache_EnableInfo = 1
+let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:NeoComplCache_EnableUnderbarCompletion = 1
+let g:NeoComplCache_MinSyntaxLength = 3
+let g:NeoComplCache_SkipInputTime = "0.1"
+let g:NeoComplCache_SmartCase = 1
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+
+
+" spec.vim
+language time en_US.UTF-8
+let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com>"
+
+
+" load .vimrc {{{1
 nnoremap <C-l> :<C-u>source ~/.vimrc<cr>
 
-hi TabLine     term=reverse cterm=reverse ctermfg=white ctermbg=black
-hi TabLineSel  term=bold cterm=bold,underline ctermfg=5
-hi TabLineFill term=reverse cterm=reverse ctermfg=white ctermbg=black
 
+" END {{{1
 " vim: foldmethod=marker
