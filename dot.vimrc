@@ -10,7 +10,7 @@ if has("syntax")
 	endif
 endif
 
-" Encoding {{{2
+" 文字コード設定 {{{2
 set encoding=utf-8
 
 if has('iconv')
@@ -54,8 +54,10 @@ set autowrite
 set backspace=indent,eol,start
 set backup
 set backupcopy&
+set backupdir=~/.vim/backup/
 set backupskip&
 set cinoptions=:0,(0,W1s
+set directory=~/.vim/swap/
 set formatoptions=tcroqnlM1
 set history=100
 set hlsearch
@@ -112,7 +114,7 @@ augroup END
 
 autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
 
-" auto write
+" 自動で書き込み
 autocmd MyAutoCmd CursorHold * silent! wall
 autocmd MyAutoCmd CursorHoldI * silent! wall
 
@@ -123,27 +125,30 @@ noremap : ;
 
 nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
 
-" move {{{2
 nnoremap j gj
 nnoremap k gk
 inoremap <C-j> <Nop>
 
-" edit {{{2
 noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
+
 
 " タブ {{{2
 nnoremap <C-t> <Nop>
 nnoremap <C-t>n :<C-u>tabnew<Return>
 nnoremap <C-t>c :<C-u>tabclose<Return>
 nnoremap <C-t>o :<C-u>tabonly<Return>
+nnoremap <C-t>j :<C-u>tabnext<Return>
+nnoremap <C-t>k :<C-u>tabprevious<Return>
 nnoremap <C-n> :<C-u>tabnext<Return>
 nnoremap <C-p> :<C-u>tabprevious<Return>
 
 
-" Plugin {{{1
 
-" neocomplcache.vim
+
+" プラグイン {{{1
+
+" neocomplcache.vim {{{2
 let g:NeoComplCache_EnableAtStartup = 1
 let g:NeoComplCache_EnableInfo = 1
 let g:NeoComplCache_EnableCamelCaseCompletion = 1
@@ -151,12 +156,47 @@ let g:NeoComplCache_EnableUnderbarCompletion = 1
 let g:NeoComplCache_MinSyntaxLength = 3
 let g:NeoComplCache_SkipInputTime = "0.1"
 let g:NeoComplCache_SmartCase = 1
+
+let g:NeoComplCache_DictionaryFileTypeLists = {
+			\ "default" : "",
+			\ "vimshell" : $HOME."/.vimshell_hist"
+			\ }
+
+if !exists("g:NeoComplCache_KeywordPatterns")
+	let g:NeoComplCache_KeywordPatterns = {}
+endif
+let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
+let g:NeoComplCache_SnippetsDir = $HOME."/snippets"
+
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
 
 
-" spec.vim
+" skk.vim {{{2
+let skk_jisyo = "~/.skk-jisyo"
+let skk_large_jisyo = "~/Library/AquaSKK/SKK-JISYO.L"
+let skk_auto_save_jisyo = 1
+let skk_keep_state = 0
+let skk_egg_like_newline = 1
+let skk_show_annotation = 1
+let skk_use_face = 1
+
+
+" smartword.vim {{{2
+map w <Plug>(smartword-w)
+map b <Plug>(smartword-b)
+map e <Plug>(smartword-e)
+map ge <Plug>(smartword-ge)
+noremap W w
+noremap B b
+noremap E e
+noremap gE ge
+
+
+" spec.vim {{{2
 language time en_US.UTF-8
 let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com>"
+
+
 
 
 " load .vimrc {{{1
