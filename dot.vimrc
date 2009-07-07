@@ -1,4 +1,6 @@
-" 基本オプション {{{1
+" Hissu {{{1
+" Windowsでも.vimを読み込むようにする
+set runtimepath& runtimepath+=$HOME/.vim
 set nocompatible
 filetype plugin indent on
 
@@ -10,8 +12,10 @@ if has("syntax")
 	endif
 endif
 
-" 文字コード設定 {{{2
-set encoding=utf-8
+" 文字コード設定 {{{1
+if &encoding !=# 'utf-8'
+	set encoding=japan
+endif
 
 if has('iconv')
 	let s:enc_euc = 'euc-jp'
@@ -46,8 +50,11 @@ if has('iconv')
 
 	unlet s:enc_euc
 	unlet s:enc_jis
-endif "}}}
+endif "
 
+
+
+" Option: オプション設定 ========================================= {{{1
 set ambiwidth=double
 set autoindent
 set autowrite
@@ -67,6 +74,7 @@ set laststatus=2
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 set mouse=
+set nrformats="hex"
 set ruler
 set shiftwidth=2
 set showcmd
@@ -115,7 +123,7 @@ augroup END
 autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
 
 " 自動で書き込み
-autocmd MyAutoCmd CursorHold * silent! wall
+autocmd MyAutoCmd CursorHold  * silent! wall
 autocmd MyAutoCmd CursorHoldI * silent! wall
 
 
@@ -127,10 +135,17 @@ nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
 
 nnoremap j gj
 nnoremap k gk
-inoremap <C-j> <Nop>
+
+noremap <Space> <Nop>
+
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
 
 noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
+
+" .vimrcのロード
+nnoremap <C-l> :<C-u>source ~/.vimrc<Return>
 
 
 " タブ {{{2
@@ -147,6 +162,11 @@ nnoremap <C-p> :<C-u>tabprevious<Return>
 
 
 " プラグイン {{{1
+
+" ku.vim {{{2
+noremap <silent> <Space>kf :<C-u>Ku file<Return>
+noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
+
 
 " neocomplcache.vim {{{2
 let g:NeoComplCache_EnableAtStartup = 1
@@ -199,8 +219,10 @@ let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com>"
 
 
 
-" load .vimrc {{{1
-nnoremap <C-l> :<C-u>source ~/.vimrc<cr>
+" Tmp: 一時的な設定 ============================================ {{{1
+
+
+
 
 
 " END {{{1
