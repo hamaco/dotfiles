@@ -1,2 +1,6 @@
 dot.emacs.d/auto-save-list/*
 dot.emacs.d/backups/*
+
+dot.vim/backup/*
+dot.vim/swap/*
+dot.vim/info/ku/history
