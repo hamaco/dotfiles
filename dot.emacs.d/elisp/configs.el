@@ -66,6 +66,9 @@
 (setq query-replace-highlight t)
 (setq lazy-highlight-initial-delay 0)
 
+; M-xでコマンド入力時に候補を表示する
+(icomplete-mode 1)
+
 ; 1行ずつスクロールする
 (setq scroll-conservatively 1)
 
