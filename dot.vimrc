@@ -4,7 +4,7 @@ set runtimepath& runtimepath+=$HOME/.vim
 set nocompatible
 filetype plugin indent on
 
-if has("syntax")
+if has('syntax')
 	syntax enable
 	set t_Co=256
 	if !exists("g:colors_name")
@@ -57,7 +57,7 @@ endif "
 " Option: オプション設定 ========================================= {{{1
 set ambiwidth=double
 set autoindent
-set autowrite
+"set autowrite
 set backspace=indent,eol,start
 set backup
 set backupcopy&
@@ -84,7 +84,7 @@ set smartcase
 set softtabstop=2
 set splitbelow
 set splitright
-set updatetime=30000
+set updatetime=3000
 set tabstop=2
 set title
 set visualbell t_vb=
@@ -99,6 +99,12 @@ let &statusline .= '  %-14.(%l,%c%V%) %P'
 
 let mapleader = ","
 let maplocalleader = "."
+
+if has("autochdir")
+	set autochdir
+else
+	au BufEnter * execute ":lcd " . expand("%:p:h")
+endif
 
 
 " command {{{1
@@ -122,9 +128,10 @@ augroup END
 
 autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
 
-" 自動で書き込み
-autocmd MyAutoCmd CursorHold  * silent! wall
-autocmd MyAutoCmd CursorHoldI * silent! wall
+" 自動で書き込み もう少し良い方法探す
+"autocmd MyAutoCmd InsertLeave * silent! wall
+
+
 
 
 " キーマップ {{{1
@@ -140,9 +147,17 @@ noremap <Space> <Nop>
 
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+
+if has('unix')
+	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
+endif
 
 noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
+
+noremap <C-h> :<C-u>help<Space>
 
 " .vimrcのロード
 nnoremap <C-l> :<C-u>source ~/.vimrc<Return>
@@ -166,7 +181,7 @@ nnoremap <C-p> :<C-u>tabprevious<Return>
 " ku.vim {{{2
 noremap <silent> <Space>kf :<C-u>Ku file<Return>
 noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
-
+"autocmd MyAutoCmd FileType ku inoremap <buffer> <ESC> <ESC>:quit<Return>
 
 " neocomplcache.vim {{{2
 let g:NeoComplCache_EnableAtStartup = 1
@@ -214,7 +229,7 @@ noremap gE ge
 
 " spec.vim {{{2
 language time en_US.UTF-8
-let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com>"
+let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com> - "
 
 
 
