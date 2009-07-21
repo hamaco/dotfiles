@@ -1,2 +1,2 @@
 (require 'auto-save-buffers)
-(run-with-idle-timer 2.0 t 'auto-save-buffers)
+(run-with-idle-timer 0.5 t 'auto-save-buffers)
