@@ -154,6 +154,7 @@ nnoremap j gj
 nnoremap k gk
 
 noremap <Space> <Nop>
+noremap <S-k> <Nop>
 
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
