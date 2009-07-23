@@ -110,7 +110,7 @@ endif
 " command {{{1
 command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
 
-" 文字コード {{{2
+" 文字コードを変えて最読込 {{{2
 command! -bang -complete=file -nargs=? Utf8
 \ edit<bang> ++enc=utf-8 <args>
 
@@ -119,6 +119,16 @@ command! -bang -complete=file -nargs=? Eucjp
 
 command! -bang -complete=file -nargs=? Sjis
 \ edit<bang> ++enc=cp932 <args>
+
+" 文字コードを変換 {{{2
+command! -bang -complete=file -nargs=? ToUtf8
+\ setlocal fileencoding=utf-8
+
+command! -bang -complete=file -nargs=? ToEucjp
+\ setlocal fileencoding=euc-jp
+
+command! -bang -complete=file -nargs=? ToSjis
+\ setlocal fileencoding=cp932
 
 
 " autocmd {{{1
