@@ -103,7 +103,7 @@ let maplocalleader = "."
 if has("autochdir")
 	set autochdir
 else
-	au BufEnter * execute ":lcd " . expand("%:p:h")
+	au BufEnter * execute "lcd " expand("%:p:h")
 endif
 
 
@@ -241,6 +241,12 @@ noremap gE ge
 " spec.vim {{{2
 language time en_US.UTF-8
 let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com> -"
+
+
+" commentop.vim {{{2
+map <Space>c     <Plug>CommentopToggleNV
+map <Space>C     <Plug>CommentopAppendNV
+map <Space><C-c> <Plug>CommentopRemoveNV
 
 
 
