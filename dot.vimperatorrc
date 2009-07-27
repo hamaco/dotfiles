@@ -1,0 +1,327 @@
+" Hamaco .vimperatorrc version 2009-01-19
+" for Vimperator 2.0a
+" vim: set ft=vimperator:
+
+echo "Loading..."
+
+" Global options
+" ======================================================================
+" ブラウザタイトルの変更
+set titlestring=Firefox
+
+" メニューとかアドレスバーを表示しない
+set guioptions=r
+
+" ex mode でインクリメント補完
+set wildoptions=auto
+
+" ページ全体で検索語を強調表示
+set hlsearch
+
+" :[tab]open コマンドで補完する候補と順番
+set complete=sl
+"autocmd VimperatorEnter .* :set complete+=H
+
+" 補完の高速化
+set preload
+
+" 新しいタブで開くコマンド
+set newtab=all
+
+" サイトのテキストボックスにオートフォーカスするのを無効化
+set focuscontent
+
+" コマンド履歴保存件数
+set history=1000
+
+" リンクのURLをコマンドラインに表示
+set showstatuslinks=2
+
+" visualbell有効化
+set visualbell
+highlight Bell display:none;
+"set visualbellstyle += opacity:.5;
+
+" colorscheme sweets
+colorscheme vimplight
+
+" Keymapping
+" ======================================================================
+
+" mapname  normal visual ??? insert commandline
+" noremap  o      o      o   x      x
+" noremap! x      x      x   o      o
+" nnoremap o      x      x   x      x
+" vnoremap x      o      x   x      x
+" onoremap x      x      o   x      x
+" inoremap x      x      x   o      x
+" cnoremap x      x      x   x      o
+
+" 設定ファイル再読込
+noremap <C-l> :source ~/.vimperatorrc<CR>
+
+noremap <C-,> :preferences<CR>
+
+" 無効化
+noremap <F1> <Nop>
+noremap <C-j> <Nop>
+inoremap <C-j> <Nop>
+cnoremap <C-j> <Nop>
+
+" ;と:を入れ替え
+noremap ; :
+noremap : ;
+
+" C-BS
+noremap <C-BS> gu
+
+noremap J <C-d>
+noremap K <C-u>
+
+" コマンドの補完をEmacs風に選択する
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
+
+" Emacs風キーバインド
+inoremap <C-a> <Home>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+inoremap <C-y> <C-v><C-v>
+"?inoremap <C-BS> <A-BS>
+
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-y> <C-v><C-v>
+
+" Opera風
+noremap 1 <C-p>
+noremap 2 <C-n>
+noremap z H
+noremap x L
+
+" タブを左右に移動させる
+noremap H :tabmove! -1<CR>
+noremap L :tabmove! +1<CR>
+
+" コピーを普通に使えるようにする
+noremap <C-c> Y
+" 選択文字列をGoogleで検索
+noremap <C-g> YP
+
+" !でページのCSSのon/off
+noremap ! :setl invum<CR>
+
+map U :undo<Space>
+
+" qmark 2.0preで動かないかも？
+" ===
+qmark a http://www.amazon.co.jp/
+qmark p http://pixiv.net/
+qmark f http://fastladder.com/reader/
+qmark l http://reader.livedoor.com/reader/
+qmark m http://www.gmail.com/
+
+map <C-4> gnl<CR>
+
+" Firefox全体の設定
+" ===
+
+" Backspaceで戻る
+set! browser.backspace_action=0
+
+" CacheをHDDからRAMに変更
+set! browser.cache.disk.enable=false
+set! browser.cache.memory.enable=true
+" 単位(KB)
+set! browser.cache.memory.capacity=51200
+
+" サイトのフォントより自分で指定したフォントを優先
+set! browser.display.use_document_fonts=0
+
+" ダウンロード完了時に自動で閉じる
+set! browser.download.manager.closeWhenDone=true
+" ダウンロード履歴をFirefox終了時に削除
+set! browser.download.manager.retention=1
+
+" RSS登録のデフォルトをLivedoorReaderに変更
+set! browser.feeds.handler.default=web
+set! browser.feeds.handlers.webservice=http://reader.livedoor.com/subscribe/?url=%s
+
+" undo可能なタブの数
+set! browser.sessionstore.max_tabs_undo=20
+
+" Tabの幅を指定
+set! browser.tabs.tabMaxWidth=24
+set! browser.tabs.tabMinWidth=24
+
+" JavaScriptでウィンドウ移動・リサイズ拒否
+set! dom.disable_window_move_resize=true
+
+" JavaScriptでステータスバーの操作を無効化
+set! dom.event.contextmenu.enabled=false
+
+" ポップアップの許可数変更
+set! dom.popup_maximum=2048
+
+" Cookieの無効化(permissions.sqliteで上書きされる)
+set! network.cookie.cookieBehavior=2
+
+" IPv6無効化
+set! network.dns.disableIPv6=true
+
+" ページのアクセスキーを無効化
+set! ui.key.generalAccessKey=0
+
+" 拡張機能インストール時の待ち時間時間
+set! security.dialog_enable_delay=0
+
+" Java無効化
+set! security.enable_java=false
+
+" Profile Manager
+set! profilemanager.opt_showProfileName=0
+
+
+
+" LDR上では新規タブをバックグラウンドに開く
+autocmd LocationChange .* :set! browser.tabs.loadDivertedInBackground=false
+autocmd LocationChange reader\\.livedoor\\.com/reader :set! browser.tabs.loadDivertedInBackground=true
+autocmd LocationChange fastladder\\.com/(reader|public) :set! browser.tabs.loadDivertedInBackground=true
+
+
+" vimperatorプラグインの設定
+" =====
+
+" feedSomeKeys_2.js
+" =====
+autocmd LocationChange .* :fmapc
+
+" Livedoor Reader
+autocmd LocationChange reader\\.livedoor\\.com/reader :fmap j k s a p q w r v < > m V,G J,<Space> K,<S-Space> B,T n,s
+autocmd LocationChange fastladder\\.com/(reader|public) :fmap j k s a p q w r v < > m V,G J,<Space> K,<S-Space> B,T n,s
+
+" Google Reader
+autocmd LocationChange www\\.google\\.com/reader :fmap -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
+
+" Gmail
+autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 j k n p o e x u c r a f [ ] / ?
+
+" RTM
+"autocmd LocationChange www\\.rememberthemilk\\.com/ :fmap t c p r s 1 2 3 4 a n i k j K J z <Tab> <Delete> <C-g> ?
+autocmd LocationChange www\\.rememberthemilk\\.com/ :fmap t c p r s 1 2 3 4 a n i k j K J z <Tab> <Delete> <C-g> ?
+
+" asdfghjkl.js
+"let g:asdfghjkl_default="true"
+
+" migemo_hint.js
+"set hintmatching=custom
+
+" migratestatusbar.js
+" =====
+javascript <<EOM
+liberator.globalVariables.migrate_elements=[
+	{
+		id: "star-button",
+		dest: "security-button",
+		after: true
+	},
+	{
+		id: "page-proxy-stack",
+		dest: "liberator-statusline",
+		after: false
+	}
+];
+EOM
+
+
+" refcontrol.js
+" =====
+let g:refcontrol_enabled = "true"
+javascript <<EOM
+liberator.globalVariables.refcontrol = {
+	"@DEFAULT"            : "",
+	"fc2.com"             : "@FORGE",
+	"image.itmedia.co.jp" : "http://www.itmedia.co.jp",
+	"bk.mufg.jp"          : "@NORMAL",
+	"pixiv.net"           : "http://www.pixiv.net",
+
+	// 仕事用 コミットしないように!!
+	"kancad01.bpr.btm.co.jp" : "@NORMAL",
+};
+EOM
+
+" copy.js
+" =====
+source ~/.vimperator/runtime/copy.js
+
+" localkeymode.js
+" =====
+let g:localkeymode_enable = "true"
+javascript <<EOM
+liberator.globalVariables.localKeyMappings = [
+	[/www\.nicovideo\.jp\/watch/, [
+		["i", ":nicoinfo"],
+		["p", ":nicopause"],
+		["m", ":nicomute"],
+		["a", ":nicoseek! -15"],
+		["s", ":nicoseek! +15"],
+		["z", ":nicosize"]
+	]]
+];
+EOM
+
+" autoproxychanger.js
+" =====
+let autochanger_proxy_enabled = "true"
+javascript <<EOM
+liberator.globalVariables.autochanger_proxy_settings = [
+	{
+		name  : "disable",
+		usage : "direct connection",
+		proxy : {
+			type      : 0,
+		}
+	},
+	{
+		name  : "dolipo",
+		usage : "dolipo proxy",
+		proxy : {
+			type      : 1,
+			http      : "localhost",
+			http_port : 8123
+		},
+	},
+	{
+		name  : "proxy",
+		usage : "my proxy",
+		proxy : {
+			type      : 2,
+			http      : "192.168.0.3",
+			http_port : 8080
+		},
+	},
+];
+EOM
+
+" hatenabookmark.js
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+
+" char_hints_mod2.js
+"let g:hintsio="io"
+"let g:hintchars="HJKLASDFGTYIOPQWERTNMZXCVB"
+
+" hatena.js
+javascript <<EOM
+liberator.globalVariables.hatenaIgnoreIds = ["login", "entry"];
+EOM
+
+" for hatebuWatchDog
+let g:hatebuWatchDogTargets='["http://d.hatena.ne.jp/hamaco/"]'
+let g:hatebuWatchDogInterval=1200
+
+
+source! ~/.vimperator/userContent.vimp
+
+echo ".vimperatorrc sourced"
