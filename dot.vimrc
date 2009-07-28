@@ -192,6 +192,7 @@ nnoremap <C-p> :<C-u>tabprevious<Return>
 " ku.vim {{{2
 noremap <silent> <Space>kf :<C-u>Ku file<Return>
 noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
+noremap <silent> <Space>kh :<C-u>Ku history<Return>
 "autocmd MyAutoCmd FileType ku inoremap <buffer> <ESC> <ESC>:quit<Return>
 
 " neocomplcache.vim {{{2
@@ -244,9 +245,9 @@ let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com> -"
 
 
 " commentop.vim {{{2
-map <Space>c     <Plug>CommentopToggleNV
-map <Space>C     <Plug>CommentopAppendNV
-map <Space><C-c> <Plug>CommentopRemoveNV
+map <Leader>c     <Plug>CommentopToggleNV
+map <Leader>C     <Plug>CommentopAppendNV
+map <Leader><C-c> <Plug>CommentopRemoveNV
 
 
 
