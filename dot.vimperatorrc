@@ -115,6 +115,8 @@ noremap ! :setl invum<CR>
 
 map U :undo<Space>
 
+noremap s :<C-u>google<Space>
+
 " qmark 2.0preで動かないかも？
 " ===
 qmark a http://www.amazon.co.jp/
@@ -323,5 +325,8 @@ let g:hatebuWatchDogInterval=1200
 
 
 source! ~/.vimperator/userContent.vimp
+
+" コマンドラインを普段は非表示にする
+highlight CmdLine height: 0px;
 
 echo ".vimperatorrc sourced"
