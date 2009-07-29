@@ -73,6 +73,7 @@ set incsearch
 set laststatus=2
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
+set modeline
 set mouse=
 set nrformats="hex"
 set ruler
@@ -90,6 +91,11 @@ set title
 set visualbell t_vb=
 set wildmenu
 set wildmode=list:longest
+
+if has("unix")
+	set nofsync
+	set swapsync=
+endif
 
 let &statusline = ''
 let &statusline .= '%<%f %y%m%r'
@@ -121,13 +127,13 @@ command! -bang -complete=file -nargs=? Sjis
 \ edit<bang> ++enc=cp932 <args>
 
 " 文字コードを変換 {{{2
-command! -bang -complete=file -nargs=? ToUtf8
+command! -bang -nargs=0 ToUtf8
 \ setlocal fileencoding=utf-8
 
-command! -bang -complete=file -nargs=? ToEucjp
+command! -bang -nargs=0 ToEucjp
 \ setlocal fileencoding=euc-jp
 
-command! -bang -complete=file -nargs=? ToSjis
+command! -bang -nargs=0 ToSjis
 \ setlocal fileencoding=cp932
 
 
@@ -156,6 +162,9 @@ nnoremap k gk
 noremap <Space> <Nop>
 noremap <S-k> <Nop>
 
+nnoremap <Space>w :<C-u>write<CR>
+nnoremap <Space>q :<C-u>quit<CR>
+
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -171,7 +180,7 @@ noremap! <C-BS> <C-w>
 noremap <C-h> :<C-u>help<Space>
 
 " .vimrcのロード
-nnoremap <C-l> :<C-u>source ~/.vimrc<Return>
+nnoremap <C-l> :<C-u>source $MYVIMRC<Return>
 
 
 " タブ {{{2
@@ -203,6 +212,11 @@ let g:NeoComplCache_EnableUnderbarCompletion = 1
 let g:NeoComplCache_MinSyntaxLength = 3
 let g:NeoComplCache_SkipInputTime = "0.1"
 let g:NeoComplCache_SmartCase = 1
+"tmp
+let g:NeoComplCache_EnableMFU = 1
+let g:NeoComplCache_PreviousKeywordCompletion = 1
+let g:NeoComplCache_SimilarMatch = 1
+let g:NeoComplCache_TryKeywordCompletion = 1
 
 let g:NeoComplCache_DictionaryFileTypeLists = {
 			\ "default" : "",
