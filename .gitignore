@@ -5,3 +5,5 @@ dot.vim/backup/*
 dot.vim/swap/*
 dot.vim/info/ku/history
 dot.vim/.netrwhist
+
+dot.vimperator/info
