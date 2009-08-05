@@ -248,9 +248,8 @@ liberator.globalVariables.refcontrol = {
 	"image.itmedia.co.jp" : "http://www.itmedia.co.jp",
 	"bk.mufg.jp"          : "@NORMAL",
 	"pixiv.net"           : "http://www.pixiv.net",
-
-	// 仕事用 コミットしないように!!
-	"kancad01.bpr.btm.co.jp" : "@NORMAL",
+	"hamaco.local"        : "@NORMAL",
+	"hamaco.org"          : "@NORMAL",
 };
 EOM
 
