@@ -325,7 +325,4 @@ let g:hatebuWatchDogInterval=1200
 
 source! ~/.vimperator/userContent.vimp
 
-" コマンドラインを普段は非表示にする
-highlight CmdLine height: 0px;
-
 echo ".vimperatorrc sourced"
