@@ -322,6 +322,13 @@ EOM
 let g:hatebuWatchDogTargets='["http://d.hatena.ne.jp/hamaco/"]'
 let g:hatebuWatchDogInterval=1200
 
+" hateDAopener
+javascript <<EOM
+liberator.globalVariables.hateDAopener_accounts = [
+	["hamaco", "d"]
+];
+EOM
+
 
 source! ~/.vimperator/userContent.vimp
 
