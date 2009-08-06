@@ -2,6 +2,7 @@ dot.emacs.d/auto-save-list/*
 dot.emacs.d/backups/*
 
 dot.vim/.netrwhist
+dot.vim/.VimballRecord
 dot.vim/backup/*
 dot.vim/doc/tags*
 dot.vim/info/ku/history
