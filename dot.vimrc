@@ -12,6 +12,9 @@ if has('syntax')
 	endif
 endif
 
+
+
+
 " 文字コード設定 {{{1
 if &encoding !=# 'utf-8'
 	set encoding=japan
@@ -149,54 +152,10 @@ autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
 
 
 
-
-" キーマップ {{{1
-noremap ; :
-noremap : ;
-
-nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
-
-nnoremap j gj
-nnoremap k gk
-
-noremap <Space> <Nop>
-noremap <S-k> <Nop>
-
-nnoremap <Space>w :<C-u>write<CR>
-nnoremap <Space>q :<C-u>quit<CR>
-
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
-
-if has('unix')
-	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
-endif
-
-noremap <C-BS> <C-w>
-noremap! <C-BS> <C-w>
-
-noremap <C-h> :<C-u>help<Space>
-
-" .vimrcのロード
-nnoremap <C-l> :<C-u>source $MYVIMRC<Return>
-
-
-" タブ {{{2
-nnoremap <C-t> <Nop>
-nnoremap <C-t>n :<C-u>tabnew<Return>
-nnoremap <C-t>c :<C-u>tabclose<Return>
-nnoremap <C-t>o :<C-u>tabonly<Return>
-nnoremap <C-t>j :<C-u>tabnext<Return>
-nnoremap <C-t>k :<C-u>tabprevious<Return>
-nnoremap <C-n> :<C-u>tabnext<Return>
-nnoremap <C-p> :<C-u>tabprevious<Return>
-
-
-
-
 " プラグイン {{{1
+
+" 無効化 {{{2
+let plugin_dicwin_disable = 1
 
 " ku.vim {{{2
 noremap <silent> <Space>kf :<C-u>Ku file<Return>
@@ -266,8 +225,53 @@ map <Leader><C-c> <Plug>CommentopRemoveNV
 
 
 
-" Tmp: 一時的な設定 ============================================ {{{1
+" キーマップ {{{1
+noremap ; :
+noremap : ;
 
+nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
+
+nnoremap j gj
+nnoremap k gk
+
+noremap <Space> <Nop>
+noremap <S-k> <Nop>
+
+nnoremap <Space>w :<C-u>write<CR>
+nnoremap <Space>q :<C-u>quit<CR>
+
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+
+if has('unix')
+	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
+endif
+
+noremap <C-BS> <C-w>
+noremap! <C-BS> <C-w>
+
+noremap <C-h> :<C-u>help<Space>
+
+" .vimrcのロード
+nnoremap <C-l> :<C-u>source $MYVIMRC<Return>
+
+
+" タブ {{{2
+nnoremap <C-t> <Nop>
+nnoremap <C-t>n :<C-u>tabnew<Return>
+nnoremap <C-t>c :<C-u>tabclose<Return>
+nnoremap <C-t>o :<C-u>tabonly<Return>
+nnoremap <C-t>j :<C-u>tabnext<Return>
+nnoremap <C-t>k :<C-u>tabprevious<Return>
+nnoremap <C-n> :<C-u>tabnext<Return>
+nnoremap <C-p> :<C-u>tabprevious<Return>
+
+
+
+
+" Tmp: 一時的な設定 ============================================ {{{1
 
 
 
