@@ -161,6 +161,7 @@ let plugin_dicwin_disable = 1
 noremap <silent> <Space>kf :<C-u>Ku file<Return>
 noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
 noremap <silent> <Space>kh :<C-u>Ku history<Return>
+noremap <silent> <Space>km :<C-u>Ku file_mru<Return>
 "autocmd MyAutoCmd FileType ku inoremap <buffer> <ESC> <ESC>:quit<Return>
 
 " neocomplcache.vim {{{2
