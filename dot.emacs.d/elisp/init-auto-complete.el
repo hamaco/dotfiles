@@ -1,6 +1,10 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
+(setq ac-sources '(ac-source-abbrev
+										ac-source-words-in-buffer
+										ac-source-files-in-current-dir))
+
 ;; 有効にするmodeを追加
 (setq ac-modes
 			(append ac-modes

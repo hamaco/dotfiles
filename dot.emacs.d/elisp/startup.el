@@ -8,7 +8,10 @@
 (setq my-load-path
 			(list
 				(expand-file-name "~/.emacs.d/elisp")
-				(expand-file-name "~/.emacs.d/elisp/3rd-party")))
+				(expand-file-name "~/.emacs.d/elisp/3rd-party")
+				(expand-file-name "~/.emacs.d/elisp/3rd-party/howm")
+				(expand-file-name "~/.emacs.d/elisp/3rd-party/mmm-mode")
+			))
 (setq load-path (append my-load-path default-load-path))
 
 ;; me

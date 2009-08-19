@@ -1,5 +1,7 @@
+dot.emacs.d/anything-c-adaptive-history
 dot.emacs.d/auto-save-list/*
 dot.emacs.d/backups/*
+dot.emacs.d/woman-cache
 
 dot.vim/.netrwhist
 dot.vim/.VimballRecord
