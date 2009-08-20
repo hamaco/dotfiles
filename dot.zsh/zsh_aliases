@@ -1,0 +1,76 @@
+alias -s txt=cat # txtファイルを直接実行した場合にcatコマンド実行
+alias -s log=less
+alias -s jpg=eog
+alias -s png=eog
+alias -s jar="java -jar"
+
+# -n 行数表示, -I バイナリファイル無視
+# svn関係のファイルを無視
+alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
+
+alias sl="ls"
+alias l="ls"
+alias ll="ls -l"
+alias la="ls -a"
+
+alias s="sudo"
+alias v="vim"
+
+alias tgz="tar cvzf"
+alias untar="tar xvf"
+
+case "${OSTYPE}" in
+linux*)
+	alias tbz2="tar cvjf"
+	alias open="nautilus"
+
+	if [ -x /usr/local/bin/tscreen ]; then
+		alias screen="tscreen"
+	fi
+	;;
+darwin*)
+	alias tbz2="tar cvyf"
+	alias ql="qlmanage -p $@ >& /dev/null"
+	alias eopen="open -a emacs"
+	alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+
+	alias mysql="mysql5"
+
+	fmount () {
+		echo "mounting $1"
+		osascript -e "tell application \"Finder\" to mount volume \"$1\""
+	}
+
+	;;
+freebsd*)
+	alias tbz2="tar cvyf"                                   # tar.bz2で圧縮
+	;;
+esac
+
+sc() {
+	name=${1:-${PWD##*/}}
+	screen -x $name || $screen -r $name || screen -S $name
+}
+
+#-------------------------------------------------------------------------------
+#  myabbrev
+#-------------------------------------------------------------------------------
+typeset -A myabbrev
+
+myabbrev=(
+	"L"  "| less"
+	"G"  "| grep"
+	"U"  "--help | head"
+	"px" "ps ax"
+)
+
+my-expand-abbrev() {
+	local left prefix
+	left=$(echo -nE "$LBUFFER" | sed -e "s/[_a-zA-Z0-9]*$//")
+	prefix=$(echo -nE "$LBUFFER" | sed -e "s/.*[^_a-zA-Z0-9]\([_a-zA-Z0-9]*\)$/\1/")
+	LBUFFER=$left${myabbrev[$prefix]:-$prefix}" "
+}
+
+zle -N my-expand-abbrev
+
+bindkey " " my-expand-abbrev

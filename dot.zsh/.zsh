@@ -1,0 +1,1 @@
+/home/hamaco/dotfiles/.zsh

@@ -1,0 +1,43 @@
+autoload -Uz colors; colors
+
+local PROMPT_YUNO="/ _ / ×"          # ゆの
+local PROMPT_YAYOI="ζ*'ヮ')ζ <"      # やよい
+local PROMPT_YAYOI2="ζ*#ﾟДﾟ)ζ<"
+local PROMPT_KONATA="＼(＝ω＝．)／ <" # こなた
+local PROMPT_NAGATO="YUKI.N>"        #
+
+function git_status() {
+	local git_dir="$(git rev-parse --git-dir 2>/dev/null)"
+	if [ -z $git_dir ]; then
+	else
+		local head_name=$(git branch | tr -d '\* ')
+		echo -n " on %{$fg[yellow]%}(git:$head_name)%{$reset_color%}"
+	fi
+
+	local svn_dir="$(ls .svn 2>/dev/null)"
+	if [ -z $svn_dir ]; then
+	else
+		local head_name=""
+		echo -n " on %{$fg[yellow]%}(svn:$head_name)%{$reset_color%}"
+	fi
+}
+
+PROMPT="%{$fg[green]%}%n@%m%{$reset_color%} "
+PROMPT="%(!,$fg[red],$fg[green])%n@%m%{$reset_color%} "
+PROMPT+="[%{$fg[cyan]%}%~%{$reset_color%}]"
+PROMPT+="\$(git_status)"
+
+PROMPT+="
+${PROMPT_NAGATO} "
+
+RPROMPT="%*"
+case "${OSTYPE}" in
+darwin*)
+	RPROMPT+=" (\$(sysctl -n vm.loadavg | sed 's/{ \(....\) .*/\1/'))"
+	;;
+esac
+
+PROMPT2="%_%% "
+SPROMPT="correct: %{$fg[red]%}%R%{$reset_color%} -> %{$fg[yellow]%}%r%{$reset_color%} ? [y,n,a,e]: "
+
+# vim:set ft=zsh:
