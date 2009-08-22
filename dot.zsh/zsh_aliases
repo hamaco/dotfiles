@@ -1,8 +1,21 @@
+# Suffix: 接尾辞エイリアス ========= {{{1
 alias -s txt=cat # txtファイルを直接実行した場合にcatコマンド実行
 alias -s log=less
 alias -s jpg=eog
 alias -s png=eog
 alias -s jar="java -jar"
+
+
+
+
+# Global: グローバルエイリアス ===== {{{1
+alias -g NL=">/dev/null"
+alias -g NLL=">/dev/null 2>&1"
+
+
+
+
+# }}}
 
 # -n 行数表示, -I バイナリファイル無視
 # svn関係のファイルを無視
@@ -74,3 +87,6 @@ my-expand-abbrev() {
 zle -N my-expand-abbrev
 
 bindkey " " my-expand-abbrev
+
+# END {{{1
+# vim: foldmethod=marker

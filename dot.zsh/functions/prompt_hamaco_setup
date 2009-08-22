@@ -1,34 +1,27 @@
 autoload -Uz colors; colors
+autoload -Uz vcs_info
 
-local PROMPT_YUNO="/ _ / ×"          # ゆの
-local PROMPT_YAYOI="ζ*'ヮ')ζ <"      # やよい
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+
+local PROMPT_YUNO="/ _ / ×"
+local PROMPT_YAYOI="ζ*'ヮ')ζ <"
 local PROMPT_YAYOI2="ζ*#ﾟДﾟ)ζ<"
-local PROMPT_KONATA="＼(＝ω＝．)／ <" # こなた
-local PROMPT_NAGATO="YUKI.N>"        #
+local PROMPT_KONATA="＼(＝ω＝．)／ <"
+local PROMPT_NAGATO="YUKI.N>"
 
-function git_status() {
-	local git_dir="$(git rev-parse --git-dir 2>/dev/null)"
-	if [ -z $git_dir ]; then
-	else
-		local head_name=$(git branch | tr -d '\* ')
-		echo -n " on %{$fg[yellow]%}(git:$head_name)%{$reset_color%}"
-	fi
-
-	local svn_dir="$(ls .svn 2>/dev/null)"
-	if [ -z $svn_dir ]; then
-	else
-		local head_name=""
-		echo -n " on %{$fg[yellow]%}(svn:$head_name)%{$reset_color%}"
-	fi
+function vcs_status () {
+	psvar=()
+	LANG=en_US.UTF-8 vcs_info
+	[[ -n "$vcs_info_msg_0_" ]] && echo -n " on %{$fg[yellow]%}$vcs_info_msg_0_%{$reset_color%}"
 }
 
-PROMPT="%{$fg[green]%}%n@%m%{$reset_color%} "
 PROMPT="%(!,$fg[red],$fg[green])%n@%m%{$reset_color%} "
 PROMPT+="[%{$fg[cyan]%}%~%{$reset_color%}]"
-PROMPT+="\$(git_status)"
-
+PROMPT+="\$(vcs_status)"
 PROMPT+="
-${PROMPT_NAGATO} "
+${PROMPT_YAYOI} "
+
 
 RPROMPT="%*"
 case "${OSTYPE}" in
@@ -37,7 +30,10 @@ darwin*)
 	;;
 esac
 
+
 PROMPT2="%_%% "
+
+
 SPROMPT="correct: %{$fg[red]%}%R%{$reset_color%} -> %{$fg[yellow]%}%r%{$reset_color%} ? [y,n,a,e]: "
 
 # vim:set ft=zsh:

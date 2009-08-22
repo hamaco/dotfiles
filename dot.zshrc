@@ -3,8 +3,6 @@
 bindkey -e
 
 umask 022
-# 重複する要素を自動的に削除
-typeset -U path cdpath fpath manpath
 source ~/.zsh/cdd
 
 cdpath=($HOME)
