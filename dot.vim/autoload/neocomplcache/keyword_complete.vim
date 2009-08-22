@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: keyword_complete.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 04 Jun 2009
+" Last Modified: 26 Jul 2009
 " Usage: Just source this file.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -23,7 +23,7 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 2.59, for Vim 7.0
+" Version: 2.64, for Vim 7.0
 "=============================================================================
 
 " Important variables.
@@ -85,6 +85,7 @@ function! neocomplcache#keyword_complete#initialize()"{{{
         let g:NeoComplCache_CtagsArgumentsList = {}
     endif
     let g:NeoComplCache_CtagsArgumentsList['default'] = ''
+    let g:NeoComplCache_CtagsArgumentsList['vim'] = "'--extra=fq --fields=afmiKlnsStz '--regex-vim=/function!? ([a-z#:_0-9A-Z]+)/\\1/function/''"
 
     " Initialize cache.
     call s:check_source()
@@ -259,7 +260,7 @@ function! neocomplcache#keyword_complete#caching_percent(number)"{{{
         let l:number = a:number
     endif
     if !has_key(s:sources, l:number)
-        return 0
+        return '-'
     elseif s:sources[l:number].cached_last_line >= s:sources[l:number].end_line
         return 100
     else
@@ -703,7 +704,7 @@ function! s:word_caching(srcname, start_line, end_line)"{{{
     endif
 endfunction"}}}
 
-function! s:word_caching_current_line()"{{{
+function! neocomplcache#keyword_complete#word_caching_current_line()"{{{
     let l:source = s:sources[bufnr('%')]
 
     " Buffer.
@@ -910,8 +911,12 @@ function! s:check_source()"{{{
     " Check new buffer.
     while l:bufnumber <= bufnr('$')
         if buflisted(l:bufnumber)
+            let l:bufname = fnamemodify(bufname(l:bufnumber), ':p')
             if (!has_key(s:sources, l:bufnumber) || s:check_changed_buffer(l:bufnumber))
                         \&& !has_key(s:caching_disable_list, l:bufnumber)
+                        \&& (g:NeoComplCache_CachingDisablePattern == '' || l:bufname !~ g:NeoComplCache_CachingDisablePattern)
+                        \&& getbufvar(l:bufnumber, '&readonly') == 0
+                        \&& getfsize(l:bufname) < g:NeoComplCache_CachingLimitFileSize
                 " Caching.
                 call s:word_caching(l:bufnumber, 1, '$')
             endif
@@ -967,7 +972,7 @@ function! s:caching_insert_enter()"{{{
         endif
     else
         " Word caching.
-        call s:word_caching_current_line()
+        call neocomplcache#keyword_complete#word_caching_current_line()
 
         let s:prev_cached_count -= 1
     endif
@@ -1038,8 +1043,14 @@ function! s:caching_buffer(number)"{{{
         let l:number = a:number
     endif
 
-    if !has_key(s:sources, l:number) ||
-                \s:sources[l:number].cached_last_line >= s:sources[l:number].end_line
+    if !has_key(s:sources, l:number)
+        if buflisted(l:number)
+            " Word caching.
+            call s:word_caching(l:number, 1, '$')
+        endif
+
+        return
+    elseif s:sources[l:number].cached_last_line >= s:sources[l:number].end_line
         return
     endif
 
