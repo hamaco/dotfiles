@@ -20,7 +20,7 @@ PROMPT="%(!,$fg[red],$fg[green])%n@%m%{$reset_color%} "
 PROMPT+="[%{$fg[cyan]%}%~%{$reset_color%}]"
 PROMPT+="\$(vcs_status)"
 PROMPT+="
-${PROMPT_YAYOI} "
+${PROMPT_NAGATO} "
 
 
 RPROMPT="%*"

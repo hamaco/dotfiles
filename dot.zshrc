@@ -88,8 +88,9 @@ zstyle -e ":completion:*:sudo:*" command-path 'reply=($path)'
 # カレントディレクトリに候補がない場合のみ cdpath 上のディレクトリを候補
 zstyle ":completion:*:cd:*" tag-order local-directories path-directories
 # 補完候補にもLS_COLORSを使う
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} # HokanKouhomo LS_COLORS niAWaseteIroduke.
-
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# killの補完を詳細にする
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
 
 
 
