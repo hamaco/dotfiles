@@ -17,7 +17,7 @@ export LANG="ja_JP.UTF-8"
 #export LANG="en_US.UTF-8"
 
 export PAGER="less"
-export LESS="--tabs=4 --no-init --LONG-PROMPT --ignore-case"
+export LESS="-er --tabs=4 --no-init --LONG-PROMPT --ignore-case"
 
 export EDITOR=vim
 export SVN_EDITOR=vim
