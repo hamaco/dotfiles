@@ -1,0 +1,26 @@
+[user]
+	name = Hamaco
+	email = 
+
+[alias]
+	ci = commit -v
+	co = checkout
+	st = status
+	di = diff
+	pl = pull
+	ps = push
+
+	up = pull --rebase
+	difflog = log -p HEAD@{3.days.ago}
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
