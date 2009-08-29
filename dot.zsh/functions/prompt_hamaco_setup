@@ -11,13 +11,13 @@ local PROMPT_KONATA="＼(＝ω＝．)／ <"
 local PROMPT_NAGATO="YUKI.N>"
 
 function vcs_status () {
-	psvar=()
 	LANG=en_US.UTF-8 vcs_info
 	[[ -n "$vcs_info_msg_0_" ]] && echo -n " on %{$fg[yellow]%}$vcs_info_msg_0_%{$reset_color%}"
 }
 
 PROMPT="%(!,$fg[red],$fg[green])%n@%m%{$reset_color%} "
 PROMPT+="[%{$fg[cyan]%}%~%{$reset_color%}]"
+# @todo zshのバージョンが4.3.6以前なら無視
 PROMPT+="\$(vcs_status)"
 PROMPT+="
 ${PROMPT_NAGATO} "
