@@ -11,6 +11,15 @@
 (global-set-key "\C-cu" 'uncomment-region) ;; 選択範囲のコメントアウトを解除
 
 
+(defun forward-word+1 ()
+  "forward-word で単語の先頭へ移動する"
+  (interactive)
+  (forward-word)
+  (forward-char))
+
+(global-set-key (kbd "M-f") 'forward-word+1)
+
+
 ;; ウィンドウ操作
 (global-set-key [S-right] 'split-window-horizontally) ;; 左右に分割する
 (global-set-key [S-left] 'split-window-horizontally) ;; 左右に分割する

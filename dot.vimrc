@@ -165,6 +165,7 @@ noremap <silent> <Space>km :<C-u>Ku file_mru<Return>
 "autocmd MyAutoCmd FileType ku inoremap <buffer> <ESC> <ESC>:quit<Return>
 
 " neocomplcache.vim {{{2
+let g:AutoComplPop_NotEnableAtStartup = 1
 let g:NeoComplCache_EnableAtStartup = 1
 let g:NeoComplCache_EnableInfo = 1
 let g:NeoComplCache_EnableCamelCaseCompletion = 1
@@ -187,9 +188,10 @@ if !exists("g:NeoComplCache_KeywordPatterns")
 	let g:NeoComplCache_KeywordPatterns = {}
 endif
 let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
-let g:NeoComplCache_SnippetsDir = $HOME."/snippets"
+"let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
 
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
 
 
 " skk.vim {{{2
