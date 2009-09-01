@@ -1,12 +1,12 @@
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal tabstop=4
 setlocal expandtab
 
 " smartchr.vim
 inoremap <buffer> <expr> = smartchr#one_of(" = ", " == ", " === ", "=")
-inoremap <buffer> <expr> + smartchr#one_of("+",   " += ", " + ")
-inoremap <buffer> <expr> - smartchr#one_of("-",   " -= ", " - ")
+inoremap <buffer> <expr> + smartchr#one_of("+",   "++",   " += ",  " + ")
+inoremap <buffer> <expr> - smartchr#one_of("-",   "--",   " -= ",  " - ")
 inoremap <buffer> <expr> ! smartchr#one_of("!",   " != ", " !== ")
 inoremap <buffer> <expr> > smartchr#one_of(">",   " >= ", " => ")
 inoremap <buffer> <expr> < smartchr#one_of("<",   " <= ", " =< ")
