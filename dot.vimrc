@@ -170,11 +170,12 @@ let g:NeoComplCache_EnableAtStartup = 1
 let g:NeoComplCache_EnableInfo = 1
 let g:NeoComplCache_EnableCamelCaseCompletion = 1
 let g:NeoComplCache_EnableUnderbarCompletion = 1
+let g:NeoComplCache_EnableQuickMatch = 0 " 数字で候補選択を無効
 let g:NeoComplCache_MinSyntaxLength = 3
 let g:NeoComplCache_SkipInputTime = "0.1"
 let g:NeoComplCache_SmartCase = 1
 "tmp
-let g:NeoComplCache_EnableMFU = 1
+"let g:NeoComplCache_EnableMFU = 1
 let g:NeoComplCache_PreviousKeywordCompletion = 1
 let g:NeoComplCache_SimilarMatch = 1
 let g:NeoComplCache_TryKeywordCompletion = 1
@@ -266,10 +267,10 @@ nnoremap <C-t> <Nop>
 nnoremap <C-t>n :<C-u>tabnew<Return>
 nnoremap <C-t>c :<C-u>tabclose<Return>
 nnoremap <C-t>o :<C-u>tabonly<Return>
-nnoremap <C-t>j :<C-u>tabnext<Return>
-nnoremap <C-t>k :<C-u>tabprevious<Return>
-nnoremap <C-n> :<C-u>tabnext<Return>
+nnoremap <C-t>h :<C-u>tabprevious<Return>
+nnoremap <C-t>l :<C-u>tabnext<Return>
 nnoremap <C-p> :<C-u>tabprevious<Return>
+nnoremap <C-n> :<C-u>tabnext<Return>
 
 
 
