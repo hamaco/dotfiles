@@ -19,4 +19,4 @@ bind o focus
 
 # screenのコントロールキーを変更する
 bind X eval "escape ^Xx"
-ind T eval "escape ^Tt"
+bind T eval "escape ^Tt"
