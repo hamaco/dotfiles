@@ -218,7 +218,7 @@ noremap gE ge
 
 " spec.vim {{{2
 language time en_US.UTF-8
-let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco_@livedoor.com> -"
+let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco@ryus.be> -"
 
 
 " commentop.vim {{{2
