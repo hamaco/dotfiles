@@ -1,0 +1,418 @@
+﻿@charset "utf-8";
+/* Stylesheet for email/news/newsfeed documents */
+/* Copyright 2007 Opera Software */
+
+/* Renewed by ashizuka 2007 */
+/* Letter or Note Style for Opera9 */
+
+@namespace omf url(http://www.opera.com/2003/omf);
+@namespace html url(http://www.w3.org/TR/REC-html40);
+
+/*============================================================
+
+  メール全体の指定
+
+============================================================*/
+
+/*** 全体の間隔を一旦リセット ***/
+* {
+margin: 0;
+padding: 0;
+}
+
+/*** 背景色と下の間隔 ***/
+body {
+background: #dbdbc6;
+padding-bottom: 1em;
+}
+
+/*** ヘッダや本文、添付ファイルの各パートは<object>で埋め込まれている ***/
+
+object {
+width: 100%;
+height: -o-content-size;
+display: block;
+}
+
+/*** ファイルの読み込みエラー ***/
+div#qp_error {
+font-size: 75%;
+font-weight: bold;
+color: #cc0000;
+padding: 10px;
+}
+
+/*============================================================
+
+  ヘッダ部分の指定
+
+============================================================*/
+
+/*** ヘッダ ***/
+div.headers {
+display: block;
+background: #efefef;
+border-right: 1px solid #adadad;
+border-left: 1px solid #adadad;
+margin: 0 5%;
+padding-bottom: 2em;
+}
+/****** ヘッダツールバーを使う場合
+div.headers {
+position: absolute;
+top: -60000px;
+}
+***********************************/
+
+/*** よくわからないのでそのまま ***/
+div+div.headers {
+margin: 10px 50px 0;
+border: 1px solid rgb(100,100,100);
+border-top-width: 3px;
+position: static;
+}
+
+/*** よくわからないのでそのまま ***/
+div+div.headers+div {
+margin: 0 50px 10px;
+border: 1px solid rgb(100,100,100);
+border-width: 0 1px 3px;
+}
+
+/*** 一旦ヘッダ情報を全て非表示 ***/
+omf|hdr {
+display:none;
+}
+
+/*** 件名と日付だけ表示させる ***/
+omf|hdr[name="subject"],
+omf|hdr[name="date"] {
+display: block;
+}
+
+/*** 件名を左上に表示 ***/
+omf|hdr[name="subject"] {
+display: block;
+position: absolute;
+left: 4%;
+top: 25px;
+}
+
+/*** 日付を右上に表示 ***/
+omf|hdr[name="date"] {
+display: block;
+position: absolute;
+right: 4%;
+top: 50px;
+}
+
+/*** ヘッダ項目名を消す ***/
+omf|hdr[name="subject"] omf|n,
+omf|hdr[name="date"] omf|n {
+display: none;
+}
+
+/*** ヘッダ情報 ***/
+omf|v {
+display: block;
+padding: 5px 0.5em 0 0.5em;
+border-bottom: 2px solid #ddd1c1;
+}
+
+/*============================================================
+
+  メール部分の指定
+
+============================================================*/
+
+/*** メール本文 ***/
+div.plainpart {
+margin: 0 5%;
+border-right:1px solid #adadad;
+border-bottom:1px solid #adadad;
+border-left:1px solid #adadad;
+}
+
+/*** HTMLで言うところのhtml要素かな ***/
+omf|mime {
+display: block;
+background: transparent;
+}
+
+/*** HTMLで言うところのbody要素かな ***/
+omf|body {
+display: block;
+background: #efefef;
+padding: 5px;
+}
+
+/*** 本文の汎用ブロック ***/
+omf|div {
+display: block;
+padding: 0 2em 2em 2em;
+}
+
+/*** 引用レベル0、つまり本文 ***/
+omf|ql.L0 {
+display: block;
+color: black;
+}
+
+/*** 本文の段落 ***/
+omf|p {
+display: block;
+line-height: 1.5;
+white-space: -o-pre-wrap;
+}
+
+/*** 本文の行 ***/
+omf|l {
+display: block !important;
+padding: 5px 0.5em 0 0.5em;
+border-bottom: 2px solid #ddd1c1;
+}
+
+/*** 本文の最初に空行があった場合削除 ***/
+omf|ql.L0 omf|p:first-child omf|l.lf{ 
+display: none;
+}
+
+/*** リンク ***/
+html|a:link {
+color: #1018b5;
+text-decoration: underline;
+}
+
+/*** 訪問済みリンク ***/
+html|a:visited {
+color: black;
+text-decoration: underline;
+}
+
+/*** リンクマウスオーバー ***/
+html|a:hover {
+color: red;
+text-decoration: none;
+}
+
+/*** 引用レベルによる文字色 ***/ 
+omf|ql.L1, omf|ql.L7, omf|ql.L13, omf|ql.L19, omf|ql.L25, omf|ql.L31 {color: #385FA3;}
+omf|ql.L2, omf|ql.L8, omf|ql.L14, omf|ql.L20, omf|ql.L26 {color: #4FA729;}
+omf|ql.L3, omf|ql.L9, omf|ql.L15, omf|ql.L21, omf|ql.L27 {color: #CC0000;}
+omf|ql.L4, omf|ql.L10, omf|ql.L16, omf|ql.L22, omf|ql.L28 {color: #6D3420;}
+omf|ql.L5, omf|ql.L11, omf|ql.L17, omf|ql.L23, omf|ql.L29 {color: #458183;}
+omf|ql.L6, omf|ql.L12, omf|ql.L18, omf|ql.L24, omf|ql.L30 {color: #212326;}
+
+/*** よくわからないのでそのまま ***/
+#flowed .flow {margin: -1em 0 1em 0;}
+
+/*** 引用の行 ***/ 
+#flowed omf|l {display: inline;}
+
+/*** 引用符の数 ***/ 
+.L1  omf|l:before { content: '> '; }
+.L2  omf|l:before { content: '>> '; }
+.L3  omf|l:before { content: '>>> '; }
+.L4  omf|l:before { content: '>>>> '; }
+.L5  omf|l:before { content: '>>>>> '; }
+.L6  omf|l:before { content: '>>>>>> '; }
+.L7  omf|l:before { content: '>>>>>>> '; }
+.L8  omf|l:before { content: '>>>>>>>> '; }
+.L9  omf|l:before { content: '>>>>>>>>> '; }
+.L10 omf|l:before { content: '>>>>>>>>>> '; }
+.L11 omf|l:before { content: '>>>>>>>>>>> '; }
+.L12 omf|l:before { content: '>>>>>>>>>>>> '; }
+.L13 omf|l:before { content: '>>>>>>>>>>>>> '; }
+.L14 omf|l:before { content: '>>>>>>>>>>>>>> '; }
+.L15 omf|l:before { content: '>>>>>>>>>>>>>>> '; }
+.L16 omf|l:before { content: '>>>>>>>>>>>>>>>> '; }
+.L17 omf|l:before { content: '>>>>>>>>>>>>>>>>> '; }
+.L18 omf|l:before { content: '>>>>>>>>>>>>>>>>>> '; }
+.L19 omf|l:before { content: '>>>>>>>>>>>>>>>>>>> '; }
+.L20 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>> '; }
+.L21 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>> '; }
+.L22 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>> '; }
+.L23 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L24 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L25 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L26 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L27 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L28 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L29 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L20 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> '; }
+.L31 omf|l:before { content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> '; }
+
+/*** スマイルのサイズ ***/
+[class^="smiley"] {
+width: -o-skin;
+height: -o-skin;
+}
+
+/*** スマイルスキンの割り当て ***/
+.smiley-happy {background-image: -o-skin("Smiley Happy");}
+.smiley-unhappy {background-image: -o-skin("Smiley Unhappy");}
+.smiley-wink {background-image: -o-skin("Smiley Wink");}
+.smiley-surprised {background-image: -o-skin("Smiley Surprised");}
+.smiley-grin {background-image: -o-skin("Smiley Grin");}
+.smiley-cool {background-image: -o-skin("Smiley Cool");}
+.smiley-indifferent {background-image: -o-skin("Smiley Indifferent");}
+.smiley-cry {background-image: -o-skin("Smiley Cry");}
+.smiley-angry {background-image: -o-skin("Smiley Angry");}
+.smiley-tongue {background-image: -o-skin("Smiley Tongue");}
+.smiley-pacman {background-image: -o-skin("Smiley Pacman");}
+
+/*** 署名 ***/
+omf|sig {
+display: block;
+text-align: right;
+}
+
+/*** 署名の最初の "--" を消す ***/
+omf|sig omf|p:first-child { 
+display: none;
+}
+
+/*** 署名の最後に何故か入ってしまう空白行を消す ***/
+omf|sig omf|p:last-child omf|l.lf{ 
+display: none;
+}
+
+/*============================================================
+
+  添付ファイル部分の指定
+
+============================================================*/
+
+/*** 添付ファイル ***/
+div.attachments {
+background: #dbdbc6;
+margin: 0 5%;
+}
+/****** フォントが上手く反映されない場合は
+font-family: 好みのフォント名;
+という風に指定する
+*****************************************/
+
+/*** 添付ファイル ***/
+div.attachments object {
+background-color: #ddd;
+border: 1px solid #aaa;
+margin-top: 3em;
+padding: 4px;
+max-width: 50%;
+width: auto;
+height: auto;
+}
+
+/*** よくわからないのでそのまま ***/
+.attachments a {
+font: status-bar; 
+text-decoration: underline;
+vertical-align: middle;
+color: blue;
+display: inline;
+}
+
+/*** よくわからないのでそのまま ***/
+.attachments a.unknown::before {
+content: "";
+background-image: -o-skin('Attachment Documents');
+margin-right: 3px;
+width: 16px;
+height: 16px;
+display: inline-block;
+}
+
+/*============================================================
+
+  HTMLメール部分の指定
+
+============================================================*/
+
+/*** HTMLメール ***/
+div.htmlpart {
+display: block;
+margin: 0 5%;
+padding: 5px;
+background: #efefef;
+border-bottom:1px solid #adadad;
+border-right:1px solid #adadad;
+border-left:1px solid #adadad;
+}
+/****** フォントが上手く反映されない場合は
+font-family: 好みのフォント名;
+という風に指定する
+*****************************************/
+
+/*============================================================
+
+  印刷プレビュー  手抜きです
+
+============================================================*/
+
+@media print {
+  * {
+	margin: 0 !important;
+	padding: 0 !important;
+	background-image: none !important;
+	background-color: white !important;
+	border: none !important;
+	color: black;
+	}
+
+  omf|hdr[name="subject"],
+  omf|hdr[name="date"] {
+  	display: none;
+	}
+
+  .L1  omf|l:before {content: '> ';}
+  .L2  omf|l:before {content: '>> ';}
+  .L3  omf|l:before {content: '>>> ';}
+  .L4  omf|l:before {content: '>>>> ';}
+  .L5  omf|l:before {content: '>>>>> ';}
+  .L6  omf|l:before {content: '>>>>>> ';}
+  .L7  omf|l:before {content: '>>>>>>> ';}
+  .L8  omf|l:before {content: '>>>>>>>> ';}
+  .L9  omf|l:before {content: '>>>>>>>>> ';}
+  .L10 omf|l:before {content: '>>>>>>>>>> ';}
+  .L11 omf|l:before {content: '>>>>>>>>>>> ';}
+  .L12 omf|l:before {content: '>>>>>>>>>>>> ';}
+  .L13 omf|l:before {content: '>>>>>>>>>>>>> ';}
+  .L14 omf|l:before {content: '>>>>>>>>>>>>>> ';}
+  .L15 omf|l:before {content: '>>>>>>>>>>>>>>> ';}
+  .L16 omf|l:before {content: '>>>>>>>>>>>>>>>> ';}
+  .L17 omf|l:before {content: '>>>>>>>>>>>>>>>>> ';}
+  .L18 omf|l:before {content: '>>>>>>>>>>>>>>>>>> ';}
+  .L19 omf|l:before {content: '>>>>>>>>>>>>>>>>>>> ';}
+  .L20 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>> ';}
+  .L21 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>> ';}
+  .L22 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L23 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L24 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L25 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L26 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L27 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L28 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L29 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L30 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ';}
+  .L31 omf|l:before {content: '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ';}
+
+  omf|sig {
+	text-align: right;
+	}
+
+  [class^="smiley"] {
+	background-image: none;
+	width: auto;
+	height: auto;
+	}
+
+  img[title] {
+	content: attr(title);
+	}
+
+  .attachments a:before {
+	content: "  " counter(attachment) ". ";
+	counter-increment: attachment;
+	}
+}

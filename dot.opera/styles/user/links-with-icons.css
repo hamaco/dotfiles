@@ -1,0 +1,198 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+/*
+Name: User: Links with icons
+Version: 0.20 (1.10.2007)
+Author: Nikita Vasilev
+Description: http://usercss.ru/styles/links-with-icons/
+*/
+
+/*
+a[href]:before {
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	background-image:-o-skin("Thread");
+	}
+a[href^='#']:before {
+	background-image:-o-skin("Thread.open");
+	}	
+a[href='.']:before {
+	background-image:-o-skin("Parent folder");
+	}
+a[href$='/']:before {
+	background-image:-o-skin("Folder");
+	}
+a[href='/']:before {
+	background-image:-o-skin("Panel Collapse Left");
+	}
+*/
+
+/* File types ---------------- */
+a[href$='.mp3']:before, a[href$='.MP3']:before, 
+a[href$='.ogg']:before, a[href$='.OGG']:before,
+a[href$='.wav']:before, a[href$='.WAV']:before,
+a[href$='.flac']:before, a[href$='.FLAC']:before, 
+a[href$='.ape']:before, a[href$='.APE']:before {
+	background-image:-o-skin("Attachment Music");
+	content:'';
+	display:inline-block;
+	width:-o-skin;
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href$='.jpg']:before, a[href$='.JPG']:before,
+a[href$='.jpeg']:before, a[href$='.JPEG']:before,
+a[href$='.gif']:before, a[href$='.GIF']:before, 
+a[href$='.png']:before, a[href$='.PNG']:before, 
+a[href$='.bmp']:before, a[href$='.BMP']:before,
+a[href$='.svg']:before, a[href$='.SVG']:before, 
+a[href$='.psd']:before, a[href$='.PSD']:before, 
+a[href$='.ai']:before, a[href$='.AI']:before {
+	background-image:-o-skin("Attachment Images");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href$='.avi']:before, a[href$='.AVI']:before, 
+a[href$='.mpg']:before, a[href$='.MPG']:before, 
+a[href$='.mpeg']:before, a[href$='.MPEG']:before, 
+a[href$='.mov']:before, a[href$='.MOV']:before, 
+a[href$='.wmv']:before, a[href$='.WMV']:before, 
+a[href$='.vob']:before, a[href$='.VOB']:before, 
+a[href$='.3gp']:before, a[href$='.3GP']:before {
+	background-image:-o-skin("Attachment Video");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href$='.doc']:before, a[href$='.DOC']:before, 
+a[href$='.odt']:before, a[href$='.ODT']:before, 
+a[href$='.pdf']:before, a[href$='.PDF']:before, 
+a[href$='.ppt']:before, a[href$='.PPT']:before, 
+a[href$='.xls']:before, a[href$='.XLS']:before {
+	background-image:-o-skin("Attachment Documents");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href$='.zip']:before, a[href$='.ZIP']:before, 
+a[href$='.rar']:before, a[href$='.RAR']:before, 
+a[href$='.7z']:before, a[href$='.7Z']:before {
+	background-image:-o-skin("Attachment Archives");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href$='.txt']:before, a[href$='.TXT']:before, 
+a[href$='.log']:before, a[href$='.LOG']:before {
+	background-image:-o-skin("Note");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href$='.rss']:before, a[href$='.RSS']:before,
+a[href$='.atom']:before, a[href$='.ATOM']:before {
+	background-image:-o-skin("RSS");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href$='.exe']:before, a[href$='.EXE']:before {
+	background-image:-o-skin("Status Busy");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+/*
+a[href$='.html']:before,
+a[href$='.htm']:before {
+	background-image:-o-skin("Newsfeed Read");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+}
+*/
+
+/* Protocols ---------------- */
+a[href^='mailto:']:before {
+	background-image:-o-skin("View mail");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href^='irc://']:before {
+	background-image:-o-skin("Account IRC");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href^='news://']:before {
+	background-image:-o-skin("Show newsgroups");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href^='opera:']:before {
+	background-image:-o-skin("Account Operamail");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+/*
+a[href^='javascript:']:before {
+	background-image:-o-skin("Status On the phone");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href^='http://']:before {
+	background-image:-o-skin("Mail Redirected");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+a[href^='https:']:before {
+	background-image:-o-skin("Tile Center");
+	content:'';
+	display:inline-block; 
+	width:-o-skin; 
+	height:-o-skin;
+	opacity:.5;
+	}
+*/
+
+/* Other ---------------- */
+a[href]:hover:before {
+	opacity:1;
+	}

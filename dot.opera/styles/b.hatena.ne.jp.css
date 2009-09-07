@@ -1,0 +1,16 @@
+/**
+ * @namespace http://d.hatena.ne.jp/rikuo/20090129
+ * @description フッターを小さく固定にする
+ */
+#footer{
+  position: fixed;
+  left: auto;
+  bottom: 0px;
+  height: 2.5em !important;
+  z-index: 100;                     /* Google Adsと重なった場合の回避 */
+  border-top-width: 3px !important; /* 線の太さは好みで */
+}
+
+#footer:hover{
+  height: auto !important;
+}

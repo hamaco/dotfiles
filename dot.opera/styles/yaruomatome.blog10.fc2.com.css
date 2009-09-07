@@ -1,0 +1,31 @@
+@charset "utf-8";
+#header_outline   /* ﾍｯﾀﾞ全部      */
+,#left            /* 左側ｻｲﾄﾞﾊﾞｰ   */
+,#right           /* 右側ｻｲﾄﾞﾊﾞｰ   */
+,#footer_outline  /* ﾌｯﾀ           */
+,.line_calendar   /* 上部1行ｶﾚﾝﾀﾞｰ */
+,.plugin3_outline /* 上部ﾌﾟﾗｸﾞｲﾝ   */
+,.page_navi       /* ﾍﾟｰｼﾞﾅﾋﾞ      */
+{display:none;}
+/* ｺﾒﾝﾄｲﾗﾈ */
+div.ently_text table{display:none !important;}
+
+/* ｺﾒﾝﾄｲﾗﾈ */
+.comment_outline{display:none !important;}
+
+/* ﾄﾗﾊﾞｲﾗﾈ */
+.trackback_outline{display:none !important;}
+
+/* 幅広すぎなんだよﾊﾞｰﾔﾊﾞｰﾔ */
+*
+,#center
+,#center-left{width:auto !important;margin:auto !important;}
+
+#outline,
+#center-left,
+#center{margin:auto 1% !important;}
+
+.ently_body{padding:1em;}
+
+*{/*font-family: "ＭＳ Ｐゴシック", "ＭＳＰゴシック", "MSPゴシック", "MS Pゴシック" !Important;*/
+background-image:url() !important;/* 背景画像ｲﾗﾈ */}

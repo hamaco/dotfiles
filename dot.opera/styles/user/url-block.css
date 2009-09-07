@@ -1,0 +1,195 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+/*
+Name: User: URL Block
+Version: 1.38 (30.06.2008)
+Author: ELV1S
+Description: http://usercss.ru/styles/url-block/ , http://operafan.net/forum/index.php?topic=1019.0
+*/
+
+
+/* AGGRESSIVE! */
+/*
+*[href*="/ban"], *[href*="/ban"] *,
+*[href*="/bn."], *[href*="/bn."] *, *[src*="/bn."],
+*[href*="/ads"], *[href*="/ads"] *,
+*[href*="/adv"], *[href*="/adv"] *, 
+*[href*="counter"], *[href*="counter"] *,
+*[href*="/count."], *[href*="/count."] *, *[src*="/count."],
+*[href*="commerce"], *[href*="commerce"] *,
+*[href*="purchase"], *[href*="purchase"] *,
+*[href*="/redirect."], *[href*="/redirect."] *,
+*[href*="/rich"], *[href*="/rich"] *,
+*[href*="/traf"], *[href*="/traf"] *,  
+*[href*="/ref"], *[href*="/ref"] *,  
+*[href*="/clk"], *[href*="/clk"] *,
+*[href*="click."], *[href*="click."] *, 
+*[src*="click"], 
+*[href*="pay.asp"], *[href*="pay.asp"] *,
+*[href*="?page="], *[href*="?page="] *,
+*[href*="partner="], *[href*="partner="] *,
+*[href*="li.ru/go?"], *[href*="li.ru/go?"] *, 
+*[src*="r.mail.ru/b"],
+[href*="yandex.ru/cy?"], *[href*="yandex.ru/cy?"]  {
+	display: none !important;
+}
+*/
+
+
+/* MEDIUM */
+*[href*="/ads/"], *[href*="/ads/"] *, *[src*="/ads/"], *[src*="_ads."],
+*[href*="/adx/"], *[href*="/adx/"] *, *[src*="/adx/"],
+*[href*="/ban/"], *[href*="/ban/"] *, *[src*="/ban/"],
+*[href*="/ban."], *[href*="/ban."] *, *[src*="/ban."], 
+*[href*="/counter"], *[href*="/counter"] *, *[src*="/counter"],
+*[href*="/reklama/"], *[href*="/reklama/"] *, *[src*="/reclama/"],
+*[href*="/reclama/"], *[href*="/reclama/"] *, *[src*="/reclama/"],
+*[href*="/rekl/"], *[href*="/rekl/"] *, *[src*="/rekl/"],
+*[href*="/adserver."], *[href*="/adserver."] *, *[src*="/adserver."],
+*[href*="/adfarm."], *[href*="/adfarm."] *, *[src*="/adfarm."],
+*[href*="banner"], *[href*="banner"] *, *[src*="banner"],
+*[href*="/adv."], *[href*="/adv."] *, *[src*="/adv."],
+*[href*="?partner="], *[href*="?partner="] *,
+*[href*="ads.com/?ref "], *[href*="ads.com/?ref"] *,
+*[href*="/cgi-bin/href/"], *[href*="/cgi-bin/href/"] *, *[src*="/cgi-bin/iframe/"],
+*[href*="adbrite"], *[href*="adbrite"] *, *[src*="adbrite"],
+*[href*="adnet"], *[href*="adnet"] *, *[src*="adnet"] {
+	display: none !important;
+}
+
+/* LOW */
+*[href*="ad.ad"], *[href*="ad.ad"] *, *[href*="ads2"], *[src*="ad.ad"],
+*[href*="/adclick"], *[href*="/adclick"] *, *[src*="/adclick"],
+*[href*="adclick."], *[href*="adclick."] *, 
+*[href*="showclick."], *[href*="showclick."] *,  
+*[href*="clickcount"], *[href*="clickcount"] *,  
+*[href*="100-100.ru"], *[href*="100-100.ru"] *, *[src*="100-100.ru"],
+*[href*="ad.rambler.ru/ban."], *[href*="ad.rambler.ru/ban."] *, 
+*[href*="pochta.ru/regform.php"], *[href*="pochta.ru/regform.php"] *, *[src*="pochta.ru/regform.php"],
+*[href*="/counter/referrer?"], *[href*="/counter/referrer?"] *, 
+*[href*="/adlog.pl"], *[href*="/adlog.pl"] *,
+*[href*="banner.php"], *[href*="banner.php"] *, *[src*="banner.php"],
+*[src*="/adview.php"],
+*[href*="/ban_click."], *[href*="/ban_click."] *, 
+*[href*="www.xtremetop100.com"], *[href*="www.xtremetop100.com"] *, *[src*="www.xtremetop100.com"],
+*[href*="tbn.ru"], *[href*="tbn.ru"] *, *[src*="tbn.ru"],
+*[href*="clx.ru/in"], *[href*="clx.ru/in"] *, 
+*[href*="jbe.ru/"], *[href*="jbe.ru/"] *,
+*[href*="link.ru/cgi-bin/"], *[href*="link.ru/cgi-bin/"] *, *[src*="link.link.ru/show?"],
+*[href*="grandcasino.ru/"], *[href*="grandcasino.ru/"] *, *[src*="grandcasino.ru"],
+*[href*="abn-ad.com"], *[href*="abn-ad.com"] *,
+*[href*="body.imho.ru"], *[href*="body.imho.ru"] *, *[src*="pics.imho.ru"],
+*[href*="begun.ru/"], *[href*="begun.ru/"] *, *[src*="begun.ru"],
+*[href*="filepost.ru/?page="], *[href*="filepost.ru/?page="] *, 
+*[href*="doubleclick.net"], *[href*="doubleclick.net"] *, *[src*="doubleclick.net"],
+*[href*="targetpoint"], *[href*="targetpoint"] *, *[src*="targetpoint"]  {
+	display: none !important;
+}
+
+
+/* Google AdSense */ 
+*[href*="pagead"], *[href*="pagead"] *, *[src*="pagead"], *[src*="pagead"] * {
+	display: none !important;
+}
+
+
+/* Счётчики */ 
+/*
+*[href*="top100.rambler.ru/cgi-bin/"], *[href*="top100.rambler.ru/cgi-bin/"] *, *[src*="rambler.ru/top100"],
+*[src*="www.yandex.ru/cycounter"],
+*[href*="top.mail.ru/jump?"], *[href*="top.mail.ru/jump?"] *,
+*[href*="top.list.ru/jump?"], *[href*="top.list.ru/jump?"] *, *[src*="top.list.ru"],
+*[href*="rax.ru/click"], *[href*="rax.ru/click"] *, 
+*[href*="liveinternet.ru/click"], *[href*="liveinternet.ru/click"] *, *[src*="counter.yadro.ru"],
+*[href*="spylog.com/cnt?"], *[href*="spylog.com/cnt?"] *, *[src*="spylog.com/cnt?"],
+*[href*="click.hotlog.ru"], *[href*="click.hotlog.ru"] *, *[src*=".hotlog.ru/cgi"],
+*[href*="bigmir.net"], *[href*="bigmir.net"] *, *[src*="bigmir.net"],
+*[href*="warlog.info/cgi-bin/"], *[href*="warlog.info/cgi-bin/"] *, *[src*="warlog.info"],
+*[href*="a-counter."], *[href*="a-counter."] *, *[src*="a-counter."],
+*[href*="stat.aport.ru/hit"], *[href*="stat.aport.ru/hit"] *, *[src*="aport.ru/show.pl"],
+*[href*="top.proext.com/go.cgi?"], *[href*="top.proext.com/go.cgi?"] *, *[src*="top.proext.com/c.cgi?"],
+*[href*="topcto.ru"], *[href*="topcto.ru"] *, *[src*="topcto.ru"],
+*[href*="top10.host2play.com"], *[href*="top10.host2play.com"] *, *[src*="top10.host2play.com"],
+*[href*="limerex.com"], *[href*="limerex.com"] *, *[src*="limerex.com"],
+*[href*="tatet.org"], *[href*="tatet.org"] *, *[src*="tatet.org"],
+*[src*=".mystat-in.net/?"],
+*[src*="counter.mystat-in.net"], 
+*[src*="counter.hitua."],
+*[src*="top.startua.com/?"],
+*[src*="thelist.ru/stat"],
+*[href*="support.fhn.ru/generation"], *[href*="support.fhn.ru/generation"] * {
+	display: none !important;
+}
+*/
+
+*[src*="dyxi.ru/"],
+*[href*="dyxi.ru/"], *[href*="dyxi.ru/"] *, *[src*="engine.awaps.net/"],
+*[href*="razno.ru/"], *[href*="razno.ru/"] *, *[src*="razno.ru/"],
+*[href*="rtbn"], *[href*="rtbn"] *, 
+*[href*="ru.redtram.com"], *[href*="ru.redtram.com"] *, *[src*="img.ru.redtram.com"],
+*[href*="interweb.spb.ru/super/"], *[href*="interweb.spb.ru/super/"] *,
+*[href*="dosugvip.ru"], *[href*="dosugvip.ru"] * {
+	display: none !important;
+}
+
+/* Sape.ru */
+*[href*="sape.ru/r"], *[href*="sape.ru/r"] *, *[src*="sape.ru/r"],
+
+/* Rorer*/
+*[src*="engine.rorer.ru"], *[href*="www.rorer.ru"],
+
+/* NoNaMe */ 
+*[href*="tours.ru"], *[href*="tours.ru"] *, *[src*="tours.ru"],
+
+/* overclockers.ru */ 
+*[href*="3a.overclockers."], *[href*="3a.overclockers."] *, *[src*="3a.overclockers."],
+*[href*=".auramedia.ru/"], *[href*=".auramedia.ru/"] *, *[src*="/partners/auramedia/"],
+
+/* mozilla.org ;-p */
+*[href*="spreadfirefox.com/?q="], *[href*="spreadfirefox.com/?q="] *, *[src*="mozilla.org/affiliates/"],
+
+/* yandex */ 
+*[href*="bs.yandex.ru"], *[src*="bs.yandex.ru"], *[value*="bs.yandex.ru"], *[data*="bs.yandex.ru"], 
+*[href*="an.yandex.ru"], *[href*="an.yandex.ru"] *, *[src*="an.yandex.ru"], *[src*="an.yandex.ru"] *,
+*[src*="narod.ru/counter."],
+*[href*="logging.to/"], *[href*="logging.to/"] * {
+	display: none !important;
+}
+
+/* ru-board */
+*[href*="/infoads.cgi"], *[href*="/infoads.cgi"] *,
+*[href*="ru-traffic.com/"], *[href*="ru-traffic.com/"] *,  
+*[src*="ru-traffic.com/"] {
+	display: none !important;
+}
+
+/* Google Analitics */
+*[href="http://www.google-analytics.com/urchin.js"], *[src="http://www.google-analytics.com/urchin.js"] {
+	display: none !important;
+}
+
+/* futurico ads */
+*[href*="pink.futurico.ru"], *[src*="pink.futurico.ru"] {
+	display: none !important;
+}
+
+/* iFolder */
+*[href*="testsbox.ru"], *[src*="testsbox.ru"] {
+	display: none !important;
+}
+
+/* tak.ru */
+[href*="tak.ru/clicks.php"], [src*="takru.com/in.php?"] {
+	display: none !important;
+}
+
+
+
+/****** Style for AllBlock.js  **********/
+/*
+.show {
+		content:normal !important;
+		color:inherit !important;
+		background:inherit !important;
+	}
+*/

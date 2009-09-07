@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+/**
+ * デフォルトのフォントを指定
+ */
+*, body {
+	font-family: KugimmyAA !important;
+}
+
+pre, pre *, code, samp, var, tt {
+	font-family: "Meiryo Consolas" !important;
+}
+
+input, textarea, select {
+	font-family: "Meiryo Consolas" !important;
+}
+
+/**
+ * 選択中のフォーム要素に色を付ける
+ *
+ *
+input:focus,
+textarea:focus,
+select:focus {
+	outline: 2px solid blueviolet !important;
+	background-color: #fdeef4 !important;
+}
+/* *
+
+/**
+ * 
+ *
+ *
+a[href]:hover:after {
+	content: attr(href) !important;
+	position: fixed !important;
+	bottom: 0px !important;
+	left: 0px !important;
+	z-index: 10000 !important;
+	color: #fff !important;
+	background-color: #44a !important;
+	font: 13px normal sans-serif !important;
+	line-height: 1em !important;
+	padding: 1px 5px !important;
+}
+/* */

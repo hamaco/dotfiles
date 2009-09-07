@@ -1,0 +1,57 @@
+a, a:link, a:visited, a:hover, a:active { text-decoration: underline !important; }
+
+#header { background-color: #cf991b !important; }
+#main { background-color: #fff !important; }
+#content { border-right: solid #999 1px !important; }
+#footer { background-color: #cf991b !important; color:#fff; border:0px; }
+h2, h3, h4, .wiki h1, .wiki h2, .wiki h3 {border:none !important;margin:3px 0px;}
+
+/* Topmenu */
+#top-menu { background-color: #905519 !important; }
+#top-menu li { margin: 0 5px !important; }
+/* #034e85 #109db1 #fecc17 #cf991b #905519 Darjeeling */
+/* #d95305 #d96705 #d9704a #d97d47 #d98841 Darjeeling tea cup */
+
+/* Menu */
+#main-menu { margin: 0 5px !important; }
+#main-menu li { margin: 0 6px 0 0 !important; }
+#main-menu li a { background-color: #f0c010 !important; color: #fff; font-weight: normal; padding:4px 8px 6px; }
+#main-menu li a:hover { background: #fff !important; color: #333; text-decoration: none; }
+#main-menu li a.selected, #main-menu li a.selected:hover { background-color: #fff !important; color: #111; }
+
+/* Issues grid styles by priorities (provided by Wynn Netherland) */
+table.list tr.issue a { color: #009 !important; }
+table.list tr.issue td { padding: 5px 0px !important; }
+
+tr.overdue { background-color: #ff3399 !important; }
+
+tr.odd.priority-5, table.list tbody tr.odd.priority-5:hover { color: #900 !important; font-weight: bold; }
+tr.odd.priority-5 { background: #ffc4c4 !important; }
+tr.even.priority-5, table.list tbody tr.even.priority-5:hover { color: #900 !important; font-weight: bold; }
+tr.even.priority-5 { background: #ffd4d4 !important; }
+tr.priority-5 a, tr.priority-5:hover a { color: #900 !important; }
+tr.odd.priority-5 td, tr.even.priority-5 td { border-color: #ffb4b4 !important; }
+
+tr.odd.priority-4, table.list tbody tr.odd.priority-4:hover { color: #900 !important; }
+tr.odd.priority-4 { background: #ffc4c4 !important; }
+tr.even.priority-4, table.list tbody tr.even.priority-4:hover { color: #900 !important; }
+tr.even.priority-4 { background: #ffd4d4 !important; }
+tr.priority-4 a { color: #900 !important; }
+tr.odd.priority-4 td, tr.even.priority-4 td { border-color: #ffb4b4 !important; }
+
+tr.odd.priority-3, table.list tbody tr.odd.priority-3:hover { color: #900 !important; }
+tr.odd.priority-3 { background: #fee !important; }
+tr.even.priority-3, table.list tbody tr.even.priority-3:hover { color: #900 !important; }
+tr.even.priority-3 { background: #fff2f2 !important; }
+tr.priority-3 a { color: #900 !important; }
+tr.odd.priority-3 td, tr.even.priority-3 td { border-color: #fcc !important; }
+
+tr.odd.priority-1, table.list tbody tr.odd.priority-1:hover { color: #559 !important; }
+tr.odd.priority-1 { background: #eaf7ff !important; }
+tr.even.priority-1, table.list tbody tr.even.priority-1:hover { color: #559 !important; }
+tr.even.priority-1 { background: #f2faff !important; }
+tr.priority-1 a { color: #559 !important; }
+tr.odd.priority-1 td, tr.even.priority-1 td { border-color: #add7f3 !important; }
+
+/* Misc */
+.box { border:0px !important;background-color:#fff; }
