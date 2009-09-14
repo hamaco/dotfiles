@@ -8,13 +8,6 @@ alias -s jar="java -jar"
 
 
 
-# Global: グローバルエイリアス ===== {{{1
-alias -g NL=">/dev/null"
-alias -g NLL=">/dev/null 2>&1"
-
-
-
-
 # }}}
 
 # -n 行数表示, -I バイナリファイル無視
@@ -71,10 +64,14 @@ sc() {
 typeset -A myabbrev
 
 myabbrev=(
+	"px" "ps ax"
+
 	"L"  "| less"
 	"G"  "| grep"
 	"U"  "--help | head"
-	"px" "ps ax"
+	"NL" ">/dev/null"
+	"NLL" ">/dev/null 2>&1"
+	"UTF" "| nkf -w"
 )
 
 my-expand-abbrev() {
