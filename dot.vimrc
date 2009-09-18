@@ -168,31 +168,37 @@ noremap <silent> <Space>km :<C-u>Ku file_mru<Return>
 let g:AutoComplPop_NotEnableAtStartup = 1
 let g:NeoComplCache_EnableAtStartup = 1
 let g:NeoComplCache_EnableInfo = 1
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:NeoComplCache_EnableUnderbarCompletion = 1
+" let g:NeoComplCache_EnableCamelCaseCompletion = 1
+" let g:NeoComplCache_EnableUnderbarCompletion = 1
 let g:NeoComplCache_EnableQuickMatch = 0 " 数字で候補選択を無効
+let g:NeoComplCache_EnableSkiipCompletion = 1
+let g:NeoComplCache_PartialMatch = 0
+let g:NeoComplCache_IgnoreCase = 0
+let g:NeoComplCache_EnableWildCard = 0
+" let g:NeoComplCache_PreviousKeywordCompletion = 0
 let g:NeoComplCache_MinSyntaxLength = 3
 let g:NeoComplCache_SkipInputTime = "0.1"
+let g:NeoComplCache_SkipCompletionTime = "0.1"
 let g:NeoComplCache_SmartCase = 1
 "tmp
+let g:NeoComplCache_AlphabeticalOrder=1
 "let g:NeoComplCache_EnableMFU = 1
-let g:NeoComplCache_PreviousKeywordCompletion = 1
-let g:NeoComplCache_SimilarMatch = 1
-let g:NeoComplCache_TryKeywordCompletion = 1
-
-let g:NeoComplCache_DictionaryFileTypeLists = {
-			\ "default" : "",
-			\ "vimshell" : $HOME."/.vimshell_hist"
-			\ }
-
-if !exists("g:NeoComplCache_KeywordPatterns")
-	let g:NeoComplCache_KeywordPatterns = {}
-endif
-let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
-"let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
-
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
-imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
+"let g:NeoComplCache_SimilarMatch = 1
+"let g:NeoComplCache_TryKeywordCompletion = 1
+"
+"let g:NeoComplCache_DictionaryFileTypeLists = {
+"			\ "default" : "",
+"			\ "vimshell" : $HOME."/.vimshell_hist"
+"			\ }
+"
+"if !exists("g:NeoComplCache_KeywordPatterns")
+"	let g:NeoComplCache_KeywordPatterns = {}
+"endif
+"let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
+""let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
+"
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+"imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
 
 
 " skk.vim {{{2
