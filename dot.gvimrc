@@ -3,7 +3,7 @@ if has("mac")
 	set lines=45
 	set guifont=MeiryoKe_Console\ 14
 	set transparency=10
-	colorscheme ir_black
+	colorscheme h2r_black
 elseif has("unix")
 	set columns=90
 	set lines=45
