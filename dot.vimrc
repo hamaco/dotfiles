@@ -6,7 +6,7 @@ filetype plugin indent on
 
 if has('syntax')
 	syntax enable
-	set t_Co=256
+	"set t_Co=256
 	if !exists("g:colors_name")
 		colorscheme desert256
 	endif
@@ -147,8 +147,16 @@ augroup END
 
 autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
 
-" 自動で書き込み もう少し良い方法探す
-"autocmd MyAutoCmd InsertLeave * silent! wall
+if !has('gui_running') && !(has('win32') || has('win64'))
+    " .vimrcの再読込時にも色が変化するようにする
+    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+    " .vimrcの再読込時にも色が変化するようにする
+    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
+                \if has('gui_running') | source $MYGVIMRC
+    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+endif
+
 
 
 
@@ -162,7 +170,7 @@ noremap <silent> <Space>kf :<C-u>Ku file<Return>
 noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
 noremap <silent> <Space>kh :<C-u>Ku history<Return>
 noremap <silent> <Space>km :<C-u>Ku file_mru<Return>
-"autocmd MyAutoCmd FileType ku inoremap <buffer> <ESC> <ESC>:quit<Return>
+autocmd MyAutoCmd FileType ku inoremap <buffer> <ESC> <ESC>:quit<Return>
 
 " neocomplcache.vim {{{2
 let g:AutoComplPop_NotEnableAtStartup = 1
