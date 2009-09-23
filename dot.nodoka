@@ -1,0 +1,70 @@
+include "104.nodoka"
+# ShellExecute(operation, file, parameters, directory, show_command)
+
+keymap Global
+	# mayu
+	key W-i = &WindowIdentify
+	key A-C-S-l = &LoadSetting() &HelpMessage("~/dot.nodoka", "reloaded.")
+
+	# Applications as Windows
+	mod windows      += !!Applications
+	key *Applications = *Rwindows
+
+	# CapsLock as Control
+	mod Control  += !!CapsLock
+	key *CapsLock = *LControl
+
+	# Sands
+	#def option delay-of !!! = 3
+	#mod shift += !!!Space
+	mod shift += !!Space
+	key R-*Space = &Ignore
+
+	# IME
+	key *IC-C-J     = &Sync &SetImeStatus(on) &Sync C-j
+
+	# Shutdown and Sleep
+	key W-u = &Sync &ShellExecute("open", "shutdown.exe", "-s -t 0",, showNormal)
+	key W-s = &Sync &ShellExecute("open", "rundll32.exe", "powrprof.dll,SetSuspendStte 0,1,0",, showNormal)
+
+	key F1   = &Ignore
+	key A-F1 = F1
+
+	key Enter = &Ignore
+	key Backspace = &Ignore
+	key Escape = &Ignore
+	key C-m = Enter
+	key C-h = Backspace
+	key C-OpenBracket = Escape
+
+	key A-Enter = F11
+
+	key W-q = A-F4
+
+	key W-z = C-z
+	key W-x = C-x
+	key W-c = C-c
+	key W-v = C-v
+
+	# Explorer’u‚«Š·‚¦
+	#key W-e = &Sync &ShellExecute("open", "D:/software/filemanager/xf/XF.exe",,, showNormal)
+
+	# Launchy
+	# SandS‚Ì‚¹‚¢‚ÅShift‚ª•K—v
+	key S-W-Space = A-Space
+
+window Explorer /explorer\.exe/ : Global
+	key C-l = A-d
+	key W-l = A-d
+	key W-n = W-A-Space &Sync C-n
+
+window InternetExplorer /iexplore\.exe/ : Global
+	key C-l = A-d
+
+window FastPictureViewer /FastPictureViewer\.Core\.exe/ : Global
+	key l = Right
+	key h = Left
+
+window Edit /Edit:|Edit$/ : Global
+	key C-a = Home
+	key C-e = End
