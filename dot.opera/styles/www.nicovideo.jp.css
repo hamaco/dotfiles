@@ -1,0 +1,118 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+/**
+ * ニコニコ動画全体の広告削除とヘッダ縮小
+ */
+body {
+	background: none !important;
+}
+
+div#PAGEHEADER table table,
+div#PAGEHEADER > table td:first-child,
+div#web_pc_premium,
+table.ads_hide,
+div.ads_468,
+div.mb16p4
+{
+	display: none !important;
+}
+
+div#PAGEHEADER {
+	background:#FFFFFF url(http://www.nicovideo.jp//img/base/head/topline.gif) no-repeat 350px top;
+	position: relative !important;
+}
+
+div#PAGEHEADER > table:first-child {
+	position: absolute !important;
+	left: 380px;
+}
+
+div#ichiba_itemA,
+div#ichiba_edit_buttonA,
+div#ichiba_editA {
+	display: none !important;
+}
+
+/**
+ * プレイヤーの位置変更
+ */
+div#mitter__container,
+div#ichiba_itemA,
+div#ichiba_edit_buttonA,
+div#ichiba_editA {
+	display: none !important;
+}
+
+div#flvplayer_container {
+	top: 0px !important;
+	left: 0px !important;                  /*動画を左に配置*/
+}
+
+div#WATCHHEADER {
+	top: 0px !important;
+	left: 560px !important;              /*作者コメントを右に配置*/
+}
+
+div#flvplayer_container {
+	height: 530px !important;
+}
+
+embed#flvplayer {
+	position: relative !important;
+	top: 0px !important;
+}
+
+div#WATCHHEADER {
+	min-height: 505px !important;
+}
+
+div#PAGEBODY {
+	position: relative !important;
+}
+
+div#WATCHHEADER * {
+	font-size: 12px !important;
+}
+
+div#WATCHHEADER {
+	width: 390px !important;
+	position: relative !important;
+	padding: 5px !important;
+	margin: 0px 0px 10px 0px !important;
+	border-top: 10px #000 solid !important;
+	border-bottom: 5px #000 solid !important;
+}
+
+div#des_2 {
+	display: block !important;
+}
+
+div#WATCHHEADER td ,
+div#WATCHHEADER table {
+	width: 390px !important;
+}
+
+div#WATCHHEADER tr ,
+div#WATCHHEADER table td {
+	display: block !important;
+}
+
+div#des_1 ,
+img[alt="隠す"] ,
+div#WATCHHEADER div.video_description + p + table {
+	display: none !important;
+}
+
+div#WATCHHEADER h1 a {
+	font-size: 16px !important;
+}
+
+div#flvplayer_container {
+	width: 550px !important;
+	position: absolute !important;
+	overflow-x: scroll !important;
+	background: #FFF !important;
+	border: 1px #000000 solid !important;
+	margin: 0px !important;
+	padding: 0px !important;
+}
