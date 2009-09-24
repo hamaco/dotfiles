@@ -1,9 +1,9 @@
 if has("mac")
 	set columns=120
 	set lines=45
-	set guifont=MeiryoKe_Console\ 14
+	"set guifont=MeiryoKe_Console\ 14
 	set transparency=10
-	colorscheme h2r_black
+	colorscheme h2u_black
 elseif has("unix")
 	set columns=90
 	set lines=45
@@ -12,7 +12,7 @@ elseif has("unix")
 elseif has("win32")
 	set columns=120
 	set lines=45
-	colorscheme h2r_black
+	colorscheme h2u_black
 endif
 
 set splitbelow " 横分割したら新しいウィンドウは下に
