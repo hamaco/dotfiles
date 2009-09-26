@@ -142,19 +142,19 @@ command! -bang -nargs=0 ToSjis
 
 " autocmd {{{1
 augroup MyAutoCmd
-  autocmd!
+ autocmd!
 augroup END
 
 autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
 
 if !has('gui_running') && !(has('win32') || has('win64'))
-    " .vimrcの再読込時にも色が変化するようにする
-    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+   " .vimrcの再読込時にも色が変化するようにする
+   autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 else
-    " .vimrcの再読込時にも色が変化するようにする
-    autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
-                \if has('gui_running') | source $MYGVIMRC
-    autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+   " .vimrcの再読込時にも色が変化するようにする
+   autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
+               \if has('gui_running') | source $MYGVIMRC
+   autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
 endif
 
 
@@ -165,12 +165,25 @@ endif
 " 無効化 {{{2
 let plugin_dicwin_disable = 1
 
+
+" Align.vim{{{2
+let g:Align_xstrlen = 3
+
+
+" commentop.vim {{{2
+map <Leader>c     <Plug>CommentopToggleNV
+map <Leader>C     <Plug>CommentopAppendNV
+map <Leader><C-c> <Plug>CommentopRemoveNV
+
+
 " ku.vim {{{2
+autocmd MyAutoCmd FileType ku  call ku#default_key_mappings(s:TRUE)
+
 noremap <silent> <Space>kf :<C-u>Ku file<Return>
 noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
 noremap <silent> <Space>kh :<C-u>Ku history<Return>
 noremap <silent> <Space>km :<C-u>Ku file_mru<Return>
-autocmd MyAutoCmd FileType ku inoremap <buffer> <ESC> <ESC>:quit<Return>
+
 
 " neocomplcache.vim {{{2
 let g:AutoComplPop_NotEnableAtStartup = 1
@@ -198,25 +211,15 @@ let g:NeoComplCache_AlphabeticalOrder=1
 "			\ "default" : "",
 "			\ "vimshell" : $HOME."/.vimshell_hist"
 "			\ }
-"
+
 "if !exists("g:NeoComplCache_KeywordPatterns")
 "	let g:NeoComplCache_KeywordPatterns = {}
 "endif
 "let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
 ""let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
-"
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
-"imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
 
-
-" skk.vim {{{2
-let skk_jisyo = "~/.skk-jisyo"
-let skk_large_jisyo = "~/Library/AquaSKK/SKK-JISYO.L"
-let skk_auto_save_jisyo = 1
-let skk_keep_state = 0
-let skk_egg_like_newline = 1
-let skk_show_annotation = 1
-let skk_use_face = 1
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
 
 
 " smartword.vim {{{2
@@ -233,12 +236,6 @@ noremap gE ge
 " spec.vim {{{2
 language time en_US.UTF-8
 let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco@ryus.be> -"
-
-
-" commentop.vim {{{2
-map <Leader>c     <Plug>CommentopToggleNV
-map <Leader>C     <Plug>CommentopAppendNV
-map <Leader><C-c> <Plug>CommentopRemoveNV
 
 
 
