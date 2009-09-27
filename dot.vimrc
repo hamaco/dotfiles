@@ -142,7 +142,7 @@ command! -bang -nargs=0 ToSjis
 
 " autocmd {{{1
 augroup MyAutoCmd
- autocmd!
+  autocmd!
 augroup END
 
 autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
@@ -177,7 +177,7 @@ map <Leader><C-c> <Plug>CommentopRemoveNV
 
 
 " ku.vim {{{2
-autocmd MyAutoCmd FileType ku  call ku#default_key_mappings(s:TRUE)
+"autocmd MyAutoCmd FileType ku  call ku#default_key_mappings(s:TRUE)
 
 noremap <silent> <Space>kf :<C-u>Ku file<Return>
 noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
@@ -236,6 +236,11 @@ noremap gE ge
 " spec.vim {{{2
 language time en_US.UTF-8
 let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco@ryus.be> -"
+
+
+" surround.vim {{{2
+map <Leader>q <Plug>Csurround w"
+map <Leader>sq <Plug>Csurround w'
 
 
 
