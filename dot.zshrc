@@ -11,6 +11,20 @@ cdpath=($HOME)
 limit coredumpsize 102400
 ulimit -c 0  # Don't create core dumps
 
+
+#色の定義
+local DEFAULT=$'%{[m%}'$
+local RED=$'%{[1;31m%}'$
+local GREEN=$'%{[1;32m%}'$
+local YELLOW=$'%{[1;33m%}'$
+local BLUE=$'%{[1;34m%}'$
+local PURPLE=$'%{[1;35m%}'$
+local LIGHT_BLUE=$'%{[1;36m%}'$
+local WHITE=$'%{[1;37m%}'$
+
+
+
+
 # Setopts: ================================================================ {{{1
 setopt always_last_prompt   # カーソル位置は保持したままファイル名一覧を順次その場で表示
 setopt auto_cd              # cdなしでもディレクトリ移動
@@ -34,6 +48,7 @@ setopt list_packed          # 補完候補をつめて表示
 setopt list_types           # 保管候補表示時にファイル種別を表示
 setopt long_list_jobs       # jobsコマンドのデフォルトを jobs -l にする
 setopt magic_equal_subst    # コマンドラインの引数で --PREFIX=/USR などの = 以降でも補完できる
+setopt mark_dirs            # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
 setopt no_auto_remove_slash # パスの最後のスラッシュを自動で削除しない
 setopt no_beep              # ビープ音の無効化
 setopt no_flow_control      # C-s, C-qの無効化
@@ -77,20 +92,46 @@ autoload -Uz compinit; compinit -u
 
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 LISTMAX=0
+
 # 補完時に大文字小文字を区別しない
 zstyle ":completion:*" matcher-list 'm:{a-z}={A-Z}'
-# 補完候補をカーソルで移動可能にする
-zstyle ":completion:*:default" menu select
+
 # 補完結果をキャッシュする(apt-get etc)
 zstyle ":completion:*" use-cache true
-# sudoでもコマンドの補完が動くようにする
-zstyle -e ":completion:*:sudo:*" command-path 'reply=($path)'
+
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
+zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
+zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
+zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
+zstyle ':completion:*:options' description 'yes'
+
 # カレントディレクトリに候補がない場合のみ cdpath 上のディレクトリを候補
 zstyle ":completion:*:cd:*" tag-order local-directories path-directories
+#cd は親ディレクトリからカレントディレクトリを選択しないので表示させないようにする (例: cd ../<TAB>):
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+# 補完候補をカーソルで移動可能にする
+zstyle ":completion:*:default" menu select=2
 # 補完候補にもLS_COLORSを使う
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# オブジェクトファイルとか中間ファイルを補完させない
+zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
+
 # killの補完を詳細にする
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
+
+# sudoでもコマンドの補完が動くようにする
+zstyle -e ":completion:*:sudo:*" command-path 'reply=($path)'
+
+# グループ名に空文字列を指定すると，マッチ対象のタグ名がグループ名に使われる。
+# したがって，すべての マッチ種別を別々に表示させたいなら以下のようにする
+zstyle ':completion:*' group-name ''
+
+
+
 
 
 
