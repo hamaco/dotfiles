@@ -273,6 +273,23 @@ liberator.globalVariables.localKeyMappings = [
 ];
 EOM
 
+" feedsomekeys_2.jsと一緒だとおかしくなる問題の対処
+js <<EOM
+autocommands.add(
+	'VimperatorEnter',
+	/.*/,
+	function () {
+		let (orig = plugins.LocalKeyMode.loadKeyMap) {
+			plugins.LocalKeyMode.loadKeyMap = function () {
+				if (!liberator.plugins.feedKey || liberator.plugins.feedKey.origMap.length <= 0)
+				orig.call(plugins.LocalKeyMode);
+			};
+		}
+	}
+);
+EOM
+
+
 " autoproxychanger.js
 " =====
 let autochanger_proxy_enabled = "true"
