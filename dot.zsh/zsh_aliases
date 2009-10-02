@@ -1,17 +1,5 @@
-# Suffix: 接尾辞エイリアス ========= {{{1
-alias -s txt=cat # txtファイルを直接実行した場合にcatコマンド実行
-alias -s log=less
-alias -s jpg=eog
-alias -s png=eog
-alias -s jar="java -jar"
-
-
-
-
-# }}}
-
-# -n 行数表示, -I バイナリファイル無視
-# svn関係のファイルを無視
+# Alias: ==== {{{1
+# -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
 alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
 
 alias sl="ls"
@@ -21,6 +9,7 @@ alias la="ls -a"
 
 alias s="sudo"
 alias v="vim"
+alias vi="vim"
 
 alias tgz="tar cvzf"
 alias untar="tar xvf"
@@ -40,6 +29,7 @@ darwin*)
 	alias eopen="open -a emacs"
 	alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 
+	# macports
 	alias mysql="mysql5"
 
 	fmount () {
@@ -49,9 +39,20 @@ darwin*)
 
 	;;
 freebsd*)
-	alias tbz2="tar cvyf"                                   # tar.bz2で圧縮
+	alias tbz2="tar cvyf"
 	;;
 esac
+
+
+# Suffix: 接尾辞エイリアス ========= {{{2
+alias -s txt=cat
+alias -s log=less
+alias -s jpg=eog
+alias -s png=eog
+alias -s jar="java -jar"
+
+
+
 
 sc() {
 	name=${1:-${PWD##*/}}
