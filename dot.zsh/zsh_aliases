@@ -24,7 +24,7 @@ linux*)
 	fi
 	;;
 darwin*)
-	alias tbz2="tar cvyf"
+	alias tbz2="tar cvjf"
 	alias ql="qlmanage -p $@ >& /dev/null"
 	alias eopen="open -a emacs"
 	alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
