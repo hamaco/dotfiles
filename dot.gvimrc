@@ -1,7 +1,7 @@
 if has("mac")
 	set columns=120
 	set lines=45
-	"set guifont=MeiryoKe_Console\ 14
+	set guifont=DejaVu\ Sans\ Mono:h14
 	set transparency=10
 	colorscheme h2u_black
 elseif has("unix")
