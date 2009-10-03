@@ -145,7 +145,8 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType help,quickrun nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType help,quickrun,quickfix nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
 if !has('gui_running') && !(has('win32') || has('win64'))
    " .vimrcの再読込時にも色が変化するようにする
@@ -246,10 +247,12 @@ map <Leader>sq <Plug>Csurround w'
 
 
 " キーマップ {{{1
+nnoremap <C-l> :<C-u>source $MYVIMRC<Return>
+
+noremap <C-h> :<C-u>help<Space>
+
 noremap ; :
 noremap : ;
-
-nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
 
 nnoremap j gj
 nnoremap k gk
@@ -265,17 +268,18 @@ inoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
-if has('unix')
-	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
-endif
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-u> <C-g>u<C-u>
 
 noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
 
-noremap <C-h> :<C-u>help<Space>
+nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
 
-" .vimrcのロード
-nnoremap <C-l> :<C-u>source $MYVIMRC<Return>
+if has('unix')
+	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
+endif
+
 
 
 " タブ {{{2
