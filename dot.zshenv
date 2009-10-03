@@ -6,7 +6,8 @@ path=($path /usr/bin(N-/) /usr/*/bin(N-/) /usr/local/*/bin(N-/))
 path=($path /usr/sbin(N-/) /usr/*/sbin(N-/) /usr/local/*/sbin(N-/))
 path=($path /opt/bin(N-/) /opt/*/bin(N-/) /opt/local/*/bin(N-/))
 path=($path /opt/sbin(N-/) /opt/*/sbin(N-/) /opt/local/*/sbin(N-/))
-path=($path ${HOME}/bin(N-/) /var/lib/gems/*/bin(N-/))
+path=($path ${HOME}/bin(N-/))
+path=($path ${HOME}/.gem/ruby/*/bin(N-/) /var/lib/gems/*/bin(N-/))
 
 
 
