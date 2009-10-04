@@ -15,8 +15,19 @@ function vcs_status () {
 	[[ -n "$vcs_info_msg_0_" ]] && echo -n " on %{$fg[yellow]%}$vcs_info_msg_0_%{$reset_color%}"
 }
 
+function pwd_status () {
+	local color
+
+	case ${PWD} in
+		/Volumes/*) color=$fg[red];;
+		*)          color=$fg[cyan];;
+	esac
+
+	echo -n "[%{$color%}%~%{$reset_color%}]"
+}
+
 PROMPT="%(!,$fg[red],$fg[green])%n@%m%{$reset_color%} "
-PROMPT+="[%{$fg[cyan]%}%~%{$reset_color%}]"
+PROMPT+="\$(pwd_status)"
 # @todo zshのバージョンが4.3.6以前なら無視
 PROMPT+="\$(vcs_status)"
 PROMPT+="
