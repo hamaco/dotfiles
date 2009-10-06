@@ -265,6 +265,7 @@ nnoremap <Space>q :<C-u>quit<CR>
 
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
+inoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
