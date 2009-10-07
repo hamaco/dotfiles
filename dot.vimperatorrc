@@ -117,6 +117,8 @@ map U :undo<Space>
 
 noremap s :<C-u>google<Space>
 
+noremap ,b :<C-u>subscldr<Space>-rate<Space>
+
 " qmark 2.0preで動かないかも？
 " ===
 qmark a http://www.amazon.co.jp/
@@ -126,6 +128,7 @@ qmark l http://reader.livedoor.com/reader/
 qmark m http://www.gmail.com/
 
 map <C-4> gnl<CR>
+map <C-5> gnf<CR>
 
 " Firefox全体の設定
 " ===

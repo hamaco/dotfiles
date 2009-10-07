@@ -1,3 +1,9 @@
+style -name all http://* <<EOM
+body {
+	font-size: 1em !important;
+}
+EOM
+
 style -name nicovideo http://www.nicovideo.jp/* <<EOM
 body {
 	background: none !important;
