@@ -4,7 +4,7 @@ set runtimepath& runtimepath+=$HOME/.vim
 set nocompatible
 filetype plugin indent on
 
-if has('syntax')
+if has("syntax")
 	syntax enable
 	"set t_Co=256
 	if !exists("g:colors_name")
@@ -20,7 +20,7 @@ if &encoding !=# 'utf-8'
 	set encoding=japan
 endif
 
-if has('iconv')
+if has("iconv")
 	let s:enc_euc = 'euc-jp'
 	let s:enc_jis = 'iso-2022-jp'
 
@@ -235,13 +235,16 @@ noremap gE ge
 
 
 " spec.vim {{{2
-language time en_US.UTF-8
+if !has("win32")
+	language time en_US.UTF-8
+endif
 let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco@ryus.be> -"
 
 
 " surround.vim {{{2
 map <Leader>q <Plug>Csurround w"
 map <Leader>sq <Plug>Csurround w'
+map <Leader>` <Plug>Csurround w`
 
 
 
@@ -277,7 +280,7 @@ noremap! <C-BS> <C-w>
 
 nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
 
-if has('unix')
+if has("unix")
 	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
 endif
 
