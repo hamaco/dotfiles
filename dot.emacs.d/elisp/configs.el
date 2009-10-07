@@ -35,6 +35,9 @@
 (setq tab-width 2)
 (setq default-tab-width 2)
 
+; リージョンを削除できるように
+(delete-selection-mode t)
+
 ; iswitchb
 (iswitchb-mode 1)
 (iswitchb-default-keybindings)

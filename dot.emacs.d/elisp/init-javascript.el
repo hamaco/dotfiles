@@ -6,6 +6,8 @@
 
 (when (load "js2" t)
 	(setq js2-bounce-indent-flag nil) ; TAB押下時にHaskell風にインデントを変えない
+	(setq js2-cleanup-whitespace nil) ; 
+	(setq js2-mirror-mode nil) ; 
 
 	; インデント時のカーソル移動を他のmajor-modeに合わせる
 	(defun indent-and-back-to-indentation ()
