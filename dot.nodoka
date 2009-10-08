@@ -15,8 +15,6 @@ keymap Global
 	key *CapsLock = *LControl
 
 	# Sands
-	#def option delay-of !!! = 3
-	#mod shift += !!!Space
 	mod shift += !!Space
 	key R-*Space = &Ignore
 
