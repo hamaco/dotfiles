@@ -255,6 +255,15 @@ function git-gol-full() {
   for i in $(git log --pretty=oneline | tail -r | cut -d ' ' -f 1); do git show $i --color-words; done | less
 }
 
+# alc
+function alc() {
+	if [ $# != 0 ]; then
+		w3m "http://eow.alc.co.jp/$*/UTF-8/?ref=sa"
+	else
+		echo "Usage: alc {word}."
+	fi
+}
+
 # kana's prompt git branch {{{
 function prompt-git-head-name() {
   local git_dir="$(git rev-parse --git-dir 2>/dev/null)"
