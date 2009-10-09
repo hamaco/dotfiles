@@ -207,17 +207,17 @@ let g:NeoComplCache_AlphabeticalOrder=1
 "let g:NeoComplCache_EnableMFU = 1
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
-"
-"let g:NeoComplCache_DictionaryFileTypeLists = {
-"			\ "default" : "",
-"			\ "vimshell" : $HOME."/.vimshell_hist"
-"			\ }
 
-"if !exists("g:NeoComplCache_KeywordPatterns")
-"	let g:NeoComplCache_KeywordPatterns = {}
-"endif
-"let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
-""let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
+let g:NeoComplCache_DictionaryFileTypeLists = {
+			\ "default" : "",
+			\ "vimshell" : $HOME."/.vimshell_hist"
+			\ }
+
+if !exists("g:NeoComplCache_KeywordPatterns")
+	let g:NeoComplCache_KeywordPatterns = {}
+endif
+let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
+let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
 
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
 imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
@@ -273,7 +273,7 @@ cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
 inoremap <C-u> <C-g>u<C-u>
-inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
 
 noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
@@ -283,6 +283,7 @@ nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
 if has("unix")
 	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
 endif
+
 
 
 
