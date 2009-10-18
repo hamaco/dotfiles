@@ -132,7 +132,7 @@ map <C-5> gnf<CR>
 
 " Firefox全体の設定
 " ===
-
+set! accessibility.tabfocus=2
 " Backspaceで戻る
 set! browser.backspace_action=0
 
