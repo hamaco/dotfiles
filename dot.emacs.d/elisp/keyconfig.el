@@ -7,9 +7,6 @@
 (global-set-key "\C-x\C-l" 'recenter) ;; 現在行を中央に
 (global-set-key "\C-l" 'goto-line) ;; 指定した行へジャンプ
 
-(global-set-key "\C-cc" 'comment-region) ;; 選択範囲をコメントアウト
-(global-set-key "\C-cu" 'uncomment-region) ;; 選択範囲のコメントアウトを解除
-
 
 (defun forward-word+1 ()
   "forward-word で単語の先頭へ移動する"
