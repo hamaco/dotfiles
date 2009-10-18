@@ -1,3 +1,6 @@
+" タブ追加アイコンを非表示
+style chrome://* .tabs-newtab-button { display: none; }
+
 style -name nicovideo http://www.nicovideo.jp/* <<EOM
 body {
 	background: none !important;
