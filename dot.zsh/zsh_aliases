@@ -8,6 +8,7 @@ alias ll="ls -l"
 alias la="ls -a"
 
 alias s="sudo"
+alias sudo="sudo " # sudoでもaliasが使えるようにする
 alias v="vim"
 alias vi="vim"
 
