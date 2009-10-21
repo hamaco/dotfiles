@@ -253,6 +253,8 @@ liberator.globalVariables.refcontrol = {
 	"pixiv.net"           : "http://www.pixiv.net",
 	"hamaco.local"        : "@NORMAL",
 	"hamaco.org"          : "@NORMAL",
+
+	"exploader.net"       : "@FORGE",
 };
 EOM
 
@@ -270,8 +272,7 @@ liberator.globalVariables.localKeyMappings = [
 		["p", ":nicopause"],
 		["m", ":nicomute"],
 		["a", ":nicoseek! -15"],
-		["s", ":nicoseek! +15"],
-		["z", ":nicosize"]
+		["s", ":nicoseek! +15"]
 	]]
 ];
 EOM
