@@ -253,8 +253,6 @@ liberator.globalVariables.refcontrol = {
 	"pixiv.net"           : "http://www.pixiv.net",
 	"hamaco.local"        : "@NORMAL",
 	"hamaco.org"          : "@NORMAL",
-
-	"exploader.net"       : "@FORGE",
 };
 EOM
 
