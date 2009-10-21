@@ -94,7 +94,7 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 LISTMAX=0
 
 # 補完時に大文字小文字を区別しない
-zstyle ":completion:*" matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 
 # 補完結果をキャッシュする(apt-get etc)
 zstyle ":completion:*" use-cache true
