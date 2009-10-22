@@ -188,6 +188,9 @@ set! security.enable_java=false
 " Profile Manager
 set! profilemanager.opt_showProfileName=0
 
+" XUL/Migemo のクイック Migemo 検索へのショートカットを無効
+set! xulmigemo.shortcut.manualStart=
+
 
 
 " LDR上では新規タブをバックグラウンドに開く
@@ -221,7 +224,7 @@ autocmd LocationChange www\\.rememberthemilk\\.com/ :fmap t c p r s 1 2 3 4 a n 
 "let g:asdfghjkl_default="true"
 
 " migemo_hint.js
-"set hintmatching=custom
+set hintmatching=custom
 
 " migratestatusbar.js
 " =====
