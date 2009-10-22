@@ -203,7 +203,10 @@ let g:NeoComplCache_SkipInputTime = "0.1"
 let g:NeoComplCache_SkipCompletionTime = "0.1"
 let g:NeoComplCache_SmartCase = 1
 "tmp
-let g:NeoComplCache_AlphabeticalOrder=1
+let g:NeoComplCache_AlphabeticalOrder = 1
+let g:NeoComplCache_KeywordCompletionStartLength = 3
+let g:NeoComplCache_TagsCompletionStartLength = 5
+let g:NeoComplCache_CachingLimitFileSize = 10240
 "let g:NeoComplCache_EnableMFU = 1
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
@@ -266,6 +269,7 @@ noremap <S-k> <Nop>
 nnoremap <Space>w :<C-u>write<CR>
 nnoremap <Space>q :<C-u>quit<CR>
 
+" Emacsっぽいキーバインド {{{2
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <C-e> <End>
@@ -277,8 +281,12 @@ inoremap <C-w> <C-g>u<C-w>
 
 noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
+"}}}
 
 nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
+
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
+cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
 if has("unix")
 	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
