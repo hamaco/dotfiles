@@ -236,6 +236,11 @@ fi
 
 
 # Tmp: 一時的な設定 ======================================================= {{{1
+
+function update_neocomplcache() {
+	wget -qO - http://github.com/Shougo/neocomplcache/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=presen
+}
+
 # cho45 ~/
 expand-to-home-or-insert () {
   if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
