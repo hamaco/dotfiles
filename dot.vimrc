@@ -88,6 +88,7 @@ set smartcase
 set softtabstop=2
 set splitbelow
 set splitright
+set tags& tags+=~/.tags
 set updatetime=3000
 set tabstop=2
 set title
@@ -212,8 +213,7 @@ let g:NeoComplCache_CachingLimitFileSize = 10240
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
 let g:NeoComplCache_DictionaryFileTypeLists = {
-			\ "default" : "",
-			\ "vimshell" : $HOME."/.vimshell_hist"
+			\ "default" : ""
 			\ }
 
 if !exists("g:NeoComplCache_KeywordPatterns")
