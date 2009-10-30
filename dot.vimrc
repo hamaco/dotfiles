@@ -88,7 +88,7 @@ set smartcase
 set softtabstop=2
 set splitbelow
 set splitright
-set tags& tags+=~/.tags
+"set tags& tags+=~/.tags
 set updatetime=3000
 set tabstop=2
 set title
