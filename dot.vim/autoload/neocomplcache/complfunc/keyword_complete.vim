@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: keyword_complete.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 23 Oct 2009
+" Last Modified: 07 Nov 2009
 " Usage: Just source this file.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -23,7 +23,7 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 3.05, for Vim 7.0
+" Version: 3.10, for Vim 7.0
 "-----------------------------------------------------------------------------
 " TODO: "{{{
 "     - Nothing.
@@ -41,7 +41,10 @@ function! neocomplcache#complfunc#keyword_complete#initialize()"{{{
     let l:plugin_list = split(globpath(&runtimepath, 'autoload/neocomplcache/plugin/*.vim'), '\n')
     for list in l:plugin_list
         let l:func_name = fnamemodify(list, ':t:r')
-        let s:plugins_func_table[l:func_name] = 'neocomplcache#plugin#' . l:func_name . '#'
+        if !has_key(g:NeoComplCache_DisablePluginList, l:func_name) || 
+                    \ g:NeoComplCache_DisablePluginList[l:func_name] == 0
+            let s:plugins_func_table[l:func_name] = 'neocomplcache#plugin#' . l:func_name . '#'
+        endif
     endfor"}}}
 
     " Initialize.
@@ -58,31 +61,20 @@ endfunction"}}}
 function! neocomplcache#complfunc#keyword_complete#get_keyword_pos(cur_text)"{{{
     let l:pattern = '\v%(' .  neocomplcache#plugin#buffer_complete#current_keyword_pattern() . ')$'
     let l:cur_keyword_pos = match(a:cur_text, l:pattern)
-    let l:cur_keyword_str = matchstr(a:cur_text, l:pattern)
-
-    if len(l:cur_keyword_str) >= g:NeoComplCache_MinKeywordLength && l:cur_keyword_str !~ '\d\+$'
-        " Check candidate.
-        call neocomplcache#plugin#buffer_complete#check_candidate(l:cur_keyword_str)
-    endif
+    let l:cur_keyword_str = a:cur_text[l:cur_keyword_pos :]
 
     if g:NeoComplCache_EnableWildCard
         " Check wildcard.
-        let [l:cur_keyword_pos, l:cur_keyword_str] = neocomplcache#complfunc#keyword_complete#check_wildcard(a:cur_text, l:pattern, l:cur_keyword_pos, l:cur_keyword_str)
+        let l:cur_keyword_pos = neocomplcache#complfunc#keyword_complete#check_wildcard(a:cur_text, l:pattern, l:cur_keyword_pos)
     endif
+    let l:cur_keyword_str = a:cur_text[l:cur_keyword_pos :]
 
     if l:cur_keyword_pos < 0 || len(l:cur_keyword_str) < g:NeoComplCache_KeywordCompletionStartLength
-        if g:NeoComplCache_EnableQuickMatch
-            " Search quick match.
-            let l:pattern = '\v\C\d{1,2}$|[ASDFGHJKLQWERTYUIOP]$'
-            let l:cur_keyword_pos = match(a:cur_text, l:pattern)
-            let l:cur_keyword_str = matchstr(a:cur_text, l:pattern)
-
-            if l:cur_keyword_str == ''
-                return -1
-            endif
-        else
-            return -1
+        if len(l:cur_keyword_str) >= g:NeoComplCache_MinKeywordLength
+            " Check candidate.
+            call neocomplcache#plugin#buffer_complete#check_candidate(l:cur_keyword_str)
         endif
+        return -1
     endif
 
     return l:cur_keyword_pos
@@ -107,14 +99,14 @@ function! neocomplcache#complfunc#keyword_complete#get_complete_words(cur_keywor
             call remove(l:loaded_plugins, l:plugin)
             let l:cache_keyword_lists[l:plugin] = []
         else
-            let l:cache_keyword_lists[l:plugin] = deepcopy(call(l:loaded_plugins[l:plugin] . 'get_keyword_list', [a:cur_keyword_str]))
+            let l:cache_keyword_lists[l:plugin] = call(l:loaded_plugins[l:plugin] . 'get_keyword_list', [a:cur_keyword_str])
         endif
 
         if !empty(l:cache_keyword_lists[l:plugin])
             let l:is_empty = 0
         endif
     endfor
-    if l:is_empty && (!g:NeoComplCache_EnableQuickMatch || match(a:cur_keyword_str, '\d$') < 0)
+    if l:is_empty
         return []
     endif
 
@@ -139,11 +131,6 @@ function! neocomplcache#complfunc#keyword_complete#get_complete_words(cur_keywor
 
     let l:cache_keyword_filtered = []
 
-    " Get next keyword.
-    let l:next_keyword_str = matchstr('a'.getline('.')[col('.')-1 :],
-        \'\v^%(' . neocomplcache#plugin#buffer_complete#current_keyword_pattern() . ')')[1:]
-    let l:next_keyword_str = substitute(escape(l:next_keyword_str, '~" \.^$*[]'), "'", "''", 'g')
-
     " Previous keyword completion.
     if g:NeoComplCache_PreviousKeywordCompletion && !g:NeoComplCache_AlphabeticalOrder "{{{
         let [l:prev_word, l:prepre_word] = s:get_prev_word(a:cur_keyword_str)
@@ -165,91 +152,26 @@ function! neocomplcache#complfunc#keyword_complete#get_complete_words(cur_keywor
         let l:cache_keyword_list += l:cache_keyword_lists[l:plugin]
     endfor
 
-    " Sort.
-    let l:cache_keyword_filtered = sort(l:cache_keyword_list, l:order_func)
-
-    " Trunk too many item.
-    let l:cache_keyword_filtered = l:cache_keyword_filtered[:g:NeoComplCache_MaxList-1]
-
-    " Quick match.
-    let l:cache_keyword_filtered = neocomplcache#get_quickmatch_list(l:cache_keyword_filtered, a:cur_keyword_pos,
-                    \a:cur_keyword_str, 'keyword_complete')
-
-    " Remove next keyword.
-    let l:cache_keyword_filtered = neocomplcache#remove_next_keyword(l:cache_keyword_filtered)
-
-    return l:cache_keyword_filtered
+    return l:cache_keyword_filtered + sort(l:cache_keyword_list, l:order_func)
 endfunction"}}}
 
-function! neocomplcache#complfunc#keyword_complete#manual_complete()"{{{
-    if !exists(':NeoComplCacheDisable')
-        return ''
-    endif
-
-    if !neocomplcache#plugin#buffer_complete#exists_current_source()
-        return ''
-    endif
-
-    " Get cursor word.
-    let l:cur_text = neocomplcache#get_cur_text()
-    let l:pattern = '\v%(' .  neocomplcache#plugin#buffer_complete#current_keyword_pattern() . ')$'
-    let l:cur_keyword_pos = match(l:cur_text, l:pattern)
-    let l:cur_keyword_str = matchstr(l:cur_text, l:pattern)
-
-    if g:NeoComplCache_EnableWildCard
-        " Check wildcard.
-        let [l:cur_keyword_pos, l:cur_keyword_str] = neocomplcache#complfunc#keyword_complete#check_wildcard(l:cur_text, l:pattern, l:cur_keyword_pos, l:cur_keyword_str)
-    endif
-
-    if len(l:cur_keyword_str) < g:NeoComplCache_ManualCompletionStartLength
-        return ''
-    endif
-
-    " Save options.
-    let l:ignorecase_save = &ignorecase
-
-    if g:NeoComplCache_SmartCase && l:cur_keyword_str =~ '\u'
-        let &ignorecase = 0
-    else
-        let &ignorecase = g:NeoComplCache_IgnoreCase
-    endif
-
-    " Set function.
-    let &l:completefunc = 'neocomplcache#manual_complete'
-
-    let l:complete_words = neocomplcache#get_quickmatch_list(neocomplcache#complfunc#keyword_complete#get_complete_words(l:cur_keyword_pos, l:cur_keyword_str),
-                \ l:cur_keyword_pos, l:cur_keyword_str, 'keyword_complete')
-    let l:complete_words = neocomplcache#remove_next_keyword(l:complete_words)
-
-    " Restore option.
-    let &ignorecase = l:ignorecase_save
-
-    " Start complete.
-    return neocomplcache#start_manual_complete(l:complete_words, l:cur_keyword_pos, l:cur_keyword_str)
+function! neocomplcache#complfunc#keyword_complete#get_rank()"{{{
+    return 5
 endfunction"}}}
 
-function! neocomplcache#complfunc#keyword_complete#check_wildcard(cur_text, pattern, cur_keyword_pos, cur_keyword_str)"{{{
+function! neocomplcache#complfunc#keyword_complete#check_wildcard(cur_text, pattern, cur_keyword_pos)"{{{
     let l:cur_keyword_pos = a:cur_keyword_pos
-    let l:cur_keyword_str = a:cur_keyword_str
 
     while l:cur_keyword_pos > 1 && a:cur_text[l:cur_keyword_pos - 1] =~ '[*-]'
         let l:left_text = a:cur_text[: l:cur_keyword_pos - 2]
-        let l:left_keyword_str = matchstr(l:left_text, a:pattern)
-        if l:left_keyword_str == ''
+        if l:left_text !~ a:pattern
             break
         endif
 
-        let l:cur_keyword_str = l:left_keyword_str . a:cur_text[l:cur_keyword_pos - 1] . l:cur_keyword_str
         let l:cur_keyword_pos = match(l:left_text, a:pattern)
     endwhile
-
-    if l:cur_keyword_str == ''
-        " Get cursor word.
-        let l:cur_text = (col('.') < 2)? '' : getline('.')[: col('.')-2]
-        let l:pattern = '\%(^\|\W\)\S[*-]$'
-        let [l:cur_keyword_pos, l:cur_keyword_str] = [match(l:cur_text, l:pattern), matchstr(l:cur_text, l:pattern)]
-    endif
-    return [l:cur_keyword_pos, l:cur_keyword_str]
+    
+    return l:cur_keyword_pos
 endfunction"}}}
 
 function! s:get_prev_word(cur_keyword_str)"{{{

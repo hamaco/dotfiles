@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: include_complete.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 26 Oct 2009
+" Last Modified: 07 Nov 2009
 " Usage: Just source this file.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -23,9 +23,30 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 1.00, for Vim 7.0
+" Version: 1.05, for Vim 7.0
 "-----------------------------------------------------------------------------
 " ChangeLog: "{{{
+"   1.05:
+"    - Save error log.
+"
+"   1.04:
+"    - Implemented fast search.
+"
+"   1.03:
+"    - Improved caching.
+"
+"   1.02:
+"    - Fixed keyword pattern error.
+"    - Added g:NeoComplCache_IncludeSuffixes option. 
+"    - Fixed empty filetype error.
+"    - Echo filename when caching.
+"
+"   1.01:
+"    - Fixed filter bug.
+"    - Fixed matchstr timing.
+"    - Fixed error when includeexpr is empty.
+"    - Don't caching readonly buffer.
+"
 "   1.00:
 "    - Initial version.
 " }}}
@@ -42,11 +63,29 @@ function! neocomplcache#plugin#include_complete#initialize()"{{{
     " Initialize
     let s:include_list = {}
     let s:include_cache = {}
+    let s:completion_length = neocomplcache#get_completion_length('include_complete')
     
     augroup neocomplcache
         " Caching events
-        autocmd FileType,BufWritePost * call s:check_buffer()
+        autocmd FileType * call s:check_buffer_all()
+        autocmd BufWritePost * call s:check_buffer(bufnr('%'))
     augroup END
+    
+    " Initialize include pattern."{{{
+    call s:set_include_pattern('java,haskell', '^import')
+    "}}}
+    " Initialize expr pattern."{{{
+    call s:set_expr_pattern('haskell', 'substitute(v:fname,''\\.'',''/'',''g'')')
+    "}}}
+    " Initialize path pattern."{{{
+    if executable('python')
+        call s:set_path_pattern('python',
+                    \system('python -', 'import sys;sys.stdout.write(",".join(sys.path))'))
+    endif
+    "}}}
+    " Initialize suffixes pattern."{{{
+    call s:set_suffixes_pattern('haskell', '.hs')
+    "}}}
     
     " Create cache directory.
     if !isdirectory(g:NeoComplCache_TemporaryDir . '/include_cache')
@@ -63,11 +102,25 @@ function! neocomplcache#plugin#include_complete#get_keyword_list(cur_keyword_str
     endif
 
     let l:keyword_list = []
-    for l:include in s:include_list[bufnr('%')]
-        let l:keyword_list += neocomplcache#keyword_filter(s:include_cache[l:include], a:cur_keyword_str)
-    endfor
-
-    return l:keyword_list
+    let l:key = tolower(a:cur_keyword_str[: s:completion_length-1])
+    if len(a:cur_keyword_str) < s:completion_length || neocomplcache#check_match_filter(l:key)
+        for l:include in s:include_list[bufnr('%')]
+            let l:keyword_list += neocomplcache#unpack_list(values(s:include_cache[l:include]))
+        endfor
+        return neocomplcache#keyword_filter(l:keyword_list, a:cur_keyword_str)
+    else
+        for l:include in s:include_list[bufnr('%')]
+            if has_key(s:include_cache[l:include], l:key)
+                let l:keyword_list += s:include_cache[l:include][l:key]
+            endif
+        endfor
+        
+        if len(a:cur_keyword_str) == s:completion_length
+            return l:keyword_list
+        else
+            return neocomplcache#keyword_filter(l:keyword_list, a:cur_keyword_str)
+        endif
+    endif
 endfunction"}}}
 
 " Dummy function.
@@ -76,59 +129,84 @@ endfunction"}}}
 function! neocomplcache#plugin#include_complete#calc_prev_rank(cache_keyword_buffer_list, prev_word, prepre_word)"{{{
 endfunction"}}}
 
-function! s:check_buffer()"{{{
+function! s:check_buffer_all()"{{{
     let l:bufnumber = 1
 
     " Check buffer.
     while l:bufnumber <= bufnr('$')
         if buflisted(l:bufnumber)
-            " Check include.
-            call s:check_include(l:bufnumber)
+            call s:check_buffer(l:bufnumber)
         endif
 
         let l:bufnumber += 1
     endwhile
 endfunction"}}}
+function! s:check_buffer(bufnumber)"{{{
+    let l:bufname = fnamemodify(bufname(a:bufnumber), ':p')
+    if (g:NeoComplCache_CachingDisablePattern == '' || l:bufname !~ g:NeoComplCache_CachingDisablePattern)
+                \&& getbufvar(a:bufnumber, '&readonly') == 0
+        " Check include.
+        call s:check_include(a:bufnumber)
+    endif
+endfunction"}}}
 function! s:check_include(bufnumber)"{{{
     let l:filetype = getbufvar(a:bufnumber, '&filetype')
+    if l:filetype == ''
+        return
+    endif
+    let l:pattern = has_key(g:NeoComplCache_IncludePattern, l:filetype) ? 
+                \g:NeoComplCache_IncludePattern[l:filetype] : getbufvar(a:bufnumber, '&include')
+    if l:pattern == ''
+        return
+    endif
     let l:path = has_key(g:NeoComplCache_IncludePath, l:filetype) ? 
                 \g:NeoComplCache_IncludePath[l:filetype] : getbufvar(a:bufnumber, '&path')
     let l:expr = has_key(g:NeoComplCache_IncludeExpr, l:filetype) ? 
                 \g:NeoComplCache_IncludeExpr[l:filetype] : getbufvar(a:bufnumber, '&includeexpr')
-    let l:pattern = has_key(g:NeoComplCache_IncludePattern, l:filetype) ? 
-                \g:NeoComplCache_IncludePattern[l:filetype] : getbufvar(a:bufnumber, '&include')
+    if has_key(g:NeoComplCache_IncludeSuffixes, l:filetype)
+        let l:suffixes = &l:suffixesadd
+    endif
 
     let l:buflines = getbufline(a:bufnumber, 1, 100)
     let l:include_files = []
     for l:line in l:buflines"{{{
         if l:line =~ l:pattern
             let l:match_end = matchend(l:line, l:pattern)
-            let l:eval = substitute(l:expr, 'v:fname', string(l:line[l:match_end :]), 'g')
-            let l:filename = fnamemodify(findfile(matchstr(eval(l:eval), '\f\+'), l:path), ':p')
+            if l:expr != ''
+                let l:eval = substitute(l:expr, 'v:fname', string(matchstr(l:line[l:match_end :], '\f\+')), 'g')
+                let l:filename = fnamemodify(findfile(eval(l:eval), l:path), ':p')
+            else
+                let l:filename = fnamemodify(findfile(matchstr(l:line[l:match_end :], '\f\+'), l:path), ':p')
+            endif
             if filereadable(l:filename)
                 call add(l:include_files, l:filename)
 
                 if !has_key(s:include_cache, l:filename)
                     " Caching.
-                    let s:include_cache[l:filename] = s:load_from_tags(l:filename)
+                    let s:include_cache[l:filename] = s:load_from_tags(l:filename, l:filetype)
                 endif
             endif
         endif
     endfor"}}}
     
+    " Restore option.
+    if has_key(g:NeoComplCache_IncludeSuffixes, l:filetype)
+        let &l:suffixesadd = l:suffixes
+    endif
+    
     let s:include_list[a:bufnumber] = l:include_files
 endfunction"}}}
 
-function! s:load_from_tags(filename)"{{{
+function! s:load_from_tags(filename, filetype)"{{{
     " Initialize include list from tags.
 
-    let l:keyword_list = s:load_from_cache(a:filename)
-    if !empty(l:keyword_list)
-        return values(l:keyword_list)
+    let l:keyword_lists = s:load_from_cache(a:filename)
+    if !empty(l:keyword_lists)
+        return l:keyword_lists
     endif
 
     if !executable('ctags')
-        return values(s:load_from_file(a:filename))
+        return s:load_from_file(a:filename, a:filetype)
     endif
     
     let l:filetype = getbufvar(bufnr(a:filename), '&filetype')
@@ -139,11 +217,11 @@ function! s:load_from_tags(filename)"{{{
     let l:max_lines = len(l:lines)
     
     let l:abbr_pattern = printf('%%.%ds..%%s', g:NeoComplCache_MaxKeywordWidth-10)
-    let l:menu_pattern = '[I] %.'. g:NeoComplCache_MaxFilenameWidth . 's'
+    let l:menu_pattern = '[I] %.' . g:NeoComplCache_MaxFilenameWidth . 's %.'. g:NeoComplCache_MaxFilenameWidth . 's'
     
     if l:max_lines > 1000
         redraw
-        echo 'Caching include files... please wait.'
+        echo 'Caching include files "' . a:filename . '"... please wait.'
     endif
     if l:max_lines > 10000
         let l:print_cache_percent = l:max_lines / 9
@@ -162,67 +240,78 @@ function! s:load_from_tags(filename)"{{{
     endif
     let l:line_cnt = l:print_cache_percent
     
-    let l:line_num = 1
-    for l:line in l:lines"{{{
-        " Percentage check."{{{
-        if l:line_cnt == 0
-            if g:NeoComplCache_CachingPercentInStatusline
-                let &l:statusline = printf('Caching: %d%%', l:line_num*100 / l:max_lines)
-                redrawstatus!
-            else
-                redraw
-                echo printf('Caching: %d%%', l:line_num*100 / l:max_lines)
+    try
+        let l:dup_check = {}
+        let l:line_num = 1
+        for l:line in l:lines"{{{
+            " Percentage check."{{{
+            if l:line_cnt == 0
+                if g:NeoComplCache_CachingPercentInStatusline
+                    let &l:statusline = printf('Caching(%s): %d%%', a:filename, l:line_num*100 / l:max_lines)
+                    redrawstatus!
+                else
+                    redraw
+                    echo printf('Caching(%s): %d%%', a:filename, l:line_num*100 / l:max_lines)
+                endif
+                let l:line_cnt = l:print_cache_percent
             endif
-            let l:line_cnt = l:print_cache_percent
-        endif
-        let l:line_cnt -= 1"}}}
-        
-        let l:tag = split(l:line, "\<Tab>")
-        " Add keywords.
-        if l:line !~ '^!' && len(l:tag[0]) >= g:NeoComplCache_MinKeywordLength
-                    \&& !has_key(l:keyword_list, l:tag[0])
-            let l:option = {}
-            let l:match = matchlist(l:line, '.*\t.*\t/^\(.*\)/;"\t\(\a\)\(.*\)')
-            if empty(l:match)
-                let l:match = split(l:line, '\t')
-                let [l:option['cmd'], l:option['kind'], l:opt] = [l:match[2], l:match[3], join(l:match[4:], '\t')]
-            else
-                let [l:option['cmd'], l:option['kind'], l:opt] = [l:match[1], l:match[2], l:match[3]]
-            endif
-            for op in split(l:opt, '\t')
-                let l:key = matchstr(op, '^\h\w*\ze:')
-                let l:option[l:key] = matchstr(op, '^\h\w*:\zs.*')
-            endfor
-            
-            if has_key(l:option, 'file') || (has_key(l:option, 'access') && l:option.access != 'public')
-                let l:line_num += 1
-                continue
-            endif
-            
-            let l:abbr = (l:tag[3] == 'd')? l:tag[0] :
-                        \ substitute(substitute(substitute(l:tag[2], '^/\^\=\s*\|\$\=/;"$', '', 'g'),
-                        \           '\s\+', ' ', 'g'), '\\/', '/', 'g')
-            let l:keyword = {
-                        \ 'word' : l:tag[0], 'rank' : 5, 'prev_rank' : 0, 'prepre_rank' : 0, 'icase' : 1,
-                        \ 'abbr' : (len(l:abbr) > g:NeoComplCache_MaxKeywordWidth)? 
-                        \   printf(l:abbr_pattern, l:abbr, l:abbr[-8:]) : l:abbr,
-                        \ 'kind' : l:option['kind']
-                        \}
-            if has_key(l:option, 'struct')
-                let keyword.menu = printf(l:menu_pattern, l:option.struct)
-            elseif has_key(l:option, 'class')
-                let keyword.menu = printf(l:menu_pattern, l:option.class)
-            elseif has_key(l:option, 'enum')
-                let keyword.menu = printf(l:menu_pattern, l:option.enum)
-            else
-                let keyword.menu = '[I]'
+            let l:line_cnt -= 1"}}}
+
+            let l:tag = split(l:line, '\t')
+            " Add keywords.
+            if l:line !~ '^!' && len(l:tag[0]) >= g:NeoComplCache_MinKeywordLength
+                        \&& !has_key(l:dup_check, l:tag[0])
+                let l:option = { 'cmd' : 
+                            \substitute(substitute(l:tag[2], '^[/?]\^\?\s*\|\$\?[/?];"$', '', 'g'), '\\\\', '\\', 'g') }
+                for l:opt in l:tag[3:]
+                    let l:key = matchstr(l:opt, '^\h\w*\ze:')
+                    if l:key == ''
+                        let l:option['kind'] = l:opt
+                    else
+                        let l:option[l:key] = matchstr(l:opt, '^\h\w*:\zs.*')
+                    endif
+                endfor
+
+                if has_key(l:option, 'file') || (has_key(l:option, 'access') && l:option.access != 'public')
+                    let l:line_num += 1
+                    continue
+                endif
+
+                let l:abbr = (l:tag[3] == 'd' || l:option['cmd'] == '')? l:tag[0] : l:option['cmd']
+                let l:keyword = {
+                            \ 'word' : l:tag[0], 'rank' : 5, 'prev_rank' : 0, 'prepre_rank' : 0, 'icase' : 1,
+                            \ 'abbr' : (len(l:abbr) > g:NeoComplCache_MaxKeywordWidth)? 
+                            \   printf(l:abbr_pattern, l:abbr, l:abbr[-8:]) : l:abbr,
+                            \ 'kind' : l:option['kind']
+                            \}
+                if has_key(l:option, 'struct')
+                    let keyword.menu = printf(l:menu_pattern, fnamemodify(l:tag[1], ':t'), l:option.struct)
+                elseif has_key(l:option, 'class')
+                    let keyword.menu = printf(l:menu_pattern, fnamemodify(l:tag[1], ':t'), l:option.class)
+                elseif has_key(l:option, 'enum')
+                    let keyword.menu = printf(l:menu_pattern, fnamemodify(l:tag[1], ':t'), l:option.enum)
+                else
+                    let keyword.menu = printf(l:menu_pattern, fnamemodify(l:tag[1], ':t'), '')
+                endif
+
+                let l:key = tolower(l:tag[0][: s:completion_length-1])
+                if !has_key(l:keyword_lists, l:key)
+                    let l:keyword_lists[l:key] = []
+                endif
+                call add(l:keyword_lists[l:key], l:keyword)
+
+                let l:dup_check[l:tag[0]] = 1
             endif
 
-            let l:keyword_list[l:tag[0]] = l:keyword
-        endif
-
-        let l:line_num += 1
-    endfor"}}}
+            let l:line_num += 1
+        endfor"}}}
+    catch /^E684:/
+        echoerr 'Error occured while analyzing tags!'
+        let l:log_file = g:NeoComplCache_TemporaryDir . '/include_cache/error_log'
+        echoerr 'Please look tags file: ' . l:log_file
+        call writefile(l:log_file, l:lines)
+        return {}
+    endtry
 
     if l:max_lines > 1000
         if g:NeoComplCache_CachingPercentInStatusline
@@ -235,15 +324,15 @@ function! s:load_from_tags(filename)"{{{
         endif
     endif
 
-    if empty(l:keyword_list)
-        return values(s:load_from_file(a:filename))
+    if empty(l:keyword_lists)
+        return s:load_from_file(a:filename, a:filetype)
     endif
     
-    call s:save_cache(a:filename, values(l:keyword_list))
+    call s:save_cache(a:filename, neocomplcache#unpack_list(values(l:keyword_lists)))
     
-    return values(l:keyword_list)
+    return l:keyword_lists
 endfunction"}}}
-function! s:load_from_file(filename)"{{{
+function! s:load_from_file(filename, filetype)"{{{
     " Initialize include list from file.
 
     let l:abbr_pattern = printf('%%.%ds..%%s', g:NeoComplCache_MaxKeywordWidth-10)
@@ -253,7 +342,7 @@ function! s:load_from_file(filename)"{{{
     
     if l:max_lines > 1000
         redraw
-        echo 'Caching include files... please wait.'
+        echo 'Caching include files "' . a:filename . '"... please wait.'
     endif
     if l:max_lines > 10000
         let l:print_cache_percent = l:max_lines / 9
@@ -273,19 +362,20 @@ function! s:load_from_file(filename)"{{{
     let l:line_cnt = l:print_cache_percent
     
     let l:line_num = 1
-    let l:pattern = neocomplcache#plugin#buffer_complete#current_keyword_pattern()
+    let l:pattern = g:NeoComplCache_KeywordPatterns[a:filetype]
     let l:menu = printf('[I] %.' . g:NeoComplCache_MaxFilenameWidth . 's', fnamemodify(a:filename, ':t'))
-    let l:keyword_list = {}
+    let l:keyword_lists = {}
+    let l:dup_check = {}
 
     for l:line in l:lines"{{{
         " Percentage check."{{{
         if l:line_cnt == 0
             if g:NeoComplCache_CachingPercentInStatusline
-                let &l:statusline = printf('Caching: %d%%', l:line_num*100 / l:max_lines)
+                let &l:statusline = printf('Caching(%s): %d%%', a:filename, l:line_num*100 / l:max_lines)
                 redrawstatus!
             else
                 redraw
-                echo printf('Caching: %d%%', l:line_num*100 / l:max_lines)
+                echo printf('Caching(%s): %d%%', a:filename, l:line_num*100 / l:max_lines)
             endif
             let l:line_cnt = l:print_cache_percent
         endif
@@ -297,7 +387,7 @@ function! s:load_from_file(filename)"{{{
 
             " Ignore too short keyword.
             if len(l:match_str) >= g:NeoComplCache_MinKeywordLength
-                        \&& !has_key(l:keyword_list, l:match_str)
+                        \&& !has_key(l:dup_check, l:match_str)
                 " Append list.
                 let l:keyword = {
                             \'word' : l:match_str, 'menu' : l:menu, 'icase' : 1, 'kind' : '',
@@ -307,7 +397,14 @@ function! s:load_from_file(filename)"{{{
                 let l:keyword.abbr = 
                             \ (len(l:match_str) > g:NeoComplCache_MaxKeywordWidth)? 
                             \ printf(l:abbr_pattern, l:match_str, l:match_str[-8:]) : l:match_str
-                let l:keyword_list[l:match_str] = l:keyword
+
+                let l:key = tolower(l:match_str[: s:completion_length-1])
+                if !has_key(l:keyword_lists, l:key)
+                    let l:keyword_lists[l:key] = []
+                endif
+                call add(l:keyword_lists[l:key], l:keyword)
+                
+                let l:dup_check[l:match_str] = 1
             endif
 
             let l:match_num = l:match + len(l:match_str)
@@ -318,7 +415,7 @@ function! s:load_from_file(filename)"{{{
     endfor"}}}
 
     if l:max_lines > 300
-        call s:save_cache(a:filename, values(l:keyword_list))
+        call s:save_cache(a:filename, neocomplcache#unpack_list(values(l:keyword_lists)))
     endif
     
     if l:max_lines > 1000
@@ -332,7 +429,7 @@ function! s:load_from_file(filename)"{{{
         endif
     endif
     
-    return l:keyword_list
+    return l:keyword_lists
 endfunction"}}}
 function! s:load_from_cache(filename)"{{{
     let l:cache_name = g:NeoComplCache_TemporaryDir . '/include_cache/' .
@@ -341,13 +438,13 @@ function! s:load_from_cache(filename)"{{{
         return {}
     endif
     
-    let l:keyword_list = {}
+    let l:keyword_lists = {}
     let l:lines = readfile(l:cache_name)
     let l:max_lines = len(l:lines)
     
     if l:max_lines > 3000
         redraw
-        echo 'Caching include files... please wait.'
+        echo 'Caching include files "' . a:filename . '"... please wait.'
     endif
     if l:max_lines > 10000
         let l:print_cache_percent = l:max_lines / 5
@@ -365,21 +462,28 @@ function! s:load_from_cache(filename)"{{{
         " Percentage check."{{{
         if l:line_cnt == 0
             if g:NeoComplCache_CachingPercentInStatusline
-                let &l:statusline = printf('Caching: %d%%', l:line_num*100 / l:max_lines)
+                let &l:statusline = printf('Caching(%s): %d%%', a:filename, l:line_num*100 / l:max_lines)
                 redrawstatus!
             else
                 redraw
-                echo printf('Caching: %d%%', l:line_num*100 / l:max_lines)
+                echo printf('Caching(%s): %d%%', a:filename, l:line_num*100 / l:max_lines)
             endif
             let l:line_cnt = l:print_cache_percent
         endif
         let l:line_cnt -= 1"}}}
         
         let l:cache = split(l:line, '!!!', 1)
-        let l:keyword_list[l:cache[0]] = {
+        let l:keyword = {
                     \ 'word' : l:cache[0], 'rank' : 5, 'prev_rank' : 0, 'prepre_rank' : 0, 'icase' : 1,
                     \ 'abbr' : l:cache[1], 'menu' : l:cache[2], 'kind' : l:cache[3]
                     \}
+
+        let l:key = tolower(l:cache[0][: s:completion_length-1])
+        if !has_key(l:keyword_lists, l:key)
+            let l:keyword_lists[l:key] = []
+        endif
+        call add(l:keyword_lists[l:key], l:keyword)
+        
         let l:line_num += 1
     endfor"}}}
     
@@ -394,7 +498,7 @@ function! s:load_from_cache(filename)"{{{
         endif
     endif
     
-    return l:keyword_list
+    return l:keyword_lists
 endfunction"}}}
 function! s:save_cache(filename, keyword_list)"{{{
     let l:cache_name = g:NeoComplCache_TemporaryDir . '/include_cache/' .
@@ -408,15 +512,49 @@ function! s:save_cache(filename, keyword_list)"{{{
     call writefile(l:word_list, l:cache_name)
 endfunction"}}}
 
+" Set pattern helper."{{{
+function! s:set_include_pattern(filetype, pattern)"{{{
+    for ft in split(a:filetype, ',')
+        if !has_key(g:NeoComplCache_IncludePattern, ft) 
+            let g:NeoComplCache_IncludePattern[ft] = a:pattern
+        endif
+    endfor
+endfunction"}}}
+function! s:set_expr_pattern(filetype, pattern)"{{{
+    for ft in split(a:filetype, ',')
+        if !has_key(g:NeoComplCache_IncludeExpr, ft) 
+            let g:NeoComplCache_IncludeExpr[ft] = a:pattern
+        endif
+    endfor
+endfunction"}}}
+function! s:set_path_pattern(filetype, pattern)"{{{
+    for ft in split(a:filetype, ',')
+        if !has_key(g:NeoComplCache_IncludePath, ft) 
+            let g:NeoComplCache_IncludePath[ft] = a:pattern
+        endif
+    endfor
+endfunction"}}}
+function! s:set_suffixes_pattern(filetype, pattern)"{{{
+    for ft in split(a:filetype, ',')
+        if !has_key(g:NeoComplCache_IncludeSuffixes, ft) 
+            let g:NeoComplCache_IncludeSuffixes[ft] = a:pattern
+        endif
+    endfor
+endfunction"}}}
+"}}}
+
 " Global options definition."{{{
-if !exists('g:NeoComplCache_IncludePath')
-    let g:NeoComplCache_IncludePath = {}
+if !exists('g:NeoComplCache_IncludePattern')
+    let g:NeoComplCache_IncludePattern = {}
 endif
 if !exists('g:NeoComplCache_IncludeExpr')
     let g:NeoComplCache_IncludeExpr = {}
 endif
-if !exists('g:NeoComplCache_IncludePattern')
-    let g:NeoComplCache_IncludePattern = {}
+if !exists('g:NeoComplCache_IncludePath')
+    let g:NeoComplCache_IncludePath = {}
+endif
+if !exists('g:NeoComplCache_IncludeSuffixes')
+    let g:NeoComplCache_IncludeSuffixes = {}
 endif
 "}}}
 

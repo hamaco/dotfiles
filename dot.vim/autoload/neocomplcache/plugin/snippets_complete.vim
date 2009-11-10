@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: snippets_complete.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 25 Oct 2009
+" Last Modified: 01 Nov 2009
 " Usage: Just source this file.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -23,11 +23,20 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 1.26, for Vim 7.0
+" Version: 1.28, for Vim 7.0
 "-----------------------------------------------------------------------------
 " ChangeLog: "{{{
+"   1.28:
+"    - Split nicely when edit snippets_file.
+"    - Fixed snippets escape bug.
+"
+"   1.27:
+"    - Fixed empty snippet edit error.
+"    - Improved snippet alias syntax.
+"
 "   1.26:
 "    - Fixed regex escape bug.
+"    - Fixed import error bug.
 "
 "   1.25:
 "    - Substitute tilde.
@@ -265,16 +274,8 @@ function! s:keyword_filter(list, cur_keyword_str)"{{{
     let l:keyword_escape = neocomplcache#keyword_escape(a:cur_keyword_str)
 
     " Keyword filter."{{{
-    let l:cur_len = len(a:cur_keyword_str)
-    if g:NeoComplCache_EnablePartialMatch && neocomplcache#skipped() && len(a:cur_keyword_str) >= g:NeoComplCache_PartialCompletionStartLength
-        " Partial match.
-        " Filtering len(a:cur_keyword_str).
-        let l:pattern = printf("v:val.word =~ %s && (v:val.condition == 1 || eval(v:val.condition))", string(l:keyword_escape))
-    else
-        " Head match.
-        " Filtering len(a:cur_keyword_str).
-        let l:pattern = printf("v:val.word =~ %s && (v:val.condition == 1 || eval(v:val.condition))", string('^' . l:keyword_escape))
-    endif"}}}
+    " Head match.
+    let l:pattern = printf("v:val.word =~ %s && (v:val.condition == 1 || eval(v:val.condition))", string('^' . l:keyword_escape))
 
     let l:list = filter(a:list, l:pattern)
 
@@ -426,9 +427,24 @@ function! s:edit_snippets(filetype, isruntime)"{{{
     if !empty(s:snippets_dir)
         " Edit snippet file.
         if a:isruntime
-            edit `=s:snippets_dir[0].'/'.l:filetype.'.snip'`
+            let l:filename = s:snippets_dir[0].'/'.l:filetype.'.snip'
         else
-            edit `=s:snippets_dir[-1].'/'.l:filetype.'.snip'`
+            let l:filename = s:snippets_dir[-1].'/'.l:filetype.'.snip'
+        endif
+        
+        " Split nicely.
+        if winheight(0) > &winheight
+            split
+        else
+            vsplit
+        endif
+        
+        if filereadable(l:filename)
+            edit `=l:filename`
+        else
+            enew
+            setfiletype snippet
+            saveas `=l:filename`
         endif
     endif
 endfunction"}}}
@@ -472,7 +488,7 @@ function! s:load_snippets(snippets_file)"{{{
     for line in readfile(a:snippets_file)
         if line =~ '^include'
             " Include snippets.
-            let l:filetype = matchstr(line, '^\s*include\s\+\zs\h\w*')
+            let l:filetype = matchstr(line, '^include\s\+\zs.*$')
             let l:snippets_files = split(globpath(join(s:snippets_dir, ','), l:filetype .  '.snip'), '\n')
             for snippets_file in l:snippets_files
                 call extend(l:snippet, s:load_snippets(snippets_file))
@@ -501,7 +517,7 @@ function! s:load_snippets(snippets_file)"{{{
                 call add(l:snippet_pattern.prev_word, matchstr(word, "'\\zs[^']*\\ze'"))
             endfor
         elseif line =~ '^alias\s'
-            let l:snippet_pattern.alias = split(matchstr(line, '^alias\s\+\zs.*$'))
+            let l:snippet_pattern.alias = split(substitute(matchstr(line, '^alias\s\+\zs.*$'), '\s', '', 'g'), ',')
         elseif line =~ '^\s'
             if l:snippet_pattern['word'] == ''
                 let l:snippet_pattern.word = matchstr(line, '^\s\+\zs.*$')
@@ -564,7 +580,7 @@ function! s:snippets_expand(cur_text, col)"{{{
 
         let l:snip_word = l:snippet.snip
         if l:snip_word =~ '`[^`]*`'
-            let l:eval = escape(eval(matchstr(l:snip_word, '`\zs[^`]*\ze`')), '~\.^$')
+            let l:eval = escape(eval(matchstr(l:snip_word, '`\zs[^`]*\ze`')), '~\.^$&')
             let l:snip_word = substitute(l:snip_word, '`[^`]*`', l:eval, '')
             if l:snip_word =~ '\n'
                 let snip_word = substitute(l:snip_word, '\n', '<\\n>', 'g') . '<expand>'
