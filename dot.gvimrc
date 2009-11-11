@@ -10,10 +10,11 @@ elseif has("unix")
 	set guifont=MeiryoKe_Console\ 10
 	colorscheme ir_black
 elseif has("win32")
-	set columns=120
-	set lines=45
+	set columns=100
+	set lines=35
+	set guifont=Osaka－等幅:h14:cSHIFTJIS
 	colorscheme h2u_black
 endif
 
-set splitbelow " 讓ｪ蛻�蜑ｲ縺励◆繧画眠縺励＞繧ｦ繧｣繝ｳ繝峨え縺ｯ荳九↓
-set splitright " 邵ｦ蛻�蜑ｲ縺励◆繧画眠縺励＞繧ｦ繧｣繝ｳ繝峨え縺ｯ蜿ｳ縺ｫ
+set splitbelow " 横分割したら新しいウィンドウは下に
+set splitright " 縦分割したら新しいウィンドウは右に
