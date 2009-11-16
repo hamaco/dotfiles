@@ -176,6 +176,9 @@ set! network.cookie.cookieBehavior=2
 " IPv6無効化
 set! network.dns.disableIPv6=true
 
+set! network.http.max_connections=32
+set! network.http.max_connections_per_server=8
+
 " ページのアクセスキーを無効化
 set! ui.key.generalAccessKey=0
 
