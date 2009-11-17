@@ -5,7 +5,7 @@ bindkey -e
 umask 022
 source ~/.zsh/cdd
 
-cdpath=($HOME)
+cdpath=($HOME /web/hamaco)
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
