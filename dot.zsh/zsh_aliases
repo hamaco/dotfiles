@@ -1,16 +1,15 @@
-# Alias: ==== {{{1
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
 alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
 
+alias sudo="sudo " # sudoでもaliasが使えるようにする
+alias s="sudo"
 alias sl="ls"
 alias l="ls -a"
 alias ll="ls -l"
 alias la="ls -la"
-
-alias s="sudo"
-alias sudo="sudo " # sudoでもaliasが使えるようにする
 alias v="vim"
 alias vi="vim"
+alias di="diff"
 
 alias tgz="tar cvzf"
 alias untar="tar xvf"
@@ -57,12 +56,20 @@ esac
 
 # Suffix: 接尾辞エイリアス ========= {{{2
 alias -s txt=cat
+alias -s php=vim
 alias -s log=less
-alias -s jpg=eog
-alias -s png=eog
 alias -s jar="java -jar"
 
-
+case "${OSTYPE}" in
+linux*)
+	alias -s jpg=eog
+	alias -s png=eog
+	;;
+darwin*)
+	alias -s jpg=ql
+	alias -s png=ql
+	;;
+esac
 
 
 sc() {
@@ -70,9 +77,7 @@ sc() {
 	screen -x $name || $screen -r $name || screen -S $name
 }
 
-#-------------------------------------------------------------------------------
-#  myabbrev
-#-------------------------------------------------------------------------------
+# myabbrev {{{1
 typeset -A myabbrev
 
 myabbrev=(

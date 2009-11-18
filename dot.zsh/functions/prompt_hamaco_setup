@@ -19,14 +19,22 @@ function pwd_status () {
 	local color
 
 	case ${PWD} in
-		/Volumes/*) color=$fg[red];;
-		*)          color=$fg[cyan];;
+		/Volumes/*) color=$fg[red]  ;;
+		/web/*)     color=$fg[yellow] ;;
+		*)          color=$fg[cyan] ;;
 	esac
 
 	echo -n "[%{$color%}%~%{$reset_color%}]"
 }
 
-PROMPT="%(!,$fg[red],$fg[green])%n@%m%{$reset_color%} "
+case "${HOST}" in
+hamacbook*)
+	PROMPT="%{$fg[green]%}%n@%m%{$reset_color%} "
+	;;
+*)
+	PROMPT="%{$fg[red]%}%n@%m%{$reset_color%} "
+	;;
+esac
 PROMPT+="\$(pwd_status)"
 # @todo zshのバージョンが4.3.6以前なら無視
 PROMPT+="\$(vcs_status)"
