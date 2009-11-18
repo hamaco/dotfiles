@@ -42,8 +42,8 @@ set visualbell
 highlight Bell display:none;
 "set visualbellstyle += opacity:.5;
 
-" colorscheme sweets
-colorscheme vimplight
+colorscheme sweets
+" colorscheme vimplight
 
 " Keymapping
 " ======================================================================
