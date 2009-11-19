@@ -353,6 +353,9 @@ liberator.globalVariables.hateDAopener_accounts = [
 ];
 EOM
 
+" no-reading.js
+let g:no_reading_do_echo = 1
+
 
 source! ~/.vimperator/userContent.vimp
 
