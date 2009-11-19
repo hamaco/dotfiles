@@ -122,10 +122,11 @@ noremap ,b :<C-u>subscldr<Space>-rate<Space>
 " qmark 2.0preで動かないかも？
 " ===
 qmark a http://www.amazon.co.jp/
-qmark p http://pixiv.net/
 qmark f http://fastladder.com/reader/
+qmark i http://www.instapaper.com/u
 qmark l http://reader.livedoor.com/reader/
 qmark m http://www.gmail.com/
+qmark p http://pixiv.net/
 
 map <C-4> gnl<CR>
 map <C-5> gnf<CR>
