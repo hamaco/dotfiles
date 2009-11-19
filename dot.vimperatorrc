@@ -158,9 +158,7 @@ set! browser.feeds.handlers.webservice=http://reader.livedoor.com/subscribe/?url
 " undo可能なタブの数
 set! browser.sessionstore.max_tabs_undo=20
 
-" Tabの幅を指定
-set! browser.tabs.tabMaxWidth=24
-set! browser.tabs.tabMinWidth=24
+set! browser.tabs.closeButtons=2
 
 " JavaScriptでウィンドウ移動・リサイズ拒否
 set! dom.disable_window_move_resize=true
@@ -183,7 +181,7 @@ set! network.http.max_connections_per_server=8
 " ページのアクセスキーを無効化
 set! ui.key.generalAccessKey=0
 
-" 拡張機能インストール時の待ち時間時間
+" 拡張機能インストール時の待ち時間
 set! security.dialog_enable_delay=0
 
 " Java無効化
