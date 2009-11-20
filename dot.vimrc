@@ -110,11 +110,6 @@ let &statusline .= '  %-14.(%l,%c%V%) %P'
 let mapleader = ","
 let maplocalleader = "."
 
-if has("autochdir")
-	set autochdir
-else
-	au BufEnter * execute "lcd " expand("%:p:h")
-endif
 
 
 " command {{{1
@@ -139,6 +134,23 @@ command! -bang -nargs=0 ToEucjp
 
 command! -bang -nargs=0 ToSjis
 \ setlocal fileencoding=cp932
+
+" {{{2
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+	if a:directory == ''
+		lcd %:p:h
+	else
+		execute 'lcd' . a:directory
+	endif
+
+	if a:bang == ''
+		pwd
+	endif
+endfunction
+
+" Change current directory.
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
 
 
 " autocmd {{{1
