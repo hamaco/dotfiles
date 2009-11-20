@@ -157,11 +157,11 @@ esac
 
 # Terminal: ターミナル毎の設定 ============================================ {{{1
 case "${TERM}" in
-xterm|kterm*)
+xterm*|kterm*)
 	precmd() {
 		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
 	}
-	#screen -r
+	screen
 	;;
 screen*) # これtscreenで動かない
 	function ssh_screen() {
