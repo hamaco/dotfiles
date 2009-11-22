@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: keyword_complete.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 07 Nov 2009
+" Last Modified: 16 Nov 2009
 " Usage: Just source this file.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -23,14 +23,7 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 3.10, for Vim 7.0
-"-----------------------------------------------------------------------------
-" TODO: "{{{
-"     - Nothing.
-""}}}
-" Bugs"{{{
-"     - Nothing.
-""}}}
+" Version: 3.16, for Vim 7.0
 "=============================================================================
 
 function! neocomplcache#complfunc#keyword_complete#initialize()"{{{
@@ -59,7 +52,7 @@ function! neocomplcache#complfunc#keyword_complete#finalize()"{{{
 endfunction"}}}
 
 function! neocomplcache#complfunc#keyword_complete#get_keyword_pos(cur_text)"{{{
-    let l:pattern = '\v%(' .  neocomplcache#plugin#buffer_complete#current_keyword_pattern() . ')$'
+    let l:pattern = '\v%(' .  neocomplcache#get_keyword_pattern() . ')$'
     let l:cur_keyword_pos = match(a:cur_text, l:pattern)
     let l:cur_keyword_str = a:cur_text[l:cur_keyword_pos :]
 
@@ -70,10 +63,6 @@ function! neocomplcache#complfunc#keyword_complete#get_keyword_pos(cur_text)"{{{
     let l:cur_keyword_str = a:cur_text[l:cur_keyword_pos :]
 
     if l:cur_keyword_pos < 0 || len(l:cur_keyword_str) < g:NeoComplCache_KeywordCompletionStartLength
-        if len(l:cur_keyword_str) >= g:NeoComplCache_MinKeywordLength
-            " Check candidate.
-            call neocomplcache#plugin#buffer_complete#check_candidate(l:cur_keyword_str)
-        endif
         return -1
     endif
 
@@ -95,7 +84,7 @@ function! neocomplcache#complfunc#keyword_complete#get_complete_words(cur_keywor
     let l:is_empty = 1
     for l:plugin in keys(l:loaded_plugins)
         if has_key(g:NeoComplCache_PluginCompletionLength, l:plugin)
-        \&& len(a:cur_keyword_str) < g:NeoComplCache_PluginCompletionLength[l:plugin]
+                    \&& len(a:cur_keyword_str) < g:NeoComplCache_PluginCompletionLength[l:plugin]
             call remove(l:loaded_plugins, l:plugin)
             let l:cache_keyword_lists[l:plugin] = []
         else
@@ -162,7 +151,7 @@ endfunction"}}}
 function! neocomplcache#complfunc#keyword_complete#check_wildcard(cur_text, pattern, cur_keyword_pos)"{{{
     let l:cur_keyword_pos = a:cur_keyword_pos
 
-    while l:cur_keyword_pos > 1 && a:cur_text[l:cur_keyword_pos - 1] =~ '[*-]'
+    while l:cur_keyword_pos > 1 && a:cur_text[l:cur_keyword_pos - 1] =~ '[*]'
         let l:left_text = a:cur_text[: l:cur_keyword_pos - 2]
         if l:left_text !~ a:pattern
             break
@@ -175,7 +164,7 @@ function! neocomplcache#complfunc#keyword_complete#check_wildcard(cur_text, patt
 endfunction"}}}
 
 function! s:get_prev_word(cur_keyword_str)"{{{
-    let l:keyword_pattern = neocomplcache#plugin#buffer_complete#current_keyword_pattern()
+    let l:keyword_pattern = neocomplcache#get_keyword_pattern()
     let l:line_part = getline('.')[: col('.')-1 - len(a:cur_keyword_str)]
     let l:prev_word_end = matchend(l:line_part, l:keyword_pattern)
     if l:prev_word_end > 0

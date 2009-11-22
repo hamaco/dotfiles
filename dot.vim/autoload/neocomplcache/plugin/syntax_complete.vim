@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: syntax_complete.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 06 Nov 2009
+" Last Modified: 20 Nov 2009
 " Usage: Just source this file.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -23,9 +23,15 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 1.25, for Vim 7.0
+" Version: 1.27, for Vim 7.0
 "-----------------------------------------------------------------------------
 " ChangeLog: "{{{
+"   1.27:
+"    - Disabled in vim.
+"
+"   1.26:
+"    - Fixed dup check bug.
+"
 "   1.25:
 "    - Implemented fast search.
 "    - Print filename when caching.
@@ -140,7 +146,7 @@ function! neocomplcache#plugin#syntax_complete#get_keyword_list(cur_keyword_str)
     elseif len(a:cur_keyword_str) == s:completion_length
         return s:syntax_list[&filetype][l:key]
     else
-        return neocomplcache#keyword_filter(s:syntax_list[&filetype][l:key], a:cur_keyword_str)
+        return neocomplcache#keyword_filter(copy(s:syntax_list[&filetype][l:key]), a:cur_keyword_str)
     endif
 endfunction"}}}
 
@@ -153,27 +159,28 @@ function! neocomplcache#plugin#syntax_complete#calc_prev_rank(cache_keyword_buff
 endfunction"}}}
 
 function! s:caching()"{{{
-    " Caching.
-    if &filetype != '' && buflisted(bufnr('%')) && !has_key(s:syntax_list, &filetype)
-        if g:NeoComplCache_CachingPercentInStatusline
-            let l:statusline_save = &l:statusline
-            let &l:statusline = 'Caching syntax "' . &filetype . '"... please wait.'
-            redrawstatus
+    if &filetype == '' || &filetype == 'vim' || !buflisted(bufnr('%')) && has_key(s:syntax_list, &filetype)
+        return
+    endif
+    
+    if g:NeoComplCache_CachingPercentInStatusline
+        let l:statusline_save = &l:statusline
+        let &l:statusline = 'Caching syntax "' . &filetype . '"... please wait.'
+        redrawstatus
 
-            let s:syntax_list[&filetype] = s:initialize_syntax()
+        let s:syntax_list[&filetype] = s:initialize_syntax()
 
-            let &l:statusline = l:statusline_save
-            redrawstatus
-        else
-            redraw
-            echo 'Caching syntax "' . &filetype . '"... please wait.'
+        let &l:statusline = l:statusline_save
+        redrawstatus
+    else
+        redraw
+        echo 'Caching syntax "' . &filetype . '"... please wait.'
 
-            let s:syntax_list[&filetype] = s:initialize_syntax()
+        let s:syntax_list[&filetype] = s:initialize_syntax()
 
-            redraw
-            echo ''
-            redraw
-        endif
+        redraw
+        echo ''
+        redraw
     endif
 endfunction"}}}
 
@@ -275,6 +282,8 @@ function! s:caching_from_syn()"{{{
                     let l:keyword_lists[l:key] = []
                 endif
                 call add(l:keyword_lists[l:key], l:keyword)
+
+                let l:dup_check[l:match_str] = 1
             endif
 
             let l:match_num += len(l:match_str)

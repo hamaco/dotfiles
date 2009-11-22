@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: snippets_complete.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 01 Nov 2009
+" Last Modified: 19 Nov 2009
 " Usage: Just source this file.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
@@ -23,9 +23,18 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 1.28, for Vim 7.0
+" Version: 1.30, for Vim 7.0
 "-----------------------------------------------------------------------------
 " ChangeLog: "{{{
+"   1.30:
+"    - Fixed snippet merge bug.
+"    - Allow keyword trigger.
+"    - Fixed NeoComplCacheEditRuntimeSnippets bug.
+"
+"   1.29:
+"    - Recognized snippets directory of snipMate automatically.
+"    - Fixed eval snippet bug.
+"
 "   1.28:
 "    - Split nicely when edit snippets_file.
 "    - Fixed snippets escape bug.
@@ -187,7 +196,8 @@ function! neocomplcache#plugin#snippets_complete#initialize()"{{{
     let s:snippet_holder_cnt = 1
 
     " Set snippets dir.
-    let s:snippets_dir = split(globpath(&runtimepath, 'autoload/neocomplcache/plugin/snippets_complete'), '\n')
+    let s:runtime_dir = split(globpath(&runtimepath, 'autoload/neocomplcache/plugin/snippets_complete'), '\n')
+    let s:snippets_dir = split(globpath(&runtimepath, 'snippets'), '\n') + s:runtime_dir
     if exists('g:NeoComplCache_SnippetsDir')
         for l:dir in split(g:NeoComplCache_SnippetsDir, ',')
             let l:dir = expand(l:dir)
@@ -273,7 +283,7 @@ endfunction
 function! s:keyword_filter(list, cur_keyword_str)"{{{
     let l:keyword_escape = neocomplcache#keyword_escape(a:cur_keyword_str)
 
-    " Keyword filter."{{{
+    " Keyword filter.
     " Head match.
     let l:pattern = printf("v:val.word =~ %s && (v:val.condition == 1 || eval(v:val.condition))", string('^' . l:keyword_escape))
 
@@ -282,13 +292,11 @@ function! s:keyword_filter(list, cur_keyword_str)"{{{
     " Substitute abbr.
     let l:abbr_pattern = printf('%%.%ds..%%s', g:NeoComplCache_MaxKeywordWidth-10)
     for snippet in l:list
-        if snippet.snip =~ '`[^`]*`'
-            let l:eval = escape(eval(matchstr(snippet.snip, '`\zs[^`]*\ze`')), '~\.^$')
-            let snippet.abbr = substitute(snippet.snip, '`[^`]*`', l:eval, '')
-
-            if len(snippet.abbr) > g:NeoComplCache_MaxKeywordWidth 
-                let snippet.abbr = printf(l:abbr_pattern, snippet.abbr, snippet.abbr[-8:])
-            endif
+        let snippet.abbr = (snippet.snip =~ '`[^`]*`')? 
+                    \s:eval_snippet(snippet.snip) : snippet.snip
+        
+        if len(snippet.abbr) > g:NeoComplCache_MaxKeywordWidth 
+            let snippet.abbr = printf(l:abbr_pattern, snippet.abbr, snippet.abbr[-8:])
         endif
     endfor
 
@@ -309,6 +317,10 @@ function! neocomplcache#plugin#snippets_complete#calc_prev_rank(cache_keyword_bu
 endfunction"}}}
 
 function! neocomplcache#plugin#snippets_complete#expandable()"{{{
+    if !neocomplcache#plugin#buffer_complete#exists_current_source()
+        return 0
+    endif
+    
     " Set buffer filetype.
     if &filetype == ''
         let l:ft = 'nothing'
@@ -316,7 +328,7 @@ function! neocomplcache#plugin#snippets_complete#expandable()"{{{
         let l:ft = &filetype
     endif
 
-    let l:snippets = s:snippets['_']
+    let l:snippets = copy(s:snippets['_'])
     for l:t in split(l:ft, '\.')
         if has_key(s:snippets, l:t)
             call extend(l:snippets, s:snippets[l:t])
@@ -333,7 +345,11 @@ function! neocomplcache#plugin#snippets_complete#expandable()"{{{
     endif
 
     let l:cur_text = neocomplcache#get_cur_text()
-    let l:cur_word = matchstr(l:cur_text, '\h\w*[^[:alnum:][:space:]]*$')
+    let l:cur_word = neocomplcache#match_word(l:cur_text)
+    if !has_key(l:snippets, l:cur_word)
+        let l:cur_word = matchstr(l:cur_text, '\h\w*[^[:alnum:][:space:]]*$')
+    endif
+    
     return (has_key(l:snippets, l:cur_word) &&
                 \(l:snippets[l:cur_word].condition == 1 || eval(l:snippets[l:cur_word].condition)))
                 \|| search('\${\d\+\%(:.\{-}\)\?\\\@<!}\|\$<\d\+\%(:.\{-}\)\?\\\@<!>', 'w') > 0
@@ -423,29 +439,35 @@ function! s:edit_snippets(filetype, isruntime)"{{{
     else
         let l:filetype = a:filetype
     endif
+    
+    " Edit snippet file.
+    if a:isruntime
+        if empty(s:runtime_dir)
+            return
+        endif
+        
+        let l:filename = s:runtime_dir[0].'/'.l:filetype.'.snip'
+    else
+        if empty(s:snippets_dir) 
+            return
+        endif
+        
+        let l:filename = s:snippets_dir[-1].'/'.l:filetype.'.snip'
+    endif
 
-    if !empty(s:snippets_dir)
-        " Edit snippet file.
-        if a:isruntime
-            let l:filename = s:snippets_dir[0].'/'.l:filetype.'.snip'
-        else
-            let l:filename = s:snippets_dir[-1].'/'.l:filetype.'.snip'
-        endif
-        
-        " Split nicely.
-        if winheight(0) > &winheight
-            split
-        else
-            vsplit
-        endif
-        
-        if filereadable(l:filename)
-            edit `=l:filename`
-        else
-            enew
-            setfiletype snippet
-            saveas `=l:filename`
-        endif
+    " Split nicely.
+    if winheight(0) > &winheight
+        split
+    else
+        vsplit
+    endif
+
+    if filereadable(l:filename)
+        edit `=l:filename`
+    else
+        enew
+        setfiletype snippet
+        saveas `=l:filename`
     endif
 endfunction"}}}
 function! s:print_snippets(filetype)"{{{
@@ -557,7 +579,7 @@ function! s:snippets_expand(cur_text, col)"{{{
         let l:ft = &filetype
     endif
 
-    let l:snippets = s:snippets['_']
+    let l:snippets = copy(s:snippets['_'])
     for l:t in split(l:ft, '\.')
         if has_key(s:snippets, l:t)
             call extend(l:snippets, s:snippets[l:t])
@@ -572,7 +594,10 @@ function! s:snippets_expand(cur_text, col)"{{{
     endif
 
     let l:cur_text = a:cur_text
-    let l:cur_word = matchstr(l:cur_text, '\h\w*[^[:alnum:][:space:]]*$')
+    let l:cur_word = neocomplcache#match_word(l:cur_text)
+    if !has_key(l:snippets, l:cur_word)
+        let l:cur_word = matchstr(l:cur_text, '\h\w*[^[:alnum:][:space:]]*$')
+    endif
     if has_key(l:snippets, l:cur_word)
                 \&& (l:snippets[l:cur_word].condition == 1 || eval(l:snippets[l:cur_word].condition))
         let l:snippet = l:snippets[l:cur_word]
@@ -580,11 +605,10 @@ function! s:snippets_expand(cur_text, col)"{{{
 
         let l:snip_word = l:snippet.snip
         if l:snip_word =~ '`[^`]*`'
-            let l:eval = escape(eval(matchstr(l:snip_word, '`\zs[^`]*\ze`')), '~\.^$&')
-            let l:snip_word = substitute(l:snip_word, '`[^`]*`', l:eval, '')
-            if l:snip_word =~ '\n'
-                let snip_word = substitute(l:snip_word, '\n', '<\\n>', 'g') . '<expand>'
-            endif
+            let l:snip_word = s:eval_snippet(l:snip_word)
+        endif
+        if l:snip_word =~ '\n'
+            let snip_word = substitute(l:snip_word, '\n', '<\\n>', 'g') . '<expand>'
         endif
 
         " Add rank.
@@ -814,6 +838,25 @@ function! s:expand_trigger(function)"{{{
     let l:cur_text = neocomplcache#get_cur_text()
     let s:cur_text = l:cur_text
     return printf("\<ESC>:call %s(%s,%d)\<CR>", a:function, string(l:cur_text), col('.'))
+endfunction"}}}
+function! s:eval_snippet(snippet_text)"{{{
+    let l:snip_word = ''
+    let l:prev_match = 0
+    let l:match = match(a:snippet_text, '`[^`]*`')
+    while l:match >= 0
+        if l:match - l:prev_match > 0
+            let l:snip_word .= a:snippet_text[l:prev_match : l:match - 1]
+        endif
+        let l:prev_match = matchend(a:snippet_text, '`[^`]*`', l:match)
+        let l:snip_word .= eval(a:snippet_text[l:match+1 : l:prev_match - 2])
+
+        let l:match = match(a:snippet_text, '`[^`]*`', l:prev_match)
+    endwhile
+    if l:prev_match >= 0
+        let l:snip_word .= a:snippet_text[l:prev_match :]
+    endif
+
+    return l:snip_word
 endfunction"}}}
 
 function! s:SID_PREFIX()
