@@ -31,32 +31,33 @@ setopt auto_cd              # cdなしでもディレクトリ移動
 setopt auto_list            # ^Iで補完可能な一覧を表示する(補完候補が複数ある時に、一覧表示)
 setopt auto_menu            # 補完キー連打で順に補完候補を自動で補完
 setopt auto_pushd           # cdのタイミングで自動的にpushd
+setopt no_auto_remove_slash # パスの最後のスラッシュを自動で削除しない
 setopt auto_resume          # サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
+setopt no_beep              # ビープ音の無効化
 setopt brace_ccl            # {a-c}をa b cに展開できるようにする
 setopt correct              # コマンド名の自動修正
 setopt extended_glob        # 拡張ファイルグロブを有効化
 setopt extended_history     # 履歴ファイルに実行時間・経過時間を記録
 setopt equals               # =COMMAND を COMMAND のパス名に展開
+setopt no_flow_control      # C-s, C-qの無効化
 setopt hist_expand          # 補完時にヒストリを自動的に展開
 setopt hist_ignore_all_dups # 履歴ファイルに重複して保存しない
 setopt hist_ignore_dups     # 直前と同じコマンドは履歴ファイルに保存しない
 setopt hist_ignore_space    # スペースで始まるコマンドは履歴ファイルに保存しない
 setopt hist_no_store        # historyコマンドは履歴ファイルに保存しない
 setopt hist_reduce_blanks   # 余分なスペースを削除して履歴ファイルに保存する
+setopt no_hup               # ログアウト時にバックグラウンドジョブをkillしない
 setopt ignore_eof           # C-dでexitしない
+setopt no_list_beep         # 補完候補表示時にビープ音が鳴らないようにする
 setopt list_packed          # 補完候補をつめて表示
 setopt list_types           # 保管候補表示時にファイル種別を表示
 setopt long_list_jobs       # jobsコマンドのデフォルトを jobs -l にする
 setopt magic_equal_subst    # コマンドラインの引数で --PREFIX=/USR などの = 以降でも補完できる
 setopt mark_dirs            # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
-setopt no_auto_remove_slash # パスの最後のスラッシュを自動で削除しない
-setopt no_beep              # ビープ音の無効化
-setopt no_flow_control      # C-s, C-qの無効化
-setopt no_hup               # ログアウト時にバックグラウンドジョブをkillしない
-setopt no_list_beep         # 補完候補表示時にビープ音が鳴らないようにする
 setopt notify               # バックグラウンドジョブが終了したら(プロンプトの表示を待たずに)すぐに知らせる
 setopt numeric_glob_sort    # ファイル名を数値としてソート
 setopt print_eight_bit      # 補完候補リストの日本語を適正表示
+setopt prompt_subst         #
 setopt pushd_ignore_dups    # 同じディレクトリをpushdしない
 setopt share_history        # 履歴ファイルを共有する
 setopt short_loops          # FOR, REPEAT, SELECT, IF, FUNCTION などで簡略文法が使えるようになる
