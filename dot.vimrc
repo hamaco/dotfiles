@@ -180,8 +180,13 @@ endif
 let plugin_dicwin_disable = 1
 
 
-" Align.vim{{{2
+" Align.vim {{{2
 let g:Align_xstrlen = 3
+
+
+" ChangeLog {{{2
+let g:changelog_username = "hamaco <hamanaka.kazuhiro@gmail.com>"
+let g:changelog_timeformat = "%Y-%m-%d"
 
 
 " commentop.vim {{{2
@@ -253,7 +258,7 @@ noremap gE ge
 if !has("win32")
 	language time en_US.UTF-8
 endif
-let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamaco@ryus.be> -"
+let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamanaka.kazuhiro@gmail.com> -"
 
 
 " surround.vim {{{2
