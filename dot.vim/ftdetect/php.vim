@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.inc setfiletype php
+autocmd BufNewFile,BufRead *.inc setlocal filetype=php
