@@ -1,6 +1,6 @@
 *neocomplcache.txt*	Ultimate auto completion system for Vim
 
-Version: 3.16
+Version: 3.18
 Author : Shougo <Shougo.Matsu@gmail.com>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
@@ -277,6 +277,12 @@ g:NeoComplCache_EnableUnderbarCompletion		*g:NeoComplCache_EnableUnderbarComplet
 	
 		Default value is 0.
 
+g:NeoComplCache_EnableDispalyParameter			*g:NeoComplCache_EnableDispalyParameter*
+		When you input, this variable controls whether neocomplcache displays the prototype of the function in Command-line. 
+		Only vim_complete supports now.
+	
+		Default value is 1.
+
 g:NeoComplCache_CachingLimitFileSize			*g:NeoComplCache_CachingLimitFileSize*
 		This variable set file size to make a cash of a file.
 		If open file is bigger than this size, neocomplcache do not make a cash.
@@ -308,14 +314,12 @@ g:NeoComplCache_TemporaryDir				*g:NeoComplCache_TemporaryDir*
 g:NeoComplCache_KeywordPatterns				*g:NeoComplCache_KeywordPatterns*
 		This dictionary records keyword patterns to completion.
 		This is appointed in regular expression every file type.
-		When you customize it, you must use '\v' for the top of the pattern.
 	
 		Because it is complicated, refer to autoload/neocomplcache.vim for the initial value.
 
 g:NeoComplCache_OmniPatterns				*g:NeoComplCache_OmniPatterns*
 		This dictionary records keyword patterns to Omni completion.
 		This is appointed in regular expression every file type.
-		When you customize it, you must use '\v' for the top of the pattern.
 	
 		Because it is complicated, refer to autoload/neocomplcache.vim for the initial value.
 
@@ -401,12 +405,13 @@ g:NeoComplCache_QuickMatchPatterns				*g:NeoComplCache_QuickMatchPatterns*
 ------------------------------------------------------------------------------
 KEY MAPPINGS 					*neocomplcache-key-mappings*
 
-<Plug>(neocomplcache_keyword_caching)				*<Plug>(neocomplcache_keyword_caching)*
-		make a cash of a current cash line.
-
 <Plug>(neocomplcache_snippets_expand)				*<Plug>(neocomplcache_snippets_expand)*
-		Expand a snippet of plural lines. Perform the disposal of place holders.
+		Expand a snippet of plural lines. When there is not snippet, jump to the next placeholder.
 		The snippet which unfolded is easy to become display by the high rank so that a rank rises.
+
+<Plug>(neocomplcache_snippets_jump)				*<Plug>(neocomplcache_snippets_jump)*
+		Jump to the next place holder. Do not expand snippet. 
+		When you do not want to expand a snippet name, use this keymapping.
 
 neocomplcache#manual_filename_complete				*neocomplcache#manual_filename_complete*
 		Use this function on inoremap <expr>.
@@ -477,7 +482,7 @@ EXAMPLES					*neocomplcache-examples*
 	if !exists('g:NeoComplCache_KeywordPatterns')
 	    let g:NeoComplCache_KeywordPatterns = {}
 	endif
-	let g:NeoComplCache_KeywordPatterns['default'] = '\v\h\w*'
+	let g:NeoComplCache_KeywordPatterns['default'] = '\h\w*'
 
 	" Plugin key-mappings.
 	imap <C-l>     <Plug>(neocomplcache_snippets_expand)
@@ -519,7 +524,11 @@ include_complete.vim					*include_complete*
 		But it is necessary for 'path' and 'include', 'includeexpr' to be set adequately.
  
 vim_complete.vim					*vim_complete*
-		Experimental.
+		An experimental function. This plugin analyzes context and start Omni completion of VimScript. 
+		This plugin does not work other than editing time of VimScript. 
+		I made it because neocomplcache cannot call |i_CTRL-X_CTRL-V|. 
+		It is an aim to do to the thing which is higher-performance than the completion prepared for by default. 
+		Local variable and a script variable, a function and the analysis of the command are implemented now.
 
 ==============================================================================
 TODO						*neocomplcache-todo*
@@ -536,6 +545,28 @@ The ability of neocomplcache will spread by creating plugin by yourself.
 ==============================================================================
 CHANGELOG					*neocomplcache-changelog*
 
+   3.18:
+    - Improved backslash escape in filename_complete.
+    - Deleted \v pattern.
+    - Fixed error when execute NeoComplCacheDisable.
+    - Fixed keyword bug in vim_complete.
+    - Implemented intellisense like prototype echo in vim_complete.
+    - Added g:NeoComplCache_EnableDispalyParameter option.
+    - Implemented the static model recognition in vim_complete.
+    - Fixed disable expand when buftype is 'nofile' bug in snippets_complete.
+    - Implemented <Plug>(neocomplcache_snippets_jump) in snippets_complete.
+    - Implemented hard tab expand in vim_complete.
+    - Restore cursor position in omni_complete.
+
+ChangeLog NeoComplCache 3.00-: {{{
+   3.17:
+    - Reinforced vim_complete.vim.
+    - Improved shortcut filename completion in filename_complete.
+    - Implemented pseudo animation.
+    - Supported backslash in vim_complete.
+    - Supported manual plugin complete.
+    - Improved caching speed when FileType in include_complete.
+    - Fixed freeze bug in filename_complete.
    3.16:
     - Fixed executable bug in filename_complete.
     - Fixed error; when open the file of the filetype that g:NeoComplCache_KeywordPatterns does not have in include_complete.
@@ -545,8 +576,8 @@ CHANGELOG					*neocomplcache-changelog*
     - Implemented vim_complete(testing).
     - Syntax_complete disabled in vim.
     - Fixed quickmatch list bug.
+    - Fixed expand snippets bug.
 
-ChangeLog NeoComplCache 3.00-: {{{
    3.15:
     - Fixed ruby omni_complete bug.
     - Fixed prefix bug.
