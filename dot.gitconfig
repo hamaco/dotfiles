@@ -1,6 +1,17 @@
 [user]
-	name = Hamaco
-	email = 
+	name = hamaco
+	email = hamanaka.kazuhiro@gmail.com
+
+[core]
+	pager = less -r
+	excludesfile = ~/.gitignore
+
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
 
 [alias]
 	ci = commit -v
@@ -12,12 +23,6 @@
 
 	up = pull --rebase
 	difflog = log -p HEAD@{3.days.ago}
-
-[color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
 
 [color "diff"]
 	meta = yellow bold
