@@ -10,18 +10,20 @@ alias la="ls -la"
 alias v="vim"
 alias vi="vim"
 alias di="diff"
-alias g="git"
-alias gs="git svn"
 alias %=" " # webにあるコマンドをコピペで実行出来るようにする
 
 alias tgz="tar cvzf"
 alias untar="tar xvf"
 
 # for git
+alias g="git"
+alias gs="git svn"
 alias gst="git status"
 alias gdi="git diff"
 alias gad="git add"
 alias gci="git commit"
+alias gsr="git svn rebase"
+alias gsd="git svn dcommit"
 
 case "${OSTYPE}" in
 linux*)
