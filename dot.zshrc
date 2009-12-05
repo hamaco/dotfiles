@@ -5,7 +5,7 @@ bindkey -e
 umask 022
 source ~/.zsh/cdd
 
-cdpath=($HOME /web/hamaco)
+cdpath=($HOME /web/hamaco /web/ryus)
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
@@ -210,6 +210,21 @@ bindkey . rationalise-dot
 
 
 
+# Alias: === {{{1
+# cho45 ~/
+expand-to-home-or-insert () {
+  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
+    LBUFFER+="~/"
+  else
+    zle self-insert
+  fi
+}
+zle -N expand-to-home-or-insert
+bindkey "\\"  expand-to-home-or-insert
+
+
+
+
 # Include: マシン・OSごとの設定 ====================================== {{{1
 for file in aliases
 do
@@ -241,17 +256,10 @@ fi
 function update_neocomplcache() {
 	wget -qO - http://github.com/Shougo/neocomplcache/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=presen
 }
-
-# cho45 ~/
-expand-to-home-or-insert () {
-  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
-    LBUFFER+="~/"
-  else
-    zle self-insert
-  fi
+function update_gitvim() {
+	wget -qO - http://github.com/motemen/git-vim/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=README.rdoc
 }
-zle -N expand-to-home-or-insert
-bindkey "\\"  expand-to-home-or-insert
+
 
 # kana's nice tool
 function git-gol() {
