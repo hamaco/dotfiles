@@ -241,6 +241,7 @@ let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
 
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
 imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
 
 " smartword.vim {{{2
