@@ -217,6 +217,7 @@ autocmd LocationChange www\\.google\\.com/reader :fmap -vkey j k n p m s t v A r
 
 " Gmail
 autocmd LocationChange mail\\.google\\.com/mail :fmap j k n p o e x u c r a f [ ] / ?
+autocmd LocationChange mail\\.google\\.com/a/ :fmap j k n p o e x u c r a f [ ] / ?
 
 " RTM
 "autocmd LocationChange www\\.rememberthemilk\\.com/ :fmap t c p r s 1 2 3 4 a n i k j K J z <Tab> <Delete> <C-g> ?
@@ -256,7 +257,6 @@ liberator.globalVariables.refcontrol = {
 	"image.itmedia.co.jp" : "http://www.itmedia.co.jp",
 	"bk.mufg.jp"          : "@NORMAL",
 	"pixiv.net"           : "http://www.pixiv.net",
-	"hamaco.local"        : "@NORMAL",
 	"hamaco.org"          : "@NORMAL",
 };
 EOM
