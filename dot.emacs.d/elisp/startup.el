@@ -15,7 +15,7 @@
 (setq load-path (append my-load-path default-load-path))
 
 ;; me
-(setq user-full-name "Hamaco")
+(setq user-full-name "hamaco")
 (setq user-mail-address "hamanaka.kazuhiro@gmail.com")
 
 
