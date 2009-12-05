@@ -1,0 +1,47 @@
+#compdef pear
+
+_pear_commands () {
+    local commands
+
+    commands=$(_call_program commands pear 2>&1 \
+        | sed -n "s/^\([a-z-]\{1,\}\) \{1,\}\(.*\)$/'\1:\2'/p")
+
+    eval "commands=($commands)"
+    _describe -t commands 'Pear commands' commands
+}
+
+_pear_installed_packages () {
+    _wanted package expl 'package' compadd \
+        $(_call_program commands pear list \
+        | sed -n 's/^\([[:alnum:]_]\{1,\}\) \{1,\}[0-9].*$/\1/p')
+}
+
+_pear_discovered_channels () {
+    _wanted channel expl 'channel' compadd \
+        $(_call_program commands pear list-channels \
+        | sed -n -e 's/^\([^ ]\{1,\}\).*$/\1/' -e '/\./p')
+}
+
+_pear () {
+    local context state line expl
+
+    _arguments \
+        '*:: :->subcmds' && return 0
+
+    if (( CURRENT > 1 )); then
+        case "$words[1]" in
+            channel-alias|channel-delete|channel-info|channel-update)
+                _arguments :channel:_pear_discovered_channels
+                ;;
+            uninstall|upgrade|run-scripts)
+                _arguments :package:_pear_installed_packages
+                ;;
+        esac
+        return 1
+    else
+        _pear_commands
+        return
+    fi
+}
+
+_pear "$@"
