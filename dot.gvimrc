@@ -12,7 +12,7 @@ elseif has("unix")
 elseif has("win32")
 	set columns=100
 	set lines=35
-	set guifont=Osaka|“™•:h14:cSHIFTJIS
+	set guifont=‚ ‚¸‚«ƒtƒHƒ“ƒg:h14:cSHIFTJIS
 	colorscheme h2u_black
 endif
 
