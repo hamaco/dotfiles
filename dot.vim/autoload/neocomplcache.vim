@@ -23,7 +23,7 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 3.21, for Vim 7.0
+" Version: 3.22, for Vim 7.0
 "=============================================================================
 
 function! neocomplcache#enable() "{{{
@@ -161,7 +161,7 @@ function! neocomplcache#enable() "{{{
     endif
     call neocomplcache#set_variable_pattern('g:NeoComplCache_CtagsArgumentsList', 'default', '')
     call neocomplcache#set_variable_pattern('g:NeoComplCache_CtagsArgumentsList', 'vim',
-                \"'--extra=fq --fields=afmiKlnsStz '--regex-vim=/function!? ([a-z#:_0-9A-Z]+)/\\1/function/''")
+                \"--extra=fq --fields=afmiKlnsStz --regex-vim='/function!? ([a-z#:_0-9A-Z]+)/\\1/function/'")
     call neocomplcache#set_variable_pattern('g:NeoComplCache_CtagsArgumentsList', 'cpp',
                 \'--c++-kinds=+p --fields=+iaS --extra=+q')
     "}}}
@@ -207,7 +207,8 @@ function! neocomplcache#enable() "{{{
     let &l:completefunc = 'neocomplcache#manual_complete'
 
     " Set options.
-    set completeopt-=menu,longest
+    set completeopt-=menu
+    set completeopt-=longest
     set completeopt+=menuone
 
     " Initialize.
