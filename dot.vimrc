@@ -239,9 +239,9 @@ endif
 let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
 let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
 
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
-imap <silent> <C-l>    <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+inoremap <expr><TAB>    pumvisible() ? "\<C-n>" :"\<TAB>"
+inoremap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
 
 " smartword.vim {{{2
@@ -310,6 +310,7 @@ if has("unix")
 	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
 endif
 
+vnoremap * "zy:let @/ = @z<CR>n
 
 
 
@@ -327,6 +328,20 @@ nnoremap <C-n> :<C-u>tabnext<Return>
 
 
 " Tmp: 一時的な設定 ============================================ {{{1
+
+" vim hacks #67
+let g:git_no_map_default = 1
+let g:git_command_edit = 'rightbelow vnew'
+nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
+nnoremap <Space>gD :<C-u>GitDiff<Enter>
+nnoremap <Space>gs :<C-u>GitStatus<Enter>
+nnoremap <Space>gl :<C-u>GitLog<Enter>
+nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<Enter>
+nnoremap <Space>ga :<C-u>GitAdd<Enter>
+nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
+nnoremap <Space>gc :<C-u>GitCommit<Enter>
+nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
+nnoremap <Space>gp :<C-u>Git push
 
 " vim hacks #106
 command! Big wincmd _ | wincmd |
