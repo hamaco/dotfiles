@@ -97,8 +97,7 @@ function! neocomplcache#complfunc#filename_complete#get_keyword_pos(cur_text)"{{
     endif
     
     " Skip directory.
-    echo s:skip_dir
-    if &l:completefunc == 'neocomplcache#auto_complete'
+    if neocomplcache#is_auto_complete()
         let l:dir = matchstr(l:cur_keyword_str, '^/\|^\a\+:')
         if l:dir == ''
             let l:dir = getcwd()
