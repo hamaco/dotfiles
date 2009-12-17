@@ -1,16 +1,23 @@
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
 alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
 
+alias %=" " # webにあるコマンドをコピペで実行出来るようにする
+
+alias di="diff"
+
 alias sudo="sudo " # sudoでもaliasが使えるようにする
 alias s="sudo"
+
+# for ls
 alias sl="ls"
 alias l="ls -a"
 alias ll="ls -l"
 alias la="ls -la"
+alias lrt="ls -lrt"
+
+# for vim
 alias v="vim"
 alias vi="vim"
-alias di="diff"
-alias %=" " # webにあるコマンドをコピペで実行出来るようにする
 
 alias tgz="tar cvzf"
 alias untar="tar xvf"
