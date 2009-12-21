@@ -248,6 +248,11 @@ inoremap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
 
+" poslist.vim {{{2
+map <C-o> <Plug>(poslist_prev)
+map <C-i> <Plug>(poslist_next)
+
+
 " smartword.vim {{{2
 map w <Plug>(smartword-w)
 map b <Plug>(smartword-b)
