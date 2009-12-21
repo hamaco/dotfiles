@@ -184,6 +184,10 @@ let plugin_dicwin_disable = 1
 let g:Align_xstrlen = 3
 
 
+" capslock.vim {{{2
+imap <C-a> <C-o><Plug>CapsLockToggle
+
+
 " ChangeLog {{{2
 let g:changelog_username = "hamaco <hamanaka.kazuhiro@gmail.com>"
 let g:changelog_timeformat = "%Y-%m-%d"
