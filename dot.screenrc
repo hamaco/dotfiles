@@ -1,7 +1,11 @@
+escape ^tt
+
 altscreen on
 autodetach on       # 自動でデタッチする
 defbce on # 背景色消去
+defutf8 on
 defscrollback 10000 # スクロールバック行数
+msgwait 0
 startup_message off # スタートアップメッセージ無効
 vbell off # ビジュアルベル無効
 
@@ -10,7 +14,6 @@ term screen
 
 hardstatus alwayslastline "%{= gk}[%m/%d %02c:%s] %{gW} %-w%{= wk}%n %t%{-}%+w %=%{gk}$USER@$HOST[$LANG] (%l) "
 
-escape ^Tt
 bind n screen
 bind h prev
 bind l next
@@ -18,5 +21,5 @@ bind w windowlist
 bind o focus
 
 # screenのコントロールキーを変更する
-bind X eval "escape ^Xx"
-bind T eval "escape ^Tt"
+bind X eval "escape ^xx"
+bind T eval "escape ^tt"
