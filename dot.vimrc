@@ -274,7 +274,7 @@ map <Leader>` <Plug>Csurround w`
 
 
 
-" キーマップ {{{1
+" key mappings {{{1
 nnoremap <C-l> :<C-u>source $MYVIMRC<Return>
 
 noremap <C-h> :<C-u>help<Space>
@@ -306,6 +306,7 @@ noremap! <C-BS> <C-w>
 "}}}
 
 nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
+nnoremap vv <C-v>
 
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
