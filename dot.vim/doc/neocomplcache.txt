@@ -1,6 +1,6 @@
 *neocomplcache.txt*	Ultimate auto completion system for Vim
 
-Version: 4.01
+Version: 4.04
 Author : Shougo <Shougo.Matsu@gmail.com>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
@@ -338,6 +338,14 @@ g:NeoComplCache_OmniPatterns				*g:NeoComplCache_OmniPatterns*
 		Because it is complicated, refer to
 		autoload/neocomplcache.vim for the initial value.
 
+g:NeoComplCache_TagsFilterPatterns			*g:NeoComplCache_TagsFilterPatterns*
+		This dictionary records  a pattern to filter a candidate in
+		the tag completion.  For example, it can exclude a candidate
+		beginning in _ in file type of C/C++.
+	
+		Because it is complicated, refer to
+		autoload/neocomplcache.vim for the initial value.
+
 g:NeoComplCache_SameFileTypeLists			*g:NeoComplCache_SameFileTypeLists*
 		It is a dictionary to connect file type mutually.  It is
 		effective at time to let you refer to c and cpp mutually.
@@ -498,6 +506,13 @@ neocomplcache#undo_completion				*neocomplcache#undo_completion*
 >
 		inoremap <expr><C-g>     neocomplcache#undo_completion()
 <
+neocomplcache#complete_common_string()			*neocomplcache#complete_common_string()*
+		Use this function on inoremap <expr>.  Complete common
+		string in candidates. It will be convenient when candidates
+		have long common string.
+>
+		inoremap <expr><C-l>     neocomplcache#complete_common_string()
+<
 ==============================================================================
 EXAMPLES					*neocomplcache-examples*
 >
@@ -530,6 +545,7 @@ EXAMPLES					*neocomplcache-examples*
 	smap <C-l>     <Plug>(neocomplcache_snippets_expand)
 	inoremap <expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 	inoremap <expr><C-g>     neocomplcache#undo_completion()
+	inoremap <expr><C-l>     neocomplcache#complete_common_string()
 <
 ==============================================================================
 PLUGINS					*neocomplcache-plugins*
@@ -596,6 +612,30 @@ ability of neocomplcache will spread by creating plugin by yourself.
 ==============================================================================
 CHANGELOG					*neocomplcache-changelog*
 
+   4.04:
+    - Implemented common string completion.
+    - Added css snippet file.
+    - Added quickmatch key.
+    - Implemented hash.
+    
+ChangeLog NeoComplCache 4.00-: {{{
+   4.03:
+    - Don't use abs() for Vim7.
+    - Changed display interface in snippets_complete.
+    - Implemented no options in vim_complete.
+    - Improved compatiblity with snipMate.
+    - Fixed typo in neocomplcache.jax.
+    
+   4.02:
+    - Added Python snippet.
+    - Added g:NeoComplCache_TagsFilterPatterns option.
+    - Use g:NeoComplCache_TagsFilterPatterns in omni_complete.
+    - Supported nested include file in C/C++ filetype in include_complete.
+    - Improved print prototype in vim_complete.
+    - Fixed member fileter error.
+    - Fixed fatal include_complete error.
+    - Fixed haskell and ocaml patterns.
+    
    4.01:
     - Added filename pattern.
     - Fixed in TeX behaviour in filename_complete.
@@ -612,7 +652,6 @@ CHANGELOG					*neocomplcache-changelog*
     - Changed g:NeoComplCache_CalcRankRandomize option as g:NeoComplCache_EnableRandomize.
     - Fixed save cache error.
     
-ChangeLog NeoComplCache 4.00-: {{{
    4.00:
     - Fixed manual completion error.
     - Deleted g:NeoComplCache_PreviousKeywordCompletion. It's default.

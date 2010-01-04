@@ -212,8 +212,8 @@ noremap <silent> <Space>km :<C-u>Ku file_mru<Return>
 let g:AutoComplPop_NotEnableAtStartup = 1
 let g:NeoComplCache_EnableAtStartup = 1
 let g:NeoComplCache_EnableInfo = 1
-" let g:NeoComplCache_EnableCamelCaseCompletion = 1
-" let g:NeoComplCache_EnableUnderbarCompletion = 1
+let g:NeoComplCache_EnableCamelCaseCompletion = 1
+let g:NeoComplCache_EnableUnderbarCompletion = 1
 let g:NeoComplCache_EnableQuickMatch = 0 " 数字で候補選択を無効
 let g:NeoComplCache_EnableSkipCompletion = 1
 let g:NeoComplCache_PartialMatch = 0
@@ -244,7 +244,7 @@ let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
 let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
 
 inoremap <expr><TAB>    pumvisible() ? "\<C-n>" :"\<TAB>"
-inoremap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
+imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
 

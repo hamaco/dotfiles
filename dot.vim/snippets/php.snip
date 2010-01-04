@@ -1,8 +1,17 @@
 snippet php
 	<?php
+	
 	${1}
 
 snippet class
-	class ${1:ClassName}${2}
-  {
-  }
+	class ${1:ClassName}$
+	{
+	}
+
+snippet fn
+	public function ${1:FuncName}
+	{
+	}
+
+snippet ve
+	var_dump(${1});exit;
