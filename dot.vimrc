@@ -292,6 +292,7 @@ nnoremap k gk
 
 noremap <Space> <Nop>
 noremap <S-k> <Nop>
+noremap <S-q> <Nop>
 
 nnoremap <Space>w :<C-u>write<CR>
 nnoremap <Space>q :<C-u>quit<CR>
@@ -353,8 +354,10 @@ nnoremap <Space>gc :<C-u>GitCommit<Enter>
 nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
 nnoremap <Space>gp :<C-u>Git push
 
+
 " vim hacks #106
 command! Big wincmd _ | wincmd |
+
 " kana's useful tab function {{{
 function! s:move_window_into_tab_page(target_tabpagenr)
   " Move the current window into a:target_tabpagenr.
@@ -388,9 +391,38 @@ function! s:move_window_into_tab_page(target_tabpagenr)
 
   execute target_tabpagenr 'tabnext'
 endfunction " }}}
-
 " <space>ao move current buffer into a new tab.
 nnoremap <silent> <Space>ao :<C-u>call <SID>move_window_into_tab_page(0)<Cr>
+
+
+" Load settings for eacy location.
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
+
+
+" buffer
+nnoremap sh <C-w>h:call <SID>good_width()<Cr>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l:call <SID>good_width()<Cr>
+nnoremap sH <C-w>H:call <SID>good_width()<Cr>
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L:call <SID>good_width()<Cr>
+function! s:good_width()
+  if winwidth(0) < 84
+    vertical resize 84
+  endif
+endfunction
 
 
 
