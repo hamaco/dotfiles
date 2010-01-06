@@ -4,14 +4,8 @@
 
 [core]
 	pager = less -r
+	quotepath = false
 	excludesfile = ~/.gitignore
-
-[color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
 
 [alias]
 	ci = commit -v
@@ -23,6 +17,13 @@
 
 	up = pull --rebase
 	difflog = log -p HEAD@{3.days.ago}
+
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
 
 [color "diff"]
 	meta = yellow bold
