@@ -2,6 +2,10 @@
 # キーバインドをEmacs風にする
 bindkey -e
 
+bindkey "u" undo
+bindkey "r" redo
+bindkey "^R" history-incremental-pattern-search-backward
+
 umask 022
 source ~/.zsh/cdd
 
@@ -331,8 +335,30 @@ function prompt-git-head-name() {
   return 0
 } # }}}
 
+# http://d.hatena.ne.jp/mollifier/20091220 {{{
+autoload smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
+zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
+bindkey '^]' insert-last-word
 
+autoload -U modify-current-argument
+# シングルクォート用
+_quote-previous-word-in-single() {
+    modify-current-argument '${(qq)${(Q)ARG}}'
+    zle vi-forward-blank-word
+}
+zle -N _quote-previous-word-in-single
+bindkey '^[s' _quote-previous-word-in-single
 
+# ダブルクォート用
+_quote-previous-word-in-double() {
+    modify-current-argument '${(qqq)${(Q)ARG}}'
+    zle vi-forward-blank-word
+}
+zle -N _quote-previous-word-in-double
+bindkey '^[d' _quote-previous-word-in-double
+
+# }}}
 
 # END {{{1
 # vim: foldmethod=marker
