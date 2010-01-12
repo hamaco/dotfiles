@@ -9,9 +9,25 @@ snippet class
 	}
 
 snippet fn
-	public function ${1:FuncName}
+	function ${1:FuncName}()
 	{
+		${2}
+	}
+
+snippet pfn
+	public function ${1:FuncName}()
+	{
+		${2}
+	}
+
+snippet ife
+	if (${1}) {
+		${2}
+	} else {
+		${3}
 	}
 
 snippet ve
 	var_dump(${1});exit;
+
+# vim: noexpandtab ts=2 sw=2
