@@ -410,6 +410,8 @@ endfunction
 
 
 " buffer
+nnoremap s <Nop>
+nnoremap ss s
 nnoremap sh <C-w>h:call <SID>good_width()<Cr>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
