@@ -3,10 +3,10 @@ let PLUGIN_INFO =
   <name>appendAnchor</name>
   <description>append anchors to texts look like url.</description>
   <description lang="ja">リンク中の URL っぽいテキストにアンカーをつける。</description>
-  <version>0.4.1</version>
+  <version>0.4.2</version>
   <author>SAKAI, Kazuaki</author>
   <minVersion>2.0pre</minVersion>
-  <maxVersion>2.0pre</maxVersion>
+  <maxVersion>2.3</maxVersion>
   <detail><![CDATA[
     == Commands ==
       :anc:
@@ -53,11 +53,11 @@ let PLUGIN_INFO =
 
   // register command
   liberator.modules.commands.addUserCommand(['anc'], 'append anchors to texts look like url',
-    function(arg, special) {
+    function(arg) {
       const doc = window.content.document;
       const range = doc.createRange();
 
-      let nodes = liberator.modules.buffer.evaluateXPath(xpathQueryPlainText);
+      let nodes = util.evaluateXPath(xpathQueryPlainText);
       for (let node in nodes) {
         while (node) {
           range.selectNode(node)
@@ -83,11 +83,13 @@ let PLUGIN_INFO =
           range.insertNode(anchor);
 
           // iterate
-          node = node.nextSibling.nextSibling;
+          node = node.nextSibling.nextSibling.nextSibling;
         }
       }
       range.detach();
-    },{}
+    },
+    {},
+    true
   );
 
   // stuff function
