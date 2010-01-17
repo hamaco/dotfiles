@@ -260,6 +260,9 @@ fi
 function update_neocomplcache() {
 	wget -qO - http://github.com/Shougo/neocomplcache/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=presen
 }
+function update_vimshell() {
+	wget -qO - http://github.com/Shougo/vimshell/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=presen
+}
 function update_gitvim() {
 	wget -qO - http://github.com/motemen/git-vim/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=README.rdoc
 }
