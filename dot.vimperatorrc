@@ -119,8 +119,15 @@ noremap s :<C-u>google<Space>
 
 noremap ,b :<C-u>subscldr<Space>-rate<Space>
 
-" qmark 2.0preで動かないかも？
-" ===
+
+" bmark
+bmark -title="Twitter" -tags=keyword -keyword=tw http://twitter.com/%s
+bmark -title="Twitter Search" -tags=keyword -keyword=ts htp://search.twitter.com/search?q=%s
+bmark -title="ニコニコ動画" -tags=keyword -keyword=nico http://www.nicovideo.jp/warch/%s
+bmark -title="ニコニコ動画 検索" -tags=keyword -keyword=nicosearch http://www.nicovideo.jp/search/%s
+
+
+" qmark
 qmark a http://www.amazon.co.jp/
 qmark f http://fastladder.com/reader/
 qmark i http://www.instapaper.com/u
