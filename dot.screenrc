@@ -1,16 +1,18 @@
-escape ^tt
-
 altscreen on
 autodetach on       # 自動でデタッチする
 defbce on # 背景色消去
 defutf8 on
-defscrollback 10000 # スクロールバック行数
+defscrollback 2048 # スクロールバック行数
 msgwait 0
 startup_message off # スタートアップメッセージ無効
 vbell off # ビジュアルベル無効
 
 term screen
 #termcapinfo rxvt-unicovde 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+escape ^Tt
+zombie ^[
+
 
 hardstatus alwayslastline "%{= gk}[%m/%d %02c:%s] %{gW} %-w%{= wk}%n %t%{-}%+w %=%{gk}$USER@$HOST[$LANG] (%l) "
 
@@ -19,6 +21,10 @@ bind h prev
 bind l next
 bind w windowlist
 bind o focus
+
+bind u encoding UTF-8
+bind e encoding EUC_JP
+bind s encoding SJIS
 
 # screenのコントロールキーを変更する
 bind X eval "escape ^xx"
