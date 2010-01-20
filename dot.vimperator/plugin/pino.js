@@ -41,7 +41,7 @@ var PLUGIN_INFO =
   <require type="plugin">_libly.js</require>
   <author mail="snaka.gml@gmail.com" homepage="http://vimperator.g.hatena.ne.jp/snaka72/">snaka</author>
   <license>MIT style license</license>
-  <version>1.3.0</version>
+  <version>1.3.2</version>
   <detail><![CDATA[
     == Subject ==
     Open livedoor Reader pinned items.
@@ -146,14 +146,21 @@ let self = liberator.plugins.pino = (function() {
     "Open livedoor Reader(and clone server) pinned item",
     function(args) {
       let pins = new Pins();
+      let items = pins.items();
+      if (!items || items.length == 0) {
+        liberator.echo("Pinned item doesn't exists.");
+        return;
+      }
 
       if (args["-list"]) {
-        let items = pins.items();
-        let list = <div>{items.length} items.<ul>{[
-                      <li><a href={i.link}>{i.title}</a><br/></li>
+        //let items = pins.items();
+        let list = <div>{items.length} items.
+                    <ul>{
+                      [<li><a href={i.link}>{i.title}</a><br/></li>
                         for each (i in items)
-                   ].reduce(function(a, b) a + b)}
-                   </ul></div>;
+                      ].reduce(function(a, b) a + b)
+                    }</ul>
+                   </div>;
         liberator.echo(list, commandline.FORCE_MULTILINE);
         return;
       }
@@ -161,10 +168,6 @@ let self = liberator.plugins.pino = (function() {
       if (args.string == "") {
         let pin;
         let max = (args.count >= 1) ? args.count : openItemsCount();
-        if (pins.items().length == 0) {
-          liberator.echo("Pinned item doesn't exists.");
-          return;
-        }
         for(let i = 0; i < max; i++) {
           if (!(pin = pins.shift()))
             break;
@@ -222,7 +225,7 @@ let self = liberator.plugins.pino = (function() {
       let result = this.cache
               ? this.cache
               : this.cache = this._getPinnedItems();
-      return result.sort(this.sortOrder);
+      return (result || []).sort(this.sortOrder);
     },
 
     shift : function() {
@@ -267,12 +270,14 @@ let self = liberator.plugins.pino = (function() {
       );
 
       request.addEventListener("onSuccess", function(data) {
-        liberator.log(data);
+        if (isLoginPage(data)) {
+          liberator.echoerr("Can't get pinned list. Maybe you should login to livedoor.");
+          return;
+        }
         result = liberator.eval(data.responseText);
       });
       request.addEventListener("onFailure", function(data) {
         liberator.echoerr("Can't get pinned list!!!");
-        liberator.log(data);
       });
       request.post();
 
@@ -312,6 +317,9 @@ let self = liberator.plugins.pino = (function() {
         for (i in source)
     ].join('&');
 
+  function isLoginPage(response)
+    response.responseText.substr(0, 5) == '<?xml'
+
   // }}}
   // API /////////////////////////////////////////////////////////// {{{
   return {
@@ -331,8 +339,6 @@ let self = liberator.plugins.pino = (function() {
 })();
 // for backward compatibility
 self.api = {};
-[
-  self.api[p] = self[p]
-    for each (p in "items head remove".split(' '))
-];
+for each (p in "items head remove".split(' '))
+  self.api[p] = self[p];
 // vim: ts=2 sw=2 et fdm=marker

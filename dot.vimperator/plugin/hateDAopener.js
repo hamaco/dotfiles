@@ -41,7 +41,7 @@ let PLUGIN_INFO =
   <updateURL>http://svn.coderepos.org/share/lang/javascript/vimperator-plugins/trunk/hateDAopener.js</updateURL>
   <author mail="snaka.gml@gmail.com" homepage="http://vimperator.g.hatena.ne.jp/snaka72/">snaka</author>
   <license>MIT style license</license>
-  <version>0.0.1</version>
+  <version>1.1.1</version>
   <detail><![CDATA[
     == Subject ==
     Open specified page of Hatena::Diary
@@ -61,13 +61,14 @@ let PLUGIN_INFO =
 
     == コマンド ==
     :hatedaopen or :ho :
-        ダイアリーを開く。<TAB>で候補を一覧表示。
-        キーワードを入力することで一覧をインクリメンタル検索(wildoptions=auto時)
-        キーワードが複数の場合は空白区切りで入力
+        コマンドを実行すると'Search Hatena::Diary?' というプロンプトが表示され、インクリメンタル検索モードになる。
+        キーワードを入力することでダイアリーの一覧をインクリメンタルに絞り込む事ができる。
+        キーワードを空白区切りで複数入力するとAnd検索となる。
 
     == グローバル変数 ==
     g:hatedaOpner_userId:
-        検索対象とするはてなidとダイアリー
+        検索対象とするはてなidとダイアリーを設定する。
+        この変数に設定されている情報を元にダイアリーのエントリ一覧を取得する。
         ex)
         >||
             js <<EOM
@@ -80,85 +81,121 @@ let PLUGIN_INFO =
         ||<
 
     == ToDo ==
+    - APIを用意する
 
   ]]></detail>
 </VimperatorPlugin>;
 // }}}
 plugins.hateDAopener = (function(){
-    // UTILITY //////////////////////////////////////////////////////////////{{{
-    let log  = liberator.log;
-    let dump = function(title, obj) liberator.dump(title + "\n" + util.objectToString(obj));
-    // \r\n separated string to array
-    let rns  = function(source) source.split("\r\n");
-    // comma separated string to array
-    let csv  = function(source) source.split(",");
-    let libly = liberator.plugins.libly;
-    // }}}
+
     // PUBLIC ///////////////////////////////////////////////////////////////{{{
     let self = {
-        extractTitleAndTags: extractTitleAndTags,
-        generateCandidates:  generateCandidates,
-        getDiaryEntries:    getDiaryEntries,
+        getEntryList:   function(keywords) {
+            return filteredCandidates(keywords);
+        },
     };
     // }}}
     // COMMAND //////////////////////////////////////////////////////////////{{{
     commands.addUserCommand(
         ["hatedaopen", "ho"],
         "Hatena::Diary opener",
-        function(args, bang) {
-            liberator.open(args.string, liberator.CURRENT_TAB);
+        function(args) {
+            commandline.input('Search Hatena::Diary? ', function(str) {
+                if (!str || str == '')
+                    return;
+                liberator.open(str, args.bang ? liberator.NEW_TAB
+                                         : liberator.CURRENT_TAB);
+            }, {
+                default: args.string,
+                completer: function(context) {
+                    dump("context", context);
+                    hatedaCompleter(context, context.filter.split(' '));
+                },
+                onChange: function(str) {
+                    showCompletions();
+                }
+            });
+            if (args.string != "")
+                showCompletions();
         }, {
-            completer: function(context, args) {
-              context.format = {
-                anchored: false,
-                title: ["Title and URL", "Tags"],
-                keys: { text: "url", name: "name", tags: "tags"},
-                process: [templateTitleAndUrl, templateTags]
-              };
-              context.filterFunc = null;
-              context.regenerate = true;
-              context.generate = function() inputFilter(args);
-            },
-            argCount: "*",
             bang: true,
+            count: "*",
         },
         true
     );
 
     // }}}
     // PRIVATE //////////////////////////////////////////////////////////////{{{
-    let cache = {
-        data: null,
-        userId: null
-    };
+
+   /**
+    * search diary
+    */
+   function hatedaCompleter(context, args) {
+        context.format = {
+            anchored: false,
+            title: ["Title and URL", "Tags"],
+            keys: {
+                text:   "url",
+                baseUrl:"baseUrl",
+                path:   "path",
+                name:   "name",
+                tags:   "tags"
+            },
+            process: [templateTitleAndUrl, templateTags]
+        };
+        context.filterFunc = null;
+        context.regenerate = true;
+        context.generate = function() filteredCandidates(args);
+        context.createRow = createRow;
+    }
 
     /**
+     * get accounts
      * @return accounts info
-     *      ex.
-     *          [['snaka72', 'd'],
-     *           ['Snaka',   'd'],
-     *           ['snaka72', 'vimperator.g']]
+     *          ex. [['snaka72', 'd'], ['snaka72', 'vimperator.g'], ...]
      */
-    function accounts() {
-        return liberator.globalVariables.hateDAopener_accounts || [];
-    }
+    function accounts()
+        liberator.globalVariables.hateDAopener_accounts || [];
 
     /**
      * filter candidates by words
      */
-    function inputFilter(words) {
-        var start = new Date;
-        dump(words.join(',') + "> start:" + start + "\n");
-        words = words.map(function(i) i.toLowerCase());
-        let filtered = generateCandidates().filter(
-            function(i) {
-                let targetString =  [i.tags, i.name].join(",").toLowerCase();
-                return words.every(function(word) targetString.indexOf(word) > -1);
-            }
-        );
-        var end = new Date;
-        dump(words.join(',') + "> end  :" + end + "[" + (end - start) + "]\n");
-        return filtered;
+    function filteredCandidates(words) (
+        generateCandidates()
+        .filter(function(i)
+            let (targetString = '' + i.tags + ' ' + i.name)
+                (words || []).every(function(word) targetString.match(word, 'i'))
+        )
+    );
+
+    /**
+     *  create completion row
+     */
+    function createRow(item, highlightGroup) {
+        if (typeof icon == "function")
+            icon = icon();
+
+        if (highlightGroup)
+        {
+            var text = item[0] || "";
+            var desc = item[1] || "";
+        }
+        else
+        {
+            var text = this.process[0].call(this, item, item.text);
+            var desc = this.process[1].call(this, item, item.description);
+        }
+
+        // <e4x>
+        return <div highlight={highlightGroup || "CompItem"} style="white-space: nowrap">
+                   <!-- The non-breaking spaces prevent empty elements
+                      - from pushing the baseline down and enlarging
+                      - the row.
+                      -->
+                   <li highlight="CompResult" style="width: 75%">{text}&#160;</li>
+                   <li highlight="CompDesc" style="width: 25%">{desc}&#160;</li>
+               </div>;
+        // </e4x>
     }
 
     /**
@@ -167,19 +204,20 @@ plugins.hateDAopener = (function(){
      */
     function generateCandidates() {
       let allEntries = [];
+      let notEmpty = function(i) i && i != "";
+
       accounts().forEach(function([userId, diary]) {
-          let entries =  getDiaryEntries(userId, diary);
-          entries = entries.filter(function(i) i && i != "");
-          entries =  entries.map(function([dateTime, path, titleAndTag]) {
-              let url = 'http://' + diary + '.hatena.ne.jp/' + userId + path;
-              let title, tags;
-              [title, tags] = extractTitleAndTags(titleAndTag);
-              return {
-                  "url"  : url,
-                  "name" : title,
-                  "tags" : tags
-              };
-          });
+          let entries =  getDiaryEntries(userId, diary)
+          .filter(notEmpty)
+          .map(function([dateTime, path, titleAndTag])
+              let ([title, tags] = extractTitleAndTags(titleAndTag)) {
+                  "url"     : hatenaDiaryUrl(diary, userId) + path,
+                  "baseUrl" : hatenaDiaryUrl(diary, userId),
+                  "path"    : path,
+                  "name"    : title,
+                  "tags"    : tags
+              }
+          );
           allEntries = allEntries.concat(entries);
       });
       return allEntries;
@@ -190,74 +228,92 @@ plugins.hateDAopener = (function(){
      * @param String UserID
      * @return [String dateTime, String path, String titleAndTag]
      */
-    function getDiaryEntries(userId, diary) {
-        if (cache[diary + userId])
-            return cache[diary + userId];
+    let getDiaryEntries = (function() {
+        let cache = {};
+        return function(userId, diary) {
+            let key = userId + '/' + diary;
+            if (cache[key])
+                return cache[key];
+            let res = util.httpGet(hatenaDiaryUrl(diary, userId) + "/archive/plaintext");
+            return cache[key] = res.responseText
+                                .split(/\r?\n/)
+                                .map(function(i) i.split(','));
+        };
+    })();
 
-        let req = new libly.Request(
-            "http://"+ diary + ".hatena.ne.jp/" + userId + "/archive/plaintext",
-            null,
-            { asynchronous: false }
-        );
-        let result;
-        req.addEventListener("onSuccess", function(data) {
-            dump("request succeeded", data);
-            result = data;
-        });
-        req.addEventListener("onFailure", function(data) {
-            dump("request failed", data);
-            return;
-        });
-        req.get();
-
-        let entries = rns(result.responseText);
-        entries = entries.map(function(i) i.split(','));
-        return cache[diary + userId] = entries;
-    }
+    function hatenaDiaryUrl(diary, userId)
+        'http://' + diary + '.hatena.ne.jp/' + userId;
 
     /**
      * @param String Title and Tags ex. "[hoge, fuga]About me."
      * @return [String title, [String tags, ...]]
      */
-    function extractTitleAndTags(titleAndTag) {
-        let patternTagAndTitle = /(\[.*\])?(.*)/;
-        if (!patternTagAndTitle.test(titleAndTag))
-            return [];
-
-        let tags, title;
-        [,tags, title] = titleAndTag.match(patternTagAndTitle);
-
-        let patternTags = /\[([^\]]+)\]/g;
-        if (!patternTags.test(tags))
-            return [title, []];
-
-        tags = tags.match(patternTags);
-        return [
-            title,
-            tags
+    function extractTitleAndTags(titleAndTag)
+        let (patternTags = /\[[^\]]+\]/g) [
+            titleAndTag.replace(patternTags, ''),
+            (titleAndTag.match(patternTags) || [])
         ];
-    }
 
-    function templateTags(item){
-      return item.tags && item.tags.length > 0 ? item.tags.join("")  : "";
-    }
+    /**
+     * template: title & url
+     */
+    function templateTitleAndUrl(item)
+        <>
+            <img src={getFaviconURI(item.baseUrl + '/')} />
+            <span class="td-strut"/>{item.name}
+            <a href={item.text} highlight="simpleURL">
+              <span class="extra-info">{item.text.replace(/^https?:\/\//, '')}</span>
+            </a>
+        </>;
 
-    function templateTitleAndUrl(item){
-      let simpleURL = item.text.replace(/^https?:\/\//, '');
-      return <>
-        <span class="td-strut"/>{item.name}
-        <a href={item.text} highlight="simpleURL">
-          <span class="extra-info">{simpleURL}</span>
-        </a>
-      </>;
-    }
+    /**
+     * template: tags
+     */
+    function templateTags(item)
+        item.tags && item.tags.length > 0 ? item.tags.join("")  : "";
+
+    // UTILITY //
+    let getFaviconURI = (function() {
+        let faviconCache = {};
+
+        return function (pageURI) {
+            if (faviconCache[pageURI])
+                return faviconCache[pageURI];
+
+            let uri = Cc["@mozilla.org/network/io-service;1"]
+                    .getService(Ci.nsIIOService)
+                    .newURI(pageURI, null, null);
+            let faviconURI = Cc["@mozilla.org/browser/favicon-service;1"]
+                    .getService(Ci.nsIFaviconService)
+                    .getFaviconImageForPage(uri);
+            return faviconCache[pageURI] = faviconURI.spec;
+        }
+    })();
+
+    let showCompletions = function() {
+        if (!options.get('wildoptions').has('auto')) {
+            evalWithContext(function() {
+                completions.complete(true, false);
+                completions.itemList.show();
+            }, commandline.input);
+        }
+    };
+
+    let evalWithContext = function(func, context) {
+        let str;
+        let fstr = func.toString();
+        if (fstr.indexOf('function () {') == 0) {
+            str = fstr.replace(/.*?{([\s\S]+)}.*?/m, "$1");
+        } else {
+            str = '(' + fstr + ')()';
+        }
+        return liberator.eval(str, context);
+    };
+
+    function dump(title, obj)
+        liberator.dump(title + "\n" + util.objectToString(obj));
 
     // }}}
-
     return self;
 })();
-let(msg="loaded...") {
-    liberator.echo(msg);
-    setTimeout(function() commandline.close(), 1000);
-}
 // vim:sw=4 ts=4 et si fdm=marker fenc=utf-8

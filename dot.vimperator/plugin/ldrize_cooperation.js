@@ -1,6 +1,6 @@
 // Vimperator plugin: 'Cooperation LDRize Mappings'
-// Version: 0.24
-// Last Change: 03-Jul-2009. Jan 2008
+// Version: 0.25
+// Last Change: 12-Jun-2009. Jan 2008
 // License: Creative Commons
 // Maintainer: Trapezoid <trapezoid.g@gmail.com> - http://unsigned.g.hatena.ne.jp/Trapezoid
 //
@@ -68,7 +68,9 @@ if (liberator.plugins.LDRizeCooperation == undefined) (function(){
     var handlerInfo = [
         //{
         //    pattern: "http://www.nicovideo.jp/*",
-        //    handler: ["c:\\usr\\SmileDownloader\\SmileDownloader.exe",["%URL%"]],
+        //    handler: {
+        //      download: ["c:\\usr\\SmileDownloader\\SmileDownloader.exe",["%URL%"]]
+        //    },
         //    wait: 5000
         //},
         //{
@@ -176,14 +178,14 @@ if (liberator.plugins.LDRizeCooperation == undefined) (function(){
                         sandbox.window.addEventListener("focus",function(){
                             self.LDRize = liberator.eval("self",sandbox.LDRize.getSiteinfo);
                             self.Minibuffer = liberator.eval("command",sandbox.Minibuffer.addCommand);
-                            if (typeof self.LDRize.getSiteInfo != "function") self.LDRize = sandbox.LDRize
-                            if (typeof self.Minibuffer.addCommand != "function") self.Minibuffer = sandbox.Minibuffer.command;
+							if (typeof self.LDRize.getSiteinfo != 'function') self.LDRize = sandbox.LDRize;
+							if (typeof self.Minibuffer.addCommand != 'function') self.Minibuffer = sandbox.Minibuffer.command;
                         },false);
                         if(window.content.wrappedJSObject == sandbox.unsafeWindow){
                             self.LDRize = liberator.eval("self",sandbox.LDRize.getSiteinfo);
                             self.Minibuffer = liberator.eval("command",sandbox.Minibuffer.addCommand);
-                            if (typeof self.LDRize.getSiteInfo != "function") self.LDRize = sandbox.LDRize
-                            if (typeof self.Minibuffer.addCommand != "function") self.Minibuffer = sandbox.Minibuffer.command;
+							if (typeof self.LDRize.getSiteinfo != 'function') self.LDRize = sandbox.LDRize;
+							if (typeof self.Minibuffer.addCommand != 'function') self.Minibuffer = sandbox.Minibuffer.command;
                         }
                     }
                 });
@@ -253,7 +255,7 @@ if (liberator.plugins.LDRizeCooperation == undefined) (function(){
             liberator.modules.commands.addUserCommand(["mb","m","minibuffer"],"Execute Minibuffer",
                 function(arg){ self.Minibuffer.execute(arg.string.replace(/\\+/g,"")) },
                 {
-                    completer: function(context,arg,special){
+                    completer: function(context,arg){
                         var filter = context.filter;
                         var completionList = [];
                         var command = self.Minibuffer.command;
@@ -267,7 +269,9 @@ if (liberator.plugins.LDRizeCooperation == undefined) (function(){
                     }
                 });
             liberator.modules.commands.addUserCommand(["pindownload"],"Download pinned links by any software",
-                function(arg){ self.downloadLinksByProgram(self.getPinnedItems());},{});
+                function(arg){ self.downloadLinksByProgram("download",self.getPinnedItems());},{});
+            liberator.modules.commands.addUserCommand(["pindo"],"Do external command, with pinned links",
+                function(arg){ self.downloadLinksByProgram(arg.string, self.getPinnedItems());},{});
             liberator.modules.commands.addUserCommand(["toggleldrizecooperation","toggleldrc"],"Toggle LDRize Cooperation",
             function(arg){ self.isEnable = !self.isEnable},{});
             //Options
@@ -313,20 +317,20 @@ if (liberator.plugins.LDRizeCooperation == undefined) (function(){
                 return [linkResult,viewResult ? viewResult.textContent : null];
             });
         },
-        downloadLinksByProgram: function(links){
+        downloadLinksByProgram: function(command, links){
             var self = this;
             var count = 0;
             links.forEach(function([url,title]){
                 for each(let x in self.handlerInfo){
                     if(x.include.test(url)){
                         setTimeout(function(){
-                            if(typeof x.handler == "object"){
-                                let args = x.handler[1].map(function(s) s.replace(/%URL%/g,url).replace(/%TITLE%/g,title));
-                                liberator.modules.io.run(x.handler[0],args,false);
-                            }else if(typeof x.handler == "string"){
-                                liberator.modules.io.run(x.handler,[url],false);
-                            }else if(typeof x.handler == "function"){
-                                x.handler(url.toString(),title);
+                            if(typeof x.handler[command] == "object"){
+                                let args = x.handler[command][1].map(function(s) s.replace(/%URL%/g,url).replace(/%TITLE%/g,title));
+                                liberator.modules.io.run(x.handler[command][0],args,false);
+                            }else if(typeof x.handler[command] == "string"){
+                                liberator.modules.io.run(x.handler[command],[url],false);
+                            }else if(typeof x.handler[command] == "function"){
+                                x.handler[command](url.toString(),title);
                             }
                         },x.wait != undefined ? x.wait * count++ : 0);
                         return;
