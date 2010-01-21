@@ -4,15 +4,15 @@
  * デフォルトのフォントを指定
  */
 *, body {
-	font-family: KugimmyAA !important;
+	font-family: "YukarryAA" !important;
 }
 
 pre, pre *, code, samp, var, tt {
-	font-family: "Meiryo Consolas" !important;
+	font-family: "YukarryAA" !important;
 }
 
 input, textarea, select {
-	font-family: "Meiryo Consolas" !important;
+	font-family: "YukarryAA" !important;
 }
 
 /**
