@@ -226,6 +226,8 @@ expand-to-home-or-insert () {
 zle -N expand-to-home-or-insert
 bindkey "\\"  expand-to-home-or-insert
 
+autoload zmv
+alias zmv="noglob zmv"
 
 
 
