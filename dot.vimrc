@@ -1,4 +1,10 @@
-" Hissu {{{1
+" Initialize: {{{1
+
+if has("win32") || has("win64")
+	" メニューが文字化けするので英語にする
+	language en
+endif
+
 " Windowsでも.vimを読み込むようにする
 set runtimepath& runtimepath+=$HOME/.vim
 set nocompatible
@@ -77,7 +83,7 @@ set laststatus=2
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 set modeline
-set mouse=
+set mouse=a
 set nrformats="hex"
 set ruler
 set shiftwidth=2
@@ -265,9 +271,6 @@ noremap gE ge
 
 
 " spec.vim {{{2
-if !has("win32")
-	language time en_US.UTF-8
-endif
 let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamanaka.kazuhiro@gmail.com> -"
 
 
