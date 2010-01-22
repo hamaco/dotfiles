@@ -208,10 +208,10 @@ map <Leader><C-c> <Plug>CommentopRemoveNV
 " ku.vim {{{2
 "autocmd MyAutoCmd FileType ku  call ku#default_key_mappings(s:TRUE)
 
-noremap <silent> <Space>kf :<C-u>Ku file<Return>
-noremap <silent> <Space>kb :<C-u>Ku buffer<Return>
-noremap <silent> <Space>kh :<C-u>Ku history<Return>
-noremap <silent> <Space>km :<C-u>Ku file_mru<Return>
+noremap <silent> <Space>kf :<C-u>Ku file<CR>
+noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
+noremap <silent> <Space>kh :<C-u>Ku history<CR>
+noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
 
 
 " neocomplcache.vim {{{2
@@ -280,10 +280,17 @@ map <Leader>sq <Plug>Csurround w'
 map <Leader>` <Plug>Csurround w`
 
 
+" vimproc.vim {{{2
+let g:VimShell_EnableInteractive = 1
+
+
 
 
 " key mappings {{{1
-nnoremap <C-l> :<C-u>source $MYVIMRC<Return>
+nnoremap <Space>ev :<C-u>edit $MYVIMRC<CR>
+nnoremap <Space>eg :<C-u>edit $MYGVIMRC<CR>
+nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
+nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 noremap <C-h> :<C-u>help<Space>
 
@@ -314,7 +321,7 @@ noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
 "}}}
 
-nnoremap <Esc><Esc> :<C-u>nohlsearch<Return>
+nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
 nnoremap vv <C-v>
 
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
@@ -330,13 +337,13 @@ vnoremap * "zy:let @/ = @z<CR>n
 
 " タブ {{{2
 nnoremap <C-t> <Nop>
-nnoremap <C-t>n :<C-u>tabnew<Return>
-nnoremap <C-t>c :<C-u>tabclose<Return>
-nnoremap <C-t>o :<C-u>tabonly<Return>
-nnoremap <C-t>h :<C-u>tabprevious<Return>
-nnoremap <C-t>l :<C-u>tabnext<Return>
-nnoremap <C-p> :<C-u>tabprevious<Return>
-nnoremap <C-n> :<C-u>tabnext<Return>
+nnoremap <C-t>n :<C-u>tabnew<CR>
+nnoremap <C-t>c :<C-u>tabclose<CR>
+nnoremap <C-t>o :<C-u>tabonly<CR>
+nnoremap <C-t>h :<C-u>tabprevious<CR>
+nnoremap <C-t>l :<C-u>tabnext<CR>
+nnoremap <C-p> :<C-u>tabprevious<CR>
+nnoremap <C-n> :<C-u>tabnext<CR>
 
 
 
