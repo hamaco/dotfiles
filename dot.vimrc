@@ -255,8 +255,8 @@ inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
 
 " poslist.vim {{{2
-map <C-o> <Plug>(poslist_prev)
-map <C-i> <Plug>(poslist_next)
+map <C-o> <Plug>(poslist-prev-pos)
+map <C-i> <Plug>(poslist-next-pos)
 
 
 " smartword.vim {{{2
