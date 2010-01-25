@@ -1,8 +1,8 @@
 if has("mac")
-	set columns=120
-	set lines=45
+	set columns=135
+	set lines=55
 	"set guifont=DejaVu\ Sans\ Mono:h14
-	set guifont=Menlo:h12
+	set guifont=Menlo:h14
 	set transparency=10
 	colorscheme h2u_black
 elseif has("unix")
