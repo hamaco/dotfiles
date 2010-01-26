@@ -3,20 +3,27 @@
 	email = hamanaka.kazuhiro@gmail.com
 
 [core]
+	excludesfile = ~/.gitignore
 	pager = less -r
 	quotepath = false
-	excludesfile = ~/.gitignore
 
 [alias]
 	ci = commit -v
 	co = checkout
-	st = status
 	di = diff
+	difflog = log -p HEAD@{3.days.ago}
+	l = log --stat
+	l1 = log --pretty=oneline --abbrev-commit
+	l1f = log --pretty=oneline
+	lg = log --name-status --color --graph
 	pl = pull
 	ps = push
-
+	sl = stash list
+	sp = stash pop
+	ss = stash save
+	st = status
+	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	up = pull --rebase
-	difflog = log -p HEAD@{3.days.ago}
 
 [color]
 	ui = auto
