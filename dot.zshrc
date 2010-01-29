@@ -125,7 +125,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # オブジェクトファイルとか中間ファイルを補完させない
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 
-# killの補完を詳細にする
+# killの補完を詳細にして色付け
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
 
 # sudoでもコマンドの補完が動くようにする
