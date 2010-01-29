@@ -1,6 +1,7 @@
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/_libly.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/account_switcher.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/appendAnchor.js
+http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/auto-focus-frame.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/auto_source.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/autoproxychanger.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/char-hints-mod2.js
@@ -25,6 +26,7 @@ http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trun
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/pluginManager.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/refcontrol.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/relative_move.js
+http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/stella.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/subscldr.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/tombloo.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/uaSwitch.js
