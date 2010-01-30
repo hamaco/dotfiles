@@ -259,6 +259,16 @@ map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
 
 
+" ref.vim {{{2
+let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
+
+
+" skk.vim {{{2
+let skk_jisyo = '~/.skk-jisyo'
+let skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+let skk_auto_save_jisyo = 1
+
+
 " smartword.vim {{{2
 map w <Plug>(smartword-w)
 map b <Plug>(smartword-b)
