@@ -10,20 +10,22 @@ echo "Loading..."
 set titlestring=Firefox
 
 " メニューとかアドレスバーを表示しない
-set guioptions=r
+set guioptions=
 
 " ex mode でインクリメント補完
 set wildoptions=auto
+
+" tabを非表示
+set showtabline=0
 
 " ページ全体で検索語を強調表示
 set hlsearch
 
 " :[tab]open コマンドで補完する候補と順番
-set complete=sl
-"autocmd VimperatorEnter .* :set complete+=H
+set complete=tslb
 
 " 補完の高速化
-set preload
+"set preload
 
 " 新しいタブで開くコマンド
 set newtab=all
@@ -40,10 +42,8 @@ set showstatuslinks=2
 " visualbell有効化
 set visualbell
 highlight Bell display:none;
-"set visualbellstyle += opacity:.5;
 
-colorscheme sweets
-" colorscheme vimplight
+colorscheme vimplight
 
 " Keymapping
 " ======================================================================
@@ -89,7 +89,6 @@ inoremap <C-b> <Left>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-y> <C-v><C-v>
-"?inoremap <C-BS> <A-BS>
 
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
@@ -118,6 +117,8 @@ map U :undo<Space>
 noremap s :<C-u>google<Space>
 
 noremap ,b :<C-u>subscldr<Space>-rate<Space>
+
+noremap U :<C-u>undo<Space>
 
 
 " bmark
@@ -270,7 +271,7 @@ EOM
 
 " copy.js
 " =====
-source ~/.vimperator/runtime/copy.js
+"source ~/.vimperator/copy.js
 
 " localkeymode.js
 " =====
@@ -278,11 +279,18 @@ let g:localkeymode_enable = "true"
 javascript <<EOM
 liberator.globalVariables.localKeyMappings = [
 	[/www\.nicovideo\.jp\/watch/, [
+		["p", ":stplay"],
+		["m", ":stmute"],
+		["a", ":stseek! -15"],
+		["s", ":stseek! +15"],
+		["z", ":stfullscreen"]
+	/*
 		["i", ":nicoinfo"],
 		["p", ":nicopause"],
 		["m", ":nicomute"],
 		["a", ":nicoseek! -15"],
 		["s", ":nicoseek! +15"]
+		*/
 	]]
 ];
 EOM
@@ -341,7 +349,7 @@ EOM
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 " char_hints_mod2.js
-"let g:hintsio="io"
+let g:hintsio="io"
 "let g:hintchars="HJKLASDFGTYIOPQWERTNMZXCVB"
 
 " hatena.js
