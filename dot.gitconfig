@@ -3,7 +3,7 @@
 	email = hamanaka.kazuhiro@gmail.com
 
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/hamaco/.gitignore
 	pager = less -r
 	quotepath = false
 
