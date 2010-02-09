@@ -2,21 +2,22 @@ snippet php
 	<?php
 	${1}
 
-snippet class
-	class ${1:ClassName}$
+snippet cls
+	class ${1:className}
 	{
+		${2}
 	}
 
 snippet fn
-	function ${1:FuncName}()
+	function ${1:funcName}(${2:arguments})
 	{
-		${2}
+		${3}
 	}
 
 snippet pfn
-	public function ${1:FuncName}()
+	public function ${1:FuncName}(${2:arguments})
 	{
-		${2}
+		${3}
 	}
 
 snippet ife
