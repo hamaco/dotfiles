@@ -298,17 +298,22 @@ let g:VimShell_EnableInteractive = 1
 
 " key mappings {{{1
 nnoremap <Space>ev :<C-u>edit $MYVIMRC<CR>
+
 nnoremap <Space>eg :<C-u>edit $MYGVIMRC<CR>
 nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
 nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 noremap <C-h> :<C-u>help<Space>
 
+nnoremap Y y$
+
 noremap ; :
 noremap : ;
 
 nnoremap j gj
 nnoremap k gk
+nnoremap gh ^
+nnoremap gl $
 
 noremap <Space> <Nop>
 noremap <S-k> <Nop>
