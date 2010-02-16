@@ -14,7 +14,7 @@ if has("syntax")
 	syntax enable
 	"set t_Co=256
 	if !exists("g:colors_name")
-		colorscheme desert256
+		colorscheme mrkn256
 	endif
 endif
 
@@ -259,14 +259,35 @@ map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
 
 
+" quickrun.vim {{{2
+let g:quickrun_direction = 'rightbelow vertical'
+let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
+map <Space>r :<C-u>QuickRun<Cr>
+
+let g:quickrun_config = {}
+if has('clientserver')
+	let g:quickrun_config['*'] = {'runmode': 'async:remote'}
+else
+	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
+endif
+let g:quickrun_config.haskell = {'command': 'runghc'}
+let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['gcc %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
+let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
+let g:quickrun_config.textile = {
+			\ 'command': 'redcloth',
+			\ 'tempfile': '{tempname()}.textile',
+			\ 'exec': ['%c %s > %s:p:r.html', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html'] }
+
+
 " ref.vim {{{2
 let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
 
 
 " skk.vim {{{2
-let skk_jisyo = '~/.skk-jisyo'
-let skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
-let skk_auto_save_jisyo = 1
+let g:skk_jisyo = '~/.skk-jisyo'
+let g:skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+let g:skk_auto_save_jisyo = 1
+
 
 
 " smartword.vim {{{2
@@ -334,6 +355,8 @@ inoremap <C-w> <C-g>u<C-w>
 
 noremap <C-BS> <C-w>
 noremap! <C-BS> <C-w>
+
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 "}}}
 
 nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>

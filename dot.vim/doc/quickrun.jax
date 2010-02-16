@@ -1,6 +1,6 @@
 *quickrun.txt*	コマンドを素早く実行します。
 
-Version: 0.2.0
+Version: 0.3.3
 Author : thinca <thinca+vim@gmail.com>
 License: クリエイティブ・コモンズの表示 2.1 日本ライセンス
          <http://creativecommons.org/licenses/by/2.1/jp/>
@@ -26,6 +26,9 @@ TODO				|quickrun-TODO|
 *quickrun* は編集中のファイルの全体もしくは一部を実行する Vim プラグインです。
 実行するためのコマンド |:QuickRun| が提供されます。
 
+要件:
+- Vim 7.2 以降
+
 						*quickrun-synopsis*
 >
 	" 現在のバッファを実行
@@ -46,7 +49,6 @@ TODO				|quickrun-TODO|
 		let g:quickrun_config = {}
 		let g:quickrun_config.haskell = {'command' : 'runhugs'}
 	endif
-	let g:QuickRunConfig.haskell = {'command' : 'runhugs'}
 
 	" ショートカットキーを設定する
 	for [key, com] in items({
@@ -97,7 +99,7 @@ TODO				|quickrun-TODO|
 ------------------------------------------------------------------------------
 関数				*quickrun-functions* *quickrun-operator*
 
-QuickRun({type})
+QuickRun({type})				*QuickRun()*
 			'operatorfunc' に対して設定するための関数です。
 			例えば、 >
 		nnoremap <silent> <C-CR> :<C-u>set opfunc=QuickRun<CR>g@ip
@@ -114,8 +116,8 @@ QuickRun({type})
 <Plug>(quickrun)				*<Plug>(quickrun)*
 			現在のバッファに適したコマンドを実行して結果を別ウィン
 			ドウに表示します。
-			これは単純に以下のコマンドと同じです。 >
-			:QuickRun >
+			これは単純に |:QuickRun| コマンドを引数なしで実行する
+			のと同じです。
 <
 
 					*g:quickrun_no_default_key_mappings*
@@ -180,6 +182,24 @@ append					*quickrun-option-append*
 			0 以外が指定された場合、(可能ならば)出力先に対して追記
 			します。
 
+runmode					*quickrun-option-runmode*
+			実行モードを指定します。以下のうちのいずれかを指定しま
+			す。
+			- "simple"
+			  単純に |system()| や |:!|(output が ":" の場合) を
+			  使って実行します。デフォルトではこのモードです。
+			- "async:remote"
+			  {|+clientserver| が必要}
+			  コマンドをバックグラウンドで実行し、終了を
+			  |+clientserver| 機能を利用して通知し結果を表示します。
+			  バックグラウンドで実行するため、コマンドが無限ループ
+			  や入力待ち等で終了しない場合、Vim から制御することは
+			  できないので注意してください。
+			- "async:remote:vimproc"
+			  コマンドの実行に |vimproc| を使います。|vimproc| が
+			  インストールされていない場合は通常と同じように実行し
+			  ます。
+
 split (*)				*quickrun-option-split*
 			出力専用バッファを開く際の補助コマンドを指定します。バ
 			ッファを開く際に |:split| コマンドの前に挿入されます。
@@ -188,6 +208,10 @@ split (*)				*quickrun-option-split*
 			デフォルトは
 			'{winwidth(0) * 2 < winheight(0) * 5 ? "" : "vertical"}'
 			です。
+
+into					*quickrun-option-into*
+			0 以外を指定すると、結果が出た際に出力専用バッファへ
+			カーソルを移動します。
 
 mode					*quickrun-option-mode*
 			実行モードです。n,v,o のいずれかを指定します。これは範
@@ -233,6 +257,11 @@ eval_template				*quickrun-option-eval_template*
 			eval が指定された際に使用されるテンプレート文字列で
 			す。テンプレート内の %s が src に置き変えられます。
 
+running_mark				*quickrun-option-running_mark*
+			この値が空文字列でない場合、実行中にこの文字列が出力先
+			に表示されます。表示は実行完了後に削除されます。
+			デフォルトは ":-)" です。
+
 
 ------------------------------------------------------------------------------
 オプション値の展開				*quickrun-expand-option*
@@ -268,6 +297,7 @@ exec オプションの書式				*quickrun-exec-format*
 	java %S:r:gs?[/\\]?.?
 <
 また、ファイルを指定するシンボルは |shellescape()| でエスケープされます。
+コマンドに改行文字が含まれている場合は空白文字に置き換えられます。
 
 Vim のコマンドを実行する
 ------------------------
@@ -287,8 +317,7 @@ exec を展開した結果先頭の文字が ":" だった場合、Vim のコマ
 設定					*quickrun-settings* *g:quickrun_config*
 
 グローバル変数 |g:quickrun_config| を使って各オプションのデフォルト値を設定で
-きます。|quickrun-options| に記載されているデフォルト値は実際にはこの変数のデ
-フォルト値です。
+きます。
 デフォルト値はオプション名をキーとした辞書で指定します。|g:quickrun_config| に
 は {type} をキー、デフォルト値を値にした辞書を指定します。つまり、この変数には
 二層構造の辞書を指定します。
@@ -303,6 +332,13 @@ exec を展開した結果先頭の文字が ":" だった場合、Vim のコマ
 す。その際に (.vimrc などで) すでに定義されていた場合は、デフォルト値に既存値
 を上書きする形で初期化されます。
 
+標準の設定					*g:quickrun_default_config*
+----------
+|g:quickrun_default_config| には標準的なデフォルトの設定が入っています。これ
+は |g:quickrun_config| と同じ構造になっています。
+|quickrun-options| に記載されているデフォルト値は実際にはこの変数のデフォルト
+値です。通常はユーザがこの値を操作する必要はありません。
+
 バッファローカルな設定				*b:quickrun_config*
 ----------------------
 |b:quickrun_config| を使ってバッファローカルな設定を追加できます。これには
@@ -315,10 +351,11 @@ exec を展開した結果先頭の文字が ":" だった場合、Vim のコマ
 1. コマンドラインで指定された値
 2. |b:quickrun_config|
 3. |g:quickrun_config| の {type}
-4. |g:quickrun_config| の '*'
+4. |g:quickrun_default_config| の {type}
+5. |g:quickrun_config| の '*'
+6. |g:quickrun_default_config| の '*'
 
-2 で {type} を設定しておくことで 3 で通常とは別の {type} を参照することも可能
-です。
+1 や 2 で {type} を設定しておくことで 3 で通常とは別の {type} を参照できます。
 
 
 
@@ -336,6 +373,36 @@ TODO						*quickrun-TODO*
 
 ==============================================================================
 更新履歴					*quickrun-changelog*
+
+0.4.0	2010-02-12
+	- |g:quickrun_default_config| を追加。
+	- デフォルトの設定に llvm を追加。
+	- コマンドに改行が含まれているとうまく実行できないバグを修正。
+	- 出力専用バッファをデフォルトで q で閉じるようにした。
+	- |quickrun-option-runmode| オプションを追加。
+	- |quickrun-option-into| オプションを追加。
+	- autoload 化。
+
+0.3.3	2009-12-16
+	- マルチバイト文字を含むコマンドの実行がうまくいかないバグを修正。
+
+0.3.2	2009-12-10
+	- eval がうまく動かないことがあるバグを修正。
+	- |g:quickrun_config| の go のデフォルト値を改善。
+	- ドキュメントの不備を修正。
+
+0.3.1	2009-11-16
+	- |g:quickrun_config| のデフォルト値を変更。
+	  - '*' に output append args を含めた。
+	  - java, scala, perl を改善。
+	  - go を追加。
+	- shebang が利用できるかの判定で、コマンドが実行可能かのチェックをしな
+	  いようにした。
+	- 内部構造を若干変更。
+
+0.3.0	2009-11-01
+	- 実行中にバッファに一時的な文字列を表示する機能
+	  (|quickrun-option-running_mark|) を追加。
 
 0.2.0	2009-11-01
 	- バッファローカルな設定を行う機能 (|b:quickrun_config|) を追加。
