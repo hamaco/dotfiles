@@ -224,8 +224,8 @@ autocmd LocationChange fastladder\\.com/(reader|public) :fmap j k s a p q w r v 
 autocmd LocationChange www\\.google\\.com/reader :fmap -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
 
 " Gmail
-autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 j k n p o e x u c r a f [ ] / ?
-autocmd LocationChange mail\\.google\\.com/a/ :fmap j k n p o e x u c r a f [ ] / ?
+autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 j k n p o e x u c r a f s [ ] / ?
+autocmd LocationChange mail\\.google\\.com/a/ :fmap j k n p o e x u c r a f s [ ] / ?
 
 " RTM
 "autocmd LocationChange www\\.rememberthemilk\\.com/ :fmap t c p r s 1 2 3 4 a n i k j K J z <Tab> <Delete> <C-g> ?

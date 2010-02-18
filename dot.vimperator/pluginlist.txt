@@ -22,6 +22,7 @@ http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trun
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/multi_requester.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/nicontroller.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/no-reading.js
+http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/option-selector.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/pino.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/pluginManager.js
 http://coderepos.org/share/export/latest/lang/javascript/vimperator-plugins/trunk/refcontrol.js
