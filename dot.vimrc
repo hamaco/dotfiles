@@ -321,6 +321,7 @@ let g:VimShell_EnableInteractive = 1
 
 
 " zen-coding.vim {{{2
+let g:user_zen_expandabbr_key = '<C-e>'
 
 
 
@@ -354,7 +355,7 @@ nnoremap <Space>q :<C-u>quit<CR>
 " Emacsっぽいキーバインド {{{2
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
-inoremap <C-e> <End>
+"inoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
