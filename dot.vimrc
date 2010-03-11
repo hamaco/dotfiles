@@ -190,6 +190,11 @@ let plugin_dicwin_disable = 1
 let g:Align_xstrlen = 3
 
 
+" altercmd.vim {{{2
+"AlterCommand cd CD
+"AlterCommand t tabedit
+
+
 " capslock.vim {{{2
 imap <C-a> <C-o><Plug>CapsLockToggle
 
@@ -315,6 +320,9 @@ map <Leader>` <Plug>Csurround w`
 let g:VimShell_EnableInteractive = 1
 
 
+" zen-coding.vim {{{2
+
+
 
 
 " key mappings {{{1
@@ -388,6 +396,7 @@ nnoremap <C-n> :<C-u>tabnext<CR>
 
 " Tmp: 一時的な設定 ============================================ {{{1
 
+let g:php_localvarcheck_enable = 0
 " vim hacks #67
 let g:git_no_map_default = 1
 let g:git_command_edit = 'rightbelow vnew'
