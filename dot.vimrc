@@ -1,12 +1,20 @@
 " Initialize: {{{1
 
+" Windowsでも.vimを読み込むようにする
+set runtimepath& runtimepath+=$HOME/.vim
+
+" pathogen
+" http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
+runtime autoload/pathogen.vim
+if exists("g:loaded_pathogen")
+	call pathogen#runtime_append_all_bundles()
+end
+
 if has("win32") || has("win64")
 	" メニューが文字化けするので英語にする
 	language en
 endif
 
-" Windowsでも.vimを読み込むようにする
-set runtimepath& runtimepath+=$HOME/.vim
 set nocompatible
 filetype plugin indent on
 
@@ -73,6 +81,7 @@ set backupcopy&
 set backupdir=~/.vim/backup/
 set backupskip&
 set cinoptions=:0,(0,W1s
+set clipboard=unnamed
 set directory=~/.vim/swap/
 set formatoptions=tcroqnlM1
 set history=100
@@ -416,38 +425,44 @@ nnoremap <Space>gp :<C-u>Git push
 " vim hacks #106
 command! Big wincmd _ | wincmd |
 
+" vim hacks #130
+command! -complete=file -nargs=+ Grep  call s:grep([<f-args>])
+function! s:grep(args)
+	execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2])
+endfunction
+
 " kana's useful tab function {{{
 function! s:move_window_into_tab_page(target_tabpagenr)
-  " Move the current window into a:target_tabpagenr.
-  " If a:target_tabpagenr is 0, move into new tab page.
-  if a:target_tabpagenr < 0  " ignore invalid number.
-    return
-  endif
-  let original_tabnr = tabpagenr()
-  let target_bufnr = bufnr('')
-  let window_view = winsaveview()
+	" Move the current window into a:target_tabpagenr.
+	" If a:target_tabpagenr is 0, move into new tab page.
+	if a:target_tabpagenr < 0  " ignore invalid number.
+		return
+	endif
+	let original_tabnr = tabpagenr()
+	let target_bufnr = bufnr('')
+	let window_view = winsaveview()
 
-  if a:target_tabpagenr == 0
-    tabnew
-    tabmove  " Move new tabpage at the last.
-    execute target_bufnr 'buffer'
-    let target_tabpagenr = tabpagenr()
-  else
-    execute a:target_tabpagenr 'tabnext'
-    let target_tabpagenr = a:target_tabpagenr
-    topleft new  " FIXME: be customizable?
-    execute target_bufnr 'buffer'
-  endif
-  call winrestview(window_view)
+	if a:target_tabpagenr == 0
+		tabnew
+		tabmove  " Move new tabpage at the last.
+		execute target_bufnr 'buffer'
+		let target_tabpagenr = tabpagenr()
+	else
+		execute a:target_tabpagenr 'tabnext'
+		let target_tabpagenr = a:target_tabpagenr
+		topleft new  " FIXME: be customizable?
+		execute target_bufnr 'buffer'
+	endif
+	call winrestview(window_view)
 
-  execute original_tabnr 'tabnext'
-  if 1 < winnr('$')
-    close
-  else
-    enew
-  endif
+	execute original_tabnr 'tabnext'
+	if 1 < winnr('$')
+		close
+	else
+		enew
+	endif
 
-  execute target_tabpagenr 'tabnext'
+	execute target_tabpagenr 'tabnext'
 endfunction " }}}
 " <space>ao move current buffer into a new tab.
 nnoremap <silent> <Space>ao :<C-u>call <SID>move_window_into_tab_page(0)<Cr>
