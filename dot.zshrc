@@ -260,17 +260,6 @@ fi
 
 # Tmp: 一時的な設定 ======================================================= {{{1
 
-function update_neocomplcache() {
-	wget -qO - http://github.com/Shougo/neocomplcache/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=presen
-}
-function update_vimshell() {
-	wget -qO - http://github.com/Shougo/vimshell/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=presen
-}
-function update_gitvim() {
-	wget -qO - http://github.com/motemen/git-vim/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=README.rdoc
-}
-
-
 # kana's nice tool
 function git-gol() {
   for i in $(git log --pretty=oneline | head -n 10 | tail -r | cut -d ' ' -f 1); do git show $i --color-words; done | less
