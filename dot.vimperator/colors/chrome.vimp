@@ -1,0 +1,103 @@
+" ==VimperatorColorSchema==
+" name: chrome
+" ==/VimperatorColorSchema==
+
+hi Boolean     color: red;
+hi Function    color: navy;
+hi Null        color: blue;
+hi Number      color: blue;
+hi Object      color: maroon;
+hi String      color: green;
+
+hi Key         font-weight: bold;
+
+hi Enabled     color: blue;
+hi Disabled    color: red;
+
+hi Normal      color: #49689e; font-size: 15px; background: white; font-size: 15px;
+hi ErrorMsg    color: white; font-size: 15px; background: red; font-weight: bold;
+hi InfoMsg     color: #49689e; font-size: 15px; background: white;
+hi ModeMsg     color: #49689e; font-size: 15px; background: white;
+hi MoreMsg     color: green; font-size: 15px; background: white;
+hi WarningMsg  color: red;   font-size: 15px; background: white;
+hi Message     white-space: normal; min-width: 100%; padding-left: 2em; text-indent: -2em; display: block;
+hi NonText     color: blue;  font-size: 15px; min-height: 16px; padding-left: 2px;
+hi Preview     color: #b0c2e1;  font-size: 15px; 
+
+hi CmdLine,>*  font-family: monospace; padding: 1px;
+hi CmdOutput   white-space: pre;
+
+hi CompGroup
+hi CompGroup:not(:first-of-type) margin-top: .5em;
+hi CompTitle          color: #4e4fa2; background: #ddedfe; font-weight: bold;
+hi CompTitle>*        padding: 0 .5ex;
+hi CompMsg            font-style: italic; margin-left: 16px;
+hi CompItem
+hi CompItem[selected] background: #e5effe;
+hi CompItem>*         padding: 0 .5ex;
+hi CompIcon           width: 16px; min-width: 16px; display: inline-block; margin-right: .5ex;
+hi CompIcon>img       max-width: 16px; max-height: 16px; vertical-align: middle;
+hi CompResult         width: 45%; overflow: hidden;
+hi CompDesc           color: gray; width: 50%;
+hi CompLess           text-align: center; height: 0;    line-height: .5ex; padding-top: 1ex;
+hi CompLess::after    content: "\2303" /* Unicode up arrowhead */
+hi CompMore           text-align: center; height: .5ex; line-height: .5ex; margin-bottom: -.5ex;
+hi CompMore::after    content: "\2304" /* Unicode down arrowhead */
+
+hi Gradient        height: 1px; margin-bottom: -1px; margin-top: -1px;
+hi GradientLeft    background-color: #b7c5e3;
+hi GradientRight   background-color: #b7c5e3;
+
+hi Indicator   color: blue;
+hi Filter      color: #559aee; font-weight: bold;
+
+hi Keyword     color: red;
+hi Tag         color: blue;
+
+hi LineNr      color: orange; font-size: 15px; background: white;
+hi Question    color: #3b4d80;  font-size: 15px; background: white; font-weight: bold; margin: 1px 0 0 0;
+
+hi StatusLine         color: #505864; font-size: 15px; background: #9fc5f3; font-weight: normal;
+hi StatusLineBroken   color: #505864; font-size: 15px; background: #FFa0a0 /* light-red */
+hi StatusLineSecure   color: #505864; font-size: 15px; background: #a0a0FF /* light-blue */
+hi StatusLineExtended color: #505864; font-size: 15px; background: #a0FFa0 /* light-green */
+
+hi TabClose,.tab-close-button
+hi TabIcon,.tab-icon
+hi TabText,.tab-text
+hi TabNumber     font-weight: bold; margin: 0px; padding-right: .3ex;
+hi TabIconNumber font-weight: bold; color: white; text-align: center; text-shadow: black -1px 0 1px, black 0 1px 1px, black 1px 0 1px, black 0 -1px 1px;
+
+
+hi Title       color: magenta;  background: white; font-weight: bold;
+hi URL         text-decoration: none; color: green; background: inherit;
+hi URL:hover   text-decoration: underline; cursor: pointer;
+
+hi FrameIndicator,,* background-color: red; opacity: 0.5; z-index: 999; position: fixed; top: 0; bottom: 0; left: 0; right: 0;
+
+hi Bell         border: none; background-color: black;
+
+
+hi Hint         font-family: monospace; font-size: 14px; font-weight: bold; color: white; padding: 0 0.25em; margin: -0.3em 0 0 -1.2em; background-color: #96b7db;      border: 1px #7d9ec9 solid; -moz-border-radius: 2px; ButtonShadow; padding 0 1px;
+hi Hint::after  content: attr(number);
+hi HintElem     background-color: #d7e4f6;  color: black; border: 1px #5d7ba1 solid; -moz-border-radius: 4px;
+hi HintActive   background-color: #3c5068; color: white; border: 1px #35475c solid; -moz-border-radius: 4px;
+hi HintImage    opacity: .5;
+
+hi Search,,* font-size: inherit; padding: 0; color: black; background-color: yellow; padding: 0;
+
+"タブ周りの色
+style -name tab chrome://* <<EOM
+
+.tabbrowser-tabs {
+  margin: 0px !important;
+  background-color: #f5f9fe !important;
+}
+
+.tabbrowser-tab[selected=true] > .tab-text { background: #FFF !important; color: #505864 !important; border:}
+.tabbrowser-tab[selected=true] { background: #FFF !important; color: #505864 !important;}
+
+#content tab:not([selected]) {
+background-color: #9fc5f3 !important; color: #505864  !important;
+}
+EOM

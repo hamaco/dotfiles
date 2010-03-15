@@ -36,7 +36,7 @@ hi StatusLineExtended height: 23px; -moz-appearance: statusbar;
 " Command Line
 "--------------------------------------------------
 hi CmdLine font-family: monospace; font-size: 12px; background: #000; padding: 0.2em 0.5em; background: #111;
-hi CmdOutput
+"hi CmdOutput
  
 hi Normal color: #f0f0f0; background: #111;
 hi NonText color: #444;
