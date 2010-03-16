@@ -1,12 +1,20 @@
 " Initialize: {{{1
 
+" Windowsでも.vimを読み込むようにする
+set runtimepath& runtimepath+=$HOME/.vim
+
+" pathogen
+" http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
+runtime autoload/pathogen.vim
+if exists("g:loaded_pathogen")
+	call pathogen#runtime_append_all_bundles()
+end
+
 if has("win32") || has("win64")
 	" メニューが文字化けするので英語にする
 	language en
 endif
 
-" Windowsでも.vimを読み込むようにする
-set runtimepath& runtimepath+=$HOME/.vim
 set nocompatible
 filetype plugin indent on
 
@@ -73,6 +81,7 @@ set backupcopy&
 set backupdir=~/.vim/backup/
 set backupskip&
 set cinoptions=:0,(0,W1s
+set clipboard=unnamed
 set directory=~/.vim/swap/
 set formatoptions=tcroqnlM1
 set history=100
@@ -164,7 +173,7 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType help,quickrun,quickfix nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType help,quickrun,quickfix,ref nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
 if !has('gui_running') && !(has('win32') || has('win64'))
@@ -190,6 +199,12 @@ let plugin_dicwin_disable = 1
 let g:Align_xstrlen = 3
 
 
+" altercmd.vim {{{2
+call altercmd#load()
+AlterCommand cd CD
+AlterCommand t tabedit
+
+
 " capslock.vim {{{2
 imap <C-a> <C-o><Plug>CapsLockToggle
 
@@ -203,15 +218,6 @@ let g:changelog_timeformat = "%Y-%m-%d"
 map <Leader>c     <Plug>CommentopToggleNV
 map <Leader>C     <Plug>CommentopAppendNV
 map <Leader><C-c> <Plug>CommentopRemoveNV
-
-
-" ku.vim {{{2
-"autocmd MyAutoCmd FileType ku  call ku#default_key_mappings(s:TRUE)
-
-noremap <silent> <Space>kf :<C-u>Ku file<CR>
-noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
-noremap <silent> <Space>kh :<C-u>Ku history<CR>
-noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
 
 
 " neocomplcache.vim {{{2
@@ -254,6 +260,13 @@ imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
 
+" ku.vim {{{2
+noremap <silent> <Space>kf :<C-u>Ku file<CR>
+noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
+noremap <silent> <Space>kh :<C-u>Ku history<CR>
+noremap <silent> <Space>km :<C-u>Ku file/mru<CR>
+
+
 " poslist.vim {{{2
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
@@ -280,6 +293,8 @@ let g:quickrun_config.textile = {
 
 
 " ref.vim {{{2
+" vimprocを使用すると上手く動かない
+let g:ref_use_vimproc = 0
 let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
 
 
@@ -320,6 +335,10 @@ map <Leader>` <Plug>Csurround w`
 let g:VimShell_EnableInteractive = 1
 
 
+" zen-coding.vim {{{2
+let g:user_zen_expandabbr_key = '<C-e>'
+
+
 
 
 " key mappings {{{1
@@ -342,7 +361,7 @@ nnoremap gh ^
 nnoremap gl $
 
 noremap <Space> <Nop>
-noremap <S-k> <Nop>
+"noremap <S-k> <Nop>
 noremap <S-q> <Nop>
 
 nnoremap <Space>w :<C-u>write<CR>
@@ -351,7 +370,7 @@ nnoremap <Space>q :<C-u>quit<CR>
 " Emacsっぽいキーバインド {{{2
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
-inoremap <C-e> <End>
+"inoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
@@ -393,6 +412,7 @@ nnoremap <C-n> :<C-u>tabnext<CR>
 
 " Tmp: 一時的な設定 ============================================ {{{1
 
+let g:php_localvarcheck_enable = 0
 " vim hacks #67
 let g:git_no_map_default = 1
 let g:git_command_edit = 'rightbelow vnew'
@@ -411,38 +431,44 @@ nnoremap <Space>gp :<C-u>Git push
 " vim hacks #106
 command! Big wincmd _ | wincmd |
 
+" vim hacks #130
+command! -complete=file -nargs=+ Grep  call s:grep([<f-args>])
+function! s:grep(args)
+	execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2])
+endfunction
+
 " kana's useful tab function {{{
 function! s:move_window_into_tab_page(target_tabpagenr)
-  " Move the current window into a:target_tabpagenr.
-  " If a:target_tabpagenr is 0, move into new tab page.
-  if a:target_tabpagenr < 0  " ignore invalid number.
-    return
-  endif
-  let original_tabnr = tabpagenr()
-  let target_bufnr = bufnr('')
-  let window_view = winsaveview()
+	" Move the current window into a:target_tabpagenr.
+	" If a:target_tabpagenr is 0, move into new tab page.
+	if a:target_tabpagenr < 0  " ignore invalid number.
+		return
+	endif
+	let original_tabnr = tabpagenr()
+	let target_bufnr = bufnr('')
+	let window_view = winsaveview()
 
-  if a:target_tabpagenr == 0
-    tabnew
-    tabmove  " Move new tabpage at the last.
-    execute target_bufnr 'buffer'
-    let target_tabpagenr = tabpagenr()
-  else
-    execute a:target_tabpagenr 'tabnext'
-    let target_tabpagenr = a:target_tabpagenr
-    topleft new  " FIXME: be customizable?
-    execute target_bufnr 'buffer'
-  endif
-  call winrestview(window_view)
+	if a:target_tabpagenr == 0
+		tabnew
+		tabmove  " Move new tabpage at the last.
+		execute target_bufnr 'buffer'
+		let target_tabpagenr = tabpagenr()
+	else
+		execute a:target_tabpagenr 'tabnext'
+		let target_tabpagenr = a:target_tabpagenr
+		topleft new  " FIXME: be customizable?
+		execute target_bufnr 'buffer'
+	endif
+	call winrestview(window_view)
 
-  execute original_tabnr 'tabnext'
-  if 1 < winnr('$')
-    close
-  else
-    enew
-  endif
+	execute original_tabnr 'tabnext'
+	if 1 < winnr('$')
+		close
+	else
+		enew
+	endif
 
-  execute target_tabpagenr 'tabnext'
+	execute target_tabpagenr 'tabnext'
 endfunction " }}}
 " <space>ao move current buffer into a new tab.
 nnoremap <silent> <Space>ao :<C-u>call <SID>move_window_into_tab_page(0)<Cr>
@@ -478,6 +504,23 @@ function! s:good_width()
     vertical resize 84
   endif
 endfunction
+
+
+" Scounter
+function! Scouter(file, ...)
+  let pat = '^\s*$\|^\s*"'
+  let lines = readfile(a:file)
+  if !a:0 || !a:1
+    let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
+  endif
+  return len(filter(lines,'v:val !~ pat'))
+endfunction
+command! -bar -bang -nargs=? -complete=file Scouter
+\        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+command! -bar -bang -nargs=? -complete=file GScouter
+\        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
+
+
 
 
 

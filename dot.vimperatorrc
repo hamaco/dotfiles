@@ -45,6 +45,12 @@ highlight Bell display:none;
 
 colorscheme vimplight
 
+js<<EOM
+	if (liberator.has("MacUnix")) {
+		liberator.execute("set editor=/Applications/MacVim.app/Contents/MacOS/MacVim");
+	}
+EOM
+
 " Keymapping
 " ======================================================================
 
@@ -374,4 +380,4 @@ let g:no_reading_do_echo = 1
 
 source! ~/.vimperator/userContent.vimp
 
-echo ".vimperatorrc sourced"
+"echo ".vimperatorrc sourced"
