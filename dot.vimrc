@@ -285,7 +285,12 @@ let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
 
 " skk.vim {{{2
 let g:skk_jisyo = '~/.skk-jisyo'
-let g:skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+if has("mac")
+	let g:skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+"elseif has("win32") || has("win64")
+else
+	let g:skk_large_jisyo = '~/Dropbox/SKK-JISYO.L'
+endif
 let g:skk_auto_save_jisyo = 1
 
 
@@ -302,7 +307,7 @@ noremap gE ge
 
 
 " spec.vim {{{2
-let g:spec_chglog_format = "%a %b %d %Y Hamaco <hamanaka.kazuhiro@gmail.com> -"
+let g:spec_chglog_format = "%a %b %d %Y hamaco <hamanaka.kazuhiro@gmail.com> -"
 
 
 " surround.vim {{{2
