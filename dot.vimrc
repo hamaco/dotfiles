@@ -173,7 +173,7 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType help,quickrun,quickfix nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType help,quickrun,quickfix,ref nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
 if !has('gui_running') && !(has('win32') || has('win64'))
@@ -200,8 +200,9 @@ let g:Align_xstrlen = 3
 
 
 " altercmd.vim {{{2
-"AlterCommand cd CD
-"AlterCommand t tabedit
+call altercmd#load()
+AlterCommand cd CD
+AlterCommand t tabedit
 
 
 " capslock.vim {{{2
@@ -217,15 +218,6 @@ let g:changelog_timeformat = "%Y-%m-%d"
 map <Leader>c     <Plug>CommentopToggleNV
 map <Leader>C     <Plug>CommentopAppendNV
 map <Leader><C-c> <Plug>CommentopRemoveNV
-
-
-" ku.vim {{{2
-"autocmd MyAutoCmd FileType ku  call ku#default_key_mappings(s:TRUE)
-
-noremap <silent> <Space>kf :<C-u>Ku file<CR>
-noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
-noremap <silent> <Space>kh :<C-u>Ku history<CR>
-noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
 
 
 " neocomplcache.vim {{{2
@@ -268,6 +260,13 @@ imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
 
+" ku.vim {{{2
+noremap <silent> <Space>kf :<C-u>Ku file<CR>
+noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
+noremap <silent> <Space>kh :<C-u>Ku history<CR>
+noremap <silent> <Space>km :<C-u>Ku file/mru<CR>
+
+
 " poslist.vim {{{2
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
@@ -294,6 +293,8 @@ let g:quickrun_config.textile = {
 
 
 " ref.vim {{{2
+" vimprocを使用すると上手く動かない
+let g:ref_use_vimproc = 0
 let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
 
 
@@ -355,7 +356,7 @@ nnoremap gh ^
 nnoremap gl $
 
 noremap <Space> <Nop>
-noremap <S-k> <Nop>
+"noremap <S-k> <Nop>
 noremap <S-q> <Nop>
 
 nnoremap <Space>w :<C-u>write<CR>
@@ -498,6 +499,23 @@ function! s:good_width()
     vertical resize 84
   endif
 endfunction
+
+
+" Scounter
+function! Scouter(file, ...)
+  let pat = '^\s*$\|^\s*"'
+  let lines = readfile(a:file)
+  if !a:0 || !a:1
+    let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
+  endif
+  return len(filter(lines,'v:val !~ pat'))
+endfunction
+command! -bar -bang -nargs=? -complete=file Scouter
+\        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+command! -bar -bang -nargs=? -complete=file GScouter
+\        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
+
+
 
 
 
