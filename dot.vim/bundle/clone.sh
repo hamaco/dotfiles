@@ -1,5 +1,6 @@
 #!/bin/sh
 
+git clone git://github.com/Shougo/git-vim.git
 git clone git://github.com/Shougo/neocomplcache.git
 git clone git://github.com/Shougo/vimshell.git
 git clone git://github.com/Shougo/vimproc.git
