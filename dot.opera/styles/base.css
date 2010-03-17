@@ -3,16 +3,29 @@
 /**
  * デフォルトのフォントを指定
  */
-*, body {
-	font-family: "YukarryAA" !important;
-}
-
-pre, pre *, code, samp, var, tt {
-	font-family: "YukarryAA" !important;
-}
-
+*, body,
+html[lang="en"] *,
+html[lang="en-US"] *,
+address,
+pre, pre *, code, samp, var, tt,
+h1, h1 *, h2, h2 *,
+h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 *,
 input, textarea, select {
 	font-family: "YukarryAA" !important;
+}
+
+* {
+	font-style: normal !important;
+}
+h1 {
+	font-style: italic !important;
+}
+
+* {
+	font-weight: normal !important;
+}
+h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 *, dt, dt *, th, b, em, strong, a[target="_blank"]:after {
+	font-weight:bold !important;
 }
 
 /**
