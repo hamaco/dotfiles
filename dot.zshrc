@@ -202,6 +202,14 @@ function chpwd() {
 	ls -G
 }
 
+function cdup() {
+	echo
+	cd ..
+	zle reset-prompt
+}
+zle -N cdup
+bindkey '\^' cdup
+
 rationalise-dot() {
 	if [[ $LBUFFER = *.. ]]; then
 		LBUFFER+=/..
@@ -275,6 +283,20 @@ function alc() {
 	else
 		echo "Usage: alc {word}."
 	fi
+}
+
+# google
+function google() {
+	local str opt
+	if [ $# != 0 ]; then
+		for i in $*; do
+			str="$str+$i"
+		done
+		str=`echo $str | sed 's/^\+//'`
+		opt='search?num=50&hl=ja&lr=lang_ja'
+		opt="${opt}&q=${str}"
+	fi
+	w3m http://www.google.co.jp/$opt
 }
 
 # kana's prompt git branch {{{
