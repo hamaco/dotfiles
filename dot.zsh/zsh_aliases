@@ -67,7 +67,7 @@ freebsd*)
 esac
 
 
-# Suffix: 接尾辞エイリアス ========= {{{2
+# Suffix: 接尾辞エイリアス ========= {{{1
 alias -s txt=cat
 alias -s php=vim
 alias -s log=less
@@ -89,6 +89,16 @@ sc() {
 	name=${1:-${PWD##*/}}
 	screen -x $name || $screen -r $name || screen -S $name
 }
+
+
+# Global: グローバルエイリアス ===== {{{1
+if which pbcopy >/dev/null 2>&1 ; then
+	# Mac
+	alias -g C='| pbcopy'
+elif which xsel >/dev/null 2>&1 ; then
+	# Linux
+	alias -g C='| xsel --input --clipboard'
+fi
 
 # myabbrev {{{1
 typeset -A myabbrev

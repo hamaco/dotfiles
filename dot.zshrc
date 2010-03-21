@@ -161,41 +161,6 @@ esac
 
 
 
-# Terminal: ターミナル毎の設定 ============================================ {{{1
-case "${TERM}" in
-xterm*|kterm*)
-	precmd() {
-		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-	}
-	screen
-	;;
-screen*) # これtscreenで動かない
-	function ssh_screen() {
-		eval server=\${$#}
-		screen -t s:$server ssh "$@"
-	}
-	alias ssh=ssh_screen
-
-	# dabbrev
-	HARDCOPYFILE=/tmp/screen-hardcopy
-	touch $HARDCOPYFILE
-
-	dabbrev-complete () {
-		local reply lines=80 # 80行分
-		screen -X eval "hardcopy -h $HARDCOPYFILE"
-		reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
-		compadd - "${reply[@]%[*/=@|]}"
-	}
-
-	zle -C dabbrev-complete menu-complete dabbrev-complete
-	bindkey '^o' dabbrev-complete
-	bindkey '^o^_' reverse-menu-complete
-	;;
-esac
-
-
-
-
 # Functions: ============================================================== {{{1
 function chpwd() {
 	_reg_pwd_screennum
@@ -251,6 +216,41 @@ osconf="$HOME/.zsh/.zshrc.`uname`"
 
 localconf="$HOME/.zsh/hosts/${HOST%%.*}.zshrc"
 [ -f $localconf ] && source $localconf
+
+
+
+
+# Terminal: ターミナル毎の設定 ============================================ {{{1
+case "${TERM}" in
+xterm*|kterm*)
+	precmd() {
+		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+	}
+	sc
+	;;
+screen*) # これtscreenで動かない
+	function ssh_screen() {
+		eval server=\${$#}
+		screen -t s:$server ssh "$@"
+	}
+	alias ssh=ssh_screen
+
+	# dabbrev
+	HARDCOPYFILE=/tmp/screen-hardcopy
+	touch $HARDCOPYFILE
+
+	dabbrev-complete () {
+		local reply lines=80 # 80行分
+		screen -X eval "hardcopy -h $HARDCOPYFILE"
+		reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
+		compadd - "${reply[@]%[*/=@|]}"
+	}
+
+	zle -C dabbrev-complete menu-complete dabbrev-complete
+	bindkey '^o' dabbrev-complete
+	bindkey '^o^_' reverse-menu-complete
+	;;
+esac
 
 
 
