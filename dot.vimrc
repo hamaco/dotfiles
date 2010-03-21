@@ -432,9 +432,12 @@ nnoremap <Space>gp :<C-u>Git push
 command! Big wincmd _ | wincmd |
 
 " vim hacks #130
-command! -complete=file -nargs=+ Grep  call s:grep([<f-args>])
+" http://webtech-walker.com/archive/2010/03/17093357.html
+command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
 function! s:grep(args)
-	execute 'vimgrep' '/'.a:args[-1].'/' join(a:args[:-2])
+	let target = len(a:args) > 1 ? join(a:args[1:]) : '**/*'
+	execute 'vimgrep' '/' . a:args[0] . '/j ' . target
+	if len(getqflist()) != 0 | copen | endif
 endfunction
 
 " kana's useful tab function {{{
