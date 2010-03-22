@@ -173,7 +173,7 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType help,quickrun,quickfix,ref nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,ref nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
 if !has('gui_running') && !(has('win32') || has('win64'))
