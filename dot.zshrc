@@ -65,6 +65,7 @@ setopt prompt_subst         #
 setopt pushd_ignore_dups    # 同じディレクトリをpushdしない
 setopt share_history        # 履歴ファイルを共有する
 setopt short_loops          # FOR, REPEAT, SELECT, IF, FUNCTION などで簡略文法が使えるようになる
+setopt transient_rprompt    # コマンド実行時にRPROMPTを消す
 
 
 
