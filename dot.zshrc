@@ -162,46 +162,19 @@ esac
 
 
 
-# Terminal: ターミナル毎の設定 ============================================ {{{1
-case "${TERM}" in
-xterm*|kterm*)
-	precmd() {
-		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-	}
-	screen
-	;;
-screen*) # これtscreenで動かない
-	function ssh_screen() {
-		eval server=\${$#}
-		screen -t s:$server ssh "$@"
-	}
-	alias ssh=ssh_screen
-
-	# dabbrev
-	HARDCOPYFILE=/tmp/screen-hardcopy
-	touch $HARDCOPYFILE
-
-	dabbrev-complete () {
-		local reply lines=80 # 80行分
-		screen -X eval "hardcopy -h $HARDCOPYFILE"
-		reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
-		compadd - "${reply[@]%[*/=@|]}"
-	}
-
-	zle -C dabbrev-complete menu-complete dabbrev-complete
-	bindkey '^o' dabbrev-complete
-	bindkey '^o^_' reverse-menu-complete
-	;;
-esac
-
-
-
-
 # Functions: ============================================================== {{{1
 function chpwd() {
 	_reg_pwd_screennum
 	ls -G
 }
+
+function cdup() {
+	echo
+	cd ..
+	zle reset-prompt
+}
+zle -N cdup
+bindkey '\^' cdup
 
 rationalise-dot() {
 	if [[ $LBUFFER = *.. ]]; then
@@ -248,6 +221,41 @@ localconf="$HOME/.zsh/hosts/${HOST%%.*}.zshrc"
 
 
 
+# Terminal: ターミナル毎の設定 ============================================ {{{1
+case "${TERM}" in
+xterm*|kterm*)
+	precmd() {
+		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+	}
+	sc
+	;;
+screen*) # これtscreenで動かない
+	function ssh_screen() {
+		eval server=\${$#}
+		screen -t s:$server ssh "$@"
+	}
+	alias ssh=ssh_screen
+
+	# dabbrev
+	HARDCOPYFILE=/tmp/screen-hardcopy
+	touch $HARDCOPYFILE
+
+	dabbrev-complete () {
+		local reply lines=80 # 80行分
+		screen -X eval "hardcopy -h $HARDCOPYFILE"
+		reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
+		compadd - "${reply[@]%[*/=@|]}"
+	}
+
+	zle -C dabbrev-complete menu-complete dabbrev-complete
+	bindkey '^o' dabbrev-complete
+	bindkey '^o^_' reverse-menu-complete
+	;;
+esac
+
+
+
+
 # keychain {{{1
 if [ -f /usr/bin/keychain ]; then
 	if [ ${UID} != 0 ]; then
@@ -276,6 +284,20 @@ function alc() {
 	else
 		echo "Usage: alc {word}."
 	fi
+}
+
+# google
+function google() {
+	local str opt
+	if [ $# != 0 ]; then
+		for i in $*; do
+			str="$str+$i"
+		done
+		str=`echo $str | sed 's/^\+//'`
+		opt='search?num=50&hl=ja&lr=lang_ja'
+		opt="${opt}&q=${str}"
+	fi
+	w3m http://www.google.co.jp/$opt
 }
 
 # kana's prompt git branch {{{
