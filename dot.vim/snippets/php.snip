@@ -2,23 +2,17 @@ snippet php
 	<?php
 	${1}
 
-snippet cls
-	class ${1:className}
-	{
-		${2}
-	}
+snippet inc
+	include("${1:file}");${2}
 
-snippet fn
-	function ${1}(${2})
-	{
-		${3}
-	}
+snippet inc1
+	include_once("${1:file}");${2}
 
-snippet pfn
-	public function ${1}(${2})
-	{
-		${3}
-	}
+snippet req
+	require("${1:file}");${2}
+
+snippet req1
+	require_once("${1:file}");${2}
 
 snippet if
 	if (${1}) {
@@ -37,6 +31,24 @@ snippet foreach
 		${3}
 	}
 
+snippet cls
+	class ${1:className}
+	{
+		${2}
+	}
+
+snippet fn
+	function ${1}(${2})
+	{
+		${3}
+	}
+
+snippet pfn
+	public function ${1}(${2})
+	{
+		${3}
+	}
+
 snippet try
 	try {
 		${1}
@@ -44,15 +56,22 @@ snippet try
 		${2}
 	}
 
+snippet throw
+	throw new ${1}Exception(${2});
+
+snippet vd
+	var_dump(${1});${2}
+
 snippet ve
 	var_dump(${1});exit;
+
+snippet pr
+	print_r(${1});${2}
 
 snippet pe
 	print_r(${1});exit;
 
-snippet throw
-	throw new ${1}Exception(${2});
-
+# for Sabel
 snippet $cc
 	$create->column("${1}")->type(${2})${3};
 
