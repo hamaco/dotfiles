@@ -2,7 +2,80 @@ snippet php
 	<?php
 	${1}
 
-snippet class
-	class ${1:ClassName}${2}
-  {
-  }
+snippet inc
+	include("${1:file}");${2}
+
+snippet inc1
+	include_once("${1:file}");${2}
+
+snippet req
+	require("${1:file}");${2}
+
+snippet req1
+	require_once("${1:file}");${2}
+
+snippet if
+	if (${1}) {
+		${2}
+	}
+
+snippet ife
+	if (${1}) {
+		${2}
+	} else {
+		${3}
+	}
+
+snippet foreach
+	foreach (${1} as ${2}) {
+		${3}
+	}
+
+snippet cls
+	class ${1:className}
+	{
+		${2}
+	}
+
+snippet fn
+	function ${1}(${2})
+	{
+		${3}
+	}
+
+snippet pfn
+	public function ${1}(${2})
+	{
+		${3}
+	}
+
+snippet try
+	try {
+		${1}
+	} catch (Exception $e){
+		${2}
+	}
+
+snippet throw
+	throw new ${1}Exception(${2});
+
+snippet vd
+	var_dump(${1});${2}
+
+snippet ve
+	var_dump(${1});exit;
+
+snippet pr
+	print_r(${1});${2}
+
+snippet pe
+	print_r(${1});exit;
+
+# for Sabel
+snippet $cc
+	$create->column("${1}")->type(${2})${3};
+
+snippet $cu
+	$create->unique("${1}");
+
+# vim: noexpandtab ts=2 sw=2

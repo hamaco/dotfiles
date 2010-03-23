@@ -1,4 +1,14 @@
-.DS_Store
-*~
 ,*
+
+# for Mac
+.DS_Store
+
+# for Vim
+*~
+.vimrc.local
 .*.sw?
+
+# for XOOPS
+sess_*
+*/cache/*
+*/templates_c/*

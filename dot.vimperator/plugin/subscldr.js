@@ -11,15 +11,16 @@
 // PLUGIN INFO: {{{
 var PLUGIN_INFO =
 <VimperatorPlugin>
-  <name>subscldr</name>
+  <name>{NAME}</name>
   <description>Adds subscriptions to livedoor Reader/Fastladder in place.</description>
   <description lang="ja">ページ遷移なしでlivedoor ReaderやFastladderにフィードを登録します。</description>
   <minVersion>2.0pre</minVersion>
   <maxVersion>2.0</maxVersion>
+  <require type="plugin">_libly.js</require>
   <updateURL>http://svn.coderepos.org/share/lang/javascript/vimperator-plugins/trunk/subscldr.js</updateURL>
   <author mail="snaka.gml@gmail.com" homepage="http://vimperator.g.hatena.ne.jp/snaka72/">snaka</author>
   <license>MIT style license</license>
-  <version>0.2</version>
+  <version>0.2.1</version>
   <detail><![CDATA[
     == Subject ==
     Adds subscriptions to livedoor Reader/Fastladder in place.
@@ -49,6 +50,8 @@ var PLUGIN_INFO =
 liberator.plugins.subscldr = (function() {
   // PUBLIC {{{
   var PUBLICS = {
+    // TODO:Provide API function.
+
     // for DEBUG {{{
     //getSubscription: getSubscription,
     //postSubscription: postSubscription,
@@ -122,7 +125,6 @@ liberator.plugins.subscldr = (function() {
       liberator.echo("Please wait ...");
       var subscribeInfo;
 
-      // for DEBUG
       var uri = target || endpoint + buffer.URL;
 
       var req = new libly.Request(uri, null, {asynchronous: false});
@@ -193,11 +195,11 @@ liberator.plugins.subscldr = (function() {
        feedlinks: []
     };
 
-    $LXs('id("feed_candidates")/li', htmldoc).forEach( function(item) {
-      var feedlink = $LX('./a[@class="feedlink"]', item);
-      var title = $LX('./a[@class="subscribe_list"]', item);
-      var users = $LX('./span[@class="subscriber_count"]/a', item);
-      var yet = $LX('./input[@name="feedlink"]', item);
+    $LXs('id("feed_candidates")/xhtml:li', htmldoc).forEach( function(item) {
+      var feedlink = $LX('./xhtml:a[@class="feedlink"]', item);
+      var title = $LX('./xhtml:a[@class="subscribe_list"]', item);
+      var users = $LX('./xhtml:span[@class="subscriber_count"]/xhtml:a', item);
+      var yet = $LX('./xhtml:input[@name="feedlink"]', item);
       liberator.log("input:" + feedlink.href);
       subscribeInfo.feedlinks.push([feedlink.href, (yet != null), (title ? title.textContent : '' ) + ' / ' + (users ? users.textContent :  '0 user')]);
     });
@@ -215,7 +217,7 @@ liberator.plugins.subscldr = (function() {
   function selectFeed(links, next) {
     liberator.log(links.toSource());
     liberator.echo("Following feeds were found on this site. Which are you subscribe?");
-    commandline.input("Input feed no. ", function(selected) {
+    commandline.input("Select or input feed URL ", function(selected) {
       liberator.echo("You select " + selected + ".");
       commandline.close();
       if (next && typeof next == "function")
@@ -233,8 +235,27 @@ liberator.plugins.subscldr = (function() {
   }
 
   // For convenience
-  function $LXs(a,b) libly.$U.getNodesFromXPath(a,b);
-  function $LX(a,b)  libly.$U.getFirstNodeFromXPath(a,b);
+  //function $LXs(a,b) libly.$U.getNodesFromXPath(a,b);
+  //function $LX(a,b)  libly.$U.getFirstNodeFromXPath(a,b);
+
+  function nsResolver(prefix) {
+    var ns = { 'xhtml': 'http://www.w3.org/1999/xhtml' };
+    return ns[prefix] || null;
+  }
+
+  function $LXs(a, b) {
+    var ret = [];
+    var res = (b.ownerDocument || b).evaluate(a, b, nsResolver, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+    for (var i = 0; i < res.snapshotLength; i++) {
+      ret.push(res.snapshotItem(i));
+    }
+    return ret;
+  }
+
+  function $LX(a, b) {
+    var res = (b.ownerDocument || b).evaluate(a, b, nsResolver, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+    return res.singleNodeValue || null;
+  }
 
   // }}}
   return PUBLICS;

@@ -50,6 +50,7 @@ darwin*)
 	alias mysql="mysql5"
 
 	alias emacs="open -a Emacs"
+	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias firefox="open -a Shiretoko"
 	alias safari="open -a Safari"
 	alias prev="open -a Preview"
@@ -66,7 +67,7 @@ freebsd*)
 esac
 
 
-# Suffix: 接尾辞エイリアス ========= {{{2
+# Suffix: 接尾辞エイリアス ========= {{{1
 alias -s txt=cat
 alias -s php=vim
 alias -s log=less
@@ -89,11 +90,23 @@ sc() {
 	screen -x $name || $screen -r $name || screen -S $name
 }
 
+
+# Global: グローバルエイリアス ===== {{{1
+if which pbcopy >/dev/null 2>&1 ; then
+	# Mac
+	alias -g C='| pbcopy'
+elif which xsel >/dev/null 2>&1 ; then
+	# Linux
+	alias -g C='| xsel --input --clipboard'
+fi
+
 # myabbrev {{{1
 typeset -A myabbrev
 
 myabbrev=(
 	"px" "ps ax"
+
+	"D"  "&& growlnotify -t done -m 'command successfully finished'"
 
 	"L"  "| less"
 	"G"  "| grep"

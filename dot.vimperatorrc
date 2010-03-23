@@ -10,20 +10,22 @@ echo "Loading..."
 set titlestring=Firefox
 
 " メニューとかアドレスバーを表示しない
-set guioptions=r
+set guioptions=
 
 " ex mode でインクリメント補完
 set wildoptions=auto
+
+" tabを非表示
+set showtabline=0
 
 " ページ全体で検索語を強調表示
 set hlsearch
 
 " :[tab]open コマンドで補完する候補と順番
-set complete=sl
-"autocmd VimperatorEnter .* :set complete+=H
+set complete=tslb
 
 " 補完の高速化
-set preload
+"set preload
 
 " 新しいタブで開くコマンド
 set newtab=all
@@ -40,10 +42,14 @@ set showstatuslinks=2
 " visualbell有効化
 set visualbell
 highlight Bell display:none;
-"set visualbellstyle += opacity:.5;
 
-colorscheme sweets
-" colorscheme vimplight
+colorscheme vimplight
+
+js<<EOM
+	if (liberator.has("MacUnix")) {
+		liberator.execute("set editor=/Applications/MacVim.app/Contents/MacOS/MacVim");
+	}
+EOM
 
 " Keymapping
 " ======================================================================
@@ -89,7 +95,6 @@ inoremap <C-b> <Left>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
 inoremap <C-y> <C-v><C-v>
-"?inoremap <C-BS> <A-BS>
 
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
@@ -119,8 +124,17 @@ noremap s :<C-u>google<Space>
 
 noremap ,b :<C-u>subscldr<Space>-rate<Space>
 
-" qmark 2.0preで動かないかも？
-" ===
+noremap U :<C-u>undo<Space>
+
+
+" bmark
+bmark -title="Twitter" -tags=keyword -keyword=tw http://twitter.com/%s
+bmark -title="Twitter Search" -tags=keyword -keyword=ts htp://search.twitter.com/search?q=%s
+bmark -title="ニコニコ動画" -tags=keyword -keyword=nico http://www.nicovideo.jp/warch/%s
+bmark -title="ニコニコ動画 検索" -tags=keyword -keyword=nicosearch http://www.nicovideo.jp/search/%s
+
+
+" qmark
 qmark a http://www.amazon.co.jp/
 qmark f http://fastladder.com/reader/
 qmark i http://www.instapaper.com/u
@@ -216,8 +230,8 @@ autocmd LocationChange fastladder\\.com/(reader|public) :fmap j k s a p q w r v 
 autocmd LocationChange www\\.google\\.com/reader :fmap -vkey j k n p m s t v A r S N P X O gh ga gs gt gu u / ?
 
 " Gmail
-autocmd LocationChange mail\\.google\\.com/mail :fmap j k n p o e x u c r a f [ ] / ?
-autocmd LocationChange mail\\.google\\.com/a/ :fmap j k n p o e x u c r a f [ ] / ?
+autocmd LocationChange mail\\.google\\.com/mail :fmap -depth 4 j k n p o e x u c r a f s [ ] / ?
+autocmd LocationChange mail\\.google\\.com/a/ :fmap j k n p o e x u c r a f s [ ] / ?
 
 " RTM
 "autocmd LocationChange www\\.rememberthemilk\\.com/ :fmap t c p r s 1 2 3 4 a n i k j K J z <Tab> <Delete> <C-g> ?
@@ -263,7 +277,7 @@ EOM
 
 " copy.js
 " =====
-source ~/.vimperator/runtime/copy.js
+"source ~/.vimperator/copy.js
 
 " localkeymode.js
 " =====
@@ -271,11 +285,18 @@ let g:localkeymode_enable = "true"
 javascript <<EOM
 liberator.globalVariables.localKeyMappings = [
 	[/www\.nicovideo\.jp\/watch/, [
+		["p", ":stplay"],
+		["m", ":stmute"],
+		["a", ":stseek! -15"],
+		["s", ":stseek! +15"],
+		["z", ":stfullscreen"]
+	/*
 		["i", ":nicoinfo"],
 		["p", ":nicopause"],
 		["m", ":nicomute"],
 		["a", ":nicoseek! -15"],
 		["s", ":nicoseek! +15"]
+		*/
 	]]
 ];
 EOM
@@ -334,7 +355,7 @@ EOM
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 " char_hints_mod2.js
-"let g:hintsio="io"
+let g:hintsio="io"
 "let g:hintchars="HJKLASDFGTYIOPQWERTNMZXCVB"
 
 " hatena.js
@@ -359,4 +380,4 @@ let g:no_reading_do_echo = 1
 
 source! ~/.vimperator/userContent.vimp
 
-echo ".vimperatorrc sourced"
+"echo ".vimperatorrc sourced"

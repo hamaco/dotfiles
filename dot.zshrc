@@ -2,6 +2,10 @@
 # キーバインドをEmacs風にする
 bindkey -e
 
+bindkey "u" undo
+bindkey "r" redo
+bindkey "^R" history-incremental-pattern-search-backward
+
 umask 022
 source ~/.zsh/cdd
 
@@ -61,6 +65,7 @@ setopt prompt_subst         #
 setopt pushd_ignore_dups    # 同じディレクトリをpushdしない
 setopt share_history        # 履歴ファイルを共有する
 setopt short_loops          # FOR, REPEAT, SELECT, IF, FUNCTION などで簡略文法が使えるようになる
+setopt transient_rprompt    # コマンド実行時にRPROMPTを消す
 
 
 
@@ -121,7 +126,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # オブジェクトファイルとか中間ファイルを補完させない
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 
-# killの補完を詳細にする
+# killの補完を詳細にして色付け
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
 
 # sudoでもコマンドの補完が動くようにする
@@ -156,13 +162,72 @@ esac
 
 
 
+# Functions: ============================================================== {{{1
+function chpwd() {
+	_reg_pwd_screennum
+	ls -G
+}
+
+function cdup() {
+	echo
+	cd ..
+	zle reset-prompt
+}
+zle -N cdup
+bindkey '\^' cdup
+
+rationalise-dot() {
+	if [[ $LBUFFER = *.. ]]; then
+		LBUFFER+=/..
+	else
+		LBUFFER+=.
+	fi
+}
+zle -N rationalise-dot
+bindkey . rationalise-dot
+
+
+
+
+# Alias: === {{{1
+# cho45 ~/
+expand-to-home-or-insert () {
+  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
+    LBUFFER+="~/"
+  else
+    zle self-insert
+  fi
+}
+zle -N expand-to-home-or-insert
+bindkey "\\"  expand-to-home-or-insert
+
+autoload zmv
+alias zmv="noglob zmv"
+
+
+
+# Include: マシン・OSごとの設定 ====================================== {{{1
+for file in aliases
+do
+	[ -f ~/.zsh/zsh_$file ] && source ~/.zsh/zsh_$file
+done
+
+osconf="$HOME/.zsh/.zshrc.`uname`"
+[ -f $osconf ] && source $osconf
+
+localconf="$HOME/.zsh/hosts/${HOST%%.*}.zshrc"
+[ -f $localconf ] && source $localconf
+
+
+
+
 # Terminal: ターミナル毎の設定 ============================================ {{{1
 case "${TERM}" in
 xterm*|kterm*)
 	precmd() {
 		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
 	}
-	screen
+	sc
 	;;
 screen*) # これtscreenで動かない
 	function ssh_screen() {
@@ -191,55 +256,6 @@ esac
 
 
 
-# Functions: ============================================================== {{{1
-function chpwd() {
-	_reg_pwd_screennum
-	ls -G
-}
-
-rationalise-dot() {
-	if [[ $LBUFFER = *.. ]]; then
-		LBUFFER+=/..
-	else
-		LBUFFER+=.
-	fi
-}
-zle -N rationalise-dot
-bindkey . rationalise-dot
-
-
-
-
-# Alias: === {{{1
-# cho45 ~/
-expand-to-home-or-insert () {
-  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
-    LBUFFER+="~/"
-  else
-    zle self-insert
-  fi
-}
-zle -N expand-to-home-or-insert
-bindkey "\\"  expand-to-home-or-insert
-
-
-
-
-# Include: マシン・OSごとの設定 ====================================== {{{1
-for file in aliases
-do
-	[ -f ~/.zsh/zsh_$file ] && source ~/.zsh/zsh_$file
-done
-
-osconf="$HOME/.zsh/.zshrc.`uname`"
-[ -f $osconf ] && source $osconf
-
-localconf="$HOME/.zsh/hosts/${HOST%%.*}.zshrc"
-[ -f $localconf ] && source $localconf
-
-
-
-
 # keychain {{{1
 if [ -f /usr/bin/keychain ]; then
 	if [ ${UID} != 0 ]; then
@@ -252,14 +268,6 @@ fi
 
 
 # Tmp: 一時的な設定 ======================================================= {{{1
-
-function update_neocomplcache() {
-	wget -qO - http://github.com/Shougo/neocomplcache/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=presen
-}
-function update_gitvim() {
-	wget -qO - http://github.com/motemen/git-vim/tarball/master | tar -xzC ~/.vim --strip-components=1 --exclude=README.rdoc
-}
-
 
 # kana's nice tool
 function git-gol() {
@@ -276,6 +284,20 @@ function alc() {
 	else
 		echo "Usage: alc {word}."
 	fi
+}
+
+# google
+function google() {
+	local str opt
+	if [ $# != 0 ]; then
+		for i in $*; do
+			str="$str+$i"
+		done
+		str=`echo $str | sed 's/^\+//'`
+		opt='search?num=50&hl=ja&lr=lang_ja'
+		opt="${opt}&q=${str}"
+	fi
+	w3m http://www.google.co.jp/$opt
 }
 
 # kana's prompt git branch {{{
@@ -331,8 +353,30 @@ function prompt-git-head-name() {
   return 0
 } # }}}
 
+# http://d.hatena.ne.jp/mollifier/20091220 {{{
+autoload smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
+zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
+bindkey '^]' insert-last-word
 
+autoload -U modify-current-argument
+# シングルクォート用
+_quote-previous-word-in-single() {
+    modify-current-argument '${(qq)${(Q)ARG}}'
+    zle vi-forward-blank-word
+}
+zle -N _quote-previous-word-in-single
+bindkey '^[s' _quote-previous-word-in-single
 
+# ダブルクォート用
+_quote-previous-word-in-double() {
+    modify-current-argument '${(qqq)${(Q)ARG}}'
+    zle vi-forward-blank-word
+}
+zle -N _quote-previous-word-in-double
+bindkey '^[d' _quote-previous-word-in-double
+
+# }}}
 
 # END {{{1
 # vim: foldmethod=marker

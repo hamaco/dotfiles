@@ -3,6 +3,7 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:svn:*' branchformat '%b:r%r'
 
 local PROMPT_YUNO="/ _ / ×"
 local PROMPT_YAYOI="ζ*'ヮ')ζ <"
@@ -19,7 +20,7 @@ function pwd_status () {
 	local color
 
 	case ${PWD} in
-		/Volumes/*) color=$fg[red]  ;;
+		/mnt/*|/Volumes/*) color=$fg[red]  ;;
 		/web/*)     color=$fg[yellow] ;;
 		*)          color=$fg[cyan] ;;
 	esac
@@ -54,5 +55,7 @@ PROMPT2="%_%% "
 
 
 SPROMPT="correct: %{$fg[red]%}%R%{$reset_color%} -> %{$fg[yellow]%}%r%{$reset_color%} ? [y,n,a,e]: "
+SPROMPT="もしかして %{$fg[yellow]%}%r%{$reset_color%}? 別にあんたのために修正したんじゃないんだからね! [n,y,a,e]:"
+
 
 # vim:set ft=zsh:
