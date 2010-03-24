@@ -7,7 +7,6 @@ bindkey "r" redo
 bindkey "^R" history-incremental-pattern-search-backward
 
 umask 022
-source ~/.zsh/cdd
 
 cdpath=($HOME /web/hamaco /web/ryus)
 
@@ -266,6 +265,9 @@ fi
 
 
 
+
+# 外部ファイル読み込み {{{1
+source ~/.zsh/cdd
 
 # Tmp: 一時的な設定 ======================================================= {{{1
 
