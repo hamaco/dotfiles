@@ -3,9 +3,12 @@ if has("mac")
 	set lines=55
 	"set guifont=DejaVu\ Sans\ Mono:h14
 	set guifont=Menlo:h14
-	set transparency=10
+	set transparency=20
 	"colorscheme h2u_black
 	colorscheme mrkn256
+
+	set fuoptions=maxvert,maxhorz
+	" au GUIEnter * set fullscreen
 elseif has("unix")
 	set columns=90
 	set lines=45
