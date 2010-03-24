@@ -264,7 +264,9 @@ inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 noremap <silent> <Space>kf :<C-u>Ku file<CR>
 noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
 noremap <silent> <Space>kh :<C-u>Ku history<CR>
-noremap <silent> <Space>km :<C-u>Ku file/mru<CR>
+noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
+noremap <silent> <Space>kc :<C-u>Ku cmd_mru/cmd<CR>
+noremap <silent> <Space>ks :<C-u>Ku cmd_mru/search<CR>
 
 
 " poslist.vim {{{2
@@ -296,6 +298,8 @@ let g:quickrun_config.textile = {
 " vimprocを使用すると上手く動かない
 let g:ref_use_vimproc = 0
 let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
+noremap <Space>ra :<C-u>Ref alc<Space>
+noremap <Space>rm :<C-u>Ref man<Space>
 
 
 " skk.vim {{{2
@@ -342,9 +346,9 @@ let g:user_zen_expandabbr_key = '<C-e>'
 
 
 " key mappings {{{1
-nnoremap <Space>ev :<C-u>edit $MYVIMRC<CR>
+nnoremap <Space>ev :<C-u>tabedit $MYVIMRC<CR>
 
-nnoremap <Space>eg :<C-u>edit $MYGVIMRC<CR>
+nnoremap <Space>eg :<C-u>tabedit $MYGVIMRC<CR>
 nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
 nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
