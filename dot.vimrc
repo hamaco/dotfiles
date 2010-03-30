@@ -173,7 +173,7 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,ref nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
 if !has('gui_running') && !(has('win32') || has('win64'))
@@ -258,6 +258,8 @@ let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
 inoremap <expr><TAB>    pumvisible() ? "\<C-n>" :"\<TAB>"
 imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+" vim hacks #135
+inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
 
 " ku.vim {{{2
