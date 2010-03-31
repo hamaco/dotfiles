@@ -127,7 +127,7 @@ let maplocalleader = "."
 
 
 
-" command {{{1
+" commands {{{1
 command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
 
 " 文字コードを変えて最読込 {{{2
@@ -150,7 +150,7 @@ command! -bang -nargs=0 ToEucjp
 command! -bang -nargs=0 ToSjis
 \ setlocal fileencoding=cp932
 
-" {{{2
+" カレントディレクトリ変更{{{2
 command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
 function! s:ChangeCurrentDir(directory, bang)
 	if a:directory == ''
@@ -166,6 +166,39 @@ endfunction
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
+
+
+" CommandGrep {{{2
+function! C(cmd)
+	redir => result
+	silent execute a:cmd
+	redir END
+	return result
+endfunction
+
+" Grep({text}, {pat} [, invert])
+function! Grep(text, pat, ...)
+	let op = a:0 && a:1 ? '!~#' : '=~#'
+	return join(filter(split(a:text, "\n"), 'v:val' . op . 'a:pat'), "\n")
+endfunction
+
+function! Cgrep(cmd, pat, ...)
+	return Grep(C(a:cmd), a:pat, a:0 && a:1)
+endfunction
+
+function! s:cgrep(args, v)
+	let list = matchlist(a:args, '^\v(/.{-}\\@<!/|\S+)\s+(.+)$')
+	if empty(list)
+		echomsg 'Cgrep: Invalid arguments: ' . a:args
+		return
+	endif
+	let pat = list[1] =~ '^/.*/$' ? list[1][1 : -2] : list[1]
+	echo Cgrep(list[2], pat, a:v)
+endfunction
+
+command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
+
+
 
 
 " autocmd {{{1
