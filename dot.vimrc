@@ -236,6 +236,8 @@ let g:Align_xstrlen = 3
 call altercmd#load()
 AlterCommand cd CD
 AlterCommand t tabedit
+AlterCommand s set
+AlterCommand sl setl
 
 
 " capslock.vim {{{2
