@@ -1,9 +1,18 @@
-" タブ追加アイコンを非表示
-style chrome://* .tabs-newtab-button { display: none; }
+" タブ追加アイコンを非表示 {{{1
+"style chrome://* .tabs-newtab-button { display: none; }
 
+" viewSBMComments {{{1
+style -name sbmcommentsviewer chrome://* <<EOM
+.liberator-sbmcommentsviewer > dd:nth-child(odd) { background: #222; }
+.liberator-sbmcommentsviewer-timestamp { color: #666; }
+EOM
+
+
+" ニコニコ動画 {{{1
 style -name nicovideo http://www.nicovideo.jp/* <<EOM
 EOM
 
+" livedoor reader {{{1
 style -name ldr http://reader.livedoor.com/reader/ <<EOM
 /* ログイン画面 */
 #loginFormboxmisc,
@@ -252,3 +261,6 @@ max-width: 100%;
 display:none;
 }
 EOM
+
+" END {{{1
+" vim: foldmethod=marker

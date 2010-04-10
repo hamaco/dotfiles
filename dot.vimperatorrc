@@ -126,6 +126,8 @@ noremap ,b :<C-u>subscldr<Space>-rate<Space>
 
 noremap U :<C-u>undo<Space>
 
+noremap C :viewSBMComments<CR>
+
 
 " bmark
 bmark -title="Twitter" -tags=keyword -keyword=tw http://twitter.com/%s
@@ -352,6 +354,15 @@ liberator.globalVariables.autochanger_proxy_settings = [
 EOM
 
 " hatenabookmark.js
+javascript <<EOF
+liberator.globalVariables.hBookmark_shortcuts = {
+	hintsAdd     : 'c',
+	hintsComment : '',
+	add          : ['c'],
+	comment      : [''],
+};
+EOF
+
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 " char_hints_mod2.js
