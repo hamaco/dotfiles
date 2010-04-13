@@ -28,9 +28,9 @@ keymap Global
 	key F1   = &Ignore
 	key A-F1 = F1
 
-	key Enter = &Ignore
-	key Backspace = &Ignore
-	key Escape = &Ignore
+	#key Enter = &Ignore
+	#key Backspace = &Ignore
+	#key Escape = &Ignore
 	key C-m = Enter
 	key C-h = Backspace
 	key C-OpenBracket = Escape
