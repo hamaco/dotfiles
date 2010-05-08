@@ -16,13 +16,13 @@ set guioptions=
 set wildoptions=auto
 
 " tabを非表示
-set showtabline=0
+set showtabline=2
 
 " ページ全体で検索語を強調表示
 set hlsearch
 
 " :[tab]open コマンドで補完する候補と順番
-set complete=tslb
+set complete=tslbH
 
 " 補完の高速化
 "set preload
@@ -43,7 +43,7 @@ set showstatuslinks=2
 set visualbell
 highlight Bell display:none;
 
-colorscheme vimplight
+colorscheme BrewBlue
 
 js<<EOM
 	if (liberator.has("MacUnix")) {
