@@ -12,7 +12,7 @@ end
 
 if has("win32") || has("win64")
 	" メニューが文字化けするので英語にする
-	language en
+	"language en
 endif
 
 set nocompatible
@@ -318,9 +318,9 @@ map <Space>r :<C-u>QuickRun<Cr>
 
 let g:quickrun_config = {}
 if has('clientserver')
-	let g:quickrun_config['*'] = {'runmode': 'async:remote'}
-else
 	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
+else
+	let g:quickrun_config['*'] = {'runmode': 'simple'}
 endif
 let g:quickrun_config.haskell = {'command': 'runghc'}
 let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['gcc %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
@@ -480,6 +480,17 @@ function! s:grep(args)
 	execute 'vimgrep' '/' . a:args[0] . '/j ' . target
 	if len(getqflist()) != 0 | copen | endif
 endfunction
+
+" vim hacks #141
+" Flip Arguments {{{
+"   f(a, b) to f(b, a) when your cursol is on '('.
+function! FlipArguments()
+  normal! y%
+  let @" = split(system('flipper "' . @" . '"'), "\n")[0]
+  execute "normal! %p\<C-o>d%"
+endfunction
+nnoremap <space>flip :<C-u>call FlipArguments()<Cr>
+" }}}
 
 " kana's useful tab function {{{
 function! s:move_window_into_tab_page(target_tabpagenr)
