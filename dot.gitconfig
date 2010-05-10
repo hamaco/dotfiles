@@ -8,6 +8,7 @@
 	quotepath = false
 
 [alias]
+	br = branch
 	ci = commit -v
 	co = checkout
 	di = diff
