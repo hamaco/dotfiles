@@ -16,7 +16,7 @@ set guioptions=
 set wildoptions=auto
 
 " tabを非表示
-set showtabline=0
+set showtabline=1
 
 " ページ全体で検索語を強調表示
 set hlsearch
