@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead .vimperatorrc setlocal filetype=vimperator
+au BufNewFile,BufRead *vimperatorrc*,*.vimp set filetype=vimperator
