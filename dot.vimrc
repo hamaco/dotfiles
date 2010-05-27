@@ -238,6 +238,7 @@ AlterCommand cd CD
 AlterCommand t tabedit
 AlterCommand s set
 AlterCommand sl setl
+AlterCommand sf setf
 
 
 " capslock.vim {{{2
