@@ -529,7 +529,7 @@ endfunction " }}}
 nnoremap <silent> <Space>ao :<C-u>call <SID>move_window_into_tab_page(0)<Cr>
 
 
-" Load settings for eacy location.
+" vim hacks #112 : Load settings for eacy location.
 augroup vimrc-local
   autocmd!
   autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
@@ -542,6 +542,22 @@ function! s:vimrc_local(loc)
   endfor
 endfunction
 
+" vim hacks #149
+let s:coding_styles = {}
+let s:coding_styles['My style']      = 'set expandtab   tabstop=4 shiftwidth=4 softtabstop&'
+let s:coding_styles['Short indent']  = 'set expandtab   tabstop=2 shiftwidth=2 softtabstop&'
+let s:coding_styles['GNU']           = 'set expandtab   tabstop=8 shiftwidth=2 softtabstop=2'
+let s:coding_styles['BSD']           = 'set noexpandtab tabstop=8 shiftwidth=4 softtabstop&'
+let s:coding_styles['Linux']         = 'set noexpandtab tabstop=8 shiftwidth=8 softtabstop&'
+
+command!
+\   -bar -nargs=1 -complete=customlist,s:coding_style_complete
+\   CodingStyle
+\   execute get(s:coding_styles, <f-args>, '')
+
+function! s:coding_style_complete(...) "{{{
+    return keys(s:coding_styles)
+endfunction "}}}
 
 " buffer
 nnoremap s <Nop>
