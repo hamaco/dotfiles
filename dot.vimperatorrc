@@ -4,53 +4,6 @@
 
 echo "Loading..."
 
-" Global options
-" ======================================================================
-" ブラウザタイトルの変更
-set titlestring=Firefox
-
-" メニューとかアドレスバーを表示しない
-set guioptions=
-
-" ex mode でインクリメント補完
-set wildoptions=auto
-
-" tabを非表示
-set showtabline=2
-
-" ページ全体で検索語を強調表示
-set hlsearch
-
-" :[tab]open コマンドで補完する候補と順番
-set complete=tslbH
-
-" 補完の高速化
-"set preload
-
-" 新しいタブで開くコマンド
-set newtab=all
-
-" サイトのテキストボックスにオートフォーカスするのを無効化
-set focuscontent
-
-" コマンド履歴保存件数
-set history=1000
-
-" リンクのURLをコマンドラインに表示
-set showstatuslinks=2
-
-" visualbell有効化
-set visualbell
-highlight Bell display:none;
-
-colorscheme BrewBlue
-
-js<<EOM
-	if (liberator.has("MacUnix")) {
-		liberator.execute("set editor=/Applications/MacVim.app/Contents/MacOS/MacVim");
-	}
-EOM
-
 " Keymapping
 " ======================================================================
 
@@ -185,6 +138,9 @@ set! dom.event.contextmenu.enabled=false
 " ポップアップの許可数変更
 set! dom.popup_maximum=2048
 
+" ミドルボタンクリックでペースト
+set! middlemouse.paste=true
+
 " Cookieの無効化(permissions.sqliteで上書きされる)
 set! network.cookie.cookieBehavior=2
 
@@ -209,6 +165,52 @@ set! profilemanager.opt_showProfileName=0
 " XUL/Migemo のクイック Migemo 検索へのショートカットを無効
 set! xulmigemo.shortcut.manualStart=
 
+" Global options
+" ======================================================================
+" ブラウザタイトルの変更
+set titlestring=Firefox
+
+" メニューとかアドレスバーを表示しない
+set guioptions=mrb
+
+" ex mode でインクリメント補完
+set wildoptions=auto
+
+" tabを非表示
+set showtabline=2
+
+" ページ全体で検索語を強調表示
+set hlsearch
+
+" :[tab]open コマンドで補完する候補と順番
+set complete=tslfbH
+
+" 補完の高速化
+"set preload
+
+" 新しいタブで開くコマンド
+set newtab=all
+
+" サイトのテキストボックスにオートフォーカスするのを無効化
+set focuscontent
+
+" コマンド履歴保存件数
+set history=1000
+
+" リンクのURLをコマンドラインに表示
+set showstatuslinks=2
+
+" visualbell有効化
+set visualbell
+highlight Bell display:none;
+
+colorscheme BrewBlue
+
+js<<EOM
+	if (liberator.has("MacUnix")) {
+		liberator.execute("set editor=/Applications/MacVim.app/Contents/MacOS/MacVim");
+	}
+EOM
 
 
 " LDR上では新規タブをバックグラウンドに開く
