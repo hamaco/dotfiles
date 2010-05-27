@@ -373,7 +373,6 @@ map <Leader>` <Plug>Csurround w`
 
 
 " vimproc.vim {{{2
-let g:VimShell_EnableInteractive = 1
 
 
 " zen-coding.vim {{{2
