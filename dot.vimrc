@@ -319,7 +319,7 @@ map <Space>r :<C-u>QuickRun<Cr>
 
 let g:quickrun_config = {}
 if has('clientserver')
-	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
+	let g:quickrun_config['*'] = {'runmode': 'simple'}
 else
 	let g:quickrun_config['*'] = {'runmode': 'simple'}
 endif
@@ -336,20 +336,37 @@ let g:quickrun_config.textile = {
 " vimprocを使用すると上手く動かない
 let g:ref_use_vimproc = 0
 let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
+
+let g:ref_alc_use_cache = 1
+
 noremap <Space>ra :<C-u>Ref alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
 
 
 " skk.vim {{{2
-let g:skk_jisyo = '~/.skk-jisyo'
-if has("mac")
-	let g:skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
-"elseif has("win32") || has("win64")
-else
-	let g:skk_large_jisyo = '~/Dropbox/SKK-JISYO.L'
-endif
-let g:skk_auto_save_jisyo = 1
+"let g:skk_jisyo = '~/.skk-jisyo'
+"if has("mac")
+"	let g:skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+""elseif has("win32") || has("win64")
+"else
+"	let g:skk_large_jisyo = '~/Dropbox/SKK-JISYO.L'
+"endif
+"let g:skk_auto_save_jisyo = 1
 
+"eskk.vim {{{2
+if !exists('s:loaded_vimrc')
+	let g:eskk_dictionary = '~/.skk-jisyo'
+	if has('mac')
+		let g:eskk_large_dictionary = "~/Library/Application\ Support/AquaSKK/SKK-JISYO.L"
+	elseif has('win32') || has('win64')
+	else
+	endif
+endif
+
+let g:eskk_egg_like_newline = 1
+if has('profile')
+	let g:eskk_debug_profile = 1
+endif
 
 
 " smartword.vim {{{2
