@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name           oAutoPagerize
 // @namespace      http://ss-o.net/
-// @description    loading next page and inserting into current page. oAutoPagerize supports for Opera 9.5+, GreaseKit(Safari/WebKit) and Google Chrome 3.0
-// @version        1.5.1
+// @description    loading next page and inserting into current page. oAutoPagerize supports for Opera 9.5+, GreaseKit(Safari/WebKit)
+// @version        1.5.2
 // @include        http://*
 // @include        https://*
 // @exclude        https://mail.google.com/*
@@ -26,19 +26,6 @@
 
 (function _oAutoPagerize(window,loaded){
 	var oAutoPagerize = _oAutoPagerize;
-	if (!loaded && this.chrome && this.unsafeWindow) {
-		var ev = document.createEvent('Event');
-		ev.initEvent('ChromeAutoPagerizeInitialize', true, false);
-		ev.setSiteinfo = function(siteinfos){
-			window.AutoPagerizeWedataSiteinfo = siteinfos;
-			oAutoPagerize(window, true);
-		};
-		ev.setSettings = function(settings){
-			window.AutoPagerizeSettings = settings;
-		};
-		document.dispatchEvent(ev);
-		return;
-	}
 	var Set = window.AutoPagerizeSettings || {
 		TOP_SITEINFO:[]
 		,BOTTOM_SITEINFO:[]
@@ -50,7 +37,7 @@
 	Set.DISABLE_SITE = Set.DISABLE_SITE || [];
 	if (window.AutoPagerizeWedataSiteinfo) {
 		var SITEINFO = window.AutoPagerizeWedataSiteinfo;
-	} else if (window.name !== 'oAutoPagerizeRequest' && (!this.chrome || !this.unsafeWindow)) {
+	} else if (window.name !== 'oAutoPagerizeRequest') {
 		if (Set.DISABLE_IFRAME && window.parent !== window) return;
 		insertSITEINFO();
 	}
@@ -68,7 +55,7 @@
 	var DebugMode = Set.DebugMode || false;
 	var URL = 'http://d.hatena.ne.jp/os0x/searchdiary?word=%2a%5boAutoPagerize%5d';
 	var UPDATE_URL = window.opera ? 'http://ss-o.net/userjs/0AutoPagerize.SITEINFO.js' : 'http://ss-o.net/userjs/0AutoPagerize.SITEINFO.user.js';
-	var VERSION = '1.5.0';
+	var VERSION = '1.5.2';
 	var AUTO_START = Set.AUTO_START !== false;
 	//var CACHE_EXPIRE = 24 * 60 * 60 * 1000;
 	var BASE_REMAIN_HEIGHT = Set.BASE_REMAIN_HEIGHT || 400;
@@ -104,6 +91,7 @@
 		}
 	];
 
+	var useIframe = false;
 	var locationHref = location.href;
 	// check disable site
 	if (disable.some(function(ads) {
@@ -125,16 +113,22 @@
 		},
 		*/
 		{
-			 url:         'http://m\\.twitter\\.com/'
+			 url:         '^http://m\\.twitter\\.com/'
 			,nextLink:    '//a[@accesskey="6"]'
 			,pageElement: '//ul/li'
 			,exampleUrl:  'http://m.twitter.com/os0x'
 		}
 		,{
-			url:           'http://eow\\.alc\\.co\\.jp/[^/]+'
+			url:           '^http://eow\\.alc\\.co\\.jp/[^/]+'
 			,nextLink:     'id("AutoPagerizeNextLink")'
-			,pageElement:  'id("resultList")//ul'
+			,pageElement:  'id("resultsList")/ul'
 			,exampleUrl:   'http://eow.alc.co.jp/%E3%81%82%E3%82%8C/UTF-8/ http://eow.alc.co.jp/are'
+		}
+		,{
+			url:           '^http://matome\\.naver\\.jp/\w+'
+			,nextLink:     '//a[@class="next"]'
+			,pageElement:  'id("itemDetail")/li'
+			,exampleUrl:   'http://matome.naver.jp/odai/2127476492987286301'
 		}
 	]);
 	var BOTTOM_SITEINFO = Set.BOTTOM_SITEINFO.concat([
@@ -160,16 +154,12 @@
 				} else {
 					document.write('<style type="text/css">body{display:none ! important;}</style>');
 				}
-				window.opera.addEventListener( 'BeforeJavascriptURL', function (e) { e.preventDefault(); }, false );
 				window.opera.addEventListener( 'BeforeEventListener', function (e) {
 					if (e.event.type != 'DOMContentLoaded') e.preventDefault();
 				}, false );
 				document.addEventListener('DOMContentLoaded',function(){
 					var _AutoPager = window.parent.AutoPagerize.AutoPagerObject;
 					_AutoPager._frameLoad.call(_AutoPager);
-					while (document.body.firstChild) {
-						document.body.removeChild(document.body.firstChild);
-					}
 					setTimeout(function(){
 						_AutoPager.removeIframe();
 					},100);
@@ -183,10 +173,10 @@
 			return;
 	}
 	var miscellaneous = [];
-	if (/^http:\/\/images\.google\.(?:[^.]+\.)?[^.\/]+\/images\?./.test(locationHref)) {
+	if (/^http:\/\/(www|images)\.google\.(?:[^.]+\.)?[^.\/]+\/images\?./.test(locationHref)) {
 		miscellaneous.push(function(utils){
 			//via http://furyu.tea-nifty.com/annex/2008/04/autopagerizeaut_c163.html
-			var info, href = location.href + '&gbv=1';
+			var info, href = location.href.replace(/^http:\/\/www/,'http://images') + '&gbv=1';
 			SITEINFO.some(function(site){
 				var r = new RegExp(site.url);
 				var m = !r.test('http://a')  && r.test(href);
@@ -202,14 +192,17 @@
 				a.href = a.href.replace(/(\?)gbv=2&|&gbv=2(&?)/,'$1$2') + '&gbv=1';
 			}
 			setTimeout(function(){
-				new Image().src = 'http://images.google.com/images?gbv=2&hl=ja&q=AutoPagerize?update='+(new Date()).getTime();
+				new Image().src = 'http://www.google.com/images?gbv=2&hl=ja&q=AutoPagerize?update='+(new Date()).getTime();
 				// for delete cookie(PREF= .. GBV=1 ..)
 			},100);
 		});
-	}
-	if (location.host == 'eow.alc.co.jp') {
+	} else if (
+		/^http:\/\/\w+\.google\.(?:[^.]+\.)?[^.\/]+/.test(locationHref) && (/^\/videosearch\?/.test(location.pathname) || /tbs=vid(%3A|:)1/.test(location.search))
+		) {
+		useIframe = true;
+	} else if (location.host === 'eow.alc.co.jp') {
 		var alc = function(doc){
-			var a,r = doc.evaluate('//table[@class="pageNavi"]//td[last()]/a',doc,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+			var a,r = doc.evaluate('id("paging")/a[last()]',doc,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
 			if (r.singleNodeValue) a = r.singleNodeValue;
 			else return;
 			a.id = 'AutoPagerizeNextLink';
@@ -219,6 +212,36 @@
 			alc(document);
 			setTimeout(function(){if (window.AutoPagerize) AutoPagerize.addDocumentFilter(alc);},500);
 		});
+	} else if (location.host==='matome.naver.jp') {
+		var info, href = location.href;
+		SITEINFO.some(function(site){
+			var r = new RegExp(site.url);
+			var m = !r.test('http://a')  && r.test(href);
+			if (m) {
+				info = site;
+				return true;
+			}
+		});
+		if (info) {
+			miscellaneous.push(function(utils){
+				var X = utils.getFirstElementByXPath;
+				var naver = function(doc){
+						var next = X(info.nextLink, doc);
+						if (next){
+							if (next.getAttribute('onclick')) {
+								var nextpage = next.getAttribute('onclick').match(/(\d+)/)[1];
+								var form=document.getElementsByName('missionViewForm')[0];
+								var param=[].slice.call(form).map(function(i){return i.name+'='+(i.name==='page'?nextpage:i.value);}).join('&');
+								next.href = location.pathname+'?'+param;
+							} else {
+								next.parentNode.removeChild(next);
+							}
+						}
+				};
+				naver(document);
+				setTimeout(function(){if (window.AutoPagerize) AutoPagerize.addDocumentFilter(naver);},500);
+			});
+		}
 	}
 	if (HISTORY_MODE_FAST && window.opera) {
 		opera.addEventListener('AfterEvent.GM_AutoPagerizeNextPageLoaded', function(){
@@ -229,6 +252,7 @@
 	}
 
 	var autopager = function() {
+		if (!SITEINFO) return;
 		miscellaneous.forEach(function(f){f({getFirstElementByXPath:getFirstElementByXPath});});
 		log('oAutoPagerize loading');
 		if (!document.body) return;
@@ -424,7 +448,7 @@
 				}
 				this.lastRequestURL = this.requestURL;
 				this.showLoading(true);
-				if (window.opera && !window.localStorage && ( !window.postMessage || 'utf-8' != document.characterSet ) ) {
+				if (useIframe || window.opera && !window.localStorage && ( !window.postMessage || 'utf-8' != document.characterSet ) ) {
 					this.frameRequest();
 				} else {
 					this.httpRequest();
@@ -467,8 +491,7 @@
 				this._frameLoad = function(){
 					self.frameLoad.call(self,iframe);
 				};
-				iframe.width = 1;
-				iframe.height = 1;
+				iframe.width = iframe.height = 1;
 				iframe.style.visibility = 'hidden';
 				iframe.name = 'oAutoPagerizeRequest';
 				iframe.src = this.requestURL;
@@ -494,7 +517,7 @@
 			}
 			,loaded:function(htmlDoc) {
 				AutoPager.documentFilters.forEach(function(i) {
-					i(htmlDoc, this.requestURL, this.info)
+					i(htmlDoc, this.requestURL, this.info);
 				}, this);
 				log('response document: '+htmlDoc);
 				try {
@@ -525,12 +548,9 @@
 					this.terminate();
 					return;
 				}
-				if (this.createHTMLDocumentMode && !window.opera) {
-					pages = pages.map(function (page) {
-						page = document.importNode(page, true);
-						return page;
-					});
-				}
+				pages.forEach(function(page, i) {
+					pages[i] = document.importNode(page, true);
+				});
 				this.loadedURLs[this.requestURL] = true;
 				this.addPage(htmlDoc, pages);
 				AutoPager.filters.forEach(function(i) {
@@ -882,7 +902,7 @@
 			sc.parentNode.removeChild(sc);
 		};
 		sc.src = SITEINFO_SERVER;
-		if (window.opera && document.readyState == 'interactive') {
+		if (window.opera && (document.readyState === 'loading' || document.readyState === 'interactive')) {
 			document.addEventListener('DOMContentLoaded',insert,false);
 		} else {
 			insert();
@@ -891,10 +911,10 @@
 			document.body.appendChild(sc);
 		}
 	}
-	if (window.opera && document.readyState == 'interactive') {
-		document.addEventListener('DOMContentLoaded',autopager,false);
+	if (window.opera && (document.readyState === 'loading' || document.readyState === 'interactive')) {
+		document.addEventListener('DOMContentLoaded', autopager, false);
 	} else {
 		autopager();
 	}
-	document.addEventListener('AutoPagerize_SiteinfoLoaded',autopager,false);
+	document.addEventListener('AutoPagerize_SiteinfoLoaded', autopager, false);
 })(window);
