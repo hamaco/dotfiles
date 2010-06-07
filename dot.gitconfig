@@ -13,18 +13,21 @@
 	co = checkout
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
+	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
 	l = log --stat
 	l1 = log --pretty=oneline --abbrev-commit
 	l1f = log --pretty=oneline
 	lg = log --name-status --color --graph
 	pl = pull
 	ps = push
+	rollback = reset --hard HEAD~
 	sl = stash list
 	sp = stash pop
 	ss = stash save
 	st = status
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	up = pull --rebase
+	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
 
 [color]
 	ui = auto
