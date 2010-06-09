@@ -1,8 +1,8 @@
 "=============================================================================
 " File: zencoding.vim
 " Author: Yasuhiro Matsumoto <mattn.jp@gmail.com>
-" Last Change: 16-Mar-2010.
-" Version: 0.35
+" Last Change: 31-May-2010.
+" Version: 0.41
 " WebPage: http://github.com/mattn/zencoding-vim
 " Description: vim plugins for HTML and CSS hi-speed coding.
 " SeeAlso: http://code.google.com/p/zen-coding/
@@ -79,11 +79,13 @@ if !exists('g:user_zen_leader_key')
 endif
 
 let s:target = expand('<sfile>:h') =~ '[\\/]plugin$' ? '' : '<buffer>'
-for item in [
+
+for s:item in [
 \ {'mode': 'i', 'var': 'user_zen_expandabbr_key', 'key': ',', 'plug': 'ZenCodingExpandAbbr', 'func': '<c-g>u<esc>:call <sid>zen_expandAbbr(0)<cr>a'},
-\ {'mode': 'i', 'var': 'user_zen_expandword_key', 'key': '.', 'plug': 'ZenCodingExpandWord', 'func': '<c-g>u<esc>:call <sid>zen_expandAbbr(1)<cr>a'},
 \ {'mode': 'v', 'var': 'user_zen_expandabbr_key', 'key': ',', 'plug': 'ZenCodingExpandVisual', 'func': ':call <sid>zen_expandAbbr(2)<cr>'},
 \ {'mode': 'n', 'var': 'user_zen_expandabbr_key', 'key': ',', 'plug': 'ZenCodingExpandNormal', 'func': ':call <sid>zen_expandAbbr(3)<cr>'},
+\ {'mode': 'i', 'var': 'user_zen_expandword_key', 'key': ';', 'plug': 'ZenCodingExpandWord', 'func': '<c-g>u<esc>:call <sid>zen_expandAbbr(1)<cr>a'},
+\ {'mode': 'n', 'var': 'user_zen_expandword_key', 'key': ',', 'plug': 'ZenCodingExpandWord', 'func': ':call <sid>zen_expandAbbr(1)<cr>'},
 \ {'mode': 'i', 'var': 'user_zen_balancetaginward_key', 'key': 'd', 'plug': 'ZenCodingBalanceTagInwardInsert', 'func': '<esc>:call <sid>zen_balanceTag(1)<cr>a'},
 \ {'mode': 'n', 'var': 'user_zen_balancetaginward_key', 'key': 'd', 'plug': 'ZenCodingBalanceTagInwardNormal', 'func': ':call <sid>zen_balanceTag(1)<cr>'},
 \ {'mode': 'v', 'var': 'user_zen_balancetaginward_key', 'key': 'd', 'plug': 'ZenCodingBalanceTagInwardVisual', 'func': ':call <sid>zen_balanceTag(2)<cr>'},
@@ -108,16 +110,18 @@ for item in [
 \ {'mode': 'n', 'var': 'user_zen_anchorizesummary_key', 'key': 'A', 'plug': 'ZenCodingAnchorizeSummary', 'func': ':call <sid>zen_anchorizeURL(1)<cr>'},
 \]
    
-  if !hasmapto('<plug>'.item.plug, item.mode)
-    exe item.mode . 'noremap <plug>' . item.plug . ' ' . item.func
+  if !hasmapto('<plug>'.s:item.plug, s:item.mode)
+    exe s:item.mode . 'noremap <plug>' . s:item.plug . ' ' . s:item.func
   endif
-  if !exists('g:' . item.var)
-    exe 'let g:' . item.var . " = '" . g:user_zen_leader_key . item.key . "'"
+  if !exists('g:' . s:item.var)
+    exe 'let g:' . s:item.var . " = '" . g:user_zen_leader_key . s:item.key . "'"
   endif
-  if !hasmapto(eval('g:' . item.var), item.mode)
-    exe item.mode . 'map ' . s:target . ' ' . eval('g:' . item.var) . ' <plug>' . item.plug
+  if !hasmapto(eval('g:' . s:item.var), s:item.mode)
+    exe s:item.mode . 'map ' . s:target . ' ' . eval('g:' . s:item.var) . ' <plug>' . s:item.plug
   endif
 endfor
+unlet s:target
+unlet s:item
 
 if exists('s:zen_settings') && g:zencoding_debug == 0
   finish
@@ -160,7 +164,8 @@ let s:zen_settings = {
 \            'd': 'display:|;',
 \            'd:n': 'display:none;',
 \            'd:b': 'display:block;',
-\            'd:ib': 'display:inline;',
+\            'd:i': 'display:inline;',
+\            'd:ib': 'display:inline-block;',
 \            'd:li': 'display:list-item;',
 \            'd:ri': 'display:run-in;',
 \            'd:cp': 'display:compact;',
@@ -857,9 +862,6 @@ function! s:zen_use_filter(filters, filter)
       return 1
     endif
   endfor
-  if a:filter == 'html'
-    return 1
-  endif
   return 0
 endfunction
 
@@ -1088,16 +1090,175 @@ function! s:zen_parseIntoTree(abbr, type)
   return root
 endfunction
 
+function! s:zen_toString_haml(settings, current, type, inline, filters, itemno, indent)
+  let settings = a:settings
+  let current = a:current
+  let type = a:type
+  let inline = a:inline
+  let filters = a:filters
+  let itemno = a:itemno
+  let indent = a:indent
+  let str = ""
+
+  let comment_indent = ''
+  let comment = ''
+  if len(current.name) > 0
+    let str .= '%' . current.name
+    let tmp = ''
+    for attr in keys(current.attr)
+      let val = current.attr[attr]
+      if current.multiplier > 1
+        while val =~ '\$[^{]*'
+          let val = substitute(val, '\(\$\+\)\([^{]*\)', '\=printf("%0".len(submatch(1))."d", itemno+1).submatch(2)', 'g')
+        endwhile
+      endif
+      if attr == 'id'
+        let str .= '#' . val
+      elseif attr == 'class'
+        let str .= '.' . substitute(val, ' ', '.', 'g')
+      else
+        if len(tmp) > 0 | let tmp .= ',' | endif
+        let tmp .= ' :' . attr . ' => "' . val . '"'
+      endif
+    endfor
+    if len(tmp)
+      let str .= '{' . tmp . ' }'
+    endif
+    if stridx(','.settings.html.empty_elements.',', ','.current.name.',') != -1 && len(current.value) == 0
+      let str .= "/"
+    elseif stridx(','.settings.html.block_elements.',', ','.current.name.',') != -1 && (len(current.child) == 0 && len(current.value) == 0)
+      let str .= '<'
+    endif
+
+    let inner = ''
+    if len(current.value) > 0
+      let lines = split(current.value[1:-2], "\n")
+      let str .= " " . lines[0]
+      for line in lines[1:]
+        let str .= " |\n" . line
+      endfor
+    endif
+    if len(current.child) == 1 && len(current.child[0].name) == 0
+      let lines = split(current.child[0].value[1:-2], "\n")
+      let str .= " " . lines[0]
+      for line in lines[1:]
+        let str .= " |\n" . line
+      endfor
+    elseif len(current.child) > 0
+      for child in current.child
+        let inner .= s:zen_toString(child, type, inline, filters)
+      endfor
+      let inner = substitute(inner, "\n", "\n  ", 'g')
+      let inner = substitute(inner, "\n  $", "", 'g')
+      let str .= "\n  " . inner
+    endif
+  endif
+  let str .= "\n"
+  return str
+endfunction
+
+function! s:zen_toString_html(settings, current, type, inline, filters, itemno, indent)
+  let settings = a:settings
+  let current = a:current
+  let type = a:type
+  let inline = a:inline
+  let filters = a:filters
+  let itemno = a:itemno
+  let indent = a:indent
+  let str = ""
+
+  let comment_indent = ''
+  let comment = ''
+  if s:zen_use_filter(filters, 'c')
+    let comment_indent = substitute(str, '^.*\(\s*\)$', '\1', '')
+  endif
+  let tmp = '<' . current.name
+  for attr in keys(current.attr)
+    if current.name =~ '^\(xsl:with-param\|xsl:variable\)$' && s:zen_use_filter(filters, 'xsl') && len(current.child) && attr == 'select'
+      continue
+    endif
+    let val = current.attr[attr]
+    if current.multiplier > 1
+      while val =~ '\$\([^{]\|$\)'
+        let val = substitute(val, '\(\$\+\)\([^{]\|$\)', '\=printf("%0".len(submatch(1))."d", itemno+1).submatch(2)', 'g')
+      endwhile
+    endif
+    let tmp .= ' ' . attr . '="' . val . '"'
+    if s:zen_use_filter(filters, 'c')
+      if attr == 'id' | let comment .= '#' . val | endif
+      if attr == 'class' | let comment .= '.' . val | endif
+    endif
+  endfor
+  if len(comment) > 0
+    let tmp = "<!-- " . comment . " -->" . (inline ? "" : "\n") . comment_indent . tmp
+  endif
+  let str .= tmp
+  let inner = current.value[1:-2]
+  if stridx(','.settings.html.inline_elements.',', ','.current.name.',') != -1
+    let child_inline = 1
+  else
+    let child_inline = 0
+  endif
+  for child in current.child
+    let html = s:zen_toString(child, type, child_inline, filters)
+    if child.name == 'br'
+      let inner = substitute(inner, '\n\s*$', '', '')
+    endif
+    let inner .= html
+  endfor
+  if len(current.child) == 1 && current.child[0].name == ''
+    if stridx(','.settings.html.inline_elements.',', ','.current.name.',') == -1
+      let str .= ">" . inner . "</" . current.name . ">\n"
+    else
+      let str .= ">" . inner . "</" . current.name . ">"
+    endif
+  elseif len(current.child)
+    if inline == 0
+      if stridx(','.settings.html.inline_elements.',', ','.current.name.',') == -1
+        let inner = substitute(inner, "\n", "\n" . indent, 'g')
+        let inner = substitute(inner, indent . "$", "", 'g')
+        let str .= ">\n" . indent . inner . "</" . current.name . ">\n"
+      else
+        let str .= ">" . inner . "</" . current.name . ">\n"
+      endif
+    else
+      let str .= ">" . inner . "</" . current.name . ">"
+    endif
+  else
+    if inline == 0
+      if stridx(','.settings.html.empty_elements.',', ','.current.name.',') != -1
+        let str .= " />\n"
+      else
+        if stridx(','.settings.html.inline_elements.',', ','.current.name.',') == -1 && len(current.child)
+          let str .= ">\n" . inner . '${cursor}</' . current.name . ">\n"
+        else
+          let str .= ">" . inner . '${cursor}</' . current.name . ">\n"
+        endif
+      endif
+    else
+      if stridx(','.settings.html.empty_elements.',', ','.current.name.',') != -1
+        let str .= " />"
+      else
+        let str .= ">" . inner . '${cursor}</' . current.name . ">"
+      endif
+    endif
+  endif
+  if len(comment) > 0
+    let str .= "<!-- /" . comment . " -->" . (inline ? "" : "\n") . comment_indent
+  endif
+  return str
+endfunction
+
 function! s:zen_toString(...)
   let current = a:1
   if a:0 > 1
     let type = a:2
   else
-    let type = ''
+    let type = &ft
   endif
-  if !has_key(s:zen_settings, type)
-    let type = 'html'
-  endif
+"  if !has_key(s:zen_settings, type)
+"    let type = 'html'
+"  endif
   if len(type) == 0 | let type = 'html' | endif
   if a:0 > 2
     let inline = a:3
@@ -1114,150 +1275,40 @@ function! s:zen_toString(...)
     let filters = ['html']
   endif
 
-  if has_key(s:zen_settings[type], 'indentation')
+  if has_key(s:zen_settings, type) && has_key(s:zen_settings[type], 'indentation')
     let indent = s:zen_settings[type].indentation
   else
     let indent = s:zen_settings.indentation
   endif
-  let m = 0
+  let itemno = 0
   let str = ''
-  while m < current.multiplier
-    let comment_indent = ''
-    let comment = ''
-    if s:zen_use_filter(filters, 'haml')
-      if len(current.name) > 0
-        let str .= '%' . current.name
-        let tmp = ''
-        for attr in keys(current.attr)
-          let val = current.attr[attr]
-          if current.multiplier > 1
-            while val =~ '\$[^{]*'
-              let val = substitute(val, '\(\$\+\)\([^{]*\)', '\=printf("%0".len(submatch(1))."d", m+1).submatch(2)', 'g')
-            endwhile
-          endif
-          if attr == 'id'
-            let str .= '#' . val
-          elseif attr == 'class'
-            let str .= '.' . substitute(val, ' ', '.', 'g')
-          else
-            if len(tmp) > 0 | let tmp .= ',' | endif
-            let tmp .= ' :' . attr . ' => "' . val . '"'
-          endif
-        endfor
-        if len(tmp)
-          let str .= '{' . tmp . ' }'
-        endif
-        if stridx(','.s:zen_settings.html.empty_elements.',', ','.current.name.',') != -1 && len(current.value) == 0
-          let str .= "/"
-        elseif stridx(','.s:zen_settings.html.block_elements.',', ','.current.name.',') != -1 && (len(current.child) == 0 && len(current.value) == 0)
-          let str .= '<'
-        endif
-
-        let inner = ''
-        if len(current.value) > 0
-          let lines = split(current.value[1:-2], "\n")
-          let str .= " " . lines[0]
-          for line in lines[1:]
-            let str .= " |\n" . line
-          endfor
-        endif
-        if len(current.child) == 1 && len(current.child[0].name) == 0
-          let lines = split(current.child[0].value[1:-2], "\n")
-          let str .= " " . lines[0]
-          for line in lines[1:]
-            let str .= " |\n" . line
-          endfor
-        elseif len(current.child) > 0
-          for child in current.child
-            let inner .= s:zen_toString(child, type, inline, filters)
-          endfor
-          let inner = substitute(inner, "\n", "\n  ", 'g')
-          let inner = substitute(inner, "\n  $", "", 'g')
-          let str .= "\n  " . inner
-        endif
-      endif
-      let str .= "\n"
-    elseif len(current.name) && s:zen_use_filter(filters, 'html')
-      if s:zen_use_filter(filters, 'c')
-        let comment_indent = substitute(str, '^.*\(\s*\)$', '\1', '')
-      endif
-      let tmp = '<' . current.name
-      for attr in keys(current.attr)
-        if current.name =~ '^\(xsl:with-param\|xsl:variable\)$' && s:zen_use_filter(filters, 'xsl') && len(current.child) && attr == 'select'
-          continue
-        endif
-        let val = current.attr[attr]
-        if current.multiplier > 1
-          while val =~ '\$\([^{]\|$\)'
-            let val = substitute(val, '\(\$\+\)\([^{]\|$\)', '\=printf("%0".len(submatch(1))."d", m+1).submatch(2)', 'g')
-          endwhile
-        endif
-        let tmp .= ' ' . attr . '="' . val . '"'
-        if s:zen_use_filter(filters, 'c')
-          if attr == 'id' | let comment .= '#' . val | endif
-          if attr == 'class' | let comment .= '.' . val | endif
-        endif
-      endfor
-      if len(comment) > 0 | let tmp = "<!-- " . comment . " -->\n" . comment_indent . tmp | endif
-      let str .= tmp
-      let inner = current.value[1:-2]
-      if stridx(','.s:zen_settings.html.inline_elements.',', ','.current.name.',') != -1
-        let child_inline = 1
+  while itemno < current.multiplier
+    if len(current.name)
+      if exists('*g:zen_toString_'.type)
+        let str .= function('g:zen_toString_'.type)(s:zen_settings, current, type, inline, filters, itemno, indent)
+      elseif s:zen_use_filter(filters, 'haml')
+        let str .= s:zen_toString_haml(s:zen_settings, current, type, inline, filters, itemno, indent)
       else
-        let child_inline = 0
-      endif
-      for child in current.child
-        let html = s:zen_toString(child, type, child_inline, filters)
-        if child.name == 'br'
-          let inner = substitute(inner, '\n\s*$', '', '')
-        endif
-        let inner .= html
-      endfor
-      if len(current.child) == 1 && current.child[0].name == ''
-        if stridx(','.s:zen_settings.html.inline_elements.',', ','.current.name.',') == -1
-          let str .= ">" . inner . "</" . current.name . ">\n"
-        else
-          let str .= ">" . inner . "</" . current.name . ">"
-        endif
-      elseif len(current.child)
-        if inline == 0
-          if stridx(','.s:zen_settings.html.inline_elements.',', ','.current.name.',') == -1
-            let inner = substitute(inner, "\n", "\n" . indent, 'g')
-            let inner = substitute(inner, indent . "$", "", 'g')
-            let str .= ">\n" . indent . inner . "</" . current.name . ">\n"
-          else
-            let str .= ">" . inner . "</" . current.name . ">\n"
-          endif
-        else
-          let str .= ">" . inner . "</" . current.name . ">"
-        endif
-        if len(comment) > 0 | let str .= "<!-- /" . comment . " -->\n" . comment_indent | endif
-      else
-        if inline == 0
-          if stridx(','.s:zen_settings.html.empty_elements.',', ','.current.name.',') != -1
-            let str .= " />\n"
-          else
-            if stridx(','.s:zen_settings.html.inline_elements.',', ','.current.name.',') == -1 && len(current.child)
-              let str .= ">\n" . inner . '${cursor}</' . current.name . ">\n"
-            else
-              let str .= ">" . inner . '${cursor}</' . current.name . ">\n"
-            endif
-          endif
-          if len(comment) > 0 | let str .= "<!-- /" . comment . " -->\n" . comment_indent | endif
-        else
-          if stridx(','.s:zen_settings.html.empty_elements.',', ','.current.name.',') != -1
-            let str .= " />"
-          else
-            let str .= ">" . inner . '${cursor}</' . current.name . ">"
-          endif
-        endif
+        let str .= s:zen_toString_html(s:zen_settings, current, type, inline, filters, itemno, indent)
       endif
     else
-      if len(current.snippet) > 0
-        let tmp = substitute(current.snippet, '|', '${cursor}', 'g')
+      let snippet = current.snippet
+      if len(current.snippet) == 0
+        let snippets = s:zen_getResource(type, 'snippets', {})
+        if !empty(snippets) && has_key(snippets, 'zensnippet')
+          let snippet = snippets['zensnippet']
+        endif
+      endif
+      if len(snippet) > 0
+        let tmp = substitute(snippet, '|', '${cursor}', 'g')
+        let tmp = substitute(tmp, '\${zenname}', current.name, 'g')
         if type == 'css' && s:zen_use_filter(filters, 'fc')
           let tmp = substitute(tmp, '^\([^:]\+\):\(.*\)$', '\1: \2', '')
         endif
+        for attr in keys(current.attr)
+          let val = current.attr[attr]
+          let tmp = substitute(tmp, '\${' . attr . '}', val, 'g')
+        endfor
         let str .= tmp
       else
         if len(current.name)
@@ -1276,7 +1327,7 @@ function! s:zen_toString(...)
       endif
       let str = substitute(str, '\${child}', inner, '')
     endif
-    let m = m + 1
+    let itemno = itemno + 1
   endwhile
   if s:zen_use_filter(filters, 'e')
     let str = substitute(str, '&', '\&amp;', 'g')
@@ -1350,7 +1401,7 @@ function! s:zen_expandAbbr(mode) range
     endif
     let mx = '|\(\%(html\|haml\|e\|c\|fc\|xsl\)\s*,\{0,1}\s*\)*$'
     if leader =~ mx
-      let filters = split(matchstr(str, mx)[1:], '\s*,\s*')
+      let filters = split(matchstr(leader, mx)[1:], '\s*,\s*')
       let leader = substitute(leader, mx, '', '')
     endif
     if leader =~ '\*'
@@ -1450,7 +1501,10 @@ function! s:zen_expandAbbr(mode) range
   endif
   silent! exe "normal! ".len(part)."h"
   if search('\$cursor\$', 'e')
-    silent! exe "normal! a" . repeat("\<c-h>", 8)
+    let oldselection = &selection
+    let &selection = 'inclusive'
+    silent! exe "normal! v7h\"_s"
+    let &selection = oldselection
   endif
 endfunction
 
@@ -1497,37 +1551,36 @@ function! s:zen_imageSize()
   if fn !~ '^\(/\|http\)'
     let fn = simplify(expand('%:h') . '/' . fn)
   endif
-  let [w, h] = [-1, -1]
+  let [type, width, height] = ['', -1, -1]
   
-  if has('perl')
-perl <<EOF
-no warnings;
-eval {
-  require Image::Info;
-  my $fn = ''.VIM::Eval('l:fn');
-  my $ii;
-  if ($fn =~ /^https?\:\/\//) {
-    require File::Temp;
-    require LWP::Simple;
-    my $tmp = File::Temp::tmpnam();
-    LWP::Simple::mirror($fn, $tmp);
-    $ii = Image::Info::image_info($tmp);
-    unlink $tmp;
-  } else {
-    $ii = Image::Info::image_info($fn);
-  }
-  VIM::DoCommand(sprintf('let [w, h] = [%d,%d]', $ii->{width} || -1, $ii->{height} || -1));
-  undef $ii;
-};
-VIM::Msg($@, "ErrorMsg") if $@;
-EOF
+  if filereadable(fn)
+    let hex = substitute(system('xxd -p "'.fn.'"'), '\n', '', 'g')
+  else
+    let hex = substitute(system('curl -s "'.fn.'" | xxd -p'), '\n', '', 'g')
   endif
 
-  if w == -1 && h == -1
+  if hex =~ '^89504e470d0a1a0a'
+    let type = 'png'
+    let width = eval('0x'.hex[32:39])
+    let height = eval('0x'.hex[40:47])
+  endif
+  if hex =~ '^ffd8'
+    let pos = match(hex, 'ffc[02]')
+    let type = 'jpg'
+    let height = eval('0x'.hex[pos+10:pos+11])*256 + eval('0x'.hex[pos+12:pos+13])
+    let width = eval('0x'.hex[pos+14:pos+15])*256 + eval('0x'.hex[pos+16:pos+17])
+  endif
+  if hex =~ '^47494638'
+    let type = 'gif'
+    let width = eval('0x'.hex[18:19].hex[16:17])
+    let height = eval('0x'.hex[14:15].hex[12:13])
+  endif
+
+  if width == -1 && height == -1
     return
   endif
-  let current.attr.width = w
-  let current.attr.height = h
+  let current.attr.width = width
+  let current.attr.height = height
   let html = s:zen_toString(current, 'html', 1)
   call s:change_content(img_region, html)
 endfunction
