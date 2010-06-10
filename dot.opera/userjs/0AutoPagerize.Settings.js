@@ -8,7 +8,7 @@
 (function(){
 	if (this.chrome) {
 		window.addEventListener('ChromeAutoPagerizeInitialize',function(evt){
-			if (evt.setSettings) evt.setSettings(window.AutoPagerizeSettings);
+			evt.setSettings(window.AutoPagerizeSettings);
 		}, true);
 	}
 var LOADING_IMAGE='url(data:image/gif;base64,'+
