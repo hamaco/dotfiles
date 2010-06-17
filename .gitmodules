@@ -1,0 +1,30 @@
+[submodule "dot.vim/bundle/vimfiler"]
+	path = dot.vim/bundle/vimfiler
+	url = git://github.com/Shougo/vimfiler.git
+[submodule "dot.vim/bundle/vimshell"]
+	path = dot.vim/bundle/vimshell
+	url = git://github.com/Shougo/vimshell.git
+[submodule "dot.vim/bundle/neocomplcache"]
+	path = dot.vim/bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
+[submodule "dot.vim/bundle/vimproc"]
+	path = dot.vim/bundle/vimproc
+	url = git://github.com/Shougo/vimproc.git
+[submodule "dot.vim/bundle/vim-html5validator"]
+	path = dot.vim/bundle/vim-html5validator
+	url = git://github.com/hokaccha/vim-html5validator.git
+[submodule "dot.vim/bundle/vim-quickrun"]
+	path = dot.vim/bundle/vim-quickrun
+	url = git://github.com/thinca/vim-quickrun.git
+[submodule "dot.vim/bundle/vim-ref"]
+	path = dot.vim/bundle/vim-ref
+	url = git://github.com/thinca/vim-ref.git
+[submodule "dot.vim/bundle/vim-textobj-plugins"]
+	path = dot.vim/bundle/vim-textobj-plugins
+	url = git://github.com/thinca/vim-textobj-plugins.git
+[submodule "dot.vim/bundle/vim-abolish"]
+	path = dot.vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule "dot.vim/bundle/vim-repeat"]
+	path = dot.vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
