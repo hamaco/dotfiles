@@ -10,7 +10,6 @@ dot.ssh/dot.config
 dot.vim/.netrwhist
 dot.vim/.VimballRecord
 dot.vim/backup/*
-dot.vim/bundle/*
 dot.vim/doc/tags*
 dot.vim/info/ku/history
 dot.vim/swap/*

@@ -28,3 +28,6 @@
 [submodule "dot.vim/bundle/vim-repeat"]
 	path = dot.vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
+[submodule "dot.vim/bundle/vim-altercmd"]
+	path = dot.vim/bundle/vim-altercmd
+	url = git://github.com/kana/vim-altercmd.git
