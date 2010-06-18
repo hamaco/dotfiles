@@ -1,14 +1,20 @@
 local COMMAND=""
 local COMMAND_TIME=""
 precmd() {
-	if [ "$COMMAND_TIME" -ne "0" ] ; then
-		local d=`date +%s`
-		d=`expr $d - $COMMAND_TIME`
-		if [ "$d" -ge "30" ] ; then
-			COMMAND="$COMMAND "
-			growlnotify -t "${${(s: :)COMMAND}[1]}" -m "$COMMAND"
-		fi
-	fi
+	case "$COMMAND" in
+		v*|tail*)
+			;;
+		*)
+			if [ "$COMMAND_TIME" -ne "0" ] ; then
+				local d=`date +%s`
+				d=`expr $d - $COMMAND_TIME`
+				if [ "$d" -ge "30" ] ; then
+					COMMAND="$COMMAND "
+					growlnotify -t "${${(s: :)COMMAND}[1]}" -m "$COMMAND" -s
+				fi
+			fi
+			;;
+	esac
 	COMMAND="0"
 	COMMAND_TIME="0"
 }
