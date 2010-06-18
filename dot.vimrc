@@ -305,6 +305,9 @@ noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
 noremap <silent> <Space>kc :<C-u>Ku cmd_mru/cmd<CR>
 noremap <silent> <Space>ks :<C-u>Ku cmd_mru/search<CR>
 
+call ku#custom_prefix('common', '.vim', $HOME . '/.vim')
+call ku#custom_prefix('common', '~', $HOME)
+
 
 " poslist.vim {{{2
 map <C-o> <Plug>(poslist-prev-pos)
