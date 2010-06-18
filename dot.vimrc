@@ -397,6 +397,11 @@ map <Leader>sq <Plug>Csurround w'
 map <Leader>` <Plug>Csurround w`
 
 
+" vimfiler.vim {{{2
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_edit_command = "tabedit"
+
+
 " vimproc.vim {{{2
 
 
