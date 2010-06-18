@@ -357,11 +357,16 @@ noremap <Space>rm :<C-u>Ref man<Space>
 
 "eskk.vim {{{2
 if !exists('s:loaded_vimrc')
-	let g:eskk_dictionary = '~/.skk-jisyo'
-	if has('mac')
-		let g:eskk_large_dictionary = "~/Library/Application\ Support/AquaSKK/SKK-JISYO.L"
-	elseif has('win32') || has('win64')
-	else
+	if !exists("g:eskk_dictionary")
+		let g:eskk_dictionary = '~/.skk-jisyo'
+	endif
+
+	if !exists("g:eskk_large_dictionary")
+		if has('mac')
+				let g:eskk_large_dictionary = "~/Library/Application\ Support/AquaSKK/SKK-JISYO.L"
+		elseif has('win32') || has('win64')
+		else
+		endif
 	endif
 endif
 
