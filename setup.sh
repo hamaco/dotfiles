@@ -7,3 +7,6 @@ do
 	rm -f ~/$file
 	ln -s $CURRENT/dot$file ~/$file
 done
+
+ln -s ~/Dropbox/Linux/bin ~/bin
+ln -s ~/Dropbox/Linux/share ~/share
