@@ -258,38 +258,37 @@ map <Leader><C-c> <Plug>CommentopRemoveNV
 
 " neocomplcache.vim {{{2
 let g:AutoComplPop_NotEnableAtStartup = 1
-let g:NeoComplCache_EnableAtStartup = 1
-let g:NeoComplCache_EnableInfo = 1
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:NeoComplCache_EnableUnderbarCompletion = 1
-let g:NeoComplCache_EnableQuickMatch = 0 " 数字で候補選択を無効
-let g:NeoComplCache_EnableSkipCompletion = 1
-let g:NeoComplCache_PartialMatch = 0
-let g:NeoComplCache_IgnoreCase = 0
-let g:NeoComplCache_EnableWildCard = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_info = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_quick_match = 0 " 数字で候補選択を無効
+let g:neocomplcache_enable_skip_completion = 1
+let g:neoComplcache_partial_match = 0
+let g:neocomplcache_enable_ignore_case = 0
+let g:neocomplcache_enable_wildcard = 0
 " let g:NeoComplCache_PreviousKeywordCompletion = 0
-let g:NeoComplCache_MinSyntaxLength = 3
-let g:NeoComplCache_SkipInputTime = "0.1"
-let g:NeoComplCache_SkipCompletionTime = "0.1"
-let g:NeoComplCache_SmartCase = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_skip_input_time = "0.1"
+let g:neocomplcache_skip_completion_time = "0.1"
+let g:neocomplcache_enable_smart_case = 1
 "tmp
-let g:NeoComplCache_AlphabeticalOrder = 1
-let g:NeoComplCache_KeywordCompletionStartLength = 2
-let g:NeoComplCache_TagsCompletionStartLength = 5
-let g:NeoComplCache_CachingLimitFileSize = 10240
+let g:neocomplcache_auto_completion_start_length = 2
+let g:neocomplcache_tags_completion_start_length = 5
+let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_EnableMFU = 1
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
-let g:NeoComplCache_DictionaryFileTypeLists = {
+let g:neocomplcache_dictionary_filetype_lists = {
 			\ "default" : ""
 			\ }
 
-if !exists("g:NeoComplCache_KeywordPatterns")
-	let g:NeoComplCache_KeywordPatterns = {}
+if !exists("g:neocomplcache_keyword_patterns")
+	let g:neocomplcache_keyword_patterns = {}
 endif
-let g:NeoComplCache_KeywordPatterns["default"] = "\v\h\w*"
-let g:NeoComplCache_SnippetsDir = $HOME."/.vim/snippets"
+let g:neocomplcache_keyword_patterns["default"] = "\v\h\w*"
+let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
 
 inoremap <expr><TAB>    pumvisible() ? "\<C-n>" :"\<TAB>"
 imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
