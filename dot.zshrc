@@ -34,7 +34,7 @@ setopt auto_cd              # cdなしでもディレクトリ移動
 setopt auto_list            # ^Iで補完可能な一覧を表示する(補完候補が複数ある時に、一覧表示)
 setopt auto_menu            # 補完キー連打で順に補完候補を自動で補完
 setopt auto_pushd           # cdのタイミングで自動的にpushd
-setopt no_auto_remove_slash # パスの最後のスラッシュを自動で削除しない
+#setopt no_auto_remove_slash # パスの最後のスラッシュを自動で削除しない
 setopt auto_resume          # サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
 setopt no_beep              # ビープ音の無効化
 setopt brace_ccl            # {a-c}をa b cに展開できるようにする
@@ -378,6 +378,10 @@ _quote-previous-word-in-double() {
 zle -N _quote-previous-word-in-double
 bindkey '^[d' _quote-previous-word-in-double
 
+# }}}
+
+# http://d.hatena.ne.jp/hchbaw/20100526/1274886125 {{{
+#source $HOME/.zsh/auto-fu.zsh; zle-line-init () { auto-fu-init; }; zle -N zle-line-init
 # }}}
 
 # END {{{1
