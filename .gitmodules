@@ -34,3 +34,6 @@
 [submodule "dot.vim/bundle/eskk.vim"]
 	path = dot.vim/bundle/eskk.vim
 	url = git://github.com/tyru/eskk.vim.git
+[submodule "dot.vim/bundle/git-vim"]
+	path = dot.vim/bundle/git-vim
+	url = git://github.com/motemen/git-vim.git
