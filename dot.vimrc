@@ -256,6 +256,22 @@ map <Leader>C     <Plug>CommentopAppendNV
 map <Leader><C-c> <Plug>CommentopRemoveNV
 
 
+" git.vim {{{2
+let g:git_no_map_default = 1
+let g:git_command_edit = 'rightbelow vnew'
+nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
+nnoremap <Space>gD :<C-u>GitDiff<Enter>
+nnoremap <Space>gs :<C-u>GitStatus<Enter>
+nnoremap <Space>gl :<C-u>GitLog<Enter>
+nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<Enter>
+nnoremap <Space>ga :<C-u>GitAdd<Enter>
+nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
+nnoremap <Space>gc :<C-u>GitCommit<Enter>
+nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
+nnoremap <Space>gp :<C-u>Git push
+
+
+
 " neocomplcache.vim {{{2
 let g:AutoComplPop_NotEnableAtStartup = 1
 let g:neocomplcache_enable_at_startup = 1
@@ -371,6 +387,7 @@ if !exists('s:loaded_vimrc')
 endif
 
 let g:eskk_egg_like_newline = 1
+let g:eskk_revert_henkan_style = "eskk"
 if has('profile')
 	let g:eskk_debug_profile = 1
 endif
@@ -402,7 +419,27 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_edit_command = "tabedit"
 
 
-" vimproc.vim {{{2
+" vimshell.vim {{{2
+let g:vimshell_user_prompt = 'getcwd()'
+let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+let g:vimshell_smart_case = 1
+
+if has('win32') || has('win64')
+	" Display user name on Windows.
+	let g:vimshell_prompt = $USERNAME."% "
+elseif has('mac')
+	" Display user name on Mac.
+	let g:vimshell_prompt = $USER."% "
+else
+	" Display user name on Linux.
+	let g:vimshell_prompt = $USER."% "
+
+	let g:vimshell_execute_file_list['zip'] = 'zipinfo'
+	call vimshell#set_execute_file('tgz,gz', 'gzcat')
+	call vimshell#set_execute_file('tbz,bz2', 'bzcat')
+	call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
+	call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
+endif
 
 
 " zen-coding.vim {{{2
@@ -483,19 +520,6 @@ nnoremap <C-n> :<C-u>tabnext<CR>
 " Tmp: 一時的な設定 ============================================ {{{1
 
 let g:php_localvarcheck_enable = 0
-" vim hacks #67
-let g:git_no_map_default = 1
-let g:git_command_edit = 'rightbelow vnew'
-nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
-nnoremap <Space>gD :<C-u>GitDiff<Enter>
-nnoremap <Space>gs :<C-u>GitStatus<Enter>
-nnoremap <Space>gl :<C-u>GitLog<Enter>
-nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<Enter>
-nnoremap <Space>ga :<C-u>GitAdd<Enter>
-nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
-nnoremap <Space>gc :<C-u>GitCommit<Enter>
-nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
-nnoremap <Space>gp :<C-u>Git push
 
 
 " vim hacks #106
