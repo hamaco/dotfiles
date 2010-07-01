@@ -333,7 +333,6 @@ map <C-i> <Plug>(poslist-next-pos)
 " quickrun.vim {{{2
 let g:quickrun_direction = 'rightbelow vertical'
 let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
-map <Space>r :<C-u>QuickRun<Cr>
 
 let g:quickrun_config = {}
 if has('clientserver')
@@ -388,9 +387,6 @@ endif
 
 let g:eskk_egg_like_newline = 1
 let g:eskk_revert_henkan_style = "eskk"
-if has('profile')
-	let g:eskk_debug_profile = 1
-endif
 
 
 " smartword.vim {{{2
