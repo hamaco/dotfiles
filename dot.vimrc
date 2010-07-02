@@ -431,7 +431,7 @@ else
 	" Display user name on Linux.
 	let g:vimshell_prompt = $USER."% "
 
-	let g:vimshell_execute_file_list['zip'] = 'zipinfo'
+	"let g:vimshell_execute_file_list['zip'] = 'zipinfo'
 	call vimshell#set_execute_file('tgz,gz', 'gzcat')
 	call vimshell#set_execute_file('tbz,bz2', 'bzcat')
 	call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')

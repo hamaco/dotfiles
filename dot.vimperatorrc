@@ -274,6 +274,7 @@ liberator.globalVariables.refcontrol = {
 	"fc2.com"             : "@FORGE",
 	"image.itmedia.co.jp" : "http://www.itmedia.co.jp",
 	"bk.mufg.jp"          : "@NORMAL",
+	"www.nicomimi.net"    : "http://www.nicomimi.net",
 	"pixiv.net"           : "http://www.pixiv.net",
 	"hamaco.org"          : "@NORMAL",
 };
