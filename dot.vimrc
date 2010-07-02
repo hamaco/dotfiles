@@ -80,6 +80,7 @@ set backup
 set backupcopy&
 set backupdir=~/.vim/backup/
 set backupskip&
+set cdpath+=/web/*
 set cinoptions=:0,(0,W1s
 set clipboard=unnamed
 set directory=~/.vim/swap/
