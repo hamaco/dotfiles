@@ -37,3 +37,9 @@
 [submodule "dot.vim/bundle/git-vim"]
 	path = dot.vim/bundle/git-vim
 	url = git://github.com/motemen/git-vim.git
+[submodule "dot.vim/bundle/lingr-vim"]
+	path = dot.vim/bundle/lingr-vim
+	url = http://github.com/tsukkee/lingr-vim.git
+[submodule "dot.vim/bundle/vim-github"]
+	path = dot.vim/bundle/vim-github
+	url = http://github.com/thinca/vim-github.git
