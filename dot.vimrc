@@ -284,6 +284,7 @@ let g:neocomplcache_enable_skip_completion = 1
 let g:neoComplcache_partial_match = 0
 let g:neocomplcache_enable_ignore_case = 0
 let g:neocomplcache_enable_wildcard = 0
+let g:neocomplcache_max_list = 10
 " let g:NeoComplCache_PreviousKeywordCompletion = 0
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_skip_input_time = "0.1"
@@ -372,22 +373,22 @@ noremap <Space>rm :<C-u>Ref man<Space>
 "let g:skk_auto_save_jisyo = 1
 
 "eskk.vim {{{2
-if !exists('s:loaded_vimrc')
-	if !exists("g:eskk_dictionary")
-		let g:eskk_dictionary = '~/.skk-jisyo'
-	endif
+if has('vim_starting')
+	let g:eskk_dictionary = '~/.skk-jisyo'
 
-	if !exists("g:eskk_large_dictionary")
-		if has('mac')
-				let g:eskk_large_dictionary = "~/Library/Application\ Support/AquaSKK/SKK-JISYO.L"
-		elseif has('win32') || has('win64')
-		else
-		endif
+	if has('mac')
+			let g:eskk_large_dictionary = "~/Library/Application\ Support/AquaSKK/SKK-JISYO.L"
+	elseif has('win32') || has('win64')
+	else
 	endif
 endif
 
+let g:eskk_debug = 0
 let g:eskk_egg_like_newline = 1
-let g:eskk_revert_henkan_style = "eskk"
+let g:eskk_revert_henkan_style = "okuri"
+let g:eskk_enable_completion = 0
+let g:eskk_no_default_mappings = 0
+
 
 
 " smartword.vim {{{2
@@ -620,6 +621,16 @@ nnoremap sH <C-w>H:call <SID>good_width()<Cr>
 nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L:call <SID>good_width()<Cr>
+nmap spj <SID>(split-to-j)
+nmap spk <SID>(split-to-k)
+nmap sph <SID>(split-to-h)
+nmap spl <SID>(split-to-l)
+
+nnoremap <SID>(split-to-j) :<C-u>belowright split<CR>
+nnoremap <SID>(split-to-k) :<C-u>aboveleft split<CR>
+nnoremap <SID>(split-to-h) :<C-u>topleft vsplit<CR>
+nnoremap <SID>(split-to-l) :<C-u>botright vsplit<CR>
+
 function! s:good_width()
   if winwidth(0) < 84
     vertical resize 84
