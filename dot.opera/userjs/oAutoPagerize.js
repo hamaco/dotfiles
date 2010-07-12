@@ -39,7 +39,7 @@
 		var SITEINFO = window.AutoPagerizeWedataSiteinfo;
 	} else if (window.name !== 'oAutoPagerizeRequest') {
 		if (Set.DISABLE_IFRAME && window.parent !== window) return;
-		insertSITEINFO();
+		if (!Set.USE_CUSTOM_SITEINFO_LOADER) insertSITEINFO();
 	}
 
 	var isSafari3 = window.getMatchedCSSRules && !window.postMessage;
@@ -916,5 +916,10 @@
 	} else {
 		autopager();
 	}
-	document.addEventListener('AutoPagerize_SiteinfoLoaded', autopager, false);
+	// document.addEventListener('AutoPagerize_SiteinfoLoaded', autopager, false);
+	// 
+	document.addEventListener('AutoPagerize_SiteinfoLoaded', function(e) {
+		if (e.SITEINFO) SITEINFO = e.SITEINFO;
+		autopager();
+	}, false);
 })(window);

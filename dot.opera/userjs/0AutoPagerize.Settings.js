@@ -69,5 +69,6 @@ window.AutoPagerizeSettings = {
 	]
 	,DISABLE_IFRAME:false
 	,HISTORY_MODE_FAST:false // via http://d.hatena.ne.jp/edvakf/20090101/1230802163
+	,USE_CUSTOM_SITEINFO_LOADER: true
 };
 })();
