@@ -421,6 +421,7 @@ let g:vimfiler_edit_command = "tabedit"
 let g:vimshell_user_prompt = 'getcwd()'
 let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_smart_case = 1
+let g:vimshell_external_history_path = expand('~/.zsh_histfile')
 
 if has('win32') || has('win64')
 	" Display user name on Windows.
