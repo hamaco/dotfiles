@@ -18,6 +18,7 @@ alias lrt="ls -lrt"
 # for vim
 alias v="vim"
 alias vi="vim"
+alias vsh="vim -c VimShell"
 alias lingr="vim -c LingrLaunch"
 
 alias tgz="tar cvzf"
