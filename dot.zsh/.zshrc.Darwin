@@ -10,7 +10,7 @@ _notify_growl_precmd() {
 				d=`expr $d - $COMMAND_TIME`
 				if [ "$d" -ge "30" ] ; then
 					COMMAND="$COMMAND "
-					growlnotify -w 10 -t "${${(s: :)COMMAND}[1]}" -m "$COMMAND"
+					growlnotify -p 1 -t "${${(s: :)COMMAND}[1]}" -m "$COMMAND"
 				fi
 			fi
 			;;
