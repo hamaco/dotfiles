@@ -81,6 +81,8 @@ noremap U :<C-u>undo<Space>
 
 noremap C :viewSBMComments<CR>
 
+noremap ,r :<C-u>js Readability.enableREADABILITY({target: {id: 'readability-statusbar-icon'}})<CR>
+
 
 " bmark
 bmark -title="Twitter" -tags=keyword -keyword=tw http://twitter.com/%s

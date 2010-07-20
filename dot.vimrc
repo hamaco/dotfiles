@@ -342,7 +342,7 @@ let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
 
 let g:quickrun_config = {}
 if has('clientserver')
-	let g:quickrun_config['*'] = {'runmode': 'simple'}
+	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
 else
 	let g:quickrun_config['*'] = {'runmode': 'simple'}
 endif
@@ -601,11 +601,11 @@ endfunction
 
 " vim hacks #149
 let s:coding_styles = {}
-let s:coding_styles['My style']      = 'set expandtab   tabstop=4 shiftwidth=4 softtabstop&'
-let s:coding_styles['Short indent']  = 'set expandtab   tabstop=2 shiftwidth=2 softtabstop&'
-let s:coding_styles['GNU']           = 'set expandtab   tabstop=8 shiftwidth=2 softtabstop=2'
-let s:coding_styles['BSD']           = 'set noexpandtab tabstop=8 shiftwidth=4 softtabstop&'
-let s:coding_styles['Linux']         = 'set noexpandtab tabstop=8 shiftwidth=8 softtabstop&'
+let s:coding_styles['My style']      = 'setl expandtab   tabstop=4 shiftwidth=4 softtabstop&'
+let s:coding_styles['Short indent']  = 'setl expandtab   tabstop=2 shiftwidth=2 softtabstop&'
+let s:coding_styles['GNU']           = 'setl expandtab   tabstop=8 shiftwidth=2 softtabstop=2'
+let s:coding_styles['BSD']           = 'setl noexpandtab tabstop=8 shiftwidth=4 softtabstop&'
+let s:coding_styles['Linux']         = 'setl noexpandtab tabstop=8 shiftwidth=8 softtabstop&'
 
 command!
 \   -bar -nargs=1 -complete=customlist,s:coding_style_complete
@@ -615,6 +615,18 @@ command!
 function! s:coding_style_complete(...) "{{{
     return keys(s:coding_styles)
 endfunction "}}}
+
+
+" vim hacks #159
+nmap <Space>sj <SID>(split-to-j)
+nmap <Space>sk <SID>(split-to-k)
+nmap <Space>sh <SID>(split-to-h)
+nmap <Space>sl <SID>(split-to-l)
+
+nnoremap <SID>(split-to-j) :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
+nnoremap <SID>(split-to-k) :<C-u>execute 'aboveleft'  (v:count == 0 ? '' : v:count) 'split'<CR>
+nnoremap <SID>(split-to-h) :<C-u>execute 'topleft'    (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+nnoremap <SID>(split-to-l) :<C-u>execute 'botright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
 
 " buffer
 nnoremap s <Nop>
