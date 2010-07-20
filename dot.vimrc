@@ -88,6 +88,7 @@ set formatoptions=tcroqnlM1
 set history=100
 set hlsearch
 set ignorecase
+set imdisable
 set incsearch
 set laststatus=2
 set list
