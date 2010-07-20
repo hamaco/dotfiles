@@ -393,6 +393,11 @@ let g:eskk_revert_henkan_style = 'okuri'
 let g:eskk_enable_completion = 0
 let g:eskk_no_default_mappings = 0
 
+let g:eskk_no_default_mappings = 1
+silent! imap <unique> <C-j>   <Plug>(eskk:enable)
+silent! cmap <unique> <C-j>   <Plug>(eskk:enable)
+silent! lmap <unique> <C-j>   <Plug>(eskk:enable)
+
 
 
 " smartword.vim {{{2

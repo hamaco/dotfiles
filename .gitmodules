@@ -43,3 +43,6 @@
 [submodule "dot.vim/bundle/vim-github"]
 	path = dot.vim/bundle/vim-github
 	url = http://github.com/thinca/vim-github.git
+[submodule "dot.vim/bundle/vim-poslist"]
+	path = dot.vim/bundle/vim-poslist
+	url = http://github.com/thinca/vim-poslist.git
