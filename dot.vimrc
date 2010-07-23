@@ -390,14 +390,12 @@ endif
 
 let g:eskk_debug = 0
 let g:eskk_egg_like_newline = 1
-let g:eskk_revert_henkan_style = 'okuri'
 let g:eskk_enable_completion = 0
-let g:eskk_no_default_mappings = 0
+let g:eskk_ignore_continuous_sticky = 1
+"let g:eskk_no_default_mappings = 1
+let g:eskk_revert_henkan_style = 'okuri'
 
-let g:eskk_no_default_mappings = 1
-silent! imap <unique> <C-j>   <Plug>(eskk:enable)
-silent! cmap <unique> <C-j>   <Plug>(eskk:enable)
-silent! lmap <unique> <C-j>   <Plug>(eskk:enable)
+"map! <C-j> <Plug>(eskk:enable)
 
 
 
@@ -438,7 +436,7 @@ if has('win32') || has('win64')
 	let g:vimshell_prompt = $USERNAME."% "
 elseif has('mac')
 	" Display user name on Mac.
-	let g:vimshell_prompt = $USER."% "
+	let g:vimshell_prompt = "ζ*#ﾟДﾟ)ζ< "
 else
 	" Display user name on Linux.
 	let g:vimshell_prompt = $USER."% "
