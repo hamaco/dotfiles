@@ -6,6 +6,7 @@ zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
 zstyle ':vcs_info:svn:*' branchformat '%b:r%r'
 
 local PROMPT_YUNO="/ _ / ×"
+local PROMPT_NONOWA="(のワの) <"
 local PROMPT_YAYOI="ζ*'ヮ')ζ <"
 local PROMPT_YAYOI2="ζ*#ﾟДﾟ)ζ<"
 local PROMPT_YUKIHO="lw 'ヮ'ﾉv <"
@@ -41,7 +42,7 @@ PROMPT+="\$(pwd_status)"
 # @todo zshのバージョンが4.3.6以前なら無視
 PROMPT+="\$(vcs_status)"
 PROMPT+="
-${PROMPT_YUKIHO} "
+${PROMPT_YUNO} "
 
 
 RPROMPT="%*"
