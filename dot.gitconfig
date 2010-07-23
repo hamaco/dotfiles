@@ -18,6 +18,8 @@
 	l1 = log --pretty=oneline --abbrev-commit
 	l1f = log --pretty=oneline
 	lg = log --name-status --color --graph
+	newly = log HEAD@{1}..HEAD --reverse
+	newlyp = log HEAD@{1}..HEAD -p --reverse
 	pl = pull
 	ps = push
 	rollback = reset --hard HEAD~
