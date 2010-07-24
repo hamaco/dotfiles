@@ -12,6 +12,7 @@ local PROMPT_YAYOI2="ζ*#ﾟДﾟ)ζ<"
 local PROMPT_YUKIHO="lw 'ヮ'ﾉv <"
 local PROMPT_KONATA="＼(＝ω＝．)／ <"
 local PROMPT_NAGATO="YUKI.N>"
+local PROMPT_UUPAA="(ε・△・)з"
 
 function vcs_status () {
 	LANG=en_US.UTF-8 vcs_info
@@ -42,7 +43,7 @@ PROMPT+="\$(pwd_status)"
 # @todo zshのバージョンが4.3.6以前なら無視
 PROMPT+="\$(vcs_status)"
 PROMPT+="
-${PROMPT_YUNO} "
+${PROMPT_NAGATO} "
 
 
 RPROMPT="%*"
