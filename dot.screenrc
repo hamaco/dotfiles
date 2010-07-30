@@ -14,7 +14,8 @@ escape ^Tt
 zombie ^[
 
 
-hardstatus alwayslastline "%{= gk}[%m/%d %02c:%s] %{gW} %-w%{= wk}%n %t%{-}%+w %=%{gk}$USER@$HOST[$LANG] (%l) "
+hardstatus alwayslastline "%{= gk}[%m/%d %02c:%s] %{gW} %-w%{= wk}%n %t%{-}%+w %=%{gk}$USER@$HOST[$LANG] [%0`] (%l) "
+backtick 0 10 10 $HOME/.screen/battery.sh
 
 bind n screen
 bind h prev
@@ -29,3 +30,9 @@ bind s encoding SJIS
 # screenのコントロールキーを変更する
 bind X eval "escape ^xx"
 bind T eval "escape ^tt"
+
+
+screen -t lingr 0
+screen 1
+screen 2
+screen 3
