@@ -279,6 +279,7 @@ liberator.globalVariables.refcontrol = {
 	"www.nicomimi.net"    : "http://www.nicomimi.net",
 	"pixiv.net"           : "http://www.pixiv.net",
 	"hamaco.org"          : "@NORMAL",
+	"www.nicomimi.net"    : "@NORMAL",
 };
 EOM
 
