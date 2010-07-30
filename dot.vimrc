@@ -122,6 +122,7 @@ let &statusline = ''
 let &statusline .= '%<%f %y%m%r'
 let &statusline .= '%='
 let &statusline .= '[%{&l:fileencoding == "" ? &encoding : &l:fileencoding}:%{&ff}]'
+let &statusline .= '%{eskk#get_stl()}'
 let &statusline .= '  %-14.(%l,%c%V%) %P'
 
 let mapleader = ","
