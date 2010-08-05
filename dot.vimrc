@@ -391,7 +391,7 @@ endif
 
 let g:eskk_debug = 0
 let g:eskk_egg_like_newline = 1
-let g:eskk_enable_completion = 0
+let g:eskk_enable_completion = 1
 let g:eskk_ignore_continuous_sticky = 1
 "let g:eskk_no_default_mappings = 1
 let g:eskk_revert_henkan_style = 'okuri'
@@ -437,7 +437,8 @@ if has('win32') || has('win64')
 	let g:vimshell_prompt = $USERNAME."% "
 elseif has('mac')
 	" Display user name on Mac.
-	let g:vimshell_prompt = "ζ*#ﾟДﾟ)ζ< "
+	"let g:vimshell_prompt = "/ _ / ×"
+	let g:vimshell_prompt = $USERNAME."% "
 else
 	" Display user name on Linux.
 	let g:vimshell_prompt = $USER."% "
@@ -697,6 +698,29 @@ command! -bar -bang -nargs=? -complete=file GScouter
 \        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
 
 
+" HighlightWith
+command! -nargs=+ -range=% HighlightWith <line1>,<line2>call s:highlight_with(<q-args>)
+xnoremap [Space]h :HighlightWith<Space><C-f>
+
+function! s:highlight_with(args) range
+	if a:firstline == 1 && a:lastline == line('$')
+		return
+	endif
+	let c = get(b:, 'highlight_count', 0)
+	let ft = matchstr(a:args, '^\w\+')
+	if globpath(&rtp, 'syntax/' . ft . '.vim') == ''
+		return
+	endif
+	unlet! b:current_syntax
+	let save_isk= &l:isk  " For scheme.
+	execute printf('syntax include @highlightWith%d syntax/%s.vim',
+				\              c, ft)
+	let &l:isk= save_isk
+	execute printf('syntax region highlightWith%d start=/\%%%dl/ end=/\%%%dl$/ '
+				\            . 'contains=@highlightWith%d',
+				\             c, a:firstline, a:lastline, c)
+	let b:highlight_count = c + 1
+endfunction"}}}
 
 
 
