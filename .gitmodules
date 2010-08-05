@@ -46,3 +46,12 @@
 [submodule "dot.vim/bundle/vim-poslist"]
 	path = dot.vim/bundle/vim-poslist
 	url = http://github.com/thinca/vim-poslist.git
+[submodule "dot.vim/bundle/unite.vim"]
+	path = dot.vim/bundle/unite.vim
+	url = http://github.com/Shougo/unite.vim.git
+[submodule "dot.vim/bundle/gist-vim"]
+	path = dot.vim/bundle/gist-vim
+	url = http://github.com/mattn/gist-vim.git
+[submodule "dot.vim/bundle/undoclosewin.vim"]
+	path = dot.vim/bundle/undoclosewin.vim
+	url = http://github.com/tyru/undoclosewin.vim.git
