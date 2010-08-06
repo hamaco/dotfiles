@@ -6,8 +6,8 @@ bindkey "u" undo
 bindkey "r" redo
 bindkey "^R" history-incremental-pattern-search-backward
 # Ctrl+左右で単語単位のカーソル移動
-bindkey ";5C" forward-word
-bindkey ";5D" backward-word
+bindkey "[5C" forward-word
+bindkey "[5D" backward-word
 
 umask 022
 
