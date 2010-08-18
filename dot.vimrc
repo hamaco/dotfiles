@@ -120,6 +120,7 @@ endif
 
 let &statusline = ''
 let &statusline .= '%<%f %y%m%r'
+let &statusline .= '  %{cfi#get_func_name()}'
 let &statusline .= '%='
 let &statusline .= '[%{&l:fileencoding == "" ? &encoding : &l:fileencoding}:%{&ff}]'
 let &statusline .= '%{eskk#get_stl()}'
@@ -324,7 +325,8 @@ inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), 
 noremap <silent> <Space>kf :<C-u>Ku file<CR>
 noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
 noremap <silent> <Space>kh :<C-u>Ku history<CR>
-noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
+" noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
+noremap <silent> <Space>km :<C-u>Unite file_mru<CR>
 noremap <silent> <Space>kc :<C-u>Ku cmd_mru/cmd<CR>
 noremap <silent> <Space>ks :<C-u>Ku cmd_mru/search<CR>
 
