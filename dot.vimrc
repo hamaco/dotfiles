@@ -322,8 +322,8 @@ inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), 
 
 
 " ku.vim {{{2
-noremap <silent> <Space>kf :<C-u>Ku file<CR>
-noremap <silent> <Space>kb :<C-u>Ku buffer<CR>
+noremap <silent> <Space>kf :<C-u>Unite file<CR>
+noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
 noremap <silent> <Space>kh :<C-u>Ku history<CR>
 " noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
 noremap <silent> <Space>km :<C-u>Unite file_mru<CR>
@@ -344,7 +344,7 @@ let g:quickrun_direction = 'rightbelow vertical'
 let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
 
 let g:quickrun_config = {}
-if has('clientserver')
+if has('clientserver') && v:servername != ''
 	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
 else
 	let g:quickrun_config['*'] = {'runmode': 'simple'}
@@ -391,7 +391,7 @@ if has('vim_starting')
 	endif
 endif
 
-let g:eskk_debug = 0
+let g:eskk_debug = 1
 let g:eskk_egg_like_newline = 1
 let g:eskk_enable_completion = 1
 let g:eskk_ignore_continuous_sticky = 1
@@ -461,10 +461,11 @@ let g:user_zen_expandabbr_key = '<C-e>'
 
 " key mappings {{{1
 nnoremap <Space>ev :<C-u>tabedit $MYVIMRC<CR>
-
 nnoremap <Space>eg :<C-u>tabedit $MYGVIMRC<CR>
 nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
 nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
+
+nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
 
 noremap <C-h> :<C-u>help<Space>
 
