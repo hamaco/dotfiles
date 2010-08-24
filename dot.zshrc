@@ -156,11 +156,10 @@ linux*)
 	alias ls="ls -F --color=auto"
 	;;
 freebsd*|darwin*)
-	export LSCOLORS=gxfxcxdxbxegedabagacad
+	export LSCOLORS=axfxcxdxbxegedabagacad
 	alias ls="ls -G"
 	;;
 esac
-
 
 
 
@@ -169,14 +168,6 @@ function chpwd() {
 	_reg_pwd_screennum
 	ls -G
 }
-
-function cdup() {
-	echo
-	cd ..
-	zle reset-prompt
-}
-zle -N cdup
-bindkey '\^' cdup
 
 rationalise-dot() {
 	if [[ $LBUFFER = *.. ]]; then
@@ -282,28 +273,6 @@ function git-gol-full() {
   for i in $(git log --pretty=oneline | tail -r | cut -d ' ' -f 1); do git show $i --color-words; done | less
 }
 
-# alc
-function alc() {
-	if [ $# != 0 ]; then
-		w3m "http://eow.alc.co.jp/$*/UTF-8/?ref=sa"
-	else
-		echo "Usage: alc {word}."
-	fi
-}
-
-# google
-#function google() {
-#	local str opt
-#	if [ $# != 0 ]; then
-#		for i in $*; do
-#			str="$str+$i"
-#		done
-#		str=`echo $str | sed 's/^\+//'`
-#		opt='search?num=50&hl=ja&lr=lang_ja'
-#		opt="${opt}&q=${str}"
-#	fi
-#	w3m http://www.google.co.jp/$opt
-#}
 
 # kana's prompt git branch {{{
 function prompt-git-head-name() {
