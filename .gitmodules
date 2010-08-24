@@ -55,3 +55,6 @@
 [submodule "dot.vim/bundle/undoclosewin.vim"]
 	path = dot.vim/bundle/undoclosewin.vim
 	url = http://github.com/tyru/undoclosewin.vim.git
+[submodule "dot.vim/bundle/vim-scouter"]
+	path = dot.vim/bundle/vim-scouter
+	url = http://github.com/thinca/vim-scouter.git
