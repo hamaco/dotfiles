@@ -44,7 +44,7 @@ PROMPT+="\$(pwd_status)"
 # @todo zshのバージョンが4.3.6以前なら無視
 PROMPT+="\$(vcs_status)"
 PROMPT+="
-${PROMPT_YUNO} "
+${PROMPT_NAGATO} "
 
 
 RPROMPT="%*"
