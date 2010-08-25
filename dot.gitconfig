@@ -10,6 +10,7 @@
 [alias]
 	br = branch
 	ci = commit -v
+	cia = commit --amend -a -C HEAD
 	co = checkout
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
