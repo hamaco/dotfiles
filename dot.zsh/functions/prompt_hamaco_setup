@@ -33,7 +33,7 @@ function pwd_status () {
 }
 
 case "${HOST}" in
-hamacbook|bacardi)
+hamacbook*)
 	PROMPT="%{$fg[green]%}%n@%m%{$reset_color%} "
 	;;
 *)
