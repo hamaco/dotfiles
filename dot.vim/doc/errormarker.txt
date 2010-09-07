@@ -1,4 +1,4 @@
-*errormarker*   Plugin to highlight error positions #version#
+*errormarker*   Plugin to highlight error positions  v0.1.11
 
                         ERROR MARKER REFERENCE MANUAL ~
 
