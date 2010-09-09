@@ -25,6 +25,8 @@
 	ps = push
 	rollback = reset --hard HEAD~
 	sl = stash list
+	smi = submodule init
+	smu = submodule update
 	sp = stash pop
 	ss = stash save
 	st = status
