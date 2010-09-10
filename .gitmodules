@@ -58,3 +58,6 @@
 [submodule "dot.vim/bundle/vim-scouter"]
 	path = dot.vim/bundle/vim-scouter
 	url = http://github.com/thinca/vim-scouter.git
+[submodule "dot.vim/bundle/current-func-info.vim"]
+	path = dot.vim/bundle/current-func-info.vim
+	url = git://github.com/tyru/current-func-info.vim.git
