@@ -121,7 +121,7 @@ endif
 
 let &statusline = ''
 let &statusline .= '%<%f %y%m%r'
-let &statusline .= '  %{cfi#get_func_name()}'
+"let &statusline .= '  %{cfi#get_func_name()}'
 let &statusline .= '%='
 let &statusline .= '[%{&l:fileencoding == "" ? &encoding : &l:fileencoding}:%{&ff}]'
 let &statusline .= '%{eskk#statusline()}'
