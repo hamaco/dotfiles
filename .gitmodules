@@ -58,3 +58,6 @@
 [submodule "dot.vim/bundle/current-func-info.vim"]
 	path = dot.vim/bundle/current-func-info.vim
 	url = git://github.com/tyru/current-func-info.vim.git
+[submodule "dot.vim/bundle/vim-altercmd"]
+	path = dot.vim/bundle/vim-altercmd
+	url = git://github.com/tyru/vim-altercmd.git
