@@ -384,10 +384,11 @@ if has('vim_starting')
 	let g:eskk_dictionary = '~/.skk-jisyo'
 
 	if has('mac')
-			let g:eskk_large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+		let g:eskk_large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
 	elseif has('win32') || has('win64')
-			let g:eskk_large_dictionary = expand('~/SKK-JISYO.L')
+		let g:eskk_large_dictionary = expand('~/SKK-JISYO.L')
 	else
+		let g:eskk_large_dictionary = '/usr/share/skk/SKK-JISYO.L'
 	endif
 endif
 
