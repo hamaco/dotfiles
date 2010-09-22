@@ -78,3 +78,7 @@ window Edit /Edit:|Edit$/ : Global
 	key W-x = C-x
 	key W-c = C-c
 	key W-v = C-v
+
+window VMWare /vmware\.exe/ : Global
+	key *IC-C-j = C-j
+	key C-Space = C-Space
