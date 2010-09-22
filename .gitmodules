@@ -28,9 +28,6 @@
 [submodule "dot.vim/bundle/vim-repeat"]
 	path = dot.vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
-[submodule "dot.vim/bundle/vim-altercmd"]
-	path = dot.vim/bundle/vim-altercmd
-	url = git://github.com/kana/vim-altercmd.git
 [submodule "dot.vim/bundle/eskk.vim"]
 	path = dot.vim/bundle/eskk.vim
 	url = git://github.com/tyru/eskk.vim.git
@@ -58,3 +55,9 @@
 [submodule "dot.vim/bundle/vim-scouter"]
 	path = dot.vim/bundle/vim-scouter
 	url = http://github.com/thinca/vim-scouter.git
+[submodule "dot.vim/bundle/current-func-info.vim"]
+	path = dot.vim/bundle/current-func-info.vim
+	url = git://github.com/tyru/current-func-info.vim.git
+[submodule "dot.vim/bundle/vim-altercmd"]
+	path = dot.vim/bundle/vim-altercmd
+	url = git://github.com/tyru/vim-altercmd.git

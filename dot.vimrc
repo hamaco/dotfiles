@@ -22,7 +22,8 @@ if has("syntax")
 	syntax enable
 	"set t_Co=256
 	if !exists("g:colors_name")
-		colorscheme mrkn256
+		"colorscheme mrkn256
+		colorscheme ap_dark8
 	endif
 endif
 
@@ -392,7 +393,7 @@ if has('vim_starting')
 	endif
 endif
 
-let g:eskk_debug = 1
+let g:eskk_debug = 0
 let g:eskk_egg_like_newline = 1
 let g:eskk_enable_completion = 1
 let g:eskk_ignore_continuous_sticky = 1
