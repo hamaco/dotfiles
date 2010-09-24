@@ -156,7 +156,7 @@ linux*)
 	alias ls="ls -F --color=auto"
 	;;
 freebsd*|darwin*)
-	export LSCOLORS=axfxcxdxbxegedabagacad
+	export LSCOLORS=gxfxcxdxbxegedabagacad
 	alias ls="ls -G"
 	;;
 esac
@@ -179,6 +179,15 @@ rationalise-dot() {
 zle -N rationalise-dot
 bindkey . rationalise-dot
 
+
+function u()
+{
+	if [ $# = 1 ]; then
+		cd ./$(git rev-parse --show-cdup)/$1
+	else
+		cd ./$(git rev-parse --show-cdup)
+	fi
+}
 
 
 
