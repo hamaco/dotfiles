@@ -61,3 +61,6 @@
 [submodule "dot.vim/bundle/vim-altercmd"]
 	path = dot.vim/bundle/vim-altercmd
 	url = git://github.com/tyru/vim-altercmd.git
+[submodule "dot.vim/bundle/shadow.vim"]
+	path = dot.vim/bundle/shadow.vim
+	url = git://github.com/ujihisa/shadow.vim.git
