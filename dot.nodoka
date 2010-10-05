@@ -79,6 +79,9 @@ window Edit /Edit:|Edit$/ : Global
 	key W-c = C-c
 	key W-v = C-v
 
+window AFxW /afxw\.exe/ : Global
+	key W-j = A-j
+
 window VMWare /vmware\.exe/ : Global
 	key *IC-C-j = C-j
 	key C-Space = C-Space
