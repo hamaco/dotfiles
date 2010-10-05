@@ -11,7 +11,7 @@ bindkey "[5D" backward-word
 
 umask 022
 
-cdpath=($HOME /web/hamaco /web/ryus)
+cdpath=($HOME /web/hamaco /web/bnsi)
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
