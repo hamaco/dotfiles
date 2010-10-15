@@ -124,7 +124,7 @@ let &statusline .= '%<%f %y%m%r'
 "let &statusline .= '  %{cfi#get_func_name()}'
 let &statusline .= '%='
 let &statusline .= '[%{&l:fileencoding == "" ? &encoding : &l:fileencoding}:%{&ff}]'
-let &statusline .= '%{eskk#statusline()}'
+"let &statusline .= '%{eskk#statusline()}'
 let &statusline .= '  %-14.(%l,%c%V%) %P'
 
 let mapleader = ","
@@ -423,6 +423,10 @@ let g:spec_chglog_format = "%a %b %d %Y hamaco <hamanaka.kazuhiro@gmail.com> -"
 map <Leader>q <Plug>Csurround w"
 map <Leader>sq <Plug>Csurround w'
 map <Leader>` <Plug>Csurround w`
+
+
+" unite.vim {{{2
+let g:unite_enable_ignore_case = 1
 
 
 " vimfiler.vim {{{2

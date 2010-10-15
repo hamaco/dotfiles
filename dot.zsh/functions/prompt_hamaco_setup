@@ -59,7 +59,7 @@ PROMPT2="%_%% "
 
 
 SPROMPT="correct: %{$fg[red]%}%R%{$reset_color%} -> %{$fg[yellow]%}%r%{$reset_color%} ? [y,n,a,e]: "
-SPROMPT="もしかして %{$fg[yellow]%}%r%{$reset_color%}? 別にあんたのために修正したんじゃないんだからね! [n,y,a,e]:"
+SPROMPT="もしかして %{$fg[yellow]%}%r%{$reset_color%}? べ、別にあんたのために修正したんじゃないんだからね! [n,y,a,e]:"
 
 
 # vim:set ft=zsh:
