@@ -11,14 +11,14 @@ if has("mac")
 	set fuoptions=maxvert,maxhorz
 	" au GUIEnter * set fullscreen
 elseif has("unix")
-	set columns=120
-	set lines=45
+	set columns=110
+	set lines=40
 	"set guifont=MeiryoKe_Console\ 10
 	set guifont=Inconsolata\ 16
 	colorscheme ir_black
 elseif has("win32")
 	set columns=100
-	set lines=35
+	set lines=30
 	set guifont=‚ ‚¸‚«ƒtƒHƒ“ƒg:h14:cSHIFTJIS
 	colorscheme h2u_black
 
