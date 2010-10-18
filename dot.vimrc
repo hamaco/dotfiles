@@ -359,7 +359,11 @@ let g:quickrun_config.textile = {
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
 let g:ref_use_vimproc = 0
-let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
+if has('win32') || has('win64')
+	let g:ref_phpmanual_path = $HOME . '\share\phpmanual'
+else
+	let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
+endif
 
 let g:ref_alc_use_cache = 1
 
