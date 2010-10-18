@@ -318,6 +318,8 @@ let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
 inoremap <expr><TAB>    pumvisible() ? "\<C-n>" :"\<TAB>"
 imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " vim hacks #135
 inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
