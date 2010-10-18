@@ -322,17 +322,14 @@ inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
 
-" ku.vim {{{2
+" unite.vim {{{2
 noremap <silent> <Space>kf :<C-u>Unite file<CR>
 noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
-noremap <silent> <Space>kh :<C-u>Ku history<CR>
-" noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
 noremap <silent> <Space>km :<C-u>Unite file_mru<CR>
-noremap <silent> <Space>kc :<C-u>Ku cmd_mru/cmd<CR>
-noremap <silent> <Space>ks :<C-u>Ku cmd_mru/search<CR>
 
-call ku#custom_prefix('common', '.vim', $HOME . '/.vim')
-call ku#custom_prefix('common', '~', $HOME)
+let g:unite_enable_start_insert = 1
+let g:unite_source_file_mru_limit = 150
+
 
 
 " poslist.vim {{{2
