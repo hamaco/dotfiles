@@ -2,38 +2,6 @@
 	name = hamaco
 	email = hamanaka.kazuhiro@gmail.com
 
-[core]
-	excludesfile = /Users/hamaco/.gitignore
-	pager = less -r
-	quotepath = false
-
-[alias]
-	br = branch
-	ci = commit -v
-	cia = commit --amend -a -C HEAD
-	co = checkout
-	di = diff
-	difflog = log -p HEAD@{3.days.ago}
-	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
-	l = log --stat
-	l1 = log --pretty=oneline --abbrev-commit
-	l1f = log --pretty=oneline
-	lg = log --name-status --color --graph
-	newly = log HEAD@{1}..HEAD --reverse
-	newlyp = log HEAD@{1}..HEAD -p --reverse
-	pl = pull
-	ps = push
-	rollback = reset --hard HEAD~
-	sl = stash list
-	smi = submodule init
-	smu = submodule update
-	sp = stash pop
-	ss = stash save
-	st = status
-	tree = log --graph --pretty=oneline --abbrev-commit --decorate
-	up = pull --rebase
-	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
-
 [color]
 	ui = auto
 	diff = auto
@@ -46,3 +14,43 @@
 	frag = magenta bold
 	old = red bold
 	new = green bold
+
+[core]
+	excludesfile = /Users/hamaco/.gitignore
+	pager = less -r
+	quotepath = false
+
+[alias]
+	br = branch
+	ci = commit -v
+	cia = commit --amend -a -C HEAD
+	co = checkout
+	d1 = diff HEAD~
+	d2 = diff HEAD~~
+	d3 = diff HEAD~~~
+	d4 = diff HEAD~~~~
+	di = diff
+	difflog = log -p HEAD@{3.days.ago}
+	ft = fetch
+	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
+	l = log --stat
+	l1 = log --pretty=oneline --abbrev-commit
+	l1f = log --pretty=oneline
+	lg = log --name-status --color --graph
+	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+	newly = log HEAD@{1}..HEAD --reverse
+	newlyp = log HEAD@{1}..HEAD -p --reverse
+	pl = pull
+	ps = push
+	rollback = reset --hard HEAD~
+	sl = stash list
+	smi = submodule init
+	smu = submodule update
+	sh = show
+	sp = stash pop
+	ss = stash save
+	st = status
+	tree = log --graph --pretty=oneline --abbrev-commit --decorate
+	up = pull --rebase
+	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
