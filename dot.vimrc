@@ -318,6 +318,8 @@ let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
 inoremap <expr><TAB>    pumvisible() ? "\<C-n>" :"\<TAB>"
 imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " vim hacks #135
 inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
@@ -325,17 +327,14 @@ inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), 
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 
-" ku.vim {{{2
+" unite.vim {{{2
 noremap <silent> <Space>kf :<C-u>Unite file<CR>
 noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
-noremap <silent> <Space>kh :<C-u>Ku history<CR>
-" noremap <silent> <Space>km :<C-u>Ku file_mru<CR>
 noremap <silent> <Space>km :<C-u>Unite file_mru<CR>
-noremap <silent> <Space>kc :<C-u>Ku cmd_mru/cmd<CR>
-noremap <silent> <Space>ks :<C-u>Ku cmd_mru/search<CR>
 
-call ku#custom_prefix('common', '.vim', $HOME . '/.vim')
-call ku#custom_prefix('common', '~', $HOME)
+let g:unite_enable_start_insert = 1
+let g:unite_source_file_mru_limit = 150
+
 
 
 " poslist.vim {{{2
@@ -365,7 +364,11 @@ let g:quickrun_config.textile = {
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
 let g:ref_use_vimproc = 0
-let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
+if has('win32') || has('win64')
+	let g:ref_phpmanual_path = $HOME . '\share\phpmanual'
+else
+	let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
+endif
 
 let g:ref_alc_use_cache = 1
 

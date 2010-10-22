@@ -180,6 +180,7 @@ zle -N rationalise-dot
 bindkey . rationalise-dot
 
 
+# gitのトップレベルに移動
 function u()
 {
 	if [ $# = 1 ]; then
@@ -187,6 +188,29 @@ function u()
 	else
 		cd ./$(git rev-parse --show-cdup)
 	fi
+}
+
+# 上位ディレクトリを指定するcd
+up() {
+	if [ "$1" = "" ]; then
+		cd ../
+		return 1
+	fi
+
+	to=$(perl -le '$p=$ENV{PWD}."/";$d="/".$ARGV[0]."/";$r=rindex($p,$d);\
+		$r>=0 && print substr($p, 0, $r+length($d))' $1)
+
+	if [ "$to" = "" ]; then
+		echo "no such file or directory: $1" 1>&2
+		return 1
+	fi
+
+	cd $to
+}
+
+sc() {
+	name=${1:-${PWD##*/}}
+	screen -x $name || $screen -r $name || screen -S $name
 }
 
 
