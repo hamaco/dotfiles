@@ -59,11 +59,8 @@ snippet try
 snippet throw
 	throw new ${1}Exception(${2});
 
-snippet vd
-	var_dump(${1});${2}
-
 snippet ve
-	var_dump(${1});exit;
+	dump(${1});exit;
 
 snippet pr
 	print_r(${1});${2}
@@ -88,6 +85,9 @@ snippet $cc
 
 snippet $cu
 	$create->unique("${1}");
+
+snippet d
+	dump(${1});${2}
 
 snippet de
 	dump(${1});exit;
