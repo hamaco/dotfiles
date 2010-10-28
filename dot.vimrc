@@ -323,6 +323,9 @@ inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " vim hacks #135
 inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+
 
 " unite.vim {{{2
 noremap <silent> <Space>kf :<C-u>Unite file<CR>

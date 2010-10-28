@@ -1,3 +1,4 @@
+# Alias: エイリアス ========= {{{1
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
 alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
 
@@ -74,6 +75,7 @@ alias -s txt=cat
 alias -s php=vim
 alias -s log=less
 alias -s jar="java -jar"
+alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack # aptitude install atool
 
 case "${OSTYPE}" in
 linux*)
