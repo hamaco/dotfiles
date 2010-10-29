@@ -211,6 +211,8 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+autocmd MyAutoCmd BufNewFile,BufRead *.tpl setf html
+
 autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
