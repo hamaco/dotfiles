@@ -211,6 +211,8 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+autocmd MyAutoCmd BufNewFile,BufRead *.tpl setf html
+
 autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
@@ -327,12 +329,13 @@ inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 
 " unite.vim {{{2
-noremap <silent> <Space>kf :<C-u>Unite file<CR>
+noremap <silent> <Space>kf :<C-u>Unite -buffer-name=files file<CR>
 noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
 noremap <silent> <Space>km :<C-u>Unite file_mru<CR>
 
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_limit = 150
+let g:unite_enable_split_vertically = 1
 
 
 
@@ -507,7 +510,7 @@ noremap! <C-BS> <C-w>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 "}}}
 
-nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+nnoremap <Space><Esc> :<C-u>nohlsearch<CR>
 nnoremap vv <C-v>
 
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
