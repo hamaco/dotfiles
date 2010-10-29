@@ -64,3 +64,6 @@
 [submodule "dot.vim/bundle/shadow.vim"]
 	path = dot.vim/bundle/shadow.vim
 	url = git://github.com/ujihisa/shadow.vim.git
+[submodule "dot.vim/bundle/caw.vim"]
+	path = dot.vim/bundle/caw.vim
+	url = http://github.com/tyru/caw.vim.git
