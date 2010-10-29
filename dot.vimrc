@@ -514,7 +514,7 @@ noremap! <C-BS> <C-w>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 "}}}
 
-nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+nnoremap <Space><Esc> :<C-u>nohlsearch<CR>
 nnoremap vv <C-v>
 
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
