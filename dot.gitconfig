@@ -29,6 +29,7 @@
 	d2 = diff HEAD~~
 	d3 = diff HEAD~~~
 	d4 = diff HEAD~~~~
+	dc = diff --cached
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
 	ft = fetch
