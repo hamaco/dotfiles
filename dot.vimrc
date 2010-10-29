@@ -235,6 +235,11 @@ endif
 " 無効化 {{{2
 let plugin_dicwin_disable = 1
 
+if has("win32") || has("win64")
+	let g:loaded_gist_vim = 1
+	let g:loaded_lingr_vim = 1
+endif
+
 
 " Align.vim {{{2
 let g:Align_xstrlen = 3
@@ -256,12 +261,6 @@ imap <C-a> <C-o><Plug>CapsLockToggle
 " ChangeLog {{{2
 let g:changelog_username = "hamaco <hamanaka.kazuhiro@gmail.com>"
 let g:changelog_timeformat = "%Y-%m-%d"
-
-
-" commentop.vim {{{2
-map <Leader>c     <Plug>CommentopToggleNV
-map <Leader>C     <Plug>CommentopAppendNV
-map <Leader><C-c> <Plug>CommentopRemoveNV
 
 
 " git.vim {{{2
@@ -456,12 +455,6 @@ elseif has('mac')
 else
 	" Display user name on Linux.
 	let g:vimshell_prompt = $USER."% "
-
-	"let g:vimshell_execute_file_list['zip'] = 'zipinfo'
-	call vimshell#set_execute_file('tgz,gz', 'gzcat')
-	call vimshell#set_execute_file('tbz,bz2', 'bzcat')
-	call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
-	call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
 endif
 
 
