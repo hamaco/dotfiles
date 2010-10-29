@@ -327,12 +327,13 @@ inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), 
 
 
 " unite.vim {{{2
-noremap <silent> <Space>kf :<C-u>Unite file<CR>
+noremap <silent> <Space>kf :<C-u>Unite -buffer-name=files file<CR>
 noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
 noremap <silent> <Space>km :<C-u>Unite file_mru<CR>
 
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_limit = 150
+let g:unite_enable_split_vertically = 1
 
 
 
