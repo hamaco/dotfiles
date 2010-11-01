@@ -328,17 +328,6 @@ inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), 
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 
-" unite.vim {{{2
-noremap <silent> <Space>kf :<C-u>Unite -buffer-name=files file<CR>
-noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
-noremap <silent> <Space>km :<C-u>Unite file_mru<CR>
-
-let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_limit = 150
-let g:unite_enable_split_vertically = 1
-
-
-
 " poslist.vim {{{2
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
@@ -434,7 +423,19 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
+noremap <silent> <Space>kf :<C-u>Unite -buffer-name=files file<CR>
+noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
+noremap <silent> <Space>km :<C-u>Unite -buffer-name=files file_mru<CR>
+
 let g:unite_enable_ignore_case = 1
+let g:unite_enable_split_vertically = 1
+let g:unite_enable_start_insert = 1
+let g:unite_source_file_mru_limit = 150
+
+call unite#set_substitute_pattern('file', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
+call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
+
+call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
 
 
 " vimfiler.vim {{{2
