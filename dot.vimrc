@@ -3,17 +3,16 @@
 " Windowsでも.vimを読み込むようにする
 set runtimepath& runtimepath+=$HOME/.vim
 
+" has('win32') || has('win64')はめんどい
+" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
+let s:iswindows = has('win32') || has('win64')
+
 " pathogen
 " http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
 runtime autoload/pathogen.vim
 if exists("g:loaded_pathogen")
 	call pathogen#runtime_append_all_bundles()
 end
-
-if has("win32") || has("win64")
-	" メニューが文字化けするので英語にする
-	"language en
-endif
 
 set nocompatible
 filetype plugin indent on
@@ -219,7 +218,7 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
 
-if !has('gui_running') && !(has('win32') || has('win64'))
+if !has('gui_running') && !s:iswindows
    " .vimrcの再読込時にも色が変化するようにする
    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 else
@@ -237,7 +236,7 @@ endif
 " 無効化 {{{2
 let plugin_dicwin_disable = 1
 
-if has("win32") || has("win64")
+if s:iswindows
 	let g:loaded_gist_vim = 1
 	let g:loaded_lingr_vim = 1
 endif
@@ -355,7 +354,7 @@ let g:quickrun_config.textile = {
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
 let g:ref_use_vimproc = 0
-if has('win32') || has('win64')
+if s:iswindows
 	let g:ref_phpmanual_path = $HOME . '\share\phpmanual'
 else
 	let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
@@ -367,24 +366,14 @@ noremap <Space>ra :<C-u>Ref alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
 
 
-" skk.vim {{{2
-"let g:skk_jisyo = '~/.skk-jisyo'
-"if has("mac")
-"	let g:skk_large_jisyo = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
-""elseif has("win32") || has("win64")
-"else
-"	let g:skk_large_jisyo = '~/Dropbox/SKK-JISYO.L'
-"endif
-"let g:skk_auto_save_jisyo = 1
-
 "eskk.vim {{{2
 if has('vim_starting')
 	let g:eskk_dictionary = '~/.skk-jisyo'
 
-	if has('mac')
-		let g:eskk_large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
-	elseif has('win32') || has('win64')
+	if s:iswindows
 		let g:eskk_large_dictionary = expand('~/SKK-JISYO.L')
+	elseif has('mac')
+		let g:eskk_large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
 	else
 		let g:eskk_large_dictionary = '/usr/share/skk/SKK-JISYO.L'
 	endif
@@ -432,10 +421,19 @@ let g:unite_enable_split_vertically = 1
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_limit = 150
 
-call unite#set_substitute_pattern('file', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
+call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
 
+call unite#set_substitute_pattern('files', '^\\', '~/*')
 call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
+
+call unite#set_substitute_pattern('files', '\*\*\+', '*', -1)
+
+
+if s:iswindows
+else
+	call unite#set_substitute_pattern('files', ';w', '/web')
+end
 
 
 " vimfiler.vim {{{2
@@ -449,7 +447,7 @@ let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_smart_case = 1
 let g:vimshell_external_history_path = expand('~/.zsh_histfile')
 
-if has('win32') || has('win64')
+if s:iswindows
 	" Display user name on Windows.
 	let g:vimshell_prompt = $USERNAME."% "
 elseif has('mac')
