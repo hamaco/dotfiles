@@ -444,7 +444,7 @@ let g:vimfiler_edit_command = "edit"
 
 " vimshell.vim {{{2
 let g:vimshell_user_prompt = 'getcwd()'
-let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+"let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_smart_case = 1
 let g:vimshell_external_history_path = expand('~/.zsh_histfile')
 
