@@ -439,7 +439,7 @@ let g:unite_enable_ignore_case = 1
 
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_edit_command = "tabedit"
+let g:vimfiler_edit_command = "edit"
 
 
 " vimshell.vim {{{2
