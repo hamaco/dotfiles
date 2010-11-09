@@ -218,6 +218,10 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
 
+autocmd MyAutoCmd FileType unite imap <buffer> ' <Plug>(unite_quick_match_default_action)
+autocmd MyAutoCmd FileType unite nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+
+
 if !has('gui_running') && !s:iswindows
    " .vimrcの再読込時にも色が変化するようにする
    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
@@ -414,23 +418,27 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
-noremap <silent> <Space>kf :<C-u>Unite -buffer-name=files file<CR>
-noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
-noremap <silent> <Space>km :<C-u>Unite -buffer-name=files file_mru<CR>
+noremap <silent> <Space>uu :<C-u>Unite -buffer-name=files buffer file file_mru<CR>
+noremap <silent> <Space>ub :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+noremap <silent> <Space>uc :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
+noremap <silent> <Space>ut :<C-u>Unite tab<CR>
 
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_split_vertically = 1
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_limit = 150
 
+
+call unite#custom_alias('file', 'h', 'left')
+call unite#custom_alias('file', 'l', 'right')
+call unite#custom_alias('file', 'to', 'tabopen')
+
+
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
-
 call unite#set_substitute_pattern('files', '^\\', '~/*')
 call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
-
 call unite#set_substitute_pattern('files', '\*\*\+', '*', -1)
-
 
 if s:iswindows
 else
@@ -440,12 +448,12 @@ end
 
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_edit_command = "tabedit"
+let g:vimfiler_edit_command = "edit"
 
 
 " vimshell.vim {{{2
 let g:vimshell_user_prompt = 'getcwd()'
-let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+"let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 let g:vimshell_smart_case = 1
 let g:vimshell_external_history_path = expand('~/.zsh_histfile')
 
