@@ -218,6 +218,10 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
 
+autocmd MyAutoCmd FileType unite imap <buffer> ' <Plug>(unite_quick_match_default_action)
+autocmd MyAutoCmd FileType unite nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+
+
 if !has('gui_running') && !s:iswindows
    " .vimrcの再読込時にも色が変化するようにする
    autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
@@ -421,6 +425,11 @@ let g:unite_enable_split_vertically = 1
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_limit = 150
 
+
+call unite#custom_alias('file', 'h', 'left')
+call unite#custom_alias('file', 'l', 'right')
+
+
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
 
@@ -428,7 +437,6 @@ call unite#set_substitute_pattern('files', '^\\', '~/*')
 call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
 
 call unite#set_substitute_pattern('files', '\*\*\+', '*', -1)
-
 
 if s:iswindows
 else
