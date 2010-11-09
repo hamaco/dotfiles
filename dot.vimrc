@@ -416,9 +416,10 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
-noremap <silent> <Space>kf :<C-u>Unite -buffer-name=files file<CR>
-noremap <silent> <Space>kb :<C-u>Unite buffer<CR>
-noremap <silent> <Space>km :<C-u>Unite -buffer-name=files file_mru<CR>
+noremap <silent> <Space>uu :<C-u>Unite -buffer-name=files buffer file file_mru<CR>
+noremap <silent> <Space>ub :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+noremap <silent> <Space>uc :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
+noremap <silent> <Space>ut :<C-u>Unite tab<CR>
 
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_split_vertically = 1
@@ -428,14 +429,13 @@ let g:unite_source_file_mru_limit = 150
 
 call unite#custom_alias('file', 'h', 'left')
 call unite#custom_alias('file', 'l', 'right')
+call unite#custom_alias('file', 'to', 'tabopen')
 
 
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
-
 call unite#set_substitute_pattern('files', '^\\', '~/*')
 call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
-
 call unite#set_substitute_pattern('files', '\*\*\+', '*', -1)
 
 if s:iswindows
