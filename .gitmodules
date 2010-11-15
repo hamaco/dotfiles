@@ -73,3 +73,6 @@
 [submodule "dot.vim/bundle/googletranslate-vim"]
 	path = dot.vim/bundle/googletranslate-vim
 	url = http://github.com/mattn/googletranslate-vim.git
+[submodule "dot.vim/bundle/unite-outline"]
+	path = dot.vim/bundle/unite-outline
+	url = https://github.com/h1mesuke/unite-outline.git
