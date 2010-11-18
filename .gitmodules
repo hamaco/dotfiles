@@ -82,3 +82,6 @@
 [submodule "dot.vim/bundle/favstar-vim"]
 	path = dot.vim/bundle/favstar-vim
 	url = https://github.com/mattn/favstar-vim.git
+[submodule "dot.vim/bundle/quiz-vim"]
+	path = dot.vim/bundle/quiz-vim
+	url = https://github.com/guyon/quiz-vim.git

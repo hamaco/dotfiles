@@ -268,6 +268,10 @@ let g:changelog_username = "hamaco <hamanaka.kazuhiro@gmail.com>"
 let g:changelog_timeformat = "%Y-%m-%d"
 
 
+" FavStar.vim {{{2
+let g:favstar_user = 'hamaco'
+
+
 " git.vim {{{2
 let g:git_no_map_default = 1
 let g:git_command_edit = 'rightbelow vnew'
