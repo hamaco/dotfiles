@@ -422,14 +422,14 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
-noremap <silent> <Space>uu :<C-u>Unite -buffer-name=files buffer file file_mru<CR>
-noremap <silent> <Space>ub :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-noremap <silent> <Space>uc :<C-u>UniteWithCurrentDir -buffer-name=files file<CR>
+noremap <silent> <Space>uu :<C-u>Unite -buffer-name=files buffer file file_mru -start-insert<CR>
+noremap <silent> <Space>ub :<C-u>UniteWithBufferDir -buffer-name=files file -start-insert<CR>
+noremap <silent> <Space>uc :<C-u>UniteWithCurrentDir -buffer-name=files file -start-insert<CR>
 noremap <silent> <Space>ut :<C-u>Unite tab<CR>
 
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_split_vertically = 1
-let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 0
 let g:unite_source_file_mru_limit = 150
 
 
