@@ -76,3 +76,9 @@
 [submodule "dot.vim/bundle/unite-outline"]
 	path = dot.vim/bundle/unite-outline
 	url = https://github.com/h1mesuke/unite-outline.git
+[submodule "dot.vim/bundle/webapi-vim"]
+	path = dot.vim/bundle/webapi-vim
+	url = https://github.com/mattn/webapi-vim.git
+[submodule "dot.vim/bundle/favstar-vim"]
+	path = dot.vim/bundle/favstar-vim
+	url = https://github.com/mattn/favstar-vim.git
