@@ -108,7 +108,10 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 
 # 補完結果をキャッシュする(apt-get etc)
-zstyle ":completion:*" use-cache true
+if [ -d ~/.zsh/cache ];  then
+	zstyle ":completion:*" use-cache yes
+	zstyle ":completion:*" cache-path ~/.zsh/cache
+fi
 
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
