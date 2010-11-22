@@ -19,6 +19,7 @@ alias lrt="ls -lrt"
 # for vim
 alias v="vim"
 alias vi="vim"
+alias pvim="vim -u NONE -i NONE -N"
 alias vsh="vim -c VimShell"
 alias lingr="vim -c LingrLaunch"
 
