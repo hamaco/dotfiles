@@ -120,7 +120,7 @@ endif
 
 let &statusline = ''
 let &statusline .= '%<%f %y%m%r'
-"let &statusline .= '  %{cfi#get_func_name()}'
+let &statusline .= '  %{cfi#get_func_name()}()'
 let &statusline .= '%='
 let &statusline .= '[%{&l:fileencoding == "" ? &encoding : &l:fileencoding}:%{&ff}]'
 "let &statusline .= '%{eskk#statusline()}'
@@ -377,26 +377,28 @@ noremap <Space>rm :<C-u>Ref man<Space>
 
 
 "eskk.vim {{{2
-if has('vim_starting')
-	let g:eskk_dictionary = '~/.skk-jisyo'
+let g:eskk#keep_state_beyond_buffer = 0
 
-	if s:iswindows
-		let g:eskk_large_dictionary = expand('~/SKK-JISYO.L')
-	elseif has('mac')
-		let g:eskk_large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
-	else
-		let g:eskk_large_dictionary = '/usr/share/skk/SKK-JISYO.L'
-	endif
-endif
+"if has('vim_starting')
+"	let g:eskk_dictionary = '~/.skk-jisyo'
+"
+"	if s:iswindows
+"		let g:eskk_large_dictionary = expand('~/SKK-JISYO.L')
+"	elseif has('mac')
+"		let g:eskk_large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+"	else
+"		let g:eskk_large_dictionary = '/usr/share/skk/SKK-JISYO.L'
+"	endif
+"endif
+"
+"let g:eskk_debug = 0
+"let g:eskk_egg_like_newline = 1
+"let g:eskk_enable_completion = 1
+"let g:eskk_ignore_continuous_sticky = 1
+""let g:eskk_no_default_mappings = 1
+"let g:eskk_revert_henkan_style = 'okuri'
 
-let g:eskk_debug = 0
-let g:eskk_egg_like_newline = 1
-let g:eskk_enable_completion = 1
-let g:eskk_ignore_continuous_sticky = 1
-"let g:eskk_no_default_mappings = 1
-let g:eskk_revert_henkan_style = 'okuri'
-
-"map! <C-j> <Plug>(eskk:enable)
+""map! <C-j> <Plug>(eskk:enable)
 
 
 
@@ -422,10 +424,15 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
-noremap <silent> <Space>uu :<C-u>Unite -buffer-name=files buffer file file_mru -start-insert<CR>
-noremap <silent> <Space>ub :<C-u>UniteWithBufferDir -buffer-name=files file -start-insert<CR>
-noremap <silent> <Space>uc :<C-u>UniteWithCurrentDir -buffer-name=files file -start-insert<CR>
-noremap <silent> <Space>ut :<C-u>Unite tab<CR>
+noremap <silent> <Space>uu  :<C-u>Unite -buffer-name=files buffer file file_mru -start-insert<CR>
+noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files file<CR>
+noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files file -start-insert<CR>
+noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files file -start-insert<CR>
+noremap <silent> <Space>ut  :<C-u>Unite tab<CR>
+" Execute help.
+nnoremap <C-h>  :<C-u>Unite -start-insert help<CR>
+" Execute help by cursor keyword.
+nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord -start-insert help<CR>
 
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_split_vertically = 1
@@ -487,8 +494,6 @@ nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYG
 nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
-
-noremap <C-h> :<C-u>help<Space>
 
 nnoremap Y y$
 
