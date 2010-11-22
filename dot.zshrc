@@ -101,6 +101,9 @@ autoload -Uz compinit; compinit -u
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 LISTMAX=0
 
+# パスの補完速度が上がるらしい
+zstyle ':completion:*' accept-exact '*(N)'
+
 # 補完時に大文字小文字を区別しない
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 
