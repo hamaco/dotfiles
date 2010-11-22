@@ -85,3 +85,12 @@
 [submodule "dot.vim/bundle/quiz-vim"]
 	path = dot.vim/bundle/quiz-vim
 	url = https://github.com/guyon/quiz-vim.git
+[submodule "dot.vim/bundle/cul.vim"]
+	path = dot.vim/bundle/cul.vim
+	url = https://github.com/tyru/cul.vim.git
+[submodule "dot.vim/bundle/savemap.vim"]
+	path = dot.vim/bundle/savemap.vim
+	url = https://github.com/tyru/savemap.vim.git
+[submodule "dot.vim/bundle/unite-help"]
+	path = dot.vim/bundle/unite-help
+	url = https://github.com/tsukkee/unite-help.git
