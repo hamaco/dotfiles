@@ -429,6 +429,7 @@ noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files file<CR>
 noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files file -start-insert<CR>
 noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files file -start-insert<CR>
 noremap <silent> <Space>ut  :<C-u>Unite tab<CR>
+noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
 " Execute help.
 nnoremap <C-h>  :<C-u>Unite -start-insert help<CR>
 " Execute help by cursor keyword.
