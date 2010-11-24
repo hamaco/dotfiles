@@ -3,116 +3,169 @@
 // @namespace http://looxu.blogspot.com/
 // @include   http://www.nicovideo.jp/watch/*
 // @author    Arc Cosine
-// @version   1.3
+// @version   3.0
 // ==/UserScript==
 (function(){
-    /** simple version of $X
-     * $X(exp);
-     * $X(exp, context);
-     * @source http://gist.github.com/3242.txt
-     */
-    var $X = function (exp, context) {
-      context || (context = document);
-      var expr = (context.ownerDocument || context).createExpression(exp, function (prefix) {
-        return document.createNSResolver(context.documentElement || context).lookupNamespaceURI(prefix) ||
-          context.namespaceURI || document.documentElement.namespaceURI || "";
-      });
-     
-      var result = expr.evaluate(context, XPathResult.ANY_TYPE, null);
-        switch (result.resultType) {
-          case XPathResult.STRING_TYPE : return result.stringValue;
-          case XPathResult.NUMBER_TYPE : return result.numberValue;
-          case XPathResult.BOOLEAN_TYPE: return result.booleanValue;
-          case XPathResult.UNORDERED_NODE_ITERATOR_TYPE:
-            // not ensure the order.
-            var ret = [], i = null;
-            while (i = result.iterateNext()) ret.push(i);
-            return ret;
-        }
-      return null;
-    }
 
-    //無駄なオブジェクト指向www
-    var NDesc = function(){
-        this.init();
-    }
+    var NDesc = {
+      com_style : {
+        'color' : '#1259C7',
+        'text-decoration' : 'underline',
+        'padding-left' : '5px',
+        'cursor' : 'pointer'
+      },
+      options : [
+        { 'text' : '広告表示',  'func' : function(){ NDesc.ad_toggle(); } },
+        { 'text' : 'Video詳細', 'func' : function(){ NDesc.description_toggle(); } }
+      ],
+      init : function(){
+          //add Input Box
+          NDesc.createInput();
 
-    NDesc.prototype.init = function(){
-        this.description_toggle();
-        this.advert_toggle();
+          //hide parts
+          NDesc.description_toggle();
+          NDesc.ad_toggle();
 
-        //add key event
-        document.addEventListener( 'keypress', this.key_event, false );
-    }
-
-    NDesc.prototype.toggleObject = function(xpath){
-        var t= $X(xpath)[0];
-        t.style.display = ( t.style.display == 'none' ) ? 'block' : 'none';
-    }
-
-    NDesc.prototype.description_toggle = function(){
-        this.toggleObject('//p[@class="video_description"]');
-    }
-
-    NDesc.prototype.advert_toggle = function(){
-        this.toggleObject('//div[@id="WATCHFOOTER"]');
-        this.toggleObject('//div[@id="PAGEFOOTER"]');
-    }
-
-
-    NDesc.prototype.popup = function() {
-        // For eyevio
-        var normalized_url = location.href;
-        var url = "http://mitter.jp/bookmarklet/popup", v = "0";
-        url += '?v=' + v + '&url=' + encodeURIComponent(normalized_url) + '&title=' + encodeURIComponent(document.title);
-        var options = 'toolbar=0,resizable=1,scrollbars=1,status=1,width=450,height=430';
-        var open_func = function() {
-            var w = window.open(url, 'mitter', options);
-            if (!w) {
-                alert('Popup window from Mitter seems to be blocked. Please allow popup window to post on Mitter.');
-            } else {
-                w.focus();
+          //add focus key event
+          document.addEventListener( 'keypress', function(e){
+            if( e.target.tagName != 'INPUT' && e.keyCode == 32 ){
+              NDesc.use_hotkey();
+              e.preventDefault();
             }
-        };
-        open_func();
-    }
-
-    NDesc.prototype.togglePlay = function() {
-        var player = this._getplayer();
-
-        (player.ext_getStatus() !== "playing")
-            ? player.ext_play(true)
-            : player.ext_play(false);
-    }
-
-    NDesc.prototype._getplayer = function() {
-        var flvplayer = document.getElementById("flvplayer");
-        if (!flvplayer) throw new Error("flvplayer is not found");
-
-        return flvplayer.wrappedJSObject || flvplayer;
-    }
+          },false );
 
 
-    NDesc.prototype.key_event = function(e){
-        var handler = {
-            'o' : function(){ NDesc.prototype.description_toggle(); },
-            'm' : function(){ NDesc.prototype.popup(); },
-            'a' : function(){ NDesc.prototype.advert_toggle(); },
-            'p' : function(){ NDesc.prototype.togglePlay(); }
-        };
-        var t = e.target;
-        if( t.nodeType == 1 ){
-           var tn = t.tagName.toLowerCase();
-           if( tn == 'input' || tn == 'textarea' ){
-               return;
-           }
-           var pressKey = String.fromCharCode(e.which);
-           if( typeof handler[pressKey] == "function" ){
-               e.preventDefault();    //Stop Default Event
-               handler[pressKey].apply();
-           }
+          for( var i=NDesc.options.length; i-- > 0; ){
+            NDesc.createParts(NDesc.options[i]);
+          }
+        },
+        createParts : function( data ) {
+          var insert_node1 = document.querySelector('div.des_1 p.font12');
+          var insert_node2 = document.querySelector('div.des_2 p.font12');
+          var node = document.createElement('span');
+          node.appendChild(document.createTextNode(data.text));
+          for( var option in NDesc.com_style ){
+            var st_op = option.replace(/-([a-z])/,function(m){ return m[1].toUpperCase();});
+            node.style[st_op] = NDesc.com_style[option];
+          }
+          node.addEventListener( 'click', function(){ data['func'].apply(); } ,false );
+          var node2 = node.cloneNode(true);
+          node2.addEventListener( 'click', function(){ data['func'].apply(); } ,false );
+          insert_node1.appendChild(node);
+          insert_node2.appendChild(node2);
+        },
+
+        toggleObject : function( selector ){
+            var target = document.querySelector(selector);
+            if( target ){
+              target.style.display = (target.style.display == 'none' ) ? '' : 'none';
+            }
+        },
+
+        description_toggle : function() {
+            NDesc.toggleObject('div.info_frm');
+            NDesc.toggleObject('div.des_2 table');
+        },
+        ad_toggle : function() {
+            NDesc.toggleObject('#WATCHFOOTER');
+            NDesc.toggleObject('#PAGEFOOTER');
+        },
+        createInput : function(){
+            if( window.parent != window ) return;
+            var input_work = document.createElement('input');
+            input_work.readOnly = true;
+            input_work.autocomplete = 'off';
+            input_work.style.margin = '0px 0px 5px 10px';
+            input_work.addEventListener('focus', function(){
+              input_work.style.backgroundColor = '#fcc';
+              input_work.value = 'Hotkey available';
+            },false );
+            input_work.addEventListener('blur',function(){
+              input_work.style.backgroundColor = '#9D9';
+              input_work.value = 'Hotkey unavailable';
+            },false );
+            input_work.addEventListener('keypress', NDesc.key_event, false );
+
+            var video_title = document.querySelector('.video_title');
+            video_title.parentNode.insertBefore( input_work, video_title.nextSibling );
+            NDesc.input = input_work;
+        },
+
+        use_hotkey : function(){
+          NDesc.input.focus();
+        },
+
+        play_pause : function(){
+          var flvplayer = document.getElementById('flvplayer');
+          if( !flvplayer ) return;
+          if( flvplayer.ext_getStatus() == 'playing' ){
+            flvplayer.ext_play(0);
+          }else{
+            flvplayer.ext_play(1);
+          }
+        },
+
+        volumeup : function(){
+          NDesc.volume(5);
+        },
+        volumedown : function(){
+          NDesc.volume(-5);
+        },
+        seekleft : function(){
+          NDesc.seek(-10);
+        },
+        seekright : function(){
+          NDesc.seek(10);
+        },
+        seek2top : function(){
+          NDesc.seek(Number.NEGATIVE_INFINITY);
+        },
+        volume : function(vol){
+          var flvplayer = document.getElementById('flvplayer');
+          if (!flvplayer) return;
+          var cur = Number(flvplayer.ext_getVolume());
+          var to = cur + Number(vol);
+          if (to > 100) to = 100;
+          if (to < 0  ) to = 0;
+          flvplayer.ext_setVolume(to);
+        },
+        seek : function(time) {
+          var flvplayer = document.getElementById('flvplayer');
+          if (!flvplayer) return;
+          var len = Number(flvplayer.ext_getTotalTime());
+          var cur = Number(flvplayer.ext_getPlayheadTime());
+          var to = cur + Number(time);
+          if (to > len) to = len;
+          if (to < 0  ) to = 0;
+          flvplayer.ext_setPlayheadTime(to);
+          // for shotage of backward seek.
+          var cur = Number(flvplayer.ext_getPlayheadTime());
+          if (time < 0 && cur - to > 5 && to > 10) {
+              flvplayer.ext_setPlayheadTime(to - 10);
+          }
+        },
+        key_event : function(e) {
+          var handler = {
+            'o' : function(){ NDesc.description_toggle(); },
+            'a' : function(){ NDesc.ad_toggle(); },
+            ' ' : function(){ NDesc.play_pause();  },
+            'k' : function(){ NDesc.volumeup(); },
+            'j' : function(){ NDesc.volumedown(); },
+            'h' : function(){ NDesc.seekleft(); },
+            'l' : function(){ NDesc.seekright(); },
+            'H' : function(){ NDesc.seek2top(); }   //Shift+H
+          };
+          var t = e.target;
+          var pressKey = String.fromCharCode(e.which);
+          if( t.nodeType == 1 && typeof handler[pressKey] == "function" ){
+            e.preventDefault();
+            handler[pressKey].apply();
+          }
         }
-    }
+   };
 
-    var o = new NDesc();
+    document.addEventListener('DOMContentLoaded', function(){
+     NDesc.init();
+    },false );
+
 })();
