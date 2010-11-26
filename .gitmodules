@@ -106,3 +106,9 @@
 [submodule "dot.vim/bundle/vim-surround"]
 	path = dot.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "dot.vim/bundle/unite-yarm"]
+	path = dot.vim/bundle/unite-yarm
+	url = https://github.com/basyura/unite-yarm.git
+[submodule "dot.vim/bundle/open-browser.vim"]
+	path = dot.vim/bundle/open-browser.vim
+	url = https://github.com/tyru/open-browser.vim.git
