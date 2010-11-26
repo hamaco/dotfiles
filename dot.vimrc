@@ -9,7 +9,7 @@ let s:iswindows = has('win32') || has('win64')
 
 " pathogen
 " http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-runtime autoload/pathogen.vim
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 if exists("g:loaded_pathogen")
 	call pathogen#runtime_append_all_bundles()
 end
