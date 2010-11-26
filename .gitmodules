@@ -94,3 +94,9 @@
 [submodule "dot.vim/bundle/unite-help"]
 	path = dot.vim/bundle/unite-help
 	url = https://github.com/tsukkee/unite-help.git
+[submodule "dot.vim/bundle/unite-colorscheme"]
+	path = dot.vim/bundle/unite-colorscheme
+	url = https://github.com/ujihisa/unite-colorscheme.git
+[submodule "dot.vim/bundle/vice.vim"]
+	path = dot.vim/bundle/vice.vim
+	url = https://github.com/tyru/vice.vim.git
