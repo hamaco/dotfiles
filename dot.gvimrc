@@ -19,7 +19,8 @@ elseif has("unix")
 elseif has("win32")
 	set columns=120
 	set lines=40
-	set guifont=ゆたぽん（コーディング）:h12:cSHIFTJIS
+	"set guifont=ゆたぽん（コーディング）:h12
+	set guifont=あくあフォント:h12
 	colorscheme h2u_black
 
 	" fullscreen
@@ -49,3 +50,13 @@ endif
 
 set splitbelow " 横分割したら新しいウィンドウは下に
 set splitright " 縦分割したら新しいウィンドウは右に
+
+" Sugamo.vim
+function! ToggleFont()
+	if &guifont=~"あくあフォント"
+		set guifont=ゆたぽん（コーディング）:h12
+	else
+		set guifont=あくあフォント:h12
+	endif
+endfunction
+command! ToggleFont :call ToggleFont()
