@@ -422,19 +422,20 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
-noremap <silent> <Space>uu  :<C-u>Unite -buffer-name=files buffer file file_mru -start-insert<CR>
-noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files file<CR>
-noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files file -start-insert<CR>
-noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files file -start-insert<CR>
+noremap <silent> <Space>uu  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru <CR>
+noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files -start-insert file<CR>
+noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
+noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>ut  :<C-u>Unite tab<CR>
 noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
+noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
 " Execute help.
 nnoremap <C-h>  :<C-u>Unite -start-insert help<CR>
 " Execute help by cursor keyword.
 nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord -start-insert help<CR>
 
 let g:unite_enable_ignore_case = 1
-let g:unite_enable_split_vertically = 1
+let g:unite_enable_split_vertically = 0
 let g:unite_enable_start_insert = 0
 let g:unite_source_file_mru_limit = 150
 
@@ -708,15 +709,6 @@ nnoremap sH <C-w>H:call <SID>good_width()<Cr>
 nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L:call <SID>good_width()<Cr>
-nmap spj <SID>(split-to-j)
-nmap spk <SID>(split-to-k)
-nmap sph <SID>(split-to-h)
-nmap spl <SID>(split-to-l)
-
-nnoremap <SID>(split-to-j) :<C-u>belowright split<CR>
-nnoremap <SID>(split-to-k) :<C-u>aboveleft split<CR>
-nnoremap <SID>(split-to-h) :<C-u>topleft vsplit<CR>
-nnoremap <SID>(split-to-l) :<C-u>botright vsplit<CR>
 
 function! s:good_width()
   if winwidth(0) < 84
