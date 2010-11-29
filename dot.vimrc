@@ -210,8 +210,6 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd BufNewFile,BufRead *.tpl setf html
-
 autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
@@ -379,18 +377,18 @@ noremap <Space>rm :<C-u>Ref man<Space>
 "eskk.vim {{{2
 let g:eskk#keep_state_beyond_buffer = 0
 
-"if has('vim_starting')
-"	let g:eskk_dictionary = '~/.skk-jisyo'
-"
-"	if s:iswindows
-"		let g:eskk_large_dictionary = expand('~/SKK-JISYO.L')
-"	elseif has('mac')
-"		let g:eskk_large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
-"	else
-"		let g:eskk_large_dictionary = '/usr/share/skk/SKK-JISYO.L'
-"	endif
-"endif
-"
+if has('vim_starting')
+	let g:eskk#dictionary = '~/.skk-jisyo'
+
+	if s:iswindows
+		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
+	elseif has('mac')
+		let g:eskk#large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+	else
+		let g:eskk#large_dictionary = '/usr/share/skk/SKK-JISYO.L'
+	endif
+endif
+
 "let g:eskk_debug = 0
 "let g:eskk_egg_like_newline = 1
 "let g:eskk_enable_completion = 1
