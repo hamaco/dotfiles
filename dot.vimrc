@@ -96,6 +96,7 @@ set listchars=tab:>-,trail:-,extends:>,precedes:<
 set modeline
 set mouse=a
 set nrformats="hex"
+set pastetoggle=<F12>
 set ruler
 set shiftwidth=2
 set showcmd
@@ -427,8 +428,10 @@ noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files -start-insert file<CR
 noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>ut  :<C-u>Unite tab<CR>
-noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
-noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
+noremap <silent> <Space>uo  :<C-u>Unite -start-insert outline<CR>
+if s:iswindows
+	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
+endif
 " Execute help.
 nnoremap <C-h>  :<C-u>Unite -start-insert help<CR>
 " Execute help by cursor keyword.
@@ -513,6 +516,7 @@ nnoremap <Space>w :<C-u>write<CR>
 nnoremap <Space>q :<C-u>quit<CR>
 
 " Emacsっぽいキーバインド {{{2
+inoremap <C-x><C-s> <C-o>:<C-u>write<CR>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 "inoremap <C-e> <End>
