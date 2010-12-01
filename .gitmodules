@@ -115,3 +115,6 @@
 [submodule "dot.vim/bundle/errormaker.vim"]
 	path = dot.vim/bundle/errormaker.vim
 	url = https://github.com/vim-scripts/errormarker.vim.git
+[submodule "dot.vim/bundle/vim-alignta"]
+	path = dot.vim/bundle/vim-alignta
+	url = https://github.com/h1mesuke/vim-alignta.git
