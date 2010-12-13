@@ -30,9 +30,10 @@ endif
 
 
 " 文字コード設定 {{{1
-if &encoding !=# 'utf-8'
-	set encoding=japan
-endif
+"if &encoding !=# 'utf-8'
+	"set encoding=japan
+"endif
+set encoding=utf-8
 
 if has("iconv")
 	let s:enc_euc = 'euc-jp'
@@ -46,6 +47,7 @@ if has("iconv")
 
 	" Make fileencodings
 	let &fileencodings = 'ucs-bom'
+	let &fileencodings = &fileencodings . ',' . &encoding
 	if &encoding !=# 'utf-8'
 		let &fileencodings = &fileencodings . ',' . 'ucs-2le'
 		let &fileencodings = &fileencodings . ',' . 'ucs-2'
@@ -63,7 +65,6 @@ if has("iconv")
 		let &fileencodings = &fileencodings . ',' . 'utf-8'
 		let &fileencodings = &fileencodings . ',' . s:enc_euc
 	endif
-	let &fileencodings = &fileencodings . ',' . &encoding
 
 	unlet s:enc_euc
 	unlet s:enc_jis
@@ -324,16 +325,21 @@ let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
 
 let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
 
-inoremap <expr><TAB>    pumvisible() ? "\<C-n>" :"\<TAB>"
-imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-h>    pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+imap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
+smap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+
+inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
 " <CR>: close popup and save indent.
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
+
 " vim hacks #135
 inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
-
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 
 " poslist.vim {{{2
