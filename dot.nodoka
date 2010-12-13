@@ -39,6 +39,11 @@ keymap Global
 
 	key W-q = A-F4
 
+	key A-h = Left
+	key A-j = Down
+	key A-k = Up
+	key A-l = Right
+
 	# Explorer’u‚«Š·‚¦
 	#key W-e = &Sync &ShellExecute("open", "D:/software/filemanager/xf/XF.exe",,, showNormal)
 
@@ -86,6 +91,10 @@ window Edit /Edit:|Edit$/ : Global
 
 window AFxW /afxw\.exe/ : Global
 	key W-j = A-j
+	key A-h = A-h
+	key A-j = A-j
+	key A-k = A-k
+	key A-l = A-l
 
 window VMWare /vmware\.exe/ : Global
 	key *IC-C-j = C-j
