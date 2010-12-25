@@ -390,9 +390,11 @@ if has('vim_starting')
 	if s:iswindows
 		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
 	elseif has('mac')
-		let g:eskk#large_dictionary = '~/Library/Application\ Support/AquaSKK/SKK-JISYO.L'
+		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
+	elseif has('unix') && !has('linux')
+		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
 	else
-		let g:eskk#large_dictionary = '/usr/share/skk/SKK-JISYO.L'
+		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
 	endif
 endif
 
