@@ -489,6 +489,8 @@ else
 	let g:vimshell_prompt = $USER."% "
 endif
 
+noremap <C-Space> :<C-u>VimShell<CR>
+
 
 " zen-coding.vim {{{2
 let g:user_zen_expandabbr_key = '<C-e>'
