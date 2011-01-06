@@ -10,7 +10,7 @@ keymap Global
 	key *Applications = *Rwindows
 
 	# CapsLock as Control
-	mod Control  += !!CapsLock
+	mod Control  += CapsLock
 	key *CapsLock = *LControl
 
 	# Sands
