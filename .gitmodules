@@ -118,3 +118,6 @@
 [submodule "dot.vim/bundle/vim-alignta"]
 	path = dot.vim/bundle/vim-alignta
 	url = https://github.com/h1mesuke/vim-alignta.git
+[submodule "dot.vim/bundle/vim-localrc"]
+	path = dot.vim/bundle/vim-localrc
+	url = https://github.com/thinca/vim-localrc.git
