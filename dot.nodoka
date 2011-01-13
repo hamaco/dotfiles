@@ -2,6 +2,21 @@ include "104.nodoka"
 # ShellExecute(operation, file, parameters, directory, show_command)
 
 keymap Global
+	mod windows -= Rwindows
+	mod mod9 = Rwindows
+	key m9-a = C-A-_1
+	key m9-s = C-A-_2
+	key m9-d = C-A-_3
+	key m9-f = C-A-_4
+	key m9-g = C-A-_5
+	key m9-h = C-A-_6
+	key m9-j = C-A-_7
+	key m9-k = C-A-_8
+	key m9-l = C-A-_9
+
+	#key *Rwindows = *Enter
+	#key *Lwindows = *Escape
+
 	# mayu
 	key W-i = &WindowIdentify
 
@@ -62,10 +77,22 @@ window Explorer /explorer\.exe/ : Global
 
 window InternetExplorer /iexplore\.exe/ : Global
 	key C-l = A-d
+	key m9-t = C-t
 
 window Opera /opera\.exe/ : Global
 	key LAlt = &Ignore
 	key RAlt = &Ignore
+	key m9-_1 = C-_1
+	key m9-_2 = C-_2
+	key m9-_3 = C-_3
+	key m9-_4 = C-_4
+	key m9-_5 = C-_5
+	key m9-_6 = C-_6
+	key m9-_7 = C-_7
+	key m9-_8 = C-_8
+	key m9-_9 = C-_9
+	key m9-w = C-w
+	key m9-t = C-t
 
 window FastPictureViewer /FastPictureViewer\.exe/ : Global
 	key l = Right
