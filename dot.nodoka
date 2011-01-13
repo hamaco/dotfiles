@@ -89,6 +89,9 @@ window Edit /Edit:|Edit$/ : Global
 	key W-c = C-c
 	key W-v = C-v
 
+window ResophNotes /ResophNotes\.exe/ : Edit
+	key F5 = C-m
+
 window AFxW /afxw\.exe/ : Global
 	key W-j = A-j
 	key A-h = A-h
@@ -97,5 +100,5 @@ window AFxW /afxw\.exe/ : Global
 	key A-l = A-l
 
 window VMWare /vmware\.exe/ : Global
-	key *IC-C-j = C-j
-	key C-Space = C-Space
+	key *IC-C-j  = C-j
+	key C-Space  = C-Space
