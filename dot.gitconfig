@@ -16,7 +16,7 @@
 	new = green bold
 
 [core]
-	excludesfile = /Users/hamaco/.gitignore
+	excludesfile = ~/.gitignore
 	pager = less -r
 	quotepath = false
 

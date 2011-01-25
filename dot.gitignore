@@ -11,6 +11,10 @@
 .vimrc.local
 .*.sw?
 
+# for Sabel
+*/*sabel.log
+cache/*
+
 # for XOOPS
 sess_*
 */cache/*

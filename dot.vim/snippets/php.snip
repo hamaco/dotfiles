@@ -1,5 +1,6 @@
 snippet php
 	<?php
+	
 	${1}
 
 snippet inc
@@ -67,8 +68,11 @@ snippet try
 snippet throw
 	throw new ${1}Exception(${2});
 
+snippet pp
+	print "<PRE>";var_dump(${1});exit;
+
 snippet ve
-	dump(${1});exit;
+	var_dump(${1});exit;
 
 snippet pr
 	print_r(${1});${2}
