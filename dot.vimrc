@@ -648,19 +648,6 @@ function! s:open_junk_file()
   endif
 endfunction "}}}
 
-" vim hacks #112 : Load settings for eacy location.
-augroup vimrc-local
-  autocmd!
-  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
-augroup END
-
-function! s:vimrc_local(loc)
-  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
-  for i in reverse(filter(files, 'filereadable(v:val)'))
-    source `=i`
-  endfor
-endfunction
-
 " vim hacks #149
 let s:coding_styles = {}
 let s:coding_styles['My style']      = 'setl expandtab   tabstop=4 shiftwidth=4 softtabstop&'
