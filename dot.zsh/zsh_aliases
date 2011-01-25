@@ -64,6 +64,9 @@ darwin*)
 		osascript -e "tell application \"Finder\" to mount volume \"$1\""
 	}
 
+	alias hiddenDesktop="chflags hidden ~/Desktop/*"
+	alias nohiddenDesktop="chflags nohidden ~/Desktop/*"
+
 	;;
 freebsd*)
 	alias tbz2="tar cvyf"
