@@ -1,5 +1,8 @@
 ,*
 
+# for Subversion
+.svn
+
 # for Mac
 .DS_Store
 
