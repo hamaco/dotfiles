@@ -30,45 +30,61 @@ endif
 
 
 " 文字コード設定 {{{1
-"if &encoding !=# 'utf-8'
-	"set encoding=japan
-"endif
-set encoding=utf-8
-
-if has("iconv")
-	let s:enc_euc = 'euc-jp'
-	let s:enc_jis = 'iso-2022-jp'
-
-	" Does iconv support JIS X 0213 ?
-	if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-		let s:enc_euc = 'euc-jisx0213,euc-jp'
-		let s:enc_jis = 'iso-2022-jp-3'
-	endif
-
-	" Make fileencodings
-	let &fileencodings = 'ucs-bom'
-	let &fileencodings = &fileencodings . ',' . &encoding
-	if &encoding !=# 'utf-8'
-		let &fileencodings = &fileencodings . ',' . 'ucs-2le'
-		let &fileencodings = &fileencodings . ',' . 'ucs-2'
-	endif
-	let &fileencodings = &fileencodings . ',' . s:enc_jis
-
-	if &encoding ==# 'utf-8'
-		let &fileencodings = &fileencodings . ',' . s:enc_euc
-		let &fileencodings = &fileencodings . ',' . 'cp932'
-	elseif &encoding =~# '^euc-\%(jp\|jisx0213\)$'
-		let &encoding = s:enc_euc
-		let &fileencodings = &fileencodings . ',' . 'utf-8'
-		let &fileencodings = &fileencodings . ',' . 'cp932'
-	else  " cp932
-		let &fileencodings = &fileencodings . ',' . 'utf-8'
-		let &fileencodings = &fileencodings . ',' . s:enc_euc
-	endif
-
-	unlet s:enc_euc
-	unlet s:enc_jis
-endif "
+if &encoding !=# 'utf-8'
+  set encoding=japan
+  set fileencoding=japan
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  " iconvがJISX0213に対応しているかをチェック
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+" 日本語を含まない場合は fileencoding に encoding を使うようにする
+if has('autocmd')
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+endif
+" 改行コードの自動認識
+set fileformats=unix,dos,mac
+" □とか○の文字があってもカーソル位置がずれないようにする
+if exists('&ambiwidth')
+  set ambiwidth=double
+endif
 
 
 
@@ -294,31 +310,59 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 0
 let g:neocomplcache_enable_underbar_completion = 1
 
-let g:neocomplcache_enable_info = 1
-let g:neocomplcache_enable_quick_match = 0 " 数字で候補選択を無効
+"let g:neocomplcache_enable_info = 1 " deleted?
 let g:neocomplcache_enable_skip_completion = 1
 let g:neoComplcache_partial_match = 0
 let g:neocomplcache_enable_ignore_case = 0
 let g:neocomplcache_enable_wildcard = 0
-let g:neocomplcache_max_list = 10
+let g:neocomplcache_max_list = 30
 " let g:NeoComplCache_PreviousKeywordCompletion = 0
 let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_min_keyword_length = 3
 let g:neocomplcache_skip_input_time = "0.1"
 let g:neocomplcache_skip_completion_time = "0.1"
 "tmp
 let g:neocomplcache_auto_completion_start_length = 2
+let g:neocomplcache_manual_completion_start_length = 0
 let g:neocomplcache_tags_completion_start_length = 5
 let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_EnableMFU = 1
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
-let g:neocomplcache_dictionary_filetype_lists = {
-			\ "default"  : "",
-			\ "vimshell" : $HOME."/.vimshell/command-history"
+let g:neocomplcache_enable_quick_match = 0 " 数字で候補選択をyuu効
+if !exists('g:neocomplcache_quick_match_patterns')
+  let g:neocomplcache_quick_match_patterns = {}
+endif
+let g:neocomplcache_quick_match_patterns.default = ' '
+let g:neocomplcache_quick_match_table = {
+			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
+			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
 			\ }
 
-if !exists("g:neocomplcache_keyword_patterns")
+let g:neocomplcache_dictionary_filetype_lists = {
+			\ 'default'  : '',
+			\ 'vimshell' : $HOME.'/.vimshell/command-history'
+			\ }
+
+
+" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+let g:neocomplcache_omni_functions = {
+			\ 'ruby': 'rubycomplete#Complete',
+			\ }
+
+if !exists('g:neocomplcache_omni_patterns')
+	let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
@@ -391,9 +435,7 @@ if has('vim_starting')
 		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
 	elseif has('mac')
 		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-	elseif has('unix') && !has('linux')
-		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-	else
+	elseif has('unix')
 		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
 	endif
 endif
@@ -436,7 +478,7 @@ noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files -start-insert file<CR
 noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>ut  :<C-u>Unite tab<CR>
-noremap <silent> <Space>uo  :<C-u>Unite -start-insert outline<CR>
+noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
 if s:iswindows
 	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
 endif
