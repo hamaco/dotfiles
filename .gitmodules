@@ -127,3 +127,6 @@
 [submodule "dot.vim/bundle/vim-localrc"]
 	path = dot.vim/bundle/vim-localrc
 	url = https://github.com/thinca/vim-localrc.git
+[submodule "dot.vim/bundle/tabpagecolorscheme"]
+	path = dot.vim/bundle/tabpagecolorscheme
+	url = https://github.com/ujihisa/tabpagecolorscheme.git
