@@ -298,11 +298,12 @@ endif
 let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
 
 let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
+command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 
 imap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
 smap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g> neocomplcache#undo_completion()
-inoremap <expr><C-l> neocomplcache#complete_common_string()
+"inoremap <expr><C-l> neocomplcache#complete_common_string()
 
 inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
