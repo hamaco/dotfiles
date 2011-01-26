@@ -1,5 +1,8 @@
 ,*
 
+# for Subversion
+.svn
+
 # for Mac
 .DS_Store
 
@@ -7,6 +10,10 @@
 *~
 .vimrc.local
 .*.sw?
+
+# for Sabel
+*/*sabel.log
+cache/*
 
 # for XOOPS
 sess_*

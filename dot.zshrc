@@ -395,5 +395,12 @@ bindkey '^[d' _quote-previous-word-in-double
 #source $HOME/.zsh/auto-fu.zsh; zle-line-init () { auto-fu-init; }; zle -N zle-line-init
 # }}}
 
+# SSHのagent forward
+# http://www.cuspy.org/blog/archives/297
+if [ "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
+  ln -fs $SSH_AUTH_SOCK $HOME/.ssh/auth_sock
+  export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
+fi
+
 # END {{{1
 # vim: foldmethod=marker

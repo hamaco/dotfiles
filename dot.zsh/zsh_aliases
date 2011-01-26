@@ -52,10 +52,10 @@ darwin*)
 	alias eopen="open -a emacs"
 
 	# macports
-	alias mysql="mysql5"
+	#alias mysql="mysql5"
 
 	alias emacs="open -a Emacs"
-	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+	#alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias firefox="open -a Shiretoko"
 	alias safari="open -a Safari"
 	alias prev="open -a Preview"
@@ -64,6 +64,9 @@ darwin*)
 		echo "mounting $1"
 		osascript -e "tell application \"Finder\" to mount volume \"$1\""
 	}
+
+	alias hiddenDesktop="chflags hidden ~/Desktop/*"
+	alias nohiddenDesktop="chflags nohidden ~/Desktop/*"
 
 	;;
 freebsd*)

@@ -16,14 +16,13 @@
 	new = green bold
 
 [core]
-	excludesfile = /Users/hamaco/.gitignore
+	excludesfile = ~/.gitignore
 	pager = less -r
 	quotepath = false
 
 [alias]
 	br = branch
 	ci = commit -v
-	cia = commit --amend -a -C HEAD
 	co = checkout
 	d1 = diff HEAD~
 	d2 = diff HEAD~~
@@ -32,6 +31,7 @@
 	dc = diff --cached
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
+	fixup = commit --amend -a -C HEAD
 	ft = fetch
 	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
 	l = log --stat
@@ -47,6 +47,7 @@
 	rollback = reset --hard HEAD~
 	sl = stash list
 	smi = submodule init
+	smp = submodule foreach "git fetch; git checkout origin/master"
 	smu = submodule update
 	sh = show
 	sp = stash pop

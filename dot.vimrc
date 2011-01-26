@@ -30,45 +30,61 @@ endif
 
 
 " 文字コード設定 {{{1
-"if &encoding !=# 'utf-8'
-	"set encoding=japan
-"endif
-set encoding=utf-8
-
-if has("iconv")
-	let s:enc_euc = 'euc-jp'
-	let s:enc_jis = 'iso-2022-jp'
-
-	" Does iconv support JIS X 0213 ?
-	if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-		let s:enc_euc = 'euc-jisx0213,euc-jp'
-		let s:enc_jis = 'iso-2022-jp-3'
-	endif
-
-	" Make fileencodings
-	let &fileencodings = 'ucs-bom'
-	let &fileencodings = &fileencodings . ',' . &encoding
-	if &encoding !=# 'utf-8'
-		let &fileencodings = &fileencodings . ',' . 'ucs-2le'
-		let &fileencodings = &fileencodings . ',' . 'ucs-2'
-	endif
-	let &fileencodings = &fileencodings . ',' . s:enc_jis
-
-	if &encoding ==# 'utf-8'
-		let &fileencodings = &fileencodings . ',' . s:enc_euc
-		let &fileencodings = &fileencodings . ',' . 'cp932'
-	elseif &encoding =~# '^euc-\%(jp\|jisx0213\)$'
-		let &encoding = s:enc_euc
-		let &fileencodings = &fileencodings . ',' . 'utf-8'
-		let &fileencodings = &fileencodings . ',' . 'cp932'
-	else  " cp932
-		let &fileencodings = &fileencodings . ',' . 'utf-8'
-		let &fileencodings = &fileencodings . ',' . s:enc_euc
-	endif
-
-	unlet s:enc_euc
-	unlet s:enc_jis
-endif "
+if &encoding !=# 'utf-8'
+  set encoding=japan
+  set fileencoding=japan
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  " iconvがJISX0213に対応しているかをチェック
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+" 日本語を含まない場合は fileencoding に encoding を使うようにする
+if has('autocmd')
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+endif
+" 改行コードの自動認識
+set fileformats=unix,dos,mac
+" □とか○の文字があってもカーソル位置がずれないようにする
+if exists('&ambiwidth')
+  set ambiwidth=double
+endif
 
 
 
@@ -133,80 +149,6 @@ let maplocalleader = "."
 
 
 
-" commands {{{1
-command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
-
-" 文字コードを変えて最読込 {{{2
-command! -bang -complete=file -nargs=? Utf8
-\ edit<bang> ++enc=utf-8 <args>
-
-command! -bang -complete=file -nargs=? Eucjp
-\ edit<bang> ++enc=euc-jp <args>
-
-command! -bang -complete=file -nargs=? Sjis
-\ edit<bang> ++enc=cp932 <args>
-
-" 文字コードを変換 {{{2
-command! -bang -nargs=0 ToUtf8
-\ setlocal fileencoding=utf-8
-
-command! -bang -nargs=0 ToEucjp
-\ setlocal fileencoding=euc-jp
-
-command! -bang -nargs=0 ToSjis
-\ setlocal fileencoding=cp932
-
-" カレントディレクトリ変更{{{2
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
-function! s:ChangeCurrentDir(directory, bang)
-	if a:directory == ''
-		lcd %:p:h
-	else
-		execute 'lcd' . a:directory
-	endif
-
-	if a:bang == ''
-		pwd
-	endif
-endfunction
-
-" Change current directory.
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
-
-" CommandGrep {{{2
-function! C(cmd)
-	redir => result
-	silent execute a:cmd
-	redir END
-	return result
-endfunction
-
-" Grep({text}, {pat} [, invert])
-function! Grep(text, pat, ...)
-	let op = a:0 && a:1 ? '!~#' : '=~#'
-	return join(filter(split(a:text, "\n"), 'v:val' . op . 'a:pat'), "\n")
-endfunction
-
-function! Cgrep(cmd, pat, ...)
-	return Grep(C(a:cmd), a:pat, a:0 && a:1)
-endfunction
-
-function! s:cgrep(args, v)
-	let list = matchlist(a:args, '^\v(/.{-}\\@<!/|\S+)\s+(.+)$')
-	if empty(list)
-		echomsg 'Cgrep: Invalid arguments: ' . a:args
-		return
-	endif
-	let pat = list[1] =~ '^/.*/$' ? list[1][1 : -2] : list[1]
-	echo Cgrep(list[2], pat, a:v)
-endfunction
-
-command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
-
-
-
-
 " autocmd {{{1
 augroup MyAutoCmd
   autocmd!
@@ -252,7 +194,6 @@ let g:Align_xstrlen = 3
 
 " altercmd.vim {{{2
 call altercmd#load()
-AlterCommand cd CD
 AlterCommand t tabedit
 AlterCommand s set
 AlterCommand sl setl
@@ -266,6 +207,11 @@ imap <C-a> <C-o><Plug>CapsLockToggle
 " ChangeLog {{{2
 let g:changelog_username = "hamaco <hamanaka.kazuhiro@gmail.com>"
 let g:changelog_timeformat = "%Y-%m-%d"
+
+
+" emap.vim {{{2
+call emap#load('noprefix')
+call emap#set_sid_from_sfile(expand('<sfile>'))
 
 
 " FavStar.vim {{{2
@@ -294,31 +240,59 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 0
 let g:neocomplcache_enable_underbar_completion = 1
 
-let g:neocomplcache_enable_info = 1
-let g:neocomplcache_enable_quick_match = 0 " 数字で候補選択を無効
+"let g:neocomplcache_enable_info = 1 " deleted?
 let g:neocomplcache_enable_skip_completion = 1
 let g:neoComplcache_partial_match = 0
 let g:neocomplcache_enable_ignore_case = 0
 let g:neocomplcache_enable_wildcard = 0
-let g:neocomplcache_max_list = 10
+let g:neocomplcache_max_list = 30
 " let g:NeoComplCache_PreviousKeywordCompletion = 0
 let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_min_keyword_length = 3
 let g:neocomplcache_skip_input_time = "0.1"
 let g:neocomplcache_skip_completion_time = "0.1"
 "tmp
 let g:neocomplcache_auto_completion_start_length = 2
+let g:neocomplcache_manual_completion_start_length = 0
 let g:neocomplcache_tags_completion_start_length = 5
 let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_EnableMFU = 1
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
-let g:neocomplcache_dictionary_filetype_lists = {
-			\ "default"  : "",
-			\ "vimshell" : $HOME."/.vimshell/command-history"
+let g:neocomplcache_enable_quick_match = 0 " 数字で候補選択をyuu効
+if !exists('g:neocomplcache_quick_match_patterns')
+  let g:neocomplcache_quick_match_patterns = {}
+endif
+let g:neocomplcache_quick_match_patterns.default = ' '
+let g:neocomplcache_quick_match_table = {
+			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
+			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
 			\ }
 
-if !exists("g:neocomplcache_keyword_patterns")
+let g:neocomplcache_dictionary_filetype_lists = {
+			\ 'default'  : '',
+			\ 'vimshell' : $HOME.'/.vimshell/command-history'
+			\ }
+
+
+" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+let g:neocomplcache_omni_functions = {
+			\ 'ruby': 'rubycomplete#Complete',
+			\ }
+
+if !exists('g:neocomplcache_omni_patterns')
+	let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
@@ -391,9 +365,7 @@ if has('vim_starting')
 		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
 	elseif has('mac')
 		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-	elseif has('unix') && !has('linux')
-		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-	else
+	elseif has('unix')
 		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
 	endif
 endif
@@ -436,7 +408,7 @@ noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files -start-insert file<CR
 noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>ut  :<C-u>Unite tab<CR>
-noremap <silent> <Space>uo  :<C-u>Unite -start-insert outline<CR>
+noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
 if s:iswindows
 	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
 endif
@@ -490,6 +462,8 @@ else
 	" Display user name on Linux.
 	let g:vimshell_prompt = $USER."% "
 endif
+
+noremap <C-Space> :<C-u>VimShell<CR>
 
 
 " zen-coding.vim {{{2
@@ -563,6 +537,93 @@ nnoremap <C-t>h :<C-u>tabprevious<CR>
 nnoremap <C-t>l :<C-u>tabnext<CR>
 nnoremap <C-p> :<C-u>tabprevious<CR>
 nnoremap <C-n> :<C-u>tabnext<CR>
+
+
+
+
+" commands {{{1
+command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
+
+" 文字コードを変えて最読込 {{{2
+command! -bang -complete=file -nargs=? Utf8
+\ edit<bang> ++enc=utf-8 <args>
+
+command! -bang -complete=file -nargs=? Eucjp
+\ edit<bang> ++enc=euc-jp <args>
+
+command! -bang -complete=file -nargs=? Sjis
+\ edit<bang> ++enc=cp932 <args>
+
+" 文字コードを変換 {{{2
+command! -bang -nargs=0 ToUtf8
+\ setlocal fileencoding=utf-8
+
+command! -bang -nargs=0 ToEucjp
+\ setlocal fileencoding=euc-jp
+
+command! -bang -nargs=0 ToSjis
+\ setlocal fileencoding=cp932
+
+" カレントディレクトリ変更{{{2
+
+" :TabpageCD - wrapper of :cd to keep cwd for each tabpage  "{{{
+
+AlterCommand cd  TabpageCD
+
+Map [n] ,cd       :<C-u>TabpageCD %:p:h<CR>
+Map [n] <Space>cd :<C-u>lcd %:p:h<CR>
+
+command!
+\   -bar -complete=dir -nargs=?
+\   CD
+\   TabpageCD <args>
+
+command!
+\   -bar -complete=dir -nargs=?
+\   TabpageCD
+\   execute 'cd' fnameescape(expand(<q-args>))
+\   | let t:cwd = getcwd()
+
+autocmd TabEnter *
+\   if exists('t:cwd') && !isdirectory(t:cwd)
+\ |     unlet t:cwd
+\ | endif
+\ | if !exists('t:cwd')
+\ |   let t:cwd = getcwd()
+\ | endif
+\ | execute 'cd' fnameescape(expand(t:cwd))
+" }}}
+
+
+" CommandGrep {{{2
+function! C(cmd)
+	redir => result
+	silent execute a:cmd
+	redir END
+	return result
+endfunction
+
+" Grep({text}, {pat} [, invert])
+function! Grep(text, pat, ...)
+	let op = a:0 && a:1 ? '!~#' : '=~#'
+	return join(filter(split(a:text, "\n"), 'v:val' . op . 'a:pat'), "\n")
+endfunction
+
+function! Cgrep(cmd, pat, ...)
+	return Grep(C(a:cmd), a:pat, a:0 && a:1)
+endfunction
+
+function! s:cgrep(args, v)
+	let list = matchlist(a:args, '^\v(/.{-}\\@<!/|\S+)\s+(.+)$')
+	if empty(list)
+		echomsg 'Cgrep: Invalid arguments: ' . a:args
+		return
+	endif
+	let pat = list[1] =~ '^/.*/$' ? list[1][1 : -2] : list[1]
+	echo Cgrep(list[2], pat, a:v)
+endfunction
+
+command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
 
 
 
@@ -645,19 +706,6 @@ function! s:open_junk_file()
     execute 'edit ' . l:filename
   endif
 endfunction "}}}
-
-" vim hacks #112 : Load settings for eacy location.
-augroup vimrc-local
-  autocmd!
-  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
-augroup END
-
-function! s:vimrc_local(loc)
-  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
-  for i in reverse(filter(files, 'filereadable(v:val)'))
-    source `=i`
-  endfor
-endfunction
 
 " vim hacks #149
 let s:coding_styles = {}
