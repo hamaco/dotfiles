@@ -149,80 +149,6 @@ let maplocalleader = "."
 
 
 
-" commands {{{1
-command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
-
-" 文字コードを変えて最読込 {{{2
-command! -bang -complete=file -nargs=? Utf8
-\ edit<bang> ++enc=utf-8 <args>
-
-command! -bang -complete=file -nargs=? Eucjp
-\ edit<bang> ++enc=euc-jp <args>
-
-command! -bang -complete=file -nargs=? Sjis
-\ edit<bang> ++enc=cp932 <args>
-
-" 文字コードを変換 {{{2
-command! -bang -nargs=0 ToUtf8
-\ setlocal fileencoding=utf-8
-
-command! -bang -nargs=0 ToEucjp
-\ setlocal fileencoding=euc-jp
-
-command! -bang -nargs=0 ToSjis
-\ setlocal fileencoding=cp932
-
-" カレントディレクトリ変更{{{2
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
-function! s:ChangeCurrentDir(directory, bang)
-	if a:directory == ''
-		lcd %:p:h
-	else
-		execute 'lcd' . a:directory
-	endif
-
-	if a:bang == ''
-		pwd
-	endif
-endfunction
-
-" Change current directory.
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
-
-" CommandGrep {{{2
-function! C(cmd)
-	redir => result
-	silent execute a:cmd
-	redir END
-	return result
-endfunction
-
-" Grep({text}, {pat} [, invert])
-function! Grep(text, pat, ...)
-	let op = a:0 && a:1 ? '!~#' : '=~#'
-	return join(filter(split(a:text, "\n"), 'v:val' . op . 'a:pat'), "\n")
-endfunction
-
-function! Cgrep(cmd, pat, ...)
-	return Grep(C(a:cmd), a:pat, a:0 && a:1)
-endfunction
-
-function! s:cgrep(args, v)
-	let list = matchlist(a:args, '^\v(/.{-}\\@<!/|\S+)\s+(.+)$')
-	if empty(list)
-		echomsg 'Cgrep: Invalid arguments: ' . a:args
-		return
-	endif
-	let pat = list[1] =~ '^/.*/$' ? list[1][1 : -2] : list[1]
-	echo Cgrep(list[2], pat, a:v)
-endfunction
-
-command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
-
-
-
-
 " autocmd {{{1
 augroup MyAutoCmd
   autocmd!
@@ -268,7 +194,6 @@ let g:Align_xstrlen = 3
 
 " altercmd.vim {{{2
 call altercmd#load()
-AlterCommand cd CD
 AlterCommand t tabedit
 AlterCommand s set
 AlterCommand sl setl
@@ -282,6 +207,11 @@ imap <C-a> <C-o><Plug>CapsLockToggle
 " ChangeLog {{{2
 let g:changelog_username = "hamaco <hamanaka.kazuhiro@gmail.com>"
 let g:changelog_timeformat = "%Y-%m-%d"
+
+
+" emap.vim {{{2
+call emap#load('noprefix')
+call emap#set_sid_from_sfile(expand('<sfile>'))
 
 
 " FavStar.vim {{{2
@@ -607,6 +537,93 @@ nnoremap <C-t>h :<C-u>tabprevious<CR>
 nnoremap <C-t>l :<C-u>tabnext<CR>
 nnoremap <C-p> :<C-u>tabprevious<CR>
 nnoremap <C-n> :<C-u>tabnext<CR>
+
+
+
+
+" commands {{{1
+command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
+
+" 文字コードを変えて最読込 {{{2
+command! -bang -complete=file -nargs=? Utf8
+\ edit<bang> ++enc=utf-8 <args>
+
+command! -bang -complete=file -nargs=? Eucjp
+\ edit<bang> ++enc=euc-jp <args>
+
+command! -bang -complete=file -nargs=? Sjis
+\ edit<bang> ++enc=cp932 <args>
+
+" 文字コードを変換 {{{2
+command! -bang -nargs=0 ToUtf8
+\ setlocal fileencoding=utf-8
+
+command! -bang -nargs=0 ToEucjp
+\ setlocal fileencoding=euc-jp
+
+command! -bang -nargs=0 ToSjis
+\ setlocal fileencoding=cp932
+
+" カレントディレクトリ変更{{{2
+
+" :TabpageCD - wrapper of :cd to keep cwd for each tabpage  "{{{
+
+AlterCommand cd  TabpageCD
+
+Map [n] ,cd       :<C-u>TabpageCD %:p:h<CR>
+Map [n] <Space>cd :<C-u>lcd %:p:h<CR>
+
+command!
+\   -bar -complete=dir -nargs=?
+\   CD
+\   TabpageCD <args>
+
+command!
+\   -bar -complete=dir -nargs=?
+\   TabpageCD
+\   execute 'cd' fnameescape(expand(<q-args>))
+\   | let t:cwd = getcwd()
+
+autocmd TabEnter *
+\   if exists('t:cwd') && !isdirectory(t:cwd)
+\ |     unlet t:cwd
+\ | endif
+\ | if !exists('t:cwd')
+\ |   let t:cwd = getcwd()
+\ | endif
+\ | execute 'cd' fnameescape(expand(t:cwd))
+" }}}
+
+
+" CommandGrep {{{2
+function! C(cmd)
+	redir => result
+	silent execute a:cmd
+	redir END
+	return result
+endfunction
+
+" Grep({text}, {pat} [, invert])
+function! Grep(text, pat, ...)
+	let op = a:0 && a:1 ? '!~#' : '=~#'
+	return join(filter(split(a:text, "\n"), 'v:val' . op . 'a:pat'), "\n")
+endfunction
+
+function! Cgrep(cmd, pat, ...)
+	return Grep(C(a:cmd), a:pat, a:0 && a:1)
+endfunction
+
+function! s:cgrep(args, v)
+	let list = matchlist(a:args, '^\v(/.{-}\\@<!/|\S+)\s+(.+)$')
+	if empty(list)
+		echomsg 'Cgrep: Invalid arguments: ' . a:args
+		return
+	endif
+	let pat = list[1] =~ '^/.*/$' ? list[1][1 : -2] : list[1]
+	echo Cgrep(list[2], pat, a:v)
+endfunction
+
+command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
 
 
 

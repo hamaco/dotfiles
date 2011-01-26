@@ -130,3 +130,6 @@
 [submodule "dot.vim/bundle/tabpagecolorscheme"]
 	path = dot.vim/bundle/tabpagecolorscheme
 	url = https://github.com/ujihisa/tabpagecolorscheme.git
+[submodule "dot.vim/bundle/emap.vim"]
+	path = dot.vim/bundle/emap.vim
+	url = https://github.com/tyru/emap.vim.git
