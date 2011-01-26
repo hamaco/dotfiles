@@ -188,10 +188,6 @@ if s:iswindows
 endif
 
 
-" Align.vim {{{2
-let g:Align_xstrlen = 3
-
-
 " altercmd.vim {{{2
 call altercmd#load()
 AlterCommand t tabedit
