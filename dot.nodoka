@@ -70,6 +70,11 @@ window Desktop /(?:Progman|WorkerW):SHELLDLL_DefView:SysListView32$/ : Global
 	key S-Down = C-Down Space
 	key S-Up   = C-Up   Space
 
+keymap Viewer : Global
+	key q = A-F4
+	key h = Left
+	key l = Right
+
 window Explorer /explorer\.exe/ : Global
 	key C-l = A-d
 	key W-l = A-d
@@ -94,10 +99,8 @@ window Opera /opera\.exe/ : Global
 	key m9-w = C-w
 	key m9-t = C-t
 
-window FastPictureViewer /FastPictureViewer\.exe/ : Global
-	key l = Right
-	key h = Left
-	key q = A-F4
+window FastPictureViewer /FastPictureViewer\.exe/ : Viewer
+window AdobeAcrobat /AcroRd32\.exe/ : Viewer
 
 window AdobeAcrobat /Acrobat\.exe/ : Global
 	key i = A-v &Sync p &Sync u
@@ -114,7 +117,7 @@ window Edit /Edit:|Edit$/ : Global
 	key W-z = C-z
 	key W-x = C-x
 	key W-c = C-c
-	key W-v = C-v
+	#key W-v = C-v
 
 window ResophNotes /ResophNotes\.exe/ : Edit
 	key F5 = C-m
