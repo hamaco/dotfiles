@@ -23,6 +23,7 @@ export LESS="-er --tabs=4 --no-init --LONG-PROMPT --ignore-case"
 export EDITOR=vim
 export SVN_EDITOR=vim
 
+export MYSQL_PS1="\\u@\\h:\\d>\\_"
 #export SCREENDIR="${HOME}/.screen"
 
 export SABEL_HOME="/sabel"
