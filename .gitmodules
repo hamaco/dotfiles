@@ -136,3 +136,9 @@
 [submodule "dot.vim/bundle/emap.vim"]
 	path = dot.vim/bundle/emap.vim
 	url = https://github.com/tyru/emap.vim.git
+[submodule "dot.vim/bundle/unite-grep"]
+	path = dot.vim/bundle/unite-grep
+	url = https://github.com/Sixeight/unite-grep.git
+[submodule "dot.vim/bundle/vim-css3-syntax"]
+	path = dot.vim/bundle/vim-css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax.git
