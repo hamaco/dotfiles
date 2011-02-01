@@ -65,7 +65,10 @@ keymap Global
 		mod windows     += !!NonConvert
 		key W-NonConvert = Escape
 
-		key *Convert = *Enter
+		mod alt += !!Convert
+		key A-Convert = Enter
+		key *A-C-Convert = C-Enter
+		key *A-S-Convert = S-Enter
 	else
 		mod Control  += CapsLock
 		key *CapsLock = *LControl
