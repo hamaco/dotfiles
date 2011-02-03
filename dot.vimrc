@@ -404,7 +404,8 @@ noremap <silent> <Space>uu  :<C-u>Unite -buffer-name=files -start-insert buffer 
 noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert file<CR>
-noremap <silent> <Space>ut  :<C-u>Unite tab<CR>
+noremap <silent> <Space>ut  :<C-u>Unite -immediately tab:no-current<CR>
+noremap <silent> <Space>uw  :<C-u>Unite -immediately window:no-current<CR>
 noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
 if s:iswindows
 	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
