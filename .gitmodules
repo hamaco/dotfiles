@@ -148,3 +148,6 @@
 [submodule "dot.vim/bundle/neco-look"]
 	path = dot.vim/bundle/neco-look
 	url = https://github.com/ujihisa/neco-look.git
+[submodule "dot.vim/bundle/vim-redmine"]
+	path = dot.vim/bundle/vim-redmine
+	url = https://github.com/toritori0318/vim-redmine.git
