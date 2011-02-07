@@ -177,7 +177,7 @@ window AFxW /afxw\.exe/ : Global
 	key A-l = A-l
 
 window PuTTY /putty\.exe/ : Global
-	key C-v = S-Insert
+	#key C-v = S-Insert
 	key W-v = S-Insert
 
 window VMWare /vmware\.exe/ : Global
