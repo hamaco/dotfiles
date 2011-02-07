@@ -816,7 +816,9 @@ function! s:highlight_with(args) range
 	let b:highlight_count = c + 1
 endfunction"}}}
 
-
+if filereadable(expand('~/.vimrc.local'))
+	source ~/.vimrc.local
+endif
 
 " END {{{1
 " vim: foldmethod=marker
