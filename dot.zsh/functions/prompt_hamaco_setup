@@ -1,5 +1,6 @@
 autoload -Uz colors; colors
 autoload -Uz vcs_info
+autoload -Uz is-at-least
 
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
@@ -41,10 +42,9 @@ hamacbook*)
 	;;
 esac
 PROMPT+="\$(pwd_status)"
-# @todo zshのバージョンが4.3.6以前なら無視
-PROMPT+="\$(vcs_status)"
+is-at-least 4.3.7 && PROMPT+="\$(vcs_status)"
 PROMPT+="
-${PROMPT_NAGATO} "
+${PROMPT_YUNO} "
 
 
 RPROMPT="%*"
