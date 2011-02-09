@@ -131,6 +131,9 @@ window InternetExplorer /iexplore\.exe/ : Global
 	key C-l = A-d
 	key m9-t = C-t
 
+window Excel /excel\.exe/ : Global
+	key A-Enter = A-Enter
+
 window Opera /opera\.exe/ : Global
 	key LAlt = &Ignore
 	key RAlt = &Ignore
