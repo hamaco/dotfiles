@@ -159,7 +159,7 @@ window AdobeAcrobat /Acrobat\.exe/ : Global
 	key C-d = C-S-d &Sync Enter &Sync Enter
 	key C-r = C-S-r &Sync Enter
 
-window Edit /Edit:|Edit$/ : Global
+window Edit /Edit:|Edit$|EditView$/ : Global
 	key C-a = Home
 	key C-e = End
 	key C-d = Delete
