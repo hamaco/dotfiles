@@ -47,12 +47,12 @@ if has('iconv')
     let s:enc_jis = 'iso-2022-jp-3'
   endif
   " fileencodingsを構築
-  if &encoding ==# 'utf-8'
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = &fileencodings .','. s:fileencodings_default
-    unlet s:fileencodings_default
-  else
+  "if &encoding ==# 'utf-8'
+    "let s:fileencodings_default = &fileencodings
+    "let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    "let &fileencodings = &fileencodings .','. s:fileencodings_default
+    "unlet s:fileencodings_default
+  "else
     let &fileencodings = &fileencodings .','. s:enc_jis
     set fileencodings+=utf-8,ucs-2le,ucs-2
     if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
@@ -65,7 +65,7 @@ if has('iconv')
     else
       let &fileencodings = &fileencodings .','. s:enc_euc
     endif
-  endif
+  "endif
   " 定数を処分
   unlet s:enc_euc
   unlet s:enc_jis
@@ -329,13 +329,17 @@ else
 	let g:quickrun_config['*'] = {'runmode': 'simple'}
 endif
 let g:quickrun_config.haskell = {'command': 'runghc'}
-let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['gcc %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
+let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['%c %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
 let g:quickrun_config.textile = {
 			\ 'command': 'redcloth',
 			\ 'tempfile': '{tempname()}.textile',
 			\ 'exec': ['%c %s > %s:p:r.html', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html'] }
-
+let g:quickrun_config['markdown'] = {
+			\ 'command': 'pandoc',
+			\ 'exec': ['%c -s -f markdown -t html -o %s:p:r.html %s', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html'],
+			\ 'tempfile': '{tempname()}.md'
+			\ }
 
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
