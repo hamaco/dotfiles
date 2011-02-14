@@ -150,7 +150,7 @@ window Opera /opera\.exe/ : Global
 	key m9-t = C-t
 
 window FastPictureViewer /FastPictureViewer\.exe/ : Viewer
-window AdobeAcrobat /AcroRd32\.exe/ : Viewer
+window AdobeReader /AcroRd32\.exe/ : Viewer
 
 window AdobeAcrobat /Acrobat\.exe/ : Global
 	key i = A-v &Sync p &Sync u
