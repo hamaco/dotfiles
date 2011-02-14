@@ -154,3 +154,6 @@
 [submodule "dot.vim/bundle/vim-markdown"]
 	path = dot.vim/bundle/vim-markdown
 	url = https://github.com/hallison/vim-markdown.git
+[submodule "dot.vim/bundle/scss-syntax.vim"]
+	path = dot.vim/bundle/scss-syntax.vim
+	url = https://github.com/cakebaker/scss-syntax.vim.git
