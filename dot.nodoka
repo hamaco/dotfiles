@@ -30,36 +30,20 @@ endif
 # ShellExecute(operation, file, parameters, directory, show_command)
 
 keymap Global
-	#key *Rwindows = *Enter
-	#key *Lwindows = *Escape
-
-	mod windows -= Rwindows
-	mod mod9 = Rwindows
-	key m9-a = C-A-_1
-	key m9-s = C-A-_2
-	key m9-d = C-A-_3
-	key m9-f = C-A-_4
-	key m9-g = C-A-_5
-	key m9-h = C-A-_6
-	key m9-j = C-A-_7
-	key m9-k = C-A-_8
-	key m9-l = C-A-_9
-
 	# mayu
-	key W-i = &WindowIdentify
+	#key W-i = &WindowIdentify
 
 	# Applications as Windows
 	mod windows      += !!Applications
-	key *Applications = *Rwindows
+	key *Applications = *RightWindows
 
 	# CapsLock as Control
 	if ( USE109 )
-		mod Control  += Eisuu
-		key *Eisuu = *LControl
+		mod Control += Eisuu
+		key *Eisuu = *LeftControl
 
-		#mod shift += ReverseSolidus
-
-		mod mod9 += Hiragana
+		mod mod9 += !!Hiragana
+		# key m9-Hiragana = A
 
 		# 無変換単体だとESC/他のキーとくみあわせるとWindowsキー
 		mod windows     += !!NonConvert
@@ -71,13 +55,30 @@ keymap Global
 		key *A-S-Convert = S-Enter
 	else
 		mod Control  += CapsLock
-		key *CapsLock = *LControl
+		key *CapsLock = *LeftControl
 	endif
-
 
 	# Sands
 	mod shift += !!Space
 	key R-*Space = &Ignore
+
+	mod windows -= RightWindows
+	mod mod9 = RightWindows
+	key m9-a = C-A-_1
+	key m9-s = C-A-_2
+	key m9-d = C-A-_3
+	key m9-f = C-A-_4
+	key m9-g = C-A-_5
+	key m9-h = C-A-_6
+	key m9-j = C-A-_7
+	key m9-k = C-A-_8
+	key m9-l = C-A-_9
+
+	# 右シフトは普段使わないので^と&に置き換え
+	# @todo できれば他のキーの場合Shiftにしたい
+	mod shift       -= RightShift
+	key RightShift   = $CIRCUMFLEX_ACCENT
+	key S-RightShift = $AMPERSAND
 
 	# IME
 	#key *IC-C-j = &Sync &SetImeStatus(on) &Sync C-j
@@ -150,7 +151,7 @@ window Opera /opera\.exe/ : Global
 	key m9-t = C-t
 
 window FastPictureViewer /FastPictureViewer\.exe/ : Viewer
-window AdobeAcrobat /AcroRd32\.exe/ : Viewer
+window AdobeReader /AcroRd32\.exe/ : Viewer
 
 window AdobeAcrobat /Acrobat\.exe/ : Global
 	key i = A-v &Sync p &Sync u

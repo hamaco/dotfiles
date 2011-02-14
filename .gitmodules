@@ -157,3 +157,6 @@
 [submodule "dot.vim/bundle/gundo.vim"]
 	path = dot.vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim.git
+[submodule "dot.vim/bundle/scss-syntax.vim"]
+	path = dot.vim/bundle/scss-syntax.vim
+	url = https://github.com/cakebaker/scss-syntax.vim.git
