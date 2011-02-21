@@ -56,14 +56,15 @@ keymap Global
 	else
 		mod Control  += CapsLock
 		key *CapsLock = *LeftControl
+
+		mod windows -= RightWindows
+		mod mod9 = RightWindows
 	endif
 
 	# Sands
 	mod shift += !!Space
 	key R-*Space = &Ignore
 
-	mod windows -= RightWindows
-	mod mod9 = RightWindows
 	key m9-a = C-A-_1
 	key m9-s = C-A-_2
 	key m9-d = C-A-_3
