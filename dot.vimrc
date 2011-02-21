@@ -229,6 +229,9 @@ nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
 nnoremap <Space>gp :<C-u>Git push
 
 
+" gundo.vim {{{2
+nmap U :<C-u>GundoToggle<CR>
+
 
 " neocomplcache.vim {{{2
 let g:neocomplcache_enable_at_startup = 1
