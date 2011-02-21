@@ -40,10 +40,17 @@
 # - Yuichi Tateno
 #
 
-export CDD_PWD_FILE=$HOME/.zsh_cdd_pwd_list
+export CDD_PWD_FILE=~/.zsh/cdd_pwd_list.$(echo $TMUX | cut -d ',' -f 3)
+
+if [ "$TMUX" != "" ]; then
+    export WINDOW=$(tmux respawn-window 2>&1 > /dev/null | cut -d ':' -f 3)
+    if [ "$WINDOW" = "" ]; then
+        export WINDOW=$(tmux respawn-window > /dev/null | cut -d ':' -f 3)
+    fi
+fi
 
 function _reg_pwd_screennum() {
-  if [ "$STY" != "" ]; then
+  if [ "$STY" != "" ] || [ "$TMUX" != "" ]; then
     if [ ! -f "$CDD_PWD_FILE" ]; then
       echo "\n" >> "$CDD_PWD_FILE"
     fi
@@ -72,15 +79,7 @@ function _cdadd {
   fi
 
   local -A real_path
-  if which realpath >/dev/null 2>&1;then
-    real_path=`realpath $2`
-  else
-    if which ruby >/dev/null 2>&1;then
-      real_path=`ruby -rpathname -e "puts Pathname.new('$2').realpath"`
-    else
-      echo "cdd add require realpath or ruby"
-    fi
-  fi
+  real_path=$(perl -MCwd -e 'print Cwd::realpath("$2")');
   echo "add $1:$real_path"
   _reg_cdd_pwd "$1" "$real_path"
 }
@@ -109,9 +108,9 @@ function cdd() {
   #arg=`echo $1|awk -F':' '{print \$1}'`
   arg=`echo $1|cut -d':' -f1`
   #grep "^$arg:" "$CDD_PWD_FILE" > /dev/null 2>&1
-  if grep "^$arg:" "$CDD_PWD_FILE" > /dev/null 2>&1 ;then
+  if =grep "^$arg:" "$CDD_PWD_FILE" > /dev/null 2>&1 ;then
     local -A res
-    res=`grep "^$arg:" "$CDD_PWD_FILE"|sed -e "s/^$arg://;"|tr -d "\n"`
+    res=`=grep "^$arg:" "$CDD_PWD_FILE"|sed -e "s/^$arg://;"|tr -d "\n"`
     echo "$res"
     cd "$res"
   else
