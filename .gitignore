@@ -1,11 +1,12 @@
 .DS_Store
 
+
 dot.emacs.d/anything-c-adaptive-history
 dot.emacs.d/auto-save-list/*
 dot.emacs.d/backups/*
 dot.emacs.d/woman-cache
 
-dot.ssh/dot.config
+dot.zsh/cdd_pwd_list*
 
 dot.vim/.netrwhist
 dot.vim/.VimballRecord
