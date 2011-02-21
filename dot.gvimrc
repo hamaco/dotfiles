@@ -14,7 +14,7 @@ elseif has("unix")
 	set columns=110
 	set lines=40
 	"set guifont=MeiryoKe_Console\ 10
-	set guifont=Inconsolata\ 16
+	set guifont=Inconsolata\ 13
 	colorscheme newspaper
 elseif has("win32")
 	set columns=120
