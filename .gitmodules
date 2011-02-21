@@ -157,3 +157,6 @@
 [submodule "dot.vim/bundle/scss-syntax.vim"]
 	path = dot.vim/bundle/scss-syntax.vim
 	url = https://github.com/cakebaker/scss-syntax.vim.git
+[submodule "dot.vim/bundle/unite-font"]
+	path = dot.vim/bundle/unite-font
+	url = https://github.com/ujihisa/unite-font.git
