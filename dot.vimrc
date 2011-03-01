@@ -798,6 +798,25 @@ command! -bar -bang -nargs=? -complete=file Scouter
 command! -bar -bang -nargs=? -complete=file GScouter
 \        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
 
+augroup vimrc-misc  " {{{
+  " ... 中略 ...
+  " Update filetype.
+  autocmd BufWritePost * if &l:filetype == '' || exists('b:ftdetect')
+  \                      | unlet! b:ftdetect | filetype detect | endif
+  " ... 中略 ...
+augroup END  " }}}
+
+
+augroup vimrc-auto-mkdir  " {{{
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'))
+  function! s:auto_mkdir(dir)  " {{{
+    if !isdirectory(a:dir)
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction  " }}}
+augroup END  " }}}
+
 
 " HighlightWith
 command! -nargs=+ -range=% HighlightWith <line1>,<line2>call s:highlight_with(<q-args>)
