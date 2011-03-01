@@ -1,29 +1,35 @@
 if ( USE109 )
 	include "109.nodoka"
 #	include "104on109.nodoka"
-	def subst ~S-*îºäp/ëSäp    = $GRAVE_ACCENT
-	def subst  S-*îºäp/ëSäp    = $TILDE
-	def subst  S-*_2           = $COMMERCIAL_AT
-	def subst  S-*_6           = $CIRCUMFLEX_ACCENT
-	def subst  S-*_7           = $AMPERSAND
-	def subst  S-*_8           = $ASTERISK
-	def subst  S-*_9           = $LEFT_PARENTHESIS
-	def subst  S-*_0           = $RIGHT_PARENTHESIS
-	def subst  S-*Hyphen       = $LOW_LINE
-	def subst ~S-*Caret        = $EQUALS_SIGN
-	def subst  S-*Caret        = $PLUS_SIGN
-	def subst ~S-*Atmark       = $LEFT_SQUARE_BRACKET
-	def subst  S-*Atmark       = $LEFT_CURLY_BRACKET
-	def subst ~S-*OpenBracket  = $RIGHT_SQUARE_BRACKET
-	def subst  S-*OpenBracket  = $RIGHT_CURLY_BRACKET
-	def subst ~S-*CloseBracket = $REVERSE_SOLIDUS
-	def subst  S-*CloseBracket = $VERTICAL_LINE
-	def subst  S-*Semicolon    = $COLON
-	def subst ~S-*Colon        = $APOSTROPHE
-	def subst  S-*Colon        = $QUOTATION_MARK
-	#def subst *ReverseSolidus = *RightShift
-	def subst ~S-*BackSlash    = $GRAVE_ACCENT
-	def subst  S-*BackSlash    = $TILDE
+
+	if ( USEMAC )
+		def key MacHiragana = 0x72 # Apple Wireless Keyboard Ç©Ç»
+		def key MacEisuu    = 0x71 # Apple Wireless Keyboard âpêî
+	else
+		def subst ~S-*îºäp/ëSäp    = $GRAVE_ACCENT
+		def subst  S-*îºäp/ëSäp    = $TILDE
+		def subst  S-*_2           = $COMMERCIAL_AT
+		def subst  S-*_6           = $CIRCUMFLEX_ACCENT
+		def subst  S-*_7           = $AMPERSAND
+		def subst  S-*_8           = $ASTERISK
+		def subst  S-*_9           = $LEFT_PARENTHESIS
+		def subst  S-*_0           = $RIGHT_PARENTHESIS
+		def subst  S-*Hyphen       = $LOW_LINE
+		def subst ~S-*Caret        = $EQUALS_SIGN
+		def subst  S-*Caret        = $PLUS_SIGN
+		def subst ~S-*Atmark       = $LEFT_SQUARE_BRACKET
+		def subst  S-*Atmark       = $LEFT_CURLY_BRACKET
+		def subst ~S-*OpenBracket  = $RIGHT_SQUARE_BRACKET
+		def subst  S-*OpenBracket  = $RIGHT_CURLY_BRACKET
+		def subst ~S-*CloseBracket = $REVERSE_SOLIDUS
+		def subst  S-*CloseBracket = $VERTICAL_LINE
+		def subst  S-*Semicolon    = $COLON
+		def subst ~S-*Colon        = $APOSTROPHE
+		def subst  S-*Colon        = $QUOTATION_MARK
+		#def subst *ReverseSolidus = *RightShift
+		def subst ~S-*BackSlash    = $GRAVE_ACCENT
+		def subst  S-*BackSlash    = $TILDE
+	endif
 else
 	include "104.nodoka"
 endif
@@ -37,7 +43,6 @@ keymap Global
 	mod windows      += !!Applications
 	key *Applications = *RightWindows
 
-	# CapsLock as Control
 	if ( USE109 )
 		mod Control += Eisuu
 		key *Eisuu = *LeftControl
@@ -53,18 +58,24 @@ keymap Global
 		key A-Convert = Enter
 		key *A-C-Convert = C-Enter
 		key *A-S-Convert = S-Enter
+
+		if ( USEMAC )
+			# Apple Wireless Keyboardópê›íË
+			key U-MacHiragana = Enter
+			key U-MacEisuu    = Escape
+		endif
 	else
 		mod Control  += CapsLock
 		key *CapsLock = *LeftControl
 
-		mod windows -= RightWindows
-		mod mod9 = RightWindows
 	endif
 
 	# Sands
 	mod shift += !!Space
 	key R-*Space = &Ignore
 
+	mod windows -= RightWindows
+	mod mod9    += RightWindows
 	key m9-a = C-A-_1
 	key m9-s = C-A-_2
 	key m9-d = C-A-_3
