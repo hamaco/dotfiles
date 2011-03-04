@@ -450,6 +450,10 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_edit_command = "edit"
 
 
+" vim-operator-user {{{2
+map R <Plug>(operator-replace)
+
+
 " vimshell.vim {{{2
 let g:vimshell_user_prompt = 'getcwd()'
 "let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
