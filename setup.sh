@@ -8,5 +8,9 @@ do
 	ln -s $CURRENT/dot$file ~/$file
 done
 
-ln -s ~/Dropbox/Linux/bin ~/bin
-ln -s ~/Dropbox/Linux/share ~/share
+for dir in bin share
+do
+	if [ ! -e ~/$dir ]; then
+		ln -s ~/Dropbox/data/linux/$dir ~/$dir
+	fi
+done
