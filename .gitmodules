@@ -175,3 +175,6 @@
 [submodule "dot.bim/bundle/visualctrlg.vim"]
 	path = dot.bim/bundle/visualctrlg.vim
 	url = https://github.com/tyru/visualctrlg.vim.git
+[submodule "dot.vim/bundle/restart.vim"]
+	path = dot.vim/bundle/restart.vim
+	url = https://github.com/tyru/restart.vim.git

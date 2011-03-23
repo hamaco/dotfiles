@@ -2,6 +2,10 @@ if ( USE109 )
 	include "109.nodoka"
 #	include "104on109.nodoka"
 
+	if ( USEGETA )
+		include "sin-geta.nodoka"
+	endif
+
 	if ( USEMAC )
 		def key MacHiragana = 0x72 # Apple Wireless Keyboard かな
 		def key MacEisuu    = 0x71 # Apple Wireless Keyboard 英数
@@ -33,11 +37,17 @@ if ( USE109 )
 else
 	include "104.nodoka"
 endif
+
 # ShellExecute(operation, file, parameters, directory, show_command)
+def option mouse-event = true
 
 keymap Global
-	# mayu
-	#key W-i = &WindowIdentify
+	key C-A-Slash = &LoadSetting()
+
+	#mod mod0 += !!A
+	#key M9-M0-a = C-A-_1
+	#key S-M0-a = S-a
+	#key M0-j  = A-Tab
 
 	# Applications as Windows
 	mod windows      += !!Applications
@@ -45,7 +55,7 @@ keymap Global
 
 	if ( USE109 )
 		mod Control += Eisuu
-		key *Eisuu = *LeftControl
+		key *Eisuu = *Esc
 
 		mod mod9 += !!Hiragana
 		# key m9-Hiragana = A
@@ -65,14 +75,16 @@ keymap Global
 			key U-MacEisuu    = Escape
 		endif
 	else
-		mod Control  += CapsLock
-		key *CapsLock = *LeftControl
-
+		# 普通のキーボード
+		mod Control  += !!CapsLock
+		# HHKキーボード
+		mod Control  += !!LControl
 	endif
 
 	# Sands
 	mod shift += !!Space
 	key R-*Space = &Ignore
+	key IL-*IC-Semicolon = &EditNextModifier(S-)
 
 	mod windows -= RightWindows
 	mod mod9    += RightWindows
@@ -146,6 +158,8 @@ window InternetExplorer /iexplore\.exe/ : Global
 
 window Excel /excel\.exe/ : Global
 	key A-Enter = A-Enter
+
+	key C-Slash = F2 &Wait(150) C-Left &Sync C-Left &Sync C-Left &Sync C-Left &Sync Backspace &Sync _0 &Sync Enter
 
 window Opera /opera\.exe/ : Global
 	key LAlt = &Ignore
