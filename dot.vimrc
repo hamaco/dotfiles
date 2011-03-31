@@ -149,34 +149,6 @@ let maplocalleader = "."
 
 
 
-" autocmd {{{1
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
-autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
-autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
-
-autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
-autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
-
-autocmd MyAutoCmd FileType unite imap <buffer> ' <Plug>(unite_quick_match_default_action)
-autocmd MyAutoCmd FileType unite nmap <buffer> ' <Plug>(unite_quick_match_default_action)
-
-
-if !has('gui_running') && !s:iswindows
-   " .vimrcの再読込時にも色が変化するようにする
-   autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-else
-   " .vimrcの再読込時にも色が変化するようにする
-   autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
-               \if has('gui_running') | source $MYGVIMRC
-   autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
-endif
-
-
-
-
 " プラグイン {{{1
 
 " 無効化 {{{2
@@ -633,6 +605,44 @@ endfunction
 
 command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
 
+
+
+
+" autocmd {{{1
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
+
+autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
+autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
+
+autocmd MyAutoCmd FileType unite imap <buffer> ' <Plug>(unite_quick_match_default_action)
+autocmd MyAutoCmd FileType unite nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+
+
+if !has('gui_running') && !s:iswindows
+  " .vimrcの再読込時にも色が変化するようにする
+  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+  " .vimrcの再読込時にも色が変化するようにする
+  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
+        \if has('gui_running') | source $MYGVIMRC
+  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+endif
+
+
+" QuickRunPHPUnit {{{
+augroup QuickRunPHPUnit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_test.php set filetype=php.unit
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
+augroup END
+
+let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+" }}}
 
 
 
