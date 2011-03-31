@@ -157,14 +157,14 @@ autoload -U promptinit; promptinit
 prompt hamaco
 
 case "${OSTYPE}" in
-linux*)
-	export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-	alias ls="ls -F --color=auto"
-	;;
-freebsd*|darwin*)
-	export LSCOLORS=gxfxcxdxbxegedabagacad
-	alias ls="ls -G"
-	;;
+	linux*)
+		export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+		alias ls="ls -F --color=auto"
+		;;
+	freebsd*|darwin*)
+		export LSCOLORS=gxfxcxdxbxegedabagacad
+		alias ls="ls -G"
+		;;
 esac
 
 
@@ -172,6 +172,7 @@ esac
 # Functions: ============================================================== {{{1
 function chpwd() {
 	_reg_pwd_screennum
+	_set_screen_title_pwd
 	ls -G
 }
 
@@ -224,11 +225,11 @@ sc() {
 # Alias: === {{{1
 # cho45 ~/
 expand-to-home-or-insert () {
-  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
-    LBUFFER+="~/"
-  else
-    zle self-insert
-  fi
+	if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
+		LBUFFER+="~/"
+	else
+		zle self-insert
+	fi
 }
 zle -N expand-to-home-or-insert
 bindkey "\\"  expand-to-home-or-insert
@@ -255,14 +256,14 @@ localconf="$HOME/.zsh/hosts/${HOST%%.*}.zshrc"
 
 # Terminal: ターミナル毎の設定 ============================================ {{{1
 case "${TERM}" in
-xterm*|kterm*)
-	precmd() {
-		echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-	}
-	sc
-	;;
-screen*) # これtscreenで動かない
-	function ssh_screen() {
+	xterm*|kterm*)
+		precmd() {
+			echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+		}
+		sc
+		;;
+	screen*) # これtscreenで動かない
+		function ssh_screen() {
 		eval server=\${$#}
 		screen -t s:$server ssh "$@"
 	}
@@ -301,6 +302,7 @@ fi
 
 # 外部ファイル読み込み {{{1
 source ~/.zsh/cdd
+source ~/.zsh/rpwd
 
 # Tmp: 一時的な設定 ======================================================= {{{1
 

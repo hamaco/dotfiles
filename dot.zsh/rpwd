@@ -1,0 +1,22 @@
+# source rpwd in .zshrc
+
+export __session_from=$PWD
+
+function rpwd()
+{
+	path_diff.rb $__session_from $(pwd)
+}
+
+function _set_screen_title()
+{
+	echo -ne "\ek$1\e\\"
+}
+
+function _set_screen_title_pwd()
+{
+	case "${TERM}" in
+		screen*)
+			_set_screen_title $(rpwd)
+			;;
+	esac
+}
