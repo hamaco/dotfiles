@@ -338,11 +338,6 @@ let g:quickrun_config.textile = {
 			\ 'command': 'redcloth',
 			\ 'tempfile': '{tempname()}.textile',
 			\ 'exec': ['%c %s > %s:p:r.html', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html'] }
-let g:quickrun_config['markdown'] = {
-			\ 'command': 'pandoc',
-			\ 'exec': ['%c -s -f markdown -t html -o %s:p:r.html %s', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html'],
-			\ 'tempfile': '{tempname()}.md'
-			\ }
 
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
