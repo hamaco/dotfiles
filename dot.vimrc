@@ -166,7 +166,7 @@ AlterCommand t tabedit
 AlterCommand s set
 AlterCommand sl setl
 AlterCommand sf setf
-
+command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
 " capslock.vim {{{2
 imap <C-a> <C-o><Plug>CapsLockToggle
@@ -350,6 +350,17 @@ endif
 
 ""map! <C-j> <Plug>(eskk:enable)
 
+
+" restart.vim {{{2
+command!
+\   RestartWithSession
+\   -bar
+\   let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
+\   | Restart
+
+MapAlterCommand res[tart] Restart
+MapAlterCommand ers[tart] Restart
+MapAlterCommand rse[tart] Restart
 
 
 " smartword.vim {{{2
