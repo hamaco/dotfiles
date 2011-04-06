@@ -353,8 +353,8 @@ endif
 
 " restart.vim {{{2
 command!
-\   RestartWithSession
 \   -bar
+\   RestartWithSession
 \   let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
 \   | Restart
 
