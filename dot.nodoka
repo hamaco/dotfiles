@@ -78,13 +78,12 @@ keymap Global
 		# 普通のキーボード
 		mod Control  += !!CapsLock
 		# HHKキーボード
-		mod Control  += !!LControl
+		#mod Control  += !!LControl
 	endif
 
 	# Sands
 	mod shift += !!Space
 	key R-*Space = &Ignore
-	key IL-*IC-Semicolon = &EditNextModifier(S-)
 
 	mod windows -= RightWindows
 	mod mod9    += RightWindows
@@ -107,6 +106,8 @@ keymap Global
 	# IME
 	#key *IC-C-j = &Sync &SetImeStatus(on) &Sync C-j
 	key *IC-C-j = &SetImeStatus(on) &Sync C-j
+	#key IL-*IC-l = l &Sync &SetImeStatus(off)
+	#key IL-*IC-Semicolon = &EditNextModifier(S-)
 
 	# Shutdown and Sleep
 	key W-u = &Sync &ShellExecute("open", "shutdown.exe", "-s -t 0",, showNormal)
@@ -215,3 +216,7 @@ window PuTTY /putty\.exe/ : Global
 window VMWare /vmware\.exe/ : Global
 	key *IC-C-j  = C-j
 	key C-Space  = C-Space
+
+window Launchy /Launchy\.exe/ : Global
+	key C-n = Down
+	key C-p = Up
