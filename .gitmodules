@@ -172,8 +172,8 @@
 [submodule "dot.vim/bundle/operator-camelize.vim"]
 	path = dot.vim/bundle/operator-camelize.vim
 	url = https://github.com/tyru/operator-camelize.vim.git
-[submodule "dot.bim/bundle/visualctrlg.vim"]
-	path = dot.bim/bundle/visualctrlg.vim
+[submodule "dot.vim/bundle/visualctrlg.vim"]
+	path = dot.vim/bundle/visualctrlg.vim
 	url = https://github.com/tyru/visualctrlg.vim.git
 [submodule "dot.vim/bundle/restart.vim"]
 	path = dot.vim/bundle/restart.vim
