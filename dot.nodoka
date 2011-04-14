@@ -96,6 +96,7 @@ keymap Global
 	key m9-j = C-A-_7
 	key m9-k = C-A-_8
 	key m9-l = C-A-_9
+	key m9-e = W-e
 
 	# 右シフトは普段使わないので^と&に置き換え
 	# @todo できれば他のキーの場合Shiftにしたい
