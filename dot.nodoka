@@ -114,9 +114,6 @@ keymap Global
 	key W-u = &Sync &ShellExecute("open", "shutdown.exe", "-s -t 0",, showNormal)
 	key W-s = &Sync &ShellExecute("open", "rundll32.exe", "powrprof.dll,SetSuspendStte 0,1,0",, showNormal)
 
-	key F1   = &Ignore
-	key A-F1 = F1
-
 	# key Enter = &Ignore
 	# key Backspace = &Ignore
 	#key Escape = &Ignore
@@ -124,14 +121,16 @@ keymap Global
 	key C-h = Backspace
 	key C-OpenBracket = Escape
 
-	key A-Enter = F11
-
 	key W-q = A-F4
 
+	#mod alt = !!LeftAlt
 	key A-h = Left
 	key A-j = Down
 	key A-k = Up
 	key A-l = Right
+	key A-Enter = F11
+	key F1   = &Ignore
+	key A-F1 = F1
 
 	# Explorer’u‚«Š·‚¦
 	#key W-e = &Sync &ShellExecute("open", "D:/software/filemanager/xf/XF.exe",,, showNormal)
@@ -209,7 +208,7 @@ window AFxW /afxw\.exe/ : Global
 	key A-l = A-l
 
 window PuTTY /putty\.exe/ : Global
-	#key C-v = S-Insert
+	key C-v = S-Insert
 	key W-v = S-Insert
 	key A-Left = C-t &Sync h
 	key A-Right = C-t &Sync l
