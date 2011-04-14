@@ -119,7 +119,7 @@ keymap Global
 
 	# key Enter = &Ignore
 	# key Backspace = &Ignore
-	key Escape = &Ignore
+	#key Escape = &Ignore
 	key C-m = Enter
 	key C-h = Backspace
 	key C-OpenBracket = Escape
