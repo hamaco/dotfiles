@@ -282,7 +282,7 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
 " <CR>: close popup and save indent.
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancel_popup()
+"inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " vim hacks #135
 inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
@@ -507,6 +507,12 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 
 nnoremap <Space><Esc> :<C-u>nohlsearch<CR>
 nnoremap vv <C-v>
+
+" vim hacks 214
+onoremap ) t)
+onoremap ( t(
+vnoremap ) t)
+vnoremap ( t(
 
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'

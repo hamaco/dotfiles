@@ -15,6 +15,7 @@ local PROMPT_KONATA="＼(＝ω＝．)／ <"
 local PROMPT_NAGATO="YUKI.N>"
 local PROMPT_UUPAA="(ε・△・)з"
 local PROMPT_UUPAA2="(ε・﹏・)з"
+local PROMPT_QB="／人◕‿‿◕人＼"
 
 function vcs_status () {
 	LANG=en_US.UTF-8 vcs_info
