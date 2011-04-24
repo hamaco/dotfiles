@@ -45,7 +45,9 @@ esac
 PROMPT+="\$(pwd_status)"
 is-at-least 4.3.7 && PROMPT+="\$(vcs_status)"
 PROMPT+="
-%(?.$fg[blue].$fg[red])${PROMPT_NAGATO}%{$reset_color%} "
+${PROMPT_NAGATO} "
+#%{$fg[cyan]%}${PROMPT_NAGATO}%{$reset_color%} "
+#%(?.$fg[blue].$fg[red])${PROMPT_NAGATO}%{$reset_color%} "
 
 
 RPROMPT="%*"
