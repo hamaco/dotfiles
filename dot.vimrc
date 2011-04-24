@@ -454,7 +454,7 @@ else
 	let g:vimshell_prompt = $USER."% "
 endif
 
-noremap <C-Space> :<C-u>VimShell<CR>
+noremap <C-Space> :<C-u>VimShellPop %:p:h<CR>
 
 
 " zen-coding.vim {{{2
