@@ -178,3 +178,9 @@
 [submodule "dot.vim/bundle/visualctrlg.vim"]
 	path = dot.vim/bundle/visualctrlg.vim
 	url = https://github.com/tyru/visualctrlg.vim.git
+[submodule "dot.vim/bundle/echodoc"]
+	path = dot.vim/bundle/echodoc
+	url = https://github.com/Shougo/echodoc.git
+[submodule "dot.vim/bundle/vcs.vim"]
+	path = dot.vim/bundle/vcs.vim
+	url = https://github.com/thinca/vim-vcs.git
