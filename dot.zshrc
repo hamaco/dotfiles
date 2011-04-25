@@ -404,5 +404,15 @@ if [ "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
   export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
 fi
 
+
+typeset -ga chpwd_functions
+
+function _naverc_check() {
+if [[ -f '.naverc' ]] ; then
+	source '.naverc'
+	fi
+}
+chpwd_functions+=_naverc_check
+
 # END {{{1
 # vim: foldmethod=marker
