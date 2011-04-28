@@ -5,6 +5,7 @@ alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
 alias %=" " # webにあるコマンドをコピペで実行出来るようにする
 
 alias di="diff"
+alias wget="noglob wget --no-check-certificate"
 
 alias sudo="sudo -E " # sudoでもaliasが使えるようにする
 alias s="sudo"
