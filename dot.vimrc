@@ -27,6 +27,7 @@ endif
 
 
 
+
 " 文字コード設定 {{{1
 if &encoding !=# 'utf-8'
   set encoding=japan
@@ -410,9 +411,9 @@ let g:unite_enable_start_insert = 0
 let g:unite_source_file_mru_limit = 150
 
 
-call unite#custom_alias('file', 'h', 'left')
-call unite#custom_alias('file', 'l', 'right')
-call unite#custom_alias('file', 'to', 'tabopen')
+"call unite#custom_alias('file', 'h', 'left')
+"call unite#custom_alias('file', 'l', 'right')
+"call unite#custom_alias('file', 'to', 'tabopen')
 
 
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
@@ -459,6 +460,7 @@ else
 endif
 
 noremap <C-@> :<C-u>VimShellPop<CR>
+noremap <C-Space> :<C-u>VimShellPop<CR>
 
 
 " zen-coding.vim {{{2
