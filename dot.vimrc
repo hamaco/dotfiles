@@ -19,9 +19,7 @@ filetype plugin indent on
 
 if has("syntax")
 	syntax enable
-	"set t_Co=256
 	if !exists("g:colors_name")
-		"colorscheme mrkn256
 		colorscheme ap_dark8
 	endif
 endif
@@ -175,6 +173,10 @@ imap <C-a> <C-o><Plug>CapsLockToggle
 " ChangeLog {{{2
 let g:changelog_username = "hamaco <hamanaka.kazuhiro@gmail.com>"
 let g:changelog_timeformat = "%Y-%m-%d"
+
+
+" echodoc.vim {{{2
+let g:echodoc_enable_at_startup = 1
 
 
 " emap.vim {{{2
@@ -392,6 +394,8 @@ noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-
 noremap <silent> <Space>ut  :<C-u>Unite -immediately tab:no-current<CR>
 noremap <silent> <Space>uw  :<C-u>Unite -immediately window:no-current<CR>
 noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
+noremap <silent> <Space>ug  :<C-u>Unite grep<CR>
+noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
 	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
 endif
@@ -454,7 +458,7 @@ else
 	let g:vimshell_prompt = $USER."% "
 endif
 
-noremap <C-Space> :<C-u>VimShellPop<CR>
+noremap <C-@> :<C-u>VimShellPop<CR>
 
 
 " zen-coding.vim {{{2
@@ -473,8 +477,8 @@ nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
 
 nnoremap Y y$
 
-noremap ; :
-noremap : ;
+"noremap ; :
+"noremap : ;
 
 nnoremap j gj
 nnoremap k gk
@@ -505,7 +509,7 @@ noremap! <C-BS> <C-w>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 "}}}
 
-nnoremap <Space><Esc> :<C-u>nohlsearch<CR>
+nnoremap <Space>n :<C-u>nohlsearch<CR>
 nnoremap vv <C-v>
 
 " vim hacks 214
@@ -776,8 +780,8 @@ nnoremap <sid>(command-line-enter) q:
 xnoremap <sid>(command-line-enter) q:
 nnoremap <sid>(command-line-norange) q:<C-u>
 
-nmap :  <sid>(command-line-enter)
-xmap :  <sid>(command-line-enter)
+nmap ;  <sid>(command-line-enter)
+xmap ;  <sid>(command-line-enter)
 
 autocmd MyAutoCmd CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
