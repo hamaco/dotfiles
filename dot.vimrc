@@ -288,7 +288,7 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 "inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " vim hacks #135
-inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
+"inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
 
 " poslist.vim {{{2
@@ -396,6 +396,7 @@ noremap <silent> <Space>ut  :<C-u>Unite -immediately tab:no-current<CR>
 noremap <silent> <Space>uw  :<C-u>Unite -immediately window:no-current<CR>
 noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
 noremap <silent> <Space>ug  :<C-u>Unite grep<CR>
+noremap <silent> <Space>us  :<C-u>Unite colorscheme -auto-preview<CR>
 noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
 	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
@@ -411,9 +412,9 @@ let g:unite_enable_start_insert = 0
 let g:unite_source_file_mru_limit = 150
 
 
-"call unite#custom_alias('file', 'h', 'left')
-"call unite#custom_alias('file', 'l', 'right')
-"call unite#custom_alias('file', 'to', 'tabopen')
+call unite#custom_alias('file', 'h', 'left')
+call unite#custom_alias('file', 'l', 'right')
+call unite#custom_alias('file', 'to', 'tabopen')
 
 
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
@@ -899,6 +900,17 @@ function! s:highlight_with(args) range
 				\             c, a:firstline, a:lastline, c)
 	let b:highlight_count = c + 1
 endfunction"}}}
+
+augroup vimrc-highlight
+	autocmd!
+	autocmd Syntax * call s:syntax_additional()
+augroup END
+
+function! s:syntax_additional()
+	syntax match myMemo /MEMO/ containedin=.*Comment.* contained
+	highlight default link myMemo Todo
+endfunction
+
 
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
