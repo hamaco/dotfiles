@@ -1,33 +1,34 @@
-" Initialize: {{{1
+	" Initialize: {{{1
 
-" Windowsでも.vimを読み込むようにする
-set runtimepath& runtimepath+=$HOME/.vim
+	" Windowsでも.vimを読み込むようにする
+	set runtimepath& runtimepath+=$HOME/.vim
 
-" has('win32') || has('win64')はめんどい
-" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
-let s:iswindows = has('win32') || has('win64')
+	" has('win32') || has('win64')はめんどい
+	" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
+	let s:iswindows = has('win32') || has('win64')
 
-" pathogen
-" http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-if exists("g:loaded_pathogen")
-	call pathogen#runtime_append_all_bundles()
-end
+	" pathogen
+	" http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
+	runtime bundle/vim-pathogen/autoload/pathogen.vim
+	if exists("g:loaded_pathogen")
+		call pathogen#runtime_append_all_bundles()
+	end
 
-set nocompatible
-filetype plugin indent on
+	set nocompatible
+	filetype plugin indent on
 
-if has("syntax")
-	syntax enable
-	if !exists("g:colors_name")
-		colorscheme ap_dark8
+	if has("syntax")
+		syntax enable
+		if !exists("g:colors_name")
+			colorscheme ap_dark8
+		endif
 	endif
-endif
 
 
 
 
-" 文字コード設定 {{{1
+
+	" 文字コード設定 {{{1
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -287,7 +288,7 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 "inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " vim hacks #135
-inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
+"inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
 
 " poslist.vim {{{2
@@ -395,6 +396,7 @@ noremap <silent> <Space>ut  :<C-u>Unite -immediately tab:no-current<CR>
 noremap <silent> <Space>uw  :<C-u>Unite -immediately window:no-current<CR>
 noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
 noremap <silent> <Space>ug  :<C-u>Unite grep<CR>
+noremap <silent> <Space>us  :<C-u>Unite colorscheme -auto-preview<CR>
 noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
 	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
@@ -899,6 +901,17 @@ function! s:highlight_with(args) range
 				\             c, a:firstline, a:lastline, c)
 	let b:highlight_count = c + 1
 endfunction"}}}
+
+augroup vimrc-highlight
+	autocmd!
+	autocmd Syntax * call s:syntax_additional()
+augroup END
+
+function! s:syntax_additional()
+	syntax match myMemo /MEMO/ containedin=.*Comment.* contained
+	highlight default link myMemo Todo
+endfunction
+
 
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
