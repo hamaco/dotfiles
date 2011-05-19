@@ -24,3 +24,6 @@ alias gad = git add
 alias gci = git commit
 alias gsr = git svn rebase
 alias gsd = git svn dcommit
+
+
+alias man=':execute "Ref man $$args" | wincmd w'
