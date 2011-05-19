@@ -220,3 +220,6 @@ window VMWare /vmware\.exe/ : Global
 window Launchy /Launchy\.exe/ : Global
 	key C-n = Down
 	key C-p = Up
+
+window LiveMessenger /msnmsgr\.exe/ : Global
+	key ESC = &Ignore
