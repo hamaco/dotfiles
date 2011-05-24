@@ -414,5 +414,14 @@ if [[ -f '.naverc' ]] ; then
 }
 chpwd_functions+=_naverc_check
 
+# incr.zsh
+load_plugins() {
+	if [ -d ~/.zsh/plugin ]; then
+		source ~/.zsh/plugin/*
+	fi
+}
+
+load_plugins
+
 # END {{{1
 # vim: foldmethod=marker
