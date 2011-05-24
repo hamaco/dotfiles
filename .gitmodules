@@ -193,3 +193,6 @@
 [submodule "dot.vim/bundle/vim_fold"]
 	path = dot.vim/bundle/vim_fold
 	url = https://github.com/thinca/vim-ft-vim_fold.git
+[submodule "dot.vim/bundle/colorizer"]
+	path = dot.vim/bundle/colorizer
+	url = https://github.com/lilydjwg/colorizer.git
