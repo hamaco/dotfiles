@@ -234,7 +234,7 @@ let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
-let g:neocomplcache_enable_quick_match = 0 " 数字で候補選択をyuu効
+let g:neocomplcache_enable_quick_match = 0
 if !exists('g:neocomplcache_quick_match_patterns')
   let g:neocomplcache_quick_match_patterns = {}
 endif
@@ -270,6 +270,14 @@ if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
+
+let g:neocomplcache_vim_completefuncs = {
+	\ 'Ref' : 'ref#complete',
+	\ 'Unite' : 'unite#complete_source',
+	\ 'VimShellExecute' : 'vimshell#complete#vimshell_execute_complete#completefunc',
+	\ 'VimShellInteractive' : 'vimshell#complete#vimshell_execute_complete#completefunc',
+	\ 'VimShellTerminal' : 'vimshell#complete#vimshell_execute_complete#completefunc',
+	\ }
 
 let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
 command! -nargs=* Nes NeoComplCacheEditSnippets <args>
@@ -460,9 +468,9 @@ else
 	let g:vimshell_prompt = $USER."% "
 endif
 
-nmap <C-@> :<C-u>VimShellPop<CR>
-nmap <C-Space> :<C-u>VimShellPop<CR>
-nnoremap <Space>; :<C-u>VimShell<CR>
+nnoremap <C-@> :<C-u>VimShellPop<CR>
+nnoremap <C-Space> :<C-u>VimShellPop<CR>
+"nnoremap <Space>; :<C-u>VimShell<CR>
 
 
 " zen-coding.vim {{{2
@@ -796,7 +804,11 @@ function! s:init_cmdwin()
   inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
   " Completion.
-  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>\<C-p>"
+
+  " Altercmd.
+  call altercmd#define('<buffer>', 'grep', 'Grep', 'i')
+  call altercmd#define('<buffer>', 'uniq', 'Uniq', 'i')
 
   startinsert!
 endfunction
