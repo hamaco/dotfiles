@@ -23,12 +23,15 @@
 [alias]
 	br = branch
 	ci = commit -v
+	cia = commit --amend
+	cih = commit --amend -C HEAD
 	co = checkout
 	d1 = diff HEAD~
 	d2 = diff HEAD~~
 	d3 = diff HEAD~~~
 	d4 = diff HEAD~~~~
 	dc = diff --cached
+	dcw = diff --color-words
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
 	fixup = commit --amend -a -C HEAD
@@ -44,15 +47,18 @@
 	newlyp = log HEAD@{1}..HEAD -p --reverse
 	pl = pull
 	ps = push
+	rb = rebase
+	rbh = rebase HEAD
 	rollback = reset --hard HEAD~
 	sl = stash list
 	smi = submodule init
 	smp = submodule foreach "git fetch; git checkout origin/master"
 	smu = submodule update
 	sh = show
+	so = remote show origin
 	sp = stash pop
 	ss = stash save
-	st = status
+	st = status -s
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	up = pull --rebase
 	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
