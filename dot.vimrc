@@ -406,7 +406,6 @@ nnoremap <C-h>  :<C-u>Unite -start-insert help<CR>
 " Execute help by cursor keyword.
 nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord -start-insert help<CR>
 
-let g:unite_enable_ignore_case = 1
 let g:unite_enable_split_vertically = 0
 let g:unite_enable_start_insert = 0
 let g:unite_source_file_mru_limit = 150
@@ -416,6 +415,8 @@ call unite#custom_alias('file', 'h', 'left')
 call unite#custom_alias('file', 'l', 'right')
 call unite#custom_alias('file', 'to', 'tabopen')
 
+call unite#set_buffer_name_option('default', 'ignorecase', 1)
+call unite#set_buffer_name_option('default', 'smartcase', 1)
 
 call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":p:h")."/*"', 2)
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
