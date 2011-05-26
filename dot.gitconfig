@@ -20,6 +20,9 @@
 	pager = less -r
 	quotepath = false
 
+[apply]
+	whitespace = nowarn
+
 [alias]
 	br = branch
 	ci = commit -v
