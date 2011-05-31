@@ -289,7 +289,12 @@ inoremap <expr><C-g> neocomplcache#undo_completion()
 
 inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+"inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>\<C-p>\<Down>"
+function! s:check_back_space()"{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 " <CR>: close popup and save indent.
 inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-y> neocomplcache#close_popup()
