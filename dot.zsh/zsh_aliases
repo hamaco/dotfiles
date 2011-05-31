@@ -56,7 +56,7 @@ darwin*)
 	#alias mysql="mysql5"
 
 	alias emacs="open -a Emacs"
-	#alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias firefox="open -a Shiretoko"
 	alias safari="open -a Safari"
 	alias prev="open -a Preview"
