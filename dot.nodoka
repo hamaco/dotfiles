@@ -208,7 +208,8 @@ window AFxW /afxw\.exe/ : Global
 	key A-l = A-l
 
 window PuTTY /putty\.exe/ : Global
-	key C-v = S-Insert
+	#key C-v = S-Insert
+	key C-S-v = S-Insert
 	key W-v = S-Insert
 	key A-Left = C-t &Sync h
 	key A-Right = C-t &Sync l
@@ -223,3 +224,6 @@ window Launchy /Launchy\.exe/ : Global
 
 window LiveMessenger /msnmsgr\.exe/ : Global
 	key ESC = &Ignore
+
+window Vim /vim\.exe/ : Global
+	key C-h = &Default
