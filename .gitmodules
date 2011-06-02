@@ -199,3 +199,6 @@
 [submodule "dot.vim/bundle/colorizer"]
 	path = dot.vim/bundle/colorizer
 	url = https://github.com/lilydjwg/colorizer.git
+[submodule "dot.vim/bundle/vimshell-ssh"]
+	path = dot.vim/bundle/vimshell-ssh
+	url = https://github.com/ujihisa/vimshell-ssh.git
