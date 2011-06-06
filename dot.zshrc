@@ -417,7 +417,7 @@ chpwd_functions+=_naverc_check
 # incr.zsh
 load_plugins() {
 	if [ -d ~/.zsh/plugin ]; then
-		source ~/.zsh/plugin/*
+		#source ~/.zsh/plugin/*
 	fi
 }
 
