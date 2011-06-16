@@ -202,3 +202,6 @@
 [submodule "dot.vim/bundle/vimshell-ssh"]
 	path = dot.vim/bundle/vimshell-ssh
 	url = https://github.com/ujihisa/vimshell-ssh.git
+[submodule "dot.vim/bundle/vim-easymotion"]
+	path = dot.vim/bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
