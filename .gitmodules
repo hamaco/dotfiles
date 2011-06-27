@@ -205,3 +205,6 @@
 [submodule "dot.vim/bundle/vim-easymotion"]
 	path = dot.vim/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "dot.vim/bundle/unite-launch"]
+	path = dot.vim/bundle/unite-launch
+	url = https://github.com/ujihisa/unite-launch.git
