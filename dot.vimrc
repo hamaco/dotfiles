@@ -424,9 +424,9 @@ let g:unite_enable_start_insert = 0
 let g:unite_source_file_mru_limit = 150
 
 
-call unite#custom_alias('file', 'h', 'left')
-call unite#custom_alias('file', 'l', 'right')
-call unite#custom_alias('file', 'to', 'tabopen')
+"call unite#custom_alias('file', 'h', 'left')
+"call unite#custom_alias('file', 'l', 'right')
+"call unite#custom_alias('file', 'to', 'tabopen')
 
 call unite#set_buffer_name_option('default', 'ignorecase', 1)
 call unite#set_buffer_name_option('default', 'smartcase', 1)
