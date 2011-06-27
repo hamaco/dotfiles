@@ -2,7 +2,7 @@
 
 CURRENT=`pwd`
 
-for file in .vim .vimrc .vimshrc .gvimrc .emacs .emacs.d .vimperator .vimperatorrc .zsh .zshrc .zshenv .gitconfig .gitignore .screenrc
+for file in .vim .vimrc .vimshrc .gvimrc .emacs .emacs.d .vimperator .vimperatorrc .zsh .zshrc .zshenv .gitconfig .gitignore .screenrc .gemrc
 do
 	rm -f ~/$file
 	ln -s $CURRENT/dot$file ~/$file
