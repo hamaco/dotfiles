@@ -410,7 +410,7 @@ noremap <silent> <Space>uw  :<C-u>Unite -immediately window:no-current<CR>
 noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
 noremap <silent> <Space>ug  :<C-u>Unite grep<CR>
 noremap <silent> <Space>us  :<C-u>Unite colorscheme -auto-preview<CR>
-noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
+"noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
 	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
 endif
@@ -495,7 +495,7 @@ nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
 
 nnoremap Y y$
 
-"noremap ; :
+noremap ; :
 "noremap : ;
 
 nnoremap j gj
@@ -798,8 +798,8 @@ nnoremap <sid>(command-line-enter) q:
 xnoremap <sid>(command-line-enter) q:
 nnoremap <sid>(command-line-norange) q:<C-u>
 
-nmap ;  <sid>(command-line-enter)
-xmap ;  <sid>(command-line-enter)
+nmap :  <sid>(command-line-enter)
+xmap :  <sid>(command-line-enter)
 
 autocmd MyAutoCmd CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
