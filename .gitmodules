@@ -31,9 +31,6 @@
 [submodule "dot.vim/bundle/eskk.vim"]
 	path = dot.vim/bundle/eskk.vim
 	url = git://github.com/tyru/eskk.vim.git
-[submodule "dot.vim/bundle/git-vim"]
-	path = dot.vim/bundle/git-vim
-	url = git://github.com/motemen/git-vim.git
 [submodule "dot.vim/bundle/lingr-vim"]
 	path = dot.vim/bundle/lingr-vim
 	url = http://github.com/tsukkee/lingr-vim.git
@@ -208,3 +205,6 @@
 [submodule "dot.vim/bundle/unite-launch"]
 	path = dot.vim/bundle/unite-launch
 	url = https://github.com/ujihisa/unite-launch.git
+[submodule "dot.vim/bundle/vim-fugitive"]
+	path = dot.vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
