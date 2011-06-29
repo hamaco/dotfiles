@@ -55,7 +55,8 @@
 	rollback = reset --hard HEAD~
 	sl = stash list
 	smi = submodule init
-	smp = submodule foreach "git checkout master; git pull"
+	smp = submodule foreach "git pull"
+	smcp = submodule foreach "git checkout master; git pull origin master"
 	smu = submodule update
 	sh = show
 	so = remote show origin
