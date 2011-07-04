@@ -192,16 +192,24 @@ let g:favstar_user = 'hamaco'
 " git.vim {{{2
 let g:git_no_map_default = 1
 let g:git_command_edit = 'rightbelow vnew'
-nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
-nnoremap <Space>gD :<C-u>GitDiff<Enter>
-nnoremap <Space>gs :<C-u>GitStatus<Enter>
-nnoremap <Space>gl :<C-u>GitLog<Enter>
-nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<Enter>
-nnoremap <Space>ga :<C-u>GitAdd<Enter>
-nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
-nnoremap <Space>gc :<C-u>GitCommit<Enter>
-nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
-nnoremap <Space>gp :<C-u>Git push
+"nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
+"nnoremap <Space>gD :<C-u>GitDiff<Enter>
+"nnoremap <Space>gs :<C-u>GitStatus<Enter>
+"nnoremap <Space>gl :<C-u>GitLog<Enter>
+"nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<Enter>
+"nnoremap <Space>ga :<C-u>GitAdd<Enter>
+"nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
+"nnoremap <Space>gc :<C-u>GitCommit<Enter>
+"nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
+"nnoremap <Space>gp :<C-u>Git push
+"
+nnoremap <Space>gd :<C-u>Gdiff<Enter>
+nnoremap <Space>gs :<C-u>Gstatus<Enter>
+nnoremap <Space>gl :<C-u>Glog<Enter>
+nnoremap <Space>ga :<C-u>Gwrite<Enter>
+nnoremap <Space>gc :<C-u>Gcommit<Enter>
+nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
+nnoremap <Space>gb :<C-u>Gblame<Enter>
 
 
 " gundo.vim {{{2
