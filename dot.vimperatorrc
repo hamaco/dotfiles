@@ -4,9 +4,7 @@
 
 echo "Loading..."
 
-" Keymapping
-" ======================================================================
-
+" Keymapping {{{
 " mapname  normal visual ??? insert commandline
 " noremap  o      o      o   x      x
 " noremap! x      x      x   o      o
@@ -82,6 +80,7 @@ noremap U :<C-u>undo<Space>
 noremap C :viewSBMComments<CR>
 
 noremap ,r :<C-u>js Readability.enableREADABILITY({target: {id: 'readability-statusbar-icon'}})<CR>
+" }}}
 
 
 " bmark
@@ -292,19 +291,16 @@ EOM
 let g:localkeymode_enable = "true"
 javascript <<EOM
 liberator.globalVariables.localKeyMappings = [
+	[/reader\.livedoor\.com\/reader/, [
+		["U", function() window.content.window.wrappedJSObject.Control.unsubscribe()]
+	]],
+
 	[/www\.nicovideo\.jp\/watch/, [
 		["p", ":stplay"],
 		["m", ":stmute"],
 		["a", ":stseek! -15"],
 		["s", ":stseek! +15"],
 		["z", ":stfullscreen"]
-	/*
-		["i", ":nicoinfo"],
-		["p", ":nicopause"],
-		["m", ":nicomute"],
-		["a", ":nicoseek! -15"],
-		["s", ":nicoseek! +15"]
-		*/
 	]]
 ];
 EOM
