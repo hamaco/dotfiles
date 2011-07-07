@@ -10,6 +10,17 @@ if has("mac")
 
 	set fuoptions=maxvert,maxhorz
 	" au GUIEnter * set fullscreen
+
+	" vim hacks 221
+	function! s:relative_transparency(diff)
+		let &transparency = a:diff + &transparency
+		let g:transparency = &transparency
+	endfunction
+	nnoremap <up> :<C-u>call <SID>relative_transparency(5)<CR>
+	inoremap <up> <C-o>:call <SID>relative_transparency(5)<CR>
+	nnoremap <down> :<C-u>call <SID>relative_transparency(-5)<CR>
+	inoremap <down> <C-o>:call <SID>relative_transparency(-5)<CR>
+	nnoremap <Space>n :<C-u>nohlsearch<CR>:let &transparency = g:transparency<CR><C-l>
 elseif has("unix")
 	set columns=110
 	set lines=40
