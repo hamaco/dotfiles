@@ -463,6 +463,17 @@ map <Leader>c <Plug>(operator-camelize)
 map <Leader>C <Plug>(operator-decamelize)
 
 
+" vim-textmanip {{{2
+" 選択したテキストの移動
+vmap <C-j> <Plug>(Textmanip.move_selection_down)
+vmap <C-k> <Plug>(Textmanip.move_selection_up)
+vmap <C-h> <Plug>(Textmanip.move_selection_left)
+vmap <C-l> <Plug>(Textmanip.move_selection_right)
+
+" 行の複製
+vmap <M-d> <Plug>(Textmanip.duplicate_selection_v)
+nmap <M-d> <Plug>(Textmanip.duplicate_selection_n)
+
 " vimshell.vim {{{2
 let g:vimshell_user_prompt = 'getcwd()'
 "let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
