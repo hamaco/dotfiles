@@ -414,6 +414,35 @@ if [[ -f '.naverc' ]] ; then
 }
 chpwd_functions+=_naverc_check
 
+function hs () {
+    n_hist_default=1000000
+
+    n_hist=${1#-}
+
+    if [ $1 != ''  -a  $n_hist != $1 ]; then
+        shift
+
+        if [ $n_hist -gt 0 ]; then
+        else
+            n_hist=$n_hist_default
+        fi
+    else
+        n_hist=$n_hist_default
+    fi
+
+    words=($*)
+
+    greps=""
+    for w in $words; do
+        greps="${greps} | grep ${w}"
+    done
+
+    # echo n: $n_hist
+    # echo w: $words
+
+    eval "history -${n_hist} ${greps}"
+}
+
 # incr.zsh
 load_plugins() {
 	if [ -d ~/.zsh/plugin ]; then
