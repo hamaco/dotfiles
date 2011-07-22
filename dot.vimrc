@@ -409,7 +409,7 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
-noremap <silent> <Space>uu  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru <CR>
+noremap <silent> <Space>uu  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru<CR>
 noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert file<CR>
