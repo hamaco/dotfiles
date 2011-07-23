@@ -180,7 +180,7 @@
 	url = https://github.com/Shougo/echodoc.git
 [submodule "dot.vim/bundle/vcs.vim"]
 	path = dot.vim/bundle/vcs.vim
-	url = https://github.com/thinca/vim-vcs.git
+	url = https://github.com/Shougo/vim-vcs.git
 [submodule "dot.vim/bundle/colors-solarized"]
 	path = dot.vim/bundle/colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
