@@ -1,7 +1,9 @@
 	" Initialize: {{{1
 
 	" Windowsでも.vimを読み込むようにする
-	set runtimepath& runtimepath+=$HOME/.vim
+	if has('vim_starting')
+		set runtimepath& runtimepath+=$HOME/.vim
+	endif
 
 	" has('win32') || has('win64')はめんどい
 	" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
