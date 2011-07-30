@@ -184,7 +184,8 @@ let g:echodoc_enable_at_startup = 1
 
 " emap.vim {{{2
 call emap#load('noprefix')
-call emap#set_sid_from_sfile(expand('<sfile>'))
+"call emap#set_sid_from_sfile(expand('<sfile>'))
+call emap#set_sid_from_vimrc()
 
 
 " FavStar.vim {{{2
