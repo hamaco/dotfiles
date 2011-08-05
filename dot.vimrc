@@ -110,7 +110,8 @@ set imdisable
 set incsearch
 set laststatus=2
 set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<
+" set listchars=tab:>-,trail:-,extends:>,precedes:<
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set modeline
 set mouse=a
 set nrformats="hex"
