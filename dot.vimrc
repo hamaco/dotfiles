@@ -454,6 +454,12 @@ else
 	call unite#set_substitute_pattern('files', ';w', '/web')
 end
 
+let g:unite_launch_apps = [
+			\ 'rake',
+			\ 'make',
+			\ 'git pull',
+			\ 'git push']
+
 
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
