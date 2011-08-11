@@ -413,27 +413,39 @@ map <Leader>` <Plug>Csurround w`
 
 
 " unite.vim {{{2
-noremap <silent> <Space>uu  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru<CR>
-noremap <silent> <Space>uf  :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
-noremap <silent> <Space>ub  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
-noremap <silent> <Space>uc  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert file<CR>
-noremap <silent> <Space>ul  :<C-u>Unite -start-insert line<CR>
-noremap <silent> <Space>ut  :<C-u>Unite -immediately tab:no-current<CR>
-noremap <silent> <Space>uw  :<C-u>Unite -immediately window:no-current<CR>
-noremap <silent> <Space>uo  :<C-u>Unite outline<CR>
-noremap <silent> <Space>ug  :<C-u>Unite grep<CR>
-noremap <silent> <Space>us  :<C-u>Unite colorscheme -auto-preview<CR>
+nnoremap [unite] <Nop>
+nmap f [unite]
+
+noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru<CR>
+noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
+noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
+noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
+noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
+noremap <silent> [unite]t  :<C-u>Unite -immediately tab:no-current<CR>
+noremap <silent> [unite]w  :<C-u>Unite -immediately window:no-current<CR>
+noremap <silent> [unite]o  :<C-u>Unite outline<CR>
+noremap <silent> [unite]g  :<C-u>Unite grep<CR>
+noremap <silent> [unite]s  :<C-u>Unite colorscheme -auto-preview<CR>
 "noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
-	noremap <silent> <Space>ue  :<C-u>Unite -start-insert everything<CR>
+	noremap <silent> [unite]e  :<C-u>Unite -start-insert everything<CR>
 endif
 " Execute help.
 nnoremap <C-h>  :<C-u>Unite -start-insert help<CR>
 " Execute help by cursor keyword.
 nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord -start-insert help<CR>
 
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings() "{{{
+	nmap <buffer> <ESC> <Plug>(unite_exit)
+	imap <buffer> jj <Plug>(unite_insert_leave)
+endfunction "}}}
+
+"let g:unite_abbr_highlight = 'TabLine'
+"let g:unite_cursor_line_highlight = 'TabLineSel'
 let g:unite_enable_split_vertically = 0
 let g:unite_enable_start_insert = 0
+let g:unite_source_file_mru_filename_format = ''
 let g:unite_source_file_mru_limit = 150
 
 
