@@ -205,3 +205,6 @@
 [submodule "dot.vim/bundle/vim-textmanip"]
 	path = dot.vim/bundle/vim-textmanip
 	url = https://github.com/t9md/vim-textmanip
+[submodule "dot.vim/bundle/sudo.vim"]
+	path = dot.vim/bundle/sudo.vim
+	url = https://github.com/vim-scripts/sudo.vim.git
