@@ -76,7 +76,8 @@ keymap Global
 		endif
 	else
 		# 普通のキーボード
-		mod Control  += !!CapsLock
+		mod Control  += CapsLock
+		key *CapsLock = *LeftControl
 		# HHKキーボード
 		#mod Control  += !!LControl
 	endif
