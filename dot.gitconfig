@@ -37,6 +37,7 @@
 	dcw = diff --color-words
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
+	find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
 	fixup = commit --amend -a -C HEAD
 	ft = fetch
 	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
@@ -53,6 +54,7 @@
 	rb = rebase
 	rbh = rebase HEAD
 	rollback = reset --hard HEAD~
+	show-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
 	sl = stash list
 	smi = submodule init
 	smp = submodule foreach "git pull"
