@@ -112,4 +112,13 @@ snippet d
 snippet de
   dump(${1});exit;
 
+snippet tra
+  try {
+    Sabel_Db_Transaction::activate();
+    ${1}
+    Sabel_Db_Transaction::commit();
+  } catch (Exception $e) {
+    Sabel_Db_Transaction::rollback();
+  }
+
 # vim: noexpandtab ts=2 sw=2
