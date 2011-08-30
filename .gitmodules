@@ -208,3 +208,6 @@
 [submodule "dot.vim/bundle/sudo.vim"]
 	path = dot.vim/bundle/sudo.vim
 	url = https://github.com/vim-scripts/sudo.vim.git
+[submodule "dot.vim/bundle/vim-coffee-script"]
+	path = dot.vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
