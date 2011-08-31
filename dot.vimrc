@@ -170,6 +170,11 @@ AlterCommand sl setl
 AlterCommand sf setf
 command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
+" ambicmd.vim {{{2
+cnoremap <expr> <Space> ambicmd#expand("\<Space>")
+cnoremap <expr> <CR>    ambicmd#expand("\<CR>")
+
+
 " capslock.vim {{{2
 imap <C-a> <C-o><Plug>CapsLockToggle
 
@@ -187,6 +192,31 @@ let g:echodoc_enable_at_startup = 1
 call emap#load('noprefix')
 "call emap#set_sid_from_sfile(expand('<sfile>'))
 call emap#set_sid_from_vimrc()
+
+
+"eskk.vim {{{2
+let g:eskk#keep_state_beyond_buffer = 0
+
+if has('vim_starting')
+	let g:eskk#dictionary = '~/.skk-jisyo'
+
+	if s:iswindows
+		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
+	elseif has('mac')
+		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
+	elseif has('unix')
+		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
+	endif
+endif
+
+"let g:eskk_debug = 0
+"let g:eskk_egg_like_newline = 1
+"let g:eskk_enable_completion = 1
+"let g:eskk_ignore_continuous_sticky = 1
+""let g:eskk_no_default_mappings = 1
+"let g:eskk_revert_henkan_style = 'okuri'
+
+""map! <C-j> <Plug>(eskk:enable)
 
 
 " FavStar.vim {{{2
@@ -246,15 +276,15 @@ let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
-let g:neocomplcache_enable_quick_match = 0
-if !exists('g:neocomplcache_quick_match_patterns')
-  let g:neocomplcache_quick_match_patterns = {}
-endif
-let g:neocomplcache_quick_match_patterns.default = ' '
-let g:neocomplcache_quick_match_table = {
-			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
-			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
-			\ }
+"let g:neocomplcache_enable_quick_match = 0
+"if !exists('g:neocomplcache_quick_match_patterns')
+"  let g:neocomplcache_quick_match_patterns = {}
+"endif
+"let g:neocomplcache_quick_match_patterns.default = ' '
+"let g:neocomplcache_quick_match_table = {
+"			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
+"			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
+"			\ }
 
 let g:neocomplcache_dictionary_filetype_lists = {
 			\ 'default'  : '',
@@ -352,31 +382,6 @@ let g:ref_alc_use_cache = 1
 
 noremap <Space>ra :<C-u>Ref alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
-
-
-"eskk.vim {{{2
-let g:eskk#keep_state_beyond_buffer = 0
-
-if has('vim_starting')
-	let g:eskk#dictionary = '~/.skk-jisyo'
-
-	if s:iswindows
-		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
-	elseif has('mac')
-		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-	elseif has('unix')
-		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
-	endif
-endif
-
-"let g:eskk_debug = 0
-"let g:eskk_egg_like_newline = 1
-"let g:eskk_enable_completion = 1
-"let g:eskk_ignore_continuous_sticky = 1
-""let g:eskk_no_default_mappings = 1
-"let g:eskk_revert_henkan_style = 'okuri'
-
-""map! <C-j> <Plug>(eskk:enable)
 
 
 " restart.vim {{{2
