@@ -545,6 +545,8 @@ nnoremap k gk
 nnoremap gh ^
 nnoremap gl $
 
+inoremap jj <ESC>
+
 noremap <Space> <Nop>
 "noremap <S-k> <Nop>
 noremap <S-q> <Nop>
