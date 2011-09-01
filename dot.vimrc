@@ -361,8 +361,9 @@ if has('clientserver') && v:servername != ''
 else
 	let g:quickrun_config['*'] = {'runmode': 'simple'}
 endif
-let g:quickrun_config.haskell = {'command': 'runghc'}
 let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['%c %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
+let g:quickrun_config.haskell = {'command': 'runghc'}
+let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
 let g:quickrun_config.textile = {
 			\ 'command': 'redcloth',
