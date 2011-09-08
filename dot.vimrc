@@ -423,7 +423,7 @@ nnoremap [unite] <Nop>
 nmap f [unite]
 
 noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru<CR>
-noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
+noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer file_rec<CR>
 noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
 noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
@@ -445,6 +445,8 @@ autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
 	nmap <buffer> <ESC> <Plug>(unite_exit)
 	imap <buffer> jj <Plug>(unite_insert_leave)
+	nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+	imap <buffer> ' <Plug>(unite_quick_match_default_action)
 endfunction "}}}
 
 "let g:unite_abbr_highlight = 'TabLine'
@@ -482,7 +484,7 @@ let g:unite_launch_apps = [
 
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_edit_command = "edit"
+let g:vimfiler_edit_command = "tabedit"
 
 
 " vim-operator-user {{{2
@@ -707,9 +709,6 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
-
-autocmd MyAutoCmd FileType unite imap <buffer> ' <Plug>(unite_quick_match_default_action)
-autocmd MyAutoCmd FileType unite nmap <buffer> ' <Plug>(unite_quick_match_default_action)
 
 
 if !has('gui_running') && !s:iswindows
