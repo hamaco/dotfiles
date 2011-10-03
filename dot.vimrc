@@ -170,6 +170,11 @@ AlterCommand sl setl
 AlterCommand sf setf
 command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
+" ambicmd.vim {{{2
+cnoremap <expr> <Space> ambicmd#expand("\<Space>")
+cnoremap <expr> <CR>    ambicmd#expand("\<CR>")
+
+
 " capslock.vim {{{2
 imap <C-a> <C-o><Plug>CapsLockToggle
 
@@ -187,6 +192,31 @@ let g:echodoc_enable_at_startup = 1
 call emap#load('noprefix')
 "call emap#set_sid_from_sfile(expand('<sfile>'))
 call emap#set_sid_from_vimrc()
+
+
+"eskk.vim {{{2
+let g:eskk#keep_state_beyond_buffer = 0
+
+if has('vim_starting')
+	let g:eskk#dictionary = '~/.skk-jisyo'
+
+	if s:iswindows
+		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
+	elseif has('mac')
+		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
+	elseif has('unix')
+		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
+	endif
+endif
+
+"let g:eskk_debug = 0
+"let g:eskk_egg_like_newline = 1
+"let g:eskk_enable_completion = 1
+"let g:eskk_ignore_continuous_sticky = 1
+""let g:eskk_no_default_mappings = 1
+"let g:eskk_revert_henkan_style = 'okuri'
+
+""map! <C-j> <Plug>(eskk:enable)
 
 
 " FavStar.vim {{{2
@@ -246,15 +276,15 @@ let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
-let g:neocomplcache_enable_quick_match = 0
-if !exists('g:neocomplcache_quick_match_patterns')
-  let g:neocomplcache_quick_match_patterns = {}
-endif
-let g:neocomplcache_quick_match_patterns.default = ' '
-let g:neocomplcache_quick_match_table = {
-			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
-			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
-			\ }
+"let g:neocomplcache_enable_quick_match = 0
+"if !exists('g:neocomplcache_quick_match_patterns')
+"  let g:neocomplcache_quick_match_patterns = {}
+"endif
+"let g:neocomplcache_quick_match_patterns.default = ' '
+"let g:neocomplcache_quick_match_table = {
+"			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
+"			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
+"			\ }
 
 let g:neocomplcache_dictionary_filetype_lists = {
 			\ 'default'  : '',
@@ -331,8 +361,9 @@ if has('clientserver') && v:servername != ''
 else
 	let g:quickrun_config['*'] = {'runmode': 'simple'}
 endif
-let g:quickrun_config.haskell = {'command': 'runghc'}
 let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['%c %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
+let g:quickrun_config.haskell = {'command': 'runghc'}
+let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
 let g:quickrun_config.textile = {
 			\ 'command': 'redcloth',
@@ -352,31 +383,6 @@ let g:ref_alc_use_cache = 1
 
 noremap <Space>ra :<C-u>Ref alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
-
-
-"eskk.vim {{{2
-let g:eskk#keep_state_beyond_buffer = 0
-
-if has('vim_starting')
-	let g:eskk#dictionary = '~/.skk-jisyo'
-
-	if s:iswindows
-		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
-	elseif has('mac')
-		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-	elseif has('unix')
-		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
-	endif
-endif
-
-"let g:eskk_debug = 0
-"let g:eskk_egg_like_newline = 1
-"let g:eskk_enable_completion = 1
-"let g:eskk_ignore_continuous_sticky = 1
-""let g:eskk_no_default_mappings = 1
-"let g:eskk_revert_henkan_style = 'okuri'
-
-""map! <C-j> <Plug>(eskk:enable)
 
 
 " restart.vim {{{2
@@ -417,7 +423,7 @@ nnoremap [unite] <Nop>
 nmap f [unite]
 
 noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru<CR>
-noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
+noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer file_rec<CR>
 noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
 noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
@@ -439,6 +445,8 @@ autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
 	nmap <buffer> <ESC> <Plug>(unite_exit)
 	imap <buffer> jj <Plug>(unite_insert_leave)
+	nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+	imap <buffer> ' <Plug>(unite_quick_match_default_action)
 endfunction "}}}
 
 "let g:unite_abbr_highlight = 'TabLine'
@@ -476,7 +484,7 @@ let g:unite_launch_apps = [
 
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_edit_command = "edit"
+let g:vimfiler_edit_command = "tabedit"
 
 
 " vim-operator-user {{{2
@@ -544,6 +552,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gh ^
 nnoremap gl $
+
+inoremap jj <ESC>
 
 noremap <Space> <Nop>
 "noremap <S-k> <Nop>
@@ -699,9 +709,6 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
-
-autocmd MyAutoCmd FileType unite imap <buffer> ' <Plug>(unite_quick_match_default_action)
-autocmd MyAutoCmd FileType unite nmap <buffer> ' <Plug>(unite_quick_match_default_action)
 
 
 if !has('gui_running') && !s:iswindows

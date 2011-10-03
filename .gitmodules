@@ -208,3 +208,12 @@
 [submodule "dot.vim/bundle/sudo.vim"]
 	path = dot.vim/bundle/sudo.vim
 	url = https://github.com/vim-scripts/sudo.vim.git
+[submodule "dot.vim/bundle/vim-coffee-script"]
+	path = dot.vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "dot.vim/bundle/vim-ambicmd"]
+	path = dot.vim/bundle/vim-ambicmd
+	url = https://github.com/thinca/vim-ambicmd.git
+[submodule "dot.vim/bundle/ref-dicts-en"]
+	path = dot.vim/bundle/ref-dicts-en
+	url = https://github.com/h1mesuke/ref-dicts-en.git
