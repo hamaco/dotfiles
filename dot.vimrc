@@ -417,7 +417,8 @@ map <C-i> <Plug>(poslist-next-pos)
 let g:quickrun_direction = 'rightbelow vertical'
 let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
 
-let g:quickrun_config = {}
+"let g:quickrun_config = {}
+let g:quickrun_config = {'outputter/buffer/into': 1}
 if has('clientserver') && v:servername != ''
 	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
 else
@@ -425,7 +426,36 @@ else
 endif
 let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['%c %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
 let g:quickrun_config.haskell = {'command': 'runghc'}
-let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+" let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+
+let phpunit_outputter = quickrun#outputter#buffer#new()
+"function! phpunit_outputter.init(session)
+"  " call original process
+"  call call(quickrun#outputter#buffer#new().init, [a:session], self)
+"endfunction
+
+function! phpunit_outputter.finish(session)
+  let winnr = winnr()
+
+  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+
+  hi default PHPUnitOK         guifg=White guibg=Green
+  hi default PHPUnitFail       guifg=White guibg=Red
+  hi default PHPUnitAssertFail guifg=Red
+
+	call matchadd("PHPUnitOK", "^OK.*$")
+	call matchadd("PHPUnitFail", "^FAILURES.*$")
+	call matchadd("PHPUnitAssertFail", "^Failed.*$")
+
+	execute winnr . "wincmd w"
+endfunction
+
+call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
+let g:quickrun_config['php.unit'] = {
+			\ 'command': 'phpunit',
+			\ 'outputter': 'phpunit_outputter',
+			\ }
+
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
 let g:quickrun_config.textile = {
 			\ 'command': 'redcloth',
@@ -791,7 +821,7 @@ augroup QuickRunPHPUnit
   autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
 augroup END
 
-let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+"let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 " }}}
 
 
@@ -1041,10 +1071,11 @@ function! s:syntax_additional()
 	highlight default link myMemo Todo
 endfunction
 
-
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
+
+nnoremap <Leader>s :<C-u>source ~/.vim/autoload/cake2.vim<CR>
 
 " END {{{1
 " vim: foldmethod=marker
