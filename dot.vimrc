@@ -1,30 +1,92 @@
-	" Initialize: {{{1
+" Initialize: {{{1
 
-	" Windowsでも.vimを読み込むようにする
-	if has('vim_starting')
-		set runtimepath& runtimepath+=$HOME/.vim
+" Windowsでも.vimを読み込むようにする
+if has('vim_starting')
+	set runtimepath& runtimepath+=$HOME/.vim
+endif
+
+" has('win32') || has('win64')はめんどい
+" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
+let s:iswindows = has('win32') || has('win64')
+
+" NeoBundle {{{1
+if has('vim_starting')
+	set runtimepath+=$HOME/.bundle/vimproc
+	set runtimepath+=$HOME/.vim/bundle/neobundle.vim
+	filetype off
+	call neobundle#rc(expand('~/.bundle'))
+	filetype plugin on
+	filetype indent on
+endif
+
+NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
+
+NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
+
+NeoBundle 'https://github.com/kana/vim-operator-user.git'
+NeoBundle 'https://github.com/kana/vim-submode.git'
+NeoBundle 'https://github.com/kana/vim-surround.git'
+
+NeoBundle 'https://github.com/mattn/favstar-vim.git'
+NeoBundle 'https://github.com/mattn/googletranslate-vim.git'
+NeoBundle 'https://github.com/mattn/webapi-vim.git'
+
+NeoBundle 'https://github.com/Shougo/echodoc.git'
+NeoBundle 'https://github.com/Shougo/neobundle.git'
+NeoBundle 'https://github.com/Shougo/neocomplcache.git'
+NeoBundle 'https://github.com/Shougo/unite.vim.git'
+NeoBundle 'https://github.com/Shougo/vim-vcs.git'
+NeoBundle 'https://github.com/Shougo/vimfiler.git'
+NeoBundle 'https://github.com/Shougo/vimproc.git'
+NeoBundle 'https://github.com/Shougo/vimshell.git'
+
+NeoBundle 'https://github.com/thinca/vim-ambicmd.git'
+NeoBundle 'https://github.com/thinca/vim-auto_source.git'
+NeoBundle 'https://github.com/thinca/vim-ft-vim_fold.git'
+NeoBundle 'https://github.com/thinca/vim-poslist.git'
+NeoBundle 'https://github.com/thinca/vim-quickrun.git'
+NeoBundle 'https://github.com/thinca/vim-ref.git'
+NeoBundle 'https://github.com/thinca/vim-scouter.git'
+NeoBundle 'https://github.com/thinca/vim-unite-history.git'
+
+NeoBundle 'https://github.com/tyru/caw.vim.git'
+NeoBundle 'https://github.com/tyru/current-func-info.vim.git'
+NeoBundle 'https://github.com/tyru/emap.vim.git'
+NeoBundle 'https://github.com/tyru/eskk.vim.git'
+NeoBundle 'https://github.com/tyru/open-browser.vim.git'
+NeoBundle 'https://github.com/tyru/operator-camelize.vim.git'
+NeoBundle 'https://github.com/tyru/restart.vim.git'
+NeoBundle 'https://github.com/tyru/savemap.vim.git'
+NeoBundle 'https://github.com/tyru/vice.vim.git'
+NeoBundle 'https://github.com/tyru/vim-altercmd.git'
+NeoBundle 'https://github.com/tyru/visualctrlg.git'
+
+NeoBundle 'https://github.com/tsukkee/lingr-vim.git'
+NeoBundle 'https://github.com/tsukkee/unite-help.git'
+
+NeoBundle 'https://github.com/ujihisa/neco-look.git'
+NeoBundle 'https://github.com/ujihisa/shadow.vim.git'
+NeoBundle 'https://github.com/ujihisa/tabpagecolorscheme.git'
+NeoBundle 'https://github.com/ujihisa/unite-colorscheme.git'
+NeoBundle 'https://github.com/ujihisa/unite-launch.git'
+NeoBundle 'https://github.com/ujihisa/vimshell-ssh.git'
+
+NeoBundle 'https://github.com/h1mesuke/unite-outline.git'
+NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
+
+NeoBundle 'https://github.com/t9md/vim-textmanip.git'
+
+NeoBundle 'https://github.com/hallison/vim-abolish.git'
+NeoBundle 'https://github.com/hallison/vim-markdown.git'
+NeoBundle 'https://github.com/sjl/gundo.vim.git'
+NeoBundle 'https://github.com/altercation/vim-colors-socialized.git'
+
+if has("syntax")
+	syntax enable
+	if !exists("g:colors_name")
+		colorscheme ap_dark8
 	endif
-
-	" has('win32') || has('win64')はめんどい
-	" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
-	let s:iswindows = has('win32') || has('win64')
-
-	" pathogen
-	" http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-	runtime bundle/vim-pathogen/autoload/pathogen.vim
-	if exists("g:loaded_pathogen")
-		call pathogen#runtime_append_all_bundles()
-	end
-
-	set nocompatible
-	filetype plugin indent on
-
-	if has("syntax")
-		syntax enable
-		if !exists("g:colors_name")
-			colorscheme ap_dark8
-		endif
-	endif
+endif
 
 
 
