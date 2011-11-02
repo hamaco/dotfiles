@@ -637,6 +637,9 @@ nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
 
 nnoremap Y y$
 
+nnoremap Q q
+nnoremap q <Nop>
+
 noremap ; :
 "noremap : ;
 
