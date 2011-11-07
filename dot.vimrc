@@ -803,22 +803,23 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
 
 
-if !has('gui_running') && !s:iswindows
-  " .vimrcの再読込時にも色が変化するようにする
-  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-else
-  " .vimrcの再読込時にも色が変化するようにする
-  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
-        \if has('gui_running') | source $MYGVIMRC
-  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
-endif
+" auto_source.vimを使うようにしたので無効化
+"if !has('gui_running') && !s:iswindows
+"  " .vimrcの再読込時にも色が変化するようにする
+"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+"else
+"  " .vimrcの再読込時にも色が変化するようにする
+"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
+"        \if has('gui_running') | source $MYGVIMRC
+"  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+"endif
 
 
 " QuickRunPHPUnit {{{
