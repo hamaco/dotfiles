@@ -32,7 +32,7 @@ NeoBundle 'https://github.com/mattn/googletranslate-vim.git'
 NeoBundle 'https://github.com/mattn/webapi-vim.git'
 
 NeoBundle 'https://github.com/Shougo/echodoc.git'
-NeoBundle 'https://github.com/Shougo/neobundle.git'
+NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'https://github.com/Shougo/neocomplcache.git'
 NeoBundle 'https://github.com/Shougo/unite.vim.git'
 NeoBundle 'https://github.com/Shougo/vim-vcs.git'
@@ -60,7 +60,7 @@ NeoBundle 'https://github.com/tyru/restart.vim.git'
 NeoBundle 'https://github.com/tyru/savemap.vim.git'
 NeoBundle 'https://github.com/tyru/vice.vim.git'
 NeoBundle 'https://github.com/tyru/vim-altercmd.git'
-NeoBundle 'https://github.com/tyru/visualctrlg.git'
+NeoBundle 'https://github.com/tyru/visualctrlg.vim.git'
 
 NeoBundle 'https://github.com/tsukkee/lingr-vim.git'
 NeoBundle 'https://github.com/tsukkee/unite-help.git'
@@ -77,10 +77,11 @@ NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
 
 NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 
-NeoBundle 'https://github.com/hallison/vim-abolish.git'
+NeoBundle 'https://github.com/tpope/vim-abolish.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
-NeoBundle 'https://github.com/altercation/vim-colors-socialized.git'
+NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
+
 
 if has("syntax")
 	syntax enable
