@@ -82,6 +82,8 @@ NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+
 
 if has("syntax")
 	syntax enable
