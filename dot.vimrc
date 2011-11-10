@@ -1,30 +1,96 @@
-	" Initialize: {{{1
+" Initialize: {{{1
 
-	" Windowsでも.vimを読み込むようにする
-	if has('vim_starting')
-		set runtimepath& runtimepath+=$HOME/.vim
+" Windowsでも.vimを読み込むようにする
+if has('vim_starting')
+	set runtimepath& runtimepath+=$HOME/.vim
+endif
+
+" has('win32') || has('win64')はめんどい
+" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
+let s:iswindows = has('win32') || has('win64')
+
+" NeoBundle {{{1
+if has('vim_starting')
+	set runtimepath+=$HOME/.bundle/vimproc
+	set runtimepath+=$HOME/.vim/bundle/neobundle.vim
+	filetype off
+	call neobundle#rc(expand('~/.bundle'))
+	filetype plugin on
+	filetype indent on
+endif
+
+NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
+
+NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
+
+NeoBundle 'https://github.com/kana/vim-operator-user.git'
+NeoBundle 'https://github.com/kana/vim-submode.git'
+NeoBundle 'https://github.com/kana/vim-surround.git'
+
+NeoBundle 'https://github.com/mattn/favstar-vim.git'
+NeoBundle 'https://github.com/mattn/googletranslate-vim.git'
+NeoBundle 'https://github.com/mattn/webapi-vim.git'
+
+NeoBundle 'https://github.com/Shougo/echodoc.git'
+NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
+NeoBundle 'https://github.com/Shougo/neocomplcache.git'
+NeoBundle 'https://github.com/Shougo/unite.vim.git'
+NeoBundle 'https://github.com/Shougo/vim-vcs.git'
+NeoBundle 'https://github.com/Shougo/vimfiler.git'
+NeoBundle 'https://github.com/Shougo/vimproc.git'
+NeoBundle 'https://github.com/Shougo/vimshell.git'
+
+NeoBundle 'https://github.com/thinca/vim-ambicmd.git'
+NeoBundle 'https://github.com/thinca/vim-auto_source.git'
+NeoBundle 'https://github.com/thinca/vim-ft-vim_fold.git'
+NeoBundle 'https://github.com/thinca/vim-openbuf.git'
+NeoBundle 'https://github.com/thinca/vim-poslist.git'
+NeoBundle 'https://github.com/thinca/vim-quickrun.git'
+NeoBundle 'https://github.com/thinca/vim-ref.git'
+NeoBundle 'https://github.com/thinca/vim-scouter.git'
+NeoBundle 'https://github.com/thinca/vim-unite-history.git'
+
+NeoBundle 'https://github.com/tyru/caw.vim.git'
+NeoBundle 'https://github.com/tyru/current-func-info.vim.git'
+NeoBundle 'https://github.com/tyru/emap.vim.git'
+NeoBundle 'https://github.com/tyru/eskk.vim.git'
+NeoBundle 'https://github.com/tyru/open-browser.vim.git'
+NeoBundle 'https://github.com/tyru/operator-camelize.vim.git'
+NeoBundle 'https://github.com/tyru/restart.vim.git'
+NeoBundle 'https://github.com/tyru/savemap.vim.git'
+NeoBundle 'https://github.com/tyru/vice.vim.git'
+NeoBundle 'https://github.com/tyru/vim-altercmd.git'
+NeoBundle 'https://github.com/tyru/visualctrlg.vim.git'
+
+NeoBundle 'https://github.com/tsukkee/lingr-vim.git'
+NeoBundle 'https://github.com/tsukkee/unite-help.git'
+
+NeoBundle 'https://github.com/ujihisa/neco-look.git'
+NeoBundle 'https://github.com/ujihisa/shadow.vim.git'
+NeoBundle 'https://github.com/ujihisa/tabpagecolorscheme.git'
+NeoBundle 'https://github.com/ujihisa/unite-colorscheme.git'
+NeoBundle 'https://github.com/ujihisa/unite-launch.git'
+NeoBundle 'https://github.com/ujihisa/vimshell-ssh.git'
+
+NeoBundle 'https://github.com/h1mesuke/unite-outline.git'
+NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
+
+NeoBundle 'https://github.com/t9md/vim-textmanip.git'
+
+NeoBundle 'https://github.com/tpope/vim-abolish.git'
+NeoBundle 'https://github.com/hallison/vim-markdown.git'
+NeoBundle 'https://github.com/sjl/gundo.vim.git'
+NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
+
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+
+
+if has("syntax")
+	syntax enable
+	if !exists("g:colors_name")
+		colorscheme ap_dark8
 	endif
-
-	" has('win32') || has('win64')はめんどい
-	" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
-	let s:iswindows = has('win32') || has('win64')
-
-	" pathogen
-	" http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-	runtime bundle/vim-pathogen/autoload/pathogen.vim
-	if exists("g:loaded_pathogen")
-		call pathogen#runtime_append_all_bundles()
-	end
-
-	set nocompatible
-	filetype plugin indent on
-
-	if has("syntax")
-		syntax enable
-		if !exists("g:colors_name")
-			colorscheme ap_dark8
-		endif
-	endif
+endif
 
 
 
@@ -170,6 +236,11 @@ AlterCommand sl setl
 AlterCommand sf setf
 command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
+" ambicmd.vim {{{2
+cnoremap <expr> <Space> ambicmd#expand("\<Space>")
+cnoremap <expr> <CR>    ambicmd#expand("\<CR>")
+
+
 " capslock.vim {{{2
 imap <C-a> <C-o><Plug>CapsLockToggle
 
@@ -189,13 +260,38 @@ call emap#load('noprefix')
 call emap#set_sid_from_vimrc()
 
 
+"eskk.vim {{{2
+let g:eskk#keep_state_beyond_buffer = 0
+
+if has('vim_starting')
+	let g:eskk#dictionary = '~/.skk-jisyo'
+
+	if s:iswindows
+		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
+	elseif has('mac')
+		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
+	elseif has('unix')
+		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
+	endif
+endif
+
+"let g:eskk_debug = 0
+"let g:eskk_egg_like_newline = 1
+"let g:eskk_enable_completion = 1
+"let g:eskk_ignore_continuous_sticky = 1
+""let g:eskk_no_default_mappings = 1
+"let g:eskk_revert_henkan_style = 'okuri'
+
+""map! <C-j> <Plug>(eskk:enable)
+
+
 " FavStar.vim {{{2
 let g:favstar_user = 'hamaco'
 
 
 " git.vim {{{2
-let g:git_no_map_default = 1
-let g:git_command_edit = 'rightbelow vnew'
+"let g:git_no_map_default = 1
+"let g:git_command_edit = 'rightbelow vnew'
 "nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
 "nnoremap <Space>gD :<C-u>GitDiff<Enter>
 "nnoremap <Space>gs :<C-u>GitStatus<Enter>
@@ -207,13 +303,16 @@ let g:git_command_edit = 'rightbelow vnew'
 "nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
 "nnoremap <Space>gp :<C-u>Git push
 "
-nnoremap <Space>gd :<C-u>Gdiff<Enter>
-nnoremap <Space>gs :<C-u>Gstatus<Enter>
-nnoremap <Space>gl :<C-u>Glog<Enter>
-nnoremap <Space>ga :<C-u>Gwrite<Enter>
-nnoremap <Space>gc :<C-u>Gcommit<Enter>
-nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
-nnoremap <Space>gb :<C-u>Gblame<Enter>
+"nnoremap <Space>gd :<C-u>Gdiff<Enter>
+"nnoremap <Space>gs :<C-u>Gstatus<Enter>
+"nnoremap <Space>gl :<C-u>Glog<Enter>
+"nnoremap <Space>ga :<C-u>Gwrite<Enter>
+"nnoremap <Space>gc :<C-u>Gcommit<Enter>
+"nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
+"nnoremap <Space>gb :<C-u>Gblame<Enter>
+nnoremap <Space>gs :<C-u>Vcs status<CR>
+nnoremap <Space>ga :<C-u>Vcs add<CR>
+nnoremap <Space>gc :<C-u>Vcs commit<CR>
 
 
 " gundo.vim {{{2
@@ -246,15 +345,15 @@ let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_SimilarMatch = 1
 "let g:NeoComplCache_TryKeywordCompletion = 1
 
-let g:neocomplcache_enable_quick_match = 0
-if !exists('g:neocomplcache_quick_match_patterns')
-  let g:neocomplcache_quick_match_patterns = {}
-endif
-let g:neocomplcache_quick_match_patterns.default = ' '
-let g:neocomplcache_quick_match_table = {
-			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
-			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
-			\ }
+"let g:neocomplcache_enable_quick_match = 0
+"if !exists('g:neocomplcache_quick_match_patterns')
+"  let g:neocomplcache_quick_match_patterns = {}
+"endif
+"let g:neocomplcache_quick_match_patterns.default = ' '
+"let g:neocomplcache_quick_match_table = {
+"			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
+"			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
+"			\ }
 
 let g:neocomplcache_dictionary_filetype_lists = {
 			\ 'default'  : '',
@@ -331,14 +430,45 @@ map <C-i> <Plug>(poslist-next-pos)
 let g:quickrun_direction = 'rightbelow vertical'
 let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
 
-let g:quickrun_config = {}
+"let g:quickrun_config = {}
+let g:quickrun_config = {'outputter/buffer/into': 1}
 if has('clientserver') && v:servername != ''
 	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
 else
 	let g:quickrun_config['*'] = {'runmode': 'simple'}
 endif
-let g:quickrun_config.haskell = {'command': 'runghc'}
 let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['%c %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
+let g:quickrun_config.haskell = {'command': 'runghc'}
+" let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+
+let phpunit_outputter = quickrun#outputter#buffer#new()
+"function! phpunit_outputter.init(session)
+"  " call original process
+"  call call(quickrun#outputter#buffer#new().init, [a:session], self)
+"endfunction
+
+function! phpunit_outputter.finish(session)
+  let winnr = winnr()
+
+  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+
+  hi default PHPUnitOK         guifg=White guibg=Green
+  hi default PHPUnitFail       guifg=White guibg=Red
+  hi default PHPUnitAssertFail guifg=Red
+
+	call matchadd("PHPUnitOK", "^OK.*$")
+	call matchadd("PHPUnitFail", "^FAILURES.*$")
+	call matchadd("PHPUnitAssertFail", "^Failed.*$")
+
+	execute winnr . "wincmd w"
+endfunction
+
+call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
+let g:quickrun_config['php.unit'] = {
+			\ 'command': 'phpunit',
+			\ 'outputter': 'phpunit_outputter',
+			\ }
+
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
 let g:quickrun_config.textile = {
 			\ 'command': 'redcloth',
@@ -358,31 +488,6 @@ let g:ref_alc_use_cache = 1
 
 noremap <Space>ra :<C-u>Ref alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
-
-
-"eskk.vim {{{2
-let g:eskk#keep_state_beyond_buffer = 0
-
-if has('vim_starting')
-	let g:eskk#dictionary = '~/.skk-jisyo'
-
-	if s:iswindows
-		let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
-	elseif has('mac')
-		let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-	elseif has('unix')
-		let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
-	endif
-endif
-
-"let g:eskk_debug = 0
-"let g:eskk_egg_like_newline = 1
-"let g:eskk_enable_completion = 1
-"let g:eskk_ignore_continuous_sticky = 1
-""let g:eskk_no_default_mappings = 1
-"let g:eskk_revert_henkan_style = 'okuri'
-
-""map! <C-j> <Plug>(eskk:enable)
 
 
 " restart.vim {{{2
@@ -423,7 +528,7 @@ nnoremap [unite] <Nop>
 nmap f [unite]
 
 noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru<CR>
-noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert file_rec<CR>
+noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer file_rec<CR>
 noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
 noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
 noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
@@ -445,6 +550,8 @@ autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
 	nmap <buffer> <ESC> <Plug>(unite_exit)
 	imap <buffer> jj <Plug>(unite_insert_leave)
+	nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+	imap <buffer> ' <Plug>(unite_quick_match_default_action)
 endfunction "}}}
 
 "let g:unite_abbr_highlight = 'TabLine'
@@ -482,7 +589,7 @@ let g:unite_launch_apps = [
 
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_edit_command = "edit"
+let g:vimfiler_edit_command = "tabedit"
 
 
 " vim-operator-user {{{2
@@ -543,6 +650,9 @@ nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
 
 nnoremap Y y$
 
+nnoremap Q q
+nnoremap q <Nop>
+
 noremap ; :
 "noremap : ;
 
@@ -550,6 +660,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gh ^
 nnoremap gl $
+
+inoremap jj <ESC>
 
 noremap <Space> <Nop>
 "noremap <S-k> <Nop>
@@ -700,25 +812,23 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref nnoremap <buffer> q <C-w>c
+autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
 
-autocmd MyAutoCmd FileType unite imap <buffer> ' <Plug>(unite_quick_match_default_action)
-autocmd MyAutoCmd FileType unite nmap <buffer> ' <Plug>(unite_quick_match_default_action)
 
-
-if !has('gui_running') && !s:iswindows
-  " .vimrcの再読込時にも色が変化するようにする
-  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-else
-  " .vimrcの再読込時にも色が変化するようにする
-  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
-        \if has('gui_running') | source $MYGVIMRC
-  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
-endif
+" auto_source.vimを使うようにしたので無効化
+"if !has('gui_running') && !s:iswindows
+"  " .vimrcの再読込時にも色が変化するようにする
+"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+"else
+"  " .vimrcの再読込時にも色が変化するようにする
+"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
+"        \if has('gui_running') | source $MYGVIMRC
+"  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+"endif
 
 
 " QuickRunPHPUnit {{{
@@ -728,7 +838,7 @@ augroup QuickRunPHPUnit
   autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
 augroup END
 
-let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+"let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 " }}}
 
 
@@ -978,10 +1088,11 @@ function! s:syntax_additional()
 	highlight default link myMemo Todo
 endfunction
 
-
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
+
+nnoremap <Leader>s :<C-u>source ~/.vim/autoload/cake2.vim<CR>
 
 " END {{{1
 " vim: foldmethod=marker
