@@ -570,6 +570,7 @@ call unite#set_substitute_pattern('files', '^@@', '\=fnamemodify(expand("#"), ":
 call unite#set_substitute_pattern('files', '^@', '\=getcwd()."/*"', 1)
 call unite#set_substitute_pattern('files', '^\\', '~/*')
 call unite#set_substitute_pattern('files', '^;v', '~/.vim/*')
+call unite#set_substitute_pattern('files', '^;b', '~/.bundle/*')
 call unite#set_substitute_pattern('files', '\*\*\+', '*', -1)
 
 if s:iswindows
