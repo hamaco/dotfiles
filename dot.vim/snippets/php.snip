@@ -121,4 +121,12 @@ snippet tra
     Sabel_Db_Transaction::rollback();
   }
 
+# for CakePHP
+snippet $mfa
+  $this->${1}->find('all', array(
+    'conditions' => array(
+      ${2}
+    ),
+  ));
+
 # vim: noexpandtab ts=2 sw=2
