@@ -1,0 +1,50 @@
+alignment top_right
+gap_x 0
+gap_y 0
+
+update_interval 1.0
+
+own_window yes
+own_window_type override
+own_window_transparent no
+own_window_colour 222222
+
+use_xft yes
+xftfont Ricty:size=11
+
+default_color eeeeec
+draw_shades no
+
+use_spacer left
+
+TEXT
+${color ffaa33}CPU$color $alignr ${freq_g}GHz
+${cpugraph cpu1}
+CPU1 ${cpu cpu1}% ${hwmon 1 device/temp 2 0.001 0}°C
+${cpugraph cpu2}
+CPU2 ${cpu cpu2}% ${hwmon 1 device/temp 3 0.001 0}°C
+
+${color ffaa33}MEM$color
+$membar
+$mem/$memmax ($memperc%)
+Swap $swap
+
+${color ffaa33}HDD$color
+$fs_bar
+$fs_used/$fs_size ($fs_used_perc%)
+R $diskio_read W $diskio_write T ${hddtemp /dev/sda}°C
+
+${color ffaa33}NET$color
+Up ${upspeed wlan0} - Down ${downspeed wlan0}
+$hr
+${color ffaa33}TOP CPU$color${alignr}CPU    MEM
+${top name 1}${alignr}${top cpu 1} ${top mem 1}
+${top name 2}${alignr}${top cpu 2} ${top mem 2}
+${top name 3}${alignr}${top cpu 3} ${top mem 3}
+${top name 4}${alignr}${top cpu 4} ${top mem 4}
+
+${color ffaa33}TOP MEM$color${alignr}CPU    MEM
+${top_mem name 1}${alignr}${top_mem cpu 1} ${top_mem mem 1}
+${top_mem name 2}${alignr}${top_mem cpu 2} ${top_mem mem 2}
+${top_mem name 3}${alignr}${top_mem cpu 3} ${top_mem mem 3}
+${top_mem name 4}${alignr}${top_mem cpu 4} ${top_mem mem 4}
