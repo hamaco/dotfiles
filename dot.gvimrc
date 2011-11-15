@@ -4,6 +4,7 @@ if has("mac")
 	"set guifont=DejaVu\ Sans\ Mono:h14
 	" set guifont=Menlo:h14
 	set guifont=Inconsolata:h16
+	set guifont=Ricty:h16
 	set transparency=20
 	"colorscheme h2u_black
 	colorscheme mrkn256
@@ -12,6 +13,7 @@ if has("mac")
 	" au GUIEnter * set fullscreen
 
 	" vim hacks 221
+	let g:transparency = &transparency
 	function! s:relative_transparency(diff)
 		let &transparency = a:diff + &transparency
 		let g:transparency = &transparency
