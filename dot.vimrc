@@ -29,7 +29,9 @@ NeoBundle 'https://github.com/kana/vim-surround.git'
 
 NeoBundle 'https://github.com/mattn/favstar-vim.git'
 NeoBundle 'https://github.com/mattn/googletranslate-vim.git'
+NeoBundle 'https://github.com/mattn/learn-vimscript.git'
 NeoBundle 'https://github.com/mattn/webapi-vim.git'
+NeoBundle 'https://github.com/mattn/sonictemplate-vim.git'
 
 NeoBundle 'https://github.com/Shougo/echodoc.git'
 NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
