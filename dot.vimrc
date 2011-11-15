@@ -594,6 +594,7 @@ let g:unite_launch_apps = [
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_edit_command = "tabedit"
+autocmd FileType vimfiler nnoremap <buffer> / /\_^- \zs
 
 
 " vim-operator-user {{{2
