@@ -548,6 +548,7 @@ function! s:unite_my_settings() "{{{
 	imap <buffer> jj <Plug>(unite_insert_leave)
 	nmap <buffer> ' <Plug>(unite_quick_match_default_action)
 	imap <buffer> ' <Plug>(unite_quick_match_default_action)
+	nmap <buffer> x <Plug>(unite_toggle_mark_current_candidate)
 endfunction "}}}
 
 "let g:unite_abbr_highlight = 'TabLine'
