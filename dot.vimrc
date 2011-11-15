@@ -80,7 +80,9 @@ NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 NeoBundle 'https://github.com/tpope/vim-abolish.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
+
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
+NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
 
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
 
