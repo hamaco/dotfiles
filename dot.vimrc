@@ -79,6 +79,7 @@ NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
 
 NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 
+NeoBundle 'https://github.com/choplin/unite-vim_hacks.git'
 NeoBundle 'https://github.com/tpope/vim-abolish.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
