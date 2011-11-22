@@ -101,10 +101,13 @@ snippet heredoc
 
 # for Sabel
 snippet $cc
-  $create->column("${1}")->type(${2})${3};
+  $create->column('${1}')->type(${2})${3};
 
 snippet $cu
-  $create->unique("${1}");
+  $create->unique('${1}');
+
+snippet $cf
+  $create->fkey('${1}')->onDelete('CASCADE');
 
 snippet d
   dump(${1});${2}

@@ -282,7 +282,7 @@ if has('vim_starting')
 endif
 
 "let g:eskk_debug = 0
-"let g:eskk_egg_like_newline = 1
+let g:eskk#egg_like_newline = 1
 "let g:eskk_enable_completion = 1
 "let g:eskk_ignore_continuous_sticky = 1
 ""let g:eskk_no_default_mappings = 1
@@ -979,6 +979,39 @@ function! s:init_cmdwin()
   startinsert!
 endfunction
 
+" vim hacks #228
+let ColorRoller = {}
+let ColorRoller.colors = [
+      \ 'luciusmod',
+      \ 'rdark',
+      \ 'vydark',
+      \ 'pyte',
+      \ 'solarized',
+      \ 'newspaper',
+      \ ]
+
+function! ColorRoller.change()
+  let color = get(self.colors, 0)
+  silent exe "Tcolorscheme " . color
+  redraw
+  "echo self.colors
+endfunction
+
+function! ColorRoller.roll()
+  let item = remove(self.colors, 0)
+  call insert(self.colors, item, len(self.colors))
+  call self.change()
+endfunction
+
+function! ColorRoller.unroll()
+  let item = remove(self.colors, -1)
+  call insert(self.colors, item, 0)
+  call self.change()
+endfunction
+
+nnoremap <silent><F9>   :<C-u>call ColorRoller.roll()<CR>
+nnoremap <silent><S-F9> :<C-u>call ColorRoller.unroll()<CR>
+
 " buffer
 nnoremap s <Nop>
 nnoremap ss s
@@ -1093,8 +1126,6 @@ endfunction
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
-
-nnoremap <Leader>s :<C-u>source ~/.vim/autoload/cake2.vim<CR>
 
 " END {{{1
 " vim: foldmethod=marker
