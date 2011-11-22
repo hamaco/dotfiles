@@ -280,7 +280,7 @@ if has('vim_starting')
 endif
 
 "let g:eskk_debug = 0
-"let g:eskk_egg_like_newline = 1
+let g:eskk#egg_like_newline = 1
 "let g:eskk_enable_completion = 1
 "let g:eskk_ignore_continuous_sticky = 1
 ""let g:eskk_no_default_mappings = 1
