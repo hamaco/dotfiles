@@ -28,6 +28,7 @@ NeoBundle 'https://github.com/kana/vim-submode.git'
 NeoBundle 'https://github.com/kana/vim-surround.git'
 
 NeoBundle 'https://github.com/mattn/favstar-vim.git'
+NeoBundle 'https://github.com/mattn/gist-vim.git'
 NeoBundle 'https://github.com/mattn/googletranslate-vim.git'
 NeoBundle 'https://github.com/mattn/learn-vimscript.git'
 NeoBundle 'https://github.com/mattn/webapi-vim.git'
@@ -47,6 +48,7 @@ NeoBundle 'https://github.com/thinca/vim-auto_source.git'
 NeoBundle 'https://github.com/thinca/vim-ft-vim_fold.git'
 NeoBundle 'https://github.com/thinca/vim-openbuf.git'
 NeoBundle 'https://github.com/thinca/vim-poslist.git'
+NeoBundle 'https://github.com/thinca/vim-prettyprint.git'
 NeoBundle 'https://github.com/thinca/vim-quickrun.git'
 NeoBundle 'https://github.com/thinca/vim-ref.git'
 NeoBundle 'https://github.com/thinca/vim-scouter.git'
@@ -829,18 +831,6 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
-
-
-" auto_source.vimを使うようにしたので無効化
-"if !has('gui_running') && !s:iswindows
-"  " .vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-"else
-"  " .vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
-"        \if has('gui_running') | source $MYGVIMRC
-"  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
-"endif
 
 
 " QuickRunPHPUnit {{{
