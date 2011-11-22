@@ -28,6 +28,7 @@ NeoBundle 'https://github.com/kana/vim-submode.git'
 NeoBundle 'https://github.com/kana/vim-surround.git'
 
 NeoBundle 'https://github.com/mattn/favstar-vim.git'
+NeoBundle 'https://github.com/mattn/gist-vim.git'
 NeoBundle 'https://github.com/mattn/googletranslate-vim.git'
 NeoBundle 'https://github.com/mattn/learn-vimscript.git'
 NeoBundle 'https://github.com/mattn/webapi-vim.git'
@@ -293,6 +294,11 @@ endif
 " FavStar.vim {{{2
 let g:favstar_user = 'hamaco'
 
+
+" gist.vim {{{2
+let g:gist_detect_filetype = 1
+let g:github_user = 'hamaco'
+let g:github_token = ''
 
 " git.vim {{{2
 "let g:git_no_map_default = 1
