@@ -827,18 +827,6 @@ autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
 
 
-" auto_source.vimを使うようにしたので無効化
-"if !has('gui_running') && !s:iswindows
-"  " .vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-"else
-"  " .vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
-"        \if has('gui_running') | source $MYGVIMRC
-"  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
-"endif
-
-
 " QuickRunPHPUnit {{{
 augroup QuickRunPHPUnit
   autocmd!
