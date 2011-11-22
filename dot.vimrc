@@ -295,11 +295,6 @@ let g:eskk#egg_like_newline = 1
 let g:favstar_user = 'hamaco'
 
 
-" gist.vim {{{2
-let g:gist_detect_filetype = 1
-let g:github_user = 'hamaco'
-let g:github_token = ''
-
 " git.vim {{{2
 "let g:git_no_map_default = 1
 "let g:git_command_edit = 'rightbelow vnew'
