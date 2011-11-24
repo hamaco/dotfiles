@@ -101,6 +101,9 @@ snippet heredoc
 
 # for Sabel
 snippet $cc
+  $create->column('${1}')->type(${2})${3}->nullable(false)${4};
+
+snippet $ccn
   $create->column('${1}')->type(${2})${3};
 
 snippet $cu
