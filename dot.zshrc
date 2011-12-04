@@ -443,6 +443,8 @@ function hs () {
     eval "history -${n_hist} ${greps}"
 }
 
+eval "$(rbenv init -)"
+
 # incr.zsh
 load_plugins() {
 	if [ -d ~/.zsh/plugin ]; then
