@@ -528,6 +528,34 @@ let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
 let g:spec_chglog_format = "%a %b %d %Y hamaco <hamanaka.kazuhiro@gmail.com> -"
 
 
+" submode.vim {{{2
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>h',
+			\   '<Plug>(textmanip-move-left)')
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>j',
+			\   '<Plug>(textmanip-move-down)')
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>k',
+			\   '<Plug>(textmanip-move-up)')
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>l',
+			\   '<Plug>(textmanip-move-right)')
+call submode#map('textmanip', 'v', 'r', 'h',
+			\   '<Plug>(textmanip-move-left)')
+call submode#map('textmanip', 'v', 'r', 'j',
+			\   '<Plug>(textmanip-move-down)')
+call submode#map('textmanip', 'v', 'r', 'k',
+			\   '<Plug>(textmanip-move-up)')
+call submode#map('textmanip', 'v', 'r', 'l',
+			\   '<Plug>(textmanip-move-right)')
+
+
 " surround.vim {{{2
 map <Leader>q <Plug>Csurround w"
 map <Leader>sq <Plug>Csurround w'
