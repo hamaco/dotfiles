@@ -2,13 +2,37 @@
 # 重複する要素を自動的に削除
 typeset -U path cdpath fpath manpath
 
-path=($HOME/bin(N-/) $HOME/app/*/bin(N-/) /bin(N-/) /sbin(N-/) $path)
-path=($path /opt/bin(N-/) /opt/*/bin(N-/) /opt/local/*/bin(N-/))
-path=($path /opt/sbin(N-/) /opt/*/sbin(N-/) /opt/local/*/sbin(N-/))
-path=($path /usr/bin(N-/) /usr/*/bin(N-/) /usr/local/*/bin(N-/))
-path=($path /usr/sbin(N-/) /usr/*/sbin(N-/) /usr/local/*/sbin(N-/))
-path=($path $HOME/.gem/ruby/*/bin(N-/) /var/lib/gems/*/bin(N-/))
-path=($path $HOME/.cabal/bin(N-/))
+path=(
+$HOME/bin(N-/)
+$HOME/app/*/bin(N-/)
+$HOME/app/*/*/bin(N-/)
+
+/bin(N-/)
+/sbin(N-/)
+
+/opt/bin(N-/)
+/opt/*/bin(N-/)
+/opt/local/*/bin(N-/)
+
+/opt/sbin(N-/)
+/opt/*/sbin(N-/)
+/opt/local/*/sbin(N-/)
+
+/usr/bin(N-/)
+/usr/*/bin(N-/)
+/usr/local/*/bin(N-/)
+
+/usr/sbin(N-/)
+/usr/*/sbin(N-/)
+/usr/local/*/sbin(N-/)
+
+$HOME/.gem/ruby/*/bin(N-/)
+/var/lib/gems/*/bin(N-/)
+
+$HOME/.rbenv/bin(N-/)
+$HOME/.cabal/bin(N-/)
+
+$path)
 
 
 
@@ -28,7 +52,6 @@ export MYSQL_PS1="\\u@\\h:\\d>\\_"
 #export SCREENDIR="${HOME}/.screen"
 
 export SABEL_HOME="/sabel"
-
 
 
 
