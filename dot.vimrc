@@ -87,7 +87,7 @@ NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
 
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
-NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
+"NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
 
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
 
@@ -176,6 +176,7 @@ set cinoptions=:0,(0,W1s
 set clipboard=unnamed
 set directory=~/.vim/swap/
 set formatoptions=tcroqnlM1
+set guioptions-=e
 set history=100
 set hlsearch
 set ignorecase
