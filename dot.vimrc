@@ -91,6 +91,10 @@ NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
 
+" neta
+NeoBundle 'https://github.com/mattn/unite-nyancat.git'
+NeoBundle 'https://github.com/osyo-manga/unite-shimapan.git'
+
 
 if has("syntax")
 	syntax enable
