@@ -54,6 +54,12 @@ NeoBundle 'https://github.com/thinca/vim-ref.git'
 NeoBundle 'https://github.com/thinca/vim-scouter.git'
 NeoBundle 'https://github.com/thinca/vim-unite-history.git'
 
+NeoBundle 'https://github.com/tpope/vim-abolish.git'
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+
+NeoBundle 'https://github.com/tsukkee/lingr-vim.git'
+NeoBundle 'https://github.com/tsukkee/unite-help.git'
+
 NeoBundle 'https://github.com/tyru/caw.vim.git'
 NeoBundle 'https://github.com/tyru/current-func-info.vim.git'
 NeoBundle 'https://github.com/tyru/emap.vim.git'
@@ -65,9 +71,6 @@ NeoBundle 'https://github.com/tyru/savemap.vim.git'
 NeoBundle 'https://github.com/tyru/vice.vim.git'
 NeoBundle 'https://github.com/tyru/vim-altercmd.git'
 NeoBundle 'https://github.com/tyru/visualctrlg.vim.git'
-
-NeoBundle 'https://github.com/tsukkee/lingr-vim.git'
-NeoBundle 'https://github.com/tsukkee/unite-help.git'
 
 NeoBundle 'https://github.com/ujihisa/neco-look.git'
 NeoBundle 'https://github.com/ujihisa/shadow.vim.git'
@@ -82,14 +85,14 @@ NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
 NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 
 NeoBundle 'https://github.com/choplin/unite-vim_hacks.git'
-NeoBundle 'https://github.com/tpope/vim-abolish.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
+NeoBundle 'https://github.com/superbrothers/vim-vimperator.git'
 
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 "NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
 
-NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+NeoBundle 'https://github.com/vim-scripts/indenthtml.vim.git'
 
 " neta
 NeoBundle 'https://github.com/mattn/unite-nyancat.git'
@@ -330,6 +333,10 @@ nnoremap <Space>gc :<C-u>Vcs commit<CR>
 
 " gundo.vim {{{2
 nmap U :<C-u>GundoToggle<CR>
+
+
+" indenthtml.vim {{{2
+let g:html_indent_inctags = 'html,body,head,tbody'
 
 
 " neocomplcache.vim {{{2
