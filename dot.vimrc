@@ -169,6 +169,7 @@ endif
 " Option: オプション設定 ========================================= {{{1
 set ambiwidth=double
 set autoindent
+set autoread
 "set autowrite
 set backspace=indent,eol,start
 set backup
@@ -864,6 +865,11 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
+
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 
 
 " QuickRunPHPUnit {{{
