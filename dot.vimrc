@@ -55,6 +55,12 @@ NeoBundle 'https://github.com/thinca/vim-ref.git'
 NeoBundle 'https://github.com/thinca/vim-scouter.git'
 NeoBundle 'https://github.com/thinca/vim-unite-history.git'
 
+NeoBundle 'https://github.com/tpope/vim-abolish.git'
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+
+NeoBundle 'https://github.com/tsukkee/lingr-vim.git'
+NeoBundle 'https://github.com/tsukkee/unite-help.git'
+
 NeoBundle 'https://github.com/tyru/caw.vim.git'
 NeoBundle 'https://github.com/tyru/current-func-info.vim.git'
 NeoBundle 'https://github.com/tyru/emap.vim.git'
@@ -66,9 +72,6 @@ NeoBundle 'https://github.com/tyru/savemap.vim.git'
 NeoBundle 'https://github.com/tyru/vice.vim.git'
 NeoBundle 'https://github.com/tyru/vim-altercmd.git'
 NeoBundle 'https://github.com/tyru/visualctrlg.vim.git'
-
-NeoBundle 'https://github.com/tsukkee/lingr-vim.git'
-NeoBundle 'https://github.com/tsukkee/unite-help.git'
 
 NeoBundle 'https://github.com/ujihisa/neco-look.git'
 NeoBundle 'https://github.com/ujihisa/shadow.vim.git'
@@ -84,14 +87,18 @@ NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
 NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 
 NeoBundle 'https://github.com/choplin/unite-vim_hacks.git'
-NeoBundle 'https://github.com/tpope/vim-abolish.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
+NeoBundle 'https://github.com/superbrothers/vim-vimperator.git'
 
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
-NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
+"NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
 
-NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+NeoBundle 'https://github.com/vim-scripts/indenthtml.vim.git'
+
+" neta
+NeoBundle 'https://github.com/mattn/unite-nyancat.git'
+NeoBundle 'https://github.com/osyo-manga/unite-shimapan.git'
 
 
 if has("syntax")
@@ -167,6 +174,7 @@ endif
 " Option: オプション設定 ========================================= {{{1
 set ambiwidth=double
 set autoindent
+set autoread
 "set autowrite
 set backspace=indent,eol,start
 set backup
@@ -178,6 +186,7 @@ set cinoptions=:0,(0,W1s
 set clipboard=unnamed
 set directory=~/.vim/swap/
 set formatoptions=tcroqnlM1
+set guioptions-=e
 set history=100
 set hlsearch
 set ignorecase
@@ -326,6 +335,10 @@ nnoremap <Space>gc :<C-u>Vcs commit<CR>
 
 " gundo.vim {{{2
 nmap U :<C-u>GundoToggle<CR>
+
+
+" indenthtml.vim {{{2
+let g:html_indent_inctags = 'html,body,head,tbody'
 
 
 " neocomplcache.vim {{{2
@@ -528,6 +541,34 @@ let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
 
 " spec.vim {{{2
 let g:spec_chglog_format = "%a %b %d %Y hamaco <hamanaka.kazuhiro@gmail.com> -"
+
+
+" submode.vim {{{2
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>h',
+			\   '<Plug>(textmanip-move-left)')
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>j',
+			\   '<Plug>(textmanip-move-down)')
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>k',
+			\   '<Plug>(textmanip-move-up)')
+call submode#enter_with('textmanip', 'v', 'r', '<C-t>l',
+			\   '<Plug>(textmanip-move-right)')
+call submode#map('textmanip', 'v', 'r', 'h',
+			\   '<Plug>(textmanip-move-left)')
+call submode#map('textmanip', 'v', 'r', 'j',
+			\   '<Plug>(textmanip-move-down)')
+call submode#map('textmanip', 'v', 'r', 'k',
+			\   '<Plug>(textmanip-move-up)')
+call submode#map('textmanip', 'v', 'r', 'l',
+			\   '<Plug>(textmanip-move-right)')
 
 
 " surround.vim {{{2
@@ -833,6 +874,11 @@ autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) 
 
 autocmd MyAutoCmd BufEnter *vimshell set listchars=tab:\ \ ,extends:>,precedes:<
 autocmd MyAutoCmd BufLeave *vimshell set listchars=tab:>-,trail:-,extends:>,precedes:<
+
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 
 
 " QuickRunPHPUnit {{{

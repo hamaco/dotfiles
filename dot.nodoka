@@ -1,3 +1,10 @@
+### 英語キーボード (HHK Pro, Kinesis)
+# -DUSE104;-DNODOKA
+### 日本語キーボード(Microsoft Natural)
+# -DUSE109;-DNODOKA
+### Apple Wirelessキーボード
+# -DUSE109;-DUSEMAC-DNODOKA
+
 if ( USE109 )
 	include "109.nodoka"
 #	include "104on109.nodoka"
@@ -188,7 +195,7 @@ window AdobeAcrobat /Acrobat\.exe/ : Global
 	key C-d = C-S-d &Sync Enter &Sync Enter
 	key C-r = C-S-r &Sync Enter
 
-window Edit /Edit:|Edit$|EditView$/ : Global
+window Edit /Edit:|Edit$|EditView|Chrome_OmniboxView$/ : Global
 	key C-a = Home
 	key C-e = End
 	key C-d = Delete

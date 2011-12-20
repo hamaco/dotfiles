@@ -54,6 +54,7 @@ setopt hist_no_store        # historyコマンドは履歴ファイルに保存�
 setopt hist_reduce_blanks   # 余分なスペースを削除して履歴ファイルに保存する
 setopt no_hup               # ログアウト時にバックグラウンドジョブをkillしない
 setopt ignore_eof           # C-dでexitしない
+setopt interactive_comments # コマンドにコメントを付けられるようにする
 setopt no_list_beep         # 補完候補表示時にビープ音が鳴らないようにする
 setopt list_packed          # 補完候補をつめて表示
 setopt list_types           # 保管候補表示時にファイル種別を表示
@@ -79,8 +80,8 @@ if [ $UID = 0 ]; then
 	SAVEHIST=0
 else
 	HISTFILE=~/.zsh_histfile
-	HISTSIZE=10000
-	SAVEHIST=10000
+	HISTSIZE=250000
+	SAVEHIST=250000
 fi
 
 # C-pとC-nでコマンド履歴検索
@@ -235,7 +236,7 @@ zle -N expand-to-home-or-insert
 bindkey "\\"  expand-to-home-or-insert
 
 autoload zmv
-alias zmv="noglob zmv"
+alias zmv="noglob zmv -W"
 
 
 
