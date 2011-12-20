@@ -43,6 +43,8 @@ NeoBundle 'https://github.com/Shougo/vimfiler.git'
 NeoBundle 'https://github.com/Shougo/vimproc.git'
 NeoBundle 'https://github.com/Shougo/vimshell.git'
 
+NeoBundle 'https://github.com/soh335/unite-hatenabookmark.git'
+
 NeoBundle 'https://github.com/thinca/vim-ambicmd.git'
 NeoBundle 'https://github.com/thinca/vim-auto_source.git'
 NeoBundle 'https://github.com/thinca/vim-ft-vim_fold.git'
@@ -639,6 +641,11 @@ let g:unite_launch_apps = [
 			\ 'make',
 			\ 'git pull',
 			\ 'git push']
+
+
+" unite-hatenabookmark {{{2
+let g:unite_hatenabookmark_username = 'hamaco'
+let g:unite_hatenabookmark_print_pattern = '[comment] [title]'
 
 
 " vimfiler.vim {{{2
