@@ -1,12 +1,8 @@
 if has("mac")
 	set columns=145
 	set lines=55
-	"set guifont=DejaVu\ Sans\ Mono:h14
-	" set guifont=Menlo:h14
-	set guifont=Inconsolata:h16
 	set guifont=Ricty:h16
 	set transparency=20
-	"colorscheme h2u_black
 	colorscheme mrkn256
 
 	set fuoptions=maxvert,maxhorz
@@ -26,7 +22,6 @@ if has("mac")
 elseif has("unix")
 	set columns=110
 	set lines=40
-	"set guifont=MeiryoKe_Console\ 10
 	set guifont=Ricty\ Bold\ 13
 	colorscheme pyte
 elseif has("win32")
@@ -60,6 +55,8 @@ elseif has("win32")
 		endif
 	endfunction
 endif
+
+set linespace=4
 
 set splitbelow " 横分割したら新しいウィンドウは下に
 set splitright " 縦分割したら新しいウィンドウは右に
