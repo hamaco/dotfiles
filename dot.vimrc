@@ -339,7 +339,7 @@ nmap U :<C-u>GundoToggle<CR>
 
 
 " indenthtml.vim {{{2
-let g:html_indent_inctags = 'html,body,head,tbody,p'
+let g:html_indent_inctags = 'html,body,head,tbody,p,li'
 
 
 " neocomplcache.vim {{{2
