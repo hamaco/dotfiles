@@ -48,7 +48,7 @@ function pwd_status () {
 }
 
 case "${HOST}" in
-hamacbook*)
+hamacbook*|*hamaco.local)
 	PROMPT="%{$fg[green]%}%n@%m%{$reset_color%} "
 	;;
 *)
