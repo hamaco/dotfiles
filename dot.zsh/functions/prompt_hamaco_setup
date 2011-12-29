@@ -13,6 +13,9 @@ local PROMPT_NAGATO="YUKI.N>"
 local PROMPT_UUPAA="(ε・△・)з"
 local PROMPT_UUPAA2="(ε・﹏・)з"
 local PROMPT_QB="／人◕‿‿◕人＼"
+local PROMPT_MAMI="ξ（゜▽＾）ξ"
+local PROMPT_MAMI2="ー═┻┳︻▄ξ(✿ ❛‿❛)ξ▄︻┻┳═一"
+local PROMPT_MAMI3="ξ(✿ ＞◡❛)ξ▄︻▇▇〓〓"
 
 
 zstyle ':vcs_info:*' enable git svn hg bzr
@@ -58,7 +61,7 @@ esac
 PROMPT+="\$(pwd_status)"
 is-at-least 4.3.7 && PROMPT+="\$(vcs_status)"
 PROMPT+="
-%{%(?.$fg[blue].$fg[red])%}${PROMPT_NAGATO}%{$reset_color%} "
+%{%(?.$fg[blue].$fg[red])%}${PROMPT_YUNO}%{$reset_color%} "
 #${PROMPT_NAGATO} "
 #%{$fg[cyan]%}${PROMPT_NAGATO}%{$reset_color%} "
 
