@@ -655,6 +655,9 @@ let g:vimfiler_edit_command = "tabedit"
 autocmd FileType vimfiler nnoremap <buffer> / /\_^- \zs
 
 
+" vim-alignta {{{2
+vnoremap <Leader>a :Alignta<Space>
+
 " vim-operator-user {{{2
 map R <Plug>(operator-replace)
 map <Leader>c <Plug>(operator-camelize)
