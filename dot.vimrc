@@ -341,7 +341,7 @@ nmap U :<C-u>GundoToggle<CR>
 
 
 " indenthtml.vim {{{2
-let g:html_indent_inctags = 'html,body,head,tbody,p'
+let g:html_indent_inctags = 'html,body,head,tbody,p,li'
 
 
 " neocomplcache.vim {{{2
@@ -656,6 +656,9 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_edit_command = "tabedit"
 autocmd FileType vimfiler nnoremap <buffer> / /\_^- \zs
 
+
+" vim-alignta {{{2
+vnoremap <Leader>a :Alignta<Space>
 
 " vim-operator-user {{{2
 map R <Plug>(operator-replace)

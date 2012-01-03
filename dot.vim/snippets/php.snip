@@ -121,7 +121,9 @@ snippet de
 snippet tra
   try {
     Sabel_Db_Transaction::activate();
+    
     ${1}
+    
     Sabel_Db_Transaction::commit();
   } catch (Exception $e) {
     Sabel_Db_Transaction::rollback();

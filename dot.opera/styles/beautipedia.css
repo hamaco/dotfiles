@@ -1,0 +1,238 @@
+/*The !important declaration is very important. Without, the author stylesheet would take precedence. It must be declared on anything not created by Beautipedia. For some properties, !important must be used, regardless of the element creator. These are typically properties which were created using a blanket selector (html, body)*/
+
+/* Hide Dumb Stuff */
+
+#mw-panel, #mp-sister, #mp-lang, #footer-icons, #p-personal, #left-navigation, #p-views, #p-cactions, #mw-page-base, #articlecount, .editsection, .metadata, .magnify, #mw-fr-revisiontag, .portlet {
+	display: none !important;
+}
+
+/* Search */
+
+#p-search {
+	position: absolute !important;
+	top: 30px;
+	opacity: .50;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: .5s;
+	right: 4.7em;
+}
+
+#p-search:hover, .suggestions-results:hover {
+	opacity: 1;
+}
+
+#simpleSearch {
+	background-image: none !important;
+	-webkit-border-radius: 5px !important;
+}
+
+#searchInput {
+	-webkit-appearance: none !important;
+	outline: none !important;
+}
+
+.suggestions-results, .suggestions-special {
+	background-color: white !important;
+}
+
+/* Main Menu */
+
+#mlDiv {
+	/*Menu, position, text*/
+	position: absolute;
+	top: .8em;
+	right: 6.25em;
+	margin-right: -4.75em;
+	width: 5.25em;
+	font-family: Times;
+}
+
+#mainLink {
+	/*Menu, position, text */
+	position: relative;
+	text-decoration: none !important;
+	color: #b1b1b1 !important;
+	text-shadow: #fffeff 0px 1px 0px;
+	margin-bottom: 5px !important;
+	font-size: 13px !important;
+}
+
+#mainLink:hover {
+	/*Menu, removes underline below "W" */
+	text-decoration: none !important;
+}
+
+#mlLinksDiv {
+	/*Menu, sets up main style of div */
+	display: none !important;
+	position: absolute !important;
+	background: white !important;
+	border: 1px solid grey !important;
+	border-radius: 5px !important;
+	max-width: 6.25em !important;
+	white-space: nowrap !important;
+	-webkit-box-shadow: 2px 4px 10px grey !important;
+}
+
+#mlDiv:hover #mlLinksDiv {
+	/*Menu, displays div on hover*/
+	display: block !important;
+}
+
+#mlLinksDiv a {
+	/*Menu -> Links, sets one link per line (block), text stuff, overflow*/
+	display: block !important;
+	padding: 5px !important;
+	text-decoration: none !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+}
+
+#mlLinksDiv a:hover {
+	/*Menu -> Links, highlights links when hovered*/
+	background: highlight !important;
+}
+
+#mlLinksDiv a:first-child {
+	/*Menu -> Links, prevents top corners of highlight from clipping rounded corners of mlLinksDiv*/
+	border-top-right-radius: 5px !important;
+	border-top-left-radius: 5px !important;
+}
+
+#mlLinksDiv a:last-child {
+	/*Menu -> Links, prevents bottom corners of highlight from clipping rounded corners of mlLinksDiv*/
+	border-bottom-right-radius: 5px !important;
+	border-bottom-left-radius: 5px !important;
+}
+
+/* Main Page */
+
+#mp-upper h2, #mp-bottom h2 {
+	/*Main Page -> Featured Headings*/
+	background: none !important;
+	border: none !important;
+	border-bottom: 1px solid #dedede !important;
+	color: #727272 !important;
+	text-shadow: #fff 0 1px 0;
+}
+
+#mp-upper table, #mp-bottom table, .MainPageBG, #mp-bottom {
+	/*Main Page, light grey article background*/
+	background-color: #f6f6f6 !important; 
+}
+
+#mp-topbanner {
+	/*Main Page -> Welcome Banner*/
+	background: none !important;
+	border: none !important;
+	font: 20px Times;
+	color: #fffffe !important;
+	display: none;
+}
+
+#mp-topbanner td:nth-child(n+2) {
+	/*Main Page -> Welcome Banner, removes everything but welcome to wikipedia*/
+	display: none !important;
+}
+
+#mp-topbanner td table {
+	/*Main Page -> Welcome Banner, center table*/
+	margin: auto !important;
+	vertical-align: middle;
+}
+
+/*General Pages*/
+
+.MainPageBG {
+	/*General*/
+	border: 1px solid #d8d8d8 !important;
+	-webkit-border-radius: 3px !important;
+	padding: 10px;
+}
+
+#mw-head-base, #content, #footer {
+	/*General, Removes strange blue lines */
+	background-image: none !important;
+	color: #4d4d4d;
+}
+
+#footer {
+	margin-top: 20px !important;
+	font-size: 14px;
+}
+
+#content {
+	/*General, white, rounded corner backdrop, shadow*/
+	margin: 3em 5em 0 5em !important;
+	border: 1px solid #d5d5d5;
+	-webkit-border-radius: 6px !important;
+	-webkit-box-shadow: 0 0 10px #d8d8d8 !important;
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-left: 20px;
+	font-size: 16px;
+}
+
+html {
+	/*General, Basic text adjustments*/
+	text-align: justify !important;
+	font-family: Times;
+	padding-top: 30px !important;
+}
+
+/* Content Display */
+
+a {
+	/*Content, Removes blue coloring*/
+	color: #333 !important;
+	border-bottom: 1px dotted #a4a4a4;
+}
+
+a:hover {
+	color: #048aea !important;
+	text-decoration: none !important;
+	text-shadow: #b3d1ff 0 0 4px;
+}
+
+p {
+	/*Content, indent*/
+	color: #4b4b4b !important;
+	text-shadow: #fffffe 0px 1px 0px;
+	line-height: 22px;
+}
+
+#firstHeading {
+	font: 3em Times;
+}
+
+.mw-headline {
+	display: block !important;
+	margin-top: .25em !important;
+	font: 20px Times;
+}
+
+.thumbinner {
+	/*Content -> Thumbnails, image well*/
+	-webkit-border-radius: 3px !important;
+	-webkit-box-shadow: 0 0 8px #ccc !important;
+}
+
+.thumbcaption {
+	/*Content -> Thumbnails -> Captions, basic settings, hides captions, adds transitions*/
+	text-align: center !important;
+	height: 0 !important;
+	display: none !important;
+	-webkit-transition-property: height;
+	-webkit-transition-duration: 1s;
+}
+
+.thumbinner:hover .thumbcaption {
+	/*Content -> Thumbnails -> Captions, shows captions on hover of thumbnail*/
+	display: block !important;
+	height: auto !important;
+}
+
+.tmbox-notice {
+	/*Content -> Notice Boxes */
+	display: none !important;
+}
