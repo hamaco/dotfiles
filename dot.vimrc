@@ -23,6 +23,10 @@ NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
 
 NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
 
+NeoBundle 'https://github.com/basyura/bitly.vim.git'
+NeoBundle 'https://github.com/basyura/twibill.vim.git'
+NeoBundle 'https://github.com/basyura/TweetVim.git'
+
 NeoBundle 'https://github.com/kana/vim-operator-user.git'
 NeoBundle 'https://github.com/kana/vim-submode.git'
 NeoBundle 'https://github.com/kana/vim-surround.git'
