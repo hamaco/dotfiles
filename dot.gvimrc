@@ -21,8 +21,8 @@ if has("mac")
 	nnoremap <Space>n :<C-u>nohlsearch<CR>:let &transparency = g:transparency<CR><C-l>
 elseif has("unix")
 	set columns=110
-	set lines=40
-	set guifont=Ricty\ Bold\ 13
+	set lines=33
+	set guifont=Ricty\ Bold\ 16
 	colorscheme pyte
 elseif has("win32")
 	set columns=120
