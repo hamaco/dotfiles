@@ -263,28 +263,36 @@ case "${TERM}" in
 		}
 		sc
 		;;
-	screen*) # これtscreenで動かない
+	screen*)
+		function ssh_tmux() {
+			eval server=\${$#}
+			tmux new-window -n s:$server "ssh $*"
+		}
 		function ssh_screen() {
-		eval server=\${$#}
-		screen -t s:$server ssh "$@"
-	}
-	alias ssh=ssh_screen
+			eval server=\${$#}
+			screen -t s:$server ssh "$@"
+		}
+		if [ -e $TMUX ]; then
+			alias ssh=ssh_screen
+		else
+			alias ssh=ssh_tmux
+		fi
 
-	# dabbrev
-	HARDCOPYFILE=/tmp/screen-hardcopy
-	touch $HARDCOPYFILE
+		# dabbrev
+		HARDCOPYFILE=/tmp/screen-hardcopy
+		touch $HARDCOPYFILE
 
-	dabbrev-complete () {
-		local reply lines=80 # 80行分
-		screen -X eval "hardcopy -h $HARDCOPYFILE"
-		reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
-		compadd - "${reply[@]%[*/=@|]}"
-	}
+		dabbrev-complete () {
+			local reply lines=80 # 80行分
+			screen -X eval "hardcopy -h $HARDCOPYFILE"
+			reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
+			compadd - "${reply[@]%[*/=@|]}"
+		}
 
-	zle -C dabbrev-complete menu-complete dabbrev-complete
-	bindkey '^o' dabbrev-complete
-	bindkey '^o^_' reverse-menu-complete
-	;;
+		zle -C dabbrev-complete menu-complete dabbrev-complete
+		bindkey '^o' dabbrev-complete
+		bindkey '^o^_' reverse-menu-complete
+		;;
 esac
 
 
