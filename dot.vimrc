@@ -111,7 +111,7 @@ NeoBundle 'https://github.com/osyo-manga/unite-shimapan.git'
 if has("syntax")
 	syntax enable
 	if !exists("g:colors_name")
-		colorscheme ap_dark8
+		colorscheme mrkn256
 	endif
 endif
 
