@@ -110,8 +110,6 @@ typeset -A myabbrev
 myabbrev=(
 	"px" "ps ax"
 
-	"D"  "&& growlnotify -t done -m 'command successfully finished'"
-
 	"L"  "| less"
 	"G"  "| grep"
 	"U"  "--help | head"
