@@ -781,13 +781,15 @@ vnoremap * "zy:let @/ = @z<CR>n
 
 " タブ {{{2
 nnoremap <C-t> <Nop>
-nnoremap <C-t>n :<C-u>tabnew<CR>
-nnoremap <C-t>c :<C-u>tabclose<CR>
+nnoremap <C-t>c :<C-u>tabnew<CR>
+nnoremap <C-t>k :<C-u>tabclose<CR>
 nnoremap <C-t>o :<C-u>tabonly<CR>
-nnoremap <C-t>h :<C-u>tabprevious<CR>
-nnoremap <C-t>l :<C-u>tabnext<CR>
+nnoremap <C-t>p :<C-u>tabprevious<CR>
+nnoremap <C-t>n :<C-u>tabnext<CR>
 nnoremap <C-p> :<C-u>tabprevious<CR>
 nnoremap <C-n> :<C-u>tabnext<CR>
+nnoremap <silent> <Left> :<C-u>execute 'tabmove' tabpagenr() - 2<CR>
+nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
 
 
 
