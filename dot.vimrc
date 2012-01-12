@@ -32,6 +32,8 @@ NeoBundle 'https://github.com/kana/vim-submode.git'
 NeoBundle 'https://github.com/kana/vim-surround.git'
 NeoBundle 'https://github.com/kana/vim-textobj-user.git'
 
+NeoBundle 'https://github.com/LeafCage/foldCC.git'
+
 NeoBundle 'https://github.com/mattn/favstar-vim.git'
 NeoBundle 'https://github.com/mattn/gist-vim.git'
 NeoBundle 'https://github.com/mattn/googletranslate-vim.git'
@@ -119,7 +121,7 @@ endif
 
 
 
-	" 文字コード設定 {{{1
+" 文字コード設定 {{{1
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -192,6 +194,7 @@ set cdpath+=/web/*
 set cinoptions=:0,(0,W1s
 set clipboard=unnamed
 set directory=~/.vim/swap/
+set foldtext=FoldCCtext()
 set formatoptions=tcroqnlM1
 set guioptions-=e
 set history=100
