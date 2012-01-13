@@ -1,5 +1,5 @@
 " highlight unused/unassigned local variable
-" Last Change:  2009-10-08
+" Last Change:  2010-07-21
 " Maintainer:   Yukihiro Nakadaira <yukihiro.nakadaira@gmail.com>
 " License:      This file is placed in the public domain.
 "
@@ -9,10 +9,6 @@
 "
 "   g:php_localvarcheck_global (default: 0)
 "     If 1, global scope code are also highlighted.
-
-if exists("b:did_ftplugin")
-  finish
-endif
 
 let s:save_cpo = &cpo
 set cpo&vim
@@ -106,12 +102,14 @@ function! s:LocalVarCheck()
   let cache_key = line('.')
   if !has_key(b:php_localvarcheck_cache_pos, cache_key)
     let pos = s:FindFunction()
-    if g:php_localvarcheck_global && (pos[0] == 0 || pos[3] == 0 || pos[3] < line('.'))
-      let pos = s:FindPhp()
+    if g:php_localvarcheck_global
+      if pos[0] == 0 || pos[3] == 0 || pos[3] < line('.')
+        let pos = s:FindPhp()
+      endif
     endif
     let b:php_localvarcheck_cache_pos[cache_key] = pos
   endif
-  let [start, startcol, open, end, endcol] = b:php_localvarcheck_cache_pos[cache_key]
+  let [start, startcol, open, end, endcol, abstract] = b:php_localvarcheck_cache_pos[cache_key]
 
   if b:php_localvarcheck_changedtick == b:changedtick
         \ && w:php_localvarcheck_start == start
@@ -127,7 +125,7 @@ function! s:LocalVarCheck()
   let w:php_localvarcheck_matches = []
 
   " set highlight
-  if start == 0 || end == 0 || end < line('.')
+  if start == 0 || end == 0 || end < line('.') || abstract
     let b:php_localvarcheck_changedtick = b:changedtick
     let w:php_localvarcheck_start = 0
     let w:php_localvarcheck_end = 0
@@ -155,7 +153,7 @@ function! s:LocalVarCheck()
 endfunction
 
 function! s:FindFunction()
-  let [start, startcol, open, end, endcol] = [0, 0, 0, 0, 0]
+  let [start, startcol, open, end, endcol, abstract] = [0, 0, 0, 0, 0, 0]
 
   if exists('g:syntax_on')
     let skip = 'synIDattr(synID(line("."), col("."), 0), "name") !~? "phpDefine\\|phpParent"'
@@ -173,23 +171,28 @@ function! s:FindFunction()
   endwhile
 
   if start != 0
-    let open = search('{', 'W')
+    let open = search('\c\v\{|\}|<function>', 'W')
     while open != 0 && eval(skip)
-      let open = search('{', 'W')
+      let open = search('\c\v\{|\}|<function>', 'W')
     endwhile
   endif
 
-  if start != 0 && open != 0
+  " If not '{', it may be a abstract method.
+  if open != 0 && getline('.')[col('.') - 1] != '{'
+    let [open, end, endcol, abstract] = [start, start, startcol, 1]
+  endif
+
+  if start != 0 && open != 0 && abstract != 1
     let [end, endcol] = searchpairpos('{', '', '}', 'W', skip)
   endif
 
   call winrestview(view)
 
-  return [start, startcol, open, end, endcol]
+  return [start, startcol, open, end, endcol, abstract]
 endfunction
 
 function! s:FindPhp()
-  let [start, startcol, open, end, endcol] = [0, 0, 0, 0, 0]
+  let [start, startcol, open, end, endcol, abstract] = [0, 0, 0, 0, 0, 0]
 
   let view = winsaveview()
 
@@ -209,7 +212,7 @@ function! s:FindPhp()
 
   call winrestview(view)
 
-  return [start, startcol, open, end, endcol]
+  return [start, startcol, open, end, endcol, abstract]
 endfunction
 
 function! s:FindBadVariables(src)
@@ -218,11 +221,16 @@ function! s:FindBadVariables(src)
   let assigned = {}
   let used = {}
   let bad = {}
-  for [var, is_assign, is_global] in s:Parse(a:src)
+  for [var, is_assign, is_combined, is_global] in s:Parse(a:src)
     if has_key(special, var)
       continue
     endif
     if is_assign
+      if is_combined
+        if !has_key(assigned, var)
+          let bad[var] = 1
+        endif
+      endif
       let assigned[var] = 1
       " global variable may be used in somewhere else.
       if is_global
@@ -245,7 +253,7 @@ function! s:FindBadVariables(src)
   return keys(bad)
 endfunction
 
-" @return [['$varname', is_assign, is_global], ...]
+" @return [['$varname', is_assign, is_combined, is_global], ...]
 function! s:Parse(src)
   if exists('g:php_noShortTags')
     let phpopen = '\<\?php'
@@ -267,12 +275,14 @@ function! s:Parse(src)
         \ . '|"%(\\.|[^"])*"'
         \ . '|\<\<\<\s*''?(\w+)''?.{-}\n\1;'
         \ . '|\$\w+'
+        \ . '|::\$\w+'
         \ . '|<as>'
         \ . '|<list>'
         \ . '|<static>'
         \ . '|<global>'
         \ . '|<function>'
         \ . '|<class>'
+        \ . '|<interface>'
         \ . '|[;(){}]'
   let items = []
   let i = match(a:src, pat_syntax)
@@ -283,7 +293,7 @@ function! s:Parse(src)
       if s[0] == ')'
         break
       elseif s[0] == '$'
-        call add(items, [s, 1, 0])
+        call add(items, [s, 1, 0, 0])
         let e = i + len(s)
       else
         let e = i + len(s)
@@ -297,7 +307,7 @@ function! s:Parse(src)
     if s[0] == '"'
       for var in s:MatchStrAll(s, '\v\\.|\$\w+')
         if var[0] == '$'
-          call add(items, [var, 0, 0])
+          call add(items, [var, 0, 0, 0])
         endif
       endfor
       let e = i + len(s)
@@ -305,16 +315,19 @@ function! s:Parse(src)
       if match(s, '^<<<\s*''') == -1
         for var in s:MatchStrAll(s, '\v\\.|\$\w+')
           if var[0] == '$'
-            call add(items, [var, 0, 0])
+            call add(items, [var, 0, 0, 0])
           endif
         endfor
       endif
       let e = i + len(s)
     elseif s[0] == '$'
-      if match(a:src, '^\_s*=[^=>]', i + len(s)) != -1
-        call add(items, [s, 1, 0])
+      let op = matchstr(a:src, '^\_s*\zs\%([&./\-%*|+^]=\|<<=\|>>=\|=[^=>]\@=\)', i + len(s))
+      if op == '='
+        call add(items, [s, 1, 0, 0])
+      elseif op != ''
+        call add(items, [s, 1, 1, 0])
       else
-        call add(items, [s, 0, 0])
+        call add(items, [s, 0, 0, 0])
       endif
       let e = i + len(s)
     elseif s ==? 'as'
@@ -323,9 +336,9 @@ function! s:Parse(src)
         " error
         break
       endif
-      call add(items, [_[1], 1, 0])
+      call add(items, [_[1], 1, 0, 0])
       if _[2] != ''
-        call add(items, [_[2], 1, 0])
+        call add(items, [_[2], 1, 0, 0])
       endif
       let e = i + len(_[0])
     elseif s ==? 'list'
@@ -335,7 +348,7 @@ function! s:Parse(src)
         if t == ')'
           break
         elseif t[0] == '$'
-          call add(items, [t, 1, 0])
+          call add(items, [t, 1, 0, 0])
         endif
         let j = match(a:src, pat_syntax, j + len(t))
       endwhile
@@ -351,7 +364,7 @@ function! s:Parse(src)
         if t == ';'
           break
         elseif t[0] == '$'
-          call add(items, [t, 1, 0])
+          call add(items, [t, 1, 0, 0])
         endif
         let j = match(a:src, pat_syntax, j + len(t))
       endwhile
@@ -367,7 +380,7 @@ function! s:Parse(src)
         if t == ';'
           break
         elseif t[0] == '$'
-          call add(items, [t, 1, 1])
+          call add(items, [t, 1, 0, 1])
         endif
         let j = match(a:src, pat_syntax, j + len(t))
       endwhile
@@ -376,8 +389,8 @@ function! s:Parse(src)
         break
       endif
       let e = j
-    elseif s ==? 'function' || s ==? 'class'
-      " skip function or class
+    elseif s ==? 'function' || s ==? 'class' || s ==? 'interface'
+      " skip block
       let j = match(a:src, pat_syntax, i + len(s))
       while j != -1
         let t = matchstr(a:src, pat_syntax, j)
