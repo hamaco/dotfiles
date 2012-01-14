@@ -33,8 +33,7 @@ $HOME/.rbenv/bin(N-/)
 $HOME/.cabal/bin(N-/)
 
 $path)
-
-
+# }}}
 
 
 # Export: ================ {{{1
@@ -52,6 +51,7 @@ export MYSQL_PS1="\\u@\\h:\\d>\\_"
 #export SCREENDIR="${HOME}/.screen"
 
 export SABEL_HOME="/sabel"
+# }}}
 
 
 
