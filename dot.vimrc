@@ -73,6 +73,7 @@ NeoBundle 'https://github.com/thinca/vim-ft-vim_fold.git'
 NeoBundle 'https://github.com/thinca/vim-openbuf.git'
 NeoBundle 'https://github.com/thinca/vim-poslist.git'
 NeoBundle 'https://github.com/thinca/vim-prettyprint.git'
+NeoBundle 'https://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'https://github.com/thinca/vim-quickrun.git'
 NeoBundle 'https://github.com/thinca/vim-ref.git'
 NeoBundle 'https://github.com/thinca/vim-scouter.git'
@@ -160,7 +161,6 @@ elseif s:iswindows
   " For system.
   set termencoding=cp932
 endif
-"}}}
 
 if !exists('did_encoding_settings') && has('iconv')
   let s:enc_euc = 'euc-jp'
@@ -232,6 +232,7 @@ set clipboard=unnamed
 set directory=~/.vim/swap/
 set foldtext=FoldCCtext()
 set formatoptions=tcroqnlM1
+set grepprg=grep\ -nH
 set guioptions-=e
 set history=100
 set hlsearch
@@ -635,7 +636,7 @@ noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
 noremap <silent> [unite]t  :<C-u>Unite -immediately tab:no-current<CR>
 noremap <silent> [unite]w  :<C-u>Unite -immediately window:no-current<CR>
 noremap <silent> [unite]o  :<C-u>Unite outline<CR>
-noremap <silent> [unite]g  :<C-u>Unite grep<CR>
+noremap <silent> [unite]g  :<C-u>Unite grep<CR><CR>
 noremap <silent> [unite]s  :<C-u>Unite colorscheme -auto-preview<CR>
 "noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
@@ -857,7 +858,6 @@ command! -bang -nargs=0 ToSjis
 \ setlocal fileencoding=cp932
 
 " カレントディレクトリ変更{{{2
-
 " :TabpageCD - wrapper of :cd to keep cwd for each tabpage  "{{{
 
 AlterCommand cd  TabpageCD
@@ -885,39 +885,6 @@ autocmd TabEnter *
 \ | endif
 \ | execute 'cd' fnameescape(expand(t:cwd))
 " }}}
-
-
-" CommandGrep {{{2
-function! C(cmd)
-	redir => result
-	silent execute a:cmd
-	redir END
-	return result
-endfunction
-
-" Grep({text}, {pat} [, invert])
-function! Grep(text, pat, ...)
-	let op = a:0 && a:1 ? '!~#' : '=~#'
-	return join(filter(split(a:text, "\n"), 'v:val' . op . 'a:pat'), "\n")
-endfunction
-
-function! Cgrep(cmd, pat, ...)
-	return Grep(C(a:cmd), a:pat, a:0 && a:1)
-endfunction
-
-function! s:cgrep(args, v)
-	let list = matchlist(a:args, '^\v(/.{-}\\@<!/|\S+)\s+(.+)$')
-	if empty(list)
-		echomsg 'Cgrep: Invalid arguments: ' . a:args
-		return
-	endif
-	let pat = list[1] =~ '^/.*/$' ? list[1][1 : -2] : list[1]
-	echo Cgrep(list[2], pat, a:v)
-endfunction
-
-command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
-
-
 
 
 " autocmd {{{1
@@ -959,7 +926,7 @@ command! Big wincmd _ | wincmd |
 command! -complete=file -nargs=+ Grep call s:grep([<f-args>])
 function! s:grep(args)
 	let target = len(a:args) > 1 ? join(a:args[1:]) : '**/*'
-	execute 'vimgrep' '/' . a:args[0] . '/j ' . target
+	execute 'grep ' . a:args[0] . ' ' . target
 	if len(getqflist()) != 0 | copen | endif
 endfunction
 
@@ -1074,7 +1041,7 @@ function! s:init_cmdwin()
   inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>\<C-p>"
 
   " Altercmd.
-  call altercmd#define('<buffer>', 'grep', 'Grep', 'i')
+  "call altercmd#define('<buffer>', 'grep', 'Grep', 'i')
   call altercmd#define('<buffer>', 'uniq', 'Uniq', 'i')
 
   startinsert!
