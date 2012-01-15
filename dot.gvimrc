@@ -22,7 +22,7 @@ if has("mac")
 elseif has("unix")
 	set columns=110
 	set lines=33
-	set guifont=Ricty\ Bold\ 16
+	set guifont=Ricty\ 14
 	colorscheme pyte
 elseif has("win32")
 	set columns=120
