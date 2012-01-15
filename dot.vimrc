@@ -27,6 +27,9 @@ if has('vim_starting')
 	filetype indent on
 endif
 
+NeoBundle 'https://github.com/vim-scripts/JavaScript-syntax'
+NeoBundle 'https://github.com/pangloss/vim-javascript'
+
 NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
 
 NeoBundle 'https://github.com/vim-scripts/capslock.vim.git'
