@@ -29,7 +29,10 @@ endif
 
 NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
 
-NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
+NeoBundle 'https://github.com/vim-scripts/capslock.vim.git'
+NeoBundle 'https://github.com/vim-scripts/errormarker.vim.git'
+NeoBundle 'https://github.com/vim-scripts/indenthtml.vim.git'
+"NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
 
 NeoBundle 'https://github.com/basyura/bitly.vim.git'
 NeoBundle 'https://github.com/basyura/twibill.vim.git'
@@ -104,6 +107,7 @@ NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
 NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 
 NeoBundle 'https://github.com/choplin/unite-vim_hacks.git'
+NeoBundle 'https://github.com/chrisbra/SudoEdit.vim.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
 NeoBundle 'https://github.com/superbrothers/vim-vimperator.git'
@@ -111,7 +115,6 @@ NeoBundle 'https://github.com/superbrothers/vim-vimperator.git'
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 "NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
 
-NeoBundle 'https://github.com/vim-scripts/indenthtml.vim.git'
 
 " neta
 NeoBundle 'https://github.com/mattn/unite-nyancat.git'
