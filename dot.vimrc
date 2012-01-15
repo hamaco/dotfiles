@@ -1,13 +1,21 @@
 " Initialize: {{{1
 
+" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
+let s:iswindows = has('win32') || has('win64')
+
+if s:iswindows
+	language message en
+endif
+
 " Windowsでも.vimを読み込むようにする
 if has('vim_starting')
 	set runtimepath& runtimepath+=$HOME/.vim
 endif
 
-" has('win32') || has('win64')はめんどい
-" http://github.com/Shougo/shougo-s-github/blob/master/vim/.vimrc
-let s:iswindows = has('win32') || has('win64')
+
+augroup MyAutoCmd
+  autocmd!
+augroup END
 
 " NeoBundle {{{1
 if has('vim_starting')
@@ -122,55 +130,77 @@ endif
 
 
 " 文字コード設定 {{{1
-if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
+set encoding=utf-8
+
+if !has('gui_running')
+  if &term == 'win32' || &term == 'win64'
+    " Setting when use the non-GUI Japanese console.
+
+    " Garbled unless set this.
+    set termencoding=cp932
+    " Japanese input changes itself unless set this.
+    " Be careful because the automatic recognition of the character code is not possible!
+    set encoding=japan
+  else
+    if $ENV_ACCESS ==# 'linux'
+      set termencoding=euc-jp
+    elseif $ENV_ACCESS ==# 'colinux'
+      set termencoding=utf-8
+    else  " fallback
+      set termencoding=  " same as 'encoding'
+    endif
+  endif
+elseif s:iswindows
+  " For system.
+  set termencoding=cp932
 endif
-if has('iconv')
+"}}}
+
+if !exists('did_encoding_settings') && has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
-  " iconvがeucJP-msに対応しているかをチェック
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
+
+  " Does iconv support JIS X 0213?
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213,euc-jp'
     let s:enc_jis = 'iso-2022-jp-3'
   endif
-  " fileencodingsを構築
-  "if &encoding ==# 'utf-8'
-    "let s:fileencodings_default = &fileencodings
-    "let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    "let &fileencodings = &fileencodings .','. s:fileencodings_default
-    "unlet s:fileencodings_default
-  "else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
-    endif
-  "endif
-  " 定数を処分
+
+  " Build encodings.
+  let &fileencodings = 'ucs-bom'
+  if &encoding !=# 'utf-8'
+    let &fileencodings = &fileencodings . ',' . 'ucs-2le'
+    let &fileencodings = &fileencodings . ',' . 'ucs-2'
+  endif
+  let &fileencodings = &fileencodings . ',' . s:enc_jis
+
+  if &encoding ==# 'utf-8'
+    let &fileencodings = &fileencodings . ',' . s:enc_euc
+    let &fileencodings = &fileencodings . ',' . 'cp932'
+  elseif &encoding =~# '^euc-\%(jp\|jisx0213\)$'
+    let &encoding = s:enc_euc
+    let &fileencodings = &fileencodings . ',' . 'utf-8'
+    let &fileencodings = &fileencodings . ',' . 'cp932'
+  else  " cp932
+    let &fileencodings = &fileencodings . ',' . 'utf-8'
+    let &fileencodings = &fileencodings . ',' . s:enc_euc
+  endif
+  let &fileencodings = &fileencodings . ',' . &encoding
+
   unlet s:enc_euc
   unlet s:enc_jis
+
+  let did_encoding_settings = 1
 endif
+
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
-if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
-    endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
-endif
+function! AU_ReCheck_FENC()
+  if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+    let &fileencoding=&encoding
+  endif
+endfunction
+autocmd MyAutoCmd BufReadPost * call AU_ReCheck_FENC()
+
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
 " □とか○の文字があってもカーソル位置がずれないようにする
@@ -885,9 +915,6 @@ command! -nargs=+ -bang Cgrep call s:cgrep(<q-args>, <bang>0)
 
 
 " autocmd {{{1
-augroup MyAutoCmd
-  autocmd!
-augroup END
 
 autocmd MyAutoCmd FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
