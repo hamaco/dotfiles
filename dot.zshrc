@@ -11,7 +11,7 @@ bindkey "[5D" backward-word
 
 umask 022
 
-cdpath=($HOME /web/*)
+cdpath=($HOME /web/*(N-/))
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
