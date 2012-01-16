@@ -78,7 +78,7 @@ esac
 
 # Suffix: 接尾辞エイリアス ========= {{{1
 alias -s txt=cat
-alias -s php=vim
+#alias -s php=vim
 alias -s log=less
 alias -s jar="java -jar"
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=aunpack # aptitude install atool
