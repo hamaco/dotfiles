@@ -113,6 +113,7 @@ NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 NeoBundle 'https://github.com/choplin/unite-vim_hacks.git'
 NeoBundle 'https://github.com/chrisbra/SudoEdit.vim.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
+NeoBundle 'https://github.com/scrooloose/syntastic.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
 NeoBundle 'https://github.com/superbrothers/vim-vimperator.git'
 
@@ -582,6 +583,14 @@ noremap E e
 noremap gE ge
 
 
+" syntastic.vim {{{2
+let g:syntastic_mode_map = {
+			\ 'mode': 'active',
+			\ 'active_filetypes': [''],
+			\ 'passive_filetypes': ['html']
+			\ }
+let g:syntastic_auto_loc_list=1
+
 " sonictemplate.vim {{{2
 let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
 
@@ -915,7 +924,7 @@ augroup END
 
 " Tmp: 一時的な設定 ============================================ {{{1
 
-let g:php_localvarcheck_enable = 0
+let g:php_localvarcheck_enable = 1
 
 
 " vim hacks #106
