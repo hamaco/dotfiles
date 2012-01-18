@@ -46,6 +46,7 @@ NeoBundle 'https://github.com/basyura/TweetVim.git'
 NeoBundle 'https://github.com/kana/vim-operator-user.git'
 NeoBundle 'https://github.com/kana/vim-submode.git'
 NeoBundle 'https://github.com/kana/vim-surround.git'
+NeoBundle 'https://github.com/kana/vim-textobj-line.git'
 NeoBundle 'https://github.com/kana/vim-textobj-user.git'
 
 NeoBundle 'https://github.com/LeafCage/foldCC.git'
