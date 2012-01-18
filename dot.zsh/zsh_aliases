@@ -31,10 +31,10 @@ alias untar="tar xvf"
 # for git
 alias g="git"
 alias gs="git svn"
-alias gst="git status"
+#alias gst="git status"
 alias gdi="git diff"
-alias gad="git add"
-alias gci="git commit"
+#alias gad="git add"
+#alias gci="git commit"
 alias gsr="git svn rebase"
 alias gsd="git svn dcommit"
 
