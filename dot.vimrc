@@ -5,6 +5,8 @@ let s:iswindows = has('win32') || has('win64')
 
 if s:iswindows
 	language message en
+else
+	language message C
 endif
 
 " Windowsでも.vimを読み込むようにする
