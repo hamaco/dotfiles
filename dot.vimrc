@@ -71,7 +71,7 @@ NeoBundle 'https://github.com/Shougo/vimshell.git'
 NeoBundle 'https://github.com/soh335/unite-hatenabookmark.git'
 
 NeoBundle 'https://github.com/thinca/vim-ambicmd.git'
-NeoBundle 'https://github.com/thinca/vim-auto_source.git'
+"NeoBundle 'https://github.com/thinca/vim-auto_source.git'
 NeoBundle 'https://github.com/thinca/vim-ft-vim_fold.git'
 NeoBundle 'https://github.com/thinca/vim-openbuf.git'
 NeoBundle 'https://github.com/thinca/vim-poslist.git'
