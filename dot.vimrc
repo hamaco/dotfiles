@@ -43,6 +43,10 @@ NeoBundle 'https://github.com/basyura/bitly.vim.git'
 NeoBundle 'https://github.com/basyura/twibill.vim.git'
 NeoBundle 'https://github.com/basyura/TweetVim.git'
 
+NeoBundle 'https://github.com/h1mesuke/textobj-wiw.git'
+NeoBundle 'https://github.com/h1mesuke/unite-outline.git'
+NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
+
 NeoBundle 'https://github.com/kana/vim-operator-user.git'
 NeoBundle 'https://github.com/kana/vim-submode.git'
 NeoBundle 'https://github.com/kana/vim-surround.git'
@@ -69,6 +73,8 @@ NeoBundle 'https://github.com/Shougo/vimproc.git'
 NeoBundle 'https://github.com/Shougo/vimshell.git'
 
 NeoBundle 'https://github.com/soh335/unite-hatenabookmark.git'
+
+NeoBundle 'https://github.com/t9md/vim-textmanip.git'
 
 NeoBundle 'https://github.com/thinca/vim-ambicmd.git'
 "NeoBundle 'https://github.com/thinca/vim-auto_source.git'
@@ -107,18 +113,13 @@ NeoBundle 'https://github.com/ujihisa/unite-colorscheme.git'
 NeoBundle 'https://github.com/ujihisa/unite-launch.git'
 NeoBundle 'https://github.com/ujihisa/vimshell-ssh.git'
 
-NeoBundle 'https://github.com/h1mesuke/textobj-wiw.git'
-NeoBundle 'https://github.com/h1mesuke/unite-outline.git'
-NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
-
-NeoBundle 'https://github.com/t9md/vim-textmanip.git'
-
 NeoBundle 'https://github.com/choplin/unite-vim_hacks.git'
 NeoBundle 'https://github.com/chrisbra/SudoEdit.vim.git'
 NeoBundle 'https://github.com/hallison/vim-markdown.git'
 NeoBundle 'https://github.com/scrooloose/syntastic.git'
 NeoBundle 'https://github.com/sjl/gundo.vim.git'
 NeoBundle 'https://github.com/superbrothers/vim-vimperator.git'
+NeoBundle 'https://github.com/vexxor/phpdoc.vim.git'
 
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 "NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
@@ -409,9 +410,8 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_min_keyword_length = 3
 let g:neocomplcache_skip_input_time = "0.1"
 let g:neocomplcache_skip_completion_time = "0.1"
-"tmp
 let g:neocomplcache_auto_completion_start_length = 2
-let g:neocomplcache_manual_completion_start_length = 0
+let g:neocomplcache_manual_completion_start_length = 2
 let g:neocomplcache_tags_completion_start_length = 5
 let g:neocomplcache_caching_limit_file_size = 10240
 "let g:NeoComplCache_EnableMFU = 1
@@ -427,6 +427,11 @@ let g:neocomplcache_caching_limit_file_size = 10240
 "			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
 "			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
 "			\ }
+
+if !exists('g:neocomplcache_delimiter_patterns')
+	let g:neocomplcache_delimiter_patterns = {}
+endif
+let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
 
 let g:neocomplcache_dictionary_filetype_lists = {
 			\ 'default'  : '',
