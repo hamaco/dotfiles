@@ -95,7 +95,7 @@ bindkey "^N" history-beginning-search-forward-end
 
 
 # Completion: 補完設定 ==================================================== {{{1
-fpath=($fpath ~/.zsh/functions)
+fpath=($fpath ~/.zsh/functions ~/.zsh/completions)
 
 autoload -Uz compinit; compinit -u
 
