@@ -13,4 +13,6 @@ inoremap <buffer> <expr> < smartchr#one_of("<",   " <= ", "<<<EOM")
 inoremap <buffer> <expr> . smartchr#one_of(".", " .= ", " . ", "..")
 inoremap <buffer> <expr> & smartchr#one_of("&", "&&", " =& ")
 
-nnoremap <buffer> ,l :<C-u>execute "!" &l:filetype "-l" shellescape(expand("%"))<Return>
+nnoremap <buffer> ,l :<C-u>execute "!" &l:filetype "-l" shellescape(expand("%"))<CR>
+
+nnoremap <buffer> ,cp :<C-u>call PhpDocSingle()<CR>
