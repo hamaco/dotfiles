@@ -28,6 +28,8 @@ alias lingr="vim -c LingrLaunch"
 alias tgz="tar cvzf"
 alias untar="tar xvf"
 
+alias tmux="tmux a || tmux"
+
 # for git
 alias g="git"
 alias gs="git svn"
