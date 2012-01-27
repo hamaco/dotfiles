@@ -540,10 +540,17 @@ let g:quickrun_config['php.unit'] = {
 			\ }
 
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
+
+let g:quickrun_config['markdown'] = {
+			\ 'type': 'markdown/kramdown',
+			\ 'outputter': 'browser'
+			\ }
+
 let g:quickrun_config.textile = {
 			\ 'command': 'redcloth',
 			\ 'tempfile': '{tempname()}.textile',
-			\ 'exec': ['%c %s > %s:p:r.html', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html'] }
+			\ 'exec': ['%c %s > %s:p:r.html', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html']
+			\ }
 
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
