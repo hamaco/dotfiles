@@ -47,6 +47,8 @@ NeoBundle 'https://github.com/h1mesuke/textobj-wiw.git'
 NeoBundle 'https://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'https://github.com/h1mesuke/vim-alignta.git'
 
+NeoBundle 'https://github.com/kana/vim-gf-diff.git'
+NeoBundle 'https://github.com/kana/vim-gf-user.git'
 NeoBundle 'https://github.com/kana/vim-operator-user.git'
 NeoBundle 'https://github.com/kana/vim-submode.git'
 NeoBundle 'https://github.com/kana/vim-surround.git'
