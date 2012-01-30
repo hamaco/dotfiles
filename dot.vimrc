@@ -874,6 +874,10 @@ command! -bang -nargs=0 ToEucjp
 command! -bang -nargs=0 ToSjis
 \ setlocal fileencoding=cp932
 
+command! -bang -nargs=0 ToWindows
+\ setlocal fileencoding=cp932 fileformat=dos
+
+
 " カレントディレクトリ変更{{{2
 " :TabpageCD - wrapper of :cd to keep cwd for each tabpage  "{{{
 
