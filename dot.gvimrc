@@ -23,7 +23,7 @@ elseif has("unix")
 	set columns=110
 	set lines=33
 	set guifont=Ricty\ 14
-	colorscheme pyte
+	colorscheme cobalt
 elseif has("win32")
 	set columns=120
 	set lines=40
