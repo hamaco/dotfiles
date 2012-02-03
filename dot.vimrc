@@ -387,6 +387,7 @@ let g:favstar_user = 'hamaco'
 nnoremap <Space>gs :<C-u>Vcs status<CR>
 nnoremap <Space>ga :<C-u>Vcs add<CR>
 nnoremap <Space>gc :<C-u>Vcs commit<CR>
+nnoremap <Space>gd :<C-u>Vcs diff<CR>
 
 
 " gundo.vim {{{2
@@ -587,7 +588,7 @@ let g:syntastic_mode_map = {
 			\ 'active_filetypes': [''],
 			\ 'passive_filetypes': ['html', 'php']
 			\ }
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=0
 
 " sonictemplate.vim {{{2
 let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
@@ -1111,18 +1112,18 @@ endfunction
 
 
 " Scounter
-function! Scouter(file, ...)
-  let pat = '^\s*$\|^\s*"'
-  let lines = readfile(a:file)
-  if !a:0 || !a:1
-    let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
-  endif
-  return len(filter(lines,'v:val !~ pat'))
-endfunction
-command! -bar -bang -nargs=? -complete=file Scouter
-\        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
-command! -bar -bang -nargs=? -complete=file GScouter
-\        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
+"function! Scouter(file, ...)
+"  let pat = '^\s*$\|^\s*"'
+"  let lines = readfile(a:file)
+"  if !a:0 || !a:1
+"    let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
+"  endif
+"  return len(filter(lines,'v:val !~ pat'))
+"endfunction
+"command! -bar -bang -nargs=? -complete=file Scouter
+"\        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+"command! -bar -bang -nargs=? -complete=file GScouter
+"\        echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
 
 augroup vimrc-misc  " {{{
   " ... 中略 ...
@@ -1145,28 +1146,28 @@ augroup END  " }}}
 
 " git-diff-aware version of gf commands.
 " http://labs.timedia.co.jp/2011/04/git-diff-aware-gf-commands-for-vim.html
-nnoremap <expr> gf  <SID>do_git_diff_aware_gf('gf')
-nnoremap <expr> gF  <SID>do_git_diff_aware_gf('gF')
-nnoremap <expr> <C-w>f  <SID>do_git_diff_aware_gf('<C-w>f')
-nnoremap <expr> <C-w><C-f>  <SID>do_git_diff_aware_gf('<C-w><C-f>')
-nnoremap <expr> <C-w>F  <SID>do_git_diff_aware_gf('<C-w>F')
-nnoremap <expr> <C-w>gf  <SID>do_git_diff_aware_gf('<C-w>gf')
-nnoremap <expr> <C-w>gF  <SID>do_git_diff_aware_gf('<C-w>gF')
-
-function! s:do_git_diff_aware_gf(command)
-  let target_path = expand('<cfile>')
-  if target_path =~# '^[ab]/'  " with a peculiar prefix of git-diff(1)?
-    if filereadable(target_path) || isdirectory(target_path)
-      return a:command
-    else
-      " BUGS: Side effect - Cursor position is changed.
-      let [_, c] = searchpos('\f\+', 'cenW')
-      return c . '|' . 'v' . (len(target_path) - 2 - 1) . 'h' . a:command
-    endif
-  else
-    return a:command
-  endif
-endfunction
+" nnoremap <expr> gf  <SID>do_git_diff_aware_gf('gf')
+" nnoremap <expr> gF  <SID>do_git_diff_aware_gf('gF')
+" nnoremap <expr> <C-w>f  <SID>do_git_diff_aware_gf('<C-w>f')
+" nnoremap <expr> <C-w><C-f>  <SID>do_git_diff_aware_gf('<C-w><C-f>')
+" nnoremap <expr> <C-w>F  <SID>do_git_diff_aware_gf('<C-w>F')
+" nnoremap <expr> <C-w>gf  <SID>do_git_diff_aware_gf('<C-w>gf')
+" nnoremap <expr> <C-w>gF  <SID>do_git_diff_aware_gf('<C-w>gF')
+" 
+" function! s:do_git_diff_aware_gf(command)
+"   let target_path = expand('<cfile>')
+"   if target_path =~# '^[ab]/'  " with a peculiar prefix of git-diff(1)?
+"     if filereadable(target_path) || isdirectory(target_path)
+"       return a:command
+"     else
+"       " BUGS: Side effect - Cursor position is changed.
+"       let [_, c] = searchpos('\f\+', 'cenW')
+"       return c . '|' . 'v' . (len(target_path) - 2 - 1) . 'h' . a:command
+"     endif
+"   else
+"     return a:command
+"   endif
+" endfunction
 
 " HighlightWith
 command! -nargs=+ -range=% HighlightWith <line1>,<line2>call s:highlight_with(<q-args>)
@@ -1190,7 +1191,7 @@ function! s:highlight_with(args) range
 				\            . 'contains=@highlightWith%d',
 				\             c, a:firstline, a:lastline, c)
 	let b:highlight_count = c + 1
-endfunction"}}}
+endfunction
 
 augroup vimrc-highlight
 	autocmd!
