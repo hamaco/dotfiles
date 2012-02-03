@@ -414,22 +414,9 @@ let g:neocomplcache_min_keyword_length = 3
 let g:neocomplcache_skip_input_time = "0.1"
 let g:neocomplcache_skip_completion_time = "0.1"
 let g:neocomplcache_auto_completion_start_length = 2
-let g:neocomplcache_manual_completion_start_length = 2
+let g:neocomplcache_manual_completion_start_length = 1
 let g:neocomplcache_tags_completion_start_length = 5
 let g:neocomplcache_caching_limit_file_size = 10240
-"let g:NeoComplCache_EnableMFU = 1
-"let g:NeoComplCache_SimilarMatch = 1
-"let g:NeoComplCache_TryKeywordCompletion = 1
-
-"let g:neocomplcache_enable_quick_match = 0
-"if !exists('g:neocomplcache_quick_match_patterns')
-"  let g:neocomplcache_quick_match_patterns = {}
-"endif
-"let g:neocomplcache_quick_match_patterns.default = ' '
-"let g:neocomplcache_quick_match_table = {
-"			\'a' : 1, 's' : 2, 'd' : 3, 'f' : 4, 'g' : 5, 'h' : 6, 'j' : 7, 'k' : 8, 'l' : 9, ';' : 10,
-"			\'q' : 11, 'w' : 12, 'e' : 13, 'r' : 14, 't' : 15, 'y' : 16, 'u' : 17, 'i' : 18, 'o' : 19, 'p' : 20,
-"			\ }
 
 if !exists('g:neocomplcache_delimiter_patterns')
 	let g:neocomplcache_delimiter_patterns = {}
@@ -455,7 +442,7 @@ let g:neocomplcache_omni_functions = {
 if !exists('g:neocomplcache_omni_patterns')
 	let g:neocomplcache_omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplcache_omni_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 if !exists('g:neocomplcache_keyword_patterns')
@@ -481,8 +468,8 @@ inoremap <expr><C-g> neocomplcache#undo_completion()
 
 inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>\<C-p>\<Down>"
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
 function! s:check_back_space()"{{{
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -1062,7 +1049,7 @@ function! s:init_cmdwin()
   inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
   " Completion.
-  inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>\<C-p>"
+  " inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>\<C-p>"
 
   " Altercmd.
   "call altercmd#define('<buffer>', 'grep', 'Grep', 'i')
