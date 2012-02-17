@@ -127,6 +127,7 @@ NeoBundle 'https://github.com/vexxor/phpdoc.vim.git'
 NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 "NeoBundle 'https://github.com/ChrisKempson/Vim-Tomorrow-Theme.git'
 NeoBundle 'https://github.com/dterei/VimCobaltColourScheme.git'
+NeoBundle 'https://github.com/tomasr/molokai.git'
 NeoBundle 'https://github.com/noahfrederick/Hemisu.git'
 
 
