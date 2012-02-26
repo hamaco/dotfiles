@@ -718,7 +718,7 @@ let g:unite_hatenabookmark_print_pattern = '[comment] [title]'
 " vimfiler.vim {{{2
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_edit_command = "tabedit"
-autocmd FileType vimfiler nnoremap <buffer> / /\_^- \zs
+"autocmd FileType vimfiler nnoremap <buffer> / /\_^- \zs
 
 
 " vim-alignta {{{2
