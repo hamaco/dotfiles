@@ -1,0 +1,31 @@
+<?php echo $MB_DOCTYPE ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="<?php echo $MB_CONTENT_TYPE ?>" />
+		<title><?= h($PAGE_TITLE) ?></title>
+		<meta name="Viewport" content="maximumscale=1.6,width=240,user-scalable=No" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Expires" content="-1" />
+		<? if (!$MB_IS_MOBILE) : ?>
+		<meta http-equiv="content-style-type" content="text/css" />
+		<style type="text/css">
+			body,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,li,marquee,p,td,th,ul.ol { margin: 0; padding: 0; }
+			img { border: 0 none; }
+		</style>
+		<? endif ?>
+	</head>
+	<? if (!$MB_IS_MOBILE) : ?>
+	<body style="background-color: #FFFFCC;">
+		<div style="background-color: #FFFFFF; margin: 0 auto; width: 242px; border: 3px solid #0066FF;">
+	<? else : ?>
+	<body style="background-color: #FFFFFF;">
+		<div>
+	<? endif ?>
+			<div style="font-size: <?php echo  $MB_FONTSIZE ?>;">
+				<a id="pagetop" name="pagetop"></a>
+				<?e $contentForLayout ?>
+			</div>
+		</div>
+	</body>
+</html>
