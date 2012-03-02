@@ -246,11 +246,14 @@ do
 	[ -f ~/.zsh/zsh_$file ] && source ~/.zsh/zsh_$file
 done
 
+localconf="$HOME/.zshrc.local"
+[ -f $localconf ] && source $localconf
+
 osconf="$HOME/.zsh/.zshrc.`uname`"
 [ -f $osconf ] && source $osconf
 
-localconf="$HOME/.zsh/hosts/${HOST%%.*}.zshrc"
-[ -f $localconf ] && source $localconf
+hostconf="$HOME/.zsh/hosts/${HOST%%.*}.zshrc"
+[ -f $hostconf ] && source $hostconf
 
 
 
@@ -457,7 +460,7 @@ eval "$(rbenv init -)"
 # incr.zsh
 load_plugins() {
 	if [ -d ~/.zsh/plugin ]; then
-		#source ~/.zsh/plugin/*
+		source ~/.zsh/plugin/*
 	fi
 }
 
