@@ -100,6 +100,11 @@ snippet heredoc
 
 
 # for Sabel
+snippet paginator
+  $paginator = new Paginator('${1}');
+  $paginator->setDefaultOrder('id', 'DESC');
+  $this->paginator = $paginator->build(30, $this->GET_VARS);
+
 snippet $cc
   $create->column('${1}')->type(${2})${3}->nullable(false)${4};
 
