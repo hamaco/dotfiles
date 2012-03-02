@@ -261,7 +261,6 @@ case "${TERM}" in
 		precmd() {
 			echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
 		}
-		sc
 		;;
 	screen*)
 		function ssh_tmux() {
