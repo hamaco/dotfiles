@@ -29,8 +29,10 @@ if has('vim_starting')
 	filetype indent on
 endif
 
-NeoBundle 'https://github.com/vim-scripts/JavaScript-syntax'
-NeoBundle 'https://github.com/pangloss/vim-javascript'
+NeoBundle 'https://github.com/hamaco/vim-sunday.git'
+
+NeoBundle 'https://github.com/vim-scripts/JavaScript-syntax.git'
+NeoBundle 'https://github.com/pangloss/vim-javascript.git'
 
 NeoBundle 'https://github.com/vim-jp/vimdoc-ja.git'
 
