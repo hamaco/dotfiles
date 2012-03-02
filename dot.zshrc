@@ -484,5 +484,9 @@ sudo() {
   esac
 }
 
+if [ -f ~/.autojump/etc/profile.d/autojump.zsh ]; then
+  source ~/.autojump/etc/profile.d/autojump.zsh
+fi
+
 # END {{{1
 # vim: foldmethod=marker
