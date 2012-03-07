@@ -20,6 +20,7 @@ alias lrt="ls -lrt"
 # for vim
 alias v="vim"
 alias vi="vim"
+alias gv="gvim"
 alias pvim="vim -u NONE -i NONE -N"
 alias pgvim="gvim -u NONE -i NONE -N"
 alias vsh="vim -c VimShell"

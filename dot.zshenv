@@ -31,6 +31,7 @@ $HOME/.gem/ruby/*/bin(N-/)
 
 $HOME/.rbenv/bin(N-/)
 $HOME/.cabal/bin(N-/)
+$HOME/.autojump/bin(N-/)
 
 $path)
 # }}}
