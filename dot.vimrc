@@ -648,10 +648,10 @@ map <Leader>` <Plug>Csurround w`
 nnoremap [unite] <Nop>
 nmap f [unite]
 
-noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer file file_mru<CR>
+noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer file file/new file_mru<CR>
 noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer file_rec<CR>
-noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file<CR>
-noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file<CR>
+noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
+noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file file/new<CR>
 noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
 noremap <silent> [unite]t  :<C-u>Unite -immediately tab:no-current<CR>
 noremap <silent> [unite]w  :<C-u>Unite -immediately window:no-current<CR>
