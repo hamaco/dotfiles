@@ -1,4 +1,5 @@
 # Alias: エイリアス ========= {{{1
+
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
 alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
 
@@ -78,8 +79,10 @@ freebsd*)
 	;;
 esac
 
+# }}}
 
 # Suffix: 接尾辞エイリアス ========= {{{1
+
 alias -s txt=cat
 #alias -s php=vim
 alias -s log=less
@@ -97,8 +100,10 @@ darwin*)
 	;;
 esac
 
+# }}}
 
 # Global: グローバルエイリアス ===== {{{1
+
 if which pbcopy >/dev/null 2>&1 ; then
 	# Mac
 	alias -g C='| pbcopy'
@@ -106,6 +111,20 @@ elif which xsel >/dev/null 2>&1 ; then
 	# Linux
 	alias -g C='| xsel --input --clipboard'
 fi
+
+# }}}
+
+# bindkey {{{1
+
+bindkey -s "vv" "!vim\n"
+#bindkey -s P "ps auxw"
+#bindkey -s G "| grep "
+bindkey -s '5~' 'f5\n' # F5
+bindkey -s '7~' 'f6\n' # F6
+bindkey -s '8~' 'f7\n' # F7
+bindkey -s '9~' 'f8\n' # F8
+
+# }}}
 
 # myabbrev {{{1
 typeset -A myabbrev
@@ -132,5 +151,8 @@ zle -N my-expand-abbrev
 
 bindkey " " my-expand-abbrev
 
+# }}}
+
 # END {{{1
 # vim: foldmethod=marker
+# }}}
