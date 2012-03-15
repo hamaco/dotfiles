@@ -60,6 +60,7 @@ set linespace=4
 
 set splitbelow " 横分割したら新しいウィンドウは下に
 set splitright " 縦分割したら新しいウィンドウは右に
+set visualbell t_vb=
 
 " Sugamo.vim
 function! ToggleFont()
