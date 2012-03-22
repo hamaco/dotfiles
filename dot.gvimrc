@@ -1,6 +1,7 @@
 if has("mac")
 	set columns=145
 	set lines=55
+	set linespace=2
 	set guifont=Ricty:h16
 	set transparency=20
 	colorscheme mrkn256
@@ -20,13 +21,15 @@ if has("mac")
 	inoremap <down> <C-o>:call <SID>relative_transparency(-5)<CR>
 	nnoremap <Space>n :<C-u>nohlsearch<CR>:let &transparency = g:transparency<CR><C-l>
 elseif has("unix")
-	set columns=110
-	set lines=33
-	set guifont=Ricty\ 14
+	set columns=115
+	set lines=32
+	set linespace=0
+	set guifont=Rounded\ M+\ 1m\ Medium\ 14
 	colorscheme cobalt
 elseif has("win32")
 	set columns=120
 	set lines=40
+	set linespace=2
 	"set guifont=ゆたぽん（コーディング）:h12
 	set guifont=あくあフォント:h12
 	colorscheme h2u_black
@@ -56,7 +59,6 @@ elseif has("win32")
 	endfunction
 endif
 
-set linespace=4
 
 set splitbelow " 横分割したら新しいウィンドウは下に
 set splitright " 縦分割したら新しいウィンドウは右に
