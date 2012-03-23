@@ -29,9 +29,11 @@ elseif has("unix")
 elseif has("win32")
 	set columns=120
 	set lines=40
-	set linespace=2
-	"set guifont=ゆたぽん（コーディング）:h12
-	set guifont=あくあフォント:h12
+	" set linespace=2
+	" set guifont=ゆたぽん（コーディング）:h12
+	" set guifont=あくあフォント:h12
+	set linespace=0
+	set guifont=Rounded\ M+\ 1m\ Medium:h12
 	colorscheme h2u_black
 
 	" fullscreen
