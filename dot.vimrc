@@ -118,6 +118,7 @@ NeoBundle 'git://github.com/ujihisa/unite-colorscheme.git'
 NeoBundle 'git://github.com/ujihisa/unite-launch.git'
 NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 
+
 NeoBundle 'git://github.com/akiyan/vim-textobj-php.git'
 NeoBundle 'git://github.com/choplin/unite-vim_hacks.git'
 "NeoBundle 'git://github.com/chrisbra/SudoEdit.vim.git'
@@ -125,6 +126,7 @@ NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
 NeoBundle 'git://github.com/superbrothers/vim-vimperator.git'
+NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
 NeoBundle 'git://github.com/vexxor/phpdoc.vim.git'
 
 
