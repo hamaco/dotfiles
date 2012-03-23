@@ -1,4 +1,4 @@
-/;;;cake2.el ---  CakePHP2 Minor Mode
+;;;cake2.el ---  CakePHP2 Minor Mode
 ;; -*- Mode: Emacs-Lisp -*-
 
 ;; Copyright (C) 2011 by 101000code/101000LAB
