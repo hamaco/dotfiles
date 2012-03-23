@@ -172,7 +172,8 @@ esac
 
 # Functions: ============================================================== {{{1
 function chpwd() {
-	_reg_pwd_screennum
+	#_reg_pwd_screennum
+	_cdd_chpwd
 	_set_screen_title_pwd
 	ls -G
 }
