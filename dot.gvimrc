@@ -1,8 +1,10 @@
 if has("mac")
 	set columns=145
 	set lines=55
-	set linespace=2
-	set guifont=Ricty:h16
+	" set linespace=2
+	" set guifont=Ricty:h15
+	set linespace=0
+	set guifont=Rounded\ M+\ 1m\ Regular:h16
 	set transparency=20
 	colorscheme mrkn256
 
