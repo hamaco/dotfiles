@@ -22,7 +22,11 @@ augroup END
 " NeoBundle {{{1
 if has('vim_starting')
 	set runtimepath+=$HOME/.bundle/vimproc
-	set runtimepath+=$HOME/.vim/bundle/neobundle.vim
+	if filereadable(expand('~/.bundle/neobundle.vim/autoload/neobundle.vim'))
+		set runtimepath+=$HOME/.bundle/neobundle.vim
+	else
+		set runtimepath+=$HOME/.vim/bundle/neobundle.vim
+	endif
 	filetype off
 	call neobundle#rc(expand('~/.bundle'))
 	filetype plugin on
