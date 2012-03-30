@@ -126,6 +126,7 @@ NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 NeoBundle 'git://github.com/akiyan/vim-textobj-php.git'
 NeoBundle 'git://github.com/choplin/unite-vim_hacks.git'
 "NeoBundle 'git://github.com/chrisbra/SudoEdit.vim.git'
+NeoBundle 'git://github.com/glidenote/memolist.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
@@ -409,6 +410,15 @@ nmap U :<C-u>GundoToggle<CR>
 
 " indenthtml.vim {{{2
 let g:html_indent_inctags = 'html,body,head,tbody,p,li'
+
+
+" memoilst.vim {{{2
+let g:memolist_path = expand('~/.memolist')
+let g:memolist_memo_suffix = 'txt'
+let g:memolist_prompt_tags = 'true'
+let g:memolist_prompt_categories = 'true'
+" let g:memolist_qfixgrep = 'true'
+let g:memolist_vimfiler = 'true'
 
 
 " neocomplcache.vim {{{2
