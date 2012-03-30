@@ -1,13 +1,21 @@
 # Basic: 基本設定 ================================================= {{{1
+
+
 # キーバインドをEmacs風にする
 bindkey -e
 
 bindkey "u" undo
 bindkey "r" redo
-bindkey "^R" history-incremental-pattern-search-backward
 # Ctrl+左右で単語単位のカーソル移動
 bindkey "[5C" forward-word
 bindkey "[5D" backward-word
+
+if [ -f "$HOME/.zsh/plugin/zaw/zaw.zsh" ]; then
+	source "$HOME/.zsh/plugin/zaw/zaw.zsh"
+	bindkey "^R" zaw-history
+else
+	bindkey "^R" history-incremental-pattern-search-backward
+fi
 
 umask 022
 
@@ -28,6 +36,8 @@ local PURPLE=$'%{[1;35m%}'$
 local LIGHT_BLUE=$'%{[1;36m%}'$
 local WHITE=$'%{[1;37m%}'$
 
+
+autoload -Uz add-zsh-hook
 
 
 
@@ -488,11 +498,14 @@ sudo() {
   esac
 }
 
+## z.sh
 _Z_CMD=j
-source ~/.zsh/z.sh
-precmd() {
+source ~/.zsh/plugin/z.sh
+_z_add() {
 	_z --add "$(pwd -P)"
 }
+add-zsh-hook precmd _z_add
+
 
 # END {{{1
 # vim: foldmethod=marker
