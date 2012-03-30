@@ -29,6 +29,8 @@ local LIGHT_BLUE=$'%{[1;36m%}'$
 local WHITE=$'%{[1;37m%}'$
 
 
+autoload -Uz add-zsh-hook
+
 
 
 # Setopts: ================================================================ {{{1
@@ -488,11 +490,14 @@ sudo() {
   esac
 }
 
+## z.sh
 _Z_CMD=j
-source ~/.zsh/z.sh
-precmd() {
+source ~/.zsh/plugin/z.sh
+_z_add() {
 	_z --add "$(pwd -P)"
 }
+add-zsh-hook precmd _z_add
+
 
 # END {{{1
 # vim: foldmethod=marker
