@@ -6,6 +6,7 @@ alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries'"
 alias %=" " # webにあるコマンドをコピペで実行出来るようにする
 
 alias di="diff"
+alias df="df -hl"
 alias wget="noglob wget --no-check-certificate"
 alias rake="noglob rake"
 
