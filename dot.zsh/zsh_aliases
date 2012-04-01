@@ -7,6 +7,7 @@ alias %=" " # webにあるコマンドをコピペで実行出来るようにす
 
 alias di="diff"
 alias wget="noglob wget --no-check-certificate"
+alias rake="noglob rake"
 
 alias sudo="sudo -E " # sudoでもaliasが使えるようにする
 alias s="sudo"
