@@ -225,6 +225,7 @@ window PuTTY /putty\.exe/ : Global
 window VMWare /vmware\.exe/ : Global
 	key *IC-C-j  = C-j
 	key C-Space  = C-Space
+	key C-h = C-h
 
 window Launchy /Launchy\.exe/ : Global
 	key C-n = Down
