@@ -131,6 +131,7 @@ NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
 NeoBundle 'git://github.com/superbrothers/vim-vimperator.git'
+NeoBundle 'git://github.com/tangledhelix/vim-octopress.git'
 NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
 NeoBundle 'git://github.com/vexxor/phpdoc.vim.git'
 
