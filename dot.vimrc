@@ -35,8 +35,8 @@ endif
 
 NeoBundle 'git://github.com/hamaco/vim-sunday.git'
 
-NeoBundle 'git://github.com/vim-scripts/JavaScript-syntax.git'
-NeoBundle 'git://github.com/pangloss/vim-javascript.git'
+"NeoBundle 'git://github.com/vim-scripts/JavaScript-syntax.git'
+"NeoBundle 'git://github.com/pangloss/vim-javascript.git'
 
 NeoBundle 'git://github.com/vim-jp/vimdoc-ja.git'
 
@@ -128,6 +128,7 @@ NeoBundle 'git://github.com/choplin/unite-vim_hacks.git'
 "NeoBundle 'git://github.com/chrisbra/SudoEdit.vim.git'
 NeoBundle 'git://github.com/glidenote/memolist.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
+NeoBundle 'git://github.com/jelera/vim-javascript-syntax.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
 NeoBundle 'git://github.com/superbrothers/vim-vimperator.git'
