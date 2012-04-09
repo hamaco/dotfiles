@@ -127,6 +127,7 @@ NeoBundle 'git://github.com/akiyan/vim-textobj-php.git'
 NeoBundle 'git://github.com/choplin/unite-vim_hacks.git'
 "NeoBundle 'git://github.com/chrisbra/SudoEdit.vim.git'
 NeoBundle 'git://github.com/glidenote/memolist.vim.git'
+NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/jelera/vim-javascript-syntax.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
@@ -421,6 +422,10 @@ let g:memolist_prompt_tags = 'true'
 let g:memolist_prompt_categories = 'true'
 " let g:memolist_qfixgrep = 'true'
 let g:memolist_vimfiler = 'true'
+
+
+" octoeditor.vim {{{2
+let g:octopress_path = '~/tmp/octopress-github'
 
 
 " neocomplcache.vim {{{2
