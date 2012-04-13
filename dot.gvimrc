@@ -26,7 +26,7 @@ elseif has("unix")
 	set columns=115
 	set lines=32
 	set linespace=0
-	set guifont=Rounded\ M+\ 1m\ Medium\ 14
+	set guifont=Rounded\ M+\ 1m\ Medium\ 12
 	colorscheme cobalt
 elseif has("win32")
 	set columns=120
