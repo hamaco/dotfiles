@@ -281,6 +281,10 @@ case "${TERM}" in
 			eval server=\${$#}
 			tmux new-window -n s:$server "ssh $*"
 		}
+		function mosh_tmux() {
+			eval server=\${$#}
+			tmux new-window -n s:$server "mosh $*"
+		}
 		function ssh_screen() {
 			eval server=\${$#}
 			screen -t s:$server ssh "$@"
@@ -289,6 +293,7 @@ case "${TERM}" in
 			alias ssh=ssh_screen
 		else
 			alias ssh=ssh_tmux
+			alias mosh=mosh_tmux
 		fi
 
 		# dabbrev
