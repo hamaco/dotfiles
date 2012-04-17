@@ -41,10 +41,10 @@
 	fixup = commit --amend -a -C HEAD
 	ft = fetch
 	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
-	l = log --stat
+	l = log --stat --date=local
 	l1 = log --pretty=oneline --abbrev-commit
 	l1f = log --pretty=oneline
-	lg = log --name-status --color --graph
+	lg = log --name-status --color --graph --date=local
 	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
 	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
 	newly = log HEAD@{1}..HEAD --reverse
