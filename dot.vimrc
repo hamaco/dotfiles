@@ -150,7 +150,7 @@ NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " neta
 NeoBundle 'git://github.com/mattn/unite-nyancat.git'
 NeoBundle 'git://github.com/osyo-manga/unite-shimapan.git'
-
+NeoBundle 'git://github.com/osyo-manga/unite-u-nya-.git'
 
 if has("syntax")
 	syntax enable
