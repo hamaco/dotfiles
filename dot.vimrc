@@ -150,6 +150,9 @@ NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 
 " neta
 NeoBundle 'git://github.com/mattn/unite-nyancat.git'
+"NeoBundle 'git://github.com/koron/u-nya-vim.git'
+"NeoBundle 'git://github.com/koron/homoo-vim.git'
+"NeoBundle 'git://github.com/osyo-manga/vim-homo-statusline.git'
 NeoBundle 'git://github.com/osyo-manga/unite-homo.git'
 NeoBundle 'git://github.com/osyo-manga/unite-jojo.git'
 NeoBundle 'git://github.com/osyo-manga/unite-nyancat_anim.git'
