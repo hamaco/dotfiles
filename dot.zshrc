@@ -279,11 +279,15 @@ case "${TERM}" in
 	screen*)
 		function ssh_tmux() {
 			eval server=\${$#}
-			tmux new-window -n s:$server "ssh $*"
+			tmux set set-remain-on-exit on\; \
+				new-window -n s:$server "ssh $*"\; \
+				set set-remain-on-exit off > /dev/null
 		}
 		function mosh_tmux() {
 			eval server=\${$#}
-			tmux new-window -n s:$server "mosh $*"
+			tmux set set-remain-on-exit on\; \
+				new-window -n s:$server "mosh $*"\; \
+				set set-remain-on-exit off > /dev/null
 		}
 		function ssh_screen() {
 			eval server=\${$#}
