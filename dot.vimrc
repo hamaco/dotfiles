@@ -130,6 +130,7 @@ NeoBundle 'git://github.com/glidenote/memolist.vim.git'
 NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/jelera/vim-javascript-syntax.git'
+NeoBundle 'git://github.com/karakaram/vim-quickrun-phpunit.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
 NeoBundle 'git://github.com/superbrothers/vim-vimperator.git'
@@ -149,6 +150,13 @@ NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 
 " neta
 NeoBundle 'git://github.com/mattn/unite-nyancat.git'
+"NeoBundle 'git://github.com/koron/u-nya-vim.git'
+"NeoBundle 'git://github.com/koron/homoo-vim.git'
+"NeoBundle 'git://github.com/osyo-manga/vim-homo-statusline.git'
+NeoBundle 'git://github.com/osyo-manga/unite-homo.git'
+NeoBundle 'git://github.com/osyo-manga/unite-jojo.git'
+NeoBundle 'git://github.com/osyo-manga/unite-nyancat_anim.git'
+NeoBundle 'git://github.com/osyo-manga/unite-rofi.git'
 NeoBundle 'git://github.com/osyo-manga/unite-shimapan.git'
 NeoBundle 'git://github.com/osyo-manga/unite-u-nya-.git'
 
@@ -547,27 +555,32 @@ let phpunit_outputter = quickrun#outputter#buffer#new()
 "  call call(quickrun#outputter#buffer#new().init, [a:session], self)
 "endfunction
 
-function! phpunit_outputter.finish(session)
-  let winnr = winnr()
+"function! phpunit_outputter.finish(session)
+"  let winnr = winnr()
+"
+"  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+"
+"  hi default PHPUnitOK         guifg=White guibg=Green
+"  hi default PHPUnitFail       guifg=White guibg=Red
+"  hi default PHPUnitAssertFail guifg=Red
+"
+"	call matchadd("PHPUnitOK", "^OK.*$")
+"	call matchadd("PHPUnitFail", "^FAILURES.*$")
+"	call matchadd("PHPUnitAssertFail", "^Failed.*$")
+"
+"	execute winnr . "wincmd w"
+"endfunction
+"
+"call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
+"let g:quickrun_config['php.unit'] = {
+"			\ 'command': 'phpunit',
+"			\ 'outputter': 'phpunit_outputter',
+"			\ }
 
-  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
-
-  hi default PHPUnitOK         guifg=White guibg=Green
-  hi default PHPUnitFail       guifg=White guibg=Red
-  hi default PHPUnitAssertFail guifg=Red
-
-	call matchadd("PHPUnitOK", "^OK.*$")
-	call matchadd("PHPUnitFail", "^FAILURES.*$")
-	call matchadd("PHPUnitAssertFail", "^Failed.*$")
-
-	execute winnr . "wincmd w"
-endfunction
-
-call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
-let g:quickrun_config['php.unit'] = {
-			\ 'command': 'phpunit',
-			\ 'outputter': 'phpunit_outputter',
-			\ }
+let g:quickrun_config['phpunit'] = {}
+let g:quickrun_config['phpunit']['outputter'] = 'phpunit'
+let g:quickrun_config['phpunit']['command'] = 'phpunit'
+let g:quickrun_config['phpunit']['exec'] = '%c %o %s'
 
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
 
