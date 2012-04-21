@@ -570,10 +570,12 @@ let phpunit_outputter = quickrun#outputter#buffer#new()
 "			\ 'outputter': 'phpunit_outputter',
 "			\ }
 
-let g:quickrun_config['phpunit'] = {}
-let g:quickrun_config['phpunit']['outputter'] = 'phpunit'
-let g:quickrun_config['phpunit']['command'] = 'phpunit'
-let g:quickrun_config['phpunit']['exec'] = '%c %o %s'
+let g:quickrun_config['php.unit'] = {}
+let g:quickrun_config['php.unit']['outputter'] = 'phpunit'
+let g:quickrun_config['php.unit']['command'] = 'phpunit'
+let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
+let g:quickrun_config['php.unit']['outputter/phpunit/height'] = 3
+
 
 let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
 
@@ -963,8 +965,6 @@ augroup QuickRunPHPUnit
   autocmd BufWinEnter,BufNewFile *_test.php set filetype=php.unit
   autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.unit
 augroup END
-
-"let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
 " }}}
 
 
