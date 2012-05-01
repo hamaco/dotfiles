@@ -236,3 +236,6 @@ window LiveMessenger /msnmsgr\.exe/ : Global
 
 window Vim /vim\.exe/ : Global
 	key C-h = &Default
+
+window Evernote /evernote\.exe/ : Global
+	key C-d = Delete
