@@ -49,7 +49,7 @@ endif
 def option mouse-event = true
 
 keymap Global
-	key C-A-Slash = &LoadSetting()
+	key C-A-Slash = &LoadSetting() &HelpMessage("Reload", "Reload dot.nodoka")
 
 	#mod mod0 += !!A
 	#key M9-M0-a = C-A-_1
