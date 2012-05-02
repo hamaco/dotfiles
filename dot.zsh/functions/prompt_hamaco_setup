@@ -41,7 +41,7 @@ function prompt_character() {
 		"/ _ / X"
 		"(のワの) <"
 		"ζ*'ヮ')ζ <"
-		"ζ*#ﾟДﾟ)ζ<"
+		"ζ*#ﾟДﾟ)ζ <"
 		"lw 'ヮ'ﾉv <"
 		"YUKI.N>"
 		"＼(＝ω＝．)／ <"
@@ -51,6 +51,7 @@ function prompt_character() {
 		"ξ(✿ ＞◡❛)ξ▄︻▇▇〓〓"
 		"(」・ω・)」うー！(／・ω・)／にゃー！"
 		"てへぺろ(・ω<)"
+		"三┌(┌ ＾o＾)┐ﾎﾓｫ…"
 	)
 
 	i=$(($(echo $(whoami)@$(hostname) | sum | cut -f1 -d' ') % ${#PROMPTS} + 1))
