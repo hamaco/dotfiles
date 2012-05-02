@@ -39,8 +39,10 @@ $path)
 
 # Export: ================ {{{1
 export TZ="Asia/Tokyo"
-export LANG="ja_JP.UTF-8"
-#export LANG="en_US.UTF-8"
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+#export LANG="ja_JP.UTF-8"
 
 export PAGER="less"
 export LESS="-er --tabs=4 --no-init --LONG-PROMPT --ignore-case"
