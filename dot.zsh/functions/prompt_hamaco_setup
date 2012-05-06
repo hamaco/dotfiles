@@ -48,21 +48,20 @@ function vcs_status () {
 	[[ -n "$vcs_info_msg_0_" ]] && echo -n " on %{$fg[yellow]%}$vcs_info_msg_0_%{$reset_color%}"
 }
 
-
 function pwd_status () {
 	local color
 
 	case ${PWD} in
-		/mnt/*|/Volumes/*) color=$fg[red]  ;;
-		/web/*)     color=$fg[yellow] ;;
-		*)          color=$fg[cyan] ;;
+		/mnt/*|/Volumes/*) color=$fg[red]    ;;
+		/web/*)            color=$fg[yellow] ;;
+		*)                 color=$fg[cyan]   ;;
 	esac
 
 	echo -n "[%{$color%}%~%{$reset_color%}]"
 }
 
 case "${HOST}" in
-hamacbook*|*.hamaco.local)
+*.hamaco.local)
 	PROMPT="%{$fg[green]%}%n@%m%{$reset_color%} "
 	;;
 *)
@@ -83,6 +82,5 @@ esac
 
 PROMPT2="%_%% "
 SPROMPT="もしかして %{$fg[yellow]%}%r%{$reset_color%}? べ、別にあんたのために修正したんじゃないんだからね! [n,y,a,e]:"
-
 
 # vim:set ft=zsh:
