@@ -3,22 +3,6 @@ autoload -Uz vcs_info
 autoload -Uz is-at-least
 
 
-local PROMPT_YUNO="/ _ / X"
-local PROMPT_NONOWA="(のワの) <"
-local PROMPT_YAYOI="ζ*'ヮ')ζ <"
-local PROMPT_YAYOI2="ζ*#ﾟДﾟ)ζ<"
-local PROMPT_YUKIHO="lw 'ヮ'ﾉv <"
-local PROMPT_KONATA="＼(＝ω＝．)／ <"
-local PROMPT_NAGATO="YUKI.N>"
-local PROMPT_UUPAA="(ε・△・)з"
-local PROMPT_UUPAA2="(ε・﹏・)з"
-local PROMPT_QB="／人◕‿‿◕人＼"
-local PROMPT_MAMI="ξ（゜▽＾）ξ"
-local PROMPT_MAMI2="ー═┻┳︻▄ξ(✿ ❛‿❛)ξ▄︻┻┳═一"
-local PROMPT_MAMI3="ξ(✿ ＞◡❛)ξ▄︻▇▇〓〓"
-local PROMPT_NYARU="(」・ω・)」うー！(／・ω・)／にゃー！"
-
-
 zstyle ':vcs_info:*' enable git svn hg bzr
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
@@ -89,9 +73,6 @@ PROMPT+="\$(pwd_status)"
 is-at-least 4.3.7 && PROMPT+="\$(vcs_status)"
 PROMPT+="
 %{%(?.$fg[blue].$fg[red])%}\$(prompt_character)%{$reset_color%} "
-# %{%(?.$fg[blue].$fg[red])%}${PROMPT_YUNO}%{$reset_color%} "
-#${PROMPT_NAGATO} "
-#%{$fg[cyan]%}${PROMPT_NAGATO}%{$reset_color%} "
 
 RPROMPT="%*"
 case "${OSTYPE}" in
