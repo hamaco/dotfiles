@@ -700,6 +700,7 @@ noremap <silent> [unite]w  :<C-u>Unite -immediately window:no-current<CR>
 noremap <silent> [unite]o  :<C-u>Unite outline<CR>
 noremap <silent> [unite]g  :<C-u>Unite grep<CR><CR>
 noremap <silent> [unite]s  :<C-u>Unite colorscheme -auto-preview<CR>
+noremap <silent> [unite]up :<C-u>Unite neobundle/install:!<CR>
 "noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
 	noremap <silent> [unite]e  :<C-u>Unite -start-insert everything<CR>
