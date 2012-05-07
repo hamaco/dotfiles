@@ -68,3 +68,11 @@
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	up = pull --rebase
 	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
+
+[tig "bind"]
+	generic = g move-first-line
+	generic = G move-last-line
+
+[github]
+	user = hamaco
+	token = a12a2024ded4bf734ec6cb2ca448af87
