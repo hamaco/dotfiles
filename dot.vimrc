@@ -864,6 +864,8 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 nnoremap <Space>n :<C-u>nohlsearch<CR>
 nnoremap vv <C-v>
 
+nnoremap <Leader>a ggVG
+
 " vim hacks 214
 onoremap ) t)
 onoremap ( t(
