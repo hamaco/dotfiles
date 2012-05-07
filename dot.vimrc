@@ -674,12 +674,15 @@ noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer f
 noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
 noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file file/new<CR>
 noremap <silent> [unite]I  :<C-u>Unite neobundle/install:!<CR>
+noremap <silent> [unite]g  :<C-u>Unite grep<CR><CR>
 noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
+noremap <silent> [unite]o  :<C-u>Unite outline<CR>
+noremap <silent> [unite]p  :<C-u>Unite process -start-insert<CR>
+noremap <silent> [unite]r  :<C-u>UniteResume<CR>
+noremap <silent> [unite]s  :<C-u>Unite colorscheme -auto-preview<CR>
 noremap <silent> [unite]t  :<C-u>Unite -immediately tab:no-current<CR>
 noremap <silent> [unite]w  :<C-u>Unite -immediately window:no-current<CR>
-noremap <silent> [unite]o  :<C-u>Unite outline<CR>
-noremap <silent> [unite]g  :<C-u>Unite grep<CR><CR>
-noremap <silent> [unite]s  :<C-u>Unite colorscheme -auto-preview<CR>
+
 "noremap <silent> :          :<C-u>Unite -start-insert history/command command<CR>
 if s:iswindows
 	noremap <silent> [unite]e  :<C-u>Unite -start-insert everything<CR>
