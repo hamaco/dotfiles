@@ -832,8 +832,6 @@ noremap ; :
 
 nnoremap j gj
 nnoremap k gk
-nnoremap gh ^
-nnoremap gl $
 
 inoremap jj <ESC>
 
@@ -884,14 +882,10 @@ vnoremap * "zy:let @/ = @z<CR>n
 
 
 " タブ {{{2
+nnoremap gh gT
+nnoremap gl gt
 nnoremap <C-t> <Nop>
-nnoremap <C-t>c :<C-u>tabnew<CR>
-nnoremap <C-t>k :<C-u>tabclose<CR>
 nnoremap <C-t>o :<C-u>tabonly<CR>
-nnoremap <C-t>p :<C-u>tabprevious<CR>
-nnoremap <C-t>n :<C-u>tabnext<CR>
-nnoremap <C-p> :<C-u>tabprevious<CR>
-nnoremap <C-n> :<C-u>tabnext<CR>
 nnoremap <silent> <Left> :<C-u>execute 'tabmove' tabpagenr() - 2<CR>
 nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
 
