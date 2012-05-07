@@ -1,6 +1,8 @@
 if has("mac")
-	set columns=145
-	set lines=55
+	if has('vim_starting')
+		set columns=145
+		set lines=55
+	endif 
 	" set linespace=2
 	" set guifont=Ricty:h15
 	set linespace=0
@@ -23,14 +25,18 @@ if has("mac")
 	inoremap <down> <C-o>:call <SID>relative_transparency(-5)<CR>
 	nnoremap <Space>n :<C-u>nohlsearch<CR>:let &transparency = g:transparency<CR><C-l>
 elseif has("unix")
-	set columns=125
-	set lines=45
+	if has('vim_starting')
+		set columns=125
+		set lines=45
+	endif 
 	set linespace=0
 	set guifont=Rounded\ M+\ 1m\ Medium\ 11
 	colorscheme h2u_dark
 elseif has("win32")
-	set columns=120
-	set lines=40
+	if has('vim_starting')
+		set columns=120
+		set lines=40
+	endif
 	" set linespace=2
 	" set guifont=ゆたぽん（コーディング）:h12
 	" set guifont=あくあフォント:h12
