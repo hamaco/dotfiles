@@ -861,6 +861,9 @@ if has("unix")
 	cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
 endif
 
+nnoremap <Leader>tr :<C-u>%s/\s\+$//<CR>
+vnoremap <Leader>tr :s/\s\+$//<CR>
+
 vnoremap * "zy:let @/ = @z<CR>n
 
 
