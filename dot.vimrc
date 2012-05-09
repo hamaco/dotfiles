@@ -92,7 +92,7 @@ NeoBundle 'git://github.com/thinca/vim-openbuf.git'
 NeoBundle 'git://github.com/thinca/vim-poslist.git'
 NeoBundle 'git://github.com/thinca/vim-prettyprint.git'
 NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
-NeoBundle 'git://github.com/thinca/vim-quickrun.git'
+NeoBundle 'git://github.com/thinca/vim-quickrun.git', 'v0.6.0dev'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/thinca/vim-scouter.git'
 NeoBundle 'git://github.com/thinca/vim-unite-history.git'
@@ -536,67 +536,79 @@ map <C-i> <Plug>(poslist-next-pos)
 
 
 " quickrun.vim {{{2
-let g:quickrun_direction = 'rightbelow vertical'
-let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
-
-"let g:quickrun_config = {}
-let g:quickrun_config = {'outputter/buffer/into': 1}
-if has('clientserver') && v:servername != ''
-	let g:quickrun_config['*'] = {'runmode': 'async:remote:vimproc'}
-else
-	let g:quickrun_config['*'] = {'runmode': 'simple'}
-endif
-let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['%c %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
-let g:quickrun_config.haskell = {'command': 'runghc'}
-" let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
-
-let phpunit_outputter = quickrun#outputter#buffer#new()
-"function! phpunit_outputter.init(session)
-"  " call original process
-"  call call(quickrun#outputter#buffer#new().init, [a:session], self)
-"endfunction
-
-"function! phpunit_outputter.finish(session)
-"  let winnr = winnr()
-"
-"  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
-"
-"  hi default PHPUnitOK         guifg=White guibg=Green
-"  hi default PHPUnitFail       guifg=White guibg=Red
-"  hi default PHPUnitAssertFail guifg=Red
-"
-"	call matchadd("PHPUnitOK", "^OK.*$")
-"	call matchadd("PHPUnitFail", "^FAILURES.*$")
-"	call matchadd("PHPUnitAssertFail", "^Failed.*$")
-"
-"	execute winnr . "wincmd w"
-"endfunction
-"
-"call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
-"let g:quickrun_config['php.unit'] = {
-"			\ 'command': 'phpunit',
-"			\ 'outputter': 'phpunit_outputter',
-"			\ }
-
-let g:quickrun_config['php.unit'] = {}
-let g:quickrun_config['php.unit']['outputter'] = 'phpunit'
-let g:quickrun_config['php.unit']['command'] = 'phpunit'
-let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
-let g:quickrun_config['php.unit']['outputter/phpunit/height'] = 3
-
-
-let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
-
+let g:quickrun_config = {}
+let g:quickrun_config['_'] = {
+			\ 'runner': 'vimproc',
+			\ 'runner/vimproc/updatetime': 250
+			\ }
 let g:quickrun_config['markdown'] = {
-			\ 'type': 'markdown/kramdown',
-			\ 'outputter': 'browser'
+			\ 'outputter': 'multi',
+			\ 'outputter/multi/targets': ['buffer', 'browser']
 			\ }
 
-let g:quickrun_config.textile = {
-			\ 'command': 'redcloth',
-			\ 'tempfile': '{tempname()}.textile',
-			\ 'exec': ['%c %s > %s:p:r.html', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html']
-			\ }
+"let g:quickrun_direction = 'rightbelow vertical'
+"let g:quickrun_no_default_key_mappings = 0 " suspend to map <leader>r
+"
+""let g:quickrun_config = {}
+"let g:quickrun_config = {'outputter/buffer/into': 1}
+"echomsg has('clientserver')
+"echomsg v:servername
+"if has('clientserver') && v:servername != ''
+"	let g:quickrun_config['*'] = {'runmode': 'async:vimproc'}
+"else
+"	let g:quickrun_config['*'] = {'runmode': 'simple'}
+"endif
+"let g:quickrun_config.asm = {'command': 'gcc', 'exec': ['%c %s -o ./aaaaa', './aaaaa', 'rm ./aaaaa']}
+"let g:quickrun_config.haskell = {'command': 'runghc'}
+"" let g:quickrun_config['php.unit'] = {'command': 'phpunit'}
+"
+"let phpunit_outputter = quickrun#outputter#buffer#new()
+""function! phpunit_outputter.init(session)
+""  " call original process
+""  call call(quickrun#outputter#buffer#new().init, [a:session], self)
+""endfunction
+"
+""function! phpunit_outputter.finish(session)
+""  let winnr = winnr()
+""
+""  call call(quickrun#outputter#buffer#new().finish, [a:session], self)
+""
+""  hi default PHPUnitOK         guifg=White guibg=Green
+""  hi default PHPUnitFail       guifg=White guibg=Red
+""  hi default PHPUnitAssertFail guifg=Red
+""
+""	call matchadd("PHPUnitOK", "^OK.*$")
+""	call matchadd("PHPUnitFail", "^FAILURES.*$")
+""	call matchadd("PHPUnitAssertFail", "^Failed.*$")
+""
+""	execute winnr . "wincmd w"
+""endfunction
+""
+""call quickrun#register_outputter("phpunit_outputter", phpunit_outputter)
+""let g:quickrun_config['php.unit'] = {
+""			\ 'command': 'phpunit',
+""			\ 'outputter': 'phpunit_outputter',
+""			\ }
+"
+"let g:quickrun_config['php.unit'] = {}
+"let g:quickrun_config['php.unit']['outputter'] = 'phpunit'
+"let g:quickrun_config['php.unit']['command'] = 'phpunit'
+"let g:quickrun_config['php.unit']['exec'] = '%c %o %s'
+"let g:quickrun_config['php.unit']['outputter/phpunit/height'] = 3
+"
+"
+"let g:quickrun_config['ruby.rspec'] = {'command': 'spec'}
+"
+"let g:quickrun_config['markdown'] = {
+"			\ 'type': 'markdown/kramdown',
+"			\ 'outputter': 'browser'
+"			\ }
+"
+"let g:quickrun_config.textile = {
+"			\ 'command': 'redcloth',
+"			\ 'tempfile': '{tempname()}.textile',
+"			\ 'exec': ['%c %s > %s:p:r.html', 'open %s:p:r.html', 'sleep 1', 'rm %s:p:r.html']
+"			\ }
 
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
@@ -1255,6 +1267,40 @@ endfunction
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
+
+"quickrun-hook-u-nya- {{{
+let s:hook = {
+\    "name" : "u_nya_",
+\    "kind" : "hook",
+\    "index_counter" : 0,
+\    "config" : {
+\        "enable" : 1
+\}
+\}
+
+function! s:hook.on_ready(session, context)
+    let self.index_counter = -2
+endfunction
+
+function! s:hook.on_output(session, context)
+    let self.index_counter += 1
+    if self.index_counter < 0
+        return
+    endif
+    let aa_list = [
+\        "（」・ω・）」うー！",
+\        "（／・ω・）／にゃー！"
+\    ]
+    echo aa_list[ self.index_counter / 4 % len(aa_list)  ]
+endfunction
+
+function! s:hook.on_exit(...)
+    echo "Let's＼(・ω・)／にゃー！"
+endfunction
+
+call quickrun#module#register(s:hook, 1)
+unlet s:hook
+" }}}
 
 " END {{{1
 " vim: foldmethod=marker
