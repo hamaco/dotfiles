@@ -404,18 +404,18 @@ let g:favstar_user = 'hamaco'
 "nnoremap <Space>gc :<C-u>GitCommit<Enter>
 "nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
 "nnoremap <Space>gp :<C-u>Git push
-"
-"nnoremap <Space>gd :<C-u>Gdiff<Enter>
-"nnoremap <Space>gs :<C-u>Gstatus<Enter>
-"nnoremap <Space>gl :<C-u>Glog<Enter>
-"nnoremap <Space>ga :<C-u>Gwrite<Enter>
-"nnoremap <Space>gc :<C-u>Gcommit<Enter>
-"nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
-"nnoremap <Space>gb :<C-u>Gblame<Enter>
-nnoremap <Space>gs :<C-u>Vcs status<CR>
-nnoremap <Space>ga :<C-u>Vcs add<CR>
-nnoremap <Space>gc :<C-u>Vcs commit<CR>
-nnoremap <Space>gd :<C-u>Vcs diff<CR>
+
+nnoremap <Space>gd :<C-u>Gdiff<Enter>
+nnoremap <Space>gs :<C-u>Gstatus<Enter>
+nnoremap <Space>gl :<C-u>Glog<Enter>
+nnoremap <Space>ga :<C-u>Gwrite<Enter>
+nnoremap <Space>gc :<C-u>Gcommit<Enter>
+nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
+nnoremap <Space>gb :<C-u>Gblame<Enter>
+"nnoremap <Space>gs :<C-u>Vcs status<CR>
+"nnoremap <Space>ga :<C-u>Vcs add<CR>
+"nnoremap <Space>gc :<C-u>Vcs commit<CR>
+"nnoremap <Space>gd :<C-u>Vcs diff<CR>
 
 
 " gundo.vim {{{2
