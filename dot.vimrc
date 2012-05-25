@@ -160,6 +160,7 @@ NeoBundle 'git://github.com/osyo-manga/unite-nyancat_anim.git'
 NeoBundle 'git://github.com/osyo-manga/unite-rofi.git'
 NeoBundle 'git://github.com/osyo-manga/unite-shimapan.git'
 NeoBundle 'git://github.com/osyo-manga/unite-u-nya-.git'
+NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
 
 if has("syntax")
 	syntax enable
@@ -539,7 +540,8 @@ map <C-i> <Plug>(poslist-next-pos)
 let g:quickrun_config = {}
 let g:quickrun_config['_'] = {
 			\ 'runner': 'vimproc',
-			\ 'runner/vimproc/updatetime': 250
+			\ 'runner/vimproc/updatetime': 250,
+			\ 'hook/u_nya_/enable': 1,
 			\ }
 let g:quickrun_config['markdown'] = {
 			\ 'outputter': 'multi',
@@ -1268,39 +1270,6 @@ if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
 
-"quickrun-hook-u-nya- {{{
-let s:hook = {
-\    "name" : "u_nya_",
-\    "kind" : "hook",
-\    "index_counter" : 0,
-\    "config" : {
-\        "enable" : 1
-\}
-\}
-
-function! s:hook.on_ready(session, context)
-    let self.index_counter = -2
-endfunction
-
-function! s:hook.on_output(session, context)
-    let self.index_counter += 1
-    if self.index_counter < 0
-        return
-    endif
-    let aa_list = [
-\        "（」・ω・）」うー！",
-\        "（／・ω・）／にゃー！"
-\    ]
-    echo aa_list[ self.index_counter / 4 % len(aa_list)  ]
-endfunction
-
-function! s:hook.on_exit(...)
-    echo "Let's＼(・ω・)／にゃー！"
-endfunction
-
-call quickrun#module#register(s:hook, 1)
-unlet s:hook
-" }}}
 
 " END {{{1
 " vim: foldmethod=marker
