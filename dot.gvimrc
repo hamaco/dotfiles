@@ -31,7 +31,8 @@ elseif has("unix")
 		set lines=45
 	endif 
 	set linespace=0
-	set guifont=Rounded\ M+\ 1m\ Medium\ 11
+	"set guifont=Rounded\ M+\ 1m\ Medium\ 11
+	set guifont=Ricty\ Discord\ 12
 	colorscheme h2u_dark
 elseif has("win32")
 	if has('vim_starting')

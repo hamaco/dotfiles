@@ -20,6 +20,10 @@ augroup MyAutoCmd
 augroup END
 
 " NeoBundle {{{1
+"
+filetype off
+filetype indent plugin off
+
 if has('vim_starting')
 	set runtimepath+=$HOME/.bundle/vimproc
 	if filereadable(expand('~/.bundle/neobundle.vim/autoload/neobundle.vim'))
@@ -27,10 +31,8 @@ if has('vim_starting')
 	else
 		set runtimepath+=$HOME/.vim/bundle/neobundle.vim
 	endif
-	filetype off
+
 	call neobundle#rc(expand('~/.bundle'))
-	filetype plugin on
-	filetype indent on
 endif
 
 NeoBundle 'git://github.com/hamaco/vim-sunday.git'
@@ -95,6 +97,7 @@ NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git', 'v0.6.0dev'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/thinca/vim-scouter.git'
+NeoBundle 'git://github.com/thinca/vim-showtime.git'
 NeoBundle 'git://github.com/thinca/vim-unite-history.git'
 
 NeoBundle 'git://github.com/tpope/vim-abolish.git'
@@ -130,6 +133,7 @@ NeoBundle 'git://github.com/glidenote/memolist.vim.git'
 NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/jelera/vim-javascript-syntax.git'
+NeoBundle 'git://github.com/jsx/jsx.vim.git'
 NeoBundle 'git://github.com/karakaram/vim-quickrun-phpunit.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
@@ -160,6 +164,9 @@ NeoBundle 'git://github.com/osyo-manga/unite-nyancat_anim.git'
 NeoBundle 'git://github.com/osyo-manga/unite-rofi.git'
 NeoBundle 'git://github.com/osyo-manga/unite-shimapan.git'
 NeoBundle 'git://github.com/osyo-manga/unite-u-nya-.git'
+NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+
+filetype indent plugin on
 
 if has("syntax")
 	syntax enable
@@ -403,18 +410,18 @@ let g:favstar_user = 'hamaco'
 "nnoremap <Space>gc :<C-u>GitCommit<Enter>
 "nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
 "nnoremap <Space>gp :<C-u>Git push
-"
-"nnoremap <Space>gd :<C-u>Gdiff<Enter>
-"nnoremap <Space>gs :<C-u>Gstatus<Enter>
-"nnoremap <Space>gl :<C-u>Glog<Enter>
-"nnoremap <Space>ga :<C-u>Gwrite<Enter>
-"nnoremap <Space>gc :<C-u>Gcommit<Enter>
-"nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
-"nnoremap <Space>gb :<C-u>Gblame<Enter>
-nnoremap <Space>gs :<C-u>Vcs status<CR>
-nnoremap <Space>ga :<C-u>Vcs add<CR>
-nnoremap <Space>gc :<C-u>Vcs commit<CR>
-nnoremap <Space>gd :<C-u>Vcs diff<CR>
+
+nnoremap <Space>gd :<C-u>Gdiff<Enter>
+nnoremap <Space>gs :<C-u>Gstatus<Enter>
+nnoremap <Space>gl :<C-u>Glog<Enter>
+nnoremap <Space>ga :<C-u>Gwrite<Enter>
+nnoremap <Space>gc :<C-u>Gcommit<Enter>
+nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
+nnoremap <Space>gb :<C-u>Gblame<Enter>
+"nnoremap <Space>gs :<C-u>Vcs status<CR>
+"nnoremap <Space>ga :<C-u>Vcs add<CR>
+"nnoremap <Space>gc :<C-u>Vcs commit<CR>
+"nnoremap <Space>gd :<C-u>Vcs diff<CR>
 
 
 " gundo.vim {{{2
@@ -539,11 +546,17 @@ map <C-i> <Plug>(poslist-next-pos)
 let g:quickrun_config = {}
 let g:quickrun_config['_'] = {
 			\ 'runner': 'vimproc',
-			\ 'runner/vimproc/updatetime': 250
+			\ 'runner/vimproc/updatetime': 250,
+			\ 'hook/u_nya_/enable': 1,
 			\ }
 let g:quickrun_config['markdown'] = {
 			\ 'outputter': 'multi',
 			\ 'outputter/multi/targets': ['buffer', 'browser']
+			\ }
+
+let g:quickrun_config['jsx'] = {
+			\ 'command': 'jsx',
+			\ 'exec': ['%c --run %s']
 			\ }
 
 "let g:quickrun_direction = 'rightbelow vertical'
@@ -1268,39 +1281,6 @@ if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
 
-"quickrun-hook-u-nya- {{{
-let s:hook = {
-\    "name" : "u_nya_",
-\    "kind" : "hook",
-\    "index_counter" : 0,
-\    "config" : {
-\        "enable" : 1
-\}
-\}
-
-function! s:hook.on_ready(session, context)
-    let self.index_counter = -2
-endfunction
-
-function! s:hook.on_output(session, context)
-    let self.index_counter += 1
-    if self.index_counter < 0
-        return
-    endif
-    let aa_list = [
-\        "（」・ω・）」うー！",
-\        "（／・ω・）／にゃー！"
-\    ]
-    echo aa_list[ self.index_counter / 4 % len(aa_list)  ]
-endfunction
-
-function! s:hook.on_exit(...)
-    echo "Let's＼(・ω・)／にゃー！"
-endfunction
-
-call quickrun#module#register(s:hook, 1)
-unlet s:hook
-" }}}
 
 " END {{{1
 " vim: foldmethod=marker
