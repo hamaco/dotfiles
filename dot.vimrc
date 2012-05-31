@@ -20,6 +20,10 @@ augroup MyAutoCmd
 augroup END
 
 " NeoBundle {{{1
+"
+filetype off
+filetype indent plugin off
+
 if has('vim_starting')
 	set runtimepath+=$HOME/.bundle/vimproc
 	if filereadable(expand('~/.bundle/neobundle.vim/autoload/neobundle.vim'))
@@ -27,10 +31,8 @@ if has('vim_starting')
 	else
 		set runtimepath+=$HOME/.vim/bundle/neobundle.vim
 	endif
-	filetype off
+
 	call neobundle#rc(expand('~/.bundle'))
-	filetype plugin on
-	filetype indent on
 endif
 
 NeoBundle 'git://github.com/hamaco/vim-sunday.git'
@@ -95,6 +97,7 @@ NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git', 'v0.6.0dev'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/thinca/vim-scouter.git'
+NeoBundle 'git://github.com/thinca/vim-showtime.git'
 NeoBundle 'git://github.com/thinca/vim-unite-history.git'
 
 NeoBundle 'git://github.com/tpope/vim-abolish.git'
@@ -130,6 +133,7 @@ NeoBundle 'git://github.com/glidenote/memolist.vim.git'
 NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/jelera/vim-javascript-syntax.git'
+NeoBundle 'git://github.com/jsx/jsx.vim.git'
 NeoBundle 'git://github.com/karakaram/vim-quickrun-phpunit.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
@@ -161,6 +165,8 @@ NeoBundle 'git://github.com/osyo-manga/unite-rofi.git'
 NeoBundle 'git://github.com/osyo-manga/unite-shimapan.git'
 NeoBundle 'git://github.com/osyo-manga/unite-u-nya-.git'
 NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+
+filetype indent plugin on
 
 if has("syntax")
 	syntax enable
@@ -546,6 +552,11 @@ let g:quickrun_config['_'] = {
 let g:quickrun_config['markdown'] = {
 			\ 'outputter': 'multi',
 			\ 'outputter/multi/targets': ['buffer', 'browser']
+			\ }
+
+let g:quickrun_config['jsx'] = {
+			\ 'command': 'jsx',
+			\ 'exec': ['%c --run %s']
 			\ }
 
 "let g:quickrun_direction = 'rightbelow vertical'
