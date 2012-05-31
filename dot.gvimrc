@@ -6,7 +6,8 @@ if has("mac")
 	" set linespace=2
 	" set guifont=Ricty:h15
 	set linespace=0
-	set guifont=Rounded\ M+\ 1m\ Regular:h16
+	" set guifont=Rounded\ M+\ 1m\ Regular:h16
+	set guifont=Ricty\ Discord\ Regular:h16
 	set transparency=20
 	colorscheme mrkn256
 
