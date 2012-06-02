@@ -400,7 +400,7 @@ nnoremap <Space>gb :<C-u>Gblame<Enter>
 
 
 " gundo.vim {{{2
-nmap U :<C-u>GundoToggle<CR>
+nnoremap U :<C-u>GundoToggle<CR>
 
 
 " indenthtml.vim {{{2
