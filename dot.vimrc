@@ -73,6 +73,8 @@ NeoBundle 'git://github.com/mattn/webapi-vim.git'
 NeoBundle 'git://github.com/mattn/sonictemplate-vim.git'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 
+NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+
 NeoBundle 'git://github.com/Shougo/echodoc.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
@@ -125,7 +127,6 @@ NeoBundle 'git://github.com/ujihisa/unite-colorscheme.git'
 NeoBundle 'git://github.com/ujihisa/unite-launch.git'
 NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 
-
 NeoBundle 'git://github.com/akiyan/vim-textobj-php.git'
 NeoBundle 'git://github.com/choplin/unite-vim_hacks.git'
 "NeoBundle 'git://github.com/chrisbra/SudoEdit.vim.git'
@@ -154,17 +155,16 @@ NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 
 
 " neta
-NeoBundle 'git://github.com/mattn/unite-nyancat.git'
-"NeoBundle 'git://github.com/koron/u-nya-vim.git'
-"NeoBundle 'git://github.com/koron/homoo-vim.git'
-"NeoBundle 'git://github.com/osyo-manga/vim-homo-statusline.git'
-NeoBundle 'git://github.com/osyo-manga/unite-homo.git'
-NeoBundle 'git://github.com/osyo-manga/unite-jojo.git'
-NeoBundle 'git://github.com/osyo-manga/unite-nyancat_anim.git'
-NeoBundle 'git://github.com/osyo-manga/unite-rofi.git'
-NeoBundle 'git://github.com/osyo-manga/unite-shimapan.git'
-NeoBundle 'git://github.com/osyo-manga/unite-u-nya-.git'
-NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+NeoBundleLazy 'git://github.com/mattn/unite-nyancat.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-homo.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-jojo.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-nyancat_anim.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-rofi.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-shimapan.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-u-nya-.git'
+
+command! -nargs=0 NeoBundleSourceNetaPlugin
+			\ :NeoBundleSource unite-nyancat unite-homo unite-jojo unite-nyancat_anim unite-rofi unite-shimapan unite-u-nya-
 
 filetype indent plugin on
 
