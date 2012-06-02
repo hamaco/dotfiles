@@ -176,9 +176,6 @@ if has("syntax")
 endif
 
 
-
-
-
 " 文字コード設定 {{{1
 set encoding=utf-8
 
@@ -383,14 +380,9 @@ if has('vim_starting')
 	endif
 endif
 
-"let g:eskk_debug = 0
+let g:eskk_debug = 0
 let g:eskk#egg_like_newline = 1
-"let g:eskk_enable_completion = 1
-"let g:eskk_ignore_continuous_sticky = 1
-""let g:eskk_no_default_mappings = 1
-"let g:eskk_revert_henkan_style = 'okuri'
-
-""map! <C-j> <Plug>(eskk:enable)
+let g:eskk#egg_like_newline_completion = 1
 
 
 " FavStar.vim {{{2
