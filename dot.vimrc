@@ -130,7 +130,6 @@ NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 NeoBundle 'git://github.com/akiyan/vim-textobj-php.git'
 NeoBundle 'git://github.com/choplin/unite-vim_hacks.git'
 "NeoBundle 'git://github.com/chrisbra/SudoEdit.vim.git'
-NeoBundle 'git://github.com/glidenote/memolist.vim.git'
 NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/jelera/vim-javascript-syntax.git'
@@ -407,19 +406,6 @@ nnoremap U :<C-u>GundoToggle<CR>
 let g:html_indent_inctags = 'html,body,head,tbody,p,li'
 
 
-" memoilst.vim {{{2
-let g:memolist_path = expand('~/.memolist')
-let g:memolist_memo_suffix = 'txt'
-let g:memolist_prompt_tags = 'true'
-let g:memolist_prompt_categories = 'true'
-" let g:memolist_qfixgrep = 'true'
-let g:memolist_vimfiler = 'true'
-
-
-" octoeditor.vim {{{2
-let g:octopress_path = '~/tmp/octopress-github'
-
-
 " neocomplcache.vim {{{2
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -510,6 +496,10 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+
+" octoeditor.vim {{{2
+let g:octopress_path = '~/tmp/octopress-github'
 
 
 " poslist.vim {{{2
