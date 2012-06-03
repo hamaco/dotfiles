@@ -1,7 +1,7 @@
 <?php
 
-function hello($text = 'world') {
+$hello = function($text = 'world') {
   echo sprintf('Hello %s!!', $text);
-}
+};
 
-hello();
+$hello();
