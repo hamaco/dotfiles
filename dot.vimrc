@@ -74,6 +74,8 @@ NeoBundle 'git://github.com/mattn/vim-textobj-cell.git'
 NeoBundle 'git://github.com/mattn/webapi-vim.git'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 
+NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+
 NeoBundle 'git://github.com/Shougo/echodoc.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
@@ -126,11 +128,9 @@ NeoBundle 'git://github.com/ujihisa/unite-colorscheme.git'
 NeoBundle 'git://github.com/ujihisa/unite-launch.git'
 NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 
-
 NeoBundle 'git://github.com/akiyan/vim-textobj-php.git'
 NeoBundle 'git://github.com/choplin/unite-vim_hacks.git'
 "NeoBundle 'git://github.com/chrisbra/SudoEdit.vim.git'
-NeoBundle 'git://github.com/glidenote/memolist.vim.git'
 NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
 NeoBundle 'git://github.com/jelera/vim-javascript-syntax.git'
@@ -155,17 +155,16 @@ NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 
 
 " neta
-NeoBundle 'git://github.com/mattn/unite-nyancat.git'
-"NeoBundle 'git://github.com/koron/u-nya-vim.git'
-"NeoBundle 'git://github.com/koron/homoo-vim.git'
-"NeoBundle 'git://github.com/osyo-manga/vim-homo-statusline.git'
-NeoBundle 'git://github.com/osyo-manga/unite-homo.git'
-NeoBundle 'git://github.com/osyo-manga/unite-jojo.git'
-NeoBundle 'git://github.com/osyo-manga/unite-nyancat_anim.git'
-NeoBundle 'git://github.com/osyo-manga/unite-rofi.git'
-NeoBundle 'git://github.com/osyo-manga/unite-shimapan.git'
-NeoBundle 'git://github.com/osyo-manga/unite-u-nya-.git'
-NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+NeoBundleLazy 'git://github.com/mattn/unite-nyancat.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-homo.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-jojo.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-nyancat_anim.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-rofi.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-shimapan.git'
+NeoBundleLazy 'git://github.com/osyo-manga/unite-u-nya-.git'
+
+command! -nargs=0 NeoBundleSourceNetaPlugin
+			\ :NeoBundleSource unite-nyancat unite-homo unite-jojo unite-nyancat_anim unite-rofi unite-shimapan unite-u-nya-
 
 filetype indent plugin on
 
@@ -175,9 +174,6 @@ if has("syntax")
 		colorscheme mrkn256
 	endif
 endif
-
-
-
 
 
 " 文字コード設定 {{{1
@@ -369,7 +365,7 @@ call emap#load('noprefix')
 call emap#set_sid_from_vimrc()
 
 
-"eskk.vim {{{2
+" eskk.vim {{{2
 let g:eskk#keep_state_beyond_buffer = 0
 
 if has('vim_starting')
@@ -384,34 +380,16 @@ if has('vim_starting')
 	endif
 endif
 
-"let g:eskk_debug = 0
+let g:eskk_debug = 0
 let g:eskk#egg_like_newline = 1
-"let g:eskk_enable_completion = 1
-"let g:eskk_ignore_continuous_sticky = 1
-""let g:eskk_no_default_mappings = 1
-"let g:eskk_revert_henkan_style = 'okuri'
-
-""map! <C-j> <Plug>(eskk:enable)
+let g:eskk#egg_like_newline_completion = 1
 
 
 " FavStar.vim {{{2
 let g:favstar_user = 'hamaco'
 
 
-" git.vim {{{2
-"let g:git_no_map_default = 1
-"let g:git_command_edit = 'rightbelow vnew'
-"nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
-"nnoremap <Space>gD :<C-u>GitDiff<Enter>
-"nnoremap <Space>gs :<C-u>GitStatus<Enter>
-"nnoremap <Space>gl :<C-u>GitLog<Enter>
-"nnoremap <Space>gL :<C-u>GitLog -u \| head -10000<Enter>
-"nnoremap <Space>ga :<C-u>GitAdd<Enter>
-"nnoremap <Space>gA :<C-u>GitAdd <cfile><Enter>
-"nnoremap <Space>gc :<C-u>GitCommit<Enter>
-"nnoremap <Space>gC :<C-u>GitCommit --amend<Enter>
-"nnoremap <Space>gp :<C-u>Git push
-
+" fugitive.vim {{{2
 nnoremap <Space>gd :<C-u>Gdiff<Enter>
 nnoremap <Space>gs :<C-u>Gstatus<Enter>
 nnoremap <Space>gl :<C-u>Glog<Enter>
@@ -419,123 +397,153 @@ nnoremap <Space>ga :<C-u>Gwrite<Enter>
 nnoremap <Space>gc :<C-u>Gcommit<Enter>
 nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
-"nnoremap <Space>gs :<C-u>Vcs status<CR>
-"nnoremap <Space>ga :<C-u>Vcs add<CR>
-"nnoremap <Space>gc :<C-u>Vcs commit<CR>
-"nnoremap <Space>gd :<C-u>Vcs diff<CR>
 
 
 " gundo.vim {{{2
-nmap U :<C-u>GundoToggle<CR>
+nnoremap U :<C-u>GundoToggle<CR>
 
 
 " indenthtml.vim {{{2
 let g:html_indent_inctags = 'html,body,head,tbody,p,li'
 
 
-" memoilst.vim {{{2
-let g:memolist_path = expand('~/.memolist')
-let g:memolist_memo_suffix = 'txt'
-let g:memolist_prompt_tags = 'true'
-let g:memolist_prompt_categories = 'true'
-" let g:memolist_qfixgrep = 'true'
-let g:memolist_vimfiler = 'true'
-
-
-" octoeditor.vim {{{2
-let g:octopress_path = '~/tmp/octopress-github'
-
-
 " neocomplcache.vim {{{2
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_smart_case = 0
 let g:neocomplcache_enable_camel_case_completion = 0
-let g:neocomplcache_enable_underbar_completion = 1
-"let g:neocomplcache_enable_info = 1 " deleted?
-let g:neocomplcache_enable_skip_completion = 1
-let g:neoComplcache_partial_match = 0
-let g:neocomplcache_enable_ignore_case = 0
-let g:neocomplcache_enable_wildcard = 0
-let g:neocomplcache_max_list = 30
-" let g:NeoComplCache_PreviousKeywordCompletion = 0
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_min_keyword_length = 3
-let g:neocomplcache_skip_input_time = "0.1"
-let g:neocomplcache_skip_completion_time = "0.1"
-let g:neocomplcache_auto_completion_start_length = 2
-let g:neocomplcache_manual_completion_start_length = 1
-let g:neocomplcache_tags_completion_start_length = 5
-let g:neocomplcache_caching_limit_file_size = 10240
+let g:neocomplcache_enable_underbar_completion = 0
+" fuzzy_completionお試しで有効化してみる
+let g:neocomplcache_enable_fuzzy_completion = 1
+let g:neocomplcache_fuzzy_completion_start_length = 3
+let g:neocomplcache_enable_auto_select = 0 " ???
+let g:neocomplcache_enable_auto_delimiter = 1
+let g:neocomplcache_force_overwrite_completefunc = 1
 
 if !exists('g:neocomplcache_delimiter_patterns')
 	let g:neocomplcache_delimiter_patterns = {}
 endif
-let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
+let g:neocomplcache_delimiter_patterns.php = ['->', '::', '\']
 
 let g:neocomplcache_dictionary_filetype_lists = {
 			\ 'default'  : '',
-			\ 'vimshell' : $HOME.'/.vimshell/command-history'
+			\ 'php' : expand('~/.vim/dict/php.dict'),
 			\ }
+      "\ 'default' : '',
+      "\ 'scheme' : expand('~/.gosh_completions'),
+      "\ 'scala' : expand('$DOTVIM/dict/scala.dict'),
+      "\ 'ruby' : expand('$DOTVIM/dict/ruby.dict'),
+      "\ 'int-termtter' : expand('~/.vimshell/int-history/int-termtter'),
+      "\ 'hoge' : expand('~/work/test.dic'),
+      "\ }
+
+" @TODO neocomplcache#start_manual_complete() の動作を調べる
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ neocomplcache#start_manual_complete()
+function! s:check_back_space()"
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"
+
+" neocomplcache-snippets-complete.vim
+imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
+			\ "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
 
 
-" Enable omni completion.
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-let g:neocomplcache_omni_functions = {
-			\ 'ruby': 'rubycomplete#Complete',
-			\ }
 
-if !exists('g:neocomplcache_omni_patterns')
-	let g:neocomplcache_omni_patterns = {}
-endif
-"let g:neocomplcache_omni_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-if !exists('g:neocomplcache_keyword_patterns')
-	let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
-
-let g:neocomplcache_vim_completefuncs = {
-	\ 'Ref' : 'ref#complete',
-	\ 'Unite' : 'unite#complete_source',
-	\ 'VimShellExecute' : 'vimshell#complete#vimshell_execute_complete#completefunc',
-	\ 'VimShellInteractive' : 'vimshell#complete#vimshell_execute_complete#completefunc',
-	\ 'VimShellTerminal' : 'vimshell#complete#vimshell_execute_complete#completefunc',
-	\ }
-
-let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
-command! -nargs=* Nes NeoComplCacheEditSnippets <args>
-
-imap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
-smap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-g> neocomplcache#undo_completion()
-"inoremap <expr><C-l> neocomplcache#complete_common_string()
-
-inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
-function! s:check_back_space()"{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><C-y> neocomplcache#close_popup()
-"inoremap <expr><C-e> neocomplcache#cancel_popup()
-
-" vim hacks #135
-"inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
+"   let g:neocomplcache_enable_at_startup = 1
+"   let g:neocomplcache_enable_smart_case = 1
+"   let g:neocomplcache_enable_camel_case_completion = 0
+"   let g:neocomplcache_enable_underbar_completion = 1
+"   "let g:neocomplcache_enable_info = 1 " deleted?
+"   let g:neocomplcache_enable_skip_completion = 1
+"   let g:neoComplcache_partial_match = 0
+"   let g:neocomplcache_enable_ignore_case = 0
+"   let g:neocomplcache_enable_wildcard = 0
+"   let g:neocomplcache_max_list = 30
+"   " let g:NeoComplCache_PreviousKeywordCompletion = 0
+"   let g:neocomplcache_min_syntax_length = 3
+"   let g:neocomplcache_min_keyword_length = 3
+"   let g:neocomplcache_skip_input_time = "0.1"
+"   let g:neocomplcache_skip_completion_time = "0.1"
+"   let g:neocomplcache_auto_completion_start_length = 2
+"   let g:neocomplcache_manual_completion_start_length = 1
+"   let g:neocomplcache_tags_completion_start_length = 5
+"   let g:neocomplcache_caching_limit_file_size = 10240
+"   
+"   if !exists('g:neocomplcache_delimiter_patterns')
+"   	let g:neocomplcache_delimiter_patterns = {}
+"   endif
+"   let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
+"   
+"   let g:neocomplcache_dictionary_filetype_lists = {
+"   			\ 'default'  : '',
+"   			\ 'vimshell' : $HOME.'/.vimshell/command-history'
+"   			\ }
+"   
+"   
+"   " Enable omni completion.
+"   "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"   "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"   "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"   "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"   "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"   let g:neocomplcache_omni_functions = {
+"   			\ 'ruby': 'rubycomplete#Complete',
+"   			\ }
+"   
+"   if !exists('g:neocomplcache_omni_patterns')
+"   	let g:neocomplcache_omni_patterns = {}
+"   endif
+"   "let g:neocomplcache_omni_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
+"   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"   
+"   if !exists('g:neocomplcache_keyword_patterns')
+"   	let g:neocomplcache_keyword_patterns = {}
+"   endif
+"   let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
+"   
+"   let g:neocomplcache_vim_completefuncs = {
+"   	\ 'Ref' : 'ref#complete',
+"   	\ 'Unite' : 'unite#complete_source',
+"   	\ 'VimShellExecute' : 'vimshell#complete#vimshell_execute_complete#completefunc',
+"   	\ 'VimShellInteractive' : 'vimshell#complete#vimshell_execute_complete#completefunc',
+"   	\ 'VimShellTerminal' : 'vimshell#complete#vimshell_execute_complete#completefunc',
+"   	\ }
+"   
+"   let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
+"   command! -nargs=* Nes NeoComplCacheEditSnippets <args>
+"   
+"   imap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
+"   smap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
+"   inoremap <expr><C-g> neocomplcache#undo_completion()
+"   "inoremap <expr><C-l> neocomplcache#complete_common_string()
+"   
+"   inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+"   inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
+"   " inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
+"   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+"   function! s:check_back_space()"{{{
+"     let col = col('.') - 1
+"     return !col || getline('.')[col - 1]  =~ '\s'
+"   endfunction"}}}
+"   " <CR>: close popup and save indent.
+"   inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+"   inoremap <expr><C-y> neocomplcache#close_popup()
+"   "inoremap <expr><C-e> neocomplcache#cancel_popup()
+"   
+"   " vim hacks #135
+"   "inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
 
 " openbrowser.vim
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+
+" octoeditor.vim {{{2
+let g:octopress_path = '~/tmp/octopress-github'
 
 
 " poslist.vim {{{2
