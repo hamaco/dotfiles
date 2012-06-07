@@ -537,6 +537,8 @@ let g:octopress_path = '~/tmp/octopress-github'
 
 
 " poslist.vim {{{2
+let g:poslist_min_save_unit = 5 " 試しに5にしてみる
+
 map <C-o> <Plug>(poslist-prev-pos)
 map <C-i> <Plug>(poslist-next-pos)
 
