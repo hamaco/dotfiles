@@ -74,7 +74,8 @@ NeoBundle 'git://github.com/mattn/vim-textobj-cell.git'
 NeoBundle 'git://github.com/mattn/webapi-vim.git'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 
-NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+" NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
+NeoBundle 'git://github.com/hamaco/quickrun-hook-u-nya-.git'
 
 NeoBundle 'git://github.com/Shougo/echodoc.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
@@ -415,7 +416,7 @@ let g:neocomplcache_enable_underbar_completion = 0
 " fuzzy_completionお試しで有効化してみる
 let g:neocomplcache_enable_fuzzy_completion = 1
 let g:neocomplcache_fuzzy_completion_start_length = 3
-let g:neocomplcache_enable_auto_select = 0 " ???
+let g:neocomplcache_enable_auto_select = 0
 let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
 
@@ -440,15 +441,14 @@ let g:neocomplcache_dictionary_filetype_lists = {
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
 			\ <SID>check_back_space() ? "\<TAB>" :
 			\ neocomplcache#start_manual_complete()
-function! s:check_back_space()"
+function! s:check_back_space() " {{{
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"
+endfunction " }}}
 
 " neocomplcache-snippets-complete.vim
 imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
 			\ "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
-
 
 
 "   let g:neocomplcache_enable_at_startup = 1
@@ -470,11 +470,6 @@ imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
 "   let g:neocomplcache_manual_completion_start_length = 1
 "   let g:neocomplcache_tags_completion_start_length = 5
 "   let g:neocomplcache_caching_limit_file_size = 10240
-"   
-"   if !exists('g:neocomplcache_delimiter_patterns')
-"   	let g:neocomplcache_delimiter_patterns = {}
-"   endif
-"   let g:neocomplcache_delimiter_patterns['php'] = ['->', '::', '\']
 "   
 "   let g:neocomplcache_dictionary_filetype_lists = {
 "   			\ 'default'  : '',
@@ -511,22 +506,12 @@ imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
 "   	\ 'VimShellTerminal' : 'vimshell#complete#vimshell_execute_complete#completefunc',
 "   	\ }
 "   
-"   let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
-"   command! -nargs=* Nes NeoComplCacheEditSnippets <args>
 "   
-"   imap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
-"   smap <silent><C-k>   <Plug>(neocomplcache_snippets_expand)
 "   inoremap <expr><C-g> neocomplcache#undo_completion()
 "   "inoremap <expr><C-l> neocomplcache#complete_common_string()
 "   
 "   inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 "   inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
-"   " inoremap <expr><TAB> pumvisible() ? "\<C-n>" :"\<TAB>"
-"   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
-"   function! s:check_back_space()"{{{
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~ '\s'
-"   endfunction"}}}
 "   " <CR>: close popup and save indent.
 "   inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 "   inoremap <expr><C-y> neocomplcache#close_popup()
@@ -536,7 +521,12 @@ imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
 "   "inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
 
-" openbrowser.vim
+" neocomplcache-snippets {{{2
+let g:neocomplcache_snippets_dir = $HOME."/.vim/snippets"
+command! -nargs=* Nes NeoComplCacheEditSnippets <args>
+
+
+" openbrowser.vim {{{2
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
