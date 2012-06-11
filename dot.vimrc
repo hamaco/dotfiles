@@ -607,12 +607,9 @@ let g:syntastic_mode_map = {
 			\ }
 let g:syntastic_auto_loc_list=0
 
+
 " sonictemplate.vim {{{2
 let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
-
-
-" spec.vim {{{2
-let g:spec_chglog_format = "%a %b %d %Y hamaco <hamanaka.kazuhiro@gmail.com> -"
 
 
 " submode.vim {{{2
