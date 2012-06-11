@@ -24,11 +24,14 @@
 	whitespace = nowarn
 
 [alias]
-	br = branch
+	b = branch
+	ba = branch -a
+	br = branch -r
 	ci = commit -v
 	cia = commit --amend
 	cih = commit --amend -C HEAD
 	co = checkout
+	cob = checkout -b
 	d1 = diff HEAD~
 	d2 = diff HEAD~~
 	d3 = diff HEAD~~~
@@ -37,9 +40,10 @@
 	dcw = diff --color-words
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
+	f = fetch
 	find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
+	first = !"git init -q && git commit -q --allow-empty -m 'init'"
 	fixup = commit --amend -a -C HEAD
-	ft = fetch
 	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
 	l = log --stat --date=local
 	l1 = log --pretty=oneline --abbrev-commit
