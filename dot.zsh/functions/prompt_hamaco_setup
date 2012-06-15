@@ -38,6 +38,7 @@ function prompt_character() {
 		"(」・ω・)」うー！(／・ω・)／にゃー！"
 		"てへぺろ(・ω<)"
 		"三┌(┌ ＾o＾)┐ﾎﾓｫ…"
+		"_(:3」∠)_"
 	)
 
 	i=$(($(echo $(whoami)@$(hostname) | sum | cut -f1 -d' ') % ${#PROMPTS} + 1))
