@@ -485,7 +485,7 @@ load_plugins
 sudo() {
   local args
   case $2 in
-    vi|vim)
+    vim|gvim)
       args=()
       for arg in $@[3,-1]
       do
@@ -495,7 +495,7 @@ sudo() {
           args[$(( 1+$#args ))]="sudo:$arg"
         fi
       done
-      command vim $args
+      command $2 $args
       ;;
     *)
       command sudo $@
