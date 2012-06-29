@@ -173,7 +173,7 @@ filetype indent plugin on
 if has("syntax")
 	syntax enable
 	if !exists("g:colors_name")
-		colorscheme mrkn256
+		colorscheme molokai
 	endif
 endif
 
