@@ -534,7 +534,7 @@ vmap gx <Plug>(openbrowser-smart-search)
 
 
 " octoeditor.vim {{{2
-let g:octopress_path = '~/tmp/octopress-github'
+let g:octopress_path = '~/works/octopress-github'
 
 
 " poslist.vim {{{2
