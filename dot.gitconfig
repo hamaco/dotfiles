@@ -2,6 +2,9 @@
 	name = hamaco
 	email = hamanaka.kazuhiro@gmail.com
 
+[apply]
+	whitespace = nowarn
+
 [color]
 	ui = auto
 	diff = auto
@@ -20,8 +23,8 @@
 	pager = less -r
 	quotepath = false
 
-[apply]
-	whitespace = nowarn
+[grep]
+	lineNumber = true
 
 [alias]
 	b = branch
@@ -44,6 +47,7 @@
 	find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
 	first = !"git init -q && git commit -q --allow-empty -m 'init'"
 	fixup = commit --amend -a -C HEAD
+	gr = grep -H --heading --break
 	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
 	l = log --stat --date=local
 	l1 = log --pretty=oneline --abbrev-commit
@@ -76,7 +80,3 @@
 [tig "bind"]
 	generic = g move-first-line
 	generic = G move-last-line
-
-[github]
-	user = hamaco
-	token = a12a2024ded4bf734ec6cb2ca448af87
