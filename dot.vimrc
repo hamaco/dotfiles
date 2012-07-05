@@ -786,11 +786,10 @@ nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
 
 nnoremap Y y$
 
-nnoremap Q q
 nnoremap q <Nop>
+nnoremap Q q
 
 noremap ; :
-"noremap : ;
 
 nnoremap j gj
 nnoremap k gk
@@ -798,8 +797,7 @@ nnoremap k gk
 inoremap jj <ESC>
 
 noremap <Space> <Nop>
-"noremap <S-k> <Nop>
-noremap <S-q> <Nop>
+
 
 nnoremap <Space>w :<C-u>write<CR>
 nnoremap <Space>q :<C-u>quit<CR>
