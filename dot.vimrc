@@ -571,9 +571,19 @@ else
 	let g:ref_phpmanual_path = $HOME . '/share/phpmanual'
 endif
 
-let g:ref_alc_use_cache = 1
+let g:ref_source_webdict_sites = {
+\   'alc': {
+\     'url': 'http://eow.alc.co.jp/search?q=%s',
+\   },
+\   'wikipedia:ja': 'http://ja.wikipedia.org/wiki/%s',
+\ }
+function! g:ref_source_webdict_sites.alc.filter(output)
+  return join(split(a:output, "\n")[38 :], "\n")
+endfunction
 
-noremap <Space>ra :<C-u>Ref alc<Space>
+let g:ref_source_webdict_sites.default = 'alc'
+
+noremap <Space>ra :<C-u>Ref webdict alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
 
 
