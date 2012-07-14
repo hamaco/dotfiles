@@ -13,11 +13,11 @@
 
 # for Sabel
 */*sabel.log
-cache/*
+#cache/*
 
 # for XOOPS
 sess_*
-*/cache/*
+#*/cache/*
 */templates_c/*
 
 # for CandyCane
