@@ -794,6 +794,8 @@ nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 nnoremap <Space>em :<C-u>tabedit ~/Dropbox/diary.txt<CR>
 
+nnoremap <C-Enter> o<ESC>
+
 nnoremap Y y$
 
 nnoremap q <Nop>
