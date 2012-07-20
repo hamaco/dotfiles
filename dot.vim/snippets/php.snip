@@ -108,6 +108,18 @@ snippet errshow
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
+snippet check_performance
+  $s   = microtime(true);
+  $mem = memory_get_usage();
+  
+  ${1};
+  
+  $result = array(
+    'time'   => microtime(true) - $s,
+    'memory' => memory_get_usage() - $mem,
+  );
+  echo '<PRE>'; var_dump($result); exit;
+
 # for Sabel
 snippet paginator
   $paginator = new Paginator('${1}');
