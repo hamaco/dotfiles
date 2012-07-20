@@ -77,6 +77,9 @@
 	up = pull --rebase
 	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
 
+[include]
+	path = .gitconfig.local
+
 [tig "bind"]
 	generic = g move-first-line
 	generic = G move-last-line
