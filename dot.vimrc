@@ -471,13 +471,13 @@ imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
 "   let g:neocomplcache_manual_completion_start_length = 1
 "   let g:neocomplcache_tags_completion_start_length = 5
 "   let g:neocomplcache_caching_limit_file_size = 10240
-"   
+"
 "   let g:neocomplcache_dictionary_filetype_lists = {
 "   			\ 'default'  : '',
 "   			\ 'vimshell' : $HOME.'/.vimshell/command-history'
 "   			\ }
-"   
-"   
+"
+"
 "   " Enable omni completion.
 "   "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 "   "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -487,18 +487,18 @@ imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
 "   let g:neocomplcache_omni_functions = {
 "   			\ 'ruby': 'rubycomplete#Complete',
 "   			\ }
-"   
+"
 "   if !exists('g:neocomplcache_omni_patterns')
 "   	let g:neocomplcache_omni_patterns = {}
 "   endif
 "   "let g:neocomplcache_omni_patterns.php  = '[^. \t]->\h\w*\|\h\w*::'
 "   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"   
+"
 "   if !exists('g:neocomplcache_keyword_patterns')
 "   	let g:neocomplcache_keyword_patterns = {}
 "   endif
 "   let g:neocomplcache_keyword_patterns["default"] = "\h\w*"
-"   
+"
 "   let g:neocomplcache_vim_completefuncs = {
 "   	\ 'Ref' : 'ref#complete',
 "   	\ 'Unite' : 'unite#complete_source',
@@ -506,18 +506,18 @@ imap <expr><C-l> neocomplcache#sources#snippets_complete#expandable() ?
 "   	\ 'VimShellInteractive' : 'vimshell#complete#vimshell_execute_complete#completefunc',
 "   	\ 'VimShellTerminal' : 'vimshell#complete#vimshell_execute_complete#completefunc',
 "   	\ }
-"   
-"   
+"
+"
 "   inoremap <expr><C-g> neocomplcache#undo_completion()
 "   "inoremap <expr><C-l> neocomplcache#complete_common_string()
-"   
+"
 "   inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 "   inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 "   " <CR>: close popup and save indent.
 "   inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 "   inoremap <expr><C-y> neocomplcache#close_popup()
 "   "inoremap <expr><C-e> neocomplcache#cancel_popup()
-"   
+"
 "   " vim hacks #135
 "   "inoremap <expr> ] searchpair('\[', '', '\]', 'nbW', 'synIDattr(synID(line("."), col("."), 1), "name") =~? "String"') ? ']' : "\<C-n>"
 
@@ -867,6 +867,8 @@ nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
 " commands {{{1
 command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
 
+command! RemoveTrailingSpaces %s/\s\+$//
+
 " 文字コードを変えて最読込 {{{2
 command! -bang -complete=file -nargs=? Utf8
 \ edit<bang> ++enc=utf-8 <args>
@@ -1173,7 +1175,7 @@ augroup END  " }}}
 " nnoremap <expr> <C-w>F  <SID>do_git_diff_aware_gf('<C-w>F')
 " nnoremap <expr> <C-w>gf  <SID>do_git_diff_aware_gf('<C-w>gf')
 " nnoremap <expr> <C-w>gF  <SID>do_git_diff_aware_gf('<C-w>gF')
-" 
+"
 " function! s:do_git_diff_aware_gf(command)
 "   let target_path = expand('<cfile>')
 "   if target_path =~# '^[ab]/'  " with a peculiar prefix of git-diff(1)?
