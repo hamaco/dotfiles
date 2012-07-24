@@ -514,6 +514,14 @@ _z_add() {
 }
 add-zsh-hook precmd _z_add
 
+# http://d.hatena.ne.jp/hiboma/20120315/1331821642
+pbcopy-buffer() {
+	print -rn $BUFFER | pbcopy
+	zle -M "pbcopy: ${BUFFER}"
+}
+zle -N pbcopy-buffer
+bindkey '^x^p' pbcopy-buffer
+
 
 # END {{{1
 # vim: foldmethod=marker
