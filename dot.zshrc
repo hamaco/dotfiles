@@ -291,9 +291,12 @@ case "${TERM}" in
 		}
 		if [ -e $TMUX ]; then
 			alias ssh=ssh_screen
+			compdef ssh_screen=ssh
 		else
 			alias ssh=ssh_tmux
 			alias mosh=mosh_tmux
+			compdef ssh_tmux=ssh
+			compdef mosh_tmux=ssh
 		fi
 
 		# dabbrev
