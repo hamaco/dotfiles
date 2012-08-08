@@ -633,6 +633,11 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
+call submode#enter_with('tabpage', 'n', '', 'gt', 'gt')
+call submode#map('tabpage', 'n', '', 't', 'gt')
+call submode#enter_with('tabpage', 'n', '', 'gT', 'gT')
+call submode#map('tabpage', 'n', '', 'T', 'gT')
+
 call submode#enter_with('textmanip', 'v', 'r', '<C-t>h',
 			\   '<Plug>(textmanip-move-left)')
 call submode#enter_with('textmanip', 'v', 'r', '<C-t>j',
