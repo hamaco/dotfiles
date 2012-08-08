@@ -662,7 +662,7 @@ nnoremap [unite] <Nop>
 nmap f [unite]
 
 noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer file file/new file_mru<CR>
-noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer file_rec<CR>
+noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async<CR>
 noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
 noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file file/new<CR>
 noremap <silent> [unite]I  :<C-u>Unite neobundle/install:!<CR>
