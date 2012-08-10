@@ -702,6 +702,10 @@ let g:unite_enable_start_insert = 0
 let g:unite_source_file_mru_filename_format = ''
 let g:unite_source_file_mru_limit = 150
 
+let g:unite_source_file_rec_ignore_pattern =
+			\'\%(^\|/\)cache\%($\|/\)'.
+			\'\|\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|bak\|sw[po]\|class\)$'.
+			\'\|\%(^\|/\)\.\%(hg\|git\|bzr\|svn\)\%($\|/\)'
 
 "call unite#custom_alias('file', 'h', 'left')
 "call unite#custom_alias('file', 'l', 'right')
