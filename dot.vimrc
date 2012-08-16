@@ -322,6 +322,8 @@ let &statusline .= '  %-14.(%l,%c%V%) %P'
 let mapleader = ","
 let maplocalleader = "."
 
+" Vim scriptで\をインデントしない
+let g:vim_indent_cont = 0
 
 
 " プラグイン {{{1
