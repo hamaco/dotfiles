@@ -239,3 +239,7 @@ window Vim /vim\.exe/ : Global
 
 window Evernote /evernote\.exe/ : Global
 	key C-d = Delete
+
+# これJavaのアプリ全部に適用されちゃう?
+window Minecraft /SunAwtFrame/ : Global
+	mod shift -= Space
