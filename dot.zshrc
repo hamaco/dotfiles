@@ -474,6 +474,7 @@ function hs () {
 }
 
 eval "$(rbenv init -)"
+eval "$(phpenv init -)"
 
 # incr.zsh
 load_plugins() {

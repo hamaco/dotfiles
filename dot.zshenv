@@ -30,6 +30,7 @@ $HOME/.gem/ruby/*/bin(N-/)
 /var/lib/gems/*/bin(N-/)
 
 $HOME/.rbenv/bin(N-/)
+$HOME/.phpenv/bin(N-/)
 $HOME/.cabal/bin(N-/)
 $HOME/.autojump/bin(N-/)
 
