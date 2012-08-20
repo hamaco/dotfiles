@@ -31,8 +31,11 @@ $HOME/.gem/ruby/*/bin(N-/)
 
 $HOME/.rbenv/bin(N-/)
 $HOME/.phpenv/bin(N-/)
+
 $HOME/.cabal/bin(N-/)
 $HOME/.autojump/bin(N-/)
+
+$HOME/.git-hook/bin(N-/)
 
 $path)
 # }}}
