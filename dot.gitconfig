@@ -62,6 +62,7 @@
 	rb = rebase
 	rbh = rebase HEAD
 	rollback = reset --hard HEAD~
+	see = browse
 	show-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
 	sl = stash list
 	smi = submodule init
