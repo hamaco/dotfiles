@@ -885,7 +885,7 @@ nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
 " commands {{{1
 command! -complete=file -nargs=1 Rename f <args>|call delete(expand("#"))
 
-command! RemoveTrailingSpaces %s/\s\+$//
+command! RemoveTrailingSpaces %s/\s\+$// | nohlsearch
 
 " 文字コードを変えて最読込 {{{2
 command! -bang -complete=file -nargs=? Utf8
