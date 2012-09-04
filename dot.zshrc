@@ -25,6 +25,9 @@ cdpath=($HOME /web/*(N-/))
 limit coredumpsize 102400
 ulimit -c 0  # Don't create core dumps
 
+# 3秒以上掛かったコマンドは詳細を表示する
+REPORTTIME=3
+
 
 #色の定義
 local DEFAULT=$'%{[m%}'$

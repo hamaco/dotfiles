@@ -48,6 +48,22 @@ endif
 # ShellExecute(operation, file, parameters, directory, show_command)
 def option mouse-event = true
 
+
+# モディファイヤーキ押しっ放し検出
+def option CheckModifier = enable 4
+
+def key WinDownOver      = E1-0x19
+def key ShiftDownOver    = E1-0x1a
+def key CtrlDownOver     = E1-0x1b
+def key AltDownOver      = E1-0x1c
+def key EnterDownOver    = E1-0x1e
+
+key U-*WinDownOver   = &HelpMessage("nodoka", "Win") U-LWin U-RWin
+key U-*ShiftDownOver = &HelpMessage("nodoka", "Shift") U-LShift U-RShift
+key U-*CtrlDownOver  = &HelpMessage("nodoka", "Ctrl") U-LCtrl U-RCtrl
+key U-*AltDownOver   = &HelpMessage("nodoka", "Alt") U-LAlt U-RAlt
+key U-*EnterDownOver = &HelpMessage("nodoka", "Enter") U-Enter
+
 keymap Global
 	key C-A-Slash = &LoadSetting() &HelpMessage("Reload", "Reload dot.nodoka")
 
@@ -95,6 +111,7 @@ keymap Global
 
 	mod windows -= RightWindows
 	mod mod9    += RightWindows
+	key *RWin = &Ignore
 	key m9-a = C-A-_1
 	key m9-s = C-A-_2
 	key m9-d = C-A-_3
@@ -163,7 +180,6 @@ window Explorer /explorer\.exe/ : Global
 
 window InternetExplorer /iexplore\.exe/ : Global
 	key C-l = A-d
-	key m9-t = C-t
 
 window Excel /excel\.exe/ : Global
 	key A-Enter = A-Enter
@@ -183,7 +199,6 @@ window Opera /opera\.exe/ : Global
 	key m9-_8 = C-_8
 	key m9-_9 = C-_9
 	key m9-w = C-w
-	key m9-t = C-t
 
 window FastPictureViewer /FastPictureViewer\.exe/ : Viewer
 window AdobeReader /AcroRd32\.exe:.+:AVL_AVView$/ : Viewer
@@ -243,3 +258,19 @@ window Evernote /evernote\.exe/ : Global
 # これJavaのアプリ全部に適用されちゃう?
 window Minecraft /SunAwtFrame/ : Global
 	mod shift -= Space
+
+keymap2 AlphaWindow
+	key _0   = &WindowSetAlpha(100)
+	key _1   = &WindowSetAlpha(10)
+	key _2   = &WindowSetAlpha(20)
+	key _3   = &WindowSetAlpha(30)
+	key _4   = &WindowSetAlpha(40)
+	key _5   = &WindowSetAlpha(50)
+	key _6   = &WindowSetAlpha(60)
+	key _7   = &WindowSetAlpha(70)
+	key _8   = &WindowSetAlpha(80)
+	key _9   = &WindowSetAlpha(90)
+	key t    = &WindowSetAlpha(50)
+
+keymap Global
+	key m9-t = &Prefix(AlphaWindow)
