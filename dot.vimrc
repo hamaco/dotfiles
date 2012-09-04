@@ -673,7 +673,7 @@ noremap <silent> [unite]u  :<C-u>Unite -buffer-name=files -start-insert buffer f
 noremap <silent> [unite]f  :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async<CR>
 noremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
 noremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files -start-insert buffer file_mru bookmark file file/new<CR>
-noremap <silent> [unite]I  :<C-u>Unite neobundle/install:!<CR>
+noremap <silent> [unite]I  :<C-u>Unite -auto-quit neobundle/update<CR>
 noremap <silent> [unite]g  :<C-u>Unite grep<CR><CR>
 noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
 noremap <silent> [unite]o  :<C-u>Unite outline<CR>
