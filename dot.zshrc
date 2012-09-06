@@ -478,6 +478,7 @@ function hs () {
 
 eval "$(rbenv init -)"
 eval "$(phpenv init -)"
+[[ -s /home/hamaco/.tmuxinator/scripts/tmuxinator ]] && source /home/hamaco/.tmuxinator/scripts/tmuxinator
 
 # incr.zsh
 load_plugins() {

@@ -1,6 +1,6 @@
 <?php
 
-class Unit_{{_name_}} extends Sabel_Test_Fixture
+class Unit_{{_name_}} extends Sabel_Test_TestCase
 {
   public function setUp()
   {
