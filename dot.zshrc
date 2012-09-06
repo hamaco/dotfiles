@@ -77,7 +77,7 @@ setopt mark_dirs            # ファイル名の展開でディレクトリに�
 setopt notify               # バックグラウンドジョブが終了したら(プロンプトの表示を待たずに)すぐに知らせる
 setopt numeric_glob_sort    # ファイル名を数値としてソート
 setopt print_eight_bit      # 補完候補リストの日本語を適正表示
-setopt prompt_subst         #
+setopt prompt_subst         # PROMPT内の$()をプロンプト表示時に展開する
 setopt pushd_ignore_dups    # 同じディレクトリをpushdしない
 setopt share_history        # 履歴ファイルを共有する
 setopt short_loops          # FOR, REPEAT, SELECT, IF, FUNCTION などで簡略文法が使えるようになる
