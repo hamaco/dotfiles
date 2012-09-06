@@ -37,7 +37,8 @@ alias tmux="tmux a || tmux"
 alias crontab="crontab -i"
 
 # for git
-alias git="hub"
+#alias git="hub"
+eval "$(hub alias -s)"
 alias g="git"
 alias gs="git svn"
 #alias gst="git status"
