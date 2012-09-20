@@ -1,0 +1,305 @@
+
+" let {{{1
+let mapleader = ","
+
+" plugin_loader.js {{{2
+"let g:plugin_loader_roots = "~/.vimperator/load/"
+let g:plugin_loader_roots = "~/share/vimperator-plugins"
+" }}}
+
+" }}}
+
+" set {{{1
+
+set complete=shl
+set defsearch=google
+set editor="/Applications/MacVim.app/Contents/MacOS/mvim -f"
+set focuscontent
+set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
+",nohatenaBookmarks
+set hintchars=iasdfghjkl
+set history=5000
+set newtab=all
+set showstatuslinks=2
+set titlestring=Firefox
+
+" }}}
+
+" set! {{{1
+
+set! accessibility.tabfocus=2
+set! browser.backspace_action=0
+set! browser.cache.disk.capacity=51200
+set! browser.cache.disk.enable=true
+set! browser.cache.memory.enable=true
+set! browser.cache.memory.capacity=51200
+set! browser.download.manager.retention=1
+set! browser.sessionstore.max_concurrent_tabs=0
+set! browser.sessionstore.max_tabs_undo=20
+set! browser.tabs.closeButtons=2
+set! browser.display.use_document_fonts=0
+set! browser.zoom.full=true
+set! config.trim_on_minimize=true
+set! dom.disable_window_move_resize=true
+set! dom.event.contextmenu.enabled=false
+set! dom.popup_maximum=2048
+set! font.language.group=ja
+set! font.minimum-size.ja=11
+set! font.name.monospace.ja=07YasashisaGothic
+set! font.name.sans-serif.ja=07YasashisaGothic
+set! font.name.serif.ja=07YasashisaGothic
+"set! general.useragent.extra.firefox='Firefox/3.6.13'
+set! general.useragent.locale='ja'
+set! intl.accept_languages='ja,en-us,en'
+set! middlemouse.paste=true
+" IPv6の無効化
+set! network.dns.disableIPv6=true
+set! network.http.max_connections=32
+set! network.http.max_connections_per_server=8
+set! plugins.hide_infobar_for_missing_plugin=true
+set! profilemanager.opt_showProfileName=0
+set! security.dialog_enable_delay=0
+set! security.enable_java=false
+set! ui.key.contentAccessKey=0
+set! ui.key.generalAccessKey=0
+set! xulmigemo.shortcut.manualStart=
+
+" }}}
+
+" autocmd {{{1
+
+" LDR上では新規タブをバックグラウンドに開く
+autocmd LocationChange .* :set! browser.tabs.loadDivertedInBackground=false
+autocmd LocationChange reader\\.livedoor\\.com/reader :set! browser.tabs.loadDivertedInBackground=true
+autocmd LocationChange fastladder\\.com/(reader|public) :set! browser.tabs.loadDivertedInBackground=true
+
+" }}}
+
+" Key mappings {{{1
+
+" 邪魔なキーを無効化
+noremap <F1> <Nop>
+noremap! <C-j> <Nop> " これ動かない?
+inoremap <C-j> <Nop>
+cnoremap <C-j> <Nop>
+nnoremap <C-k> <Nop>
+
+nnoremap <C-l> :<C-u>source ~/.vimperatorrc<CR>
+nnoremap <C-,> :preferences<CR>
+
+noremap ; :
+noremap : ;
+
+" j/k でのスクロールを3行にした
+nnoremap j 3<C-e>
+nnoremap k 3<C-y>
+nnoremap h 3h
+nnoremap l 3l
+
+" インサートモードでの色々
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-h> <BS>
+cnoremap <C-h> <BS>
+
+" コマンドモードでの色々
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-p> <S-Tab>
+cnoremap <C-n> <Tab>
+cnoremap <C-v> <S-Insert>
+
+" タブ関係
+nnoremap z <A-Left>
+nnoremap x <A-Right>
+
+nnoremap H <C-p>
+nnoremap L <C-n>
+nnoremap <Left> :tabmove! -1<CR>
+nnoremap <Right> :tabmove! +1<CR>
+
+nnoremap b :<C-u>tabopen about:mybookmarks<CR>
+
+" }}}
+
+" Key mappings for Extensions {{{1
+
+" Clearly
+nnoremap ,r :<C-u>js __readable_by_evernote.readable_by_evernote__menu__call(buffer.URL)<CR>
+
+" }}}
+
+" Key mappings for Plugins {{{1
+
+" copy.js
+nnoremap ,c :<C-u>copy 
+
+" multi_requestor.js
+nnoremap ,h :<C-u>hbsearch<Space>
+
+" multi_requestor.js
+nnoremap ,t :<C-u>mr alc<Space>
+
+" readitlater.js
+nnoremap ,a :<C-u>readitlater add<CR>
+
+" }}}
+
+" Color Scheme {{{1
+
+colorscheme indigo
+
+" }}}
+
+" bmark {{{1
+
+bmark -title="モゲマス ユーザ" -keyword=imas http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F%s%3Frnd%3D832445730
+bmark -title="Twilog (hamaco)" -keyword=twilog http://twilog.org/hamaco
+
+" }}}
+
+" QuickMarks {{{1
+
+silent qmark a http://animita.tv/mypage/product_list/on_air
+silent qmark A http://analytics.google.com/
+silent qmark c http://calendar.google.com/
+silent qmark F http://fastladder.com/reader/
+silent qmark f http://www.facebook.com/
+silent qmark l http://reader.livedoor.com/reader/
+silent qmark m http://www.gmail.com/
+silent qmark p http://getpocket.com/a/queue/
+silent qmark r http://reader.google.com/reader/
+silent qmark R http://readability.com/hamaco/
+silent qmark t http://reblog.machine.mamemomonga.com/
+silent qmark T http://www.tumblr.com/dashboard
+silent qmark I http://sp.pf.mbga.jp/12008305
+
+silent qmark b http://reblog.machine.mamemomonga.com/dashboard
+
+" }}}
+
+" Styles {{{1
+
+style chrome://* <<EOM
+.tabbrowser-tab[fadein]:not([pinned]) {
+	min-width: 40px !important;
+	max-width: 40px !important;
+}
+EOM
+
+" }}}
+
+" Plugins {{{1
+
+" copy.js
+javascript <<EOM
+liberator.globalVariables.copy_templates = [
+  { label: 'markdown',       value: '[%TITLE%](%URL%)' },
+  { label: 'twitter',        value: '"%TITLE%" %URL%' },
+  { label: 'titleAndURL',    value: '%TITLE%\n%URL%' },
+  { label: 'title',          value: '%TITLE%', map: ',y' },
+  { label: 'anchor',         value: '<a href="%URL%">%TITLE%</a>' },
+  { label: 'selanchor',      value: '<a href="%URL%" title="%TITLE%">%SEL%</a>' },
+  { label: 'htmlblockquote', value: '<blockquote cite="%URL%" title="%TITLE%">%HTMLSEL%</blockquote>' },
+  { label: 'ASIN',   value: 'copy ASIN code from Amazon', custom: function(){return content.document.getElementById('ASIN').value;} },
+];
+EOM
+
+" }}}
+
+
+
+
+
+
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+
+
+" vimperator設定
+"set guioptions=rbm
+set hintchars=iasdfghjkl
+set showstatuslinks=2
+set titlestring=Firefox
+"set wildoptions=auto
+
+
+
+" keymappings {{{1
+
+
+inoremap <C-v> <S-Insert>
+
+noremap <C-c> <C-v><C-c>
+
+" 選択文字列をGoogleで検索
+noremap <C-g> YP
+noremap s :<C-u>google<Space>
+
+" }}}
+
+
+" plugins
+" https://github.com/vimpr/vimperator-plugins
+
+" feedSomeKeys_3.js
+"fmap -modes=i -events=keydown,keypress <C-p> <Up>
+"fmap -modes=i -events=keydown,keypress <C-n> <Down>
+"lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+"lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+
+lazy fmaps -u='mail\.google\.com/mail' -events=vkeydown,keypress,vkeyup j k
+lazy fmaps -u='mail\.google\.com/mail' c n p o u x s r a ? gi gs gt gd ga gc I
+lazy fmaps -u='mail\.google\.com/mail' -p=<Leader> d,# s,! e
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c j,n k,p n,j p,k o u x s r a ? gi gs gt gd ga gc
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' -p=<Leader> d,# s,! e
+
+
+lazy fmaps -u='www\.google\.(co\.jp|com)/reader' -events=vkeypress j k n p m s v o A r R S N P X O gh ga gs gt gu u / ? J K
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k n,s s a p o r v c m i,p J,<Space> K,<S-Space> z b < > q w e,g
+lazy fmaps -u='reblog\.machine\.mamemomonga\.com/dashboard' j k t l m
+lazy fmaps -u='www\.pixiv\.net' j k z 0
+
+nnoremap -urls=www\\.slideshare\\.net l :slideshare next<CR>
+nnoremap -urls=www\\.slideshare\\.net h :slideshare prev<CR>
+
+" hatenabookmark.js
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+
+" localkeymode.js
+let g:localkeymode_enable = 'true'
+javascript <<EOM
+liberator.globalVariables.localKeyMappings = [
+	[/www\.nicovideo\.jp\/watch/, [
+		['p', ':stplay'],
+		['m', ':stmute'],
+		['a', ':stseek! -15'],
+		['s', ':stseek! +15'],
+		['z', ':stfullscreen']
+	]]
+];
+EOM
+
+" readitlater.js
+let g:readitlater_api_key = "06eA4C5cd3a99R7c9bpbz3bi89T8x0V8"
+
+" refcontrol.js
+let g:refcontrol_enabled = 'true'
+javascript <<EOM
+liberator.globalVariables.refcontrol = {
+	'@DEFAULT'            : '',
+	'fc2.com'             : '@FORGE',
+	'image.itmedia.co.jp' : 'http://www.itmedia.co.jp',
+	'bk.mufg.jp'          : '@NORMAL',
+	'www.nicomimi.net'    : 'http://www.nicomimi.net',
+	'pixiv.net'           : 'http://www.pixiv.net',
+	'hamaco.org'          : '@NORMAL',
+	'www.nicomimi.net'    : '@NORMAL',
+	'yuik.net'            : '@FORGE',
+	'bitbucket.org'       : '@FORGE',
+};
+EOM
+
+source ~/.vimperatorrc.js
+
+" END {{{1
+" vim: foldmethod=marker
