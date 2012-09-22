@@ -22,7 +22,7 @@ fi
 
 HOSTCOLOR="green"
 
-OK="ζ*"ヮ"%)ζ <"
+OK="ζ*'ヮ'%)ζ <"
 NG="ζ*#ﾟДﾟ%)ζ <"
 
 function vcs_prompt_info() {
