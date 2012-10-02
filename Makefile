@@ -20,6 +20,7 @@ tmux:
 	ln -fns $(CURRENT_DIR)/tmux/tmux.conf $(INSTALL_DIR)/.tmux.conf
 
 vim:
+	git submodule update --init
 	ln -fns $(CURRENT_DIR)/vim/vim    $(INSTALL_DIR)/.vim
 	ln -fns $(CURRENT_DIR)/vim/vimrc  $(INSTALL_DIR)/.vimrc
 	ln -fns $(CURRENT_DIR)/vim/gvimrc $(INSTALL_DIR)/.gvimrc
