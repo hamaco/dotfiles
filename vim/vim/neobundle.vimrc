@@ -7,8 +7,8 @@ if has('vim_starting')
 	if filereadable(expand('~/.bundle/neobundle.vim/autoload/neobundle.vim'))
 		set runtimepath+=$HOME/.bundle/neobundle.vim
 	else
-		"set runtimepath+=$HOME/.vim/bundle/neobundle.vim
-		set runtimepath+=$HOME/_neobundle
+		set runtimepath+=$HOME/.vim/bundle/neobundle.vim
+		"set runtimepath+=$HOME/_neobundle
 	endif
 
 	call neobundle#rc(expand('~/.bundle'))
