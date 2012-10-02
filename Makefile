@@ -3,8 +3,8 @@ INSTALL_DIR := $(HOME)
 
 all: cui gui
 
-.PHONY: git tmux vim zsh
-cui: git tmux vim zsh
+.PHONY: git tig tmux vim zsh
+cui: git tig tmux vim zsh
 
 .PHONY: vimperator
 gui: vimperator
@@ -13,10 +13,14 @@ git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
 	ln -fns $(CURRENT_DIR)/git/gitignore $(INSTALL_DIR)/.gitignore
 
+tig:
+	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
+
 tmux:
 	ln -fns $(CURRENT_DIR)/tmux/tmux.conf $(INSTALL_DIR)/.tmux.conf
 
 vim:
+	git submodule update --init
 	ln -fns $(CURRENT_DIR)/vim/vim    $(INSTALL_DIR)/.vim
 	ln -fns $(CURRENT_DIR)/vim/vimrc  $(INSTALL_DIR)/.vimrc
 	ln -fns $(CURRENT_DIR)/vim/gvimrc $(INSTALL_DIR)/.gvimrc

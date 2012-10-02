@@ -60,7 +60,9 @@
 	pl = pull
 	ps = push
 	rb = rebase
+	rc = rebase --continue
 	rbh = rebase HEAD
+	ro = rebase origin
 	rollback = reset --hard HEAD~
 	see = browse
 	show-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
@@ -73,7 +75,7 @@
 	so = remote show origin
 	sp = stash pop
 	ss = stash save
-	st = status -s
+	st = status -sb
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	up = pull --rebase
 	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
