@@ -11,7 +11,17 @@ do
 	source $config_file
 done
 
+
 for dir in $HOME/app/*
 do
 	source_if $dir/zshenv
 done
+
+# https://github.com/rupa/z
+_z_add() {
+	_z --add "$(pwd -P)"
+}
+
+_Z_CMD=j
+source $ZSH_HOME/plugins/z.sh/z.sh
+add-zsh-hook precmd _z_add
