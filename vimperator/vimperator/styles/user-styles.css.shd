@@ -1,4 +1,4 @@
-// scss -s -t expanded --trace
+// scss -s -t nested --trace
 
 // タブの幅を40pxで固定する
 @-moz-document url-prefix("chrome://") {
@@ -8,9 +8,29 @@
 	}
 }
 
+
 // チャットワークの広告を非表示にする
 @-moz-document domain("www.chatwork.com") {
 	#cw_promotion_area {
 		display: none !important;
+	}
+}
+
+
+// Firebugのフォント設定
+@-moz-document url-prefix("chrome://firebug/content/firefox/") {
+	textbox#fbCommandLine,    // コマンドライン
+	#fbCommandLineCompletion, // コマンドラインの補完候補
+	#fbCommandEditor,         // コマンドエディタ
+	#fbCommandToolbar         // コマンドエディタツール
+	{
+		font-size: 12px !important;
+		font-family: "Source Code Pro" !important;
+	}
+
+	// コンソールログ
+	.panelNode-console {
+		font-size: 12px !important;
+		font-family: "Ricty" !important;
 	}
 }
