@@ -171,7 +171,6 @@ silent qmark m http://www.gmail.com/
 silent qmark p http://getpocket.com/a/queue/
 silent qmark r http://reader.google.com/reader/
 silent qmark R http://readability.com/hamaco/
-silent qmark t http://reblog.machine.mamemomonga.com/
 silent qmark T http://www.tumblr.com/dashboard
 silent qmark I http://sp.pf.mbga.jp/12008305
 
