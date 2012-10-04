@@ -55,6 +55,8 @@ alias dstat-cpu="dstat -Tclr"
 alias dstat-net="dstat -Tclnd"
 alias dstat-disk="dstat -Tcldr"
 
+alias delete-empty-dir="find . -type d -empty -delete"
+
 case "${OSTYPE}" in
 linux*)
 	alias tbz2="tar cvjf"
