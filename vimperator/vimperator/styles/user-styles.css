@@ -18,3 +18,17 @@
   .panelNode-console {
     font-size: 12px !important;
     font-family: "Ricty" !important; } }
+
+@-moz-document url("chrome://browser/content/aboutDialog.xul") {
+  #aboutDialog #clientBox {
+    background-color: #fffff7 !important; }
+
+  #aboutDialog #clientBox #leftBox {
+    background-repeat: no-repeat;
+    min-width: 250px !important;
+    margin-top: 0px !important;
+    -moz-margin-start: 20px !important;
+    -moz-margin-end: -10px !important; }
+
+  #aboutDialog #bottomBox {
+    background: -moz-linear-gradient(top, #c3c3c3, #f0f0f0 6px) !important; } }
