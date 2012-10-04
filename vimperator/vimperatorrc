@@ -180,11 +180,19 @@ silent qmark b http://reblog.machine.mamemomonga.com/dashboard
 
 " Styles {{{1
 
-style chrome://* <<EOM
-.tabbrowser-tab[fadein]:not([pinned]) {
-	min-width: 40px !important;
-	max-width: 40px !important;
-}
+javascript <<EOM
+(function(){
+  let filter = new RegExp('^.*\.css$');
+  let dir = io.File('~/.vimperator/styles')
+  if (dir.exists() && dir.isDirectory() && dir.isReadable()) {
+    let files = dir.readDirectory(true);
+    files.forEach(function (file) {
+      if (filter.test(file.path)) {
+        io.source(file.path, false);
+      }
+    });
+  }
+})();
 EOM
 
 " }}}

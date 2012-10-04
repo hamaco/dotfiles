@@ -1,0 +1,16 @@
+// scss -s -t expanded --trace
+
+// タブの幅を40pxで固定する
+@-moz-document url-prefix("chrome://") {
+	.tabbrowser-tab[fadein]:not([pinned]) {
+		min-width: 40px !important;
+		max-width: 40px !important;
+	}
+}
+
+// チャットワークの広告を非表示にする
+@-moz-document domain("www.chatwork.com") {
+	#cw_promotion_area {
+		display: none !important;
+	}
+}

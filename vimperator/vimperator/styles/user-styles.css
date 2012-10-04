@@ -1,0 +1,12 @@
+@-moz-document url-prefix("chrome://") {
+  .tabbrowser-tab[fadein]:not([pinned]) {
+    min-width: 40px !important;
+    max-width: 40px !important;
+  }
+}
+
+@-moz-document domain("www.chatwork.com") {
+  #cw_promotion_area {
+    display: none !important;
+  }
+}
