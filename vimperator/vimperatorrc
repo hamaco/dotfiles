@@ -163,6 +163,7 @@ bmark -title="Twilog (hamaco)" -keyword=twilog http://twilog.org/hamaco
 silent qmark a http://animita.tv/mypage/product_list/on_air
 silent qmark A http://analytics.google.com/
 silent qmark c http://calendar.google.com/
+silent qmark C http://www.chatwork.com/
 silent qmark F http://fastladder.com/reader/
 silent qmark f http://www.facebook.com/
 silent qmark l http://reader.livedoor.com/reader/
