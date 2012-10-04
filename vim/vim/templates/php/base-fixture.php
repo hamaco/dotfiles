@@ -23,7 +23,7 @@ class Fixture_{{_name_}} extends Fixture_Base
 
       $data = array();
       foreach ($columns as $column_name => $pos) {
-        $data[$column_name] = $line[$pos];
+        $data[$column_name] = $line[$pos] ?: null;
       }
 
       $this->insert($data);
