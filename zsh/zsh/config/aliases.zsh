@@ -57,6 +57,8 @@ alias dstat-disk="dstat -Tcldr"
 
 alias delete-empty-dir="find . -type d -empty -delete"
 
+alias oil="noglob oil"
+
 case "${OSTYPE}" in
 linux*)
 	alias tbz2="tar cvjf"
