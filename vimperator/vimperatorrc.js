@@ -44,3 +44,5 @@ mappings.addUserMap(
     editor.executeCommand("cmd_charNext",  1);
   }
 );
+
+// vim: set ft=javascript :
