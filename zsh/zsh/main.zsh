@@ -17,6 +17,7 @@ do
 	source_if $dir/zshenv
 done
 
+##### z.sh #####
 # https://github.com/rupa/z
 _z_add() {
 	_z --add "$(pwd -P)"
@@ -25,3 +26,9 @@ _z_add() {
 _Z_CMD=j
 source $ZSH_HOME/plugins/z.sh/z.sh
 add-zsh-hook precmd _z_add
+
+##### tmux #####
+# @TODO tmuxのコマンド存在チェックする
+if [ -z "$TMUX" ]; then
+	tmux
+fi
