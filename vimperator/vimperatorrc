@@ -51,6 +51,7 @@ set! font.name.serif.ja=07YasashisaGothic
 "set! general.useragent.extra.firefox='Firefox/3.6.13'
 set! general.useragent.locale='ja'
 set! intl.accept_languages='ja,en-us,en'
+set! intl.charset.default='Shift_JIS'
 set! middlemouse.paste=true
 " IPv6の無効化
 set! network.dns.disableIPv6=true
