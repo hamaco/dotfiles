@@ -89,6 +89,7 @@ NeoBundle 'git://github.com/tpope/vim-fugitive.git'
 NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
 NeoBundle 'git://github.com/tsukkee/unite-help.git'
 
+NeoBundle 'git://github.com/tyru/autochmodx.vim.git'
 NeoBundle 'git://github.com/tyru/caw.vim.git'
 NeoBundle 'git://github.com/tyru/current-func-info.vim.git'
 NeoBundle 'git://github.com/tyru/emap.vim.git'
