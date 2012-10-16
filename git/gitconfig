@@ -58,6 +58,7 @@
 	newly = log HEAD@{1}..HEAD --reverse
 	newlyp = log HEAD@{1}..HEAD -p --reverse
 	pl = pull
+	pr = pull --rebase
 	ps = push
 	rb = rebase
 	rc = rebase --continue
