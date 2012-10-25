@@ -35,7 +35,7 @@ elseif has("unix")
 	"set guifont=Rounded\ M+\ 1m\ Medium\ 11
 	"set guifont=Ricty\ Discord\ 12
 	"set guifont=Ricty\ Bold\ 12
-	set guifont=Source\ Code\ Pro\ 10
+	set guifont=Source\ Code\ Pro\ 11
 	colorscheme h2u_dark
 elseif has("win32")
 	if has('vim_starting')
