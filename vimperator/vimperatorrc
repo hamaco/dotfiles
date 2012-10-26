@@ -164,7 +164,7 @@ bmark -title="Twilog (hamaco)" -keyword=twilog http://twilog.org/hamaco
 
 " QuickMarks {{{1
 
-silent qmark a http://animita.tv/mypage/product_list/on_air
+silent qmark a http://animita.tv/home/checkin
 silent qmark A http://analytics.google.com/
 silent qmark c http://calendar.google.com/
 silent qmark C http://www.chatwork.com/
