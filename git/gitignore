@@ -13,7 +13,7 @@
 
 # for Sabel
 */*sabel.log
-#cache/*
+cache/*
 
 # for XOOPS
 sess_*
