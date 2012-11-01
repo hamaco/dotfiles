@@ -44,13 +44,21 @@ set! dom.disable_window_move_resize=true
 set! dom.event.contextmenu.enabled=false
 set! dom.popup_maximum=2048
 set! font.language.group=ja
+
 set! font.minimum-size.ja=11
 set! font.name.monospace.ja=07YasashisaGothic
-set! font.name.monospace.x-western=07YasashisaGothic
 set! font.name.sans-serif.ja=07YasashisaGothic
-set! font.name.sans-serif.x-western=07YasashisaGothic
 set! font.name.serif.ja=07YasashisaGothic
+set! font.size.fixed.ja=14
+set! font.size.variable.ja=14
+
+set! font.minimum-size.x-western=11
+set! font.name.monospace.x-western=07YasashisaGothic
+set! font.name.sans-serif.x-western=07YasashisaGothic
 set! font.name.serif.x-western=07YasashisaGothic
+set! font.size.fixed.x-western=14
+set! font.size.variable.x-western=14
+
 "set! general.useragent.extra.firefox='Firefox/3.6.13'
 set! general.useragent.locale='ja'
 set! intl.accept_languages='ja,en-us,en'
