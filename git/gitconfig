@@ -60,6 +60,7 @@
 	pl = pull
 	pr = pull --rebase
 	ps = push
+	ranking = shortlog -sn
 	rb = rebase
 	rc = rebase --continue
 	rbh = rebase HEAD
