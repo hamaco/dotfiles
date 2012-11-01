@@ -420,6 +420,54 @@ let g:quickrun_config['jsx'] = {
 			\ }
 
 
+" reanimate.vim {{{2
+let g:reanimate_save_dir = expand('~/.vim/save_point')
+let g:reanimate_default_save_name = 'latest'
+let g:reanimate_sessionoptions="curdir,folds,help,localoptions,slash,tabpages,winpos,winsize"
+let g:reanimate_disables = ['reanimate_message']
+
+let s:event = {
+\    "name" : "user_event",
+\}
+
+" function! s:event.load_pre(...)
+function! s:event.load_pre_post(...)
+    " 読み込み前に全てのバッファを保存
+    :wall
+    " 復元前にタブを削除する
+    :tabonly
+endfunction
+
+function! s:event.save_pre(...)
+    " 保存前に args を削除する
+    try
+        :execute "argd *"
+    catch
+    endtry
+endfunction
+
+call reanimate#hook(s:event)
+unlet s:event
+
+
+augroup SavePoint
+    autocmd!
+    " 終了時に保存を行う
+    autocmd VimLeavePre * ReanimateSave
+
+    " バッファに書き込む時に一緒の保存する
+    autocmd BufWritePost * ReanimateSave
+
+    " CursorHold 時には ReanimateSaveCursorHold を使用する
+"     autocmd CursorHold * ReanimateSaveCursorHold
+
+    " 自動的に復元する場合
+"     autocmd VimEnter * ReanimateLoad
+augroup END
+
+" }}}
+
+
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
 let g:ref_use_vimproc = 0
@@ -533,7 +581,9 @@ noremap <silent> [unite]g  :<C-u>Unite grep<CR><CR>
 noremap <silent> [unite]l  :<C-u>Unite -start-insert line<CR>
 noremap <silent> [unite]o  :<C-u>Unite outline<CR>
 noremap <silent> [unite]p  :<C-u>Unite process -start-insert<CR>
-noremap <silent> [unite]r  :<C-u>UniteResume<CR>
+noremap <silent> [unite]rm :<C-u>UniteResume<CR>
+noremap <silent> [unite]rl :<C-u>Unite reanimate -default-action=reanimate_load<CR>
+noremap <silent> [unite]rs :<C-u>Unite reanimate -default-action=reanimate_save<CR>
 noremap <silent> [unite]s  :<C-u>Unite colorscheme -auto-preview<CR>
 noremap <silent> [unite]t  :<C-u>Unite -immediately tab:no-current<CR>
 noremap <silent> [unite]w  :<C-u>Unite -immediately window:no-current<CR>
@@ -1117,5 +1167,24 @@ function! s:force_blockwise_visual(next_key)
   endif
 endfunction
 
+let g:Powerline_symbols = 'fancy'
+
+
+let g:indent_guides_enable_on_vim_startup = 1
+" 1インデント目からガイドする
+let g:indent_guides_start_level = 1
+" 自動カラーを無効にして手動で設定する
+let g:indent_guides_auto_colors = 1
+" 奇数インデントのガイドカラー
+"hi IndentGuidesOdd  ctermbg=green guibg=green
+" 偶数インデントのガイドカラー
+"hi IndentGuidesEven ctermbg=black
+" ハイライト色の変化の幅 (Terminal では未サポート)
+"let g:indent_guides_color_change_percent = 20
+" ガイドの幅
+let g:indent_guides_guide_size = 4
+
+
 " END {{{1
 " vim: foldmethod=marker
+"
