@@ -43,7 +43,7 @@
 	dcw = diff --color-words
 	di = diff
 	difflog = log -p HEAD@{3.days.ago}
-	f = fetch
+	fo = fetch origin
 	find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
 	first = !"git init -q && git commit -q --allow-empty -m 'init'"
 	fixup = commit --amend -a -C HEAD
