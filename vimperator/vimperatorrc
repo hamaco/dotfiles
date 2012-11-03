@@ -235,15 +235,6 @@ EOM
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 
 
-" vimperator設定
-"set guioptions=rbm
-set hintchars=iasdfghjkl
-set showstatuslinks=2
-set titlestring=Firefox
-"set wildoptions=auto
-
-
-
 " keymappings {{{1
 
 
