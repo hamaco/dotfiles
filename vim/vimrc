@@ -1052,7 +1052,7 @@ nnoremap sL <C-w>L:call <SID>good_width()<Cr>
 
 function! s:good_width()
   if winwidth(0) < 84
-    vertical resize 84
+		"vertical resize 84
   endif
 endfunction
 
