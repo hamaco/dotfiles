@@ -1,3 +1,6 @@
+set vertical-split = yes
+
+
 bind diff ; view-next
 bind diff l scroll-right
 bind diff h scroll-left
@@ -8,3 +11,4 @@ bind main o !@hub browse -- commit/%(commit)
 bind diff o !@hub browse -- commit/%(commit)
 bind log o !@hub browse -- commit/%(commit)
 
+bind generic L !git reflog
