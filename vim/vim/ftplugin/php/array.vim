@@ -12,5 +12,5 @@ function! s:php_smart_bracket(last_char)
 	endif
 endfunction
 
-inoremap <buffer><expr> [ <SID>php_smart_bracket(<SID>last_char())
-inoremap <buffer><expr> ] smartchr#one_of(']', ')')
+"inoremap <buffer><expr> [ <SID>php_smart_bracket(<SID>last_char())
+"inoremap <buffer><expr> ] smartchr#one_of(']', ')')
