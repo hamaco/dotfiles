@@ -12,6 +12,7 @@
     googlesuggeset
     multi_requestor
     readitlater
+    removetabs
     sbmcommentsviewer
     slideshare
     subscldr
