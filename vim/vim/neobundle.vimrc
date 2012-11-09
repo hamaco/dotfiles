@@ -58,6 +58,8 @@ NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 
 " NeoBundle 'git://github.com/osyo-manga/quickrun-hook-u-nya-.git'
 NeoBundle 'git://github.com/hamaco/quickrun-hook-u-nya-.git'
+NeoBundle 'git://github.com/osyo-manga/shabadou.vim.git'
+NeoBundle 'git://github.com/osyo-manga/unite-quickfix.git'
 
 NeoBundle 'git://github.com/Shougo/echodoc.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
