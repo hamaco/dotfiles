@@ -1,13 +1,23 @@
 CURRENT_DIR := $(shell pwd)
 INSTALL_DIR := $(HOME)
 
+OS = ${shell uname}
+
 all: cui gui
 
 .PHONY: git tig tmux vim zsh
 cui: git tig tmux vim zsh
 
-.PHONY: vimperator
-gui: vimperator
+.PHONY: vimperator chrome
+gui: vimperator chrome
+
+chrome:
+ifeq ($(OS), Linux)
+	ln -fns $(CURRENT_DIR)/chrome/usercss/Custom.css $(INSTALL_DIR)/.config/chromium/Default/User\ StyleSheets/Custom.css
+endif
+ifeq ($(OS), Darwin)
+	ln -fns $(CURRENT_DIR)/chrome/usercss/Custom.css $(INSTALL_DIR)/Library/Application\ Support/Google/Chrome/Default/User\ StyleSheets/Custom.css
+endif
 
 git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
