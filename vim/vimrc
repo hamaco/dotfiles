@@ -465,8 +465,6 @@ augroup SavePoint
 "     autocmd VimEnter * ReanimateLoad
 augroup END
 
-" }}}
-
 
 " ref.vim {{{2
 " vimprocを使用すると上手く動かない
@@ -503,6 +501,18 @@ command!
 MapAlterCommand res[tart] Restart
 MapAlterCommand ers[tart] Restart
 MapAlterCommand rse[tart] Restart
+
+
+" smartinput.vim {{{2
+call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
+call smartinput#map_to_trigger('i', '%', '%', '%')
+
+"call smartinput#define_rule({'at': '(\%#)', 'char': '<Space>', 'input': '<Space><Space><Left>'})
+"call smartinput#define_rule({'at': '( \%# )', 'char': '<BS>', 'input': '<BS><Del>'})
+
+call smartinput#define_rule({'at': '{\%#}', 'char': '<Space>', 'input': '<Space><Space><Left>'})
+call smartinput#define_rule({'at': '{\%#}', 'char': '%', 'input': '%<Space><Space>%<Left><Left>'})
+call smartinput#define_rule({'at': '{% \%# %}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
 
 
 " smartword.vim {{{2
