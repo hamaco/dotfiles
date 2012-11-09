@@ -45,3 +45,14 @@ if [ -z "$TMUX" ]; then
 fi
 
 
+#######
+
+function _delete-char-or-list-expand() {
+    if [[ -z "${RBUFFER}" ]]; then
+        zle list-expand
+    else
+        zle delete-char
+    fi
+}
+zle -N _delete-char-or-list-expand
+bindkey '^D' _delete-char-or-list-expand
