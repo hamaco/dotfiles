@@ -37,14 +37,12 @@ alias tmux="tmux a || tmux"
 alias crontab="crontab -i"
 
 # for git
-#alias git="hub"
-eval "$(hub alias -s)"
+if type hub > /dev/null; then
+	eval "$(hub alias -s)"
+fi
 alias g="git"
+
 alias gs="git svn"
-#alias gst="git status"
-alias gdi="git diff"
-#alias gad="git add"
-#alias gci="git commit"
 alias gsr="git svn rebase"
 alias gsd="git svn dcommit"
 
