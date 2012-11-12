@@ -28,9 +28,7 @@ source $ZSH_HOME/plugins/z.sh/z.sh
 add-zsh-hook precmd _z_add
 
 ##### tmux #####
-# @TODO tmuxのコマンド存在チェックする
-
-if type tmux > /dev/null; then
+if whence -p tmux > /dev/null; then
 	tmuxx() {
 		if [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/null) ) ]]; then
 			# on OS X force tmux's default command to spawn a shell in the user's namespace
@@ -46,9 +44,7 @@ if type tmux > /dev/null; then
 	fi
 fi
 
-
 #######
-
 function _delete-char-or-list-expand() {
     if [[ -z "${RBUFFER}" ]]; then
         zle list-expand
@@ -58,3 +54,5 @@ function _delete-char-or-list-expand() {
 }
 zle -N _delete-char-or-list-expand
 bindkey '^D' _delete-char-or-list-expand
+
+#######
