@@ -512,14 +512,24 @@ MapAlterCommand rse[tart] Restart
 
 " smartinput.vim {{{2
 call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
+call smartinput#map_to_trigger('i', '<', '<', '<')
+call smartinput#map_to_trigger('i', '>', '>', '>')
 call smartinput#map_to_trigger('i', '%', '%', '%')
+call smartinput#map_to_trigger('i', '?', '?', '?')
 
 "call smartinput#define_rule({'at': '(\%#)', 'char': '<Space>', 'input': '<Space><Space><Left>'})
 "call smartinput#define_rule({'at': '( \%# )', 'char': '<BS>', 'input': '<BS><Del>'})
 
+call smartinput#define_rule({'at': '\%#', 'char': '<', 'input': '<><Left>'})
+call smartinput#define_rule({'at': '\%#\_s*>', 'char': '>', 'input': '<C-r>=smartinput#_leave_block(''>'')<Enter><Right>'})
+call smartinput#define_rule({'at': '<\%#>', 'char': '<BS>', 'input': '<BS><Del>'})
+
 call smartinput#define_rule({'at': '{\%#}', 'char': '<Space>', 'input': '<Space><Space><Left>'})
 call smartinput#define_rule({'at': '{\%#}', 'char': '%', 'input': '%<Space><Space>%<Left><Left>'})
 call smartinput#define_rule({'at': '{% \%# %}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
+
+call smartinput#define_rule({'at': '<\%#>', 'char': '?', 'input': '??<Left>'})
+call smartinput#define_rule({'at': '<?\%#?>', 'char': '<BS>', 'input': '<BS><Del>'})
 
 
 " smartword.vim {{{2
