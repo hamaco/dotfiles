@@ -20,7 +20,7 @@ if is-at-least 4.3.10; then
   zstyle ":vcs_info:git:*" actionformats "(%s)-[%c%u%b|%a]"
 fi
 
-if [ ${$(hostname -A)##*.} = "local" ]; then
+if [ ${$(hostname)##*.} = "local" ]; then
 	HOSTCOLOR="green"
 else
 	HOSTCOLOR="yellow"
