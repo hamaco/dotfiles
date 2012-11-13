@@ -5,8 +5,8 @@ OS = ${shell uname}
 
 all: cui gui
 
-.PHONY: git tig tmux vim zsh
-cui: git tig tmux vim zsh
+.PHONY: git mercurial tig tmux vim zsh
+cui: git mercurial tig tmux vim zsh
 
 .PHONY: vimperator chrome
 gui: vimperator chrome
@@ -19,9 +19,13 @@ ifeq ($(OS), Darwin)
 	ln -fns $(CURRENT_DIR)/chrome/usercss/Custom.css $(INSTALL_DIR)/Library/Application\ Support/Google/Chrome/Default/User\ StyleSheets/Custom.css
 endif
 
+
 git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
 	ln -fns $(CURRENT_DIR)/git/gitignore $(INSTALL_DIR)/.gitignore
+
+mercurial:
+	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
 
 tig:
 	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
