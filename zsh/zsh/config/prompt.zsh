@@ -25,7 +25,7 @@ if [ ${$(hostname)##*.} = "local" ]; then
 else
 	HOSTCOLOR="yellow"
 fi
-if [ whoami = 'root' ]; then
+if [ $(whoami) = 'root' ]; then
 	HOSTCOLOR="red"
 fi
 
