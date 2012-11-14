@@ -14,8 +14,6 @@ if has('vim_starting')
 	call neobundle#rc(expand('~/.bundle'))
 endif
 
-NeoBundle 'git://github.com/osyo-manga/vim-reanimate.git'
-
 NeoBundle 'git://github.com/hamaco/vim-sunday.git'
 
 "NeoBundle 'git://github.com/vim-scripts/JavaScript-syntax.git'
