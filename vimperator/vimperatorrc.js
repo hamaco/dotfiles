@@ -15,6 +15,7 @@
     removetabs
     sbmcommentsviewer
     slideshare
+    speakerdeck
     subscldr
     walk-input
   </>.toString().split(/\s+/).filter(function(n) !/^!/.test(n));
