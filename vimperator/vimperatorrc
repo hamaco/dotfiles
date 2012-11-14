@@ -125,8 +125,6 @@ nnoremap L <C-n>
 nnoremap <Left> :tabmove! -1<CR>
 nnoremap <Right> :tabmove! +1<CR>
 
-nnoremap b :<C-u>tabopen about:mybookmarks<CR>
-
 " }}}
 " Key mappings for Extensions {{{1
 
