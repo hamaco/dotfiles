@@ -1,163 +1,163 @@
 snippet php
 prev_word '^'
-  <?php
-  
-  ${1}
+	<?php
+	
+	${1}
 
 snippet inc
 abbr include
-  include("${1:file}");${2}
+	include("${1:file}");${2}
 
 snippet inc1
 abbr include_once
-  include_once("${1:file}");${2}
+	include_once("${1:file}");${2}
 
 snippet req
-  require("${1:file}");${2}
+	require("${1:file}");${2}
 
 snippet req1
-  require_once("${1:file}");${2}
+	require_once("${1:file}");${2}
 
 snippet if
 abbr if
-  if (${1}) {
-    ${2}
-  }
+	if (${1}) {
+		${2}
+	}
 
 snippet ife
 abbr if / else
-  if (${1}) {
-    ${2}
-  } else {
-    ${3}
-  }
+	if (${1}) {
+		${2}
+	} else {
+		${3}
+	}
 
 snippet fe
 abbr foreach
-  foreach (${1} as ${2}) {
-    ${3}
-  }
+	foreach (${1} as ${2}) {
+		${3}
+	}
 
 snippet cls
 prev_word '^'
-  class ${1:className}
-  {
-    ${2}
-  }
+	class ${1:className}
+	{
+		${2}
+	}
 
 snippet fn
-  function ${1}(${2})
-  {
-    ${3}
-  }
+	function ${1}(${2})
+	{
+		${3}
+	}
 
 snippet pusfn
-  public static function ${1}(${2})
-  {
-    ${3}
-  }
+	public static function ${1}(${2})
+	{
+		${3}
+	}
 
 snippet pufn
-  public function ${1}(${2})
-  {
-    ${3}
-  }
+	public function ${1}(${2})
+	{
+		${3}
+	}
 
 snippet prfn
-  protected function ${1}(${2})
-  {
-    ${3}
-  }
+	protected function ${1}(${2})
+	{
+		${3}
+	}
 
 snippet try
-  try {
-    ${1}
-  } catch (Exception $e){
-    ${2}
-  }
+	try {
+		${1}
+	} catch (Exception $e){
+		${2}
+	}
 
 snippet throw
-  throw new ${1}Exception(${2});
+	throw new ${1}Exception(${2});
 
 snippet pp
-  print "<PRE>";var_dump(${1});exit;
+	print "<PRE>";var_dump(${1});exit;
 
 snippet vd
-  var_dump(${1});
+	var_dump(${1});
 
 snippet ve
-  var_dump(${1});exit;
+	var_dump(${1});exit;
 
 snippet pr
-  print_r(${1});${2}
+	print_r(${1});${2}
 
 snippet pe
-  print_r(${1});exit;
+	print_r(${1});exit;
 
 
 # util
 snippet dt
-  date('Y-m-d H:i:s'${1})${2}
+	date('Y-m-d H:i:s'${1})${2}
 
 snippet heredoc
-  <<<EOM
-  ${1}
-  EOM
+	<<<EOM
+	${1}
+	EOM
 
 snippet errshow
-  error_reporting(E_ALL);
-  ini_set('display_errors', 1);
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
 
 snippet check_performance
-  $s   = microtime(true);
-  $mem = memory_get_usage();
-  
-  ${1};
-  
-  $result = array(
-    'time'   => microtime(true) - $s,
-    'memory' => memory_get_usage() - $mem,
-  );
-  echo '<PRE>'; var_dump($result); exit;
+	$s	 = microtime(true);
+	$mem = memory_get_usage();
+	
+	${1};
+	
+	$result = array(
+		'time'	 => microtime(true) - $s,
+		'memory' => memory_get_usage() - $mem,
+	);
+	echo '<PRE>'; var_dump($result); exit;
 
 # for Sabel
 snippet paginator
-  $paginator = new Paginator('${1}');
-  $paginator->setDefaultOrder('id', 'DESC');
-  $this->paginator = $paginator->build(30, $this->GET_VARS);
+	$paginator = new Paginator('${1}');
+	$paginator->setDefaultOrder('id', 'DESC');
+	$this->paginator = $paginator->build(30, $this->GET_VARS);
 
 snippet $cc
-  $create->column('${1}')->type(${2})${3}->nullable(false)${4};
+	$create->column('${1}')->type(${2})${3}->nullable(false)${4};
 
 snippet $ccn
-  $create->column('${1}')->type(${2})${3};
+	$create->column('${1}')->type(${2})${3};
 
 snippet $cu
-  $create->unique('${1}');
+	$create->unique('${1}');
 
 snippet $cf
-  $create->fkey('${1}')->onDelete('CASCADE');
+	$create->fkey('${1}')->onDelete('CASCADE');
 
 snippet de
-  dump(${1});exit;
+	dump(${1});exit;
 
 snippet tra
-  try {
-    Sabel_Db_Transaction::activate();
-    
-    ${1}
-    
-    Sabel_Db_Transaction::commit();
-  } catch (Exception $e) {
-    Sabel_Db_Transaction::rollback();
-  }
+	try {
+		Sabel_Db_Transaction::activate();
+		
+		${1}
+		
+		Sabel_Db_Transaction::commit();
+	} catch (Exception $e) {
+		Sabel_Db_Transaction::rollback();
+	}
 
 # for CakePHP
 snippet $mfa
-  $this->${1}->find('all', array(
-    'conditions' => array(
-      ${2}
-    ),
-  ));
+	$this->${1}->find('all', array(
+		'conditions' => array(
+			${2}
+		),
+	));
 
 # vim: noexpandtab ts=2 sw=2
