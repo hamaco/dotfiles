@@ -147,11 +147,6 @@ nnoremap ,t :<C-u>mr alc<Space>
 nnoremap ,a :<C-u>readitlater add<CR>
 
 " }}}
-" Color Scheme {{{1
-
-colorscheme indigo
-
-" }}}
 " bmark {{{1
 
 bmark -title="モゲマス ユーザ" -keyword=imas http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F%s%3Frnd%3D832445730
@@ -162,19 +157,17 @@ bmark -title="Twilog (hamaco)" -keyword=twilog http://twilog.org/hamaco
 
 silent qmark a http://animita.tv/home/checkin
 silent qmark A http://analytics.google.com/
+silent qmark b http://reblog.machine.mamemomonga.com/dashboard
 silent qmark c http://calendar.google.com/
 silent qmark C http://www.chatwork.com/
-silent qmark F http://fastladder.com/reader/
 silent qmark f http://www.facebook.com/
+silent qmark F http://fastladder.com/reader/
+silent qmark I http://sp.pf.mbga.jp/12008305
 silent qmark l http://reader.livedoor.com/reader/
 silent qmark m http://www.gmail.com/
 silent qmark p http://getpocket.com/a/queue/
 silent qmark r http://reader.google.com/reader/
 silent qmark R http://readability.com/hamaco/
-silent qmark T http://www.tumblr.com/dashboard
-silent qmark I http://sp.pf.mbga.jp/12008305
-
-silent qmark b http://reblog.machine.mamemomonga.com/dashboard
 
 " }}}
 " Styles {{{1
@@ -298,6 +291,7 @@ liberator.globalVariables.refcontrol = {
 };
 EOM
 
+colorscheme indigo
 source ~/.vimperatorrc.js
 
 " END {{{1
