@@ -1,3 +1,5 @@
+alias ha="history -i 1"
+
 setopt extended_history     # 履歴ファイルに実行時間・経過時間を記録
 setopt hist_expand          # 補完時にヒストリを自動的に展開
 setopt hist_ignore_all_dups # 履歴ファイルに重複して保存しない
@@ -6,7 +8,6 @@ setopt hist_ignore_space    # スペースで始まるコマンドは履歴フ�
 setopt hist_no_store        # historyコマンドは履歴ファイルに保存しない
 setopt hist_reduce_blanks   # 余分なスペースを削除して履歴ファイルに保存する
 setopt share_history        # 履歴ファイルを共有する
-
 
 function hs () {
     n_hist_default=1000000
@@ -28,8 +29,8 @@ function hs () {
 
     greps=""
     for w in $words; do
-        greps="${greps} | grep ${w}"
+        greps="${greps} | =grep ${w}"
     done
 
-    eval "history -${n_hist} ${greps}"
+    eval "history -i -${n_hist} ${greps}"
 }
