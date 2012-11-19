@@ -57,6 +57,7 @@
 	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
 	newly = log HEAD@{1}..HEAD --reverse
 	newlyp = log HEAD@{1}..HEAD -p --reverse
+	package = !"git archive --format=tar --prefix=$(basename $(pwd))/ HEAD | gzip > $(basename $(pwd)).tar.gz"
 	pl = pull
 	pr = pull --rebase
 	ps = push
