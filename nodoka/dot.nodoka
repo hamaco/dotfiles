@@ -106,15 +106,15 @@ keymap Global
 	mod windows -= RightWindows
 	mod mod9    += RightWindows
 	key *RWin = &Ignore
-	key m9-a  = C-A-_1
-	key m9-s  = C-A-_2
-	key m9-d  = C-A-_3
-	key m9-f  = C-A-_4
-	key m9-g  = C-A-_5
-	key m9-h  = C-A-_6
-	key m9-j  = C-A-_7
-	key m9-k  = C-A-_8
-	key m9-l  = C-A-_9
+	key m9-a  = C-A-_1 &Sync
+	key m9-s  = C-A-_2 &Sync
+	key m9-d  = C-A-_3 &Sync
+	key m9-f  = C-A-_4 &Sync
+	key m9-g  = C-A-_5 &Sync
+	key m9-h  = C-A-_6 &Sync
+	key m9-j  = C-A-_7 &Sync
+	key m9-k  = C-A-_8 &Sync
+	key m9-l  = C-A-_9 &Sync
 	key m9-e  = W-e
 
 	# 右シフトは普段使わないので^と&に置き換え
