@@ -85,6 +85,9 @@
 
 [include]
 	path = /home/hamaco/.gitconfig.local
+	
+[github]
+	user = hamaco
 
 [tig "bind"]
 	generic = g move-first-line
