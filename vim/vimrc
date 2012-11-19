@@ -260,6 +260,11 @@ nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
 
 
+" gist.vim {{{2
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
+
 " gundo.vim {{{2
 nnoremap U :<C-u>GundoToggle<CR>
 
