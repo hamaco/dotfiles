@@ -30,6 +30,7 @@ set! browser.cache.disk.capacity=51200
 set! browser.cache.disk.enable=true
 set! browser.cache.memory.enable=true
 set! browser.cache.memory.capacity=51200
+set! browser.display.use_document_fonts=1
 set! browser.download.manager.retention=1
 set! browser.sessionstore.max_concurrent_tabs=0
 set! browser.sessionstore.max_tabs_undo=20
@@ -41,21 +42,18 @@ set! dom.disable_window_move_resize=true
 set! dom.event.contextmenu.enabled=false
 set! dom.popup_maximum=2048
 set! font.language.group=ja
-
 set! font.minimum-size.ja=11
 set! font.name.monospace.ja=07YasashisaGothic
 set! font.name.sans-serif.ja=07YasashisaGothic
 set! font.name.serif.ja=07YasashisaGothic
 set! font.size.fixed.ja=14
 set! font.size.variable.ja=14
-
 set! font.minimum-size.x-western=11
 set! font.name.monospace.x-western=07YasashisaGothic
 set! font.name.sans-serif.x-western=07YasashisaGothic
 set! font.name.serif.x-western=07YasashisaGothic
 set! font.size.fixed.x-western=14
 set! font.size.variable.x-western=14
-
 "set! general.useragent.extra.firefox='Firefox/3.6.13'
 set! general.useragent.locale='ja'
 set! intl.accept_languages='ja,en-us,en'

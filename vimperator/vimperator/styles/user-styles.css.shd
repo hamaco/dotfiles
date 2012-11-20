@@ -1,5 +1,9 @@
 // scss -s -t nested --trace
 
+* {
+	font-family: '07YasashiaGothic' !important;
+}
+
 // タブの幅を40pxで固定する
 @-moz-document url-prefix("chrome://") {
 	.tabbrowser-tab[fadein]:not([pinned]) {
@@ -13,6 +17,13 @@
 @-moz-document domain("www.chatwork.com") {
 	#cw_promotion_area {
 		display: none !important;
+	}
+}
+
+// GitHubのアイコン出るようにしたい
+@-moz-document domain("github.com") {
+	.mini-icon, .mega-icon {
+		font-family: 'Octicons Regular' !important;
 	}
 }
 

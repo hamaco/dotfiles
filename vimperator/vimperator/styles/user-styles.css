@@ -1,3 +1,6 @@
+* {
+  font-family: '07YasashiaGothic' !important; }
+
 @-moz-document url-prefix("chrome://") {
   .tabbrowser-tab[fadein]:not([pinned]) {
     min-width: 40px !important;
@@ -6,6 +9,10 @@
 @-moz-document domain("www.chatwork.com") {
   #cw_promotion_area {
     display: none !important; } }
+
+@-moz-document domain("github.com") {
+  .mini-icon, .mega-icon {
+    font-family: 'Octicons Regular' !important; } }
 
 @-moz-document url-prefix("chrome://firebug/content/firefox/") {
   textbox#fbCommandLine,
