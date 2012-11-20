@@ -91,6 +91,7 @@ NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/thinca/vim-scouter.git'
 NeoBundle 'git://github.com/thinca/vim-showtime.git'
 NeoBundle 'git://github.com/thinca/vim-unite-history.git'
+NeoBundle 'git://github.com/thinca/vim-visualstar.git'
 
 NeoBundle 'git://github.com/tpope/vim-abolish.git'
 NeoBundle 'git://github.com/tpope/vim-fugitive.git'
