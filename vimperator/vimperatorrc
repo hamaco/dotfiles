@@ -35,7 +35,6 @@ set! browser.download.manager.retention=1
 set! browser.sessionstore.max_concurrent_tabs=0
 set! browser.sessionstore.max_tabs_undo=20
 set! browser.tabs.closeButtons=2
-set! browser.display.use_document_fonts=0
 set! browser.zoom.full=true
 set! config.trim_on_minimize=true
 set! dom.disable_window_move_resize=true
