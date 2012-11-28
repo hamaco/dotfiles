@@ -47,11 +47,7 @@ if whence -p tmux > /dev/null; then
 fi
 
 #######
-<<<<<<< Updated upstream
 
-=======
-#
->>>>>>> Stashed changes
 function _delete-char-or-list-expand() {
     if [[ -z "${RBUFFER}" ]]; then
         zle list-expand
