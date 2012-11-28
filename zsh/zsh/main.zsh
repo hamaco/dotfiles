@@ -1,6 +1,3 @@
-
-function exists { which $1 &> /dev/null }
-
 function source_if() {
 	[[ -s "$1" ]] && source "$1"
 }
