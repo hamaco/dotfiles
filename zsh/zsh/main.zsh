@@ -45,6 +45,7 @@ if whence -p tmux > /dev/null; then
 fi
 
 #######
+
 function _delete-char-or-list-expand() {
     if [[ -z "${RBUFFER}" ]]; then
         zle list-expand
@@ -54,5 +55,10 @@ function _delete-char-or-list-expand() {
 }
 zle -N _delete-char-or-list-expand
 bindkey '^D' _delete-char-or-list-expand
+
+#######
+
+trap "source ~/.zshrc" USR1
+alias source-zshrc-all="pkill -usr1 zsh"
 
 #######
