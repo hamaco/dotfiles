@@ -1,8 +1,25 @@
-snippet php
+snippet <?
 prev_word '^'
 	<?php
 	
 	${1}
+
+snippet <?e
+	<?php echo ${1} ?>
+
+snippet ns
+	namespace ${1:Foo\Bar\Baz};
+	${2}
+
+snippet use
+	use ${1:Foo\Bar\Baz};
+	${2}
+
+snippet /*
+	/**
+	 * ${1}
+	 *
+	 */
 
 snippet inc
 abbr include
@@ -80,7 +97,7 @@ snippet throw
 	throw new ${1}Exception(${2});
 
 snippet pp
-	print "<PRE>";var_dump(${1});exit;
+	print "<pre>";var_dump(${1});exit;
 
 snippet vd
 	var_dump(${1});
