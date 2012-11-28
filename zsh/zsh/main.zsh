@@ -1,4 +1,6 @@
 
+function exists { which $1 &> /dev/null }
+
 function source_if() {
 	[[ -s "$1" ]] && source "$1"
 }
@@ -45,7 +47,11 @@ if whence -p tmux > /dev/null; then
 fi
 
 #######
+<<<<<<< Updated upstream
 
+=======
+#
+>>>>>>> Stashed changes
 function _delete-char-or-list-expand() {
     if [[ -z "${RBUFFER}" ]]; then
         zle list-expand
@@ -60,5 +66,20 @@ bindkey '^D' _delete-char-or-list-expand
 
 trap "source ~/.zshrc" USR1
 alias source-zshrc-all="pkill -usr1 zsh"
+
+#######
+
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(history -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+fi
 
 #######
