@@ -23,7 +23,7 @@ _z_add() {
 }
 
 _Z_CMD=j
-source $ZSH_HOME/plugins/z.sh/z.sh
+source_if $ZSH_HOME/plugins/z.sh/z.sh
 add-zsh-hook precmd _z_add
 
 ##### tmux #####
