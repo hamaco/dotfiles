@@ -62,14 +62,16 @@ alias delete-empty-dir="find . -type d -empty -delete"
 
 alias oil="noglob oil"
 
+for command in nautilus caja nemo
+do
+	if exists $command; then
+		alias open=$command
+	fi
+done
+
 case "${OSTYPE}" in
 linux*)
 	alias tbz2="tar cvjf"
-	if [ -x /usr/bin/caja ]; then
-		alias open="caja"
-	else
-		alias open="nautilus"
-	fi
 
 	if [ -x /usr/local/bin/tscreen ]; then
 		alias screen="tscreen"
