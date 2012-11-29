@@ -27,7 +27,7 @@ source_if $ZSH_HOME/plugins/z.sh/z.sh
 add-zsh-hook precmd _z_add
 
 ##### tmux #####
-if whence -p tmux > /dev/null; then
+if exists tmux; then
 	tmuxx() {
 		if [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/null) ) ]]; then
 			# on OS X force tmux's default command to spawn a shell in the user's namespace
