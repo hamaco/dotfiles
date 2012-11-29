@@ -51,8 +51,8 @@ bindkey '^D' _delete-char-or-list-expand
 
 #######
 
-trap "source ~/.zshrc" USR1
-alias source-zshrc-all="pkill -usr1 zsh"
+trap "source ~/.zshrc && rehash" USR1
+alias source-zshrc-all="pkill -usr1 -u `id -u` zsh"
 
 #######
 
