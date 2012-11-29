@@ -34,75 +34,12 @@ endif
 
 
 " 文字コード設定 {{{1
+let &termencoding = 'utf-8'
 set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,latin1
 
-if !has('gui_running')
-  if &term == 'win32' || &term == 'win64'
-    " Setting when use the non-GUI Japanese console.
-
-    " Garbled unless set this.
-    set termencoding=cp932
-    " Japanese input changes itself unless set this.
-    " Be careful because the automatic recognition of the character code is not possible!
-    set encoding=japan
-  else
-    if $ENV_ACCESS ==# 'linux'
-      set termencoding=euc-jp
-    elseif $ENV_ACCESS ==# 'colinux'
-      set termencoding=utf-8
-    else  " fallback
-      set termencoding=  " same as 'encoding'
-    endif
-  endif
-elseif s:iswindows
-  " For system.
-  set termencoding=cp932
-endif
-
-if !exists('did_encoding_settings') && has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-
-  " Does iconv support JIS X 0213?
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213,euc-jp'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-
-  " Build encodings.
-  let &fileencodings = 'ucs-bom'
-  if &encoding !=# 'utf-8'
-    let &fileencodings = &fileencodings . ',' . 'ucs-2le'
-    let &fileencodings = &fileencodings . ',' . 'ucs-2'
-  endif
-  let &fileencodings = &fileencodings . ',' . s:enc_jis
-
-  if &encoding ==# 'utf-8'
-    let &fileencodings = &fileencodings . ',' . s:enc_euc
-    let &fileencodings = &fileencodings . ',' . 'cp932'
-  elseif &encoding =~# '^euc-\%(jp\|jisx0213\)$'
-    let &encoding = s:enc_euc
-    let &fileencodings = &fileencodings . ',' . 'utf-8'
-    let &fileencodings = &fileencodings . ',' . 'cp932'
-  else  " cp932
-    let &fileencodings = &fileencodings . ',' . 'utf-8'
-    let &fileencodings = &fileencodings . ',' . s:enc_euc
-  endif
-  let &fileencodings = &fileencodings . ',' . &encoding
-
-  unlet s:enc_euc
-  unlet s:enc_jis
-
-  let did_encoding_settings = 1
-endif
-
-" 日本語を含まない場合は fileencoding に encoding を使うようにする
-function! AU_ReCheck_FENC()
-  if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-    let &fileencoding=&encoding
-  endif
-endfunction
-autocmd MyAutoCmd BufReadPost * call AU_ReCheck_FENC()
+scriptencoding utf-8
 
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
