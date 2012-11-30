@@ -40,7 +40,7 @@ function vcs_prompt_info() {
 
 PROMPT=""
 PROMPT+="%F{$HOSTCOLOR}%n@%m%f "
-PROMPT+="[%F{white}%~%f]"
+PROMPT+="[%F{magenta}%~%f]"
 is-at-least 4.3.7 && PROMPT+="\$(vcs_prompt_info)"
 PROMPT+="
 "
