@@ -1,7 +1,7 @@
 sudo() {
   local args
   case $2 in
-    v|vi|vim)
+    v|vi|vim|/Applications/MacVim.app/Contents/MacOS/Vim)
       args=()
       for arg in $@[3,-1]
       do
