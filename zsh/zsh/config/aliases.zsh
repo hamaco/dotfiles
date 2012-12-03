@@ -47,6 +47,8 @@ if type hub > /dev/null; then
 fi
 alias g="git"
 
+alias gst="git status -sb"
+
 alias gs="git svn"
 alias gsr="git svn rebase"
 alias gsd="git svn dcommit"
