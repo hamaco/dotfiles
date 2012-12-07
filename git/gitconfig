@@ -26,6 +26,12 @@
 [grep]
 	lineNumber = true
 
+[merge]
+	ff = false
+
+[pull]
+	rebase = true
+
 [alias]
 	b = branch
 	br = branch -a
