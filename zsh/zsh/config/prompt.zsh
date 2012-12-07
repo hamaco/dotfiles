@@ -13,11 +13,11 @@ zstyle ":vcs_info:bzr:*" use-simple true
 zstyle ":vcs_info:*" max-exports 6
 
 if is-at-least 4.3.10; then
-  #zstyle ":vcs_info:git:*" check-for-changes true
-  zstyle ":vcs_info:git:*" stagedstr "+"
-  zstyle ":vcs_info:git:*" unstagedstr "-"
-  zstyle ":vcs_info:git:*" formats "(%s)-[%c%u%b]"
-  zstyle ":vcs_info:git:*" actionformats "(%s)-[%c%u%b|%a]"
+  zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
+  zstyle ":vcs_info:git:*" stagedstr "<S>"
+  zstyle ":vcs_info:git:*" unstagedstr "<U>"
+  zstyle ":vcs_info:git:*" formats "(%s)-[%b] %c%u"
+  zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
 fi
 
 if [ ${$(hostname)##*.} = "local" ]; then
