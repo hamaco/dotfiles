@@ -14,17 +14,17 @@ $HOME/app/*/*/bin(N-/)
 /bin(N-/)
 /sbin(N-/)
 
-/opt/bin(N-/)
-/opt/*/bin(N-/)
 /opt/local/*/bin(N-/)
+/opt/*/bin(N-/)
+/opt/bin(N-/)
 
 /opt/sbin(N-/)
 /opt/*/sbin(N-/)
 /opt/local/*/sbin(N-/)
 
-/usr/bin(N-/)
-/usr/*/bin(N-/)
 /usr/local/*/bin(N-/)
+/usr/*/bin(N-/)
+/usr/bin(N-/)
 
 /usr/sbin(N-/)
 /usr/*/sbin(N-/)
