@@ -85,7 +85,6 @@
 	ss = stash save
 	st = status -sb
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
-	up = pull --rebase
 	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
 
 [include]
