@@ -68,6 +68,7 @@ set foldtext=FoldCCtext()
 set formatoptions=tcroqnlM1
 set grepprg=grep\ -nH
 set guioptions-=e
+set helplang=ja,en
 set history=100
 set hlsearch
 set ignorecase
