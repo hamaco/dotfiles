@@ -5,8 +5,8 @@ OS = ${shell uname}
 
 all: cui gui
 
-.PHONY: git mercurial tig tmux vim zsh
-cui: git mercurial tig tmux vim zsh
+.PHONY: git mercurial tig tmux vim zsh percol
+cui: git mercurial tig tmux vim zsh percol
 
 .PHONY: vimperator chrome
 gui: vimperator chrome
@@ -19,13 +19,15 @@ ifeq ($(OS), Darwin)
 	ln -fns $(CURRENT_DIR)/chrome/usercss/Custom.css $(INSTALL_DIR)/Library/Application\ Support/Google/Chrome/Default/User\ StyleSheets/Custom.css
 endif
 
-
 git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
 	ln -fns $(CURRENT_DIR)/git/gitignore $(INSTALL_DIR)/.gitignore
 
 mercurial:
 	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
+
+percol:
+	ln -fns $(CURRENT_DIR)/percol/percol.d $(INSTALL_DIR)/.percol.d
 
 tig:
 	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
@@ -55,12 +57,3 @@ zsh:
 	ln -fns $(CURRENT_DIR)/zsh/zsh    $(INSTALL_DIR)/.zsh
 	ln -fns $(CURRENT_DIR)/zsh/zshrc  $(INSTALL_DIR)/.zshrc
 	ln -fns $(CURRENT_DIR)/zsh/zshenv $(INSTALL_DIR)/.zshenv
-
-clean:
-	rm ${INSTALL_DIR}/.tmux.conf
-	rm ${INSTALL_DIR}/.zsh
-	rm ${INSTALL_DIR}/.zshrc
-	rm ${INSTALL_DIR}/.zshenv
-	rm $(INSTALL_DIR)/.vim
-	rm $(INSTALL_DIR)/.vimrc
-	rm $(INSTALL_DIR)/.gvimrc
