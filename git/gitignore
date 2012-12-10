@@ -19,7 +19,3 @@ cache/*
 sess_*
 #*/cache/*
 */templates_c/*
-
-# for CandyCane
-app/Plugin/*
-app/webroot/themed/*
