@@ -125,6 +125,15 @@ nnoremap L <C-n>
 nnoremap <Left> :tabmove! -1<CR>
 nnoremap <Right> :tabmove! +1<CR>
 
+" Panorama
+nnoremap <Leader>pc :<C-u>panorama<Space>
+nnoremap <Leader>ps :<C-u>panorama switch<Space>
+nnoremap <Leader>pa :<C-u>panorama add<Space>
+nnoremap <Leader>pl :<C-u>panorama list<CR>
+nnoremap <Leader>pp :<C-u>panorama pushtab<Space>
+nnoremap <Leader>pu :<C-u>panorama pulltab<Space>
+nnoremap <Leader>pr :<C-u>panorama remove<Space>
+
 " }}}
 " Key mappings for Extensions {{{1
 
