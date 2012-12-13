@@ -50,7 +50,7 @@ PROMPT+="%(?.%F{blue}$OK%f.%F{red}$NG%f) "
 
 PROMPT2="%_%% "
 RPROMPT="[%*]"
-SPROMPT="%F{yellow}%r%f? あ、あんたのために修正したんじゃないんだからね、勘違いしないでよね! [n,y,a,e]:"
+SPROMPT="从*ﾟ?ﾟ) < %F{yellow}%r%f? あ、あんたのために修正したんじゃないんだからね、勘違いしないでよね! [n,y,a,e]:"
 
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
