@@ -395,3 +395,9 @@ if exists percol; then
 fi
 
 #######
+
+temp() {
+  cd $(mktemp -d --tmpdir=$HOME/tmp "$(date +'%Y%m%d').$1${1:+.}XXXXXX")
+}
+
+#######
