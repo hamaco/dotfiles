@@ -1,5 +1,6 @@
 * {
-  font-family: '07YasashiaGothic' !important; }
+  /* font-family: '07YasashiaGothic' !important; */
+  font-family: 'Ruika-03' !important; }
 
 @-moz-document url-prefix("chrome://") {
   .tabbrowser-tab[fadein]:not([pinned]) {

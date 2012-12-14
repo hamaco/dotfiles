@@ -1,7 +1,8 @@
 // scss -s -t nested --trace
 
 * {
-	font-family: '07YasashiaGothic' !important;
+	/* font-family: '07YasashiaGothic' !important; */
+	font-family: 'Ruika-03' !important;
 }
 
 // タブの幅を40pxで固定する
