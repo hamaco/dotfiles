@@ -10,6 +10,12 @@ do
 	source $config_file
 done
 
+# load plugins
+for plugin_config ($ZSH_HOME/plugins/*/*.zshrc(N-.))
+do
+  source $plugin_config
+done
+
 
 ## 分割待ち ##
 
@@ -21,12 +27,12 @@ case "${OSTYPE}" in
 		alias ls="ls -G"
 		;;
 esac
-if [ -f "$HOME/.zsh/plugin/zaw/zaw.zsh" ]; then
-	source "$HOME/.zsh/plugin/zaw/zaw.zsh"
-	bindkey "^R" zaw-history
-else
-	bindkey "^R" history-incremental-pattern-search-backward
-fi
+# if [ -f "$HOME/.zsh/plugin/zaw/zaw.zsh" ]; then
+# 	source "$HOME/.zsh/plugin/zaw/zaw.zsh"
+# 	bindkey "^R" zaw-history
+# else
+# 	bindkey "^R" history-incremental-pattern-search-backward
+# fi
 
 umask 022
 
@@ -318,19 +324,6 @@ if [[ -f '.naverc' ]] ; then
 chpwd_functions+=_naverc_check
 
 #eval "$(rbenv init -)"
-
-
-## z.sh
-#_Z_CMD=j
-#source ~/.zsh/plugin/z.sh
-#_z_add() {
-#	_z --add "$(pwd -P)"
-#}
-#add-zsh-hook precmd _z_add
-
-
-# END {{{1
-# vim: foldmethod=marker
 
 
 
