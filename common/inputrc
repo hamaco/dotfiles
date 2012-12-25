@@ -3,6 +3,6 @@ $if mysql
   "\C-xt": "\\cshow tables;\n"
   "\C-xu": "\\cselect user,host,password from mysql.user order by user,host;\n"
   "\C-xb": "\\cselect user,host,db       from mysql.db   order by user,host;\n"
-  "\C-xc": "\\cshow create table "
+  "\C-xc": "\\ccreate database  charset utf8;"
   "\C-xs": "\\cselect * from "
 $endif
