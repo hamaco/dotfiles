@@ -390,7 +390,14 @@ fi
 #######
 
 temp() {
-  cd $(mktemp -d --tmpdir=$HOME/tmp "$(date +'%Y%m%d').$1${1:+.}XXXXXX")
+  case "${OSTYPE}" in
+    linux*)
+      cd $(mktemp -d --tmpdir=$HOME/tmp "$(date +'%Y%m%d').$1${1:+.}XXXXXX")
+      ;;
+    freebsd*|darwin*)
+      cd $(mktemp -d "$HOME/tmp/$(date +'%Y%m%d').$1${1:+.}XXXXXX")
+      ;;
+  esac
 }
 
 #######
