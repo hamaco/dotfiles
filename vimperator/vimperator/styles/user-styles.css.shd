@@ -23,7 +23,7 @@
 
 // GitHubのアイコン出るようにしたい
 @-moz-document domain("github.com") {
-	.mini-icon, .mega-icon {
+	.mini-icon, .mega-icon, i.minus {
 		font-family: 'Octicons Regular' !important;
 	}
 }

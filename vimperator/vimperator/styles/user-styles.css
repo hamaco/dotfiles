@@ -12,7 +12,7 @@
     display: none !important; } }
 
 @-moz-document domain("github.com") {
-  .mini-icon, .mega-icon {
+  .mini-icon, .mega-icon, i.minus {
     font-family: 'Octicons Regular' !important; } }
 
 @-moz-document url-prefix("chrome://firebug/content/firefox/") {
