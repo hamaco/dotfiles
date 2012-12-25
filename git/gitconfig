@@ -37,6 +37,9 @@
 [pull]
 	rebase = true
 
+[push]
+	default = simple
+
 [alias]
 	b = branch
 	br = branch -a
