@@ -167,18 +167,19 @@ bmark -title="Twilog (hamaco)" -keyword=twilog http://twilog.org/hamaco
 silent qmark a http://animita.tv/home/
 silent qmark A http://analytics.google.com/
 silent qmark b http://reblog.machine.mamemomonga.com/dashboard
+silent qmark B http://b.hatena.ne.jp/hamaco/
 silent qmark c http://calendar.google.com/
 silent qmark C https://www.chatwork.com/
 silent qmark f http://www.facebook.com/
-silent qmark F http://fastladder.com/reader/
 silent qmark g http://github.com/hamaco
 silent qmark I http://sp.pf.mbga.jp/12008305
 silent qmark l http://reader.livedoor.com/reader/
 silent qmark m http://www.gmail.com/
 silent qmark p http://getpocket.com/a/queue/
+silent qmark P http://www.pixiv.net/bookmark_new_illust.php
 silent qmark r http://reader.google.com/reader/
 silent qmark R http://readability.com/hamaco/
-silent qmark t https://www.toodledo.com/
+silent qmark t https://trello.com/
 silent qmark T https://www.toggl.com/track
 
 " }}}
