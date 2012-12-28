@@ -14,6 +14,7 @@ alias di="diff"
 alias df="df -hl"
 alias wget="noglob wget --no-check-certificate"
 alias rake="noglob rake"
+alias calc="noglob calc"
 
 alias sudo="sudo -E " # sudoでもaliasが使えるようにする
 alias s="sudo"
