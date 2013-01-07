@@ -24,8 +24,11 @@ NeoBundle "Shougo/vimproc", { "build": {
 \ }
 
 " blog
-NeoBundle "glidenote/octoeditor.vim"
-NeoBundle "tangledhelix/vim-octopress"
+NeoBundleLazy "tangledhelix/vim-octopress"
+NeoBundleLazy "glidenote/octoeditor.vim", {
+\   'depends': 'tangledhelix/vim-octopress',
+\   'autoload': { 'commands': [ "OctopressList", "OctopressNew" ] }
+\ }
 
 " quickrun
 NeoBundle "thinca/vim-quickrun"
