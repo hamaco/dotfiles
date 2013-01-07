@@ -41,7 +41,7 @@ endfunction
 
 
 " === Load plugins ===
-call s:source_if('~/Dropbox/tmp/new_vimrc/vim/neobundle.vimrc')
+call s:source_if('~/.vim/neobundle.vimrc')
 
 syntax enable
 colorscheme vydark
