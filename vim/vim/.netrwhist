@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/hamaco/dotfiles/vimperator/vimperator'
+let g:netrw_dirhist_2='/home/hamaco/dotfiles'
+let g:netrw_dirhist_3='/var/www/work/mems.work.hamaco.local/2012data'
+let g:netrw_dirhist_4='/home/hamaco/app/phpenv/versions/5.4.10/share/pyrus/.pear'

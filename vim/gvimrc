@@ -1,86 +1,45 @@
-if has("mac")
-	if has('vim_starting')
-		set columns=145
-		set lines=55
-	endif 
-	set linespace=0
-	set guifont=Source\ Code\ Pro:h14
-	set transparency=20
-	colorscheme mrkn256
-
-	set fuoptions=maxvert,maxhorz
-	" au GUIEnter * set fullscreen
-
-	" vim hacks 221
-	let g:transparency = &transparency
-	function! s:relative_transparency(diff)
-		let &transparency = a:diff + &transparency
-		let g:transparency = &transparency
-	endfunction
-	nnoremap <up> :<C-u>call <SID>relative_transparency(5)<CR>
-	inoremap <up> <C-o>:call <SID>relative_transparency(5)<CR>
-	nnoremap <down> :<C-u>call <SID>relative_transparency(-5)<CR>
-	inoremap <down> <C-o>:call <SID>relative_transparency(-5)<CR>
-	nnoremap <Space>n :<C-u>nohlsearch<CR>:let &transparency = g:transparency<CR><C-l>
-elseif has("unix")
-	if has('vim_starting')
-		set columns=125
-		set lines=45
-	endif 
-	set linespace=0
-	"set guifont=Rounded\ M+\ 1m\ Medium\ 11
-	"set guifont=Ricty\ Discord\ 12
-	"set guifont=Ricty\ Bold\ 12
-	set guifont=Source\ Code\ Pro\ 11
-	colorscheme h2u_dark
-elseif has("win32")
-	if has('vim_starting')
-		set columns=120
-		set lines=40
-	endif
-	" set linespace=2
-	" set guifont=‚ä‚½‚Û‚ñiƒR[ƒfƒBƒ“ƒOj:h12
-	" set guifont=‚ ‚­‚ ƒtƒHƒ“ƒg:h12
-	set linespace=0
-	set guifont=Rounded\ M+\ 1m\ Medium:h12
-	colorscheme h2u_black
-
-	" fullscreen
-	"-----------------------------------------------------------
-	nnoremap <F11> :call ToggleFullScreen()<CR>
-	function! ToggleFullScreen()
-		if &guioptions =~# 'C'
-			set guioptions-=C
-			if exists('s:go_temp')
-				if s:go_temp =~# 'm'
-					set guioptions+=m
-				endif
-				if s:go_temp =~# 'T'
-					set guioptions+=T
-				endif
-			endif
-			simalt ~r
-		else
-			let s:go_temp = &guioptions
-			set guioptions+=C
-			set guioptions-=m
-			set guioptions-=T
-			simalt ~x
-		endif
-	endfunction
-endif
-
-
-set splitbelow " ‰¡•ªŠ„‚µ‚½‚çV‚µ‚¢ƒEƒBƒ“ƒhƒE‚Í‰º‚É
-set splitright " c•ªŠ„‚µ‚½‚çV‚µ‚¢ƒEƒBƒ“ƒhƒE‚Í‰E‚É
-set visualbell t_vb=
-
-" Sugamo.vim
-function! ToggleFont()
-	if &guifont=~"‚ ‚­‚ ƒtƒHƒ“ƒg"
-		set guifont=‚ä‚½‚Û‚ñiƒR[ƒfƒBƒ“ƒOj:h12
-	else
-		set guifont=‚ ‚­‚ ƒtƒHƒ“ƒg:h12
-	endif
+" === My functions ===
+function! s:set_font(fontname, fontsize)
+  let fontname = join(split(a:fontname, '\s'), '\ ')
+  if has("gui_gtk2")
+    let font = fontname . '\ ' . a:fontsize
+  else
+    let font = fontname . ":h" . a:fontsize
+  endif
+  execute "set guifont=" . font
 endfunction
-command! ToggleFont :call ToggleFont()
+
+
+
+colorscheme vydark
+
+if has("mac")
+  " call s:set_font("Source Code Pro", 14)
+  " call s:set_font("ã‚»ãƒ—ãƒ†ãƒ³ãƒãƒ¼ï¼­-ç­‰å¹…æ•™æ¼¢", 16)
+  call s:set_font("ãƒ«ã‚¤ã‚«ç­‰å¹…-ï¼ï¼“", 16)
+
+  if has('vim_starting')
+    " set columns=140
+    " set lines=55
+  endif
+
+  set transparency=20
+  let g:transparency = &transparency
+  function! s:relative_transparency(diff)
+    let &transparency = a:diff + &transparency
+    let g:transparency = &transparency
+  endfunction
+
+  nnoremap <up>   :<C-u>call <SID>relative_transparency(5)<CR>
+  inoremap <up>   <C-o>:call <SID>relative_transparency(5)<CR>
+  nnoremap <down> :<C-u>call <SID>relative_transparency(-5)<CR>
+  inoremap <down> <C-o>:call <SID>relative_transparency(-5)<CR>
+elseif has("unix")
+  call s:set_font("RuikaMono-03 Thin", 12)
+
+  if has('vim_starting')
+    set columns=140
+    set lines=55
+    set linespace=1
+  endif
+endif
