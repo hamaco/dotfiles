@@ -65,6 +65,7 @@ alias dstat-disk="dstat -Tcldr"
 
 alias delete-empty-dir="find . -type d -empty -delete"
 
+alias comp="composer"
 alias oil="noglob oil"
 
 for command in nautilus caja nemo
