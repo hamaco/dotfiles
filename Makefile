@@ -40,12 +40,13 @@ tmux:
 	ln -fns $(CURRENT_DIR)/tmux/tmux.conf $(INSTALL_DIR)/.tmux.conf
 
 vim:
-	git submodule update --init
+	@if [ ! -d $(INSTALL_DIR)/.bundle ]; then \
+		git clone git://github.com/Shougo/neobundle.vim $(INSTALL_DIR)/.bundle/neobundle.vim; \
+	fi
 	ln -fns $(CURRENT_DIR)/vim/vim    $(INSTALL_DIR)/.vim
 	ln -fns $(CURRENT_DIR)/vim/vimrc  $(INSTALL_DIR)/.vimrc
 	ln -fns $(CURRENT_DIR)/vim/gvimrc $(INSTALL_DIR)/.gvimrc
 	vim -u ~/.vim/neobundle.vimrc +"silent NeoBundleInstall" +q
-	cd ~/.bundle/vimproc; make -f make_unix.mak
 
 vimperator: vimperator-repo
 	ln -fns $(CURRENT_DIR)/vimperator/vimperator      $(INSTALL_DIR)/.vimperator
