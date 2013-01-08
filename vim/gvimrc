@@ -36,6 +36,7 @@ if has("mac")
   inoremap <down> <C-o>:call <SID>relative_transparency(-5)<CR>
 elseif has("unix")
   call s:set_font("RuikaMono-03 Thin", 12)
+  call s:set_font("nukamiso", 12)
 
   if has('vim_starting')
     set columns=140
