@@ -5,7 +5,7 @@ function source_if() {
 ZSH_HOME="$HOME/.zsh"
 
 # load config
-for config_file ($ZSH_HOME/config/*.zsh(N-.) $HOME/app/*/zshenv(N-.))
+for config_file ($ZSH_HOME/config/*.zsh(N-.))
 do
 	source $config_file
 done

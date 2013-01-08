@@ -67,6 +67,11 @@ export SABEL_HOME="/sabel"
 # }}}
 
 
+for config_file ($HOME/app/*/zshenv(N-.))
+do
+	source $config_file
+done
+
 
 # END {{{1
 # vim: foldmethod=marker
