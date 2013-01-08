@@ -11,7 +11,7 @@ do
 done
 
 # load plugins
-for plugin_config ($ZSH_HOME/plugins/*/*.zshrc(N-.))
+for plugin_config ($ZSH_HOME/plugins/*/zshrc(N-.))
 do
   source $plugin_config
 done
@@ -327,16 +327,6 @@ chpwd_functions+=_naverc_check
 
 
 
-
-##### z.sh #####
-# https://github.com/rupa/z
-_z_add() {
-	_z --add "$(pwd -P)"
-}
-
-_Z_CMD=j
-source_if $ZSH_HOME/plugins/z.sh/z.sh
-add-zsh-hook precmd _z_add
 
 ##### tmux #####
 if exists tmux; then
