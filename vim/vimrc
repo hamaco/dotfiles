@@ -13,6 +13,12 @@ endif
 " End Debug }}}
 
 
+let s:is_win = has('win32') || has('win64')
+if has('vim_starting')
+  set runtimepath& runtimepath+=$HOME/.vim
+endif
+
+
 " === My functions ===
 function! s:source_if(file)
   let realpath = expand(a:file)
