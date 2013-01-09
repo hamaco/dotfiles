@@ -12,11 +12,14 @@ if has('vim_starting') && has('reltime')
 endif
 " End Debug }}}
 
-
-let s:is_win = has('win32') || has('win64')
 if has('vim_starting')
   set runtimepath& runtimepath+=$HOME/.vim
 endif
+
+let s:is_win = has('win32') || has('win64')
+if s:is_win
+  language message en
+fi
 
 
 " === My functions ===
