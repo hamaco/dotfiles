@@ -27,10 +27,18 @@ NeoBundleLazy "glidenote/octoeditor.vim", {
 
 " quickrun
 NeoBundle "thinca/vim-quickrun"
-NeoBundle "hamaco/quickrun-hook-u-nya-"
-NeoBundle "osyo-manga/shabadou.vim"
-NeoBundle "osyo-manga/unite-quickfix"
-NeoBundle "karakaram/vim-quickrun-phpunit"
+NeoBundle "hamaco/quickrun-hook-u-nya-", {
+\   'depends': 'thinca/vim-quickrun',
+\ }
+NeoBundle "osyo-manga/shabadou.vim", {
+\   'depends': 'thinca/vim-quickrun',
+\ }
+NeoBundle "osyo-manga/unite-quickfix", {
+\   'depends': 'thinca/vim-quickrun',
+\ }
+NeoBundle "karakaram/vim-quickrun-phpunit", {
+\   'depends': 'thinca/vim-quickrun',
+\ }
 
 NeoBundle "osyo-manga/vim-watchdogs"
 NeoBundle "jceb/vim-hier"
