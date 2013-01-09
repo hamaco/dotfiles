@@ -209,16 +209,16 @@ nnoremap <Leader>gc :<C-u>Gcommit<Enter>
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_auto_completion_start_length = 2
 
-imap <expr> <Tab> neosnippet#expandable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" :
-\ pumvisible() ? "\<C-n>" : "\<TAB>"
-
 
 " neosnippet.vim
 let g:neosnippet#snippets_directory = "~/.vim/snippets"
 
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
+
+imap <expr> <TAB> neosnippet#expandable() \|\| neosnippet#jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" :
+\ pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 " octoeditor.vim
