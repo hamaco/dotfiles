@@ -232,9 +232,6 @@ window Launchy /Launchy\.exe/ : Global
 	key C-n = Down
 	key C-p = Up
 
-window LiveMessenger /msnmsgr\.exe/ : Global
-	key ESC = &Ignore
-
 window Vim /vim\.exe/ : Global
 	key C-h = &Default
 
