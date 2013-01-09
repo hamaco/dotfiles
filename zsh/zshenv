@@ -64,6 +64,15 @@ export MYSQL_PS1="\\u@\\h:\\d>\\_"
 #export SCREENDIR="${HOME}/.screen"
 
 export SABEL_HOME="/sabel"
+
+case "${OSTYPE}" in
+	cygwin*)
+		export ARCHI="cygwin"
+		;;
+	*)
+		export ARCHI=""
+		;;
+esac
 # }}}
 
 
