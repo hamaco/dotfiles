@@ -1,8 +1,4 @@
 " === Debug === {{{1
-"set go+=M
-set nocompatible
-set nu
-set nobackup
 if has('vim_starting') && has('reltime')
   let g:startuptime = reltime()
   augroup vimrc-startuptime
