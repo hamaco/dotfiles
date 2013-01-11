@@ -79,4 +79,8 @@ NeoBundle "ujihisa/shadow.vim"
 NeoBundle "vim-scripts/matchit.zip"
 NeoBundle "vim-scripts/sudo.vim"
 
+NeoBundleLazy "thinca/vim-scouter", {
+\   'autoload': { 'commands': [ "Scouter" ] }
+\ }
+
 filetype indent plugin on
