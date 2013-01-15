@@ -12,7 +12,8 @@ NeoBundle 'drikin/minimap-vim'
 " base
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', { 'build': {
+NeoBundle 'Shougo/vimproc', {
+\  'build': {
 \     'mac' : 'make -f make_mac.mak',
 \     'unix': 'make -f make_unix.mak',
 \     'cygwin': 'make -f make_cygwin.mak',
@@ -23,7 +24,7 @@ NeoBundle 'Shougo/vimproc', { 'build': {
 NeoBundleLazy 'tangledhelix/vim-octopress'
 NeoBundleLazy 'glidenote/octoeditor.vim', {
 \   'depends': 'tangledhelix/vim-octopress',
-\   'autoload': { 'commands': [ 'OctopressList', 'OctopressNew' ] }
+\   'autoload': {'commands': ['OctopressList', 'OctopressNew']}
 \ }
 
 " quickrun
@@ -54,10 +55,18 @@ NeoBundle 'h1mesuke/unite-outline'
 
 " PHP
 NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
-\   'autoload': { 'filetypes': [ 'php' ] }
+\   'autoload': {'filetypes': 'php'}
 \ }
 NeoBundleLazy 'StanAngeloff/php.vim', {
-\   'autoload': { 'filetypes': [ 'php' ] }
+\   'autoload': {'filetypes': 'php'}
+\ }
+
+" Twitter
+NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundleLazy 'basyura/twivill.vim'
+NeoBundleLazy 'basyura/TweetVim', {
+\   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
+\   'autoload': {'commands': 'TweetVimHomeTimeline'}
 \ }
 
 " Colorscheme
@@ -84,7 +93,7 @@ NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
 
 NeoBundleLazy "thinca/vim-scouter", {
-\   'autoload': { 'commands': [ "Scouter" ] }
+\   'autoload': {'commands': ["Scouter"]}
 \ }
 
 filetype indent plugin on
