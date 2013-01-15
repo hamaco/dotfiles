@@ -177,6 +177,9 @@ cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 vnoremap <Leader>a :Alignta<Space>
 
 " eskk.vim
+
+" なんかあんまり辞書登録ちゃんとされてる気がしないので毎回書き込んでみる
+let g:eskk#dictinary_save_count = 1
 let g:eskk#egg_like_newline = 1
 let g:eskk#egg_like_newline_completion = 1
 
@@ -185,8 +188,10 @@ if has('vim_starting')
 
   if has('mac')
     let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-  else
+  elseif has('unix')
     let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
+  elseif s:is_win
+    let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
   endif
 endif
 
