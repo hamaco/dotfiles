@@ -29,7 +29,7 @@ NeoBundleLazy 'glidenote/octoeditor.vim', {
 
 " unite
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline', {
+NeoBundle 'Shougo/unite-outline', {
 \   'depends': 'Shougo/unite.vim'
 \ }
 
