@@ -27,31 +27,39 @@ NeoBundleLazy 'glidenote/octoeditor.vim', {
 \   'autoload': {'commands': ['OctopressList', 'OctopressNew']}
 \ }
 
-" quickrun
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'hamaco/quickrun-hook-u-nya-', {
-\   'depends': 'thinca/vim-quickrun',
-\ }
-NeoBundle 'osyo-manga/shabadou.vim', {
-\   'depends': 'thinca/vim-quickrun',
-\ }
-NeoBundle 'osyo-manga/unite-quickfix', {
-\   'depends': 'thinca/vim-quickrun',
-\ }
-NeoBundle 'karakaram/vim-quickrun-phpunit', {
-\   'depends': 'thinca/vim-quickrun',
+" unite
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline', {
+\   'depends': 'Shougo/unite.vim'
 \ }
 
-NeoBundle 'osyo-manga/vim-watchdogs'
+" quickrun
+NeoBundle 'thinca/vim-quickrun', {
+\   'depends': 'Shougo/unite.vim'
+\ }
+NeoBundle 'hamaco/quickrun-hook-u-nya-', {
+\   'depends': 'thinca/vim-quickrun'
+\ }
+NeoBundle 'osyo-manga/shabadou.vim', {
+\   'depends': 'thinca/vim-quickrun'
+\ }
+NeoBundle 'osyo-manga/unite-quickfix', {
+\   'depends': 'thinca/vim-quickrun'
+\ }
+NeoBundle 'karakaram/vim-quickrun-phpunit', {
+\   'depends': 'thinca/vim-quickrun'
+\ }
+
 NeoBundle 'jceb/vim-hier'
+NeoBundle 'osyo-manga/vim-watchdogs', {
+\   'depends': ['Shougo/vimproc', 'thinca/vim-quickrun', 'jceb/vim-hier', 'osyo-manga/shabadou.vim']
+\ }
 
 " neocomplcache
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-
-" unite
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/neosnippet', {
+\   'depends': 'Shougo/neocomplcache',
+\ }
 
 " PHP
 NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
