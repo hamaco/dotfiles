@@ -176,6 +176,11 @@ cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 " alignta.vim
 vnoremap <Leader>a :Alignta<Space>
 
+
+" capslock.vim
+imap <C-a> <C-o><Plug>CapsLockToggle
+
+
 " eskk.vim
 
 " なんかあんまり辞書登録ちゃんとされてる気がしないので毎回書き込んでみる
