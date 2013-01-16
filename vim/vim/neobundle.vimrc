@@ -82,7 +82,6 @@ NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 NeoBundleLazy 'nanotech/jellybeans.vim'
 
 " other
-NeoBundle 'thinca/vim-ref'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
@@ -90,6 +89,8 @@ NeoBundle 'kana/vim-smartword'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/sonictemplate-vim'
 NeoBundle 'teramako/instant-markdown-vim'
+NeoBundle 'thinca/vim-localrc'
+NeoBundle 'thinca/vim-ref'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/autochmodx.vim'
