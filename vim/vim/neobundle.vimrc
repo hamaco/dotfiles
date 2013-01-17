@@ -98,6 +98,9 @@ NeoBundle 'tyru/autochmodx.vim'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'tyru/eskk.vim'
+NeoBundleLazy 'tyru/restart.vim', {
+\   'autoload': {'commands': ['Restart', 'RestartWithSession']}
+\ }
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'

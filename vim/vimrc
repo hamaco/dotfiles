@@ -295,7 +295,15 @@ noremap <Space>ra :<C-u>Ref webdict alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
 
 
-" ===== smartinput.vim ===== {{{2
+" ===== restart.vim =====
+command!
+\   -bar
+\   RestartWithSession
+\   let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
+\   | Restart
+
+
+" ===== smartinput.vim =====
 call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
 call smartinput#map_to_trigger('i', '<', '<', '<')
 call smartinput#map_to_trigger('i', '>', '>', '>')
@@ -317,7 +325,7 @@ imap <C-j> <Plug>(eskk:toggle)
 cmap <C-j> <Plug>(eskk:toggle)
 
 
-" ===== smartword.vim ===== {{{2
+" ===== smartword.vim =====
 map w <Plug>(smartword-w)
 map b <Plug>(smartword-b)
 map e <Plug>(smartword-e)
@@ -328,18 +336,18 @@ noremap E e
 noremap gE ge
 
 
-" ===== sonictemplate.vim ===== {{{2
+" ===== sonictemplate.vim =====
 let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
 
 
-" ===== watchdogs.vim ===== {{{2
+" ===== watchdogs.vim =====
 let g:watchdogs_check_BufWritePost_enable = 1
 let g:watchdogs_check_CursorHold_enable = 0
 
 call watchdogs#setup(g:quickrun_config)
 
 
-" ===== unite.vim ===== {{{2
+" ===== unite.vim =====
 let g:unite_source_history_yank_enable = 1
 
 nnoremap [unite] <Nop>
