@@ -79,7 +79,7 @@ NeoBundleLazy 'basyura/TweetVim', {
 
 " Colorscheme
 NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
-NeoBundleLazy 'nanotech/jellybeans.vim'
+NeoBundle 'nanotech/jellybeans.vim'
 
 " other
 NeoBundle 'h1mesuke/vim-alignta'

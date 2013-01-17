@@ -11,7 +11,7 @@ endfunction
 
 
 
-colorscheme vydark
+colorscheme jellybeans
 
 if has("mac")
   " call s:set_font("Source Code Pro", 14)
