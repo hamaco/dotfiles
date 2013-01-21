@@ -1,4 +1,5 @@
 set vertical-split = yes
+set wrap-lines = no
 
 
 bind diff ; view-next
