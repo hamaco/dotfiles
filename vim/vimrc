@@ -61,6 +61,7 @@ set fileformats=unix,dos,mac
 
 
 " === ??? ===
+" Vim 以外の所でファイルが変更された場合自動で読み込む
 set autoread
 set ambiwidth=double
 set backspace=indent,eol,start
@@ -72,6 +73,7 @@ set laststatus=2 statusline=%!MyStatusLine()
 set showtabline=2
 set ignorecase smartcase incsearch hlsearch
 set imdisable
+" <C-a> / <C-b> で10進数のみ対応させる
 set nrformats="hex"
 set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 "set pastetoggle=<C-e>
