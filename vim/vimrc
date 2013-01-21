@@ -430,8 +430,6 @@ nnoremap <silent> <Space>ao :<C-u>call <SID>move_window_into_tab_page(0)<Cr>
 set autoindent
 "set cindent
 "set cinoptions=:2,(1,W1s
-let g:PHP_vintage_case_default_indent = 1
-"let g:PHP_autoformatcomment = 0
 
 " }}}
 
