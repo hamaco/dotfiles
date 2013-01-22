@@ -26,7 +26,7 @@ zstyle ':completion:*:options' description 'yes'
 # カレントディレクトリに候補がない場合のみ cdpath 上のディレクトリを候補
 zstyle ":completion:*:cd:*" tag-order local-directories path-directories
 #cd は親ディレクトリからカレントディレクトリを選択しないので表示させないようにする (例: cd ../<TAB>):
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:cd:*' ignore-parents parent pwd ..
 
 # 補完候補をカーソルで移動可能にする
 zstyle ":completion:*:default" menu select=2
