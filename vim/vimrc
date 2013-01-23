@@ -45,7 +45,6 @@ function! MyStatusLine()
   return line
 endfunction
 
-
 " === Load plugins ===
 call s:source_if('~/.vim/neobundle.vimrc')
 
@@ -53,16 +52,27 @@ syntax enable
 colorscheme jellybeans
 
 
-" === Encoding ===
-"let &termencoding = 'utf-8'
+" === Settings ===
+
+" ===== Encoding =====
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932
 set fileformat=unix
 set fileformats=unix,dos,mac
 
+" ===== Backup =====
+set backup backupcopy=yes backupdir=~/.vimbackup
+set swapfile directory=~/.vimbackup
+if !isdirectory(&backupdir)
+  call mkdir(&backupdir, "p")
+endif
+if has('persistent_undo')
+  set undodir=~/.vimbackup
+  set undofile
+endif
 
-" === Settings ===
+
 " Vim 以外の所でファイルが変更された場合自動で読み込む
 set autoread
 set ambiwidth=double
@@ -86,19 +96,6 @@ set splitbelow splitright
 set novisualbell t_vb=
 set conceallevel=2 concealcursor=i
 set title
-
-
-
-
-set backup backupcopy=yes backupdir=~/.vimbackup
-set swapfile directory=~/.vimbackup
-if !isdirectory(&backupdir)
-  call mkdir(&backupdir, "p")
-endif
-if has('persistent_undo')
-  set undodir=~/.vimbackup
-  set undofile
-endif
 
 " set autoindent
 set expandtab
