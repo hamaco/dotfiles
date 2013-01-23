@@ -15,7 +15,7 @@ endif
 
 let s:is_win = has('win32') || has('win64')
 if s:is_win
-  language message en
+  language messages en
 endif
 
 
