@@ -1,3 +1,4 @@
+" http://d.hatena.ne.jp/thinca/20110209/1297178876
 autocmd BufReadPost,BufNewFile *.txt call s:structured_text()
 
 function! s:structured_text()
@@ -10,13 +11,4 @@ function! s:structured_text()
         \ line2 =~ '^=\+$'   ? 'markdown' :
         \                      'text'
   execute 'set ft=' . filetype
-
-  "execute 'setfiletype'
-  "      \ line1 =~ '^\([=-`:''"~^_*+#<>]\)\1*$' ? 'rst' :
-  "      \ line1 =~ '^*'      ? 'hatena'   :
-  "      \ line1 =~ '^#' ||
-  "      \ line2 =~ '^=\+$'   ? 'markdown' :
-  "      \                      'text'
 endfunction
-
-let b:ftdetect = 1
