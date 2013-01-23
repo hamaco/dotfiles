@@ -176,6 +176,12 @@ cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
 nnoremap <Leader>a ggVG
 
+" 括弧までの選択を簡単にする
+onoremap ) f)
+onoremap ( t(
+vnoremap ) f)
+vnoremap ( t(
+
 
 " === Plugin settings ===
 
