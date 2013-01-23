@@ -343,13 +343,6 @@ noremap gE ge
 let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
 
 
-" ===== watchdogs.vim =====
-let g:watchdogs_check_BufWritePost_enable = 1
-let g:watchdogs_check_CursorHold_enable = 0
-
-call watchdogs#setup(g:quickrun_config)
-
-
 " ===== unite.vim =====
 let g:unite_source_history_yank_enable = 1
 
@@ -369,6 +362,13 @@ function! s:unite_my_settings() "{{{
   imap <buffer> ' <Plug>(unite_quick_match_default_action)
   nmap <buffer> x <Plug>(unite_toggle_mark_current_candidate)
 endfunction "}}}
+
+
+" ===== watchdogs.vim =====
+let g:watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_CursorHold_enable = 0
+
+call watchdogs#setup(g:quickrun_config)
 
 
 
