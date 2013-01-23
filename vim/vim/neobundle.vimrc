@@ -104,6 +104,7 @@ NeoBundleLazy 'tyru/restart.vim', {
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'Shougo/vimfiler'
 
 NeoBundleLazy "thinca/vim-scouter", {
 \   'autoload': {'commands': ["Scouter"]}
