@@ -83,6 +83,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 
 " other
 NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'kana/vim-niceblock'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-smartword'
