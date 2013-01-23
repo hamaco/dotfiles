@@ -1,4 +1,5 @@
-" === Debug === {{{1
+" === Startup ===
+" https://gist.github.com/1518874
 if has('vim_starting') && has('reltime')
   let g:startuptime = reltime()
   augroup vimrc-startuptime
@@ -6,7 +7,7 @@ if has('vim_starting') && has('reltime')
     \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
   augroup END
 endif
-" End Debug }}}
+
 
 if has('vim_starting')
   set runtimepath& runtimepath+=$HOME/.vim
@@ -51,6 +52,7 @@ call s:source_if('~/.vim/neobundle.vimrc')
 syntax enable
 colorscheme jellybeans
 
+
 " === Encoding ===
 "let &termencoding = 'utf-8'
 set encoding=utf-8
@@ -60,7 +62,7 @@ set fileformat=unix
 set fileformats=unix,dos,mac
 
 
-" === ??? ===
+" === Settings ===
 " Vim 以外の所でファイルが変更された場合自動で読み込む
 set autoread
 set ambiwidth=double
@@ -116,6 +118,7 @@ augroup END
 
 autocmd vimrc FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
 
+
 " === command ===
 " 文字コードを変えて最読込
 command! -nargs=? -bang -complete=file Utf8 edit<bang> ++enc=utf-8  <args>
@@ -133,6 +136,7 @@ command! -nargs=0 ToUnix    setlocal fileencoding=utf-8 fileformat=unix
 command! -nargs=1 -bang -complete=file Rename saveas<bang> <args> | call delete(expand('#:p'))
 command! RemoveTrailingSpaces %s/\s\+$// | nohlsearch
 command! RemoveBlankLines :g /^$/d
+
 
 " === Key mappings ===
 nnoremap <Leader>ev :<C-u>tabedit $MYVIMRC<CR>
@@ -158,7 +162,6 @@ nnoremap Y y$
 nnoremap / /\v
 nnoremap ? ?\v
 
-
 " タブ
 nnoremap <C-t> <Nop>
 nnoremap <C-t>o :<C-u>tabonly<CR>
@@ -173,6 +176,7 @@ cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
 
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
 
 " === Plugin settings ===
 
@@ -430,15 +434,3 @@ function! s:move_window_into_tab_page(target_tabpagenr)
   execute target_tabpagenr 'tabnext'
 endfunction " }}}
 nnoremap <silent> <Space>ao :<C-u>call <SID>move_window_into_tab_page(0)<Cr>
-
-
-" === Debug === {{{1
-
-set autoindent
-"set cindent
-"set cinoptions=:2,(1,W1s
-
-" }}}
-
-" END {{{1
-" vim: 
