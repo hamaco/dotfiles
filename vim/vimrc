@@ -49,7 +49,7 @@ endfunction
 call s:source_if('~/.vim/neobundle.vimrc')
 
 syntax enable
-colorscheme vydark
+colorscheme jellybeans
 
 " === Encoding ===
 "let &termencoding = 'utf-8'
