@@ -358,7 +358,7 @@ noremap <silent> [unite]I :<C-u>Unite -auto-quit neobundle/update<CR>
 noremap <silent> [unite]o :<C-u>Unite outline<CR>
 noremap <silent> [unite]u :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:! file file_mru<CR>
 
-autocmd FileType unite call s:unite_my_settings()
+autocmd vimrc FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
   nmap <buffer> <ESC> <Plug>(unite_exit)
   imap <buffer> jj <Plug>(unite_insert_leave)
