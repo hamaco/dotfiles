@@ -115,6 +115,14 @@ augroup END
 
 autocmd vimrc FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
 
+" 保存時にディレクトリが存在しなければ自動で作成する
+autocmd vimrc BufWritePre * call s:auto_mkdir(expand("<afile>:p:h"))
+function! s:auto_mkdir(directory)
+  if !isdirectory(a:directory)
+    call mkdir(a:directory, "p")
+  endif
+endfunction
+
 
 " === command ===
 " 文字コードを変えて最読込
