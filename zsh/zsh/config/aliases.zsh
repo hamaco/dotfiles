@@ -34,8 +34,10 @@ alias pvim="vim -u NONE -i NONE -N"
 alias pgvim="gvim -u NONE -i NONE -N"
 alias vsh="vim -c VimShell"
 alias lingr="vim -c LingrLaunch"
-
 alias vihosts="sudo vim /etc/hosts"
+
+# for emacs
+alias e="emacsclient"
 
 alias tgz="tar cvzf"
 alias untar="tar xvf"
