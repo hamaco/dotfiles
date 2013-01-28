@@ -10,8 +10,8 @@ endif
 NeoBundle 'drikin/minimap-vim'
 
 " base
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
 \  'build': {
 \     'mac' : 'make -f make_mac.mak',
@@ -106,6 +106,7 @@ NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'majutsushi/tagbar'
 
 NeoBundleLazy "thinca/vim-scouter", {
 \   'autoload': {'commands': ["Scouter"]}
