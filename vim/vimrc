@@ -360,6 +360,24 @@ noremap gE ge
 let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
 
 
+" ===== submode.vim =====
+" タブの切り替え
+call submode#enter_with('tabpage', 'n', '', 'gt', 'gt')
+call submode#enter_with('tabpage', 'n', '', 'gT', 'gT')
+call submode#map('tabpage', 'n', '', 't', 'gt')
+call submode#map('tabpage', 'n', '', 'T', 'gT')
+
+" ウィンドウのリサイズ
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+
 " ===== unite.vim =====
 let g:unite_source_history_yank_enable = 1
 
