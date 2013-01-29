@@ -251,6 +251,10 @@ imap <expr> <TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
 let g:octopress_path = '~/works/octopress-github'
 
 
+" operator-replace.vim
+map R <Plug>(operator-replace)
+
+
 " quickrun.vim
 let g:quickrun_config = {}
 let g:quickrun_config['_'] = {
