@@ -36,7 +36,7 @@ esac
 
 umask 022
 
-cdpath=($HOME /web/*(N-/))
+cdpath=($HOME /var/www/*(N-/) /var/www/html/*(N-/))
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
