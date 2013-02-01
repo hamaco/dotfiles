@@ -11,6 +11,9 @@
 .vimrc.local
 .*.sw?
 
+# for PhpStorm
+.idea
+
 # for Sabel
 */*sabel.log
 cache/*
