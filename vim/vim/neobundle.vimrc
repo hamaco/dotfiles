@@ -91,6 +91,11 @@ NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/sonictemplate-vim'
+NeoBundleLazy 'mattn/webapi-vim'
+NeoBundleLazy 'mattn/gist-vim', {
+\   'depends': 'mattn/webapi-vim',
+\   'autoload': {'commands': ['Gist']}
+\ }
 NeoBundle 'teramako/instant-markdown-vim'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-ref'

@@ -231,6 +231,10 @@ nnoremap <Leader>gc :<C-u>Gcommit<Enter>
   nnoremap <Leader>gb :<C-u>Gblame<Enter>
 
 
+" gist.vim
+let g:gist_update_on_write = 2
+
+
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_auto_completion_start_length = 2
