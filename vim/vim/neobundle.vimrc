@@ -114,6 +114,10 @@ NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'Shougo/vimfiler'
+NeoBundleLazy 'Shougo/vimshell', {
+\   'autoload': {'commands': ['VimShell', 'VimShellPop']},
+\   'mappings' : ['<Plug>(vimshell_switch)']
+\ }
 NeoBundle 'majutsushi/tagbar'
 
 NeoBundleLazy "thinca/vim-scouter", {

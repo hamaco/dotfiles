@@ -409,8 +409,20 @@ function! s:unite_my_settings() "{{{
 endfunction "}}}
 
 
-" ===== vimfiler.vim ======
+" ===== vimfiler.vim =====
 let g:vimfiler_as_default_explorer = 1
+
+
+" ===== vimshell.vim =====
+let bundle = neobundle#get('vimshell')
+function! bundle.hooks.on_source(bundle)
+  let g:vimshell_user_prompt = 'getcwd()'
+  let g:vimshell_prompt = "/ _ / X < "
+endfunction
+
+nmap <C-@> <Plug>(vimshell_switch)
+nmap <C-Space> <Plug>(vimshell_switch)
+nnoremap ! :VimShellExecute<Space>
 
 
 " ===== watchdogs.vim =====
