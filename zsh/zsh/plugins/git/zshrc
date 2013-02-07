@@ -1,0 +1,13 @@
+if exists hub; then
+	eval "$(hub alias -s)"
+	compdef hub=git
+	fpath=($(dirname $0)/completions $fpath)
+fi
+
+alias g="git"
+
+alias gst="git status -sb"
+
+alias gs="git svn"
+alias gsr="git svn rebase"
+alias gsd="git svn dcommit"

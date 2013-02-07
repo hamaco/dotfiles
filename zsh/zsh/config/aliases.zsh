@@ -46,18 +46,6 @@ alias tmux="tmux a || tmux"
 
 alias crontab="crontab -i"
 
-# for git
-if type hub > /dev/null; then
-	eval "$(hub alias -s)"
-fi
-alias g="git"
-
-alias gst="git status -sb"
-
-alias gs="git svn"
-alias gsr="git svn rebase"
-alias gsd="git svn dcommit"
-
 # for dstat
 alias dstat-full="dstat -Tclmdrn"
 alias dstat-mem="dstat -Tclm"
