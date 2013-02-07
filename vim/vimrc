@@ -171,6 +171,10 @@ nnoremap ? ?\v
 " タブ
 nnoremap <C-t> <Nop>
 nnoremap <C-t>o :<C-u>tabonly<CR>
+nnoremap <C-t>h <C-w>h
+nnoremap <C-t>j <C-w>j
+nnoremap <C-t>k <C-w>k
+nnoremap <C-t>l <C-w>l
 nnoremap <silent> <Left> :<C-u>execute 'tabmove' tabpagenr() - 2<CR>
 nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
 
