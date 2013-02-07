@@ -146,8 +146,9 @@ command! RemoveBlankLines :g /^$/d
 " === Key mappings ===
 nnoremap <Leader>ev :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Leader>eg :<C-u>tabedit $MYGVIMRC<CR>
-nnoremap <Leader>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
-nnoremap <Leader>rg :<C-u>source $MYGVIMRC<CR>
+" TODO: quickrunと被ってた……
+"nnoremap <Leader>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
+"nnoremap <Leader>rg :<C-u>source $MYGVIMRC<CR>
 
 noremap ; :
 noremap : ;
