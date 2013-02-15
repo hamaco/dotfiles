@@ -411,6 +411,7 @@ function! s:unite_my_settings() "{{{
   nmap <buffer> ' <Plug>(unite_quick_match_default_action)
   imap <buffer> ' <Plug>(unite_quick_match_default_action)
   nmap <buffer> x <Plug>(unite_toggle_mark_current_candidate)
+  imap <buffer> <C-BS> <Plug>(unite_delete_backward_path)
 endfunction "}}}
 
 
