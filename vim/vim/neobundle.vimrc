@@ -114,7 +114,9 @@ NeoBundleLazy 'tyru/restart.vim', {
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimfiler', {
+\   'depends': 'Shougo/unite.vim'
+\ }
 NeoBundleLazy 'Shougo/vimshell', {
 \   'autoload': {'commands': ['VimShell', 'VimShellPop']},
 \   'mappings' : ['<Plug>(vimshell_switch)']
