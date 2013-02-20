@@ -10,8 +10,7 @@ function! s:set_font(fontname, fontsize)
 endfunction
 
 
-
-colorscheme jellybeans
+colorscheme magica
 
 if has("mac")
   " call s:set_font("Source Code Pro", 14)
