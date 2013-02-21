@@ -1,0 +1,7 @@
+--ignore-dir=tmp
+--ignore-dir=cake
+
+--type-add=php=tpl,ctp
+
+--sort-files
+# --nogroup
