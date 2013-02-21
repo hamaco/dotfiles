@@ -47,6 +47,7 @@
 	cia = commit --amend
 	cih = commit --amend -C HEAD
 	co = checkout
+	cp = cherry-pick
 	cob = checkout -b
 	d1 = diff HEAD~
 	d2 = diff HEAD~~
