@@ -65,3 +65,6 @@ zsh:
 	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/antigen/antigen ]; then \
 		git clone git://github.com/zsh-users/antigen.git $(INSTALL_DIR)/.zsh/plugins/antigen/antigen; \
 	fi
+	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/ghq/ghq ]; then \
+		git clone git://github.com/motemen/ghq.git $(INSTALL_DIR)/.zsh/plugins/ghq/ghq; \
+	fi

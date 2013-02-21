@@ -1,0 +1,3 @@
+fpath=($(dirname $0)/ghq/zsh(N-/) $fpath)
+
+autoload -U ghq
