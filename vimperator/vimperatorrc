@@ -115,6 +115,7 @@ cnoremap <C-f> <Right>
 cnoremap <C-p> <S-Tab>
 cnoremap <C-n> <Tab>
 cnoremap <C-v> <S-Insert>
+cnoremap <C-BS> <C-w>
 
 " タブ関係
 nnoremap z <A-Left>
@@ -221,7 +222,7 @@ EOM
 " feedSomeKeys_3.js {{{
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 lazy fmaps -u='mail\.google\.com/mail' -events=vkeydown,keypress,vkeyup j k
-lazy fmaps -u='mail\.google\.com/mail' c n p o u x s r a ? gi gs gt gd ga gc I
+lazy fmaps -u='mail\.google\.com/mail' c n p o u x s r a ? gi gs gt gd ga gc U
 lazy fmaps -u='mail\.google\.com/mail' -p=<Leader> d,# s,! e
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c j,n k,p n,j p,k o u x s r a ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' -p=<Leader> d,# s,! e
