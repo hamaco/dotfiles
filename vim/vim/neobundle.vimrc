@@ -124,6 +124,7 @@ NeoBundleLazy 'Shougo/vimshell', {
 \ }
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'supermomonga/shaberu.vim'
+NeoBundle 'Yggdroot/indentLine'
 
 NeoBundleLazy "thinca/vim-scouter", {
 \   'autoload': {'commands': ["Scouter"]}
