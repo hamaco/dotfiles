@@ -122,6 +122,7 @@ NeoBundleLazy 'Shougo/vimshell', {
 \   'mappings' : ['<Plug>(vimshell_switch)']
 \ }
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'supermomonga/shaberu.vim'
 
 NeoBundleLazy "thinca/vim-scouter", {
 \   'autoload': {'commands': ["Scouter"]}

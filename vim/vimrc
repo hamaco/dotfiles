@@ -336,6 +336,10 @@ command!
 \   | Restart
 
 
+" ===== shaberu.vim =====
+let g:shaberu_user_define_say_command = 'say -v Kyoko "%%TEXT%%"'
+
+
 " ===== smartinput.vim =====
 call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
 call smartinput#map_to_trigger('i', '<', '<', '<')
