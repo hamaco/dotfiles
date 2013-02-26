@@ -93,6 +93,10 @@ darwin*)
 		osascript -e "tell application \"Finder\" to mount volume \"$1\""
 	}
 
+	d () {
+		open dict://"$@" ; say "$@"
+	}
+
 	alias hiddenDesktop="chflags hidden ~/Desktop/*"
 	alias nohiddenDesktop="chflags nohidden ~/Desktop/*"
 
