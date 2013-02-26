@@ -84,6 +84,7 @@ darwin*)
 	alias emacs="open -a Emacs"
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 	alias mvim="/Applications/MacVim.app/Contents/MacOS/mvim"
+  alias gv="/Applications/MacVim.app/Contents/MacOS/mvim"
 	alias firefox="open -a Shiretoko"
 	alias safari="open -a Safari"
 	alias prev="open -a Preview"
