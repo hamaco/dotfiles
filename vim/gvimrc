@@ -10,7 +10,7 @@ function! s:set_font(fontname, fontsize)
 endfunction
 
 
-colorscheme magica
+colorscheme hybrid
 
 if has("mac")
   " call s:set_font("Source Code Pro", 14)
