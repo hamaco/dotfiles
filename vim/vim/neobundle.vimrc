@@ -9,7 +9,7 @@ endif
 " tmp
 NeoBundle 'drikin/minimap-vim'
 
-" base
+" base {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'Shougo/vimproc', {
@@ -19,21 +19,24 @@ NeoBundle 'Shougo/vimproc', {
 \     'cygwin': 'make -f make_cygwin.mak',
 \   },
 \ }
+" }}}
 
-" blog
+" blog {{{
 NeoBundleLazy 'tangledhelix/vim-octopress'
 NeoBundleLazy 'glidenote/octoeditor.vim', {
 \   'depends': 'tangledhelix/vim-octopress',
 \   'autoload': {'commands': ['OctopressList', 'OctopressNew']}
 \ }
+" }}}
 
-" unite
+" unite {{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline', {
 \   'depends': 'Shougo/unite.vim'
 \ }
+" }}}
 
-" quickrun
+" quickrun {{{
 NeoBundle 'thinca/vim-quickrun', {
 \   'depends': 'Shougo/unite.vim'
 \ }
@@ -49,39 +52,43 @@ NeoBundle 'osyo-manga/unite-quickfix', {
 NeoBundle 'karakaram/vim-quickrun-phpunit', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
-
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'osyo-manga/vim-watchdogs', {
 \   'depends': ['Shougo/vimproc', 'thinca/vim-quickrun', 'jceb/vim-hier', 'osyo-manga/shabadou.vim']
 \ }
+" }}}
 
-" neocomplcache
+" neocomplcache {{{
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet', {
 \   'depends': 'Shougo/neocomplcache',
 \ }
+" }}}
 
-" PHP
+" PHP {{{
 NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
 \   'autoload': {'filetypes': 'php'}
 \ }
 NeoBundleLazy 'StanAngeloff/php.vim', {
 \   'autoload': {'filetypes': 'php'}
 \ }
+" }}}
 
-" Twitter
+" Twitter {{{
 NeoBundleLazy 'tyru/open-browser.vim'
 NeoBundleLazy 'basyura/twibill.vim'
 NeoBundleLazy 'basyura/TweetVim', {
 \   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
 \   'autoload': {'commands': 'TweetVimHomeTimeline'}
 \ }
+" }}}
 
-" Colorscheme
+" Colorscheme {{{
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundleLazy 'aereal/vim-magica-colors'
 NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
+" }}}
 
 " other
 NeoBundle 'h1mesuke/vim-alignta'
@@ -123,7 +130,9 @@ NeoBundleLazy 'Shougo/vimshell', {
 \   'mappings' : ['<Plug>(vimshell_switch)']
 \ }
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'supermomonga/shaberu.vim'
+NeoBundle 'supermomonga/shaberu.vim', {
+\   'depends': 'Shougo/vimproc'
+\ }
 NeoBundle 'Yggdroot/indentLine'
 
 NeoBundleLazy "thinca/vim-scouter", {
@@ -131,3 +140,5 @@ NeoBundleLazy "thinca/vim-scouter", {
 \ }
 
 filetype indent plugin on
+
+" vim: foldmethod=marker
