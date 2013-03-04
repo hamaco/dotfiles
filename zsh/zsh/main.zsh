@@ -1,8 +1,14 @@
+ZSH_HOME="$HOME/.zsh"
+
 function source_if() {
 	[[ -s "$1" ]] && source "$1"
 }
 
-ZSH_HOME="$HOME/.zsh"
+
+umask 022
+
+fpath=($ZSH_HOME/completions $fpath)
+cdpath=($HOME /var/www/*(N-/) /var/www/html/*(N-/))
 
 # load config
 for config_file ($ZSH_HOME/config/*.zsh(N-.))
@@ -33,10 +39,6 @@ esac
 # else
 # 	bindkey "^R" history-incremental-pattern-search-backward
 # fi
-
-umask 022
-
-cdpath=($HOME /var/www/*(N-/) /var/www/html/*(N-/))
 
 # コアダンプサイズを制限
 limit coredumpsize 102400

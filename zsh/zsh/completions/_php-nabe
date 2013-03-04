@@ -1,0 +1,54 @@
+#compdef php-nabe
+
+_php-nabe() {
+  _no_arguments() {
+    (( ret )) && _message 'no more arguments'
+  }
+
+  typeset -A opt_args
+  local context state line ret=1
+
+  _arguments -C \
+    '(--clean-source)--clean-source[Before building, remove old source code]' \
+    '(--disable-mysqlnd)--disable-mysqlnd[Disable mysqlnd extension]' \
+    '(--git)--git[Get code from git repository]' \
+    '(--rebuild)--rebuild[Rebuild]' \
+    '1: :->cmds' \
+    '(1 *): :->args'
+
+  case $state in
+    cmds)
+      local -a cmds
+      cmds=( setup help install ls use disable ext-install ext-remove ext-ls ext-disable ext-enable composer-install )
+
+      _describe -t commands 'php-nabe command' cmds && ret=0
+      ;;
+    args)
+      case $line[1] in
+        install)
+          # TODO
+          _no_arguments
+          ;;
+        use)
+          local -a _versions
+          _versions=( $(php-nabe ls | grep -v '=>') )
+
+          _describe -t versions "PHP Versions" _versions && ret=0
+          ;;
+        ext-remove | ext-disable)
+          local -a _extensions
+          _extensions=( $(php-nabe ext-ls) )
+
+          _describe -t extensions "PHP extensions" _extensions && ret=0
+          ;;
+        *)
+          _no_arguments
+          ;;
+      esac
+      ;;
+  esac
+
+  return ret
+}
+
+_php-nabe "$@"
