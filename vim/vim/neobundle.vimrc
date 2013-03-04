@@ -75,7 +75,7 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 " }}}
 
 " Twitter {{{
-NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundle 'tyru/open-browser.vim'
 NeoBundleLazy 'basyura/twibill.vim'
 NeoBundleLazy 'basyura/TweetVim', {
 \   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
