@@ -65,6 +65,11 @@ NeoBundle 'Shougo/neosnippet', {
 \ }
 " }}}
 
+" git {{{
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+" }}}
+
 " PHP {{{
 NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
 \   'autoload': {'filetypes': 'php'}
@@ -111,7 +116,6 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-submode', {'rev': 'my-master'}
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-capslock'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tyru/autochmodx.vim'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'tyru/current-func-info.vim'
