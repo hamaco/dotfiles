@@ -13,14 +13,7 @@ endfunction
 colorscheme hybrid
 
 if has("mac")
-  " call s:set_font("Source Code Pro", 14)
-  " call s:set_font("セプテンバーＭ-等幅教漢", 16)
   call s:set_font("ルイカ等幅-０３", 16)
-
-  if has('vim_starting')
-    " set columns=140
-    " set lines=55
-  endif
 
   set transparency=20
   let g:transparency = &transparency
