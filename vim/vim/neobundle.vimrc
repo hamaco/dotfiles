@@ -138,9 +138,12 @@ NeoBundle 'supermomonga/shaberu.vim', {
 \   'depends': 'Shougo/vimproc'
 \ }
 NeoBundle 'Yggdroot/indentLine'
+NeoBundleLazy 'rking/ag.vim', {
+\   'autoload': {'commands': ['Ag']}
+\ }
 
-NeoBundleLazy "thinca/vim-scouter", {
-\   'autoload': {'commands': ["Scouter"]}
+NeoBundleLazy 'thinca/vim-scouter', {
+\   'autoload': {'commands': ['Scouter']}
 \ }
 
 filetype indent plugin on
