@@ -10,7 +10,7 @@ let g:plugin_loader_roots = "~/share/vimperator-plugins ~/share/my-vimperator-pl
 " set {{{1
 
 set complete=shl
-set defsearch=google
+set defsearch=bing
 set editor="/Applications/MacVim.app/Contents/MacOS/mvim -f"
 set focuscontent
 set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
@@ -158,6 +158,8 @@ nnoremap ,a :<C-u>readitlater add<CR>
 
 " }}}
 " bmark {{{1
+
+bmark -title="Bing Search" -tags=keyword -keyword=bing http://www.bing.com/search?q=%s
 
 bmark -title="BitBucket" -keyword=bb https://bitbucket.org/
 bmark -title="Favstar (hamaco)" -keyword=favstar http://favstar.fm/users/hamaco/recent
