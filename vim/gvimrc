@@ -15,6 +15,13 @@ colorscheme hybrid
 if has("mac")
   call s:set_font("ルイカ等幅-０３", 16)
 
+  if has('vim_starting')
+    set columns=177
+    set lines=43
+    set cmdheight=1
+    set linespace=1
+  endif
+
   set transparency=20
   let g:transparency = &transparency
   function! s:relative_transparency(diff)
