@@ -6,9 +6,6 @@ if has('vim_starting')
 	call neobundle#rc(expand('~/.bundle'))
 endif
 
-" tmp
-NeoBundle 'drikin/minimap-vim'
-
 " base {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
