@@ -101,7 +101,9 @@ NeoBundle 'kana/vim-smartword'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'mattn/sonictemplate-vim'
+NeoBundleLazy 'mattn/sonictemplate-vim', {
+\   'autoload': {'commands': ['Template']}
+\ }
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/gist-vim', {
 \   'depends': 'mattn/webapi-vim',
