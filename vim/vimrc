@@ -340,6 +340,12 @@ command!
 " ===== shaberu.vim =====
 let g:shaberu_user_define_say_command = 'say -v Kyoko "%%TEXT%%"'
 
+augroup vimrc-shaberu-vim
+  autocmd VimEnter * ShaberuSay 'お帰りなさいませ、ご主人さま'
+  autocmd VimLeave * ShaberuSay '行ってらっしゃいませ、ご主人さま'
+  autocmd BufWritePost .gvimrc nested source $MYGVIMRC | ShaberuSay 'ビムアールシーを読み込みました'
+augroup END
+
 
 " ===== smartinput.vim =====
 call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
