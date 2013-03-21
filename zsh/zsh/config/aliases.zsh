@@ -58,7 +58,7 @@ alias delete-empty-dir="find . -type d -empty -delete"
 alias comp="composer"
 alias oil="noglob oil"
 
-for command in nautilus caja nemo
+for command in nautilus caja thunar nemo
 do
 	if exists $command; then
 		alias open=$command
