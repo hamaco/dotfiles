@@ -112,7 +112,7 @@ NeoBundleLazy 'mattn/gist-vim', {
 NeoBundle 'teramako/instant-markdown-vim'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-submode', {'rev': 'my-master'}
+NeoBundle 'kana/vim-submode'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-capslock'
 NeoBundle 'tyru/autochmodx.vim'

@@ -389,7 +389,7 @@ let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
 
 
 " ===== submode.vim =====
-let g:submode_leave_with_key = 1
+let g:submode_keep_leaving_key = 1
 
 " タブの切り替え
 call submode#enter_with('tabpage', 'n', '', 'gt', 'gt')
