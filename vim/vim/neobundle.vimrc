@@ -145,6 +145,7 @@ NeoBundleLazy 'rking/ag.vim', {
 NeoBundleLazy 'thinca/vim-scouter', {
 \   'autoload': {'commands': ['Scouter']}
 \ }
+NeoBundle 'rhysd/clever-f.vim'
 
 filetype indent plugin on
 
