@@ -96,6 +96,7 @@ set splitbelow splitright
 set novisualbell t_vb=
 set conceallevel=2 concealcursor=i
 set title
+set completeopt-=preview
 
 " set autoindent
 set expandtab
