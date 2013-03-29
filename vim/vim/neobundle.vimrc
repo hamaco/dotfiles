@@ -64,7 +64,7 @@ NeoBundle 'Shougo/neosnippet', {
 
 " git {{{
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
+" NeoBundle 'airblade/vim-gitgutter'
 " }}}
 
 " PHP {{{
@@ -87,7 +87,7 @@ NeoBundleLazy 'basyura/TweetVim', {
 
 " Colorscheme {{{
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
+NeoBundleLazy 'w0ng/vim-hybrid'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundleLazy 'aereal/vim-magica-colors'
 NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
@@ -110,12 +110,12 @@ NeoBundleLazy 'mattn/gist-vim', {
 \   'depends': 'mattn/webapi-vim',
 \   'autoload': {'commands': ['Gist']}
 \ }
-NeoBundle 'teramako/instant-markdown-vim'
+" NeoBundle 'teramako/instant-markdown-vim'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-capslock'
+" NeoBundle 'tpope/vim-capslock'
 NeoBundle 'tyru/autochmodx.vim'
 NeoBundle 'tyru/caw.vim'
 NeoBundle 'tyru/current-func-info.vim'
@@ -123,7 +123,7 @@ NeoBundle 'tyru/eskk.vim'
 NeoBundleLazy 'tyru/restart.vim', {
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}
 \ }
-NeoBundle 'ujihisa/shadow.vim'
+" NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'Shougo/vimfiler', {
@@ -145,7 +145,7 @@ NeoBundleLazy 'rking/ag.vim', {
 NeoBundleLazy 'thinca/vim-scouter', {
 \   'autoload': {'commands': ['Scouter']}
 \ }
-NeoBundle 'rhysd/clever-f.vim'
+" NeoBundle 'rhysd/clever-f.vim'
 
 filetype indent plugin on
 
