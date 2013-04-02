@@ -114,6 +114,9 @@ NeoBundleLazy 'mattn/gist-vim', {
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'kana/vim-submode'
+NeoBundleLazy 'osyo-manga/vim-hideout', {
+\   'autoload': {'commands': ['HideoutOn']}
+\ }
 NeoBundle 'tpope/vim-abolish'
 " NeoBundle 'tpope/vim-capslock'
 NeoBundle 'tyru/autochmodx.vim'
