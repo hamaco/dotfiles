@@ -1,7 +1,6 @@
 if exists hub; then
+	#fpath=($(dirname $0)/completions $fpath)
 	eval "$(hub alias -s)"
-	compdef hub=git
-	fpath=($(dirname $0)/completions $fpath)
 fi
 
 alias g="git"
