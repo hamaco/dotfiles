@@ -272,11 +272,13 @@ bindkey '^[d' _quote-previous-word-in-double
 # }}}
 
 # SSHのagent forward
-# http://www.cuspy.org/blog/archives/297
-if [ "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
-  ln -fs $SSH_AUTH_SOCK $HOME/.ssh/auth_sock
-  export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
-fi
+# # http://www.cuspy.org/blog/archives/297
+# if [ "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
+#   ln -fs $SSH_AUTH_SOCK $HOME/.ssh/auth_sock
+#   export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
+# fi
+# http://www.funtoo.org/wiki/Keychain
+exists keychain && eval `keychain --eval --agents ssh id_dsa`
 
 
 function chpwd() { ls }
