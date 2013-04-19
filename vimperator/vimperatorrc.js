@@ -2,7 +2,7 @@
 
   // load plugins {{{
     // migemized_find
-  liberator.globalVariables.plugin_loader_plugins = <>
+  liberator.globalVariables.plugin_loader_plugins = `
     _libly
     appendAnchor
     auto_reload
@@ -18,7 +18,7 @@
     speakerdeck
     subscldr
     walk-input
-  </>.toString().split(/\s+/).filter(function(n) !/^!/.test(n));
+  `.toString().split(/\s+/).filter(function(n) !/^!/.test(n));
   // }}}
 
 })();
