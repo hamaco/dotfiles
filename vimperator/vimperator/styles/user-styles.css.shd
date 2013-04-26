@@ -1,48 +1,40 @@
-// scss -s -t nested --trace
+// sass -s -t nested --trace
 
-* {
-	/* font-family: '07YasashiaGothic' !important; */
-	font-family: 'Ruika-03' !important;
-}
+*
+	font-family: 'Ruika-03' !important
 
 // タブの幅を40pxで固定する
-@-moz-document url-prefix("chrome://") {
-	.tabbrowser-tab[fadein]:not([pinned]) {
-		min-width: 40px !important;
-		max-width: 40px !important;
-	}
-}
+@-moz-document url-prefix("chrome://")
+	.tabbrowser-tab[fadein]:not([pinned])
+		min-width: 40px !important
+		max-width: 40px !important
 
 
 // チャットワークの広告を非表示にする
-@-moz-document domain("www.chatwork.com") {
-	#cw_promotion_area {
-		display: none !important;
-	}
-}
+@-moz-document domain("www.chatwork.com")
+	#cw_promotion_area
+		display: none !important
 
 // GitHubのアイコン出るようにしたい
-@-moz-document domain("github.com") {
-	.mini-icon, .mega-icon, i.minus {
-		font-family: 'Octicons Regular' !important;
-	}
-}
+@-moz-document domain("github.com")
+	.mini-icon,
+	.mega-icon,
+	i.minus,
+	span.diffstat .diffstat-bar,
+	span.diffstat .diffstat-bar i
+		font-family: 'Octicons Regular' !important
 
 
 // Firebugのフォント設定
-@-moz-document url-prefix("chrome://firebug/content/firefox/") {
-	textbox#fbCommandLine,    // コマンドライン
-	#fbCommandLineCompletion, // コマンドラインの補完候補
-	#fbCommandEditor,         // コマンドエディタ
-	#fbCommandToolbar         // コマンドエディタツール
-	{
-		font-size: 12px !important;
-		font-family: "Source Code Pro" !important;
-	}
+@-moz-document url-prefix("chrome://firebug/content/firefox/")
+	textbox#fbCommandLine,
+	#fbCommandLineCompletion,
+	#fbCommandEditor,
+	#fbCommandToolbar
+		font-size: 12px !important
+		font-family: "Source Code Pro" !important
 
 	// コンソールログ
-	.panelNode-console {
-		font-size: 12px !important;
-		font-family: "Ricty" !important;
-	}
-}
+	.panelNode-console
+		font-size: 12px !important
+		font-family: "Ricty" !important

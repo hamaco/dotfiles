@@ -1,6 +1,5 @@
 * {
-  /* font-family: '07YasashiaGothic' !important; */
-  font-family: 'Ruika-03' !important; }
+  font-family: "Ruika-03" !important; }
 
 @-moz-document url-prefix("chrome://") {
   .tabbrowser-tab[fadein]:not([pinned]) {
@@ -12,8 +11,12 @@
     display: none !important; } }
 
 @-moz-document domain("github.com") {
-  .mini-icon, .mega-icon, i.minus {
-    font-family: 'Octicons Regular' !important; } }
+  .mini-icon,
+  .mega-icon,
+  i.minus,
+  span.diffstat .diffstat-bar,
+  span.diffstat .diffstat-bar i {
+    font-family: "Octicons Regular" !important; } }
 
 @-moz-document url-prefix("chrome://firebug/content/firefox/") {
   textbox#fbCommandLine,
