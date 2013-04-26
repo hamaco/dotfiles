@@ -203,6 +203,12 @@ vnoremap ( t(
 vnoremap <Leader>a :Alignta<Space>
 
 
+" autocdmodx.vim
+let g:autochmodx_ignore_scriptish_file_patterns = [
+\ '\c.*\.rb$',
+\]
+
+
 " capslock.vim
 imap <C-a> <C-o><Plug>CapsLockToggle
 
