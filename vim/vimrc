@@ -266,6 +266,8 @@ map R <Plug>(operator-replace)
 
 
 " quickrun.vim
+map <Leader>r <Plug>(quickrun)
+
 let g:quickrun_config = {}
 let g:quickrun_config['_'] = {
 \   'runner': 'vimproc',
@@ -456,7 +458,10 @@ nnoremap ! :VimShellExecute<Space>
 let g:watchdogs_check_BufWritePost_enable = 1
 let g:watchdogs_check_CursorHold_enable = 0
 
-call watchdogs#setup(g:quickrun_config)
+let bundle = neobundle#get('vim-quickrun')
+function! bundle.hooks.on_source(bundle)
+  call watchdogs#setup(g:quickrun_config)
+endfunction
 
 
 

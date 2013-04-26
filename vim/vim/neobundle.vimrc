@@ -18,53 +18,59 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 " }}}
 
-" blog {{{
-NeoBundleLazy 'tangledhelix/vim-octopress'
-NeoBundleLazy 'glidenote/octoeditor.vim', {
-\   'depends': 'tangledhelix/vim-octopress',
-\   'autoload': {'commands': ['OctopressList', 'OctopressNew']}
-\ }
-" }}}
-
 " unite {{{
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline', {
-\   'depends': 'Shougo/unite.vim'
+NeoBundleLazy 'Shougo/unite.vim', {
+\   'autoload': {'commands': ['Unite']}
+\ }
+NeoBundleLazy 'Shougo/unite-outline', {
+\   'depends': 'Shougo/unite.vim',
+\   'autoload': {'unite_sources': 'outline'}
 \ }
 " }}}
 
 " quickrun {{{
-NeoBundle 'thinca/vim-quickrun', {
-\   'depends': 'Shougo/unite.vim'
+NeoBundleLazy 'thinca/vim-quickrun', {
+\   'depends': 'Shougo/unite.vim',
+\   'autoload' : {'mappings' : ['<Plug>(quickrun)']},
 \ }
-NeoBundle 'hamaco/quickrun-hook-u-nya-', {
+NeoBundleLazy 'hamaco/quickrun-hook-u-nya-', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
-NeoBundle 'osyo-manga/shabadou.vim', {
+NeoBundleLazy 'osyo-manga/shabadou.vim', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
-NeoBundle 'osyo-manga/unite-quickfix', {
+NeoBundleLazy 'osyo-manga/unite-quickfix', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
-NeoBundle 'karakaram/vim-quickrun-phpunit', {
+NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
-NeoBundle 'jceb/vim-hier'
-NeoBundle 'osyo-manga/vim-watchdogs', {
+NeoBundleLazy 'jceb/vim-hier'
+NeoBundleLazy 'osyo-manga/vim-watchdogs', {
 \   'depends': ['Shougo/vimproc', 'thinca/vim-quickrun', 'jceb/vim-hier', 'osyo-manga/shabadou.vim']
 \ }
 " }}}
 
 " neocomplcache {{{
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet', {
+NeoBundleLazy 'Shougo/neocomplcache', {
+\   'autoload': {
+\     'insert': 1,
+\   }
+\ }
+NeoBundleLazy 'Shougo/neosnippet', {
 \   'depends': 'Shougo/neocomplcache',
+\   'autoload': {
+\     'insert': 1,
+\     'filetypes': 'snippet',
+\     'unite_sources': ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
+\   }
 \ }
 " }}}
 
 " git {{{
+" autocmd で頑張ってるので Lazy できなさそう
 NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'airblade/vim-gitgutter'
+" NeoBundleLazy 'airblade/vim-gitgutter'
 " }}}
 
 " PHP {{{
@@ -76,8 +82,40 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 \ }
 " }}}
 
+
+
+
+NeoBundleLazy 'tyru/current-func-info.vim', {
+\   'autoload': {'functions': 'cfi#format'}
+\ }
+NeoBundleLazy 'Shougo/vimfiler', {
+\   'depends': 'Shougo/unite.vim',
+\   'autoload': {
+\     'commands': ['VimFiler', 'VimFilerExplorer'],
+\     'explorer': 1,
+\   }
+\ }
+NeoBundleLazy 'Shougo/vimshell', {
+\   'autoload': {'commands': ['VimShell', 'VimShellPop']},
+\   'mappings' : ['<Plug>(vimshell_switch)']
+\ }
+NeoBundleLazy 'h1mesuke/vim-alignta', {
+\   'autoload': {'commands': ['Alignta']},
+\ }
+
+
+
+" blog {{{
+NeoBundleLazy 'tangledhelix/vim-octopress'
+NeoBundleLazy 'glidenote/octoeditor.vim', {
+\   'depends': 'tangledhelix/vim-octopress',
+\   'autoload': {'commands': ['OctopressList', 'OctopressNew']}
+\ }
+" }}}
+
+
 " Twitter {{{
-NeoBundle 'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser.vim'
 NeoBundleLazy 'basyura/twibill.vim'
 NeoBundleLazy 'basyura/TweetVim', {
 \   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
@@ -85,23 +123,22 @@ NeoBundleLazy 'basyura/TweetVim', {
 \ }
 " }}}
 
-" Colorscheme {{{
+" ColorScheme {{{
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundleLazy 'w0ng/vim-hybrid'
-NeoBundle 'itchyny/landscape.vim'
+NeoBundleLazy 'itchyny/landscape.vim'
 NeoBundleLazy 'aereal/vim-magica-colors'
 NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}
 
 " other
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'kana/vim-niceblock'
-NeoBundle 'kana/vim-smartchr'
+NeoBundleLazy 'kana/vim-niceblock'
+NeoBundleLazy 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-smartword'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace'
-NeoBundle 'kana/vim-textobj-user'
+NeoBundleLazy 'kana/vim-operator-user'
+NeoBundleLazy 'kana/vim-operator-replace'
+NeoBundleLazy 'kana/vim-textobj-user'
 NeoBundleLazy 'mattn/sonictemplate-vim', {
 \   'autoload': {'commands': ['Template']}
 \ }
@@ -110,37 +147,29 @@ NeoBundleLazy 'mattn/gist-vim', {
 \   'depends': 'mattn/webapi-vim',
 \   'autoload': {'commands': ['Gist']}
 \ }
-" NeoBundle 'teramako/instant-markdown-vim'
-NeoBundle 'thinca/vim-localrc'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'kana/vim-submode'
+" NeoBundleLazy 'teramako/instant-markdown-vim'
+NeoBundleLazy 'thinca/vim-localrc'
+NeoBundleLazy 'thinca/vim-ref'
+NeoBundleLazy 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
-NeoBundle 'tpope/vim-abolish'
-" NeoBundle 'tpope/vim-capslock'
-NeoBundle 'tyru/autochmodx.vim'
-NeoBundle 'tyru/caw.vim'
-NeoBundle 'tyru/current-func-info.vim'
-NeoBundle 'tyru/eskk.vim'
+NeoBundleLazy 'tpope/vim-abolish'
+" NeoBundleLazy 'tpope/vim-capslock'
+NeoBundleLazy 'tyru/autochmodx.vim'
+NeoBundleLazy 'tyru/caw.vim'
+NeoBundleLazy 'tyru/eskk.vim'
 NeoBundleLazy 'tyru/restart.vim', {
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}
 \ }
-" NeoBundle 'ujihisa/shadow.vim'
-NeoBundle 'vim-scripts/matchit.zip'
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'Shougo/vimfiler', {
-\   'depends': 'Shougo/unite.vim'
-\ }
-NeoBundleLazy 'Shougo/vimshell', {
-\   'autoload': {'commands': ['VimShell', 'VimShellPop']},
-\   'mappings' : ['<Plug>(vimshell_switch)']
-\ }
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'supermomonga/shaberu.vim', {
+" NeoBundleLazy 'ujihisa/shadow.vim'
+NeoBundleLazy 'vim-scripts/matchit.zip'
+NeoBundleLazy 'vim-scripts/sudo.vim'
+NeoBundleLazy 'majutsushi/tagbar'
+NeoBundleLazy 'supermomonga/shaberu.vim', {
 \   'depends': 'Shougo/vimproc'
 \ }
-NeoBundle 'Yggdroot/indentLine'
+NeoBundleLazy 'Yggdroot/indentLine'
 NeoBundleLazy 'rking/ag.vim', {
 \   'autoload': {'commands': ['Ag']}
 \ }
@@ -148,7 +177,11 @@ NeoBundleLazy 'rking/ag.vim', {
 NeoBundleLazy 'thinca/vim-scouter', {
 \   'autoload': {'commands': ['Scouter']}
 \ }
-" NeoBundle 'rhysd/clever-f.vim'
+" NeoBundleLazy 'rhysd/clever-f.vim'
+
+
+
+
 
 filetype indent plugin on
 
