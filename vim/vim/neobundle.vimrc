@@ -164,7 +164,7 @@ NeoBundleLazy 'tyru/eskk.vim'
 NeoBundleLazy 'tyru/restart.vim', {
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}
 \ }
-" NeoBundleLazy 'ujihisa/shadow.vim'
+NeoBundleLazy 'ujihisa/shadow.vim'
 NeoBundleLazy 'vim-scripts/matchit.zip'
 NeoBundleLazy 'vim-scripts/sudo.vim'
 NeoBundleLazy 'majutsushi/tagbar'
