@@ -93,6 +93,7 @@
 	sp = stash pop
 	ss = stash save
 	st = status -sb
+	sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
 
