@@ -19,7 +19,12 @@ _php-nabe() {
   case $state in
     cmds)
       local -a cmds
-      cmds=( setup help install ls use disable ext-install ext-remove ext-ls ext-disable ext-enable composer-install )
+      cmds=(
+        setup help install ls use disable
+        ext-install ext-remove ext-ls ext-disable ext-enable
+        composer-install
+        fpm-start fpm-stop fpm-reload
+      )
 
       _describe -t commands 'php-nabe command' cmds && ret=0
       ;;
