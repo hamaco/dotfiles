@@ -1,4 +1,4 @@
-if exists hub; then
+if exists ruby && exists hub; then
 	#fpath=($(dirname $0)/completions $fpath)
 	eval "$(hub alias -s)"
 fi
