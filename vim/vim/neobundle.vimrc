@@ -85,6 +85,9 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 
 
 
+NeoBundleLazy 'tyru/caw.vim', {
+\   'autoload': {'mappings': '<Plug>(caw:prefix)'}
+\ }
 NeoBundleLazy 'tyru/current-func-info.vim', {
 \   'autoload': {'functions': 'cfi#format'}
 \ }
@@ -157,7 +160,6 @@ NeoBundleLazy 'osyo-manga/vim-hideout', {
 NeoBundleLazy 'tpope/vim-abolish'
 " NeoBundleLazy 'tpope/vim-capslock'
 NeoBundleLazy 'tyru/autochmodx.vim'
-NeoBundleLazy 'tyru/caw.vim'
 NeoBundleLazy 'tyru/eskk.vim'
 NeoBundleLazy 'tyru/restart.vim', {
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}

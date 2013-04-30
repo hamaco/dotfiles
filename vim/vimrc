@@ -213,6 +213,11 @@ let g:autochmodx_ignore_scriptish_file_patterns = [
 imap <C-a> <C-o><Plug>CapsLockToggle
 
 
+" caw.vim
+nmap gc <Plug>(caw:prefix)
+vmap gc <Plug>(caw:prefix)
+
+
 " eskk.vim
 
 " なんかあんまり辞書登録ちゃんとされてる気がしないので毎回書き込んでみる
