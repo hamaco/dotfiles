@@ -173,7 +173,7 @@ NeoBundleLazy 'tyru/restart.vim', {
 \ }
 NeoBundleLazy 'ujihisa/shadow.vim'
 NeoBundleLazy 'vim-scripts/matchit.zip'
-NeoBundleLazy 'vim-scripts/sudo.vim'
+NeoBundle 'vim-scripts/sudo.vim'
 NeoBundleLazy 'majutsushi/tagbar'
 NeoBundleLazy 'supermomonga/shaberu.vim', {
 \   'depends': 'Shougo/vimproc'
