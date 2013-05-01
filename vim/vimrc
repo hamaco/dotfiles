@@ -339,6 +339,8 @@ function! g:ref_source_webdict_sites.alc.filter(output)
   return join(split(a:output, "\n")[38 :], "\n")
 endfunction
 
+nmap <silent> K <Plug>(ref-keyword)
+vmap <silent> K <Plug>(ref-keyword)
 noremap <Space>ra :<C-u>Ref webdict alc<Space>
 noremap <Space>rm :<C-u>Ref man<Space>
 

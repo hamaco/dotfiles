@@ -152,7 +152,12 @@ NeoBundleLazy 'mattn/gist-vim', {
 \ }
 " NeoBundleLazy 'teramako/instant-markdown-vim'
 NeoBundleLazy 'thinca/vim-localrc'
-NeoBundleLazy 'thinca/vim-ref'
+NeoBundleLazy 'thinca/vim-ref', {
+\   'autoload': {
+\     'commands': ['Ref'],
+\     'mappings': '<Plug>(ref-keyword)',
+\   }
+\ }
 NeoBundleLazy 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
