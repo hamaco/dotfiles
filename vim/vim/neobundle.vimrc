@@ -165,7 +165,9 @@ NeoBundleLazy 'osyo-manga/vim-hideout', {
 NeoBundleLazy 'tpope/vim-abolish'
 " NeoBundleLazy 'tpope/vim-capslock'
 NeoBundleLazy 'tyru/autochmodx.vim'
-NeoBundleLazy 'tyru/eskk.vim'
+NeoBundleLazy 'tyru/eskk.vim', {
+\   'autoload': {'mappings' : [['i', '<Plug>(eskk:toggle)']]}
+\ }
 NeoBundleLazy 'tyru/restart.vim', {
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}
 \ }
