@@ -20,7 +20,7 @@ NeoBundle 'Shougo/vimproc', {
 
 " unite {{{
 NeoBundleLazy 'Shougo/unite.vim', {
-\   'autoload': {'commands': ['Unite']}
+\   'autoload': {'commands': ['Unite', 'UniteWithBufferDir']}
 \ }
 NeoBundleLazy 'Shougo/unite-outline', {
 \   'depends': 'Shougo/unite.vim',
