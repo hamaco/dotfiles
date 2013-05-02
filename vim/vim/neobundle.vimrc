@@ -169,6 +169,7 @@ NeoBundleLazy 'tyru/eskk.vim', {
 \   'autoload': {'mappings' : [['i', '<Plug>(eskk:toggle)']]}
 \ }
 NeoBundleLazy 'tyru/restart.vim', {
+\   'gui': 1,
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}
 \ }
 NeoBundleLazy 'ujihisa/shadow.vim'

@@ -346,11 +346,16 @@ noremap <Space>rm :<C-u>Ref man<Space>
 
 
 " ===== restart.vim =====
-command!
-\   -bar
-\   RestartWithSession
-\   let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
-\   | Restart
+if has('gui_running')
+  let bundle = neobundle#get('restart.vim')
+  function! bundle.hooks.on_source(bundle)
+    command!
+    \   -bar
+    \   RestartWithSession
+    \   let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
+    \   | Restart
+  endfunction
+endif
 
 
 " ===== shaberu.vim =====
