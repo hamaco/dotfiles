@@ -359,9 +359,11 @@ endif
 
 
 " ===== shaberu.vim =====
-let g:shaberu_user_define_say_command = 'say -v Kyoko "%%TEXT%%"'
-
 if has('mac')
+  NeoBundleSource shaberu.vim
+
+  let g:shaberu_user_define_say_command = 'say -v Kyoko "%%TEXT%%"'
+
   augroup vimrc-shaberu-vim
     autocmd VimEnter * ShaberuSay 'お帰りなさいませ、ごしゅじんさま'
     autocmd VimLeave * ShaberuSay '行ってらっしゃいませ、ごしゅじんさま'
