@@ -20,10 +20,11 @@ ifeq ($(OS), Darwin)
 endif
 
 common:
-	ln -fns $(CURRENT_DIR)/common/ackrc   $(INSTALL_DIR)/.ackrc
-	ln -fns $(CURRENT_DIR)/common/editrc  $(INSTALL_DIR)/.editrc
-	ln -fns $(CURRENT_DIR)/common/gemrc   $(INSTALL_DIR)/.gemrc
-	ln -fns $(CURRENT_DIR)/common/inputrc $(INSTALL_DIR)/.inputrc
+	ln -fns $(CURRENT_DIR)/common/ackrc    $(INSTALL_DIR)/.ackrc
+	ln -fns $(CURRENT_DIR)/common/agignore $(INSTALL_DIR)/.agignore
+	ln -fns $(CURRENT_DIR)/common/editrc   $(INSTALL_DIR)/.editrc
+	ln -fns $(CURRENT_DIR)/common/gemrc    $(INSTALL_DIR)/.gemrc
+	ln -fns $(CURRENT_DIR)/common/inputrc  $(INSTALL_DIR)/.inputrc
 
 git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig

@@ -1,0 +1,8 @@
+cache/*
+tmp/*
+
+*.log
+*min.js
+*min.css
+
+jquery.js
