@@ -129,7 +129,8 @@ NeoBundleLazy 'basyura/TweetVim', {
 " ColorScheme {{{
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundleLazy 'w0ng/vim-hybrid'
-NeoBundle 'itchyny/landscape.vim'
+NeoBundleLazy 'itchyny/landscape.vim'
+NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundleLazy 'aereal/vim-magica-colors'
 NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}

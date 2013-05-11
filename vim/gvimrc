@@ -10,10 +10,11 @@ function! s:set_font(fontname, fontsize)
 endfunction
 
 
-colorscheme landscape
+" colorscheme landscape
+colorscheme newspaper
 
 if has("mac")
-  call s:set_font("ルイカ等幅-０３", 16)
+  call s:set_font("ルイカ等幅-０３", 14)
 
   if has('vim_starting')
     set columns=177
@@ -22,7 +23,7 @@ if has("mac")
     set linespace=1
   endif
 
-  set transparency=20
+  set transparency=0
   let g:transparency = &transparency
   function! s:relative_transparency(diff)
     let &transparency = a:diff + &transparency
