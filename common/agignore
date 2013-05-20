@@ -1,6 +1,7 @@
 cache/*
 tmp/*
 
+*.sql
 *.log
 *min.js
 *min.css
