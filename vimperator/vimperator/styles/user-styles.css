@@ -18,6 +18,10 @@
   span.diffstat .diffstat-bar i {
     font-family: "Octicons Regular" !important; } }
 
+@-moz-document domain("demo.gitlab.com") {
+  [class^="icon-"], [class*=" icon-"] {
+    font-family: FontAwesome !important; } }
+
 @-moz-document url-prefix("chrome://firebug/content/firefox/") {
   textbox#fbCommandLine,
   #fbCommandLineCompletion,
