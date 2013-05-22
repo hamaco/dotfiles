@@ -295,10 +295,20 @@ let g:quickrun_config['_'] = {
 \   'hook/quickfix_replate_tempname_to_bufnr/priority_exit' : -10,
 \ }
 
-let g:quickrun_config['markdown'] = {
-\   'outputter': 'multi',
-\   'outputter/multi/targets': ['buffer', 'browser']
-\ }
+if has('mac')
+  let g:quickrun_config['markdown'] = {
+  \   'outputter': 'null',
+  \   'command':   'open',
+  \   'cmdopt':    '-a',
+  \   'args':      'Marked',
+  \   'exec':      '%c %o %a %s',
+  \ }
+else
+  let g:quickrun_config['markdown'] = {
+  \   'outputter': 'multi',
+  \   'outputter/multi/targets': ['buffer', 'browser']
+  \ }
+endif
 
 let g:quickrun_config['jsx'] = {
 \   'command': 'jsx',
