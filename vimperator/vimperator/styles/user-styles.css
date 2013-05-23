@@ -11,12 +11,8 @@
     display: none !important; } }
 
 @-moz-document domain("github.com") {
-  .mini-icon,
-  .mega-icon,
-  i.minus,
-  span.diffstat .diffstat-bar,
-  span.diffstat .diffstat-bar i {
-    font-family: "Octicons Regular" !important; } }
+  [class*="octicon"] {
+    font-family: "github-octicons" !important; } }
 
 @-moz-document domain("demo.gitlab.com") {
   [class^="icon-"], [class*=" icon-"] {
