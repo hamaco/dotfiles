@@ -71,3 +71,6 @@ zsh:
 	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/ghq/ghq ]; then \
 		git clone git://github.com/motemen/ghq.git $(INSTALL_DIR)/.zsh/plugins/ghq/ghq; \
 	fi
+	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/zaw/zaw ]; then \
+		git clone git://github.com/nakamuray/zaw.git $(INSTALL_DIR)/.zsh/plugins/zaw/zaw; \
+	fi
