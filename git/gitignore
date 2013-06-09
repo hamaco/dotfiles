@@ -22,3 +22,7 @@ cache/*
 sess_*
 #*/cache/*
 #*/templates_c/*
+
+# for CandyCane
+app/webroot/coverage
+app/Plugin/Cc*
