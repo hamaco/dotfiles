@@ -82,7 +82,11 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 " }}}
 
 
-
+" JavaScript {{{
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+\   'autoload': {'filetypes': 'coffee'}
+\ }
+" }}}
 
 NeoBundleLazy 'tyru/caw.vim', {
 \   'autoload': {'mappings': '<Plug>(caw:prefix)'}
