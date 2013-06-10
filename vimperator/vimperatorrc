@@ -238,7 +238,7 @@ lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k n,s s a p o r v c m i,p J,
 lazy fmaps -u='www\.facebook\.com' -events=vkeydown j k l
 
 lazy fmaps -u='reblog\.machine\.mamemomonga\.com/dashboard' j k t l m
-lazy fmaps -u='www\.pixiv\.net' j k z 0
+lazy fmaps -u='www\.pixiv\.net/member_illust\.php' -events=vkeydown j k z 0
 " }}}
 
 " }}}
