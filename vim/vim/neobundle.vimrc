@@ -28,6 +28,10 @@ NeoBundleLazy 'Shougo/unite-outline', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload': {'unite_sources': 'outline'}
 \ }
+NeoBundleLazy 'ujihisa/unite-colorscheme', {
+\   'depends': 'Shougo/unite.vim',
+\   'autoload': {'unite_sources': 'colorscheme'}
+\ }
 " }}}
 
 " quickrun {{{
