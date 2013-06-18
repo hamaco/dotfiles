@@ -173,7 +173,7 @@ NeoBundleLazy 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
-NeoBundleLazy 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-abolish'
 " NeoBundleLazy 'tpope/vim-capslock'
 NeoBundleLazy 'tyru/autochmodx.vim'
 NeoBundleLazy 'tyru/eskk.vim', {
