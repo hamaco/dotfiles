@@ -276,6 +276,12 @@ let g:octopress_path = '~/works/octopress-github'
 map R <Plug>(operator-replace)
 
 
+" vim-precious
+map <Leader>q <Plug>(precious-quickrun-op)
+omap ic <Plug>(textobj-precious-i)
+vmap ic <Plug>(textobj-precious-i)
+
+
 " quickrun.vim
 map <Leader>r <Plug>(quickrun)
 

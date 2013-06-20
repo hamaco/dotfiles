@@ -203,6 +203,8 @@ NeoBundleLazy 'thinca/vim-scouter', {
 
 
 
+NeoBundle 'Shougo/context_filetype.vim'
+NeoBundle 'osyo-manga/vim-precious'
 
 filetype indent plugin on
 
