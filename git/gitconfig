@@ -72,6 +72,7 @@
 	newly = log HEAD@{1}..HEAD --reverse
 	newlyp = log HEAD@{1}..HEAD -p --reverse
 	package = !"git archive --format=tar --prefix=$(basename $(pwd))/ HEAD | gzip > $(basename $(pwd)).tar.gz"
+  pbcopy = !printf "$1" | pbcopy
 	pl = pull
 	pr = pull --rebase
 	ps = push
