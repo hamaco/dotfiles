@@ -134,6 +134,9 @@ NeoBundleLazy 'basyura/TweetVim', {
 \   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
 \   'autoload': {'commands': 'TweetVimHomeTimeline'}
 \ }
+NeoBundleLazy 'rhysd/tmpwin.vim', {
+\   'autoload': {'functions': 'tmpwin#toggle'}
+\ }
 " }}}
 
 " ColorScheme {{{
