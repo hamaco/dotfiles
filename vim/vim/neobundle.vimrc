@@ -213,7 +213,7 @@ NeoBundleLazy 'thinca/vim-scouter', {
 \   'autoload': {'commands': ['Scouter']}
 \ }
 NeoBundleLazy 'thinca/vim-prettyprint', {
-\   'autoload': {'commands': 'PrettyPrint'}
+\   'autoload': {'commands': ['PP', 'PrettyPrint']}
 \ }
 
 
