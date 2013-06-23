@@ -74,12 +74,13 @@ NeoBundleLazy 'Shougo/neosnippet', {
 " }}}
 
 " git {{{
-" autocmd で頑張ってるので Lazy できなさそう
+" autocmd で頑張ってるので Lazy できなさそう?
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'gregsexton/gitv'
 " NeoBundleLazy 'airblade/vim-gitgutter'
 " }}}
 
-" PHP {{{
+" php {{{
 NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
 \   'autoload': {'filetypes': 'php'}
 \ }
@@ -88,11 +89,42 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 \ }
 " }}}
 
-
-" JavaScript {{{
+" javascript {{{
 NeoBundleLazy 'kchmck/vim-coffee-script', {
 \   'autoload': {'filetypes': 'coffee'}
 \ }
+" }}}
+
+" blog {{{
+NeoBundleLazy 'tangledhelix/vim-octopress'
+NeoBundleLazy 'glidenote/octoeditor.vim', {
+\   'depends': 'tangledhelix/vim-octopress',
+\   'autoload': {'commands': ['OctopressList', 'OctopressNew']}
+\ }
+" }}}
+
+" twitter {{{
+NeoBundleLazy 'tyru/open-browser.vim', {
+\   'autoload': {'mappings' : '<Plug>(openbrowser-open)'}
+\ }
+
+NeoBundleLazy 'basyura/twibill.vim'
+NeoBundleLazy 'basyura/TweetVim', {
+\   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
+\   'autoload': {'commands': 'TweetVimHomeTimeline'}
+\ }
+NeoBundleLazy 'rhysd/tmpwin.vim', {
+\   'autoload': {'functions': 'tmpwin#toggle'}
+\ }
+" }}}
+
+" colorscheme {{{
+NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundleLazy 'w0ng/vim-hybrid'
+NeoBundleLazy 'itchyny/landscape.vim'
+NeoBundleLazy 'aereal/vim-magica-colors'
+NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}
 
 NeoBundleLazy 'tyru/caw.vim', {
@@ -109,44 +141,21 @@ NeoBundleLazy 'Shougo/vimfiler', {
 \   }
 \ }
 NeoBundleLazy 'Shougo/vimshell', {
-\   'autoload': {'commands': ['VimShell', 'VimShellPop']},
-\   'mappings' : ['<Plug>(vimshell_switch)']
-\ }
+\   'depends': 'Shougo/vimproc',
+\   'autoload': {
+\       'commands': [
+\           {'name': 'VimShell', 'complete': 'customlist,vimshell#complete'},
+\           'VimShellPop',
+\       ],
+\       'mappings': ['<Plug>(vimshell_switch)'],
+\ }}
+
 NeoBundleLazy 'h1mesuke/vim-alignta', {
 \   'autoload': {'commands': ['Alignta']},
 \ }
 
 
 
-" blog {{{
-NeoBundleLazy 'tangledhelix/vim-octopress'
-NeoBundleLazy 'glidenote/octoeditor.vim', {
-\   'depends': 'tangledhelix/vim-octopress',
-\   'autoload': {'commands': ['OctopressList', 'OctopressNew']}
-\ }
-" }}}
-
-
-" Twitter {{{
-NeoBundleLazy 'tyru/open-browser.vim'
-NeoBundleLazy 'basyura/twibill.vim'
-NeoBundleLazy 'basyura/TweetVim', {
-\   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
-\   'autoload': {'commands': 'TweetVimHomeTimeline'}
-\ }
-NeoBundleLazy 'rhysd/tmpwin.vim', {
-\   'autoload': {'functions': 'tmpwin#toggle'}
-\ }
-" }}}
-
-" ColorScheme {{{
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundleLazy 'w0ng/vim-hybrid'
-NeoBundleLazy 'itchyny/landscape.vim'
-NeoBundle 'vim-scripts/newspaper.vim'
-NeoBundleLazy 'aereal/vim-magica-colors'
-NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
-" }}}
 
 " other
 NeoBundleLazy 'kana/vim-niceblock'
@@ -155,10 +164,13 @@ NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-smartword'
 NeoBundleLazy 'kana/vim-operator-user'
 NeoBundleLazy 'kana/vim-operator-replace'
-NeoBundleLazy 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-user'
 NeoBundleLazy 'mattn/sonictemplate-vim', {
-\   'autoload': {'commands': ['Template']}
+\   'autoload': {'commands': [
+\       {'name': 'Template', 'complete': 'customlist,sonictemplate#complete'},
+\   ]}
 \ }
+
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/gist-vim', {
 \   'depends': 'mattn/webapi-vim',
@@ -177,7 +189,6 @@ NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
 NeoBundle 'tpope/vim-abolish'
-" NeoBundleLazy 'tpope/vim-capslock'
 NeoBundleLazy 'tyru/autochmodx.vim'
 NeoBundleLazy 'tyru/eskk.vim', {
 \   'autoload': {'mappings' : [['i', '<Plug>(eskk:toggle)']]}
@@ -193,18 +204,23 @@ NeoBundleLazy 'majutsushi/tagbar'
 NeoBundleLazy 'supermomonga/shaberu.vim', {
 \   'depends': 'Shougo/vimproc'
 \ }
-NeoBundleLazy 'Yggdroot/indentLine'
 NeoBundleLazy 'rking/ag.vim', {
-\   'autoload': {'commands': ['Ag']}
-\ }
+\   'autoload': {
+\     'commands': [{'name': 'Ag', 'complete': 'file'}]
+\ }}
 
 NeoBundleLazy 'thinca/vim-scouter', {
 \   'autoload': {'commands': ['Scouter']}
 \ }
-" NeoBundleLazy 'rhysd/clever-f.vim'
+NeoBundleLazy 'thinca/vim-prettyprint', {
+\   'autoload': {'commands': 'PrettyPrint'}
+\ }
 
 
 
+NeoBundleLazy 'deris/vim-rengbang', {
+\   'autoload': {'commands': ['RengBang', 'RengBangUsePrev']}
+\ }
 
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'osyo-manga/vim-precious'
