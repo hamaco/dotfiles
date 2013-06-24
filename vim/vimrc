@@ -138,7 +138,6 @@ command! -nargs=0 ToSjis    setlocal fileencoding=cp932
 command! -nargs=0 ToWindows setlocal fileencoding=cp932 fileformat=dos
 command! -nargs=0 ToUnix    setlocal fileencoding=utf-8 fileformat=unix
 
-" ???
 command! -nargs=1 -bang -complete=file Rename saveas<bang> <args> | call delete(expand('#:p'))
 command! RemoveTrailingSpaces %s/\s\+$// | nohlsearch
 command! RemoveBlankLines :g /^$/d
@@ -147,9 +146,6 @@ command! RemoveBlankLines :g /^$/d
 " === Key mappings ===
 nnoremap <Leader>ev :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Leader>eg :<C-u>tabedit $MYGVIMRC<CR>
-" TODO: quickrunと被ってた……
-"nnoremap <Leader>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif<CR>
-"nnoremap <Leader>rg :<C-u>source $MYGVIMRC<CR>
 
 noremap ; :
 noremap : ;
@@ -179,7 +175,6 @@ nnoremap <C-t>l <C-w>l
 nnoremap <silent> <Left> :<C-u>execute 'tabmove' tabpagenr() - 2<CR>
 nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
 
-" ???
 nnoremap vv <C-v>
 noremap! <C-BS> <C-w>
 
@@ -270,6 +265,11 @@ imap <expr> <TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
 
 " octoeditor.vim
 let g:octopress_path = '~/works/octopress-github'
+
+
+" open-browser.vim
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 
 
 " operator-replace.vim
