@@ -145,7 +145,7 @@ NeoBundleLazy 'Shougo/vimshell', {
 \   'autoload': {
 \       'commands': [
 \           {'name': 'VimShell', 'complete': 'customlist,vimshell#complete'},
-\           'VimShellPop',
+\           'VimShellPop', 'VimShellExecute',
 \       ],
 \       'mappings': ['<Plug>(vimshell_switch)'],
 \ }}
