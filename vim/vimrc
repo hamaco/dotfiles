@@ -331,7 +331,7 @@ let g:quickrun_config['jsx'] = {
 \ }
 
 let g:quickrun_config['watchdogs_checker/_'] = {
-\   'hook/unite_quickfix/enable_failure': 0,
+\   'hook/unite_quickfix/enable_failure': 1,
 \   'hook/u_nya_/enable': 0,
 \ }
 

@@ -35,25 +35,25 @@ NeoBundleLazy 'ujihisa/unite-colorscheme', {
 " }}}
 
 " quickrun {{{
-NeoBundleLazy 'thinca/vim-quickrun', {
+NeoBundle 'thinca/vim-quickrun', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload' : {'mappings' : ['<Plug>(quickrun)']},
 \ }
-NeoBundleLazy 'hamaco/quickrun-hook-u-nya-', {
+NeoBundle 'hamaco/quickrun-hook-u-nya-', {
+\   'depends': 'thinca/vim-quickrun'
+\ }
+NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
 NeoBundleLazy 'osyo-manga/shabadou.vim', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
 NeoBundleLazy 'osyo-manga/unite-quickfix', {
-\   'depends': 'thinca/vim-quickrun'
-\ }
-NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
-\   'depends': 'thinca/vim-quickrun'
+\   'depends': ['Shougo/unite.vim', 'thinca/vim-quickrun']
 \ }
 NeoBundleLazy 'jceb/vim-hier'
 NeoBundleLazy 'osyo-manga/vim-watchdogs', {
-\   'depends': ['Shougo/vimproc', 'thinca/vim-quickrun', 'jceb/vim-hier', 'osyo-manga/shabadou.vim']
+\   'depends': ['Shougo/vimproc', 'thinca/vim-quickrun', 'jceb/vim-hier', 'osyo-manga/unite-quickfix', 'osyo-manga/shabadou.vim']
 \ }
 " }}}
 
