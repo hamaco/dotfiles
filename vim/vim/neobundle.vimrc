@@ -162,8 +162,8 @@ NeoBundleLazy 'kana/vim-niceblock'
 NeoBundleLazy 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-smartword'
-NeoBundleLazy 'kana/vim-operator-user'
-NeoBundleLazy 'kana/vim-operator-replace'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundleLazy 'mattn/sonictemplate-vim', {
 \   'autoload': {'commands': [
