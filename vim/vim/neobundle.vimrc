@@ -105,7 +105,7 @@ NeoBundleLazy 'glidenote/octoeditor.vim', {
 
 " twitter {{{
 NeoBundleLazy 'tyru/open-browser.vim', {
-\   'autoload': {'mappings' : '<Plug>(openbrowser-open)'}
+\   'autoload': {'mappings' : ['<Plug>(openbrowser-open)', '<Plug>(openbrowser-smart-search)']}
 \ }
 
 NeoBundleLazy 'basyura/twibill.vim'
