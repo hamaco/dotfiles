@@ -193,6 +193,7 @@ NeoBundleLazy 'tyru/autochmodx.vim'
 NeoBundleLazy 'tyru/eskk.vim', {
 \   'autoload': {'mappings' : [['i', '<Plug>(eskk:toggle)']]}
 \ }
+NeoBundle 'tyru/vim-altercmd'
 NeoBundleLazy 'tyru/restart.vim', {
 \   'gui': 1,
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}

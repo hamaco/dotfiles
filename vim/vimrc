@@ -198,6 +198,13 @@ vnoremap ( t(
 vnoremap <Leader>a :Alignta<Space>
 
 
+" altercmd.vim
+call altercmd#load()
+command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
+
+MapAlterCommand sl setl
+MapAlterCommand sf setf
+
 " autocdmodx.vim
 let g:autochmodx_ignore_scriptish_file_patterns = [
 \ '\c.*\.rb$',
@@ -380,6 +387,8 @@ if has('gui_running')
     \   let g:restart_sessionoptions = 'blank,curdir,folds,help,localoptions,tabpages'
     \   | Restart
   endfunction
+
+  MapAlterCommand res[tart] Restart
 endif
 
 
