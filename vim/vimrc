@@ -109,14 +109,15 @@ let mapleader = ","
 
 
 " === autocmd ===
+command! -bang -nargs=* Autocmd autocmd<bang> vimrc <args>
 augroup vimrc
   autocmd!
 augroup END
 
-autocmd vimrc FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
+Autocmd FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
 
 " 保存時にディレクトリが存在しなければ自動で作成する
-autocmd vimrc BufWritePre * call s:auto_mkdir(expand("<afile>:p:h"))
+Autocmd BufWritePre * call s:auto_mkdir(expand("<afile>:p:h"))
 function! s:auto_mkdir(directory)
   if !isdirectory(a:directory)
     call mkdir(a:directory, "p")
@@ -250,8 +251,8 @@ let g:gist_update_on_write = 2
 
 
 " ===== gitv.vim =====
-autocmd FileType git :setl foldlevel=99
-autocmd FileType gitv call s:my_gitv_settings()
+Autocmd FileType git :setl foldlevel=99
+Autocmd FileType gitv call s:my_gitv_settings()
 function! s:my_gitv_settings()
   setlocal iskeyword+=/,-,.
   nnoremap <silent><buffer> C :<C-u>Git checkout <C-r><C-w><CR>
@@ -486,7 +487,7 @@ noremap <silent> [unite]I :<C-u>Unite -auto-quit neobundle/update<CR>
 noremap <silent> [unite]o :<C-u>Unite outline<CR>
 noremap <silent> [unite]u :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:! file file_mru<CR>
 
-autocmd vimrc FileType unite call s:unite_my_settings()
+Autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
   nmap <buffer> <ESC> <Plug>(unite_exit)
   imap <buffer> jj <Plug>(unite_insert_leave)
@@ -533,7 +534,7 @@ nnoremap <sid>(command-line-norange) q:<C-u>
 nmap :  <sid>(command-line-enter)
 xmap :  <sid>(command-line-enter)
 
-autocmd vimrc CmdwinEnter * call s:init_cmdwin()
+Autocmd CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
   nnoremap <buffer> q :<C-u>quit<CR>
   nnoremap <buffer> <TAB> :<C-u>quit<CR>
