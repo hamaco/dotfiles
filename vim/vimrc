@@ -204,7 +204,7 @@ command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdw
 MapAlterCommand sl setl
 MapAlterCommand sf setf
 
-" autocdmodx.vim
+" autochmodx.vim
 let g:autochmodx_ignore_scriptish_file_patterns = [
 \ '\c.*\.rb$',
 \]
