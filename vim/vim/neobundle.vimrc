@@ -182,7 +182,7 @@ NeoBundleLazy 'thinca/vim-localrc'
 NeoBundleLazy 'thinca/vim-ref', {
 \   'autoload': {
 \     'commands': ['Ref'],
-\     'mappings': '<Plug>(ref-keyword)',
+\     'mappings': ['K', '<Plug>(ref-keyword)'],
 \   }
 \ }
 NeoBundleLazy 'kana/vim-submode'
