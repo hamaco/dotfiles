@@ -18,6 +18,8 @@ if s:is_win
   language messages en
 endif
 
+let g:vim_indent_cont = 0
+let mapleader = ","
 
 " === My functions ===
 function! s:source_if(file)
@@ -103,9 +105,6 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set shiftround
-
-let g:vim_indent_cont = 0
-let mapleader = ","
 
 
 " === autocmd ===
@@ -295,8 +294,6 @@ vmap ic <Plug>(textobj-precious-i)
 
 
 " quickrun.vim
-map <Leader>r <Plug>(quickrun)
-
 let g:quickrun_config = {}
 let g:quickrun_config['_'] = {
 \   'runner': 'vimproc',
