@@ -210,10 +210,6 @@ let g:autochmodx_ignore_scriptish_file_patterns = [
 \]
 
 
-" capslock.vim
-imap <C-a> <C-o><Plug>CapsLockToggle
-
-
 " caw.vim
 nmap gc <Plug>(caw:prefix)
 vmap gc <Plug>(caw:prefix)
