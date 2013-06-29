@@ -85,7 +85,7 @@ set laststatus=2 statusline=%!MyStatusLine()
 set showtabline=2
 set ignorecase smartcase incsearch hlsearch
 set imdisable
-set nrformats="hex"
+set nrformats=hex
 set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 "set pastetoggle=<C-e>
 set nomore
