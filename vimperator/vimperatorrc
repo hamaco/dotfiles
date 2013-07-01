@@ -184,7 +184,7 @@ silent qmark l http://reader.livedoor.com/reader/
 silent qmark m http://www.gmail.com/
 silent qmark p http://getpocket.com/a/queue/
 silent qmark P http://www.pixiv.net/bookmark_new_illust.php
-silent qmark r http://reader.google.com/reader/
+silent qmark r http://cloud.feedly.com/#my
 silent qmark R http://www.readability.com/hamaco/
 silent qmark t https://trello.com/
 silent qmark T https://www.toggl.com/track
