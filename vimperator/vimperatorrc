@@ -165,7 +165,7 @@ bmark -title="東京アメッシュ"   -keyword=amesh   http://tokyo-ame.jwa.or.
 bmark -title="BitBucket"        -keyword=bb      https://bitbucket.org/
 bmark -title="Favstar (hamaco)" -keyword=favstar http://favstar.fm/users/hamaco/recent
 bmark -title="GitHub Issues"    -keyword=issue   http://github-issue.herokuapp.com/
-bmark -title="Qiita (hamaco)"   -keyword=qiita   http://qiita.me/hamaco
+bmark -title="Qiita (hamaco)"   -keyword=qiita   http://qiita.com/hamaco
 bmark -title="Twilog (hamaco)"  -keyword=twilog  http://twilog.org/hamaco
 
 " }}}
