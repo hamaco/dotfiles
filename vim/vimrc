@@ -293,6 +293,10 @@ map <Leader>q <Plug>(precious-quickrun-op)
 omap ic <Plug>(textobj-precious-i)
 vmap ic <Plug>(textobj-precious-i)
 
+let g:precious_enable_switch_CursorMoved = {
+\   'help': 0
+\ }
+
 
 " quickrun.vim
 let g:quickrun_config = {}
