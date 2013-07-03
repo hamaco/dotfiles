@@ -42,7 +42,7 @@ alias e="emacsclient"
 alias tgz="tar cvzf"
 alias untar="tar xvf"
 
-alias tmux="tmux a || tmux"
+alias tmux="tmux a -d || tmux"
 
 alias crontab="crontab -i"
 
