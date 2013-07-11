@@ -8,7 +8,7 @@ function source_if() {
 umask 022
 
 fpath=($ZSH_HOME/completions $fpath)
-cdpath=($HOME /var/www/*(N-/) /var/www/html/*(N-/))
+cdpath=($HOME /var/www/*(N-/))
 
 # load config
 for config_file ($ZSH_HOME/config/*.zsh(N-.))
