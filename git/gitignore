@@ -6,6 +6,9 @@
 # for Mac
 .DS_Store
 
+# for Windows
+Thumbs.db
+
 # for Vim
 *~
 .vimrc.local
