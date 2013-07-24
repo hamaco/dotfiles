@@ -91,6 +91,10 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 " }}}
 
 " javascript {{{
+NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
+\   'autoload': {'filetypes': 'javascript'}
+\ }
+
 NeoBundleLazy 'kchmck/vim-coffee-script', {
 \   'autoload': {'filetypes': 'coffee'}
 \ }
