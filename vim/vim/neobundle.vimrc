@@ -163,10 +163,15 @@ NeoBundleLazy 'h1mesuke/vim-alignta', {
 
 
 " other
-NeoBundleLazy 'kana/vim-niceblock'
-NeoBundleLazy 'kana/vim-smartchr'
-NeoBundle 'kana/vim-smartinput'
+NeoBundleLazy 'kana/vim-smartchr', {
+\   'autoload': {'insert': 1}
+\ }
+NeoBundleLazy 'kana/vim-smartinput', {
+\   'autoload': {'insert': 1}
+\ }
 NeoBundle 'kana/vim-smartword'
+
+NeoBundleLazy 'kana/vim-niceblock'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'kana/vim-textobj-user'

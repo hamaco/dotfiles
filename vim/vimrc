@@ -401,38 +401,44 @@ endif
 
 
 " ===== smartinput.vim =====
-call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
-call smartinput#map_to_trigger('i', '<', '<', '<')
-call smartinput#map_to_trigger('i', '>', '>', '>')
-call smartinput#map_to_trigger('i', '%', '%', '%')
-call smartinput#map_to_trigger('i', '?', '?', '?')
+let bundle = neobundle#get('vim-smartinput')
+function! bundle.hooks.on_source(bundle)
+  call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
+  call smartinput#map_to_trigger('i', '<', '<', '<')
+  call smartinput#map_to_trigger('i', '>', '>', '>')
+  call smartinput#map_to_trigger('i', '%', '%', '%')
+  call smartinput#map_to_trigger('i', '?', '?', '?')
 
-call smartinput#define_rule({'at': '\%#', 'char': '<', 'input': '<><Left>'})
-call smartinput#define_rule({'at': '\%#\_s*>', 'char': '>', 'input': '<C-r>=smartinput#_leave_block(''>'')<Enter><Right>'})
-call smartinput#define_rule({'at': '<\%#>', 'char': '<BS>', 'input': '<BS><Del>'})
+  call smartinput#define_rule({'at': '\%#', 'char': '<', 'input': '<><Left>'})
+  call smartinput#define_rule({'at': '\%#\_s*>', 'char': '>', 'input': '<C-r>=smartinput#_leave_block(''>'')<Enter><Right>'})
+  call smartinput#define_rule({'at': '<\%#>', 'char': '<BS>', 'input': '<BS><Del>'})
 
-call smartinput#define_rule({'at': '{\%#}', 'char': '<Space>', 'input': '<Space><Space><Left>'})
-call smartinput#define_rule({'at': '{\%#}', 'char': '%', 'input': '%<Space><Space>%<Left><Left>'})
-call smartinput#define_rule({'at': '{% \%# %}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
-call smartinput#define_rule({'at': '{\%#}', 'char': '{', 'input': '{<Space><Space>}<Left><Left>'})
-call smartinput#define_rule({'at': '{{ \%# }}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
+  call smartinput#define_rule({'at': '{\%#}', 'char': '<Space>', 'input': '<Space><Space><Left>'})
+  call smartinput#define_rule({'at': '{\%#}', 'char': '%', 'input': '%<Space><Space>%<Left><Left>'})
+  call smartinput#define_rule({'at': '{% \%# %}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
+  call smartinput#define_rule({'at': '{\%#}', 'char': '{', 'input': '{<Space><Space>}<Left><Left>'})
+  call smartinput#define_rule({'at': '{{ \%# }}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
 
-call smartinput#define_rule({'at': '<\%#>', 'char': '?', 'input': '?<Space>?<Left><Left>'})
-call smartinput#define_rule({'at': '<?\%# ?>', 'char': '<BS>', 'input': '<BS><Del><Del>'})
+  call smartinput#define_rule({'at': '<\%#>', 'char': '?', 'input': '?<Space>?<Left><Left>'})
+  call smartinput#define_rule({'at': '<?\%# ?>', 'char': '<BS>', 'input': '<BS><Del><Del>'})
+endfunction
 
 imap <C-j> <Plug>(eskk:toggle)
 cmap <C-j> <Plug>(eskk:toggle)
 
 
 " ===== smartword.vim =====
-map w <Plug>(smartword-w)
-map b <Plug>(smartword-b)
-map e <Plug>(smartword-e)
-map ge <Plug>(smartword-ge)
-noremap W w
-noremap B b
-noremap E e
-noremap gE ge
+let bundle = neobundle#get('vim-smartword')
+function! bundle.hooks.on_source(bundle)
+  map w <Plug>(smartword-w)
+  map b <Plug>(smartword-b)
+  map e <Plug>(smartword-e)
+  map ge <Plug>(smartword-ge)
+  noremap W w
+  noremap B b
+  noremap E e
+  noremap gE ge
+endfunction
 
 
 " ===== sonictemplate.vim =====
