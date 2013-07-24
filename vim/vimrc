@@ -155,6 +155,8 @@ nnoremap k gk
 
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 nnoremap q <Nop>
 nnoremap Q q
