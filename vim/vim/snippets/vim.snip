@@ -1,0 +1,5 @@
+snippet bundle
+  let bundle = neobundle#get('${1}')
+  function! bundle.hooks.on_source(bundle)
+    ${2}
+  endfunction
