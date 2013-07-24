@@ -389,7 +389,8 @@ endif
 if has('mac')
   NeoBundleSource shaberu.vim
 
-  let g:shaberu_user_define_say_command = 'SayKana "%%TEXT%%"'
+  " let g:shaberu_user_define_say_command = 'SayKana "%%TEXT%%"'
+  let g:shaberu_user_define_say_command = 'say "%%TEXT%%"'
 
   augroup vimrc-shaberu-vim
     autocmd VimEnter * ShaberuSay 'おかえりなさいませ、ごしゅじんさま'
