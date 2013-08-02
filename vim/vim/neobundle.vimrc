@@ -54,7 +54,10 @@ NeoBundleLazy 'osyo-manga/unite-quickfix', {
 \ }
 NeoBundleLazy 'jceb/vim-hier'
 NeoBundleLazy 'osyo-manga/vim-watchdogs', {
-\   'depends': ['Shougo/vimproc', 'thinca/vim-quickrun', 'jceb/vim-hier', 'osyo-manga/unite-quickfix', 'osyo-manga/shabadou.vim']
+\   'depends': ['Shougo/vimproc', 'thinca/vim-quickrun', 'jceb/vim-hier', 'osyo-manga/unite-quickfix', 'osyo-manga/shabadou.vim'],
+\   'autoload': {
+\     'insert': 1,
+\   }
 \ }
 " }}}
 
@@ -141,7 +144,10 @@ NeoBundleLazy 'tyru/current-func-info.vim', {
 NeoBundleLazy 'Shougo/vimfiler', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload': {
-\     'commands': ['VimFiler', 'VimFilerExplorer'],
+\     'commands': [
+\        {'name' : 'VimFiler', 'complete': 'customlist,vimfiler#complete'},
+\        'VimFilerExplorer'
+\     ],
 \     'explorer': 1,
 \   }
 \ }
@@ -175,11 +181,12 @@ NeoBundleLazy 'kana/vim-niceblock'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'kana/vim-textobj-user'
-NeoBundleLazy 'mattn/sonictemplate-vim', {
-\   'autoload': {'commands': [
-\       {'name': 'Template', 'complete': 'customlist,sonictemplate#complete'},
-\   ]}
-\ }
+NeoBundle 'mattn/sonictemplate-vim'
+" NeoBundleLazy 'mattn/sonictemplate-vim', {
+" \   'autoload': {'commands': [
+" \       {'name': 'Template', 'complete': 'customlist,sonictemplate#complete'},
+" \   ]}
+" \ }
 
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/gist-vim', {
