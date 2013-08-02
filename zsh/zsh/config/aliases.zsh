@@ -68,18 +68,11 @@ done
 case "${OSTYPE}" in
 linux*)
 	alias tbz2="tar cvjf"
-
-	if [ -x /usr/local/bin/tscreen ]; then
-		alias screen="tscreen"
-	fi
 	;;
 darwin*)
 	alias tbz2="tar cvjf"
 	alias ql="qlmanage -p $@ >& /dev/null"
 	alias eopen="open -a emacs"
-
-	# macports
-	#alias mysql="mysql5"
 
 	alias emacs="open -a Emacs"
 	alias firefox="open -a Shiretoko"
