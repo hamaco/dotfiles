@@ -414,6 +414,8 @@ temp() {
       cd $(mktemp -d "$HOME/tmp/$(date +'%Y%m%d').$1${1:+.}XXXXXX")
       ;;
   esac
+
+  git first
 }
 
 #######
