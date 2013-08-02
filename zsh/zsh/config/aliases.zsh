@@ -55,6 +55,7 @@ alias dstat-disk="dstat -Tcldr"
 
 alias delete-empty-dir="find . -type d -empty -delete"
 
+alias vag="vagrant"
 alias comp="composer"
 alias oil="noglob oil"
 
