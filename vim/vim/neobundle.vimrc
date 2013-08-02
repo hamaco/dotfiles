@@ -93,6 +93,12 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 \ }
 " }}}
 
+" html {{{
+NeoBundleLazy 'vim-scripts/indenthtml.vim', {
+\   'autoload': {'filetypes': 'html'}
+\ }
+" }}}
+
 " javascript {{{
 NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
 \   'autoload': {'filetypes': 'javascript'}
@@ -205,6 +211,7 @@ NeoBundleLazy 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
 NeoBundleLazy 'tyru/autochmodx.vim'
 NeoBundleLazy 'tyru/eskk.vim', {

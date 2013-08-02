@@ -261,6 +261,10 @@ function! s:my_gitv_settings()
 endfunction
 
 
+" indenthtml.vim
+let g:html_indent_inctags = 'html,body,head,tbody,p,li'
+
+
 " neocomplcache.vim
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_auto_completion_start_length = 2
