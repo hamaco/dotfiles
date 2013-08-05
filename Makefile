@@ -66,11 +66,5 @@ zsh:
 	ln -fns $(CURRENT_DIR)/zsh/zshrc  $(INSTALL_DIR)/.zshrc
 	ln -fns $(CURRENT_DIR)/zsh/zshenv $(INSTALL_DIR)/.zshenv
 	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/antigen/antigen ]; then \
-		git clone git://github.com/zsh-users/antigen.git $(INSTALL_DIR)/.zsh/plugins/antigen/antigen; \
-	fi
-	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/ghq/ghq ]; then \
-		git clone git://github.com/motemen/ghq.git $(INSTALL_DIR)/.zsh/plugins/ghq/ghq; \
-	fi
-	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/zaw/zaw ]; then \
-		git clone git://github.com/nakamuray/zaw.git $(INSTALL_DIR)/.zsh/plugins/zaw/zaw; \
+		git clone git://github.com/hamaco/antigen.git $(INSTALL_DIR)/.zsh/plugins/antigen/antigen; \
 	fi

@@ -1,4 +1,6 @@
-source $(dirname $0)/zaw/zaw.zsh
+# source $(dirname $0)/zaw/zaw.zsh
+
+antigen bundle zsh-users/zaw
 
 source $(dirname $0)/sources/git-recent-branches.zsh
 bindkey '^x^b' zaw-git-recent-branches
