@@ -33,12 +33,6 @@ case "${OSTYPE}" in
 		alias ls="ls -G"
 		;;
 esac
-# if [ -f "$HOME/.zsh/plugin/zaw/zaw.zsh" ]; then
-# 	source "$HOME/.zsh/plugin/zaw/zaw.zsh"
-# 	bindkey "^R" zaw-history
-# else
-# 	bindkey "^R" history-incremental-pattern-search-backward
-# fi
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
@@ -160,7 +154,7 @@ function do_enter() {
     return 0
 }
 zle -N do_enter
-bindkey '^m' do_enter
+# bindkey '^m' do_enter
 
 
 # gitのトップレベルに移動
