@@ -10,16 +10,16 @@ umask 022
 fpath=($ZSH_HOME/completions $fpath)
 cdpath=($HOME /var/www/*(N-/))
 
-# load config
-for config_file ($ZSH_HOME/config/*.zsh(N-.))
-do
-	source $config_file
-done
-
 # load plugins
 for plugin_config ($ZSH_HOME/plugins/*/zshrc(N-.))
 do
   source $plugin_config
+done
+
+# load config
+for config_file ($ZSH_HOME/config/*.zsh(N-.))
+do
+	source $config_file
 done
 
 
