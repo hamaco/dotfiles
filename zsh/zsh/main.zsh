@@ -421,6 +421,18 @@ compdef mcd=cd
 
 #######
 
+function tenki() {
+  local spot=$1
+
+  if [ "$spot" = "" ]; then
+    spot="東京"
+  fi
+
+  weather-report "東京"
+}
+
+#######
+
 REPORTTIME=3 # 3秒以上掛かるコマンドは詳細表示する
 
 #######
