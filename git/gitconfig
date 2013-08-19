@@ -1,109 +1,109 @@
 [user]
-	name = hamaco
-	email = hamanaka.kazuhiro@gmail.com
+    name = hamaco
+    email = hamanaka.kazuhiro@gmail.com
 
 [apply]
-	whitespace = nowarn
+    whitespace = nowarn
 
 [color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
 
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 
 [core]
-	excludesfile = ~/.gitignore
-	pager = less -r
-	quotepath = false
+    excludesfile = ~/.gitignore
+    pager = less -r
+    quotepath = false
 
 [grep]
-	lineNumber = true
+    lineNumber = true
 
 [merge]
-	ff = false
+    ff = false
 
 [pull]
-	rebase = true
+    rebase = true
 
 # [push]
-# 	default = simple
+#     default = simple
 
 [alias]
-	b = branch
-	br = branch -a
-	ci = commit -v
-	cia = commit --amend
-	cih = commit --amend -C HEAD
-	co = checkout
-	cp = cherry-pick
-	cob = checkout -b
-	d1 = diff HEAD~
-	d2 = diff HEAD~~
-	d3 = diff HEAD~~~
-	d4 = diff HEAD~~~~
-	dc = diff --cached
-	dcw = diff --color-words
-	di = diff
-	difflog = log -p HEAD@{3.days.ago}
-	fo = fetch origin
-	find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
-	first = !"git init -q && git commit -q --allow-empty -m 'init'"
-	fixup = commit --amend -a -C HEAD
-	gr = grep -H --heading --break
-	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
-	l = log --stat --date=local
-	l1 = log --pretty=oneline --abbrev-commit
-	l1f = log --pretty=oneline
-	lg = log --name-status --color --graph --date=local
-	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
-	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
-	newly = log HEAD@{1}..HEAD --reverse
-	newlyp = log HEAD@{1}..HEAD -p --reverse
-	package = !"git archive --format=tar --prefix=$(basename $(pwd))/ HEAD | gzip > $(basename $(pwd)).tar.gz"
-  pbcopy = !printf "$1" | pbcopy
-	pl = pull
-	pr = pull --rebase
-	ps = push
-	ranking = shortlog -sn
-	rb = rebase
-	rc = rebase --continue
-	rbh = rebase HEAD
-	ro = rebase origin
-	rollback = reset --hard HEAD~
-	see = browse
-	show-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
-	sl = stash list
-	smi = submodule init
-	smp = submodule foreach "git pull"
-	smcp = submodule foreach "git checkout master; git pull origin master"
-	smu = submodule update
-	sh = show
-	so = remote show origin
-	sp = stash pop
-	ss = stash save
-	st = status -sb
-	sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
-	tree = log --graph --pretty=oneline --abbrev-commit --decorate
-	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
+    b = branch
+    br = branch -a
+    ci = commit -v
+    cia = commit --amend
+    cih = commit --amend -C HEAD
+    co = checkout
+    cp = cherry-pick
+    cob = checkout -b
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+    dc = diff --cached
+    dcw = diff --color-words
+    di = diff
+    difflog = log -p HEAD@{3.days.ago}
+    fo = fetch origin
+    find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
+    first = !"git init -q && git commit -q --allow-empty -m 'init'"
+    fixup = commit --amend -a -C HEAD
+    gr = grep -H --heading --break
+    gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
+    l = log --stat --date=local
+    l1 = log --pretty=oneline --abbrev-commit
+    l1f = log --pretty=oneline
+    lg = log --name-status --color --graph --date=local
+    log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+    log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+    newly = log HEAD@{1}..HEAD --reverse
+    newlyp = log HEAD@{1}..HEAD -p --reverse
+    package = !"git archive --format=tar --prefix=$(basename $(pwd))/ HEAD | gzip > $(basename $(pwd)).tar.gz"
+    pbcopy = !printf "$1" | pbcopy
+    pl = pull
+    pr = pull --rebase
+    ps = push
+    ranking = shortlog -sn
+    rb = rebase
+    rc = rebase --continue
+    rbh = rebase HEAD
+    ro = rebase origin
+    rollback = reset --hard HEAD~
+    see = browse
+    show-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
+    sl = stash list
+    smi = submodule init
+    smp = submodule foreach "git pull"
+    smcp = submodule foreach "git checkout master; git pull origin master"
+    smu = submodule update
+    sh = show
+    so = remote show origin
+    sp = stash pop
+    ss = stash save
+    st = status -sb
+    sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
+    tree = log --graph --pretty=oneline --abbrev-commit --decorate
+    view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
 
 [include]
-	path = /home/hamaco/.gitconfig.local
+    path = /home/hamaco/.gitconfig.local
 
 [github]
-	user = hamaco
+    user = hamaco
 
 [tig "bind"]
-	generic = g move-first-line
-	generic = G move-last-line
+    generic = g move-first-line
+    generic = G move-last-line
