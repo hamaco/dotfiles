@@ -61,14 +61,14 @@ NeoBundleLazy 'osyo-manga/vim-watchdogs', {
 \ }
 " }}}
 
-" neocomplcache {{{
-NeoBundleLazy 'Shougo/neocomplcache', {
+" neocomplete {{{
+NeoBundleLazy 'Shougo/neocomplete', {
 \   'autoload': {
 \     'insert': 1,
 \   }
 \ }
 NeoBundleLazy 'Shougo/neosnippet', {
-\   'depends': 'Shougo/neocomplcache',
+\   'depends': 'Shougo/neocomplete',
 \   'autoload': {
 \     'insert': 1,
 \     'filetypes': 'snippet',

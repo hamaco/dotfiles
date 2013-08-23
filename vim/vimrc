@@ -265,9 +265,26 @@ endfunction
 let g:html_indent_inctags = 'html,body,head,tbody,p,li'
 
 
-" neocomplcache.vim
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_auto_completion_start_length = 2
+" neocomplete.vim
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_ignore_case = 0
+let g:neocomplete#enable_smart_case = 1
+
+let g:neocomplete#sources#buffer#disabled_pattern = '\.log'
+
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+
+inoremap <expr> <CR> neocomplete#smart_close_popup() . "\<CR>"
 
 
 " neosnippet.vim
