@@ -207,6 +207,16 @@ command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdw
 MapAlterCommand sl setl
 MapAlterCommand sf setf
 
+
+" anzu.vim
+let g:anzu_search_limit = 250
+
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+
+
 " autochmodx.vim
 let g:autochmodx_ignore_scriptish_file_patterns = [
 \ '\c.*\.rb$',

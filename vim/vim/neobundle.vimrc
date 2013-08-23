@@ -211,6 +211,7 @@ NeoBundleLazy 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
+NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
 NeoBundleLazy 'tyru/autochmodx.vim'
