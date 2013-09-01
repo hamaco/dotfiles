@@ -15,6 +15,7 @@ NeoBundle 'Shougo/vimproc', {
 \     'cygwin': 'make -f make_cygwin.mak',
 \   },
 \ }
+NeoBundle 'itchyny/lightline.vim'
 " }}}
 
 " unite {{{
