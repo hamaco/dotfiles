@@ -228,6 +228,12 @@ NeoBundle 'ujihisa/shadow.vim'
 NeoBundleLazy 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundleLazy 'majutsushi/tagbar'
+
+NeoBundle 'osyo-manga/vim-pronamachang', {
+\   'depends' : ['osyo-manga/vim-sound', 'Shougo/vimproc']
+\}
+NeoBundle 'osyo-manga/vim-automatic'
+
 NeoBundleLazy 'supermomonga/shaberu.vim', {
 \   'depends': 'Shougo/vimproc'
 \ }

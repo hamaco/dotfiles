@@ -223,6 +223,56 @@ let g:autochmodx_ignore_scriptish_file_patterns = [
 \]
 
 
+" automatic.vim
+let s:bundle = neobundle#get('vim-automatic')
+function! s:bundle.hooks.on_source(bundle)
+let g:automatic_config = []
+  call add(g:automatic_config, {
+  \   'match' : {
+  \       'localtime_expr' : '6 <= hour && hour <= 11',
+  \       'autocmds' : ['VimEnter'],
+  \       'is_open_other_window' : 0
+  \   },
+  \   'set' : {
+  \       'pronamachang_voice' : 'kei_voice_008_phrase1',
+  \   },
+  \ })
+
+  call add(g:automatic_config, {
+  \   'match' : {
+  \       'localtime_expr' : '12 <= hour && hour <= 18',
+  \       'autocmds' : ['VimEnter'],
+  \       'is_open_other_window' : 0
+  \   },
+  \   'set' : {
+  \       'pronamachang_voice' : 'kei_voice_009_phrase1',
+  \   },
+  \ })
+
+  call add(g:automatic_config, {
+  \   'match' : {
+  \       'localtime_expr' : '19 <= hour && hour <= 22',
+  \       'autocmds' : ['VimEnter'],
+  \       'is_open_other_window' : 0
+  \   },
+  \   'set' : {
+  \       'pronamachang_voice' : 'kei_voice_010_phrase1',
+  \   },
+  \ })
+
+
+  call add(g:automatic_config, {
+  \   'match' : {
+  \       'bufname' : '\[unite\]',
+  \       'unite_sources' : ['grep']
+  \   },
+  \   'set' : {
+  \       'pronamachang_voice' : 'kei_voice_036_phrase1',
+  \   },
+  \})
+endfunction
+
+
 " caw.vim
 nmap gc <Plug>(caw:prefix)
 vmap gc <Plug>(caw:prefix)
@@ -321,6 +371,11 @@ vmap gx <Plug>(openbrowser-smart-search)
 map R <Plug>(operator-replace)
 
 
+" pronamachang
+
+let g:pronamachang_voice_root = "/Users/hamaco/Desktop"
+
+
 " vim-precious
 map <Leader>q <Plug>(precious-quickrun-op)
 omap ic <Plug>(textobj-precious-i)
@@ -417,18 +472,23 @@ endif
 
 
 " ===== shaberu.vim =====
-if has('mac')
-  NeoBundleSource shaberu.vim
-
-  " let g:shaberu_user_define_say_command = 'SayKana "%%TEXT%%"'
-  let g:shaberu_user_define_say_command = 'say "%%TEXT%%"'
-
-  augroup vimrc-shaberu-vim
-    autocmd VimEnter * ShaberuSay 'おかえりなさいませ、ごしゅじんさま'
-    autocmd VimLeave * ShaberuSay 'いってらっしゃいませ、ごしゅじんさま'
-    autocmd BufWritePost .gvimrc nested source $MYGVIMRC | ShaberuSay 'ビムアールシーをよみこみました'
-  augroup END
-endif
+" if has('mac')
+"   NeoBundleSource shaberu.vim
+"
+"   " let g:shaberu_user_define_say_command = 'SayKana "%%TEXT%%"'
+"   " let g:shaberu_user_define_say_command = 'say "%%TEXT%%"'
+"   let g:shaberu_user_define_say_command = 'afplay -v 0.5 %%TEXT%%'
+"
+"   augroup vimrc-shaberu-vim
+"     " autocmd VimEnter * ShaberuSay 'おかえりなさいませ、ごしゅじんさま'
+"     " autocmd VimLeave * ShaberuSay 'いってらっしゃいませ、ごしゅじんさま'
+"     " autocmd BufWritePost .gvimrc nested source $MYGVIMRC | ShaberuSay 'ビムアールシーをよみこみました'
+"
+"     autocmd VimEnter * ShaberuSay '/Users/hamaco/Desktop/kei_voice_01/cut/kei_voice_008_phrase2.wav'
+"     autocmd VimLeave * ShaberuSay '/Users/hamaco/Desktop/kei_voice_01/cut/kei_voice_017_phrase2.wav'
+"     autocmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC | ShaberuSay '/Users/hamaco/Desktop/kei_voice_03/cut/kei_voice_97.wav'
+"   augroup END
+" endif
 
 
 " ===== smartinput.vim =====
