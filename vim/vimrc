@@ -325,6 +325,26 @@ endfunction
 let g:html_indent_inctags = 'html,body,head,tbody,p,li'
 
 
+" lightline.vim
+let g:lightline = {
+\   'colorscheme': 'jellybeans',
+\   'active': {
+\       'left': [
+\           ['mode', 'paste'],
+\           ['readonly', 'filename', 'modified', 'anzu'],
+\       ],
+\       'right': [
+\           ['lineinfo'],
+\           ['percent'],
+\           ['fileformat', 'fileencoding', 'filetype']
+\       ],
+\   },
+\   'component_function': {
+\       'anzu': 'anzu#search_status',
+\   }
+\ }
+
+
 " neocomplete.vim
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_ignore_case = 0
