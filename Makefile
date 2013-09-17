@@ -3,13 +3,16 @@ INSTALL_DIR := $(HOME)
 
 OS = ${shell uname}
 
-all: cui gui
+all: cui gui mac
 
 .PHONY: git mercurial tig tmux vim zsh percol common
 cui: git mercurial tig tmux vim zsh percol common
 
 .PHONY: vimperator chrome
 gui: vimperator chrome
+
+.PHONY: slate
+mac: slate
 
 chrome:
 ifeq ($(OS), Linux)
@@ -35,6 +38,9 @@ mercurial:
 
 percol:
 	ln -fns $(CURRENT_DIR)/percol/percol.d $(INSTALL_DIR)/.percol.d
+
+slate:
+	ln -nfs $(CURRENT_DIR)/slate/slate.js $(INSTALL_DIR)/.slate.js
 
 tig:
 	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
