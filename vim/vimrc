@@ -211,10 +211,10 @@ MapAlterCommand sf setf
 " anzu.vim
 let g:anzu_search_limit = 250
 
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
 
 
 " autochmodx.vim
@@ -327,11 +327,11 @@ let g:html_indent_inctags = 'html,body,head,tbody,p,li'
 
 " lightline.vim
 let g:lightline = {
-\   'colorscheme': 'jellybeans',
+\   'colorscheme': 'wombat',
 \   'active': {
 \       'left': [
 \           ['mode', 'paste'],
-\           ['readonly', 'filename', 'modified', 'anzu'],
+\           ['readonly', 'fugitive', 'filename', 'cfi', 'modified', 'anzu'],
 \       ],
 \       'right': [
 \           ['lineinfo'],
@@ -340,10 +340,19 @@ let g:lightline = {
 \       ],
 \   },
 \   'component_function': {
-\       'anzu': 'anzu#search_status',
+\       'anzu':      'anzu#search_status',
+\       'cfi':       'MyCurrentFuncInfo',
+\       'fugitive':  'MyFugitive',
 \   }
 \ }
 
+function! MyFugitive()
+  return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! MyCurrentFuncInfo()
+  return cfi#format("::%s()", "")
+endfunction
 
 " neocomplete.vim
 let g:neocomplete#enable_at_startup = 1
