@@ -14,7 +14,7 @@ endfunction
 colorscheme newspaper
 
 if has("mac")
-  call s:set_font("Source Code Pro", 13)
+  call s:set_font("Ricty Discord", 16)
 
   if has('vim_starting')
     set columns=177
