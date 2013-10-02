@@ -234,7 +234,7 @@ let g:automatic_config = []
   \       'is_open_other_window' : 0
   \   },
   \   'set' : {
-  \       'pronamachang_voice' : 'kei_voice_008_phrase1',
+  \       'pronamachang_voice' : 'kei_voice_008',
   \   },
   \ })
 
@@ -245,18 +245,18 @@ let g:automatic_config = []
   \       'is_open_other_window' : 0
   \   },
   \   'set' : {
-  \       'pronamachang_voice' : 'kei_voice_009_phrase1',
+  \       'pronamachang_voice' : 'kei_voice_009',
   \   },
   \ })
 
   call add(g:automatic_config, {
   \   'match' : {
-  \       'localtime_expr' : '19 <= hour && hour <= 22',
+  \       'localtime_expr' : '19 <= hour && hour <= 23',
   \       'autocmds' : ['VimEnter'],
   \       'is_open_other_window' : 0
   \   },
   \   'set' : {
-  \       'pronamachang_voice' : 'kei_voice_010_phrase1',
+  \       'pronamachang_voice' : 'kei_voice_010',
   \   },
   \ })
 
