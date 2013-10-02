@@ -64,6 +64,8 @@
     fixup = commit --amend -a -C HEAD
     gr = grep -H --heading --break
     gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
+    ignore = update-index --assume-unchanged
+    ignored = !git ls-files -v | grep "^[a-z]"
     l = log --stat --date=local
     l1 = log --pretty=oneline --abbrev-commit
     l1f = log --pretty=oneline
@@ -97,6 +99,7 @@
     st = status -sb
     sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
     tree = log --graph --pretty=oneline --abbrev-commit --decorate
+    unignore = update-index --no-assume-unchanged
     view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
 
 [include]
