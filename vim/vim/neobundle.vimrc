@@ -176,6 +176,7 @@ NeoBundleLazy 'h1mesuke/vim-alignta', {
 
 
 " other
+NeoBundle 'rhysd/clever-f.vim'
 NeoBundleLazy 'kana/vim-smartchr', {
 \   'autoload': {'insert': 1}
 \ }
