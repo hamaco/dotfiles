@@ -232,8 +232,10 @@ NeoBundleLazy 'majutsushi/tagbar'
 
 NeoBundle 'osyo-manga/vim-pronamachang', {
 \   'depends' : ['osyo-manga/vim-sound', 'Shougo/vimproc']
-\}
-NeoBundle 'osyo-manga/vim-automatic'
+\ }
+NeoBundle 'osyo-manga/vim-automatic', {
+\   'depends': 'osyo-manga/vim-gift'
+\ }
 
 NeoBundleLazy 'supermomonga/shaberu.vim', {
 \   'depends': 'Shougo/vimproc'
