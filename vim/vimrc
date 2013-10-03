@@ -621,6 +621,7 @@ noremap <silent> [unite]c :<C-u>Unite -auto-preview colorscheme<CR>
 noremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search -auto-preview -no-quit<CR>
 noremap <silent> [unite]G :<C-u>Unite grep:. -buffer-name=search -auto-preview -no-quit<CR><C-r><C-w>
 noremap <silent> [unite]I :<C-u>Unite -auto-quit neobundle/update<CR>
+noremap <silent> [unite]j :<C-u>Unite -default-action=vimfiler bookmark<CR>
 noremap <silent> [unite]o :<C-u>Unite outline<CR>
 noremap <silent> [unite]u :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:! file file_mru<CR>
 
@@ -637,7 +638,8 @@ endfunction "}}}
 
 " ===== vimfiler.vim =====
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_edit_action = "tabopen"
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_edit_action = "open"
 
 
 " ===== vimshell.vim =====
