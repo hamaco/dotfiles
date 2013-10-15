@@ -133,10 +133,10 @@ NeoBundleLazy 'rhysd/tmpwin.vim', {
 " colorscheme {{{
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundleLazy 'w0ng/vim-hybrid'
-NeoBundleLazy 'itchyny/landscape.vim'
-NeoBundleLazy 'aereal/vim-magica-colors'
-NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'aereal/vim-magica-colors'
+NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}
 
 NeoBundleLazy 'tyru/caw.vim', {
