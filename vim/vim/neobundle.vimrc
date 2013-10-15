@@ -15,6 +15,16 @@ NeoBundle 'Shougo/vimproc', {
 \     'cygwin': 'make -f make_cygwin.mak',
 \   },
 \ }
+
+NeoBundleLazy 'tyru/current-func-info.vim', {
+\   'autoload': {'functions': 'cfi#format'}
+\ }
+NeoBundleLazy 'osyo-manga/vim-anzu', {
+\   'autoload': {
+\     'functions': 'anzu#search_status',
+\     'mappings': '<Plug>(anzu-'
+\   }
+\ }
 NeoBundle 'itchyny/lightline.vim'
 " }}}
 
@@ -144,9 +154,6 @@ NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 NeoBundleLazy 'tyru/caw.vim', {
 \   'autoload': {'mappings': '<Plug>(caw:prefix)'}
 \ }
-NeoBundleLazy 'tyru/current-func-info.vim', {
-\   'autoload': {'functions': 'cfi#format'}
-\ }
 NeoBundleLazy 'Shougo/vimfiler', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload': {
@@ -207,7 +214,7 @@ NeoBundleLazy 'mattn/gist-vim', {
 \   'autoload': {'commands': ['Gist']}
 \ }
 " NeoBundleLazy 'teramako/instant-markdown-vim'
-NeoBundleLazy 'thinca/vim-localrc'
+" NeoBundleLazy 'thinca/vim-localrc'
 NeoBundleLazy 'thinca/vim-ref', {
 \   'autoload': {
 \     'commands': ['Ref'],
@@ -218,7 +225,6 @@ NeoBundleLazy 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
-NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
 NeoBundleLazy 'tyru/autochmodx.vim'
