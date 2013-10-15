@@ -204,6 +204,8 @@ vnoremap <Leader>a :Alignta<Space>
 call altercmd#load()
 command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
+MapAlterCommand t  tabedit
+
 MapAlterCommand sl setl
 MapAlterCommand sf setf
 
@@ -412,7 +414,6 @@ map R <Plug>(operator-replace)
 
 
 " pronamachang
-
 let g:pronamachang_voice_root = "/Users/hamaco/Desktop"
 
 
