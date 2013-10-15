@@ -180,9 +180,7 @@ NeoBundleLazy 'rhysd/clever-f.vim', {
 \     'mappings': ['f', 'F', 't', 'T']
 \   }
 \ }
-NeoBundleLazy 'kana/vim-smartchr', {
-\   'autoload': {'insert': 1}
-\ }
+NeoBundleLazy 'kana/vim-smartchr'
 NeoBundleLazy 'kana/vim-smartinput', {
 \   'autoload': {'insert': 1}
 \ }
