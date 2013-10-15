@@ -245,8 +245,12 @@ NeoBundleLazy 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundleLazy 'majutsushi/tagbar'
 
-NeoBundle 'osyo-manga/vim-pronamachang', {
+NeoBundleLazy 'osyo-manga/vim-pronamachang', {
 \   'depends' : ['osyo-manga/vim-sound', 'Shougo/vimproc']
+\   'autoload': {
+\     'commands': 'PronamachangSay',
+\     'unite_sources': 'pronamachang'
+\   }
 \ }
 NeoBundle 'osyo-manga/vim-automatic', {
 \   'vim_version': '7.3.895',
