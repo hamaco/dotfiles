@@ -184,7 +184,11 @@ NeoBundleLazy 'kana/vim-smartchr'
 NeoBundleLazy 'kana/vim-smartinput', {
 \   'autoload': {'insert': 1}
 \ }
-NeoBundle 'kana/vim-smartword'
+NeoBundleLazy 'kana/vim-smartword', {
+\   'autoload': {
+\     'mappings': '<Plug>(smartword-'
+\   }
+\ }
 
 NeoBundleLazy 'kana/vim-niceblock'
 NeoBundle 'kana/vim-operator-user'
