@@ -41,9 +41,6 @@ NeoBundleLazy 'thinca/vim-quickrun', {
 \   'depends': ['Shougo/unite.vim', 'hamaco/quickrun-hook-u-nya-'],
 \   'autoload' : {'mappings' : ['<Leader>r', '<Plug>(quickrun)']},
 \ }
-" NeoBundleLazy 'hamaco/quickrun-hook-u-nya-', {
-" \   'depends': 'thinca/vim-quickrun'
-" \ }
 NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
@@ -190,11 +187,6 @@ NeoBundle 'kana/vim-operator-user'
 NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/sonictemplate-vim'
-" NeoBundleLazy 'mattn/sonictemplate-vim', {
-" \   'autoload': {'commands': [
-" \       {'name': 'Template', 'complete': 'customlist,sonictemplate#complete'},
-" \   ]}
-" \ }
 
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/gist-vim', {
