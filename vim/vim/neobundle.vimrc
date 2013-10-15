@@ -227,7 +227,11 @@ NeoBundleLazy 'osyo-manga/vim-hideout', {
 \ }
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
-NeoBundleLazy 'tyru/autochmodx.vim'
+NeoBundleLazy 'tyru/autochmodx.vim', {
+\   'autoload': {
+\     'filetypes': ['sh', 'zsh', 'bash']
+\   }
+\ }
 NeoBundleLazy 'tyru/eskk.vim', {
 \   'autoload': {'mappings' : [['i', '<Plug>(eskk:toggle)']]}
 \ }
