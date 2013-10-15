@@ -61,11 +61,13 @@ NeoBundleLazy 'osyo-manga/vim-watchdogs', {
 
 " neocomplete {{{
 NeoBundleLazy 'Shougo/neocomplete', {
+\   'vim_version': '7.3.885',
 \   'autoload': {
 \     'insert': 1,
 \   }
 \ }
 NeoBundleLazy 'Shougo/neosnippet', {
+\   'vim_version': '7.3.885',
 \   'depends': 'Shougo/neocomplete',
 \   'autoload': {
 \     'insert': 1,
