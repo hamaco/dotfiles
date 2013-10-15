@@ -257,9 +257,9 @@ NeoBundle 'osyo-manga/vim-automatic', {
 \   'depends':     'osyo-manga/vim-gift',
 \ }
 
-NeoBundleLazy 'supermomonga/shaberu.vim', {
-\   'depends': 'Shougo/vimproc'
-\ }
+" NeoBundleLazy 'supermomonga/shaberu.vim', {
+" \   'depends': 'Shougo/vimproc'
+" \ }
 NeoBundleLazy 'rking/ag.vim', {
 \   'autoload': {
 \     'commands': [{'name': 'Ag', 'complete': 'file'}]

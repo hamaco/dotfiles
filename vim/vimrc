@@ -512,26 +512,6 @@ if has('gui_running')
 endif
 
 
-" ===== shaberu.vim =====
-" if has('mac')
-"   NeoBundleSource shaberu.vim
-"
-"   " let g:shaberu_user_define_say_command = 'SayKana "%%TEXT%%"'
-"   " let g:shaberu_user_define_say_command = 'say "%%TEXT%%"'
-"   let g:shaberu_user_define_say_command = 'afplay -v 0.5 %%TEXT%%'
-"
-"   augroup vimrc-shaberu-vim
-"     " autocmd VimEnter * ShaberuSay 'おかえりなさいませ、ごしゅじんさま'
-"     " autocmd VimLeave * ShaberuSay 'いってらっしゃいませ、ごしゅじんさま'
-"     " autocmd BufWritePost .gvimrc nested source $MYGVIMRC | ShaberuSay 'ビムアールシーをよみこみました'
-"
-"     autocmd VimEnter * ShaberuSay '/Users/hamaco/Desktop/kei_voice_01/cut/kei_voice_008_phrase2.wav'
-"     autocmd VimLeave * ShaberuSay '/Users/hamaco/Desktop/kei_voice_01/cut/kei_voice_017_phrase2.wav'
-"     autocmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC | ShaberuSay '/Users/hamaco/Desktop/kei_voice_03/cut/kei_voice_97.wav'
-"   augroup END
-" endif
-
-
 " ===== smartinput.vim =====
 let bundle = neobundle#get('vim-smartinput')
 function! bundle.hooks.on_source(bundle)
