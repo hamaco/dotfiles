@@ -117,7 +117,7 @@ NeoBundleLazy 'glidenote/octoeditor.vim', {
 
 " twitter {{{
 NeoBundleLazy 'tyru/open-browser.vim', {
-\   'autoload': {'mappings' : ['<Plug>(openbrowser-open)', '<Plug>(openbrowser-smart-search)']}
+\   'autoload': {'mappings' : '<Plug>(openbrowser-'}
 \ }
 
 NeoBundleLazy 'basyura/twibill.vim'
@@ -184,7 +184,9 @@ NeoBundle 'kana/vim-smartword'
 
 NeoBundleLazy 'kana/vim-niceblock'
 NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace'
+NeoBundle 'kana/vim-operator-replace', {
+\   'depends': 'kana/vim-operator-user',
+\ }
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/sonictemplate-vim'
 
@@ -226,7 +228,8 @@ NeoBundle 'osyo-manga/vim-pronamachang', {
 \   'depends' : ['osyo-manga/vim-sound', 'Shougo/vimproc']
 \ }
 NeoBundle 'osyo-manga/vim-automatic', {
-\   'depends': 'osyo-manga/vim-gift'
+\   'vim_version': '7.3.895',
+\   'depends':     'osyo-manga/vim-gift',
 \ }
 
 NeoBundleLazy 'supermomonga/shaberu.vim', {
