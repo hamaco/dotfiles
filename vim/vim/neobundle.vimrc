@@ -192,8 +192,11 @@ NeoBundleLazy 'kana/vim-smartword', {
 
 NeoBundleLazy 'kana/vim-niceblock'
 NeoBundleLazy 'kana/vim-operator-user'
-NeoBundle 'kana/vim-operator-replace', {
+NeoBundleLazy 'kana/vim-operator-replace', {
 \   'depends': 'kana/vim-operator-user',
+\   'autoload': {
+\     'mappings': '<Plug>(operator-replace)'
+\   }
 \ }
 NeoBundleLazy 'kana/vim-textobj-user'
 NeoBundle 'mattn/sonictemplate-vim'
