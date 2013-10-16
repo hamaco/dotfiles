@@ -43,4 +43,12 @@ elseif has("unix")
     set lines=55
     set linespace=1
   endif
+else
+  call s:set_font("Ricty_Discord", 12)
+  if has('vim_starting')
+    set columns=125
+    set lines=50
+    set cmdheight=1
+    set linespace=1
+  endif
 endif
