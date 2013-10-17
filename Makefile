@@ -74,5 +74,5 @@ zsh:
 	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/antigen/antigen ]; then \
 		git clone git://github.com/hamaco/antigen.git $(INSTALL_DIR)/.zsh/plugins/antigen/antigen; \
 		cd $(INSTALL_DIR)/.zsh/plugins/antigen/antigen; \
-		git co fix/load-script-loc; \
+		git checkout fix/load-script-loc; \
 	fi
