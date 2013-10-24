@@ -74,17 +74,17 @@ slate.bind('left:shift,cmd', hamaco.leftscreen);
 
 slate.bind('right:shift,cmd', hamaco.rightscreen);
 
-slate.bind('i:ctrl,alt', slate.operation('chain', {
-  'operations': [hamaco.topleft, hamaco.topright, hamaco.bottomright, hamaco.bottomleft]
-}));
+// slate.bind('i:ctrl,alt', slate.operation('chain', {
+//   'operations': [hamaco.topleft, hamaco.topright, hamaco.bottomright, hamaco.bottomleft]
+// }));
 
-slate.bind('left:d,shift,cmd', hamaco.leftscreen.dup({
-  'style': 'bar-resize:screenSizeX/7*3'
-}));
-
-slate.bind('right:d,shift,cmd', hamaco.rightscreen.dup({
-  'style': 'bar-resize:screenSizeX/7*3'
-}));
+// slate.bind('left:d,shift,cmd', hamaco.leftscreen.dup({
+//   'style': 'bar-resize:screenSizeX/7*3'
+// }));
+// 
+// slate.bind('right:d,shift,cmd', hamaco.rightscreen.dup({
+//   'style': 'bar-resize:screenSizeX/7*3'
+// }));
 
 middleGood = slate.operation("move", {
   x: "screenOriginX+screenSizeX/7",
@@ -98,31 +98,31 @@ middleTopBar = slate.operation("push", {
   style: "bar-resize:screenSizeX/2"
 });
 
-slate.bind("o:ctrl,shift,alt,cmd", function(win) {
-  if (!win) {
-    return null;
-  }
-  return win.move(util.nextScreen(win.screen()).visibleRect());
-});
-
-slate.bind("i:ctrl,shift,alt,cmd", slate.operation("focus", {
-  direction: "behind"
-}));
-
-slate.bind("f6", function(win) {
-  if (win.app().name() === "iTunes") {
-    return slate.operation("hide", {
-      app: 'current'
-    }).run();
-  } else {
-    return slate.shell("/usr/bin/open -a iTunes", false);
-  }
-});
-
-slate.bind('e:cmd', slate.operation("shell", {
-  command: '/usr/bin/open -a Finder',
-  wait: false
-}));
+// slate.bind("o:ctrl,shift,alt,cmd", function(win) {
+//   if (!win) {
+//     return null;
+//   }
+//   return win.move(util.nextScreen(win.screen()).visibleRect());
+// });
+// 
+// slate.bind("i:ctrl,shift,alt,cmd", slate.operation("focus", {
+//   direction: "behind"
+// }));
+// 
+// slate.bind("f6", function(win) {
+//   if (win.app().name() === "iTunes") {
+//     return slate.operation("hide", {
+//       app: 'current'
+//     }).run();
+//   } else {
+//     return slate.shell("/usr/bin/open -a iTunes", false);
+//   }
+// });
+// 
+// slate.bind('e:cmd', slate.operation("shell", {
+//   command: '/usr/bin/open -a Finder',
+//   wait: false
+// }));
 
 if (slate.screenCount() === 1) {
   mainLayout = slate.layout("main", {
@@ -199,6 +199,6 @@ if (slate.screenCount() === 1) {
   });
 }
 
-slate.bind("1:ctrl,shift,alt,cmd", slate.operation("layout", {
-  name: mainLayout
-}));
+// slate.bind("1:ctrl,shift,alt,cmd", slate.operation("layout", {
+//   name: mainLayout
+// }));
