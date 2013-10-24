@@ -252,6 +252,10 @@ NeoBundleLazy 'osyo-manga/vim-pronamachang', {
 \     'unite_sources': 'pronamachang'
 \   }
 \ }
+
+NeoBundleLazy 'osyo-manga/vim-gift', {
+\   'vim_version': '7.3.895'
+\ }
 NeoBundle 'osyo-manga/vim-automatic', {
 \   'vim_version': '7.3.895',
 \   'depends':     'osyo-manga/vim-gift',
