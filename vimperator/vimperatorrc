@@ -187,7 +187,7 @@ silent qmark P http://www.pixiv.net/bookmark_new_illust.php
 silent qmark r http://cloud.feedly.com/#my
 silent qmark R http://www.readability.com/hamaco/
 silent qmark t https://trello.com/
-silent qmark T https://www.toggl.com/track
+silent qmark T https://new.toggl.com/app/
 
 " }}}
 " Styles {{{1
