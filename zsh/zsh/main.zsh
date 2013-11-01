@@ -382,6 +382,12 @@ bindkey '^D' _delete-char-or-list-expand
 trap "source ~/.zshrc && rehash" USR1
 alias source-zshrc-all="pkill -usr1 -u `id -u` zsh"
 
+
+#######
+
+function calc(){ awk "BEGIN{ print $* }" ;}
+
+
 #######
 
 if exists percol; then
