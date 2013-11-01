@@ -634,6 +634,10 @@ nnoremap ! :VimShellExecute<Space>
 
 " ===== watchdogs.vim =====
 let g:watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_BufWritePost_enables = {
+\   "perl": 0,
+\ }
+
 let g:watchdogs_check_CursorHold_enable = 0
 
 " let bundle = neobundle#get('vim-watchdogs')
