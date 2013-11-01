@@ -353,10 +353,10 @@ if exists tmux; then
 	tmuxx() {
 		if [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/null) ) ]]; then
 			# on OS X force tmux's default command to spawn a shell in the user's namespace
-			tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l zsh"'))
-			tmux -f <(echo "$tmux_config") new-session -d && echo "tmux created new session supported OS X"
+			tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
+			tmux attach -d || tmux -f <(echo "$tmux_config") new-session
 		else
-			tmux new-session && echo "tmux created new session"
+			tmux attach -d || tmux new-session
 		fi
 	}
 

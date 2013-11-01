@@ -7,44 +7,18 @@ function exists { whence -p $1 &> /dev/null }
 typeset -U path cdpath fpath manpath
 
 path=(
-$HOME/bin(N-/)
-$HOME/app/*/bin(N-/)
-$HOME/app/*/*/bin(N-/)
+  $HOME/bin(N-/)
+  $HOME/app/*/bin(N-/)
+  $HOME/app/*/*/bin(N-/)
 
-/bin(N-/)
-/sbin(N-/)
+  $path
 
-/opt/local/*/bin(N-/)
-/opt/*/bin(N-/)
-/opt/bin(N-/)
+  /usr/local/bin(N-/)
+)
 
-/opt/sbin(N-/)
-/opt/*/sbin(N-/)
-/opt/local/*/sbin(N-/)
-
-/usr/local/*/bin(N-/)
-/usr/*/bin(N-/)
-/usr/bin(N-/)
-
-/usr/sbin(N-/)
-/usr/*/sbin(N-/)
-/usr/local/*/sbin(N-/)
-
-$HOME/.gem/ruby/*/bin(N-/)
-/var/lib/gems/*/bin(N-/)
-
-/usr/local/share/npm/bin(N-/)
-
-$HOME/.cabal/bin(N-/)
-$HOME/.autojump/bin(N-/)
-
-$HOME/.git-hook/bin(N-/)
-
-$path)
 # }}}
-
-
 # Export: ================ {{{1
+
 export TZ="Asia/Tokyo"
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -72,6 +46,7 @@ case "${OSTYPE}" in
 		export ARCHI=""
 		;;
 esac
+
 # }}}
 
 
