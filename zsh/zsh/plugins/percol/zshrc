@@ -1,0 +1,11 @@
+if exists percol; then
+  # source $(dirname $0)/sources/*.zsh
+  for f ($(dirname $0)/sources/*.zsh(N-.)) source "$f"
+
+  # select-history
+  bindkey '^r' percol-select-history
+
+  # git-resetn-breanches
+  bindkey '^x^b' percol-git-recent-branches
+  bindkey '^xb'  percol-git-recent-all-branches
+fi
