@@ -636,6 +636,7 @@ nnoremap ! :VimShellExecute<Space>
 let g:watchdogs_check_BufWritePost_enable = 1
 let g:watchdogs_check_BufWritePost_enables = {
 \   "perl": 0,
+\   "zsh": 0,
 \ }
 
 let g:watchdogs_check_CursorHold_enable = 0
