@@ -26,6 +26,8 @@ alias ll="ls -l"
 alias la="ls -la"
 alias lrt="ls -lrt"
 
+alias less="less --no-init --quit-if-one-screen -g -R"
+
 # for vim
 alias v="vim"
 alias vi="vim"
