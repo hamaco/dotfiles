@@ -10,6 +10,8 @@ umask 022
 fpath=($ZSH_HOME/completions $fpath)
 cdpath=($HOME /var/www/*(N-/))
 
+bindkey -e
+
 # load plugins
 for plugin_config ($ZSH_HOME/plugins/*/zshrc(N-.))
 do
