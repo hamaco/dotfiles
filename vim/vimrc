@@ -460,6 +460,7 @@ else
 endif
 
 let g:quickrun_config['watchdogs_checker/_'] = {
+\   'outputter/quickfix/open_cmd': '',
 \   'hook/unite_quickfix/enable_failure': 1,
 \   'hook/u_nya_/enable': 0,
 \ }
