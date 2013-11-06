@@ -205,7 +205,10 @@ NeoBundleLazy 'kana/vim-operator-replace', {
 \     'mappings': '<Plug>(operator-replace)'
 \   }
 \ }
-NeoBundleLazy 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-line', {
+\   'depends': 'kana/vim-textobj-user',
+\ }
 NeoBundle 'mattn/sonictemplate-vim'
 
 NeoBundleLazy 'mattn/webapi-vim'
