@@ -634,18 +634,18 @@ nnoremap ! :VimShellExecute<Space>
 
 
 " ===== watchdogs.vim =====
-let g:watchdogs_check_BufWritePost_enable = 1
-let g:watchdogs_check_BufWritePost_enables = {
-\   "perl": 0,
-\   "zsh": 0,
-\ }
+let bundle = neobundle#get('vim-watchdogs')
+function! bundle.hooks.on_source(bundle)
+  let g:watchdogs_check_BufWritePost_enable = 1
+  let g:watchdogs_check_BufWritePost_enables = {
+  \   "perl": 0,
+  \   "zsh": 0,
+  \ }
 
-let g:watchdogs_check_CursorHold_enable = 0
+  let g:watchdogs_check_CursorHold_enable = 0
 
-" let bundle = neobundle#get('vim-watchdogs')
-" function! bundle.hooks.on_source(bundle)
-"   call watchdogs#setup(g:quickrun_config)
-" endfunction
+  call watchdogs#setup(g:quickrun_config)
+endfunction
 
 
 
