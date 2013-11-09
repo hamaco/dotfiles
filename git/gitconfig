@@ -1,6 +1,5 @@
-[user]
-    name = hamaco
-    email = hamanaka.kazuhiro@gmail.com
+[include]
+    path = .gitconfig.local
 
 [apply]
     whitespace = nowarn
@@ -101,9 +100,6 @@
     tree = log --graph --pretty=oneline --abbrev-commit --decorate
     unignore = update-index --no-assume-unchanged
     view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
-
-[include]
-    path = /home/hamaco/.gitconfig.local
 
 [github]
     user = hamaco
