@@ -10,11 +10,10 @@ function! s:set_font(fontname, fontsize)
 endfunction
 
 
-" colorscheme landscape
-colorscheme newspaper
+colorscheme hybrid
 
 if has("mac")
-  call s:set_font("Ricty Discord", 16)
+  call s:set_font("NFモトヤバーチ1等幅", 18)
 
   if has('vim_starting')
     set columns=177
