@@ -648,6 +648,12 @@ function! bundle.hooks.on_source(bundle)
 endfunction
 
 
+" ===== yankround.vim =====
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+
 
 " === Other === {{{1
 " vim hacks #161
