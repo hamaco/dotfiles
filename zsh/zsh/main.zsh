@@ -430,3 +430,10 @@ REPORTTIME=3 # 3秒以上掛かるコマンドは詳細表示する
 
 #######
 
+# http://qiita.com/mollifier/items/81a9daf716d94b63f94f
+alias run-help >/dev/null 2>&1 && unalias run-help
+autoload -Uz run-help
+autoload -Uz run-help-git
+autoload -Uz run-help-svn
+
+#######
