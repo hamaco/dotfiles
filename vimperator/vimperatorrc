@@ -104,8 +104,8 @@ nnoremap h 3h
 nnoremap l 3l
 
 " インサートモードでの色々
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
+" inoremap <C-b> <Left>
+" inoremap <C-f> <Right>
 inoremap <C-h> <BS>
 cnoremap <C-h> <BS>
 
