@@ -204,7 +204,7 @@ vnoremap <Leader>a :Alignta<Space>
 call altercmd#load()
 command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
-MapAlterCommand t  tabedit
+MapAlterCommand t[abedit]  tabedit
 
 MapAlterCommand sl setl
 MapAlterCommand sf setf
