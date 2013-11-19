@@ -11,9 +11,9 @@ path=(
   $HOME/app/*/bin(N-/)
   $HOME/app/*/*/bin(N-/)
 
-  $path
-
   /usr/local/bin(N-/)
+
+  $path
 )
 
 # }}}
