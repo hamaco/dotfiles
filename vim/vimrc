@@ -153,6 +153,9 @@ noremap : ;
 nnoremap j gj
 nnoremap k gk
 
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
