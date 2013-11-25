@@ -47,3 +47,21 @@ zstyle -e ":completion:*:sudo:*" command-path 'reply=($path)'
 # したがって，すべての マッチ種別を別々に表示させたいなら以下のようにする
 zstyle ':completion:*' group-name ''
 
+
+# tmuxの画面に表示されてる文字列を補完する
+# http://secondlife.hatenablog.jp/entry/20060108/1136650653
+HARDCOPYFILE=/tmp/tmux-hardcopy
+touch $HARDCOPYFILE
+
+dabbrev-complete () {
+  local reply lines=80
+
+  tmux capture-pane && tmux save-buffer -b 0 $HARDCOPYFILE && tmux delete-buffer -b 0
+  reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
+
+  compadd - "${reply[@]%[*/=@|]}"
+}
+
+zle -C dabbrev-complete menu-complete dabbrev-complete
+bindkey '^o' dabbrev-complete
+bindkey '^o^_' reverse-menu-complete
