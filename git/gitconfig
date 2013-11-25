@@ -23,6 +23,7 @@
     new = green bold
 
 [core]
+    attributesfile = ~/.gitattributes
     excludesfile = ~/.gitignore
     pager = less -r
     quotepath = false
