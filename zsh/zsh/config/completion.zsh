@@ -59,7 +59,7 @@ dabbrev-complete () {
   tmux capture-pane && tmux save-buffer -b 0 $HARDCOPYFILE && tmux delete-buffer -b 0
   reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
 
-  compadd - "${reply[@]%[*/=@|]}"
+  compadd -Q - "${reply[@]%[*/=@|]}"
 }
 
 zle -C dabbrev-complete menu-complete dabbrev-complete
