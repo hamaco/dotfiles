@@ -558,6 +558,7 @@ noremap gE ge
 
 " ===== sonictemplate.vim =====
 let g:sonictemplate_vim_template_dir = expand('~/.vim/templates/')
+MapAlterCommand te[mplate] Template
 
 
 " ===== submode.vim =====
