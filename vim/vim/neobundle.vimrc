@@ -250,7 +250,7 @@ NeoBundleLazy 'tyru/restart.vim', {
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}
 \ }
 NeoBundle 'ujihisa/shadow.vim'
-NeoBundleLazy 'vim-scripts/matchit.zip'
+NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundleLazy 'majutsushi/tagbar'
 
