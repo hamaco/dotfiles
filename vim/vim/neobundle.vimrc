@@ -46,10 +46,13 @@ NeoBundleLazy 'ujihisa/unite-colorscheme', {
 " }}}
 
 " quickrun {{{
-NeoBundleLazy 'hamaco/quickrun-hook-u-nya-'
 NeoBundleLazy 'thinca/vim-quickrun', {
-\   'depends': ['Shougo/unite.vim', 'hamaco/quickrun-hook-u-nya-'],
+\   'depends': 'Shougo/unite.vim',
 \   'autoload' : {'mappings' : ['<Leader>r', '<Plug>(quickrun)']},
+\ }
+NeoBundleLazy 'hamaco/quickrun-hook-u-nya-', {
+\   'depends' : 'thinca/vim-quickrun',
+\   'autoload': {'on_source': 'vim-quickrun'},
 \ }
 NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
 \   'depends': 'thinca/vim-quickrun'
