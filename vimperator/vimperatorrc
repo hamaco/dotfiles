@@ -178,6 +178,7 @@ silent qmark B http://b.hatena.ne.jp/hamaco/
 silent qmark c http://calendar.google.com/
 silent qmark C https://www.chatwork.com/
 silent qmark f http://www.facebook.com/
+silent qmark F https://ja.foursquare.com/
 silent qmark g http://github.com/hamaco
 silent qmark I http://sp.pf.mbga.jp/12008305
 silent qmark l http://reader.livedoor.com/reader/
