@@ -229,53 +229,56 @@ let g:autochmodx_ignore_scriptish_file_patterns = [
 
 
 " automatic.vim
-let s:bundle = neobundle#get('vim-automatic')
-function! s:bundle.hooks.on_source(bundle)
-let g:automatic_config = []
-  call add(g:automatic_config, {
-  \   'match' : {
-  \       'localtime_expr' : '6 <= hour && hour <= 11',
-  \       'autocmds' : ['VimEnter'],
-  \       'is_open_other_window' : 0
-  \   },
-  \   'set' : {
-  \       'pronamachang_voice' : 'kei_voice_008',
-  \   },
-  \ })
+if neobundle#tap('vim-automatic')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:automatic_config = []
+    call add(g:automatic_config, {
+    \   'match' : {
+    \       'localtime_expr' : '6 <= hour && hour <= 11',
+    \       'autocmds' : ['VimEnter'],
+    \       'is_open_other_window' : 0
+    \   },
+    \   'set' : {
+    \       'pronamachang_voice' : 'kei_voice_008',
+    \   },
+    \ })
 
-  call add(g:automatic_config, {
-  \   'match' : {
-  \       'localtime_expr' : '12 <= hour && hour <= 18',
-  \       'autocmds' : ['VimEnter'],
-  \       'is_open_other_window' : 0
-  \   },
-  \   'set' : {
-  \       'pronamachang_voice' : 'kei_voice_009',
-  \   },
-  \ })
+    call add(g:automatic_config, {
+    \   'match' : {
+    \       'localtime_expr' : '12 <= hour && hour <= 18',
+    \       'autocmds' : ['VimEnter'],
+    \       'is_open_other_window' : 0
+    \   },
+    \   'set' : {
+    \       'pronamachang_voice' : 'kei_voice_009',
+    \   },
+    \ })
 
-  call add(g:automatic_config, {
-  \   'match' : {
-  \       'localtime_expr' : '19 <= hour && hour <= 23',
-  \       'autocmds' : ['VimEnter'],
-  \       'is_open_other_window' : 0
-  \   },
-  \   'set' : {
-  \       'pronamachang_voice' : 'kei_voice_010',
-  \   },
-  \ })
+    call add(g:automatic_config, {
+    \   'match' : {
+    \       'localtime_expr' : '19 <= hour && hour <= 23',
+    \       'autocmds' : ['VimEnter'],
+    \       'is_open_other_window' : 0
+    \   },
+    \   'set' : {
+    \       'pronamachang_voice' : 'kei_voice_010',
+    \   },
+    \ })
 
 
-  call add(g:automatic_config, {
-  \   'match' : {
-  \       'bufname' : '\[unite\]',
-  \       'unite_sources' : ['grep']
-  \   },
-  \   'set' : {
-  \       'pronamachang_voice' : 'kei_voice_036_phrase1',
-  \   },
-  \})
-endfunction
+    call add(g:automatic_config, {
+    \   'match' : {
+    \       'bufname' : '\[unite\]',
+    \       'unite_sources' : ['grep']
+    \   },
+    \   'set' : {
+    \       'pronamachang_voice' : 'kei_voice_036_phrase1',
+    \   },
+    \})
+  endfunction
+
+  call neobundle#untap()
+endif
 
 
 " caw.vim
@@ -389,7 +392,7 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
-inoremap <expr> <CR> neocomplete#smart_close_popup() . "\<CR>"
+" inoremap <expr> <CR> neocomplete#smart_close_popup() . "\<CR>"
 
 
 " neosnippet.vim
@@ -404,7 +407,13 @@ imap <expr> <TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
 
 
 " octoeditor.vim
-let g:octopress_path = '~/works/octopress-github'
+if neobundle#tap('octoeditor.vim')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:octopress_path = '~/works/octopress-github'
+  endfunction
+
+  call neobundle#untap()
+endif
 
 
 " open-browser.vim
@@ -517,43 +526,72 @@ endif
 
 
 " ===== smartinput.vim =====
-let bundle = neobundle#get('vim-smartinput')
-function! bundle.hooks.on_source(bundle)
-  call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
-  call smartinput#map_to_trigger('i', '<', '<', '<')
-  call smartinput#map_to_trigger('i', '>', '>', '>')
-  call smartinput#map_to_trigger('i', '%', '%', '%')
-  call smartinput#map_to_trigger('i', '?', '?', '?')
+if neobundle#tap('vim-smartinput')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
+    call smartinput#map_to_trigger('i', '<', '<', '<')
+    call smartinput#map_to_trigger('i', '>', '>', '>')
+    call smartinput#map_to_trigger('i', '%', '%', '%')
+    call smartinput#map_to_trigger('i', '?', '?', '?')
+    call smartinput#map_to_trigger('i', '-', '-', '-')
+    call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
 
-  call smartinput#define_rule({'at': '\%#', 'char': '<', 'input': '<><Left>'})
-  call smartinput#define_rule({'at': '\%#\_s*>', 'char': '>', 'input': '<C-r>=smartinput#_leave_block(''>'')<Enter><Right>'})
-  call smartinput#define_rule({'at': '<\%#>', 'char': '<BS>', 'input': '<BS><Del>'})
-  call smartinput#define_rule({'at': '<\%#>', 'char': '<', 'input': '<<Del>'})
-  call smartinput#define_rule({'at': '<<\%#', 'char': '<', 'input': '<'})
+    imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
+    \    neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+    \    neocomplete#close_popup()
 
-  call smartinput#define_rule({'at': '{\%#}', 'char': '<Space>', 'input': '<Space><Space><Left>'})
-  call smartinput#define_rule({'at': '{\%#}', 'char': '%', 'input': '%<Space><Space>%<Left><Left>'})
-  call smartinput#define_rule({'at': '{% \%# %}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
-  call smartinput#define_rule({'at': '{\%#}', 'char': '{', 'input': '{<Space><Space>}<Left><Left>'})
-  call smartinput#define_rule({'at': '{{ \%# }}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
+    call smartinput#define_rule({'at': '^\s*\%#', 'char': '-', 'input': '-<Space>', 'filetype': ['markdown']})
+    call smartinput#define_rule({'at': '- \%#', 'char': '[', 'input': '[<Space>]<Space>', 'filetype': ['markdown']})
 
-  call smartinput#define_rule({'at': '<\%#>', 'char': '?', 'input': '?<Space>?<Left><Left>'})
-  call smartinput#define_rule({'at': '<?\%# ?>', 'char': '<BS>', 'input': '<BS><Del><Del>'})
-endfunction
+    call smartinput#define_rule({
+    \    'at'       : 'eval\s*\%#',
+    \    'char'     : '{',
+    \    'input'    : '{};<Left><Left>',
+    \    'filetype' : ['perl'],
+    \ })
+
+    " call smartinput#define_rule({'at': '\%#', 'char': '<', 'input': '<><Left>'})
+    " call smartinput#define_rule({'at': '\%#\_s*>', 'char': '>', 'input': '<C-r>=smartinput#_leave_block(''>'')<Enter><Right>'})
+    " call smartinput#define_rule({'at': '<\%#>', 'char': '<BS>', 'input': '<BS><Del>'})
+    " call smartinput#define_rule({'at': '<\%#>', 'char': '<', 'input': '<<Del>'})
+    " call smartinput#define_rule({'at': '<<\%#', 'char': '<', 'input': '<'})
+
+    " perl Template-Toolkit
+    call smartinput#define_rule({'at': '\[\%#\]', 'char': '<Space>', 'input': '<Space><Space><Left>'})
+    call smartinput#define_rule({'at': '\[\%#\]', 'char': '%', 'input': '%<Space><Space>%<Left><Left>'})
+    call smartinput#define_rule({'at': '\[% \%# %\]', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
+
+    " PHP Twig
+    call smartinput#define_rule({'at': '{\%#}', 'char': '<Space>', 'input': '<Space><Space><Left>'})
+    call smartinput#define_rule({'at': '{\%#}', 'char': '%', 'input': '%<Space><Space>%<Left><Left>'})
+    call smartinput#define_rule({'at': '{% \%# %}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
+    call smartinput#define_rule({'at': '{\%#}', 'char': '{', 'input': '{<Space><Space>}<Left><Left>'})
+    call smartinput#define_rule({'at': '{{ \%# }}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
+
+    " PHP
+    call smartinput#define_rule({'at': '<\%#>', 'char': '?', 'input': '?<Space>?<Left><Left>'})
+    call smartinput#define_rule({'at': '<?\%# ?>', 'char': '<BS>', 'input': '<BS><Del><Del>'})
+  endfunction
+endif
 
 imap <C-j> <Plug>(eskk:toggle)
 cmap <C-j> <Plug>(eskk:toggle)
 
 
 " ===== smartword.vim =====
-map w <Plug>(smartword-w)
-map b <Plug>(smartword-b)
-map e <Plug>(smartword-e)
-map ge <Plug>(smartword-ge)
-noremap W w
-noremap B b
-noremap E e
-noremap gE ge
+if neobundle#tap('vim-smartword')
+  map w <Plug>(smartword-w)
+  map b <Plug>(smartword-b)
+  map e <Plug>(smartword-e)
+  map ge <Plug>(smartword-ge)
+
+  noremap W w
+  noremap B b
+  noremap E e
+  noremap gE ge
+
+  call neobundle#untap()
+endif
 
 
 " ===== sonictemplate.vim =====
@@ -562,23 +600,29 @@ MapAlterCommand te[mplate] Template
 
 
 " ===== submode.vim =====
-let g:submode_keep_leaving_key = 1
+if neobundle#tap('vim-submode')
+  let g:submode_keep_leaving_key = 1
 
-" タブの切り替え
-call submode#enter_with('tabpage', 'n', '', 'gt', 'gt')
-call submode#enter_with('tabpage', 'n', '', 'gT', 'gT')
-call submode#map('tabpage', 'n', '', 't', 'gt')
-call submode#map('tabpage', 'n', '', 'T', 'gT')
+  " タブの切り替え
+  call submode#enter_with('tabpage', 'n', '', 'gt', 'gt')
+  call submode#enter_with('tabpage', 'n', '', 'gT', 'gT')
+  call submode#map('tabpage', 'n', '', 't', 'gt')
+  call submode#map('tabpage', 'n', '', 'T', 'gT')
 
-" ウィンドウのリサイズ
-call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-call submode#map('winsize', 'n', '', '>', '<C-w>>')
-call submode#map('winsize', 'n', '', '<', '<C-w><')
-call submode#map('winsize', 'n', '', '+', '<C-w>+')
-call submode#map('winsize', 'n', '', '-', '<C-w>-')
+  " ウィンドウのリサイズ
+  call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+  call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+  call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+  call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+  call submode#map('winsize', 'n', '', '>', '<C-w>>')
+  call submode#map('winsize', 'n', '', '<', '<C-w><')
+  call submode#map('winsize', 'n', '', '+', '<C-w>+')
+  call submode#map('winsize', 'n', '', '-', '<C-w>-')
+
+  call neobundle#untap()
+endif
+
+
 
 
 " ===== tmpwin.vim =====
@@ -588,37 +632,43 @@ nnoremap <silent><Leader>tt :<C-u>call tmpwin#toggle(
 
 
 " ===== unite.vim =====
-let g:unite_source_history_yank_enable = 1
+if neobundle#tap('unite.vim')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    let g:unite_source_history_yank_enable = 1
 
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
-let g:unite_source_grep_recursive_opt = ''
-let g:unite_source_grep_max_candidates = 200
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_max_candidates = 200
 
-call unite#custom#alias('file', 'tabopen', 'tabdrop')
-call unite#custom#alias('directory', 'tabopen', 'tabvimfiler')
+    call unite#custom#alias('file', 'tabopen', 'tabdrop')
+    call unite#custom#alias('directory', 'tabopen', 'tabvimfiler')
 
-nnoremap [unite] <Nop>
-nmap ,f [unite]
+    Autocmd FileType unite call s:unite_my_settings()
+    function! s:unite_my_settings()
+      nmap <buffer> <ESC> <Plug>(unite_exit)
+      imap <buffer> jj <Plug>(unite_insert_leave)
+      nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+      imap <buffer> ' <Plug>(unite_quick_match_default_action)
+      nmap <buffer> x <Plug>(unite_toggle_mark_current_candidate)
+      imap <buffer> <C-BS> <Plug>(unite_delete_backward_path)
+    endfunction
+  endfunction
 
-noremap <silent> [unite]b :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
-noremap <silent> [unite]c :<C-u>Unite -auto-preview colorscheme<CR>
-noremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search -auto-preview -no-quit<CR>
-noremap <silent> [unite]G :<C-u>Unite grep:. -buffer-name=search -auto-preview -no-quit<CR><C-r><C-w>
-noremap <silent> [unite]I :<C-u>Unite -auto-quit neobundle/update<CR>
-noremap <silent> [unite]j :<C-u>Unite -default-action=vimfiler bookmark<CR>
-noremap <silent> [unite]o :<C-u>Unite outline<CR>
-noremap <silent> [unite]u :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:! file file_mru<CR>
+  nnoremap [unite] <Nop>
+  nmap ,f [unite]
 
-Autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings() "{{{
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-  imap <buffer> jj <Plug>(unite_insert_leave)
-  nmap <buffer> ' <Plug>(unite_quick_match_default_action)
-  imap <buffer> ' <Plug>(unite_quick_match_default_action)
-  nmap <buffer> x <Plug>(unite_toggle_mark_current_candidate)
-  imap <buffer> <C-BS> <Plug>(unite_delete_backward_path)
-endfunction "}}}
+  noremap <silent> [unite]b :<C-u>UniteWithBufferDir -buffer-name=files -start-insert file file/new<CR>
+  noremap <silent> [unite]c :<C-u>Unite -auto-preview colorscheme<CR>
+  noremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search -auto-preview -no-quit<CR>
+  noremap <silent> [unite]G :<C-u>Unite grep:. -buffer-name=search -auto-preview -no-quit<CR><C-r><C-w>
+  noremap <silent> [unite]I :<C-u>Unite -auto-quit neobundle/update<CR>
+  noremap <silent> [unite]j :<C-u>Unite -default-action=vimfiler bookmark<CR>
+  noremap <silent> [unite]o :<C-u>Unite outline<CR>
+  noremap <silent> [unite]u :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:! file file_mru<CR>
+
+  call neobundle#untap()
+endif
 
 
 " ===== vimfiler.vim =====
@@ -628,15 +678,16 @@ let g:vimfiler_edit_action = "open"
 
 
 " ===== vimshell.vim =====
-let bundle = neobundle#get('vimshell')
-function! bundle.hooks.on_source(bundle)
-  let g:vimshell_user_prompt = 'getcwd()'
-  let g:vimshell_prompt = "/ _ / X < "
-endfunction
+if neobundle#tap('vimshell')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    let g:vimshell_user_prompt = 'getcwd()'
+    let g:vimshell_prompt = "/ _ / X < "
+  endfunction
 
-nmap <C-@> <Plug>(vimshell_switch)
-nmap <C-Space> <Plug>(vimshell_switch)
-nnoremap ! :VimShellExecute<Space>
+  nmap <C-@> <Plug>(vimshell_switch)
+  nmap <C-Space> <Plug>(vimshell_switch)
+  nnoremap ! :VimShellExecute<Space>
+endif
 
 
 " ===== watchdogs.vim =====
