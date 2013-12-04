@@ -1,7 +1,7 @@
 # Alias: エイリアス ========= {{{1
 
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
-alias grep="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude='*/cache/*'"
+alias gf="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude='*/cache/*'"
 
 # Ubuntuとかだとack-grepに変わったのでaliasする
 if type ack-grep > /dev/null; then
