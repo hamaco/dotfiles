@@ -9,7 +9,7 @@ call neobundle#rc(expand('~/.bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'Shougo/vimproc', {
-\  'build': {
+\   'build': {
 \     'mac' : 'make -f make_mac.mak',
 \     'unix': 'make -f make_unix.mak',
 \     'cygwin': 'make -f make_cygwin.mak',
@@ -103,6 +103,15 @@ NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
 \ }
 NeoBundleLazy 'StanAngeloff/php.vim', {
 \   'autoload': {'filetypes': 'php'}
+\ }
+NeoBundleLazy 'majutsushi/tagbar'
+NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
+\   'depends': 'majutsushi/tagbar',
+\   'autoload': {'filetypes': 'php'},
+\   'build': {
+\      'mac'  : 'chmod +x bin/phpctags',
+\      'unix' : 'chmod +x bin/phpctags',
+\    },
 \ }
 " }}}
 
@@ -255,7 +264,6 @@ NeoBundleLazy 'tyru/restart.vim', {
 NeoBundle 'ujihisa/shadow.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'vim-scripts/sudo.vim'
-NeoBundleLazy 'majutsushi/tagbar'
 
 NeoBundle 'osyo-manga/vim-pronamachang', {
 \   'depends' : ['osyo-manga/vim-sound', 'Shougo/vimproc'],

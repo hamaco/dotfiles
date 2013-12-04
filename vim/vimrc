@@ -170,6 +170,9 @@ nnoremap Y y$
 nnoremap / /\v
 nnoremap ? ?\v
 
+" ウィンドウ
+nnoremap <Tab> <C-w>w
+
 " タブ
 nnoremap <C-t> <Nop>
 nnoremap <C-t>o :<C-u>tabonly<CR>
@@ -623,6 +626,12 @@ if neobundle#tap('vim-submode')
 endif
 
 
+" ===== tagbar.vim =====
+if neobundle#tap('tagbar')
+  nnoremap <silent> <Leader>t :<C-u>TagbarToggle<CR>
+
+  call neobundle#untap()
+endif
 
 
 " ===== tmpwin.vim =====
