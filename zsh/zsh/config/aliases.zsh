@@ -187,7 +187,7 @@ my-expand-abbrev() {
 
 zle -N my-expand-abbrev
 
-bindkey " " my-expand-abbrev
+# bindkey " " my-expand-abbrev
 
 # }}}
 
