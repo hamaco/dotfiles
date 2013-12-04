@@ -14,6 +14,7 @@ colorscheme hybrid
 
 if has("mac")
   call s:set_font("NFモトヤバーチ1等幅", 18)
+  call s:set_font("Osaka-Mono", 18)
 
   if has('vim_starting')
     set columns=177
