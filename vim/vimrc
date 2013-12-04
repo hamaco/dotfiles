@@ -541,7 +541,7 @@ if neobundle#tap('vim-smartinput')
 
     imap <expr><CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
     \    neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
-    \    neocomplete#close_popup()
+    \    neocomplete#smart_close_popup() . "\<CR>"
 
     call smartinput#define_rule({'at': '^\s*\%#', 'char': '-', 'input': '-<Space>', 'filetype': ['markdown']})
     call smartinput#define_rule({'at': '- \%#', 'char': '[', 'input': '[<Space>]<Space>', 'filetype': ['markdown']})
