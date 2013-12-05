@@ -44,7 +44,7 @@ function _precmd_vcs_info() {
     psvar[3]="$vcs_info_msg_1_"
     psvar[4]=$(echo $PWD | sed -e "s#^$vcs_info_msg_2_##")
   else
-    psvar[2]=$PWD
+    psvar[2]=$(echo $PWD | sed -e "s#^$HOME#~#")
   fi
 }
 add-zsh-hook precmd _precmd_vcs_info
