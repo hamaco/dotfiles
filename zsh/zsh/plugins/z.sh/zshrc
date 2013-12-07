@@ -1,9 +1,9 @@
 # https://github.com/rupa/z
+antigen bundle rupa/z
+
 _z_add() {
 	_z --add "$(pwd -P)"
 }
 
 _Z_CMD=j
 add-zsh-hook precmd _z_add
-
-antigen bundle rupa/z
