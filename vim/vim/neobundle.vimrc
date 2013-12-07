@@ -186,9 +186,10 @@ NeoBundleLazy 'Shougo/vimshell', {
 \       'mappings': ['<Plug>(vimshell_switch)'],
 \ }}
 
-NeoBundleLazy 'h1mesuke/vim-alignta', {
-\   'autoload': {'commands': ['Alignta']},
-\ }
+NeoBundle 'h1mesuke/vim-alignta'
+" NeoBundleLazy 'h1mesuke/vim-alignta', {
+" \   'autoload': {'commands': 'Alignta'}
+" \ }
 
 
 
