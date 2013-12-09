@@ -141,7 +141,10 @@ NeoBundleLazy 'glidenote/octoeditor.vim', {
 
 " twitter {{{
 NeoBundleLazy 'tyru/open-browser.vim', {
-\   'autoload': {'mappings' : '<Plug>(openbrowser-'}
+\   'autoload': {
+\       'mappings': '<Plug>(openbrowser-',
+\       'commands': 'OpenBrowser',
+\   }
 \ }
 
 NeoBundleLazy 'basyura/twibill.vim'
@@ -301,6 +304,10 @@ NeoBundleLazy 'thinca/vim-prettyprint', {
 
 NeoBundleLazy 'deris/vim-rengbang', {
 \   'autoload': {'commands': ['RengBang', 'RengBangUsePrev']}
+\ }
+NeoBundleLazy 'basyura/J6uil.vim', {
+\   'depends': ['mattn/webapi-vim', 'Shougo/vimproc'],
+\   'autoload': {'commands': 'J6uil'}
 \ }
 
 NeoBundle 'Shougo/context_filetype.vim'
