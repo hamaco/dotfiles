@@ -315,4 +315,6 @@ NeoBundle 'osyo-manga/vim-precious'
 
 filetype indent plugin on
 
+NeoBundleCheck
+
 " vim: foldmethod=marker
