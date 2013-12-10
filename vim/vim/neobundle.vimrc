@@ -79,6 +79,11 @@ NeoBundleLazy 'Shougo/neocomplete', {
 \     'insert': 1,
 \   }
 \ }
+NeoBundleLazy 'ujihisa/neco-look', {
+\   'depends' : 'Shougo/neocomplete',
+\   'autoload': {'on_source': 'neocomplete'}
+\ }
+
 NeoBundleLazy 'Shougo/neosnippet', {
 \   'vim_version': '7.3.885',
 \   'depends': 'Shougo/neocomplete',
