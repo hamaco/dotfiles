@@ -56,7 +56,8 @@ vim:
 	ln -fns $(CURRENT_DIR)/vim/vim    $(INSTALL_DIR)/.vim
 	ln -fns $(CURRENT_DIR)/vim/vimrc  $(INSTALL_DIR)/.vimrc
 	ln -fns $(CURRENT_DIR)/vim/gvimrc $(INSTALL_DIR)/.gvimrc
-	vim -u ~/.vim/neobundle.vimrc +"silent NeoBundleInstall" +q
+	vim -N -u $(INSTALL_DIR)/.vim/neobundle.vimrc -U NONE -i NONE -V1 -e -s \
+		-c "try | NeoBundleUpdate $* | finally | qall! | endtry"
 
 vimperator: vimperator-repo
 	ln -fns $(CURRENT_DIR)/vimperator/vimperator      $(INSTALL_DIR)/.vimperator
