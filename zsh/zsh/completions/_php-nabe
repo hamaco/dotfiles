@@ -31,8 +31,8 @@ _php-nabe() {
     args)
       case $line[1] in
         install)
-          # TODO
-          _no_arguments
+          __php_nabe_retrieve_update_cache
+          _describe "PHP Versions" __php_nabe_php_versions || return 1
           ;;
         use)
           local -a _versions
@@ -54,6 +54,23 @@ _php-nabe() {
   esac
 
   return ret
+}
+
+__php_nabe_retrieve_update_cache() {
+  if (!(($+__php_nabe_php_versions)) || _cache_invalid 'php-nabe') && ! _retrieve_cache 'php-nabe'; then
+    __php_nabe_php_versions=( $(__php_nabe_get_available_versions) )
+    _store_cache 'php-nabe' __php_nabe_php_versions
+    return 0
+  fi
+
+  return 1
+}
+
+__php_nabe_get_available_versions() {
+  local versions
+
+  versions=( $(curl --silent https://api.github.com/repos/php/php-src/tags | awk '/"name": "php-[0-9.]*"/ { print $0 }' | sed -e "s/.*php-\([0-9\.]*\).*/\1/" | uniq) )
+  echo $versions
 }
 
 _php-nabe "$@"
