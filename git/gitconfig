@@ -54,6 +54,7 @@
     co = checkout
     cp = cherry-pick
     cob = checkout -b
+    current-branch = rev-parse --abbrev-ref HEAD
     d1 = diff HEAD~
     d2 = diff HEAD~~
     d3 = diff HEAD~~~
