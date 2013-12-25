@@ -22,6 +22,7 @@ setopt long_list_jobs       # jobsコマンドのデフォルトを jobs -l に�
 setopt magic_equal_subst    # コマンドラインの引数で --PREFIX=/USR などの = 以降でも補完できる
 setopt mark_dirs            # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
 setopt notify               # バックグラウンドジョブが終了したら(プロンプトの表示を待たずに)すぐに知らせる
+setopt nullglob             # 拡張ファイルグロブにマッチしない時にそのままコマンドを実行する
 setopt numeric_glob_sort    # ファイル名を数値としてソート
 setopt print_eight_bit      # 補完候補リストの日本語を適正表示
 setopt prompt_subst         #
