@@ -3,3 +3,8 @@ source $(dirname $0)/antigen/antigen.zsh
 antigen bundle zsh-users/zsh-completions src
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle rhysd/zsh-bundle-exec
+
+
+antigen bundle mollifier/cd-gitroot
+autoload -Uz cd-gitroot
+alias u='cd-gitroot'

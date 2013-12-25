@@ -159,16 +159,6 @@ zle -N do_enter
 # bindkey '^m' do_enter
 
 
-# gitのトップレベルに移動
-function u()
-{
-	if [ $# = 1 ]; then
-		cd ./$(git rev-parse --show-cdup)/$1
-	else
-		cd ./$(git rev-parse --show-cdup)
-	fi
-}
-
 # 上位ディレクトリを指定するcd
 up() {
 	if [ "$1" = "" ]; then
