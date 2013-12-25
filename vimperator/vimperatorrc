@@ -233,7 +233,6 @@ lazy fmaps -u='mail\.google\.com/mail' -p=<Leader> d,# s,! e
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c j,n k,p n,j p,k o u x s r a ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' -p=<Leader> d,# s,! e
 
-lazy fmaps -u='www\.google\.(co\.jp|com)/reader' -events=vkeypress j k n p m s v o A r R S N P X O gh ga gs gt gu u / ? J K
 lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k n,s s a p o r v c m i,p J,<Space> K,<S-Space> z b < > q w e,g
 
 lazy fmaps -u='www\.facebook\.com' -events=vkeydown j k l c
