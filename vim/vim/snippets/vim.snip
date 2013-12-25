@@ -1,5 +1,8 @@
 snippet bundle
-  let bundle = neobundle#get('${1}')
-  function! bundle.hooks.on_source(bundle)
-    ${2}
-  endfunction
+  if neobundle#tap('${1}')
+    function! neobundle#tapped.hooks.on_post_source(bundle)
+      ${2}
+    endfunction
+    
+    call neobundle#untap()
+  endif
