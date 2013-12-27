@@ -344,7 +344,7 @@ endfunction
 
 
 " indenthtml.vim
-let g:html_indent_inctags = 'html,body,head,tbody,p,li'
+let g:html_indent_inctags = 'html,body,head,tbody,p,li,dt'
 
 
 " lightline.vim
