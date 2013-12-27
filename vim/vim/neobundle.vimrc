@@ -236,6 +236,14 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line', {
 \   'depends': 'kana/vim-textobj-user',
 \ }
+NeoBundle 'kana/vim-textobj-function', {
+\   'depends': 'kana/vim-textobj-user',
+\ }
+NeoBundle 'rhysd/vim-textobj-word-column', {
+\   'depends': 'kana/vim-textobj-user',
+\ }
+
+
 NeoBundle 'mattn/sonictemplate-vim'
 
 NeoBundleLazy 'mattn/webapi-vim'
