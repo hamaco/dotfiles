@@ -116,14 +116,6 @@ augroup END
 
 Autocmd FileType git-diff,help,quickrun,quickfix,qf,ref,vcs-status nnoremap <buffer> q <C-w>c
 
-" 保存時にディレクトリが存在しなければ自動で作成する
-Autocmd BufWritePre * call s:auto_mkdir(expand("<afile>:p:h"))
-function! s:auto_mkdir(directory)
-  if !isdirectory(a:directory)
-    call mkdir(a:directory, "p")
-  endif
-endfunction
-
 
 " === command ===
 " 文字コードを変えて最読込
@@ -229,6 +221,14 @@ nmap # <Plug>(anzu-sharp)
 let g:autochmodx_ignore_scriptish_file_patterns = [
 \ '\c.*\.rb$',
 \]
+
+
+" ===== autodirmake.vim =====
+if neobundle#tap('autodirmake.vim')
+  let g:autodirmake#is_confirm = 0
+
+  call neobundle#untap()
+endif
 
 
 " automatic.vim

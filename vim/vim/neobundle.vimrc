@@ -326,6 +326,8 @@ NeoBundleLazy 'basyura/J6uil.vim', {
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'osyo-manga/vim-precious'
 
+NeoBundle 'mopp/autodirmake.vim'
+
 filetype indent plugin on
 
 NeoBundleCheck
