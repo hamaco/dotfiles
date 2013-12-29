@@ -636,6 +636,14 @@ if neobundle#tap('vim-submode')
 endif
 
 
+" ===== switch.vim =====
+if neobundle#tap('switch.vim')
+  nnoremap - :<C-u>Switch<CR>
+
+  call neobundle#untap()
+endif
+
+
 " ===== tagbar.vim =====
 if neobundle#tap('tagbar')
   nnoremap <silent> <Leader>t :<C-u>TagbarToggle<CR>

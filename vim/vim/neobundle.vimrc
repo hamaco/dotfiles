@@ -326,6 +326,9 @@ NeoBundleLazy 'basyura/J6uil.vim', {
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'osyo-manga/vim-precious'
 
+NeoBundleLazy 'AndrewRadev/switch.vim', {
+\   'autoload': {'commands': 'Switch'}
+\ }
 NeoBundle 'mopp/autodirmake.vim'
 
 filetype indent plugin on
