@@ -10,6 +10,7 @@
     copy
     feedSomeKeys_3
     googlesuggeset
+    hints-ext
     multi_requestor
     readitlater
     removetabs
