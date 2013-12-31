@@ -793,3 +793,12 @@ function! s:move_window_into_tab_page(target_tabpagenr)
   execute target_tabpagenr 'tabnext'
 endfunction " }}}
 nnoremap <silent> <Space>ao :<C-u>call <SID>move_window_into_tab_page(0)<Cr>
+
+
+function! ChangeCurrentDirectoryToProjectRoot()
+  let directory = unite#util#path2project_directory(expand('%'))
+  if isdirectory(directory)
+    execute ":lcd " . directory
+  endif
+endfunction
+Autocmd BufEnter * call ChangeCurrentDirectoryToProjectRoot()
