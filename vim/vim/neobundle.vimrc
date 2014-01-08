@@ -171,6 +171,7 @@ NeoBundle 'aereal/vim-magica-colors'
 NeoBundle '29decibel/codeschool-vim-theme'
 NeoBundle 'vim-scripts/moria'
 NeoBundle 'mopp/mopkai.vim'
+NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}
 
