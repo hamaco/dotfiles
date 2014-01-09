@@ -31,6 +31,14 @@
 		min-width: 40px !important
 		max-width: 40px !important
 
+// Livedoor Reader見やすくする
+// via: http://hitode909.hatenablog.com/entry/2014/01/03/162918
+@-moz-document url("http://reader.livedoor.com/reader/")
+	.item
+		max-width: 1100px
+		img
+			max-width: 100%
+
 
 // チャットワークの広告を非表示にする
 @-moz-document domain("www.chatwork.com")
