@@ -9,10 +9,6 @@
     .item img {
       max-width: 100%; } }
 
-@-moz-document domain("www.chatwork.com") {
-  #cw_promotion_area {
-    display: none !important; } }
-
 @-moz-document url-prefix("chrome://firebug/content/firefox/") {
   textbox#fbCommandLine,
   #fbCommandLineCompletion,
