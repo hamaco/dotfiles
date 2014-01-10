@@ -335,6 +335,10 @@ NeoBundleLazy 'AndrewRadev/switch.vim', {
 \ }
 NeoBundle 'mopp/autodirmake.vim'
 
+NeoBundleLazy 'itchyny/calendar.vim', {
+\   'autoload': {'commands': 'Calendar'}
+\ }
+
 filetype indent plugin on
 
 NeoBundleCheck
