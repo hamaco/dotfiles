@@ -1,0 +1,21 @@
+snippet des
+  describe ${1} do
+    it { should ${2} }
+  end
+
+snippet desp
+  describe package('${1}') do
+    it { should be_installed }
+  end
+
+snippet dess
+  describe service('${1}') do
+    it { should be_enabled }
+    it { should be_running }
+  end
+
+snippet desf
+  describe file('${1}') do
+    it { should be_file }
+    it { should contain '${2}' }
+  end
