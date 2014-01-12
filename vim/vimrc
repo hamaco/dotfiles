@@ -191,7 +191,11 @@ vnoremap ( t(
 " === Plugin settings ===
 
 " alignta.vim
-vnoremap <Leader>a :Alignta<Space>
+if neobundle#tap('vim-alignta')
+  vnoremap <Leader>a :Alignta<Space>
+
+  call neobundle#untap()
+endif
 
 
 " altercmd.vim
