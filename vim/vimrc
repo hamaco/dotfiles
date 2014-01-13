@@ -305,22 +305,25 @@ let g:EditorConfig_verbose = 1
 
 
 " eskk.vim
+if neobundle#tap('eskk.vim')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    let g:eskk#dictionary = '~/.skk-jisyo'
 
-" なんかあんまり辞書登録ちゃんとされてる気がしないので毎回書き込んでみる
-let g:eskk#dictinary_save_count = 1
-let g:eskk#egg_like_newline = 1
-let g:eskk#egg_like_newline_completion = 1
+    if has('mac')
+      let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
+    elseif has('unix')
+      let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
+    elseif s:is_win
+      let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
+    endif
+  endfunction
 
-if has('vim_starting')
-  let g:eskk#dictionary = '~/.skk-jisyo'
+  " なんかあんまり辞書登録ちゃんとされてる気がしないので毎回書き込んでみる
+  let g:eskk#dictinary_save_count = 1
+  let g:eskk#egg_like_newline = 1
+  let g:eskk#egg_like_newline_completion = 1
 
-  if has('mac')
-    let g:eskk#large_dictionary = expand('~/Library/Application\ Support/AquaSKK/SKK-JISYO.L')
-  elseif has('unix')
-    let g:eskk#large_dictionary = expand('/usr/share/skk/SKK-JISYO.L')
-  elseif s:is_win
-    let g:eskk#large_dictionary = expand('~/SKK-JISYO.L')
-  endif
+  call neobundle#untap()
 endif
 
 
