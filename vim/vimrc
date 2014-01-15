@@ -199,13 +199,17 @@ endif
 
 
 " altercmd.vim
-call altercmd#load()
-command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
+if neobundle#tap('vim-altercmd')
+  call altercmd#load()
+  command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
-MapAlterCommand t[abedit]  tabedit
+  MapAlterCommand t[abedit]  tabedit
 
-MapAlterCommand sl setl
-MapAlterCommand sf setf
+  MapAlterCommand sl setl
+  MapAlterCommand sf setf
+
+  call neobundle#untap()
+endif
 
 
 " anzu.vim
@@ -521,9 +525,8 @@ noremap <Space>rm :<C-u>Ref man<Space>
 
 
 " ===== restart.vim =====
-if has('gui_running')
-  let bundle = neobundle#get('restart.vim')
-  function! bundle.hooks.on_source(bundle)
+if neobundle#tap('restart.vim')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
     command!
     \   -bar
     \   RestartWithSession
@@ -532,6 +535,8 @@ if has('gui_running')
   endfunction
 
   MapAlterCommand res[tart] Restart
+
+  call neobundle#untap()
 endif
 
 
