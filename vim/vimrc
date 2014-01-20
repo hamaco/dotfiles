@@ -426,14 +426,20 @@ endif
 
 
 " neosnippet.vim
-let g:neosnippet#snippets_directory = "~/.vim/snippets"
+if neobundle#tap('neosnippet')
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    imap <C-k> <Plug>(neosnippet_expand_or_jump)
+    smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
+    imap <expr> <TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)" :
+    \ pumvisible() ? "\<C-n>" : "\<TAB>"
+  endfunction
 
-imap <expr> <TAB> neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" :
-\ pumvisible() ? "\<C-n>" : "\<TAB>"
+  let g:neosnippet#snippets_directory = "~/.vim/snippets"
+
+  call neobundle#untap()
+endif
 
 
 " octoeditor.vim
