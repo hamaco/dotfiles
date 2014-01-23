@@ -397,6 +397,7 @@ function! MyFugitive()
 endfunction
 
 function! MyCurrentFuncInfo()
+  return ''
   return cfi#format("::%s()", "")
 endfunction
 
