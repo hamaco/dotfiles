@@ -313,6 +313,14 @@ endif
 let g:EditorConfig_verbose = 1
 
 
+" emmet-vim
+if neobundle#tap('emmet-vim')
+  let g:user_emmet_expandabbr_key = '<c-e>'
+
+  call neobundle#untap()
+endif
+
+
 " eskk.vim
 if neobundle#tap('eskk.vim')
   function! neobundle#tapped.hooks.on_post_source(bundle)

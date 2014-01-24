@@ -124,6 +124,9 @@ NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
 NeoBundleLazy 'vim-scripts/indenthtml.vim', {
 \   'autoload': {'filetypes': 'html'}
 \ }
+NeoBundleLazy 'mattn/emmet-vim', {
+\   'autoload': {'filetypes': 'html'}
+\ }
 " }}}
 
 " javascript {{{
