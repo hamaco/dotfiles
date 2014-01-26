@@ -10,7 +10,7 @@ function! s:set_font(fontname, fontsize)
 endfunction
 
 
-colorscheme hybrid
+colorscheme iceberg
 
 if has("mac")
   call s:set_font("NFモトヤバーチ1等幅", 18)
