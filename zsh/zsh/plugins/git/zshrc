@@ -1,6 +1,6 @@
 if exists ruby && exists hub; then
-	#fpath=($(dirname $0)/completions $fpath)
-	eval "$(hub alias -s)"
+  fpath=($(dirname $0)/completions $fpath)
+  function git() { hub "$@" }
 fi
 
 alias g="git"
