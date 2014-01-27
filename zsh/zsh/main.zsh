@@ -353,7 +353,7 @@ if exists tmux; then
 	}
 
 	if [ -z "$TMUX" -a "$TERM" != "screen" ]; then
-		tmuxx
+		# tmuxx
 	fi
 fi
 
