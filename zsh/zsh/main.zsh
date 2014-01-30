@@ -328,17 +328,6 @@ exists keychain && eval `keychain --eval --agents ssh id_dsa`
 function chpwd() { ls_abbrev }
 typeset -ga chpwd_functions
 
-function _naverc_check() {
-if [[ -f '.naverc' ]] ; then
-	source '.naverc'
-	fi
-}
-chpwd_functions+=_naverc_check
-
-#eval "$(rbenv init -)"
-
-
-
 
 ##### tmux #####
 if exists tmux; then
@@ -351,10 +340,6 @@ if exists tmux; then
 			tmux attach -d || tmux new-session
 		fi
 	}
-
-	if [ -z "$TMUX" -a "$TERM" != "screen" ]; then
-		# tmuxx
-	fi
 fi
 
 #######
@@ -401,18 +386,6 @@ function mcd() {
   mkdir -p "$1" && cd "$1"
 }
 compdef mcd=cd
-
-#######
-
-function tenki() {
-  local spot=$1
-
-  if [ "$spot" = "" ]; then
-    spot="東京"
-  fi
-
-  weather-report "東京"
-}
 
 #######
 
