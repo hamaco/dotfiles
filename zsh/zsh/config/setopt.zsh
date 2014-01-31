@@ -25,8 +25,8 @@ setopt notify               # バックグラウンドジョブが終了した�
 setopt nullglob             # 拡張ファイルグロブにマッチしない時にそのままコマンドを実行する
 setopt numeric_glob_sort    # ファイル名を数値としてソート
 setopt print_eight_bit      # 補完候補リストの日本語を適正表示
-setopt prompt_subst         #
+setopt prompt_subst         # 色を使う
 setopt pushd_ignore_dups    # 同じディレクトリをpushdしない
 setopt share_history        # 履歴ファイルを共有する
 setopt short_loops          # FOR, REPEAT, SELECT, IF, FUNCTION などで簡略文法が使えるようになる
-setopt transient_rprompt    # コマンド実行時にRPROMPTを消す
+# setopt transient_rprompt    # コマンド実行時にRPROMPTを消す
