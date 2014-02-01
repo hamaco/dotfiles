@@ -6,6 +6,7 @@ function source_if() {
 
 
 umask 022
+autoload -Uz add-zsh-hook
 
 fpath=($ZSH_HOME/completions $fpath)
 cdpath=($HOME /var/www/*(N-/))
@@ -52,7 +53,6 @@ ulimit -c 0  # Don't create core dumps
 # local WHITE=$'%{[1;37m%}'$
 
 
-autoload -Uz add-zsh-hook
 
 
 
