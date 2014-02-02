@@ -201,11 +201,6 @@ alias zmv="noglob zmv -W"
 
 # Terminal: ターミナル毎の設定 ============================================ {{{1
 case "${TERM}" in
-	xterm*|kterm*)
-		precmd() {
-			echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-		}
-		;;
 	screen*)
 		function ssh_tmux() {
 			eval server=\${$#}
@@ -324,7 +319,6 @@ bindkey '^[d' _quote-previous-word-in-double
 exists keychain && eval `keychain --eval --agents ssh id_dsa`
 
 
-# function chpwd() { ls }
 function chpwd() { ls_abbrev }
 typeset -ga chpwd_functions
 
