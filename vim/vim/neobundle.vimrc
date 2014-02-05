@@ -240,6 +240,14 @@ NeoBundleLazy 'kana/vim-operator-replace', {
 \     'mappings': '<Plug>(operator-replace)'
 \   }
 \ }
+NeoBundleLazy 'osyo-manga/vim-operator-search', {
+\   'depends': ['kana/vim-operator-user', 'kana/vim-textobj-function'],
+\   'autoload': {
+\     'mappings': '<Plug>(operator-search)'
+\   }
+\ }
+
+
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line', {
 \   'depends': 'kana/vim-textobj-user',

@@ -710,6 +710,11 @@ if neobundle#tap('tagbar')
 endif
 
 
+" ===== vim-operator-search.vim =====
+" nmap <Space>s <Plug>(operator-search)
+nmap <Space>/ <Plug>(operator-search)if
+
+
 " ===== tmpwin.vim =====
 nnoremap <silent><Leader>tt :<C-u>call tmpwin#toggle(
 \   {'open' : '15split', 'move_cursor': 1},
