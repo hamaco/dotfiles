@@ -258,6 +258,12 @@ NeoBundle 'kana/vim-textobj-function', {
 NeoBundle 'rhysd/vim-textobj-word-column', {
 \   'depends': 'kana/vim-textobj-user',
 \ }
+NeoBundleLazy 'osyo-manga/vim-textobj-multiblock', {
+\   'depends': 'kana/vim-textobj-user',
+\   'autoload': {
+\     'mappings': '<Plug>(textobj-multiblock-'
+\   }
+\ }
 
 
 NeoBundle 'mattn/sonictemplate-vim'

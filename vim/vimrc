@@ -709,6 +709,16 @@ if neobundle#tap('tagbar')
   call neobundle#untap()
 endif
 
+" vim-textobj-multiblock
+if neobundle#tap('vim-textobj-multiblock')
+  omap ab <Plug>(textobj-multiblock-a)
+  omap ib <Plug>(textobj-multiblock-i)
+  xmap ab <Plug>(textobj-multiblock-a)
+  xmap ib <Plug>(textobj-multiblock-i)
+
+  call neobundle#untap()
+endif
+
 
 " ===== vim-operator-search.vim =====
 " nmap <Space>s <Plug>(operator-search)
