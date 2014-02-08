@@ -394,3 +394,10 @@ autoload -Uz run-help-git
 autoload -Uz run-help-svn
 
 #######
+
+# iTerm2のタブ名を変更する
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
+
+#######
