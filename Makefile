@@ -73,6 +73,3 @@ zsh:
 	ln -fns $(CURRENT_DIR)/zsh/zsh    $(INSTALL_DIR)/.zsh
 	ln -fns $(CURRENT_DIR)/zsh/zshrc  $(INSTALL_DIR)/.zshrc
 	ln -fns $(CURRENT_DIR)/zsh/zshenv $(INSTALL_DIR)/.zshenv
-	@if [ ! -d $(INSTALL_DIR)/.zsh/plugins/000-antigen/antigen ]; then \
-		git clone git://github.com/zsh-users/antigen.git $(INSTALL_DIR)/.zsh/plugins/000-antigen/antigen; \
-	fi
