@@ -1,6 +1,6 @@
-# Common functions
+function exists()       { whence -p $1 &> /dev/null  }
+function source_if()    { [[ -s $1 ]] && source "$1" }
 
-function exists { whence -p $1 &> /dev/null }
 
 # PATH: ================== {{{1
 # 重複する要素を自動的に削除

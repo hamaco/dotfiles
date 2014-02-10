@@ -1,10 +1,5 @@
 ZSH_HOME="$HOME/.zsh"
 
-function source_if() {
-	[[ -s "$1" ]] && source "$1"
-}
-
-
 umask 022
 autoload -Uz add-zsh-hook
 
