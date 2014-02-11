@@ -137,6 +137,10 @@ NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
 NeoBundleLazy 'kchmck/vim-coffee-script', {
 \   'autoload': {'filetypes': 'coffee'}
 \ }
+
+NeoBundleLazy 'elzr/vim-json', {
+\   'autoload': {'filetypes': 'json'}
+\ }
 " }}}
 
 " blog {{{
