@@ -1,6 +1,5 @@
 if exists percol; then
-  # source $(dirname $0)/sources/*.zsh
-  for f ($(dirname $0)/sources/*.zsh(N-.)) source "$f"
+  source_files $(dirname $0)/sources/*.zsh
 
   # select-history
   bindkey '^r' percol-select-history

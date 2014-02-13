@@ -8,17 +8,10 @@ cdpath=($HOME /var/www/*(N-/))
 
 bindkey -e
 
-# load plugins
-for plugin_config ($ZSH_HOME/plugins/*/zshrc(N-.))
-do
-  source $plugin_config
-done
 
-# load config
-for config_file ($ZSH_HOME/config/*.zsh(N-.))
-do
-	source $config_file
-done
+# load plugins
+source_files $ZSH_HOME/plugins/*/zshrc(N-.)
+source_files $ZSH_HOME/config/*.zsh(N-.)
 
 
 ## 分割待ち ##

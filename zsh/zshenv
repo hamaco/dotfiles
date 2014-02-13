@@ -1,5 +1,6 @@
 function exists()       { whence -p $1 &> /dev/null  }
 function source_if()    { [[ -s $1 ]] && source "$1" }
+function source_files() { for file in $@; do source $file; done }
 
 
 # PATH: ================== {{{1
@@ -15,10 +16,9 @@ path=(
 
   $path
 )
-
 # }}}
-# Export: ================ {{{1
 
+# Export: ================ {{{1
 export TZ="Asia/Tokyo"
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -46,15 +46,10 @@ case "${OSTYPE}" in
 		export ARCHI=""
 		;;
 esac
-
 # }}}
 
 
-for config_file ($HOME/app/*/zshenv(N-.))
-do
-	source $config_file
-done
-
+source_files $HOME/app/*/zshenv(N-.)
 
 # END {{{1
 # vim: foldmethod=marker
