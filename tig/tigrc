@@ -1,18 +1,17 @@
+set diff-context   = 5
+set show-id        = yes
 set vertical-split = yes
-set wrap-lines = no
+set wrap-lines     = no
 
 
 bind diff ; view-next
 bind diff l scroll-right
 bind diff h scroll-left
 
-# copy commit_id (mac)
+# copy commit_id (Mac)
 bind main C !@git pbcopy %(commit)
 
-
 # open commit at github
-bind main o !@hub browse -- commit/%(commit)
-bind diff o !@hub browse -- commit/%(commit)
-bind log o !@hub browse -- commit/%(commit)
+bind generic o !@hub browse -- commit/%(commit)
 
 bind generic L !git reflog
