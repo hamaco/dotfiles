@@ -136,44 +136,6 @@ up() {
 }
 
 
-# Alias: === {{{1
-# cho45 ~/
-expand-to-home-or-insert () {
-	if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
-		LBUFFER+="~/"
-	else
-		zle self-insert
-	fi
-}
-zle -N expand-to-home-or-insert
-#bindkey "\\"  expand-to-home-or-insert
-
-autoload zmv
-alias zmv="noglob zmv -W"
-
-
-
-# Include: マシン・OSごとの設定 ====================================== {{{1
-
-
-
-# Terminal: ターミナル毎の設定 ============================================ {{{1
-case "${TERM}" in
-	screen*)
-		function ssh_tmux() {
-			eval server=\${$#}
-			tmux new-window -n s:$server "ssh $*"
-		}
-		alias ssh=ssh_tmux
-		;;
-esac
-
-
-
-
-# 外部ファイル読み込み {{{1
-#source ~/.zsh/rpwd
-
 # Tmp: 一時的な設定 ======================================================= {{{1
 
 # kana's nice tool
@@ -183,60 +145,6 @@ function git-gol() {
 function git-gol-full() {
   for i in $(git log --pretty=oneline | tail -r | cut -d ' ' -f 1); do git show $i --color-words; done | less
 }
-
-
-# kana's prompt git branch {{{
-function prompt-git-head-name() {
-  local git_dir="$(git rev-parse --git-dir 2>/dev/null)"
-  if [ -z "$git_dir" ]; then
-    return 1
-  fi
-  local head_name=''
-  local additional_info=''
-  if [ -d "$git_dir/rebase-apply" ]; then
-    if [ -f "$git_dir/rebase-apply/rebasing" ]; then
-      additional_info="REBASE"
-    elif [ -f "$git_dir/rebase-apply/applying" ]; then
-      additional_info="AM"
-    else
-      additional_info="AM/REBASE"
-    fi
-    head_name="$(git symbolic-ref HEAD 2>/dev/null)"
-  elif [ -f "$git_dir/rebase-merge/interactive" ]; then
-    additional_info="REBASE-i"
-    head_name="$(< "$git_dir/rebase-merge/head-name")"
-  elif [ -d "$git_dir/rebase-merge" ]; then
-    additional_info="REBASE-m"
-    head_name="$(< "$git_dir/rebase-merge/head-name")"
-  elif [ -f "$git_dir/MERGE_HEAD" ]; then
-    additional_info="MERGING"
-    head_name="$(git symbolic-ref HEAD 2>/dev/null)"
-  fi
-  if [ -z "$head_name" ]; then
-    head_name="$(git branch | sed -e 's/^\* //;t;d')"
-    if [ "$head_name" = '(no branch)' ]; then
-      # "git branch" doesn't show the correct name of a branch after
-      # "git checkout {commitish-and-not-the-head-of-a-branch}",
-      # so we have to use another method to get the name of {commitish}.
-      head_name="($(
-        {
-          fgrep 'checkout: moving from ' .git/logs/HEAD |
-          sed '$s/^.* to \([^ ]*\)$/\1/;t;d'
-        } 2>/dev/null
-      ))"
-    elif [ "$head_name" = '' ]; then
-      head_name='(just initialized; nothing commited)'
-    fi
-  else
-    head_name="${head_name##refs/heads/}"
-  fi
-  if [ -n "$additional_info" ]; then
-    additional_info="|$additional_info"
-  fi
-
-  echo " [$head_name$additional_info]"
-  return 0
-} # }}}
 
 # http://d.hatena.ne.jp/mollifier/20091220 {{{
 autoload smart-insert-last-word
@@ -280,19 +188,6 @@ exists keychain && eval `keychain --eval --agents ssh id_dsa`
 function chpwd() { ls_abbrev }
 typeset -ga chpwd_functions
 
-
-##### tmux #####
-if exists tmux; then
-	tmuxx() {
-		if [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/null) ) ]]; then
-			# on OS X force tmux's default command to spawn a shell in the user's namespace
-			tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-			tmux attach -d || tmux -f <(echo "$tmux_config") new-session
-		else
-			tmux attach -d || tmux new-session
-		fi
-	}
-fi
 
 #######
 
