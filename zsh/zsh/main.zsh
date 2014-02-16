@@ -171,16 +171,7 @@ bindkey '^[d' _quote-previous-word-in-double
 
 # }}}
 
-# http://d.hatena.ne.jp/hchbaw/20100526/1274886125 {{{
-#source $HOME/.zsh/auto-fu.zsh; zle-line-init () { auto-fu-init; }; zle -N zle-line-init
-# }}}
-
 # SSHのagent forward
-# # http://www.cuspy.org/blog/archives/297
-# if [ "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
-#   ln -fs $SSH_AUTH_SOCK $HOME/.ssh/auth_sock
-#   export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
-# fi
 # http://www.funtoo.org/wiki/Keychain
 exists keychain && eval `keychain --eval --agents ssh id_dsa`
 
