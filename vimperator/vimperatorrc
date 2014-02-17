@@ -10,7 +10,7 @@ let g:plugin_loader_roots = "~/share/vimperator-plugins ~/share/my-vimperator-pl
 " set {{{1
 
 set complete=shl
-set defsearch=bing
+set defsearch=google
 set editor="/usr/local/bin/mvim -f"
 set focuscontent
 set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
