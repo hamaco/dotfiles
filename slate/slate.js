@@ -98,13 +98,13 @@ middleTopBar = slate.operation("push", {
   style: "bar-resize:screenSizeX/2"
 });
 
-// slate.bind("o:ctrl,shift,alt,cmd", function(win) {
-//   if (!win) {
-//     return null;
-//   }
-//   return win.move(util.nextScreen(win.screen()).visibleRect());
-// });
-// 
+slate.bind("o:ctrl,shift,alt,cmd", function(win) {
+  if (!win) {
+    return null;
+  }
+  return win.move(util.nextScreen(win.screen()).visibleRect());
+});
+ 
 // slate.bind("i:ctrl,shift,alt,cmd", slate.operation("focus", {
 //   direction: "behind"
 // }));
