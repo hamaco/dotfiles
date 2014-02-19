@@ -103,9 +103,9 @@ NeoBundle 'gregsexton/gitv'
 " }}}
 
 " php {{{
-NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
-\   'autoload': {'filetypes': 'php'}
-\ }
+" NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
+" \   'autoload': {'filetypes': 'php'}
+" \ }
 NeoBundleLazy 'StanAngeloff/php.vim', {
 \   'autoload': {'filetypes': 'php'}
 \ }
