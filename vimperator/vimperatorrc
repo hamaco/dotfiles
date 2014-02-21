@@ -262,8 +262,8 @@ inoremap <C-v> <S-Insert>
 noremap <C-c> <C-v><C-c>
 
 " 選択文字列をGoogleで検索
-noremap <C-g> YP
-noremap s :<C-u>google<Space>
+vnoremap <C-g> YP
+noremap s :<C-u>tabopen<Space>google<Space>
 
 " }}}
 
@@ -317,6 +317,8 @@ EOM
 
 colorscheme indigo
 source ~/.vimperatorrc.js
+
+echo "vimperatorrc loaded."
 
 " END {{{1
 " vim: foldmethod=marker
