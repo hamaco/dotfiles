@@ -30,27 +30,10 @@ function! s:source_if(file)
   endif
 endfunction
 
-function! MyStatusLine()
-  let line  = ''
-
-  let line .= '%<' " Truncate point
-  let line .= '%f' " Filename
-  let line .= '%m' " Modified flag
-  let line .= ' %{cfi#format("<%s()>", "")}' " current-func-info.vim
-  let line .= '%=' " Separation point
-  let line .= '%y' " Filetype
-  let line .= '%r' " Readonly flag
-  let line .= '[%{&l:fenc}:%{&ff}]' " File encoding and format
-  let line .= '  %-10.(%l,%c%V%)' " Current line status
-  let line .= '%P' " Percentage through file of displayed window
-
-  return line
-endfunction
-
 " === Load plugins ===
 call s:source_if('~/.vim/neobundle.vimrc')
-
 syntax enable
+
 colorscheme jellybeans
 
 
@@ -83,7 +66,7 @@ set clipboard=unnamed
 set formatoptions& formatoptions-=ro formatoptions+=mM
 set helplang=ja,en
 set keywordprg=:help
-set laststatus=2 statusline=%!MyStatusLine()
+set laststatus=2
 set showtabline=2
 set ignorecase smartcase incsearch hlsearch
 set imdisable
