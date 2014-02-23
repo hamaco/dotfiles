@@ -224,7 +224,7 @@ if neobundle#tap('vim-automatic')
     let g:automatic_config = []
     call add(g:automatic_config, {
     \   'match' : {
-    \       'localtime_expr' : '6 <= hour && hour <= 11',
+    \       'localtime_expr' : '6 <= hour && hour <= 12',
     \       'autocmds' : ['VimEnter'],
     \       'is_open_other_window' : 0
     \   },
@@ -235,7 +235,7 @@ if neobundle#tap('vim-automatic')
 
     call add(g:automatic_config, {
     \   'match' : {
-    \       'localtime_expr' : '12 <= hour && hour <= 18',
+    \       'localtime_expr' : '13 <= hour && hour <= 16',
     \       'autocmds' : ['VimEnter'],
     \       'is_open_other_window' : 0
     \   },
@@ -246,7 +246,7 @@ if neobundle#tap('vim-automatic')
 
     call add(g:automatic_config, {
     \   'match' : {
-    \       'localtime_expr' : '19 <= hour && hour <= 23',
+    \       'localtime_expr' : '17 <= hour && hour <= 23',
     \       'autocmds' : ['VimEnter'],
     \       'is_open_other_window' : 0
     \   },
