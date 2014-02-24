@@ -152,7 +152,7 @@ fi
 
 # bindkey {{{1
 
-bindkey -s "vv" "!vim\n"
+#bindkey -s "vv" "!vim\n"
 #bindkey -s P "ps auxw"
 #bindkey -s G "| grep "
 bindkey -s '5~' 'f5\n' # F5
