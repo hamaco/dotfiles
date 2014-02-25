@@ -77,7 +77,7 @@ set nomore
 set showcmd showmode
 set wildmenu wildmode=list:longest
 set splitbelow splitright
-set novisualbell t_vb=
+set visualbell t_vb=
 set conceallevel=2 concealcursor=i
 set title
 set number
