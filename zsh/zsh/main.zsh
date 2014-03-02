@@ -51,8 +51,8 @@ if [ $UID = 0 ]; then
 	SAVEHIST=0
 else
 	HISTFILE=~/.zsh_histfile
-	HISTSIZE=250000
-	SAVEHIST=250000
+	HISTSIZE=500000
+	SAVEHIST=500000
 fi
 
 # C-pとC-nでコマンド履歴検索
