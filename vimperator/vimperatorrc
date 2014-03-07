@@ -262,7 +262,7 @@ inoremap <C-v> <S-Insert>
 noremap <C-c> <C-v><C-c>
 
 " 選択文字列をGoogleで検索
-vmap <C-g> YP
+noremap <C-g> YP
 noremap s :<C-u>tabopen<Space>google<Space>
 
 " }}}
