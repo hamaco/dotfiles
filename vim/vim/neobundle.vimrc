@@ -365,6 +365,8 @@ NeoBundleLazy 'itchyny/calendar.vim', {
 \   'autoload': {'commands': 'Calendar'}
 \ }
 
+NeoBundle 't9md/vim-textmanip'
+
 NeoBundle 'editorconfig/editorconfig-vim'
 
 filetype indent plugin on

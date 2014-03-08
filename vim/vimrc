@@ -708,6 +708,23 @@ endif
 nmap <Space>/ <Plug>(operator-search)if
 
 
+" ===== vim-textmanip =====
+if neobundle#tap('vim-textmanip')
+  nmap <CR>   <Plug>(textmanip-blank-below)
+  nmap <S-CR> <Plug>(textmanip-blank-above)
+
+  nmap <C-S-j> <Plug>(textmanip-duplicae-down)
+  nmap <C-S-k> <Plug>(textmanip-duplicae-up)
+
+  xmap <C-k> <Plug>(textmanip-move-up)
+  xmap <C-j> <Plug>(textmanip-move-down)
+  xmap <C-h> <Plug>(textmanip-move-left)
+  xmap <C-l> <Plug>(textmanip-move-right)
+
+  call neobundle#untap()
+endif
+
+
 " ===== tmpwin.vim =====
 nnoremap <silent><Leader>tt :<C-u>call tmpwin#toggle(
 \   {'open' : '15split', 'move_cursor': 1},
