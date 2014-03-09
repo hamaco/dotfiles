@@ -174,16 +174,17 @@ NeoBundleLazy 'rhysd/tmpwin.vim', {
 " }}}
 
 " colorscheme {{{
-NeoBundle 'vim-scripts/newspaper.vim'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'itchyny/landscape.vim'
-NeoBundle 'aereal/vim-magica-colors'
 NeoBundle '29decibel/codeschool-vim-theme'
-NeoBundle 'vim-scripts/moria'
-NeoBundle 'mopp/mopkai.vim'
+NeoBundle 'aereal/vim-magica-colors'
 NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'mopp/mopkai.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'sjl/badwolf'
 NeoBundle 'svjunic/RadicalGoodSpeed'
+NeoBundle 'vim-scripts/moria'
+NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}
 
