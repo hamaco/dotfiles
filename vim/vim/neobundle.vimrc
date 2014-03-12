@@ -362,6 +362,11 @@ NeoBundleLazy 'AndrewRadev/switch.vim', {
 \ }
 NeoBundle 'mopp/autodirmake.vim'
 
+NeoBundle 'koron/codic-vim'
+NeoBundle 'rhysd/unite-codic.vim', {
+\   'depends': ['Shougo/unite.vim', 'koron/codic-vim'],
+\ }
+
 NeoBundleLazy 'itchyny/calendar.vim', {
 \   'autoload': {'commands': 'Calendar'}
 \ }
