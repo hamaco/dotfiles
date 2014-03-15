@@ -19,3 +19,14 @@ snippet desf
     it { should be_file }
     it { should contain '${2}' }
   end
+
+
+snippet template
+abbr    chef_template
+options word
+  template "${1}" do
+    source "${2}"
+    owner  "${3}"
+    group  "${4}"
+    mode   "${5}"
+  end
