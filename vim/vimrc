@@ -149,8 +149,8 @@ nnoremap ? ?\v
 nnoremap <Tab> <C-w>w
 
 " タブ
-nnoremap <C-t> <Nop>
-nnoremap <C-t>o :<C-u>tabonly<CR>
+" nnoremap <C-t> <Nop>
+" nnoremap <C-t>o :<C-u>tabonly<CR>
 nnoremap <silent> <Left> :<C-u>execute 'tabmove' tabpagenr() - 2<CR>
 nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
 
