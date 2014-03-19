@@ -188,6 +188,10 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}
 
+" game {{{
+NeoBundleLazy 'thinca/vim-threes'
+" }}}
+
 NeoBundleLazy 'tyru/caw.vim', {
 \   'autoload': {'mappings': '<Plug>(caw:prefix)'}
 \ }
