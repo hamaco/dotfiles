@@ -14,6 +14,10 @@ antigen bundle mollifier/cd-gitroot
 autoload -Uz cd-gitroot
 alias u='cd-gitroot'
 
+antigen bundle mollifier/cd-bookmark
+autoload -Uz cd-bookmark
+alias b='cd-bookmark'
+
 export SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 antigen bundle marzocchi/zsh-notify
