@@ -43,7 +43,7 @@ NeoBundleLazy 'ujihisa/unite-colorscheme', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload': {'unite_sources': 'colorscheme'}
 \ }
-NeoBundleLazy 'Shougo/unite-mru', {
+NeoBundleLazy 'Shougo/neomru.vim', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload': {'unite_sources': 'file_mru'}
 \ }
