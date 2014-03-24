@@ -38,6 +38,8 @@ export SVN_EDITOR=vim
 
 export MYSQL_PS1="\\u@\\h:\\d>\\_"
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications" 
+
 case "${OSTYPE}" in
 	cygwin*)
 		export ARCHI="cygwin"
