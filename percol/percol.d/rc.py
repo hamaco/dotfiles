@@ -1,6 +1,11 @@
 # X / _ / X
 percol.view.PROMPT  = ur"<bold><yellow>X / _ / X</yellow></bold> %q"
 
+percol.view.CANDIDATES_LINE_BASIC    = ("on_default", "default")
+percol.view.CANDIDATES_LINE_SELECTED = ("underline", "on_magenta", "black")
+percol.view.CANDIDATES_LINE_MARKED   = ("bold", "on_cyan", "black")
+percol.view.CANDIDATES_LINE_QUERY    = ("yellow", "bold")
+
 # Emacs like
 percol.import_keymap({
     "C-h" : lambda percol: percol.command.delete_backward_char(),
