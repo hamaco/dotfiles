@@ -28,6 +28,47 @@ NeoBundleLazy 'osyo-manga/vim-anzu', {
 NeoBundle 'itchyny/lightline.vim'
 " }}}
 
+" textobj {{{
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-line', {
+\   'depends': 'kana/vim-textobj-user',
+\ }
+NeoBundle 'kana/vim-textobj-function', {
+\   'depends': 'kana/vim-textobj-user',
+\ }
+NeoBundle 'rhysd/vim-textobj-word-column', {
+\   'depends': 'kana/vim-textobj-user',
+\ }
+NeoBundleLazy 'osyo-manga/vim-textobj-multiblock', {
+\   'depends': 'kana/vim-textobj-user',
+\   'autoload': {
+\     'mappings': '<Plug>(textobj-multiblock-'
+\   }
+\ }
+" }}}
+
+" operator {{{
+NeoBundleLazy 'kana/vim-operator-user'
+NeoBundleLazy 'kana/vim-operator-replace', {
+\   'depends': 'kana/vim-operator-user',
+\   'autoload': {
+\     'mappings': '<Plug>(operator-replace)'
+\   }
+\ }
+NeoBundleLazy 'osyo-manga/vim-operator-search', {
+\   'depends': ['kana/vim-operator-user', 'kana/vim-textobj-function'],
+\   'autoload': {
+\     'mappings': '<Plug>(operator-search)'
+\   }
+\ }
+NeoBundleLazy 'rhysd/vim-operator-surround', {
+\   'depends': ['kana/vim-operator-user', 'osyo-manga/vim-textobj-multiblock'],
+\   'autoload': {
+\     'mappings': '<Plug>(operator-surround-'
+\   }
+\ }
+" }}}
+
 " unite {{{
 NeoBundleLazy 'Shougo/unite.vim', {
 \   'autoload': {'commands': [
@@ -246,37 +287,6 @@ NeoBundleLazy 'kana/vim-smartword', {
 \ }
 
 NeoBundleLazy 'kana/vim-niceblock'
-NeoBundleLazy 'kana/vim-operator-user'
-NeoBundleLazy 'kana/vim-operator-replace', {
-\   'depends': 'kana/vim-operator-user',
-\   'autoload': {
-\     'mappings': '<Plug>(operator-replace)'
-\   }
-\ }
-NeoBundleLazy 'osyo-manga/vim-operator-search', {
-\   'depends': ['kana/vim-operator-user', 'kana/vim-textobj-function'],
-\   'autoload': {
-\     'mappings': '<Plug>(operator-search)'
-\   }
-\ }
-
-
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-line', {
-\   'depends': 'kana/vim-textobj-user',
-\ }
-NeoBundle 'kana/vim-textobj-function', {
-\   'depends': 'kana/vim-textobj-user',
-\ }
-NeoBundle 'rhysd/vim-textobj-word-column', {
-\   'depends': 'kana/vim-textobj-user',
-\ }
-NeoBundleLazy 'osyo-manga/vim-textobj-multiblock', {
-\   'depends': 'kana/vim-textobj-user',
-\   'autoload': {
-\     'mappings': '<Plug>(textobj-multiblock-'
-\   }
-\ }
 
 
 NeoBundle 'mattn/sonictemplate-vim'
@@ -298,7 +308,8 @@ NeoBundleLazy 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
-NeoBundle 'tpope/vim-surround'
+" NeoBundle 'tpope/vim-surround'
+
 NeoBundle 'tpope/vim-abolish'
 NeoBundleLazy 'tyru/autochmodx.vim', {
 \   'autoload': {
