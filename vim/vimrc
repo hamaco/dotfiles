@@ -141,6 +141,10 @@ nnoremap Q q
 
 nnoremap Y y$
 
+" 範囲選択で y した時にカーソル位置が移動しないようにする
+xnoremap <silent><expr> y "ygv" . mode()
+xnoremap <silent><expr> Y "Ygv" . mode()
+
 " Very magic
 nnoremap / /\v
 nnoremap ? ?\v
