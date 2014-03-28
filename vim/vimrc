@@ -72,13 +72,15 @@ set ignorecase smartcase incsearch hlsearch
 set imdisable
 set nrformats=hex
 set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-"set pastetoggle=<C-e>
+set pastetoggle=<F12>
 set nomore
 set showcmd showmode
 set wildmenu wildmode=list:longest
 set splitbelow splitright
 set visualbell t_vb=
+set errorbells
 set conceallevel=2 concealcursor=i
+set lazyredraw
 set title
 set number
 set completeopt-=preview
