@@ -205,7 +205,7 @@ function calc(){ awk "BEGIN{ print $* }" ;}
 
 #######
 
-temp() {
+function temp() {
   case "${OSTYPE}" in
     linux*)
       cd $(mktemp -d --tmpdir=$HOME/tmp "$(date +'%Y%m%d').$1${1:+.}XXXXXX")
@@ -245,3 +245,12 @@ function title {
 }
 
 #######
+
+# scpコマンドそのままfswatch化
+function fwscp() {
+    SOURCE=$1
+    DEST=$2
+
+    echo fswatch ./$(dirname $SOURCE) \"scp $SOURCE $DEST\"
+    fswatch ./$(dirname $SOURCE) "scp $SOURCE $DEST"
+}
