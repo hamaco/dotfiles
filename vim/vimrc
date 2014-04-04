@@ -193,6 +193,7 @@ if neobundle#tap('vim-altercmd')
   command! -bar -nargs=+ MapAlterCommand CAlterCommand <args> | AlterCommand <cmdwin> <args>
 
   MapAlterCommand t[abedit]  tabedit
+  MapAlterCommand to tabonly
 
   MapAlterCommand sl setl
   MapAlterCommand sf setf
