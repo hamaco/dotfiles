@@ -15,22 +15,22 @@ if [ -d ~/.zsh/cache ];  then
 	zstyle ":completion:*" cache-path ~/.zsh/cache
 fi
 
-zstyle ':completion:*' verbose yes
-# zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _history
-zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
-zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
-zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
-zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
-zstyle ':completion:*:options' description 'yes'
+# zstyle ':completion:*' verbose yes
+# # zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+# zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _history
+# zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
+# zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
+# zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
+# # zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
+# zstyle ':completion:*:options' description 'yes'
 
 # カレントディレクトリに候補がない場合のみ cdpath 上のディレクトリを候補
 zstyle ":completion:*:cd:*" tag-order local-directories path-directories
 #cd は親ディレクトリからカレントディレクトリを選択しないので表示させないようにする (例: cd ../<TAB>):
 zstyle ':completion:*:cd:*' ignore-parents parent pwd ..
 
-# 補完候補をカーソルで移動可能にする
-zstyle ":completion:*:default" menu select=2
+# select の数字以上補完候補があれば補完候補をカーソルで移動可能にする
+zstyle ":completion:*:default" menu select=1
 # 補完候補にもLS_COLORSを使う
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
