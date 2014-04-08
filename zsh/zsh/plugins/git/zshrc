@@ -11,5 +11,6 @@ alias gst="git status -sb"
 alias gs="git svn"
 alias gsr="git svn rebase"
 alias gsd="git svn dcommit"
+alias gsf="git svn fetch"
 
 alias ggpush="git push origin \$(git current-branch)"
