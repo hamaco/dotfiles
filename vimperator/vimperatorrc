@@ -167,6 +167,7 @@ bmark -title="Favstar (hamaco)" -keyword=favstar http://favstar.fm/users/hamaco/
 bmark -title="GitHub Issues"    -keyword=issue   http://github-issue.herokuapp.com/
 bmark -title="Qiita (hamaco)"   -keyword=qiita   http://qiita.com/hamaco
 bmark -title="Twilog (hamaco)"  -keyword=twilog  http://twilog.org/hamaco
+bmark -title="Favolog (hamaco)" -keyword=favlog  http://favolog.org/hamaco
 bmark -title="SIGN"             -keyword=sign    http://svgn.biz/
 
 " }}}
