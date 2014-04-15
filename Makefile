@@ -11,8 +11,8 @@ cui: git mercurial tig tmux vim zsh percol common
 .PHONY: vimperator chrome
 gui: vimperator chrome
 
-.PHONY: slate
-mac: slate
+.PHONY: slate homebrew
+mac: slate homebrew
 
 chrome:
 ifeq ($(OS), Linux)
@@ -33,6 +33,10 @@ git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
 	ln -fns $(CURRENT_DIR)/git/gitignore $(INSTALL_DIR)/.gitignore
 	ln -fns $(CURRENT_DIR)/git/gitattributes $(INSTALL_DIR)/.gitattributes
+
+homebrew:
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+	brew bundle
 
 mercurial:
 	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
