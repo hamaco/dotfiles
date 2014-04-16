@@ -1,5 +1,6 @@
 *.html diff=html
 *.tpl  diff=html
+*.twig diff=html
 *.pl   diff=perl
 *.php  diff=php
 *.py   diff=python
