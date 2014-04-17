@@ -347,10 +347,6 @@ NeoBundle 'osyo-manga/vim-automatic', {
 " NeoBundleLazy 'supermomonga/shaberu.vim', {
 " \   'depends': 'Shougo/vimproc'
 " \ }
-NeoBundleLazy 'rking/ag.vim', {
-\   'autoload': {
-\     'commands': [{'name': 'Ag', 'complete': 'file'}]
-\ }}
 
 NeoBundleLazy 'thinca/vim-scouter', {
 \   'autoload': {'commands': ['Scouter']}
