@@ -265,11 +265,12 @@ NeoBundle 'h1mesuke/vim-alignta'
 
 
 " other
-NeoBundleLazy 'LeafCage/yankround.vim', {
-\   'autoload': {
-\     'mappings': '<Plug>(yankround-'
-\   }
-\ }
+NeoBundle 'LeafCage/yankround.vim'
+" NeoBundleLazy 'LeafCage/yankround.vim', {
+" \   'autoload': {
+" \     'mappings': '<Plug>(yankround-'
+" \   }
+" \ }
 
 NeoBundleLazy 'rhysd/clever-f.vim', {
 \   'autoload': {
