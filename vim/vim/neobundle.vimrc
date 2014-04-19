@@ -216,17 +216,17 @@ NeoBundleLazy 'rhysd/tmpwin.vim', {
 
 " colorscheme {{{
 NeoBundle '29decibel/codeschool-vim-theme'
-NeoBundle 'aereal/vim-magica-colors'
-NeoBundle 'cocopon/iceberg.vim'
-NeoBundle 'itchyny/landscape.vim'
-NeoBundle 'mopp/mopkai.vim'
+NeoBundleLazy 'aereal/vim-magica-colors'
+NeoBundleLazy 'cocopon/iceberg.vim'
+NeoBundleLazy 'itchyny/landscape.vim'
+NeoBundleLazy 'mopp/mopkai.vim'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'sjl/badwolf'
-NeoBundle 'svjunic/RadicalGoodSpeed'
-NeoBundle 'vim-scripts/moria'
-NeoBundle 'vim-scripts/newspaper.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
+NeoBundleLazy 'sjl/badwolf'
+NeoBundleLazy 'svjunic/RadicalGoodSpeed'
+NeoBundleLazy 'vim-scripts/moria'
+NeoBundleLazy 'vim-scripts/newspaper.vim'
+NeoBundleLazy 'w0ng/vim-hybrid'
+NeoBundleLazy 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 " }}}
 
 " game {{{
