@@ -6,5 +6,5 @@ vim/vim/swap
 vimperator/vimperator/info
 
 zsh/zsh/cache/*
-zsh/zsh/plugins/antigen/antigen
+zsh/zsh/plugins/000-antigen/antigen
 zsh/zsh/plugins/ghq/ghq
