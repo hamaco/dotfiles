@@ -729,9 +729,6 @@ nmap <Space>/ <Plug>(operator-search)if
 
 " ===== vim-textmanip =====
 if neobundle#tap('vim-textmanip')
-  nmap <CR>   <Plug>(textmanip-blank-below)
-  nmap <S-CR> <Plug>(textmanip-blank-above)
-
   nmap <C-S-j> <Plug>(textmanip-duplicae-down)
   nmap <C-S-k> <Plug>(textmanip-duplicae-up)
 
