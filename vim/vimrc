@@ -32,8 +32,8 @@ endfunction
 
 " === Load plugins ===
 call s:source_if('~/.vim/neobundle.vimrc')
-syntax enable
 
+syntax enable
 colorscheme jellybeans
 
 
@@ -800,10 +800,12 @@ if neobundle#tap('vimshell')
   function! neobundle#tapped.hooks.on_post_source(bundle)
     let g:vimshell_user_prompt = 'getcwd()'
     let g:vimshell_prompt = "/ _ / X < "
+
+    let g:vimshell_split_command = 'split | resize 10'
   endfunction
 
   nmap <C-@> <Plug>(vimshell_switch)
-  nmap <C-Space> <Plug>(vimshell_switch)
+  nmap <C-Space> <Plug>(vimshell_split_switch)
   nnoremap ! :VimShellExecute<Space>
 endif
 
