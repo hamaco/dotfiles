@@ -4,14 +4,18 @@ set vertical-split = yes
 set wrap-lines     = no
 
 
-bind diff ; view-next
-bind diff l scroll-right
-bind diff h scroll-left
+# open commit at github
+bind generic o !@hub browse -- commit/%(commit)
+bind generic L !git reflog
+
+
+bind main g move-first-line
+bind main G move-last-line
 
 # copy commit_id (Mac)
 bind main C !@git pbcopy %(commit)
 
-# open commit at github
-bind generic o !@hub browse -- commit/%(commit)
 
-bind generic L !git reflog
+bind diff ; view-next
+bind diff l scroll-right
+bind diff h scroll-left
