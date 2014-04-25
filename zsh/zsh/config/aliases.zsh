@@ -17,7 +17,7 @@ alias rake="noglob rake"
 alias calc="noglob calc"
 
 alias sudo="sudo -E " # sudoでもaliasが使えるようにする
-alias s="sudo"
+# alias s="sudo"
 
 # for ls
 alias sl="ls"

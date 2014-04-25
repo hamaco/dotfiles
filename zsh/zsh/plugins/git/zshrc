@@ -6,7 +6,8 @@ fi
 alias g="git"
 alias gist="gist -cop"
 
-alias gst="git status -sb"
+alias s="git status -sb"
+alias gst="echo バーカ"
 
 alias gs="git svn"
 alias gsr="git svn rebase"
