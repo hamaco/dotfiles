@@ -86,7 +86,7 @@ darwin*)
 		osascript -e "tell application \"Finder\" to mount volume \"$1\""
 	}
 
-	d () {
+	dic () {
 		open dict://"$@" ; say "$@"
 	}
 
