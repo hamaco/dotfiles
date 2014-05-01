@@ -4,6 +4,7 @@ upgrade
 tap phinze/homebrew-cask
 
 install git
+install openssh
 
 install brew-cask
 
