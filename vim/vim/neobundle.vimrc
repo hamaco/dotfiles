@@ -129,9 +129,10 @@ NeoBundleLazy 'ujihisa/neco-look', {
 \   'autoload': {'on_source': 'neocomplete'}
 \ }
 
+NeoBundleLazy 'Shougo/neosnippet-snippets'
 NeoBundleLazy 'Shougo/neosnippet', {
 \   'vim_version': '7.3.885',
-\   'depends': 'Shougo/neocomplete',
+\   'depends': ['Shougo/neocomplete', 'Shougo/neosnippet-snippets'],
 \   'autoload': {
 \     'insert': 1,
 \     'filetypes': 'snippet',
