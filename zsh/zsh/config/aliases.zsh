@@ -73,13 +73,9 @@ linux*)
 	;;
 darwin*)
 	alias tbz2="tar cvjf"
-	alias ql="qlmanage -p $@ >& /dev/null"
-	alias eopen="open -a emacs"
+	# alias ql="qlmanage -p $@ >& /dev/null"
 
-	alias emacs="open -a Emacs"
-	alias firefox="open -a Shiretoko"
-	alias safari="open -a Safari"
-	alias prev="open -a Preview"
+  alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 
 	fmount () {
 		echo "mounting $1"
