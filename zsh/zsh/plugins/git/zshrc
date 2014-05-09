@@ -15,3 +15,4 @@ alias gsd="git svn dcommit"
 alias gsf="git svn fetch"
 
 alias ggpush="git push origin \$(git current-branch)"
+alias ggpull="git pull origin \$(git current-branch)"
