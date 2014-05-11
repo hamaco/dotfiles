@@ -1,5 +1,5 @@
 if exists tmux; then
-  tmuxx() {
+  tmux() {
     if [ -n "$TMUX" ]; then
       echo "Error: tmux session has been already attached"
       return 1
@@ -8,10 +8,15 @@ if exists tmux; then
     if [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/null) ) ]]; then
       # on OS X force tmux's default command to spawn a shell in the user's namespace
       tmux_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-      tmux attach -d || tmux -f <(echo "$tmux_config") new-session
+      =tmux -f <(echo "$tmux_config") new-session
+      # echo "$tmux_config"
     else
-      tmux attach -d || tmux new-session
+      =tmux new-session
     fi
+  }
+
+  tmuxx() {
+    =tmux attach -d || tmux
   }
 fi
 
@@ -19,7 +24,7 @@ case "${TERM}" in
   screen*)
     function ssh_tmux() {
       eval server=\${$#}
-      tmux new-window -n s:$server "ssh $*"
+      =tmux new-window -n s:$server "ssh $*"
     }
     alias ssh=ssh_tmux
     ;;
