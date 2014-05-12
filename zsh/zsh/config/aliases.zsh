@@ -3,10 +3,8 @@
 # -n 行数表示, -I バイナリファイル無視, svn関係のファイルを無視
 alias gf="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude='*/cache/*'"
 
-# Ubuntuとかだとack-grepに変わったのでaliasする
-if type ack-grep > /dev/null; then
-	alias ack="ack-grep"
-fi
+alias ag="ag -S --stats"
+alias agh="ag -S --stats --hidden"
 
 alias %=" " # webにあるコマンドをコピペで実行出来るようにする
 
