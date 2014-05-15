@@ -1,5 +1,5 @@
-cache/*
-tmp/*
+cache
+tmp
 
 *.sql
 *.log
@@ -7,3 +7,5 @@ tmp/*
 *min.css
 
 jquery.js
+
+vendor
