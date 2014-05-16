@@ -1,5 +1,6 @@
 cache
 tmp
+tags
 
 *.sql
 *.log
