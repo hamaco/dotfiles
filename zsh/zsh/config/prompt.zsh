@@ -40,9 +40,9 @@ function _precmd_vcs_info() {
   if [[ -n "$vcs_info_msg_1_" ]] && [[ -n "$vcs_info_msg_2_" ]];then
     psvar[2]=$(echo $vcs_info_msg_2_ | sed -e "s/$vcs_info_msg_1_$//" | sed -e "s#^$HOME#~#")
     psvar[3]="$vcs_info_msg_1_"
-    psvar[4]=$(echo $PWD | sed -e "s#^$vcs_info_msg_2_##")
+    psvar[4]=$(echo $(pwd -P) | sed -e "s#^$vcs_info_msg_2_##")
   else
-    psvar[2]=$(echo $PWD | sed -e "s#^$HOME#~#")
+    psvar[2]=$(echo $(pwd -P) | sed -e "s#^$HOME#~#")
   fi
 }
 add-zsh-hook precmd _precmd_vcs_info
