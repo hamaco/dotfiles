@@ -98,7 +98,7 @@ esac
 # Suffix: 接尾辞エイリアス ========= {{{1
 
 alias -s txt=cat
-#alias -s php=vim
+alias -s php="php -F"
 alias -s log=less
 alias -s jar="java -jar"
 unction extract() {
