@@ -1,3 +1,0 @@
-antigen bundle motemen/ghq zsh
-
-autoload -U ghq
