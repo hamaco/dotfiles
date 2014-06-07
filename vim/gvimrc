@@ -12,6 +12,8 @@ endfunction
 
 colorscheme codeschool
 
+set guioptions-=e
+
 if has("mac")
   call s:set_font("NFモトヤバーチ1等幅", 18)
   call s:set_font("Osaka-Mono", 18)
