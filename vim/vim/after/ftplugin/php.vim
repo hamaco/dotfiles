@@ -26,3 +26,7 @@ function! s:at()
   return name =~# 'String\|Comment\|None' ? '@' : '$this->'
 endfunction
 inoremap <expr> <buffer> @ <SID>at()
+
+if exists(":EditorConfigReload")
+  EditorConfigReload
+endif
