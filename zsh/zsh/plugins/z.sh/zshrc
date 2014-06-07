@@ -1,6 +1,0 @@
-# https://github.com/rupa/z
-
-_Z_CMD=j
-_Z_NO_RESOLVE_SYMLINKS=true
-
-antigen bundle rupa/z
