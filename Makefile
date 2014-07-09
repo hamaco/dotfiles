@@ -5,8 +5,8 @@ OS = ${shell uname}
 
 all: cui gui mac
 
-.PHONY: git mercurial tig tmux vim zsh percol common
-cui: git mercurial tig tmux vim zsh percol common
+.PHONY: git mercurial tig tmux vim zsh peco common
+cui: git mercurial tig tmux vim zsh peco common
 
 .PHONY: vimperator chrome
 gui: vimperator chrome
@@ -40,6 +40,9 @@ homebrew:
 
 mercurial:
 	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
+
+peco:
+	ln -fns $(CURRENT_DIR)/peco $(INSTALL_DIR)/.config/peco
 
 percol:
 	ln -fns $(CURRENT_DIR)/percol/percol.d $(INSTALL_DIR)/.percol.d
