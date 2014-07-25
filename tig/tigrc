@@ -11,10 +11,6 @@ set main-view = \
   commit-title:yes,graph,refs,overflow=no
 
 
-# open commit at github
-bind generic o !@hub browse -- commit/%(commit)
-bind generic L !git reflog
-
 bind generic w scroll-page-up
 bind generic s scroll-page-down
 
@@ -29,3 +25,13 @@ bind main C !@git pbcopy %(commit)
 bind diff ; view-next
 bind diff l scroll-right
 bind diff h scroll-left
+
+
+# open commit at github
+bind generic o @hub browse -- commit/%(commit)
+bind generic L !git reflog
+
+bind main B @hub browse -- commit/%(commit)
+bind diff B @hub browse -- commit/%(commit)
+bind tree B @hub browse -- tree/%(commit)/%(directory)
+bind blob B @hub browse -- tree/%(commit)/%(file)
