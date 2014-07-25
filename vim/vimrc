@@ -485,7 +485,7 @@ if neobundle#tap('vim-operator-surround')
 endif
 
 " pronamachang
-let g:pronamachang_voice_root = "/Users/hamaco/Desktop"
+let g:pronamachang_voice_root = "$HOME/Dropbox/data/voice/pronamachang"
 
 
 " vim-precious
