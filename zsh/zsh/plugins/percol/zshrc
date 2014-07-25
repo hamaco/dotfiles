@@ -1,13 +1,16 @@
-if exists percol; then
-  source_files $(dirname $0)/sources/*.zsh
-
-  # select-history
-  bindkey '^r' percol-select-history
-
-  # git-resetn-breanches
-  bindkey '^x^b' percol-git-recent-branches
-  bindkey '^xb'  percol-git-recent-all-branches
-
-  # cdr
-  bindkey '^x;' percol-cdr
-fi
+# if exists percol; then
+#   source_files $(dirname $0)/sources/*.zsh
+# 
+#   # select-history
+#   bindkey '^r' percol-select-history
+# 
+#   # git-resetn-breanches
+#   bindkey '^x^b' percol-git-recent-branches
+#   bindkey '^xb'  percol-git-recent-all-branches
+# 
+#   # cdr
+#   bindkey '^x;' percol-cdr
+# 
+#   # ghq-look
+#   bindkey '^s' percol-ghq-look
+# fi
