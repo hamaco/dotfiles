@@ -146,6 +146,13 @@ NeoBundleLazy 'Shougo/neosnippet', {
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 " NeoBundleLazy 'airblade/vim-gitgutter'
+" \ }
+" }}}
+
+" golang {{{
+NeoBundleLazy 'vim-jp/go-vim', {
+\   'autoload': {'filetypes': 'go'}
+\ }
 " }}}
 
 " php {{{
