@@ -119,6 +119,8 @@ command! -nargs=1 -bang -complete=file Rename saveas<bang> <args> | call delete(
 command! RemoveTrailingSpaces %s/\s\+$// | nohlsearch
 command! RemoveBlankLines :g /^$/d
 
+command! -nargs=* -range GitBrowseRemote !git browse-remote --rev -L<line1>,<line2> <f-args> -- %
+
 
 " === Key mappings ===
 nnoremap <Leader>ev :<C-u>tabedit $MYVIMRC<CR>
