@@ -711,6 +711,11 @@ endif
 if neobundle#tap('switch.vim')
   nnoremap - :<C-u>Switch<CR>
 
+  let g:switch_custom_definitions =
+  \ [
+  \   ['public', 'protected', 'private']
+  \ ]
+
   call neobundle#untap()
 endif
 
