@@ -160,6 +160,10 @@ NeoBundleLazy 'lambdalisue/vim-gista', {
 \ }
 " }}}
 
+" markdown {{{
+NeoBundleLazy 'plasticboy/vim-markdown', {
+\   'autoload': {'filetypes': 'markdown'}
+\ }
 " }}}
 
 " golang {{{

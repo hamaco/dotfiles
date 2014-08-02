@@ -412,6 +412,13 @@ function! MyCurrentFuncInfo()
 endfunction
 
 
+" markdown.vim
+if neobundle#tap('markdown.vim')
+  let g:vim_markdown_folding_disabled = 1
+
+  call neobundle#untap()
+endif
+
 " neocomplete.vim
 if neobundle#tap('neocomplete')
   let g:neocomplete#enable_at_startup = 1
