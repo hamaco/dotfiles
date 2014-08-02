@@ -14,8 +14,8 @@ if is-at-least 4.3.10; then
   zstyle ":vcs_info:git:*" formats "(%s)-[%b] %c%u" "%r" "%R"
   zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
   zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
-  zstyle ":vcs_info:git:*" stagedstr "<S>"
-  zstyle ":vcs_info:git:*" unstagedstr "<U>"
+  zstyle ":vcs_info:git:*" stagedstr "<S> "
+  zstyle ":vcs_info:git:*" unstagedstr "<U> "
 fi
 
 if [ ${$(hostname)##*.} = "local" ]; then
@@ -31,6 +31,14 @@ fi
 OK="ζ*'ヮ'%)ζ <"
 NG="ζ*#ﾟДﾟ%)ζ <"
 
+function _prompt_github_commit_status() {
+  if exists github-commit-status-mark; then
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]]; then
+      # github-commit-status-mark >/dev/null &!
+      echo $(github-commit-status-mark -cached)
+    fi
+  fi
+}
 function _precmd_vcs_info() {
   LANG=en_US.UTF-8 vcs_info
   psvar=()
@@ -50,12 +58,15 @@ add-zsh-hook precmd _precmd_vcs_info
 PROMPT="%F{$HOSTCOLOR}%n@%m%f "
 PROMPT+="[%F{magenta}%2v%F{cyan}%3v%F{magenta}%4v%f]"
 [[ $ARCHI != "cygwin" ]] && PROMPT+="%{$fg[yellow]%}%1v%f"
+PROMPT+="\$(_prompt_github_commit_status)"
 PROMPT+=$'\n'
 PROMPT+="%(?.%F{blue}$OK%f.%F{red}$NG%f) "
 
 
 PROMPT2="%_%% "
+
 RPROMPT="[%*]"
+
 SPROMPT="从*ﾟ?ﾟ) < もしかして %F{yellow}%r%f かしら? あ、あんたのために修正したんじゃないんだからね、勘違いしないでよね! [n,y,a,e]:"
 
 export LSCOLORS=gxfxcxdxbxegedabagacad
