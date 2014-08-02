@@ -10,13 +10,16 @@ function! s:set_font(fontname, fontsize)
 endfunction
 
 
-colorscheme codeschool
+colorscheme slate
 
 set guioptions-=e
 
 if has("mac")
-  call s:set_font("NFモトヤバーチ1等幅", 18)
-  call s:set_font("Osaka-Mono", 18)
+  " call s:set_font("NFモトヤバーチ1等幅", 18)
+  " call s:set_font("Osaka-Mono", 18)
+  " call s:set_font("Menlo Regular", 15)
+  " call s:set_font("nukamiso", 15)
+  call s:set_font("Ayuthaya", 15)
 
   if has('vim_starting')
     set columns=177
