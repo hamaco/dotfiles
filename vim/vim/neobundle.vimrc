@@ -179,6 +179,9 @@ NeoBundleLazy 'vim-jp/go-vim', {
 NeoBundleLazy 'StanAngeloff/php.vim', {
 \   'autoload': {'filetypes': 'php'}
 \ }
+NeoBundleLazy '2072/PHP-Indenting-for-VIm', {
+\   'autoload': {'filetypes': 'php'}
+\ }
 NeoBundleLazy 'majutsushi/tagbar'
 NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
 \   'depends': 'majutsushi/tagbar',
