@@ -330,6 +330,12 @@ if neobundle#tap('eskk.vim')
   let g:eskk#egg_like_newline = 1
   let g:eskk#egg_like_newline_completion = 1
 
+  let g:eskk#server = {
+  \    'host': 'localhost',
+  \    'port': '55100',
+  \    'type': 'notfound',
+  \ }
+
   call neobundle#untap()
 endif
 
