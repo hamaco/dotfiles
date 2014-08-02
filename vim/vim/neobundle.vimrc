@@ -26,6 +26,7 @@ NeoBundleLazy 'osyo-manga/vim-anzu', {
 \   }
 \ }
 NeoBundle 'itchyny/lightline.vim'
+NeoBundleLazy 'mattn/webapi-vim'
 " }}}
 
 " textobj {{{
@@ -146,7 +147,19 @@ NeoBundleLazy 'Shougo/neosnippet', {
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 " NeoBundleLazy 'airblade/vim-gitgutter'
+" NeoBundleLazy 'mattn/gist-vim', {
+" \   'depends': 'mattn/webapi-vim',
+" \   'autoload': {'commands': ['Gist']}
 " \ }
+NeoBundleLazy 'lambdalisue/vim-gista', {
+\   'autoload': {
+\       'commands': ['Gista'],
+\       'mappings': '<Plug>(gista-',
+\       'unite_sources': 'gista',
+\   }
+\ }
+" }}}
+
 " }}}
 
 " golang {{{
@@ -303,11 +316,6 @@ NeoBundleLazy 'kana/vim-niceblock'
 
 NeoBundle 'mattn/sonictemplate-vim'
 
-NeoBundleLazy 'mattn/webapi-vim'
-NeoBundleLazy 'mattn/gist-vim', {
-\   'depends': 'mattn/webapi-vim',
-\   'autoload': {'commands': ['Gist']}
-\ }
 " NeoBundleLazy 'teramako/instant-markdown-vim'
 " NeoBundleLazy 'thinca/vim-localrc'
 NeoBundleLazy 'thinca/vim-ref', {
