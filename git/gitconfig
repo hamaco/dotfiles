@@ -117,3 +117,6 @@
 
 [url "git://github.com/"]
     insteadof = gh:
+
+[ghq]
+    root = ~/src
