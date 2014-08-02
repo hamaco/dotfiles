@@ -9,6 +9,11 @@ cdpath=($HOME /var/www/*(N-/))
 bindkey -e
 
 
+# plugin より先にやらないとダメなのでとりあえずここで……
+alias ssh="cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config; ssh"
+alias scp="cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config; scp"
+alias git="cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config; git"
+
 # load plugins
 source_files $ZSH_HOME/plugins/*/zshrc(N-.)
 source_files $ZSH_HOME/config/*.zsh(N-.)
