@@ -303,7 +303,11 @@ if neobundle#tap('clever-f.vim')
 endif
 
 " editorconfig.vim
-let g:EditorConfig_verbose = 1
+if neobundle#tap('editorconfig-vim')
+  let g:EditorConfig_verbose = 1
+
+  call neobundle#untap()
+endif
 
 
 " emmet-vim
