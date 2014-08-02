@@ -2,7 +2,7 @@
 " abbreviate tl - [ ]
 
 " 入れ子のリストを折りたたむ
-setlocal foldmethod=indent
+" setlocal foldmethod=indent
 
 " todoリストのon/offを切り替える
 nnoremap <buffer> <Leader><Leader> :call ToggleCheckbox()<CR>
