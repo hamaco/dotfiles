@@ -256,6 +256,21 @@ function fwscp() {
     SOURCE=$1
     DEST=$2
 
-    echo fswatch ./$(dirname $SOURCE) \"scp $SOURCE $DEST\"
-    fswatch ./$(dirname $SOURCE) "scp $SOURCE $DEST"
+    echo fswatch-run $(=cd $(dirname $SOURCE); pwd) \"scp $SOURCE $DEST\"
+    fswatch-run $(=cd $(dirname $SOURCE); pwd) \"scp $SOURCE $DEST\"
+}
+
+#######
+
+function animita_init() {
+    if [ "$1" = "" ]; then
+        echo "Usage: animita_init {アニメタイトル}"
+        exit 1
+    fi
+
+    echo "" > $1.markdown
+    for episode in {01..13}
+    do
+        echo "# ${episode}" >> $1.markdown
+    done
 }
