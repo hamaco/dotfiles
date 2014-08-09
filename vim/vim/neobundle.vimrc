@@ -244,17 +244,17 @@ NeoBundleLazy 'rhysd/tmpwin.vim', {
 
 " colorscheme {{{
 NeoBundle '29decibel/codeschool-vim-theme'
-NeoBundleFetch 'aereal/vim-magica-colors'
-NeoBundleFetch 'cocopon/iceberg.vim'
-NeoBundleFetch 'itchyny/landscape.vim'
-NeoBundleFetch 'mopp/mopkai.vim'
+NeoBundle 'aereal/vim-magica-colors'
+NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'mopp/mopkai.vim'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundleFetch 'sjl/badwolf'
-NeoBundleFetch 'svjunic/RadicalGoodSpeed'
-NeoBundleFetch 'vim-scripts/moria'
-NeoBundleFetch 'vim-scripts/newspaper.vim'
-NeoBundleFetch 'w0ng/vim-hybrid'
-NeoBundleFetch 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
+NeoBundle 'sjl/badwolf'
+NeoBundle 'svjunic/RadicalGoodSpeed'
+NeoBundle 'vim-scripts/moria'
+NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 
 command! -nargs=0 NeoBundleSourceColorSchemes
 \   :NeoBundleSource vim-magica-colors iceberg.vim landscape.vim mopkai.vi badwolf RedicalGoodSpeed moria newspaper.vim vim-hybrid h2u_white

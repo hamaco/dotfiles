@@ -10,7 +10,7 @@ function! s:set_font(fontname, fontsize)
 endfunction
 
 
-colorscheme slate
+colorscheme moria
 
 set guioptions-=e
 
