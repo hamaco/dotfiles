@@ -35,7 +35,7 @@ git:
 	ln -fns $(CURRENT_DIR)/git/gitattributes $(INSTALL_DIR)/.gitattributes
 
 homebrew:
-	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+	ruby -e "$$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 	brew bundle
 
 mercurial:
