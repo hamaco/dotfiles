@@ -36,7 +36,7 @@ git:
 
 homebrew:
 	ruby -e "$$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-	brew bundle
+	bash $(CURRENT_DIR)/Brewfile
 
 mercurial:
 	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
