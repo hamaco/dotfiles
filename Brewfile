@@ -1,21 +1,24 @@
-update
-upgrade
+#!/usr/bin/env bash
 
-tap phinze/homebrew-cask
+# brew update
+# brew upgrade
 
-install git
-install openssh
+# brew tap phinze/homebrew-cask
 
-install brew-cask
+brew install git
+brew install openssh
 
-cask install hipchat
-cask install vagrant
-cask install virtualbox
-cask install alfred
-cask install sourcetree
-cask install coteditor
-cask install sublime-text
+brew install brew-cask
 
-cask alfred link
+brew cask install hipchat
+brew cask install vagrant
+brew cask install virtualbox
+brew cask install alfred
+brew cask install sourcetree
+brew cask install coteditor
+brew cask install sublime-text
 
-cleanup
+open "$HOME/Applications/Alfred Preferences.app"
+brew cask alfred link
+
+brew cleanup
