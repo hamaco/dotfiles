@@ -48,6 +48,13 @@ brew cask install sourcetree
 brew cask install coteditor
 # brew cask install sublime-text
 
+brew cask install caffeine
+brew cask install fantastical
+brew cask install textexpander
+brew cask install yorufukurou
+brew cask install daisydisk
+brew cask install reflector
+
 open "$HOME/Applications/Alfred Preferences.app"
 brew cask alfred link
 
