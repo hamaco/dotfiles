@@ -9,6 +9,8 @@ alias gist="gist -cop"
 alias s="git status -sb"
 alias gst="echo バーカ"
 
+alias gi="git issue"
+
 alias gs="git svn"
 alias gsr="git svn rebase"
 alias gsd="git svn dcommit"
