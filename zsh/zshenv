@@ -12,6 +12,7 @@ path=(
   $HOME/app/*/bin(N-/)
   $HOME/app/*/*/bin(N-/)
 
+  /usr/local/heroku/bin(N-/)
   /usr/local/bin(N-/)
 
   $path
