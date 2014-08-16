@@ -151,6 +151,7 @@ NeoBundle 'gregsexton/gitv'
 " \   'depends': 'mattn/webapi-vim',
 " \   'autoload': {'commands': ['Gist']}
 " \ }
+NeoBundle 'rhysd/committia.vim'
 NeoBundleLazy 'lambdalisue/vim-gista', {
 \   'autoload': {
 \       'commands': ['Gista'],
