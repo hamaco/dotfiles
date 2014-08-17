@@ -8,3 +8,5 @@ vimperator/vimperator/info
 zsh/zsh/cache/*
 zsh/zsh/plugins/000-antigen/antigen
 zsh/zsh/plugins/ghq/ghq
+
+.github-commit-status
