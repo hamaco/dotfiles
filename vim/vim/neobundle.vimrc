@@ -328,7 +328,7 @@ NeoBundleLazy 'kana/vim-niceblock'
 NeoBundle 'mattn/sonictemplate-vim'
 
 " NeoBundleLazy 'teramako/instant-markdown-vim'
-" NeoBundleLazy 'thinca/vim-localrc'
+NeoBundle 'thinca/vim-localrc'
 NeoBundleLazy 'thinca/vim-ref', {
 \   'autoload': {
 \     'commands': ['Ref'],

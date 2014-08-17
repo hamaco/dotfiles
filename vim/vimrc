@@ -179,6 +179,10 @@ vnoremap ( t(
 
 " === Plugin settings ===
 
+for rc in glob("~/.vim/rc/plugins/*.vim", 1, 1)
+  execute "source " . rc
+endfor
+
 " alignta.vim
 if neobundle#tap('vim-alignta')
   vnoremap <Leader>a :Alignta<Space>
