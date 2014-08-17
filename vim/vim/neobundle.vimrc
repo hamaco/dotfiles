@@ -100,9 +100,6 @@ NeoBundleLazy 'hamaco/quickrun-hook-u-nya-', {
 \   'depends' : 'thinca/vim-quickrun',
 \   'autoload': {'on_source': 'vim-quickrun'},
 \ }
-NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
-\   'depends': 'thinca/vim-quickrun'
-\ }
 NeoBundleLazy 'osyo-manga/shabadou.vim', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
@@ -183,6 +180,7 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 NeoBundleLazy '2072/PHP-Indenting-for-VIm', {
 \   'autoload': {'filetypes': 'php'}
 \ }
+
 NeoBundleLazy 'majutsushi/tagbar'
 NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
 \   'depends': 'majutsushi/tagbar',
@@ -191,6 +189,10 @@ NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
 \      'mac'  : 'chmod +x bin/phpctags',
 \      'unix' : 'chmod +x bin/phpctags',
 \    },
+\ }
+
+NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
+\   'depends': 'thinca/vim-quickrun'
 \ }
 " }}}
 
