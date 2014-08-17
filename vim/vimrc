@@ -546,6 +546,13 @@ if has('mac')
   \   'args':      'Marked',
   \   'exec':      '%c %o %a %s',
   \ }
+  let g:quickrun_config['mkd'] = {
+  \   'outputter': 'null',
+  \   'command':   'open',
+  \   'cmdopt':    '-a',
+  \   'args':      'Marked',
+  \   'exec':      '%c %o %a %s',
+  \ }
 else
   let g:quickrun_config['markdown'] = {
   \   'outputter': 'multi',
