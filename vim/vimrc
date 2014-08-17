@@ -561,10 +561,18 @@ else
 endif
 
 let g:quickrun_config['watchdogs_checker/_'] = {
-\   'outputter/quickfix/open_cmd': '',
-\   'hook/unite_quickfix/enable_failure': 1,
+\   'hook/time/enable':   0,
 \   'hook/u_nya_/enable': 0,
 \ }
+let g:quickrun_config['watchdogs_checker/php'] = {
+\   'command':     'php',
+\   'exec':        '%c -d error_reporting=E_ALL -d display_errors=1 -d display_startup_errors=1 -d log_errors=0 -d xdebug.cli_color=0 -l %o %s:p',
+\   'errorformat': '%m\ in\ %f\ on\ line\ %l',
+\ }
+
+" let g:quickrun_config['ruby/watchdogs_checker'] = {
+" \   'type': 'watchdogs_checker/rubocop'
+" \}
 
 augroup QuickRunPHPUnit
   autocmd!
