@@ -417,6 +417,10 @@ NeoBundle 't9md/vim-textmanip'
 
 NeoBundle 'editorconfig/editorconfig-vim'
 
+NeoBundleLazy 'glidenote/roadworker.vim', {
+\   'autoload': {'filename_patterns': 'Routefile'}
+\ }
+
 filetype indent plugin on
 
 NeoBundleCheck
