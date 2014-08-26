@@ -182,6 +182,7 @@ silent qmark C https://www.chatwork.com/
 silent qmark f http://www.facebook.com/
 silent qmark F https://ja.foursquare.com/
 silent qmark g http://github.com/hamaco
+silent qmark G http://github-issue.herokuapp.com/
 silent qmark I http://sp.pf.mbga.jp/12008305
 silent qmark l http://reader.livedoor.com/reader/
 silent qmark m http://www.gmail.com/
