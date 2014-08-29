@@ -57,7 +57,7 @@ touch $HARDCOPYFILE
 dabbrev-complete () {
   local reply lines=80
 
-  tmux capture-pane && tmux save-buffer -b 0 $HARDCOPYFILE && tmux delete-buffer -b 0
+  =tmux capture-pane && =tmux save-buffer -b 0 $HARDCOPYFILE && =tmux delete-buffer -b 0
   reply=($(sed '/^$/d' $HARDCOPYFILE | sed '$ d' | tail -$lines))
 
   compadd -Q - "${reply[@]%[*/=@|]}"
