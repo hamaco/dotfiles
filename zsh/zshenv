@@ -51,6 +51,7 @@ case "${OSTYPE}" in
 esac
 # }}}
 
+exists direnv && eval "$(direnv hook zsh)"
 
 source_files $HOME/app/*/zshenv(N-.)
 
