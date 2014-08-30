@@ -16,10 +16,10 @@ set guioptions-=e
 
 if has("mac")
   " call s:set_font("NFモトヤバーチ1等幅", 18)
-  " call s:set_font("Osaka-Mono", 18)
+  " call s:set_font("Osaka-Mono", 16)
   " call s:set_font("Menlo Regular", 15)
   " call s:set_font("nukamiso", 15)
-  call s:set_font("Ayuthaya", 15)
+  call s:set_font("Gen Jyuu Gothic Monospace Medium", 15)
 
   if has('vim_starting')
     set columns=177
@@ -28,7 +28,7 @@ if has("mac")
     set linespace=1
   endif
 
-  set transparency=20
+  set transparency=10
   let g:transparency = &transparency
   function! s:relative_transparency(diff)
     let &transparency = a:diff + &transparency
