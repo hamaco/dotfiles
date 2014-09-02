@@ -133,5 +133,8 @@
 [url "git://github.com/"]
     insteadof = gh:
 
+[ghn]
+    followissuecomment = true
+
 [ghq]
     root = ~/src
