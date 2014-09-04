@@ -248,6 +248,8 @@ lazy fmaps -u='reblog\.machine\.mamemomonga\.com/dashboard' j k t l m
 lazy fmaps -u='www\.pixiv\.net/member_illust\.php\?mode=manga' -events=vkeydown j k z 0
 
 lazy fmaps -u='glide\.so' h l
+
+lazy fmaps -u='www\.pplog\.net' -events=vkeydown r,d z
 " }}}
 
 " }}}
