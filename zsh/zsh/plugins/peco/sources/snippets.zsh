@@ -11,7 +11,7 @@ function peco-snippets() {
 
     # Get snippets in the current directory if it exists.
     cwd=`pwd`
-    if [ -e "$cwd/.snippets" ]; then
+    if [ "$cwd" != "$HOME" -a -e "$cwd/.snippets" ]; then
       local_snippet="$cwd/.snippets"
     else
       local_snippet=""
