@@ -23,10 +23,7 @@ inoremap <buffer> <expr> & smartchr#one_of("&", "&&", " =& ")
 function! s:at()
   let syntax = synstack(line('.'), col('.'))
   let name = empty(syntax) ? '' : synIDattr(syntax[-1], "name")
-  return name =~# 'String\|Comment\|None' ? '@' : '$this->'
+  echomsg name
+  return name =~# 'String\|Comment\|phpHereDoc\|phpNowDoc\|None' ? '@' : '$this->'
 endfunction
 inoremap <expr> <buffer> @ <SID>at()
-
-if exists(":EditorConfigReload")
-  EditorConfigReload
-endif
