@@ -266,6 +266,9 @@ command! -nargs=0 NeoBundleSourceColorSchemes
 
 " game {{{
 NeoBundleLazy 'thinca/vim-threes'
+NeoBundleLazy 'katono/rogue.vim', {
+\   'autoload': {'commands': 'Rogue'}
+\ }
 " }}}
 
 NeoBundleLazy 'tyru/caw.vim', {
