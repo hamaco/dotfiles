@@ -1,140 +1,146 @@
 [include]
-    path = .gitconfig.local
+	path = .gitconfig.local
 
 [apply]
-    whitespace = nowarn
+	whitespace = nowarn
 
 [color]
-    ui = auto
-    diff = auto
-    status = auto
-    branch = auto
-    interactive = auto
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
 
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 
 [core]
-    attributesfile = ~/.gitattributes
-    excludesfile = ~/.gitignore
-    pager = less -r
-    quotepath = false
-    precomposeunicode = true
+	attributesfile = ~/.gitattributes
+	excludesfile = ~/.gitignore
+	pager = less -r
+	quotepath = false
+	precomposeunicode = true
+
+[fetch]
+	prune = true
 
 [grep]
-    lineNumber = true
+	lineNumber = true
 
 [pager]
-    log  = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+	log  = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
 
 [merge]
-    ff = false
+	ff = false
 
 [pull]
-    rebase = true
+	rebase = true
 
 [rebase]
-    autostash = true
-    autosquash = true
+	autostash = true
+	autosquash = true
 
 # [push]
-#     default = simple
+#	 default = simple
 
 [alias]
-    b              = branch
-    br             = branch -a
-    ci             = commit -v
-    cia            = commit --amend
-    cih            = commit --amend -C HEAD
-    co             = checkout
-    cb             = checkout -b
-    cob            = "!sh -c 'git checkout -b ${0} origin/master'"
-    cp             = cherry-pick
-    dc             = diff --cached -w
-    di             = diff -w
-    fetch-pulls    = fetch origin +refs/pull/*:refs/remotes/pull/*
-    first          = !"git init -q && git commit -q --allow-empty -m 'init'"
-    fixup          = commit --amend -a -C HEAD
-    fo             = fetch origin
-    l1             = log --pretty=oneline --abbrev-commit
-    lp             = log --decorate --stat --patch
-    ls             = stash list
-    pl             = pull
-    ps             = push
-    pull-dry-run   = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD); git diff --stat --summary ${B}..origin/${B}"
-    ra             = remote add
-    ranking        = shortlog -sn
-    rc             = rebase --continue
-    review         = !"tig --reverse -w $(git branch-root)..HEAD"
-    sl             = stash list
-    sp             = stash pop
-    ss             = stash save
-    st             = status -sb
+	b              = branch
+	br             = branch -a
+	ci             = commit -v
+	cia            = commit --amend
+	cih            = commit --amend -C HEAD
+	co             = checkout
+	cb             = checkout -b
+	cob            = "!sh -c 'git checkout -b ${0} origin/master'"
+	cp             = cherry-pick
+	dc             = diff --cached -w
+	di             = diff -w
+	fetch-pulls    = fetch origin +refs/pull/*:refs/remotes/pull/*
+	first          = !"git init -q && git commit -q --allow-empty -m 'init'"
+	fixup          = commit --amend -a -C HEAD
+	fo             = fetch origin
+	l1             = log --pretty=oneline --abbrev-commit
+	lp             = log --decorate --stat --patch
+	ls             = stash list
+	pl             = pull
+	ps             = push
+	pull-dry-run   = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD); git diff --stat --summary ${B}..origin/${B}"
+	ra             = remote add
+	ranking        = shortlog -sn
+	rc             = rebase --continue
+	review         = !"tig --reverse -w $(git branch-root)..HEAD"
+	sl             = stash list
+	sp             = stash pop
+	ss             = stash save
+	st             = status -sb
 
-    pad            = !"peco-git-add"
+	n = now --all --stat
+	now = now --all --stat
 
-    branch-root    = merge-base master HEAD
-    current-branch = rev-parse --abbrev-ref HEAD
-    pbcopy         = !printf "$1" | pbcopy
+	pad            = !"peco-git-add"
+
+	branch-root    = merge-base master HEAD
+	current-branch = rev-parse --abbrev-ref HEAD
+	pbcopy         = !printf "$1" | pbcopy
 
 
-    d1 = diff HEAD~
-    d2 = diff HEAD~~
-    d3 = diff HEAD~~~
-    d4 = diff HEAD~~~~
-    dcw = diff --color-words
-    difflog = log -p HEAD@{3.days.ago}
-    find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
-    gr = grep -H --heading --break
-    gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
-    ignore = update-index --assume-unchanged
-    ignored = !git ls-files -v | grep "^[a-z]"
-    l = log --stat --date=local
-    l1f = log --pretty=oneline
-    lg = log --name-status --color --graph --date=local
-    log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
-    log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
-    newly = log HEAD@{1}..HEAD --reverse
-    newlyp = log HEAD@{1}..HEAD -p --reverse
-    package = !"git archive --format=tar --prefix=$(basename $(pwd))/ HEAD | gzip > $(basename $(pwd)).tar.gz"
-    pr = pull --rebase
-    pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
-    rb = rebase
-    rbh = rebase HEAD
-    ro = rebase origin
-    rollback = reset --hard HEAD~
-    see = browse
-    show-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
-    smi = submodule init
-    smp = submodule foreach "git pull"
-    smcp = submodule foreach "git checkout master; git pull origin master"
-    smu = submodule update
-    sh = show
-    so = remote show origin
-    sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
-    tree = log --graph --pretty=oneline --abbrev-commit --decorate
-    unignore = update-index --no-assume-unchanged
-    view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
+	d1 = diff HEAD~
+	d2 = diff HEAD~~
+	d3 = diff HEAD~~~
+	d4 = diff HEAD~~~~
+	dcw = diff --color-words
+	difflog = log -p HEAD@{3.days.ago}
+	find-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
+	gr = grep -H --heading --break
+	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
+	ignore = update-index --assume-unchanged
+	ignored = !git ls-files -v | grep "^[a-z]"
+	l = log --stat --date=local
+	l1f = log --pretty=oneline
+	lg = log --name-status --color --graph --date=local
+	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+	newly = log HEAD@{1}..HEAD --reverse
+	newlyp = log HEAD@{1}..HEAD -p --reverse
+	package = !"git archive --format=tar --prefix=$(basename $(pwd))/ HEAD | gzip > $(basename $(pwd)).tar.gz"
+	pr = pull --rebase
+	pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
+	rb = rebase
+	rbh = rebase HEAD
+	ro = rebase origin
+	rollback = reset --hard HEAD~
+	see = browse
+	show-rev = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
+	smi = submodule init
+	smp = submodule foreach "git pull"
+	smcp = submodule foreach "git checkout master; git pull origin master"
+	smu = submodule update
+	sh = show
+	so = remote show origin
+	sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
+	tree = log --graph --pretty=oneline --abbrev-commit --decorate
+	unignore = update-index --no-assume-unchanged
+	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
 
 [url "git@github.com:"]
-    pushinsteadof = "https://github.com/"
-    pushinsteadof = "git://github.com/"
+	pushinsteadof = "https://github.com/"
+	pushinsteadof = "git://github.com/"
 
 [url "git://github.com/"]
-    insteadof = gh:
+	insteadof = gh:
 
 [ghn]
-    followissuecomment = true
+	followissuecomment = true
 
 [ghq]
-    root = ~/src
+	root = ~/src
