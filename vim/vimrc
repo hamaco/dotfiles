@@ -672,6 +672,9 @@ if neobundle#tap('vim-smartinput')
     call smartinput#define_rule({'at': '{\%#}', 'char': '{', 'input': '{<Space><Space>}<Left><Left>'})
     call smartinput#define_rule({'at': '{{ \%# }}', 'char': '<BS>', 'input': '<BS><BS><Del><Del>'})
 
+    " PHP Blade(Laravel)
+    call smartinput#define_rule({'at': '{{ \%# }}', 'char': '{', 'input': '<Left>{<Right><Right>}<Left><Left>'})
+
     " PHP
     call smartinput#define_rule({'at': '<\%#>', 'char': '?', 'input': '?<Space>?<Left><Left>'})
     call smartinput#define_rule({'at': '<?\%# ?>', 'char': '<BS>', 'input': '<BS><Del><Del>'})
