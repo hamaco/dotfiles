@@ -3,7 +3,7 @@ set nocompatible
 if has('vim_starting')
   set runtimepath+=$HOME/.bundle/neobundle.vim
 endif
-call neobundle#rc(expand('~/.bundle'))
+call neobundle#begin(expand('~/.bundle'))
 
 " base {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -424,5 +424,8 @@ NeoBundleLazy 'glidenote/roadworker.vim', {
 filetype indent plugin on
 
 NeoBundleCheck
+call neobundle#end()
+
+filetype indent plugin on
 
 " vim: foldmethod=marker
