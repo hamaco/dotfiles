@@ -118,6 +118,8 @@ cnoremap <C-v> <S-Insert>
 cnoremap <C-BS> <C-w>
 
 " タブ関係
+" zi / zo / zz とかのズーム関係の2ストロークマッピング消す
+javascript [it.names = [] for (it of mappings.getCandidates(modes.NORMAL, 'z'))] 
 nnoremap z <A-Left>
 nnoremap x <A-Right>
 
