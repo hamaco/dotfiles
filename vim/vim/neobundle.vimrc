@@ -89,6 +89,10 @@ NeoBundleLazy 'Shougo/neomru.vim', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload': {'unite_sources': 'file_mru'}
 \ }
+NeoBundleLazy 'sorah/unite-ghq', {
+\   'depends': 'Shougo/unite.vim',
+\   'autoload': {'unite_sources': 'ghq'}
+\ }
 " }}}
 
 " quickrun {{{
