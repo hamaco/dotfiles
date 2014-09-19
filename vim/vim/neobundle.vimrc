@@ -266,6 +266,7 @@ NeoBundle 'vim-scripts/moria'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'junegunn/seoul256.vim'
+NeoBundle 'morhetz/gruvbox'
 NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
 
 command! -nargs=0 NeoBundleSourceColorSchemes
