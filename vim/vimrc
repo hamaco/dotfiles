@@ -522,6 +522,8 @@ let g:precious_enable_switch_CursorMoved = {
 
 
 " quickrun.vim
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+
 let g:quickrun_config = {}
 let g:quickrun_config['_'] = {
 \   'runner': 'vimproc',
