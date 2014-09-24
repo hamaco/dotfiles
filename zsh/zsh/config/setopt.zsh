@@ -9,7 +9,6 @@ setopt no_beep              # ビープ音の無効化
 setopt brace_ccl            # {a-c}をa b cに展開できるようにする
 setopt correct              # コマンド名の自動修正
 setopt extended_glob        # 拡張ファイルグロブを有効化
-setopt extended_history     # 履歴ファイルに実行時間・経過時間を記録
 setopt equals               # =COMMAND を COMMAND のパス名に展開
 setopt no_flow_control      # C-s, C-qの無効化
 setopt no_hup               # ログアウト時にバックグラウンドジョブをkillしない
@@ -27,6 +26,5 @@ setopt numeric_glob_sort    # ファイル名を数値としてソート
 setopt print_eight_bit      # 補完候補リストの日本語を適正表示
 setopt prompt_subst         # 色を使う
 setopt pushd_ignore_dups    # 同じディレクトリをpushdしない
-setopt share_history        # 履歴ファイルを共有する
 setopt short_loops          # FOR, REPEAT, SELECT, IF, FUNCTION などで簡略文法が使えるようになる
 # setopt transient_rprompt    # コマンド実行時にRPROMPTを消す
