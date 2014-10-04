@@ -73,7 +73,12 @@ darwin*)
 	alias tbz2="tar cvjf"
 	# alias ql="qlmanage -p $@ >& /dev/null"
 
-  alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+	alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+
+	if [ -f "/Applications/MacVim.app/Contents/MacOS/mvim" ]; then
+		alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+		alias gvim="/Applications/MacVim.app/Contents/MacOS/mvim"
+	fi
 
 	fmount () {
 		echo "mounting $1"
