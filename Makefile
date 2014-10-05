@@ -44,7 +44,7 @@ mercurial:
 	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
 
 peco:
-	ln -fns $(CURRENT_DIR)/peco $(INSTALL_DIR)/.config/peco
+	ln -fns $(CURRENT_DIR)/peco $(INSTALL_DIR)/.peco
 
 percol:
 	ln -fns $(CURRENT_DIR)/percol/percol.d $(INSTALL_DIR)/.percol.d
