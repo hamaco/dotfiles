@@ -36,6 +36,10 @@ export LV="-c -l"
 
 export EDITOR=vim
 export SVN_EDITOR=vim
+if [ -f "/Applications/MacVim.app/Contents/MacOS/mvim" ]; then
+	export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
+	export SVN_EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
+fi
 
 export MYSQL_PS1="\\u@\\h:\\d>\\_"
 export GOPATH=$HOME
