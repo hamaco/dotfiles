@@ -30,6 +30,9 @@ common:
 	ln -fns $(CURRENT_DIR)/common/gemrc    $(INSTALL_DIR)/.gemrc
 	ln -fns $(CURRENT_DIR)/common/inputrc  $(INSTALL_DIR)/.inputrc
 
+dropbox:
+	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
+
 git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
 	ln -fns $(CURRENT_DIR)/git/gitignore $(INSTALL_DIR)/.gitignore
