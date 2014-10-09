@@ -12,7 +12,8 @@ cui: git mercurial tig tmux vim zsh peco common
 gui: vimperator chrome
 
 .PHONY: slate homebrew
-mac: slate homebrew
+# mac: slate homebrew
+mac: slate
 
 chrome:
 ifeq ($(OS), Linux)
