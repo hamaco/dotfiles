@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-# brew update
-# brew upgrade
+brew update
+brew upgrade
 
-# brew tap phinze/homebrew-cask
+brew tap phinze/homebrew-cask
+brew tap caskroom/versions
 
 brew install git
 brew install openssh
@@ -16,7 +17,7 @@ brew cask install karabiner
 brew cask install clipmenu
 brew cask install slate
 brew cask install dropbox
-brew cask install firefox
+brew cask install firefox-ja # caskroom/versions
 brew cask install google-chrome
 
 brew cask install omnifocus
