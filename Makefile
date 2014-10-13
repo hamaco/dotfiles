@@ -32,6 +32,8 @@ common:
 
 dropbox:
 	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
+	ln -fns $(HOME)/Dropbox/data/linux/share/phpmanual $(INSTALL_DIR)/share/phpmanual
+	ln -fns $(HOME)/Dropbox/data/linux/share/my-vimperator-plugins $(INSTALL_DIR)/share/my-vimperator-plugins
 
 git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
