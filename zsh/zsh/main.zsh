@@ -268,9 +268,13 @@ function animita_init() {
         exit 1
     fi
 
-    echo "" > $1.markdown
+    echo > $1.markdown
     for episode in {01..13}
     do
-        echo "# ${episode}" >> $1.markdown
+        cat <<EOF >> $1.markdown
+# ${episode}
+
+
+EOF
     done
 }
