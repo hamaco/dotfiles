@@ -39,6 +39,7 @@ if neobundle#tap('unite.vim')
   noremap <silent> [unite]j :<C-u>Unite -default-action=vimfiler bookmark<CR>
   noremap <silent> [unite]o :<C-u>Unite outline<CR>
   noremap <silent> [unite]u :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:! file file_mru<CR>
+  noremap <silent> [unite]U :<C-u>Unite neobundle/update<CR>
 
   call neobundle#untap()
 endif
