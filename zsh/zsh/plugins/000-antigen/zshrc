@@ -22,4 +22,4 @@ antigen bundle supercrabtree/k
 
 export SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
-antigen bundle marzocchi/zsh-notify
+# antigen bundle marzocchi/zsh-notify
