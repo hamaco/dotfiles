@@ -19,7 +19,9 @@ if has("mac")
   " call s:set_font("Osaka-Mono", 16)
   " call s:set_font("Menlo Regular", 15)
   " call s:set_font("nukamiso", 15)
-  call s:set_font("Gen Jyuu Gothic Monospace Medium", 15)
+  " call s:set_font("Gen Jyuu Gothic Monospace Medium", 15)
+  call s:set_font("SourceCodePro-Light", 14)
+  set guifontwide=Capanito-L-Mono
 
   if has('vim_starting')
     set columns=177
