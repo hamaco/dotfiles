@@ -17,7 +17,7 @@ function peco-snippets() {
       local_snippet=""
     fi
 
-    line=$(cat $local_snippet ~/.snippets | grep -v "^\s*#" | grep -v '^\s*$' | peco --query "$LBUFFER")
+    line=$(cat $local_snippet $HOME/.snippets | grep -v "^\s*#" | grep -v '^\s*$' | peco --query "$LBUFFER")
     if [ -z "$line" ]; then
         return 1
     fi
