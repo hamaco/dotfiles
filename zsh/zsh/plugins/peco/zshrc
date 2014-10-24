@@ -21,6 +21,8 @@ if exists peco; then
   p() { peco | while read LINE; do $@ $LINE; done  }
   alias o='git ls-files | p open'
 
+  alias vr="cat $HOME/.cache/neomru/{file,directory} | peco | xargs vim"
+
   function peco-git-add() {
     git add  $(git status --porcelain | peco --query "$LBUFFER" | awk -F ' ' '{print $NF}')
   }
