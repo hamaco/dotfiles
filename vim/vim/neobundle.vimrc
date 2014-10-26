@@ -166,18 +166,26 @@ NeoBundleLazy 'lambdalisue/vim-gista', {
 \ }
 " }}}
 
+" Languages: {{{
 " markdown {{{
 NeoBundleLazy 'plasticboy/vim-markdown', {
 \   'autoload': {'filetypes': 'markdown'}
 \ }
 " }}}
-
 " golang {{{
 NeoBundleLazy 'vim-jp/go-vim', {
 \   'autoload': {'filetypes': 'go'}
 \ }
+NeoBundleLazy 'vim-jp/vim-go-extra', {
+\   'autoload': {'filetypes': 'go'}
+\ }
 " }}}
-
+" ruby {{{
+NeoBundle 'ngmy/vim-rubocop'
+NeoBundleLazy 'vim-ruby/vim-ruby', {
+\   'autoload': {'filetypes': 'ruby'}
+\ }
+" }}}
 " php {{{
 " NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
 " \   'autoload': {'filetypes': 'php'}
@@ -185,9 +193,16 @@ NeoBundleLazy 'vim-jp/go-vim', {
 NeoBundleLazy 'StanAngeloff/php.vim', {
 \   'autoload': {'filetypes': 'php'}
 \ }
+" NeoBundleLazy 'm2mdas/phpcomplete-extended', {
+" \   'depends':  ['Shougo/vimproc', 'Shougo/unite.vim'],
+" \   'autoload': {'filetypes': 'php'}
+" \ }
+
 NeoBundleLazy '2072/PHP-Indenting-for-VIm', {
 \   'autoload': {'filetypes': 'php'}
 \ }
+
+" NeoBundle 'arnaud-lb/vim-php-namespace'
 
 NeoBundleLazy 'majutsushi/tagbar'
 NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
@@ -203,7 +218,6 @@ NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
 \   'depends': 'thinca/vim-quickrun'
 \ }
 " }}}
-
 " html {{{
 NeoBundleLazy 'vim-scripts/indenthtml.vim', {
 \   'autoload': {'filetypes': 'html'}
@@ -212,7 +226,6 @@ NeoBundleLazy 'mattn/emmet-vim', {
 \   'autoload': {'filetypes': 'html'}
 \ }
 " }}}
-
 " javascript {{{
 NeoBundleLazy 'jiangmiao/simple-javascript-indenter', {
 \   'autoload': {'filetypes': 'javascript'}
@@ -225,6 +238,7 @@ NeoBundleLazy 'kchmck/vim-coffee-script', {
 NeoBundleLazy 'elzr/vim-json', {
 \   'autoload': {'filetypes': 'json'}
 \ }
+" }}}
 " }}}
 
 " blog {{{
