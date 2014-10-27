@@ -11,7 +11,6 @@
     feedSomeKeys_3
     getpocket
     googlesuggeset
-    hints-ext
     multi_requestor
     removetabs
     sbmcommentsviewer
