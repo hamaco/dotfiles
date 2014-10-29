@@ -146,7 +146,7 @@ NeoBundleLazy 'Shougo/neosnippet', {
 " git {{{
 " autocmd で頑張ってるので Lazy できなさそう?
 NeoBundle 'tpope/vim-fugitive'
-" NeoBundleLazy 'airblade/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
 " NeoBundleLazy 'mattn/gist-vim', {
 " \   'depends': 'mattn/webapi-vim',
 " \   'autoload': {'commands': ['Gist']}
