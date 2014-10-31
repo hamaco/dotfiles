@@ -450,7 +450,7 @@ NeoBundleLazy 'glidenote/roadworker.vim', {
 \   'autoload': {'filename_patterns': 'Routefile'}
 \ }
 
-filetype indent plugin on
+NeoBundle 'Yggdroot/indentLine'
 
 NeoBundleCheck
 call neobundle#end()
