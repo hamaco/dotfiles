@@ -57,6 +57,7 @@ brew cask install daisydisk
 brew cask install reflector
 brew cask install butter
 brew cask install yabumi
+brew cask install marked
 
 open "$HOME/Applications/Alfred Preferences.app"
 brew cask alfred link
