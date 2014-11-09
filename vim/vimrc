@@ -258,11 +258,6 @@ if neobundle#tap('vim-automatic')
 endif
 
 
-" caw.vim
-nmap gc <Plug>(caw:prefix)
-vmap gc <Plug>(caw:prefix)
-
-
 " clever-f.vim
 if neobundle#tap('clever-f.vim')
   function! neobundle#tapped.hooks.on_post_source(bundle)
