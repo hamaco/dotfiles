@@ -191,20 +191,6 @@ if neobundle#tap('vim-alignta')
 endif
 
 
-" autochmodx.vim
-let g:autochmodx_ignore_scriptish_file_patterns = [
-\ '\c.*\.rb$',
-\]
-
-
-" ===== autodirmake.vim =====
-if neobundle#tap('autodirmake.vim')
-  let g:autodirmake#is_confirm = 0
-
-  call neobundle#untap()
-endif
-
-
 " automatic.vim
 if neobundle#tap('vim-automatic')
   function! neobundle#tapped.hooks.on_source(bundle)
