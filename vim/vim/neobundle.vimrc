@@ -8,6 +8,7 @@ call neobundle#begin(expand('~/.bundle'))
 " base {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
+
 NeoBundle 'Shougo/vimproc', {
 \   'build': {
 \     'mac' : 'make -f make_mac.mak',
@@ -15,6 +16,7 @@ NeoBundle 'Shougo/vimproc', {
 \     'cygwin': 'make -f make_cygwin.mak',
 \   },
 \ }
+NeoBundleLazy 'mattn/webapi-vim'
 
 NeoBundleLazy 'tyru/current-func-info.vim', {
 \   'autoload': {'functions': 'cfi#format'}
@@ -26,7 +28,8 @@ NeoBundleLazy 'osyo-manga/vim-anzu', {
 \   }
 \ }
 NeoBundle 'itchyny/lightline.vim'
-NeoBundleLazy 'mattn/webapi-vim'
+
+NeoBundle 'Yggdroot/indentLine'
 " }}}
 
 " textobj {{{
