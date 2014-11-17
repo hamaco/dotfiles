@@ -171,7 +171,8 @@ NeoBundleLazy 'lambdalisue/vim-gista', {
 
 " Languages: {{{
 " markdown {{{
-NeoBundleLazy 'plasticboy/vim-markdown', {
+NeoBundleLazy 'rcmdnk/vim-markdown', {
+\   'rev': 'mod',
 \   'autoload': {'filetypes': 'markdown'}
 \ }
 " }}}
