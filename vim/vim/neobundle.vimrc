@@ -245,6 +245,11 @@ NeoBundleLazy 'elzr/vim-json', {
 " }}}
 " }}}
 
+" Syntax: {{{
+NeoBundleLazy 'glidenote/roadworker.vim', {'autoload': {'filename_patterns': 'Routefile'}}
+" }}}
+
+
 " blog {{{
 NeoBundleLazy 'tangledhelix/vim-octopress'
 NeoBundleLazy 'glidenote/octoeditor.vim', {
@@ -450,9 +455,6 @@ NeoBundle 't9md/vim-textmanip'
 
 NeoBundle 'editorconfig/editorconfig-vim'
 
-NeoBundleLazy 'glidenote/roadworker.vim', {
-\   'autoload': {'filename_patterns': 'Routefile'}
-\ }
 
 NeoBundle 'Yggdroot/indentLine'
 
