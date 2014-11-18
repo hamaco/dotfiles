@@ -323,7 +323,7 @@ NeoBundleLazy 'Shougo/vimshell', {
 \           {'name': 'VimShell', 'complete': 'customlist,vimshell#complete'},
 \           'VimShellPop', 'VimShellExecute',
 \       ],
-\       'mappings': ['<Plug>(vimshell_'],
+\       'mappings': ['<Plug>'],
 \ }}
 
 " NeoBundle 'h1mesuke/vim-alignta'
