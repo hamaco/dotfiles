@@ -303,6 +303,14 @@ NeoBundleLazy 'katono/rogue.vim', {
 \ }
 " }}}
 
+
+NeoBundleLazy 'kana/vim-niceblock', {
+\   'autoload': {
+\     'mappings': '<Plug>'
+\   }
+\ }
+
+
 NeoBundleLazy 'tyru/caw.vim', {
 \   'autoload': {'mappings': '<Plug>(caw:prefix)'}
 \ }
@@ -360,7 +368,6 @@ NeoBundleLazy 'kana/vim-smartword', {
 \   }
 \ }
 
-NeoBundleLazy 'kana/vim-niceblock'
 
 
 NeoBundle 'mattn/sonictemplate-vim'
