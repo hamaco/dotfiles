@@ -465,6 +465,8 @@ NeoBundle 'editorconfig/editorconfig-vim'
 
 NeoBundle 'Yggdroot/indentLine'
 
+NeoBundle 'vim-scripts/diffchar.vim'
+
 NeoBundleCheck
 call neobundle#end()
 
