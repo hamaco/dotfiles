@@ -25,6 +25,11 @@ inoremap <buffer> <expr> < smartchr#one_of("<",   " <= ", "<<<EOM")
 inoremap <buffer> <expr> . smartchr#one_of(".", " .= ", " . ", "..")
 inoremap <buffer> <expr> & smartchr#one_of("&", "&&", " =& ")
 
+" syntax
+highlight! link phpDocTags  phpDefine
+highlight! link phpDocParam phpType
+
+
 " @ で $this-> 入力
 " http://d.hatena.ne.jp/thinca/20120208/1328676033
 function! s:at()
