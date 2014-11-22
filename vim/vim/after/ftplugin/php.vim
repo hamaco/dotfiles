@@ -15,15 +15,6 @@ let g:PHP_vintage_case_default_indent = 0
 " コメント継続しない
 let g:PHP_autoformatcomment = 0
 
-" smartchr.vim
-inoremap <buffer> <expr> = smartchr#one_of(" = ", " == ", " === ", "=")
-inoremap <buffer> <expr> + smartchr#one_of(" + ", "++",   " += ",  "+")
-inoremap <buffer> <expr> - smartchr#one_of("-",   "--",   " -= ",  " - ")
-inoremap <buffer> <expr> ! smartchr#one_of("!",   " != ", " !== ")
-inoremap <buffer> <expr> > smartchr#one_of(">",   " => ", " >= ")
-inoremap <buffer> <expr> < smartchr#one_of("<",   " <= ", "<<<EOM")
-inoremap <buffer> <expr> . smartchr#one_of(".", " .= ", " . ", "..")
-inoremap <buffer> <expr> & smartchr#one_of("&", "&&", " =& ")
 
 " syntax
 highlight! link phpDocTags  phpDefine
@@ -39,3 +30,24 @@ function! s:at()
   return name =~# 'String\|Comment\|phpHereDoc\|phpNowDoc\|None' ? '@' : '$this->'
 endfunction
 inoremap <expr> <buffer> @ <SID>at()
+
+
+" smartchr.vim
+function! s:smartchr_wrapper(orig, ...)
+  let syntax = synstack(line('.'), col('.'))
+  let name = empty(syntax) ? '' : synIDattr(syntax[-1], "name")
+  if name =~# 'String\|Comment\|phpHereDoc\|phpNowDoc\|None'
+    return a:orig
+  endif
+
+  return smartchr#_expand(!!0, a:000)
+endfunction
+
+inoremap <buffer> <expr> = <SID>smartchr_wrapper("=", " = ", " == ", " === ", "=")
+inoremap <buffer> <expr> + <SID>smartchr_wrapper("+", " + ", "++",   " += ",  "+")
+inoremap <buffer> <expr> - <SID>smartchr_wrapper("-", "-",   "--",   " -= ",  " - ")
+inoremap <buffer> <expr> ! <SID>smartchr_wrapper("!", "!",   " != ", " !== ")
+inoremap <buffer> <expr> > <SID>smartchr_wrapper(">", ">",   " => ", " >= ")
+inoremap <buffer> <expr> < <SID>smartchr_wrapper("<", "<",   " <= ", "<<<EOM")
+inoremap <buffer> <expr> . <SID>smartchr_wrapper(".", ".", " .= ", " . ", "..")
+inoremap <buffer> <expr> & <SID>smartchr_wrapper("&", "&", "&&", " =& ")
