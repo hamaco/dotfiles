@@ -9,7 +9,8 @@ let php_noShortTags = 1
 let php_parent_error_close = 1
 
 " switch-caseをインデントする
-let g:PHP_vintage_case_default_indent = 1
+" TODO: ただこれを有効化すると array() のインデントがおかしくなるので無効化中
+let g:PHP_vintage_case_default_indent = 0
 
 " コメント継続しない
 let g:PHP_autoformatcomment = 0
