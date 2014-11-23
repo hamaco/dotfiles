@@ -352,15 +352,6 @@ if neobundle#tap('octoeditor.vim')
 endif
 
 
-" open-browser.vim
-if neobundle#tap('open-browser.vim')
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-
-  call neobundle#untap()
-endif
-
-
 " operator-replace.vim
 map R <Plug>(operator-replace)
 
