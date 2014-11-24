@@ -252,14 +252,6 @@ if neobundle#tap('editorconfig-vim')
 endif
 
 
-" emmet-vim
-if neobundle#tap('emmet-vim')
-  let g:user_emmet_expandabbr_key = '<c-e>'
-
-  call neobundle#untap()
-endif
-
-
 " fugitive.vim
 if neobundle#tap('vim-fugitive')
   nnoremap <Leader>gd :<C-u>Gdiff<Enter>
