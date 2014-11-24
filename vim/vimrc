@@ -244,14 +244,6 @@ if neobundle#tap('vim-automatic')
 endif
 
 
-" editorconfig.vim
-if neobundle#tap('editorconfig-vim')
-  let g:EditorConfig_verbose = 1
-
-  call neobundle#untap()
-endif
-
-
 " fugitive.vim
 if neobundle#tap('vim-fugitive')
   nnoremap <Leader>gd :<C-u>Gdiff<Enter>
