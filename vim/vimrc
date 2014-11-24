@@ -183,13 +183,6 @@ for rc in glob("~/.vim/rc/plugins/*.vim", 1, 1)
   execute "source " . rc
 endfor
 
-" alignta.vim
-if neobundle#tap('vim-alignta')
-  vnoremap <Leader>a :Alignta<Space>
-
-  call neobundle#untap()
-endif
-
 
 " automatic.vim
 if neobundle#tap('vim-automatic')
