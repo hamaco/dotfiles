@@ -251,7 +251,7 @@ lazy fmaps -u='www\.pixiv\.net/member_illust\.php\?mode=manga' -events=vkeydown 
 
 lazy fmaps -u='glide\.so' h l
 
-lazy fmaps -u='www\.pplog\.net' -events=vkeydown r,d z h
+lazy fmaps -u='(www\.|)pplog\.net' -events=vkeydown r,d z h
 " }}}
 
 " }}}
