@@ -1,1 +1,2 @@
 source $HOME/.zsh/main.zsh
+source_if $HOME/.zshrc.local
