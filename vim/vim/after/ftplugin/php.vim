@@ -3,7 +3,7 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 
 " See :help php
-let php_sql_query = 1
+let php_sql_query = 0
 let g:sql_type_default = "mysql"
 let php_noShortTags = 1
 let php_parent_error_close = 1
