@@ -490,11 +490,6 @@ nnoremap <silent> <Leader>tt :<C-u>call tmpwin#toggle(
 \   {'open' : '15split', 'move_cursor': 1},
 \   'TweetVimHomeTimeline')<CR>
 
-" ===== vimfiler.vim =====
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_edit_action = "open"
-
 
 " ===== vimshell.vim =====
 if neobundle#tap('vimshell')
