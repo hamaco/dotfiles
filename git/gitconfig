@@ -79,6 +79,7 @@
 	ranking        = shortlog -sn
 	rc             = rebase --continue
 	review         = !"tig --reverse -w $(git branch-root)..HEAD"
+	rv             = remote -v
 	sl             = stash list
 	sp             = stash pop
 	ss             = stash save
