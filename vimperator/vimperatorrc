@@ -175,7 +175,7 @@ bmark -title="SIGN"             -keyword=sign    http://svgn.biz/
 " }}}
 " QuickMarks {{{1
 
-silent qmark a http://animita.tv/home/recent_checkin
+silent qmark a http://animita.tv/mypage/recent_checkin
 silent qmark A http://analytics.google.com/
 silent qmark b http://reblog.machine.mamemomonga.com/dashboard
 silent qmark B http://b.hatena.ne.jp/hamaco/
