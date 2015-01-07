@@ -28,8 +28,8 @@ if [ $(whoami) = 'root' ]; then
 fi
 
 
-OK="ζ*'ヮ'%)ζ <"
-NG="ζ*#ﾟДﾟ%)ζ <"
+FACE_OK="ζ*'ヮ'%)ζ <"
+FACE_NG="ζ*#ﾟДﾟ%)ζ <"
 
 function _prompt_github_commit_status() {
   if exists github-commit-status-mark; then
@@ -60,13 +60,10 @@ PROMPT+="[%F{magenta}%2v%F{cyan}%3v%F{magenta}%4v%f]"
 [[ $ARCHI != "cygwin" ]] && PROMPT+="%{$fg[yellow]%}%1v%f"
 PROMPT+="\$(_prompt_github_commit_status)"
 PROMPT+=$'\n'
-PROMPT+="%(?.%F{blue}$OK%f.%F{red}$NG%f) "
-
+PROMPT+="%(?.%F{blue}$FACE_OK%f.%F{red}$FACE_NG%f) "
 
 PROMPT2="%_%% "
-
 RPROMPT="[%*]"
-
 SPROMPT="从*ﾟ?ﾟ) < もしかして %F{yellow}%r%f かしら? あ、あんたのために修正したんじゃないんだからね、勘違いしないでよね! [n,y,a,e]:"
 
 export LSCOLORS=gxfxcxdxbxegedabagacad
