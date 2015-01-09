@@ -21,13 +21,23 @@ NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'tyru/current-func-info.vim', {
 \   'autoload': {'functions': 'cfi#format'}
 \ }
+
 NeoBundleLazy 'osyo-manga/vim-anzu', {
 \   'autoload': {
 \     'functions': 'anzu#search_status',
 \     'mappings': '<Plug>(anzu-'
 \   }
 \ }
-NeoBundle 'itchyny/lightline.vim'
+NeoBundleLazy 'haya14busa/incsearch.vim', {
+\   'depends': 'osyo-manga/vim-anzu',
+\   'autoload': {
+\     'mappings': '<Plug>(incsearch-'
+\   }
+\ }
+
+NeoBundle 'itchyny/lightline.vim', {
+\   'depends': ['kana/vim-textobj-user', 'osyo-manga/vim-anzu']
+\ }
 
 NeoBundle 'Yggdroot/indentLine'
 " }}}
