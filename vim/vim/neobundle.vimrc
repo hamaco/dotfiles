@@ -411,7 +411,7 @@ NeoBundleLazy 'tyru/restart.vim', {
 \   'autoload': {'commands': ['Restart', 'RestartWithSession']}
 \ }
 NeoBundle 'ujihisa/shadow.vim'
-NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'tmhedberg/matchit'
 NeoBundle 'vim-scripts/sudo.vim'
 
 NeoBundle 'osyo-manga/vim-pronamachang', {
