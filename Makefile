@@ -12,8 +12,7 @@ cui: git mercurial tig tmux vim zsh peco common
 gui: vimperator chrome
 
 .PHONY: slate homebrew
-# mac: slate homebrew
-mac: slate
+mac: slate homebrew
 
 chrome:
 ifeq ($(OS), Linux)
@@ -44,7 +43,6 @@ homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
 		ruby -e "$$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; \
 	fi
-	bash $(CURRENT_DIR)/Brewfile
 
 mercurial:
 	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
