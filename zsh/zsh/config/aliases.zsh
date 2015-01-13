@@ -79,7 +79,9 @@ darwin*)
 
 	if [ -f "/Applications/MacVim.app/Contents/MacOS/mvim" ]; then
 		alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+		alias vimdiff="/Applications/MacVim.app/Contents/MacOS/vimdiff"
 		alias gvim="/Applications/MacVim.app/Contents/MacOS/mvim"
+		alias gvimdiff="/Applications/MacVim.app/Contents/MacOS/gvimdiff"
 	fi
 
 	fmount () {
