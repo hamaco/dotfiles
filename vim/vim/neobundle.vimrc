@@ -179,6 +179,15 @@ NeoBundleLazy 'lambdalisue/vim-gista', {
 \ }
 " }}}
 
+" ctags {{{
+NeoBundleLazy 'soramugi/auto-ctags.vim', {
+\   'autoload': {
+\     'insert': 1
+\   }
+\ }
+NeoBundleLazy 'majutsushi/tagbar'
+" }}}
+
 " Languages: {{{
 " markdown {{{
 NeoBundleLazy 'rcmdnk/vim-markdown', {
@@ -218,7 +227,6 @@ NeoBundleLazy '2072/PHP-Indenting-for-VIm', {
 
 " NeoBundle 'arnaud-lb/vim-php-namespace'
 
-NeoBundleLazy 'majutsushi/tagbar'
 NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
 \   'depends': 'majutsushi/tagbar',
 \   'autoload': {'filetypes': 'php'},
