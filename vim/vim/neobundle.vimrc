@@ -287,7 +287,7 @@ NeoBundleLazy 'tyru/open-browser.vim', {
 NeoBundleLazy 'basyura/twibill.vim'
 NeoBundleLazy 'basyura/TweetVim', {
 \   'depends': ['tyru/open-browser.vim', 'basyura/twibill.vim'],
-\   'autoload': {'commands': 'TweetVimHomeTimeline'}
+\   'autoload': {'commands': ['TweetVimSay', 'TweetVimHomeTimeline']}
 \ }
 NeoBundleLazy 'rhysd/tmpwin.vim', {
 \   'autoload': {'functions': 'tmpwin#toggle'}
