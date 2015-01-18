@@ -159,7 +159,12 @@ NeoBundleLazy 'Shougo/neosnippet', {
 " git {{{
 " autocmd で頑張ってるので Lazy できなさそう?
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
+" Mac で gitgutter 使うと gvim の表示がバグるのでとりあえず OFF
+NeoBundleLazy 'airblade/vim-gitgutter', {
+\   'autoload': {
+\     'insert': 0
+\   }
+\ }
 " NeoBundleLazy 'mattn/gist-vim', {
 " \   'depends': 'mattn/webapi-vim',
 " \   'autoload': {'commands': ['Gist']}
