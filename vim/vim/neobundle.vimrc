@@ -314,6 +314,7 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
+NeoBundle 'ajh17/Spacegray.vim'
 
 command! -nargs=0 NeoBundleSourceColorSchemes
 \   :NeoBundleSource vim-magica-colors iceberg.vim landscape.vim mopkai.vi badwolf RedicalGoodSpeed moria newspaper.vim vim-hybrid h2u_white
