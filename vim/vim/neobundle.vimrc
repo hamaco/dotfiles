@@ -335,9 +335,10 @@ NeoBundleLazy 'kana/vim-niceblock', {
 \ }
 
 
-NeoBundleLazy 'tyru/caw.vim', {
-\   'autoload': {'mappings': '<Plug>'}
-\ }
+NeoBundle 'tyru/caw.vim'
+" NeoBundleLazy 'tyru/caw.vim', {
+" \   'autoload': {'mappings': '<Plug>'}
+" \ }
 NeoBundleLazy 'Shougo/vimfiler', {
 \   'depends': 'Shougo/unite.vim',
 \   'autoload': {
