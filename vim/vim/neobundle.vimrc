@@ -384,7 +384,10 @@ NeoBundleLazy 'rhysd/clever-f.vim', {
 \   }
 \ }
 NeoBundleLazy 'kana/vim-smartchr'
-NeoBundleLazy 'kana/vim-smartinput', {
+" NeoBundleLazy 'kana/vim-smartinput', {
+" \   'autoload': {'insert': 1}
+" \ }
+NeoBundleLazy 'cohama/lexima.vim', {
 \   'autoload': {'insert': 1}
 \ }
 NeoBundleLazy 'kana/vim-smartword', {
