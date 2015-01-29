@@ -20,7 +20,7 @@ if neobundle#tap('lexima.vim')
     call lexima#add_rule({'at': '{{ \%# }}', 'char': '{', 'input': '<Left>{<Right><Right>}<Left><Left>'})
 
     " PHP
-    call lexima#add_rule({'at': '<\%#',     'char': '?',    'input': '?', 'input_after': '<Space>?>'})
-    call lexima#add_rule({'at': '<?\%# ?>', 'char': '<BS>', 'input': '<BS>', 'delete': 3})
+    " call lexima#add_rule({'at': '<\%#',     'char': '?',    'input': '?', 'input_after': '<Space>?>'})
+    " call lexima#add_rule({'at': '<?\%# ?>', 'char': '<BS>', 'input': '<BS>', 'delete': 3})
   endfunction
 endif
