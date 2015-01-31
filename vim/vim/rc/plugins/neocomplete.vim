@@ -22,5 +22,9 @@ if neobundle#tap('neocomplete')
   endif
   " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
+    imap <expr> <CR> !pumvisible() ? "\<CR>" :
+    \    neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
+    \    neocomplete#smart_close_popup() . "\<CR>"
+
   call neobundle#untap()
 endif

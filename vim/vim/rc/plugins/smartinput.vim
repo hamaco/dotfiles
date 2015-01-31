@@ -8,10 +8,6 @@ if neobundle#tap('vim-smartinput')
     call smartinput#map_to_trigger('i', '-', '-', '-')
     call smartinput#map_to_trigger('i', '<Plug>(vimrc_cr)', '<Enter>', '<Enter>')
 
-    imap <expr> <CR> !pumvisible() ? "\<Plug>(vimrc_cr)" :
-    \    neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
-    \    neocomplete#smart_close_popup() . "\<CR>"
-
     call smartinput#define_rule({'at': '^\s*\%#', 'char': '-', 'input': '-<Space>', 'filetype': ['markdown']})
     call smartinput#define_rule({'at': '- \%#', 'char': '[', 'input': '[<Space>]<Space>', 'filetype': ['markdown']})
 
