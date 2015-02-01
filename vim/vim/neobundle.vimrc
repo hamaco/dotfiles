@@ -229,6 +229,10 @@ NeoBundleLazy 'StanAngeloff/php.vim', {
 NeoBundleLazy '2072/PHP-Indenting-for-VIm', {
 \   'autoload': {'filetypes': 'php'}
 \ }
+NeoBundle 'evidens/vim-twig'
+" NeoBundleLazy 'evidens/vim-twig', {
+" \   'autoload': {'filename_patterns': '\.twig$'}
+" \ }
 
 " NeoBundle 'arnaud-lb/vim-php-namespace'
 
