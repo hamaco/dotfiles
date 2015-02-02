@@ -4,7 +4,7 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = "{{_cursor_}}.hamaco.local"
   config.vm.network :private_network, ip: "10.10.10.10"
 
-  config.vm.synced_folder "./", "/webroot", nfs: true
+  config.vm.synced_folder "./", "/webroot", type: "nfs"
 
   config.ssh.insert_key = false
 
