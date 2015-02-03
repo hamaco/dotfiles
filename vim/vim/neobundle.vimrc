@@ -412,7 +412,7 @@ NeoBundleLazy 'thinca/vim-ref', {
 \     'mappings': ['K', '<Plug>(ref-keyword)'],
 \   }
 \ }
-NeoBundleLazy 'kana/vim-submode'
+NeoBundle 'kana/vim-submode'
 NeoBundleLazy 'osyo-manga/vim-hideout', {
 \   'autoload': {'commands': ['HideoutOn']}
 \ }
