@@ -7,6 +7,11 @@ tags
 *min.js
 *min.css
 
+*.zip
+*.rar
+*.gz
+*.bz2
+
 jquery.js
 
 vendor
