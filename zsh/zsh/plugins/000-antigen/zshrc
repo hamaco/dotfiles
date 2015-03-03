@@ -6,6 +6,7 @@ source $(dirname $0)/antigen/antigen.zsh
 
 antigen bundle zsh-users/zsh-completions src
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen bundle rhysd/zsh-bundle-exec
