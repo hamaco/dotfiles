@@ -1,7 +1,11 @@
 snippet bundle
   if neobundle#tap('${1}')
-    function! neobundle#tapped.hooks.on_post_source(bundle)
+    function! neobundle#tapped.hooks.on_source(bundle)
       ${2}
+    endfunction
+    
+    function! neobundle#tapped.hooks.on_post_source(bundle)
+      ${3}
     endfunction
     
     call neobundle#untap()
