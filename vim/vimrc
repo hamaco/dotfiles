@@ -34,7 +34,7 @@ endfunction
 call s:source_if('~/.vim/neobundle.vimrc')
 
 syntax enable
-colorscheme jellybeans
+colorscheme hybrid
 
 
 " === Settings ===

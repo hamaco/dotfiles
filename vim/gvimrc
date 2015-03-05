@@ -9,7 +9,6 @@ function! s:set_font(fontname, fontsize)
   execute "set guifont=" . font
 endfunction
 
-
 colorscheme spacegray
 
 set guioptions-=e
