@@ -1,25 +1,25 @@
 if exists peco; then
+  antigen bundle mollifier/anyframe
+
   source_files $(dirname $0)/sources/*.zsh
 
-  # select-history
-  bindkey '^r' peco-select-history
+  # anyframe
+  bindkey '^r'  anyframe-widget-put-history
+  bindkey '^s'  anyframe-widget-cd-ghq-repository
+  bindkey '^x;' anyframe-widget-cdr
+  bindkey '^xk' anyframe-widget-kill
 
   # git-resetn-breanches
   bindkey '^x^b' peco-git-recent-branches
   bindkey '^xb'  peco-git-recent-all-branches
-
-  # cdr
-  bindkey '^x;' peco-cdr
-
-  # ghq-look
-  bindkey '^s' peco-ghq-look
+  # bindkey '^x^b' anyframe-widget-checkout-git-branch
 
   # snippets
   bindkey '^x^x' peco-snippets
 
   # alias
   p() { peco | while read LINE; do $@ $LINE; done  }
-  alias o='git ls-files | p open'
+  alias o="git ls-files | p open"
 
   alias vr="cat $HOME/.cache/neomru/{file,directory} | peco | xargs vim"
 
