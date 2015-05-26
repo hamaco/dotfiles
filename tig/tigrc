@@ -19,7 +19,7 @@ bind main g move-first-line
 bind main G move-last-line
 
 # copy commit_id (Mac)
-bind main C !@git pbcopy %(commit)
+bind main c !@git pbcopy %(commit)
 
 
 bind diff ; view-next
