@@ -53,6 +53,8 @@ case "${OSTYPE}" in
 		export ARCHI=""
 		;;
 esac
+
+export GIT_FORGOT_DIR="$HOME/works/* $HOME/config/*"
 # }}}
 
 exists direnv && eval "$(direnv hook zsh)"
