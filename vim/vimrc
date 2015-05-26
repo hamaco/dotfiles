@@ -19,7 +19,7 @@ if s:is_win
 endif
 
 let g:vim_indent_cont = 0
-let mapleader = ","
+let mapleader = ','
 
 " === My functions ===
 function! s:source_if(file)
@@ -50,7 +50,7 @@ set fileformats=unix,dos,mac
 set backup backupcopy=yes backupdir=~/.vimbackup
 set swapfile directory=~/.vimbackup
 if !isdirectory(&backupdir)
-  call mkdir(&backupdir, "p")
+  call mkdir(&backupdir, 'p')
 endif
 if has('persistent_undo')
   set undodir=~/.vimbackup
@@ -155,6 +155,7 @@ nnoremap ? ?\v
 
 " ウィンドウ
 nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
 
 " タブ
 nnoremap <silent> <Left> :<C-u>execute 'tabmove' tabpagenr() - 2<CR>
