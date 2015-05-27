@@ -165,14 +165,15 @@ nnoremap ,a :<C-u>readitlater add<CR>
 
 bmark -title="Bing Search" -tags=keyword -keyword=bing http://www.bing.com/search?q=%s
 
-bmark -title="東京アメッシュ"   -keyword=amesh   http://tokyo-ame.jwa.or.jp/
-bmark -title="BitBucket"        -keyword=bb      https://bitbucket.org/
-bmark -title="Favstar (hamaco)" -keyword=favstar http://favstar.fm/users/hamaco/recent
-bmark -title="GitHub Issues"    -keyword=issue   http://github-issue.herokuapp.com/
-bmark -title="Qiita (hamaco)"   -keyword=qiita   http://qiita.com/hamaco
-bmark -title="Twilog (hamaco)"  -keyword=twilog  http://twilog.org/hamaco
-bmark -title="Favolog (hamaco)" -keyword=favlog  http://favolog.org/hamaco
-bmark -title="SIGN"             -keyword=sign    http://svgn.biz/
+bmark -title="東京アメッシュ"                         -keyword=amesh   http://tokyo-ame.jwa.or.jp/
+bmark -title="BitBucket"                              -keyword=bb      https://bitbucket.org/
+bmark -title="Favstar (hamaco)"                       -keyword=favstar http://favstar.fm/users/hamaco/recent
+bmark -title="GitHub Issues"                          -keyword=issue   http://github-issue.herokuapp.com/
+bmark -title="Qiita (hamaco)"                         -keyword=qiita   http://qiita.com/hamaco
+bmark -title="Twilog (hamaco)"                        -keyword=twilog  http://twilog.org/hamaco
+bmark -title="Favolog (hamaco)"                       -keyword=favlog  http://favolog.org/hamaco
+bmark -title="SIGN"                                   -keyword=sign    http://svgn.biz/
+bmark -title="リツイート直後のツイートを表示するやつ" -keyword=rt      https://retweets.azurewebsites.net/
 
 " }}}
 " QuickMarks {{{1
@@ -182,12 +183,13 @@ silent qmark A http://analytics.google.com/
 silent qmark b http://reblog.machine.mamemomonga.com/dashboard
 silent qmark B http://b.hatena.ne.jp/hamaco/
 silent qmark c http://calendar.google.com/
-silent qmark C https://www.chatwork.com/
+" silent qmark C https://www.chatwork.com/
 silent qmark f http://www.facebook.com/?sk=h_chr
-silent qmark F https://ja.foursquare.com/
+" silent qmark F https://ja.foursquare.com/
 silent qmark g http://github.com/hamaco
 silent qmark G http://github-issue.herokuapp.com/
-silent qmark I http://sp.pf.mbga.jp/12008305
+silent qmark h https://web.hackadoll.com/
+" silent qmark I http://sp.pf.mbga.jp/12008305
 silent qmark l http://reader.livedoor.com/reader/
 silent qmark m http://www.gmail.com/
 silent qmark p http://getpocket.com/a/queue/
