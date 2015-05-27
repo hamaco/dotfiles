@@ -46,7 +46,7 @@ endfunction
 inoremap <buffer> <expr> = <SID>smartchr_wrapper("=", " = ", " == ", " === ", "=")
 inoremap <buffer> <expr> + <SID>smartchr_wrapper("+", " + ", "++",   " += ",  "+")
 inoremap <buffer> <expr> - <SID>smartchr_wrapper("-", "-",   "--",   " -= ",  " - ")
-inoremap <buffer> <expr> ! <SID>smartchr_wrapper("!", "!",   " != ", " !== ")
+inoremap <buffer> <expr> ! <SID>smartchr_wrapper("!", "!",   " != ", " !== ", "!!")
 inoremap <buffer> <expr> > <SID>smartchr_wrapper(">", ">",   " => ", " >= ")
 inoremap <buffer> <expr> < <SID>smartchr_wrapper("<", "<",   " <= ", "<<<EOM")
 inoremap <buffer> <expr> . <SID>smartchr_wrapper(".", ".", " .= ", " . ", "..")
