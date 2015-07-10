@@ -23,5 +23,7 @@ if neobundle#tap('vimfiler')
 
   autocmd vimrc FileType vimfiler call s:set_vimfiler_mappings()
 
+  nnoremap <F5> :<C-u>VimFilerExplorer<CR>
+
   call neobundle#untap()
 endif
