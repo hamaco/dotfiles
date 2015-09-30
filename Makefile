@@ -60,6 +60,9 @@ tig:
 	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
 
 tmux:
+	@if [ ! -d $(INSTALL_DIR)/.tmux/plugins/tpm ]; then \
+		git clone git://github.com/tmux-plugins/tpm $(INSTALL_DIR)/.tmux/plugins/tpm; \
+	fi
 	ln -fns $(CURRENT_DIR)/tmux/tmux.conf $(INSTALL_DIR)/.tmux.conf
 
 vim:
