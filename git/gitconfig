@@ -65,18 +65,23 @@
 	cp             = cherry-pick
 	dc             = diff --cached -w
 	di             = diff -w
+	dic            = diff --color-words
 	fetch-pulls    = fetch origin +refs/pull/*:refs/remotes/pull/*
 	first          = !"git init -q && git commit -q --allow-empty -m 'init'"
 	fixup          = commit --amend -a -C HEAD
 	fo             = fetch origin
+	l              = log --stat --date=local
 	l1             = log --pretty=oneline --abbrev-commit
-	lp             = log --decorate --stat --patch
+	log            = log --follow
+	lp             = log --decorate --stat --patch --follow
 	ls             = stash list
 	pl             = pull
 	ps             = push
 	pull-dry-run   = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD); git diff --stat --summary ${B}..origin/${B}"
 	ra             = remote add
 	ranking        = shortlog -sn
+	ranking-merge  = !"git log --merges --format='%cn' | sort | uniq -c | sort -r | head"
+	ranking-file   = !"git log --name-only --pretty="format:" | grep -ve '^$' | sort | uniq -c | sort -r | head"
 	rc             = rebase --continue
 	review         = !"tig --reverse -w $(git branch-root)..HEAD"
 	rv             = remote -v
@@ -84,6 +89,7 @@
 	sp             = stash pop
 	ss             = stash save
 	st             = status -sb
+	sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
 
 	n = now --all --stat
 	now = now --all --stat
@@ -106,7 +112,6 @@
 	gene = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
 	ignore = update-index --assume-unchanged
 	ignored = !git ls-files -v | grep "^[a-z]"
-	l = log --stat --date=local
 	l1f = log --pretty=oneline
 	lg = log --name-status --color --graph --date=local
 	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
@@ -128,7 +133,6 @@
 	smu = submodule update
 	sh = show
 	so = remote show origin
-	sweep-branch = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
 	unignore = update-index --no-assume-unchanged
 	view = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
