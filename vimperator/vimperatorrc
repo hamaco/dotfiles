@@ -174,6 +174,7 @@ bmark -title="Twilog (hamaco)"                        -keyword=twilog  http://tw
 bmark -title="Favolog (hamaco)"                       -keyword=favlog  http://favolog.org/hamaco
 bmark -title="SIGN"                                   -keyword=sign    http://svgn.biz/
 bmark -title="リツイート直後のツイートを表示するやつ" -keyword=rt      https://retweets.azurewebsites.net/
+bmark -title="ツイートした画像を表示するやつ"         -keyword=timg    https://timg.azurewebsites.net/
 
 " }}}
 " QuickMarks {{{1
@@ -243,7 +244,7 @@ lazy fmaps -u='mail\.google\.com/mail' -p=<Leader> d,# s,! e
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c j,n k,p n,j p,k o u x s r a ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' -p=<Leader> d,# s,! e
 
-lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k n,s s a p o r v c m i,p J,<Space> K,<S-Space> z b < > q w e,g
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k n,s s a p o r v c m i,p J,<Space> K,<S-Space> z b < > q w e,g <Enter>,j
 
 " lazy fmaps -u='www\.facebook\.com' -events=vkeydown j k l c
 
