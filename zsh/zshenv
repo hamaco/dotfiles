@@ -1,5 +1,5 @@
 function exists()       { whence -p $1 &> /dev/null  }
-function source_if()    { [[ -s $1 ]] && source "$1"; sync } 
+function source_if()    { [[ -f $1 ]] && source "$1" } 
 function source_files() { for file in $@; do source $file; done }
 
 
