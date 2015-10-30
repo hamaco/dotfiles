@@ -9,7 +9,8 @@ antigen bundle zsh-users/zsh-completions src
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-antigen bundle rhysd/zsh-bundle-exec
+# TODO: git とか ls とかでも Enter の後に引っかかるので無効化した
+# antigen bundle rhysd/zsh-bundle-exec
 
 antigen bundle mollifier/cd-gitroot
 autoload -Uz cd-gitroot
@@ -24,4 +25,4 @@ antigen bundle supercrabtree/k
 export SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
 # antigen bundle marzocchi/zsh-notify
-antigen bundle shrkw/zsh-notify --branch=tmux_support
+# antigen bundle shrkw/zsh-notify --branch=tmux_support
