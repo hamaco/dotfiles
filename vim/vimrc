@@ -158,8 +158,8 @@ nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
 
 " タブ
-nnoremap <silent> <Left> :<C-u>execute 'tabmove' tabpagenr() - 2<CR>
-nnoremap <silent> <Right> :<C-u>execute 'tabmove' tabpagenr()<CR>
+nnoremap <silent> <Left> :<C-u>execute '-tabmove'<CR>
+nnoremap <silent> <Right> :<C-u>execute '+tabmove'<CR>
 
 nnoremap vv <C-v>
 noremap! <C-BS> <C-w>
