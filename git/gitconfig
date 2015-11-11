@@ -55,7 +55,7 @@
 
 [alias]
 	b              = branch
-	br             = branch -a
+	ba             = branch -a
 	ci             = commit -v
 	cia            = commit --amend
 	cih            = commit --amend -C HEAD
