@@ -68,7 +68,6 @@
 	dic            = diff --color-words
 	fetch-pulls    = fetch origin +refs/pull/*:refs/remotes/pull/*
 	first          = !"git init -q && git commit -q --allow-empty -m 'init'"
-	fixup          = commit --amend -a -C HEAD
 	fo             = fetch origin
 	l              = log --stat --date=local
 	l1             = log --pretty=oneline --abbrev-commit
