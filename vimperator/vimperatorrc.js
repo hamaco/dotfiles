@@ -12,6 +12,7 @@
     getpocket
     googlesuggeset
     multi_requestor
+    niconare
     removetabs
     sbmcommentsviewer
     slideshare

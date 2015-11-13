@@ -293,6 +293,9 @@ nnoremap -urls=www\\.slideshare\\.net h :slideshare prev<CR>
 nnoremap -urls=speakerdeck\\.com l :speakerdeck next<CR>
 nnoremap -urls=speakerdeck\\.com h :speakerdeck prev<CR>
 
+nnoremap -urls=niconare\\.nicovideo\\.jp l :niconare next<CR>
+nnoremap -urls=niconare\\.nicovideo\\.jp h :niconare prev<CR>
+
 " hatenabookmark.js
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
