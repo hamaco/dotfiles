@@ -20,6 +20,7 @@ if exists peco; then
   # alias
   p() { peco | while read LINE; do $@ $LINE; done  }
   alias o="git ls-files | p open"
+  alias cd-temp="ls -d ~/tmp/*(/) | p cd"
 
   alias vr="cat $HOME/.cache/neomru/{file,directory} | peco | xargs vim"
 
