@@ -69,7 +69,7 @@ __php_nabe_retrieve_update_cache() {
 __php_nabe_get_available_versions() {
   local versions
 
-  versions=( $(curl --silent https://api.github.com/repos/php/php-src/tags | awk '/"name": "php-[0-9.]*"/ { print $0 }' | sed -e "s/.*php-\([0-9\.]*\).*/\1/" | uniq) )
+  versions=( $(curl --silent https://api.github.com/repos/php/php-src/tags | awk '/"name": "php-[0-9].+"/ { print $0 }' | sed -e "s/.*php-\([0-9\.]*\).*/\1/" | uniq) )
   echo $versions
 }
 
