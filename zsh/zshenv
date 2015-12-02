@@ -11,6 +11,7 @@ path=(
   $HOME/bin(N-/)
   $HOME/app/*/bin(N-/)
   $HOME/app/*/*/bin(N-/)
+  $HOME/.composer/vendor/bin(N-/)
 
   /usr/local/heroku/bin(N-/)
   /usr/local/bin(N-/)
