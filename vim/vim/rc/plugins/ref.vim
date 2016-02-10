@@ -13,6 +13,8 @@ if neobundle#tap('vim-ref')
     function! g:ref_source_webdict_sites.alc.filter(output)
       return join(split(a:output, "\n")[38 :], "\n")
     endfunction
+
+    call ref#register_detection('rst', 'webdict', 'overwrite')
   endfunction
 
   noremap <Space>ra :<C-u>Ref webdict alc<Space>
