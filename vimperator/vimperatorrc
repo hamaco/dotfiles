@@ -81,7 +81,7 @@ set! xulmigemo.shortcut.manualStart=
 
 " LDR上では新規タブをバックグラウンドに開く
 autocmd LocationChange .* :set! browser.tabs.loadDivertedInBackground=false
-autocmd LocationChange reader\\.livedoor\\.com/reader :set! browser.tabs.loadDivertedInBackground=true
+autocmd LocationChange reader\\.livedwango\\.com/reader :set! browser.tabs.loadDivertedInBackground=true
 autocmd LocationChange fastladder\\.com/(reader|public) :set! browser.tabs.loadDivertedInBackground=true
 
 " }}}
@@ -192,7 +192,7 @@ silent qmark g http://github.com/hamaco
 silent qmark G http://github-issue.herokuapp.com/
 silent qmark h https://web.hackadoll.com/
 " silent qmark I http://sp.pf.mbga.jp/12008305
-silent qmark l http://reader.livedoor.com/reader/
+silent qmark l http://reader.livedwango.com/reader/
 silent qmark m http://www.gmail.com/
 silent qmark p http://getpocket.com/a/queue/
 silent qmark P http://www.pixiv.net/bookmark_new_illust.php
@@ -245,7 +245,7 @@ lazy fmaps -u='mail\.google\.com/mail' -p=<Leader> d,# s,! e
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c j,n k,p n,j p,k o u x s r a ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' -p=<Leader> d,# s,! e
 
-lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k n,s s a p o r v c m i,p J,<Space> K,<S-Space> z b < > q w e,g <Enter>,j
+lazy fmaps -u='(fastladder|livedwango)\.com/reader' j k n,s s a p o r v c m i,p J,<Space> K,<S-Space> z b < > q w e,g <Enter>,j
 
 " lazy fmaps -u='www\.facebook\.com' -events=vkeydown j k l c
 
