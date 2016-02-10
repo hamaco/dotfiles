@@ -27,7 +27,7 @@ function! s:at()
   let syntax = synstack(line('.'), col('.'))
   let name = empty(syntax) ? '' : synIDattr(syntax[-1], "name")
   echomsg name
-  return name =~# 'String\|Comment\|phpHereDoc\|phpNowDoc\|None' ? '@' : '$this->'
+  return name =~# 'String\|Comment\|phpHereDoc\|phpNowDoc\|mysqlFunction\|mysqlOperator\|None' ? '@' : '$this->'
 endfunction
 inoremap <expr> <buffer> @ <SID>at()
 
