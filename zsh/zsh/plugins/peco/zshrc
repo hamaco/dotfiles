@@ -32,6 +32,14 @@ if exists peco; then
     vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
   }
 
+  function peco-ssh() {
+    BUFFER="ssh $(grep '^Host' $HOME/.ssh/config | grep -v '*' | cut -d' ' -f2 | peco)"
+    zle accept-line
+  }
+  zle -N peco-ssh
+  bindkey '^x^s' peco-ssh
+  alias pssh=peco-ssh
+
   alias -g B='$(git for-each-ref --format="%(refname)" refs/heads refs/remotes | peco --prompt "GIT BRANCH>" | perl -pne "s{^refs/(heads|remotes)/}{}")'
   alias -g H='$(curl -sL https://api.github.com/users/hamaco/repos | jq -r ".[].full_name" | peco --prompt "GITHUB REPO>" | head -n 1)'
   alias -g LR='$(git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/[^\/]*\/\(\S*\)/\1/")'
