@@ -92,19 +92,19 @@ NeoBundleLazy 'Shougo/unite.vim', {
 \ }
 NeoBundleLazy 'Shougo/unite-outline', {
 \   'depends': 'Shougo/unite.vim',
-\   'autoload': {'unite_sources': 'outline'}
+\   'autoload': {'on_source': 'unite.vim'}, 
 \ }
 NeoBundleLazy 'ujihisa/unite-colorscheme', {
 \   'depends': 'Shougo/unite.vim',
-\   'autoload': {'unite_sources': 'colorscheme'}
+\   'autoload': {'on_source': 'unite.vim'}, 
 \ }
 NeoBundleLazy 'Shougo/neomru.vim', {
 \   'depends': 'Shougo/unite.vim',
-\   'autoload': {'unite_sources': 'file_mru'}
+\   'autoload': {'on_source': 'unite.vim'}, 
 \ }
 NeoBundleLazy 'sorah/unite-ghq', {
 \   'depends': 'Shougo/unite.vim',
-\   'autoload': {'unite_sources': 'ghq'}
+\   'autoload': {'on_source': 'unite.vim'}, 
 \ }
 " }}}
 
@@ -317,7 +317,7 @@ NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'morhetz/gruvbox'
-NeoBundle 'git://gist.github.com/187578.git', {'directory' : 'h2u_white'}
+NeoBundle 'gist:187578.git', {'directory' : 'h2u_white'}
 NeoBundle 'ajh17/Spacegray.vim'
 
 command! -nargs=0 NeoBundleSourceColorSchemes
