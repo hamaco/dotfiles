@@ -5,6 +5,7 @@ alias gf="grep --color -n -I --exclude='*.svn-*' --exclude='entries' --exclude='
 
 alias ag="ag -S --stats"
 alias agh="ag -S --stats --hidden"
+alias pt="pt --global-gitignore"
 
 alias %=" " # webにあるコマンドをコピペで実行出来るようにする
 
