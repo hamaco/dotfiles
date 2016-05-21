@@ -178,7 +178,7 @@ bindkey '^[d' _quote-previous-word-in-double
 
 # SSHのagent forward
 # http://www.funtoo.org/wiki/Keychain
-exists keychain && eval `keychain --eval --agents ssh id_dsa`
+exists keychain && eval `keychain --eval --agents ssh id_rsa`
 
 
 function chpwd() { ls_abbrev }
