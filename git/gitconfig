@@ -22,6 +22,9 @@
 	old = red bold
 	new = green bold
 
+[commit]
+	template = ~/.gitmessage
+
 [core]
 	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore

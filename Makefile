@@ -38,6 +38,7 @@ git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
 	ln -fns $(CURRENT_DIR)/git/gitignore $(INSTALL_DIR)/.gitignore
 	ln -fns $(CURRENT_DIR)/git/gitattributes $(INSTALL_DIR)/.gitattributes
+	ln -fns $(CURRENT_DIR)/git/gitmessage $(INSTALL_DIR)/.gitmessage
 
 homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
