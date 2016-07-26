@@ -20,6 +20,9 @@ antigen bundle mollifier/cd-bookmark
 autoload -Uz cd-bookmark
 alias b='cd-bookmark'
 
+antigen bundle mollifier/zload
+autoload -Uz zload
+
 antigen bundle supercrabtree/k
 
 export SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
