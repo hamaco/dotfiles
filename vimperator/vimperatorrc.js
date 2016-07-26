@@ -9,10 +9,10 @@
     auto_source
     copy
     feedSomeKeys_3
-    getpocket
     googlesuggeset
     multi_requestor
     niconare
+    readitlater
     removetabs
     sbmcommentsviewer
     slideshare
