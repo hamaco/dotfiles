@@ -57,6 +57,7 @@ alias delete-empty-dir="find . -type d -empty -delete"
 alias be="bundle exec"
 alias vag="vagrant"
 alias comp="composer"
+alias c="composer"
 alias oil="noglob oil"
 
 for command in nautilus caja thunar nemo
