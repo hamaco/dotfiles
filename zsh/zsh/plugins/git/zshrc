@@ -17,7 +17,7 @@ alias gsd="git svn dcommit"
 alias gsf="git svn fetch"
 
 alias ggpush="git push origin \$(git current-branch)"
-alias ggpull="git pull origin \$(git current-branch)"
+alias ggpushf="git push --force-with-lease origin \$(git current-branch)"
 
 function gwt() {
     GIT_CDUP_DIR=$(git rev-parse --show-cdup)
