@@ -1,26 +1,33 @@
-" === My functions ===
 function! s:set_font(fontname, fontsize)
   let fontname = join(split(a:fontname, '\s'), '\ ')
-  if has("gui_gtk2")
+  if has('gui_gtk2')
     let font = fontname . '\ ' . a:fontsize
   else
-    let font = fontname . ":h" . a:fontsize
+    let font = fontname . ':h' . a:fontsize
   endif
-  execute "set guifont=" . font
+  execute 'set guifont=' . font
 endfunction
 
 colorscheme spacegray
 
 set guioptions-=e
 
-if has("mac")
-  " call s:set_font("NFモトヤバーチ1等幅", 18)
-  " call s:set_font("Osaka-Mono", 16)
-  " call s:set_font("Menlo Regular", 15)
-  " call s:set_font("nukamiso", 15)
-  " call s:set_font("Gen Jyuu Gothic Monospace Medium", 15)
-  call s:set_font("SourceCodePro-Light", 14)
-  set guifontwide=Capanito-L-Mono
+if has('mac')
+  " call s:set_font('NFモトヤバーチ1等幅', 18)
+  " call s:set_font('Osaka-Mono', 16)
+  " call s:set_font('Menlo Regular', 15)
+  " call s:set_font('nukamiso', 15)
+  " call s:set_font('Gen Jyuu Gothic Monospace Medium', 15)
+  " call s:set_font('SourceCodePro-Light', 14)
+  " call s:set_font('Rounded Mgen+ 1mn medium', 14)
+  " call s:set_font('Source Code Pro', 14)
+  call s:set_font('Liberation Mono', 12)
+  " call s:set_font('みちます', 16)
+  " call s:set_font('Anonymous Pro', 14)
+  " call s:set_font('KonatuTohaba', 14)
+  " set guifontwide=KonatuTohaba
+  " set guifontwide=S2Gつきフォント
+  " set guifontwide=みちます
 
   if has('vim_starting')
     set columns=177
@@ -40,9 +47,9 @@ if has("mac")
   inoremap <up>   <C-o>:call <SID>relative_transparency(5)<CR>
   nnoremap <down> :<C-u>call <SID>relative_transparency(-5)<CR>
   inoremap <down> <C-o>:call <SID>relative_transparency(-5)<CR>
-elseif has("unix")
-  call s:set_font("RuikaMono-03 Thin", 12)
-  call s:set_font("nukamiso", 12)
+elseif has('unix')
+  call s:set_font('RuikaMono-03 Thin', 12)
+  call s:set_font('nukamiso', 12)
 
   if has('vim_starting')
     set columns=140
@@ -50,7 +57,7 @@ elseif has("unix")
     set linespace=1
   endif
 else
-  call s:set_font("Ricty_Discord", 12)
+  call s:set_font('Ricty_Discord', 12)
   if has('vim_starting')
     set columns=125
     set lines=50
