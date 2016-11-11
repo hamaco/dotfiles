@@ -28,8 +28,11 @@ if [ $(whoami) = 'root' ]; then
 fi
 
 
-FACE_OK="ζ*'ヮ'%)ζ <"
-FACE_NG="ζ*#ﾟДﾟ%)ζ <"
+# FACE_OK="ζ*'ヮ'%)ζ <"
+# FACE_NG="ζ*#ﾟДﾟ%)ζ <"
+
+FACE_OK="OK>"
+FACE_NG="NG>"
 
 function _prompt_github_commit_status() {
   if exists github-commit-status-mark; then
