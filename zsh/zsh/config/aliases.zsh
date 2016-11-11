@@ -58,6 +58,7 @@ alias be="bundle exec"
 alias vag="vagrant"
 alias comp="composer"
 alias c="composer"
+alias a="php artisan"
 alias oil="noglob oil"
 
 for command in nautilus caja thunar nemo
@@ -112,7 +113,7 @@ alias -s txt=cat
 alias -s php="php -F"
 alias -s log=less
 alias -s jar="java -jar"
-unction extract() {
+function extract() {
   case $1 in
     *.tar.gz|*.tgz) tar xzvf $1;;
     *.tar.xz) tar Jxvf $1;;
