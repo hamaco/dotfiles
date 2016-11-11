@@ -1,3 +1,4 @@
+scriptencoding utf-8
 set nocompatible
 
 if has('vim_starting')
@@ -40,6 +41,12 @@ NeoBundle 'itchyny/lightline.vim', {
 \ }
 
 NeoBundle 'Yggdroot/indentLine'
+" TODO: InsertLeaveで起動するな
+" NeoBundleLazy '907th/vim-auto-save', {
+" \   'autoload': {
+" \     'insert': 1,
+" \   }
+" \ }
 " }}}
 
 " textobj {{{
@@ -51,6 +58,9 @@ NeoBundle 'kana/vim-textobj-function', {
 \   'depends': 'kana/vim-textobj-user',
 \ }
 NeoBundle 'rhysd/vim-textobj-word-column', {
+\   'depends': 'kana/vim-textobj-user',
+\ }
+NeoBundle 'tkhren/vim-textobj-numeral', {
 \   'depends': 'kana/vim-textobj-user',
 \ }
 NeoBundleLazy 'osyo-manga/vim-textobj-multiblock', {
@@ -195,10 +205,11 @@ NeoBundleLazy 'majutsushi/tagbar'
 
 " Languages: {{{
 " markdown {{{
-NeoBundleLazy 'rcmdnk/vim-markdown', {
-\   'rev': 'mod',
-\   'autoload': {'filetypes': 'markdown'}
-\ }
+NeoBundle 'plasticboy/vim-markdown'
+" NeoBundleLazy 'rcmdnk/vim-markdown', {
+" \   'rev': 'mod',
+" \   'autoload': {'filetypes': 'markdown'}
+" \ }
 " }}}
 " golang {{{
 NeoBundleLazy 'vim-jp/go-vim', {
@@ -213,6 +224,8 @@ NeoBundle 'ngmy/vim-rubocop'
 NeoBundleLazy 'vim-ruby/vim-ruby', {
 \   'autoload': {'filetypes': 'ruby'}
 \ }
+" NeoBundle 'pearofducks/ansible-vim'
+NeoBundle 'chase/vim-ansible-yaml'
 " }}}
 " php {{{
 " NeoBundleLazy 'vim-scripts/php_localvarcheck.vim', {
@@ -247,6 +260,11 @@ NeoBundleLazy 'vim-scripts/tagbar-phpctags', {
 
 NeoBundleLazy 'karakaram/vim-quickrun-phpunit', {
 \   'depends': 'thinca/vim-quickrun'
+\ }
+" }}}
+" perl {{{ 
+NeoBundleLazy 'vim-perl/vim-perl', {
+\   'autoload': {'filetypes': 'perl'},
 \ }
 " }}}
 " html {{{
@@ -305,7 +323,7 @@ NeoBundleLazy 'rhysd/tmpwin.vim', {
 
 " colorscheme {{{
 NeoBundle '29decibel/codeschool-vim-theme'
-NeoBundle 'aereal/vim-magica-colors'
+" NeoBundle 'aereal/vim-magica-colors'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'mopp/mopkai.vim'
@@ -319,6 +337,7 @@ NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'gist:187578.git', {'directory' : 'h2u_white'}
 NeoBundle 'ajh17/Spacegray.vim'
+NeoBundle 'jscappini/material.vim'
 
 command! -nargs=0 NeoBundleSourceColorSchemes
 \   :NeoBundleSource vim-magica-colors iceberg.vim landscape.vim mopkai.vi badwolf RedicalGoodSpeed moria newspaper.vim vim-hybrid h2u_white
@@ -388,12 +407,15 @@ NeoBundleLazy 'rhysd/clever-f.vim', {
 \   }
 \ }
 NeoBundleLazy 'kana/vim-smartchr'
-" NeoBundleLazy 'kana/vim-smartinput', {
-" \   'autoload': {'insert': 1}
-" \ }
-NeoBundleLazy 'cohama/lexima.vim', {
+NeoBundleLazy 'kana/vim-smartinput'
+NeoBundleLazy 'cohama/vim-smartinput-endwise', {
+\   'depends': 'kana/vim-smartinput',
 \   'autoload': {'insert': 1}
 \ }
+" TODO: NeoBundle で読み込むとエラーがでるので一時的にコメントアウト...
+" NeoBundleLazy 'cohama/lexima.vim', {
+" \   'autoload': {'insert': 1}
+" \ }
 NeoBundleLazy 'kana/vim-smartword', {
 \   'autoload': {
 \     'mappings': '<Plug>(smartword-'
@@ -498,6 +520,7 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'Yggdroot/indentLine'
 
 " NeoBundle 'vim-scripts/diffchar.vim'
+NeoBundle 'LeafCage/foldCC.vim'
 
 NeoBundleCheck
 call neobundle#end()

@@ -15,6 +15,9 @@ if neobundle#tap('eskk.vim')
     endfor
   endfunction
 
+  imap <C-j> <Plug>(eskk:toggle)
+  cmap <C-j> <Plug>(eskk:toggle)
+
   " なんかあんまり辞書登録ちゃんとされてる気がしないので毎回書き込んでみる
   let g:eskk#dictinary_save_count = 1
   let g:eskk#egg_like_newline = 1

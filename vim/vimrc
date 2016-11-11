@@ -34,7 +34,7 @@ endfunction
 call s:source_if('~/.vim/neobundle.vimrc')
 
 syntax enable
-colorscheme hybrid
+colorscheme badwolf
 
 
 " === Settings ===
@@ -291,6 +291,13 @@ let g:precious_enable_switch_CursorMoved = {
 \   'help': 0
 \ }
 
+" 保存時に補完が誤作動しないように切っておく
+augroup PreciousMySettings
+autocmd!
+  autocmd User PreciousFileType :echo precious#context_filetype()
+  autocmd User PreciousFiletype_javascript :let g:watchdogs_check_BufWritePost_enables['javascript'] = 0
+augroup END
+
 
 " quickrun.vim
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
@@ -377,9 +384,6 @@ if neobundle#tap('restart.vim')
 endif
 
 
-imap <C-j> <Plug>(eskk:toggle)
-cmap <C-j> <Plug>(eskk:toggle)
-
 
 " ===== simple-javascript-indenter.vim =====
 if neobundle#tap('simple-javascript-indenter')
@@ -414,7 +418,7 @@ MapAlterCommand te[mplate] Template
 
 " ===== switch.vim =====
 if neobundle#tap('switch.vim')
-  nnoremap - :<C-u>Switch<CR>
+  nnoremap _ :<C-u>Switch<CR>
 
   let g:switch_custom_definitions =
   \ [
@@ -490,6 +494,7 @@ function! bundle.hooks.on_source(bundle)
   let g:watchdogs_check_BufWritePost_enables = {
   \   "perl": 0,
   \   "zsh": 0,
+  \   "vim" : 0, 
   \ }
 
   let g:watchdogs_check_CursorHold_enable = 0
@@ -519,7 +524,7 @@ function! s:init_cmdwin()
   nnoremap <buffer> q :<C-u>quit<CR>
   nnoremap <buffer> <TAB> :<C-u>quit<CR>
   inoremap <buffer> <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-  inoremap <buffer> <expr> <C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer> <expr> <C-h> pumvisible() ? "\<C-y>\<C-h>" : "<C-h>"
   inoremap <buffer> <expr> <BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
   startinsert!
@@ -568,3 +573,27 @@ function! ChangeCurrentDirectoryToProjectRoot()
   endif
 endfunction
 Autocmd BufEnter * call ChangeCurrentDirectoryToProjectRoot()
+
+function! Increment(step)
+    let inc_key = a:step > 0 ? "\<C-a>" : "\<C-x>"
+    let @z = '"zyadjvad"zp'. abs(a:step) . inc_key
+    return '@z'
+endfunction
+
+nmap <expr> + Increment(1)
+nmap <expr> - Increment(-1)
+
+
+
+" memo
+" http://lambdalisue.hatenablog.com/entry/2015/12/25/000046
+nnoremap <Plug>(my-switch) <Nop>
+nmap <Leader>s <Plug>(my-switch)
+" nnoremap <silent> <Plug>(my-switch)s :<C-u>setl spell! spell?<CR>
+nnoremap <silent> <Plug>(my-switch)l :<C-u>setl list! list?<CR>
+nnoremap <silent> <Plug>(my-switch)t :<C-u>setl expandtab! expandtab?<CR>
+nnoremap <silent> <Plug>(my-switch)w :<C-u>setl wrap! wrap?<CR>
+" nnoremap <silent> <Plug>(my-switch)p :<C-u>setl paste! paste?<CR>
+" nnoremap <silent> <Plug>(my-switch)b :<C-u>setl scrollbind! scrollbind?<CR>
+
+cabbr w!! w !sudo tee > /dev/null %
