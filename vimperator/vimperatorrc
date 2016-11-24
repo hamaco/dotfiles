@@ -168,14 +168,15 @@ bmark -title="Bing Search" -tags=keyword -keyword=bing http://www.bing.com/searc
 
 bmark -title="東京アメッシュ"                         -keyword=amesh   http://tokyo-ame.jwa.or.jp/
 bmark -title="BitBucket"                              -keyword=bb      https://bitbucket.org/
+bmark -title="Favolog (hamaco)"                       -keyword=favlog  http://favolog.org/hamaco
 bmark -title="Favstar (hamaco)"                       -keyword=favstar http://favstar.fm/users/hamaco/recent
 bmark -title="GitHub Issues"                          -keyword=issue   http://github-issue.herokuapp.com/
+bmark -title="Amazon Kindle Search"                   -keyword=kindle  https://www.amazon.co.jp/s?url=search-alias=digital-text&field-keywords=%s
 bmark -title="Qiita (hamaco)"                         -keyword=qiita   http://qiita.com/hamaco
-bmark -title="Twilog (hamaco)"                        -keyword=twilog  http://twilog.org/hamaco
-bmark -title="Favolog (hamaco)"                       -keyword=favlog  http://favolog.org/hamaco
 bmark -title="SIGN"                                   -keyword=sign    http://svgn.biz/
 bmark -title="リツイート直後のツイートを表示するやつ" -keyword=rt      https://retweets.azurewebsites.net/
 bmark -title="ツイートした画像を表示するやつ"         -keyword=timg    https://timg.azurewebsites.net/
+bmark -title="Twilog (hamaco)"                        -keyword=twilog  http://twilog.org/hamaco
 
 " }}}
 " QuickMarks {{{1
