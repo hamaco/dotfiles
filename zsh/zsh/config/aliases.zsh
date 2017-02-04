@@ -61,6 +61,9 @@ alias c="composer"
 alias a="php artisan"
 alias oil="noglob oil"
 
+alias d="docker"
+alias dc="docker-compose"
+
 for command in nautilus caja thunar nemo
 do
 	if exists $command; then
