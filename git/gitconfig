@@ -1,54 +1,62 @@
 [include]
-	path = .gitconfig.local
+  path = .gitconfig.local
 
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 
 [color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
 
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 
 [commit]
-	template = ~/.gitmessage
+  template = ~/.gitmessage
 
 [core]
-	attributesfile = ~/.gitattributes
-	excludesfile = ~/.gitignore
-	pager = less -r
-	quotepath = false
-	precomposeunicode = true
+  attributesfile = ~/.gitattributes
+  excludesfile = ~/.gitignore
+  pager = less -r
+  quotepath = false
+  precomposeunicode = true
+  editor = nvim
+
+[diff]
+  renames = true
+  compactionHeuristic = true
 
 [diff]
   renames = true
   compactionHeuristic = true
 
 [fetch]
-	prune = true
+  prune = true
 
 [grep]
-	lineNumber = true
-
-[pager]
-	log  = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
+  lineNumber = true
 
 [merge]
-	ff = false
+  ff = false
+
+[pager]
+#  log  = diff-so-fancy | less --tabs=1,5 -R
+#  show = diff-so-fancy | less --tabs=1,5 -R
+#  diff = diff-so-fancy | less --tabs=1,5 -R
+#  log  = diff-highlight | less -r
+#  show = diff-highlight | less -r
+#  diff = diff-highlight | less -r
 
 [pull]
   rebase = true
@@ -57,8 +65,8 @@
   default = simple
 
 [rebase]
-	autostash = true
-	autosquash = true
+  autostash = true
+  autosquash = true
 
 [stash]
   showPatch = true
@@ -66,10 +74,12 @@
 [alias]
   b              = branch
   ba             = branch -a
+  branches       = branch -a
   ci             = commit -v
   cia            = commit --amend
   cih            = commit --amend -C HEAD
   co             = checkout
+  cb             = checkout -b
   cob            = "!sh -c 'git checkout -b ${0} origin/master'"
   cp             = cherry-pick
   dc             = diff --cached -w
@@ -81,12 +91,12 @@
   make-ignore    = !"f() { IFS=,; curl \"https://www.gitignore.io/api/$*\"; }; f"
   l              = log --stat --date=local
   l1             = log --pretty=oneline --abbrev-commit
-  # log            = log --follow
   lp             = log --decorate --stat --patch --follow
   pl             = pull
   ps             = push
   psf            = push --force-with-lease
   pull-dry-run   = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD); git diff --stat --summary ${B}..origin/${B}"
+  ra             = remote add
   ranking        = shortlog -sn
   ranking-merge  = !"git log --merges --format='%cn' | sort | uniq -c | sort -r | head"
   ranking-file   = !"git log --name-only --pretty="format:" | grep -ve '^$' | sort | uniq -c | sort -r | head"
@@ -143,19 +153,20 @@
   unmerged = diff --name-only --diff-filter=U
 
 [url "git@github.com:"]
-	pushinsteadof = "https://github.com/"
-	pushinsteadof = "git://github.com/"
+  pushinsteadof = "https://github.com/"
+  pushinsteadof = "git://github.com/"
 
 [url "git://github.com/"]
-	insteadof = gh:
+  insteadof = gh:
 
 [ghn]
-	followissuecomment = true
+  followissuecomment = true
 
 [ghq]
-	root = ~/src
+  root = ~/src
 
 [init]
-  templatedir = /Users/hamaco/.gittemplate
+  templatedir = ~/.gittemplate
+
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/pr/*/head
