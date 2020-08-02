@@ -6,6 +6,7 @@ function peco-git-recent-branches () {
         | awk '{print $1}')
     if [ -n "$selected_branch" ]; then
         BUFFER="git checkout ${selected_branch}"
+        # BUFFER="git switch -d ${selected_branch}"
         zle accept-line
     fi
     zle clear-screen
@@ -20,6 +21,7 @@ function peco-git-recent-all-branches () {
         | awk '{print $1}')
     if [ -n "$selected_branch" ]; then
         BUFFER="git checkout ${selected_branch}"
+        # BUFFER="git switch -d ${selected_branch}"
         zle accept-line
     fi
     zle clear-screen

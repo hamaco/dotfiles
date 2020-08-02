@@ -8,12 +8,6 @@ cdpath=($HOME /var/www/*(N-/))
 
 bindkey -e
 
-
-# plugin より先にやらないとダメなのでとりあえずここで……
-alias ssh="cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config; ssh"
-alias scp="cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config; scp"
-alias git="cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config; git"
-
 # load plugins
 source_files $ZSH_HOME/plugins/*/zshrc(N-.)
 source_files $ZSH_HOME/config/*.zsh(N-.)
@@ -22,12 +16,12 @@ source_files $ZSH_HOME/config/*.zsh(N-.)
 ## 分割待ち ##
 
 case "${OSTYPE}" in
-	linux*)
-		alias ls="ls -F --color=auto"
-		;;
-	freebsd*|darwin*)
-		alias ls="ls -G"
-		;;
+    linux*)
+        alias ls="ls -F --color=auto"
+        ;;
+    freebsd*|darwin*)
+        alias ls="ls -G"
+        ;;
 esac
 
 # コアダンプサイズを制限
@@ -35,29 +29,15 @@ limit coredumpsize 102400
 ulimit -c 0  # Don't create core dumps
 
 
-#色の定義
-# local DEFAULT=$'%{[m%}'$
-# local RED=$'%{[1;31m%}'$
-# local GREEN=$'%{[1;32m%}'$
-# local YELLOW=$'%{[1;33m%}'$
-# local BLUE=$'%{[1;34m%}'$
-# local PURPLE=$'%{[1;35m%}'$
-# local LIGHT_BLUE=$'%{[1;36m%}'$
-# local WHITE=$'%{[1;37m%}'$
-
-
-
-
-
 # History: ============================================================= {{{
 # rootは履歴を保存しない
 if [ $UID = 0 ]; then
-	unset HISTFILE
-	SAVEHIST=0
+    unset HISTFILE
+    SAVEHIST=0
 else
-	HISTFILE=~/.zsh_histfile
-	HISTSIZE=500000
-	SAVEHIST=500000
+    HISTFILE=~/.zsh_histfile
+    HISTSIZE=500000
+    SAVEHIST=500000
 fi
 
 # C-pとC-nでコマンド履歴検索
@@ -68,21 +48,13 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 
-
-
-
-
-
-
-
-
 # Functions: ============================================================== {{{1
 function rationalise-dot() {
-	if [[ $LBUFFER = *.. ]]; then
-		LBUFFER+=/..
-	else
-		LBUFFER+=.
-	fi
+    if [[ $LBUFFER = *.. ]]; then
+        LBUFFER+=/..
+    else
+        LBUFFER+=.
+    fi
 }
 zle -N rationalise-dot
 bindkey . rationalise-dot
@@ -124,32 +96,24 @@ function ls_abbrev() {
 
 # 上位ディレクトリを指定するcd
 up() {
-	if [ "$1" = "" ]; then
-		cd ../
-		return 1
-	fi
+    if [ "$1" = "" ]; then
+        cd ../
+        return 1
+    fi
 
-	to=$(perl -le '$p=$ENV{PWD}."/";$d="/".$ARGV[0]."/";$r=rindex($p,$d);\
-		$r>=0 && print substr($p, 0, $r+length($d))' $1)
+    to=$(perl -le '$p=$ENV{PWD}."/";$d="/".$ARGV[0]."/";$r=rindex($p,$d);\
+        $r>=0 && print substr($p, 0, $r+length($d))' $1)
 
-	if [ "$to" = "" ]; then
-		echo "no such file or directory: $1" 1>&2
-		return 1
-	fi
+    if [ "$to" = "" ]; then
+        echo "no such file or directory: $1" 1>&2
+        return 1
+    fi
 
-	cd $to
+    cd $to
 }
 
 
 # Tmp: 一時的な設定 ======================================================= {{{1
-
-# kana's nice tool
-function git-gol() {
-  for i in $(git log --pretty=oneline | head -n 10 | tail -r | cut -d ' ' -f 1); do git show $i --color-words; done | less
-}
-function git-gol-full() {
-  for i in $(git log --pretty=oneline | tail -r | cut -d ' ' -f 1); do git show $i --color-words; done | less
-}
 
 # http://d.hatena.ne.jp/mollifier/20091220 {{{
 autoload smart-insert-last-word
@@ -178,7 +142,7 @@ bindkey '^[d' _quote-previous-word-in-double
 
 # SSHのagent forward
 # http://www.funtoo.org/wiki/Keychain
-exists keychain && eval `keychain --eval --agents ssh id_rsa`
+exists keychain && eval `keychain --eval --agents ssh id_ed25519 old.id_rsa`
 
 
 function chpwd() { ls_abbrev }
@@ -199,14 +163,7 @@ bindkey '^D' _delete-char-or-list-expand
 
 #######
 
-trap "source ~/.zshrc && rehash" USR1
-alias source-zshrc-all="pkill -usr1 -u `id -u` zsh"
-
-
-#######
-
-function calc(){ awk "BEGIN{ print $* }" ;}
-
+function calc() { awk "BEGIN{ print $* }" }
 
 #######
 
@@ -247,38 +204,4 @@ autoload -Uz run-help-svn
 # iTerm2のタブ名を変更する
 function title {
     echo -ne "\033]0;"$*"\007"
-}
-
-#######
-
-# scpコマンドそのままfswatch化
-function fwscp() {
-    SOURCE=$1
-    DEST=$2
-
-    echo fswatch-run $(=cd $(dirname $SOURCE); pwd) \"scp $SOURCE $DEST\"
-    fswatch-run $(=cd $(dirname $SOURCE); pwd) \"scp $SOURCE $DEST\"
-}
-
-#######
-
-function animita_init() {
-    if [ "$1" = "" ]; then
-        echo "Usage: animita_init {アニメタイトル}"
-        exit 1
-    fi
-
-    echo "# $1" > $1.markdown
-    cat <<EOF > $1.markdown
-# ${1}
-
-EOF
-    for episode in {01..13}
-    do
-        cat <<EOF >> $1.markdown
-## ${episode}
-
-
-EOF
-    done
 }

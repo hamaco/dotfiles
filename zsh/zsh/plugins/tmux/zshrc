@@ -19,15 +19,3 @@ if exists tmux; then
     =tmux attach -d || tmux
   }
 fi
-
-case "${TERM}" in
-  screen*)
-    function ssh_tmux() {
-      eval server=\${$#}
-      cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config
-      =tmux new-window -n s:$server "TERM=screen ssh $*"
-    }
-    alias ssh=ssh_tmux
-    alias nssh="cat ~/.ssh/conf.d/**/*.conf ~/.ssh/conf.d/config > ~/.ssh/config; TERM=screen =ssh"
-    ;;
-esac

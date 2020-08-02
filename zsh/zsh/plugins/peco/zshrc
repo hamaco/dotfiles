@@ -1,11 +1,9 @@
 if exists peco; then
-  antigen bundle mollifier/anyframe
-
   source_files $(dirname $0)/sources/*.zsh
 
   # anyframe
   bindkey '^r'  anyframe-widget-put-history
-  bindkey '^s'  anyframe-widget-cd-ghq-repository
+  bindkey '^s'  anyframe-widget-cd-ghq-repository && basename `pwd`
   bindkey '^x;' anyframe-widget-cdr
   bindkey '^xk' anyframe-widget-kill
 
@@ -22,14 +20,8 @@ if exists peco; then
   alias o="git ls-files | p open"
   alias cd-temp="ls -d ~/tmp/*(/) | p cd"
 
-  alias vr="cat $HOME/.cache/neomru/{file,directory} | peco | xargs vim"
-
   function peco-git-add() {
     git add  $(git status --porcelain | peco --query "$LBUFFER" | awk -F ' ' '{print $NF}')
-  }
-
-  function agvim() {
-    vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
   }
 
   function peco-ssh() {
