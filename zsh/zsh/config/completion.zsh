@@ -1,4 +1,5 @@
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+# ここに入れたものが1単語として認識される
+WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 LISTMAX=0
 
 autoload -Uz compinit; compinit -u
