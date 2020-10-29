@@ -1,7 +1,8 @@
-set diff-context   = 5
-set vertical-split = yes
-set wrap-lines     = no
-
+set vertical-split   = yes
+set diff-context     = 5
+set split-view-width = 75%
+set wrap-lines       = no
+set ignore-space     = all
 
 set main-view = \
   line-number:no,interval=5 \
