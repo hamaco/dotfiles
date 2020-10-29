@@ -31,10 +31,9 @@ function! s:source_if(file)
 endfunction
 
 " === Load plugins ===
-call s:source_if('~/.vim/neobundle.vimrc')
 
-syntax enable
-colorscheme badwolf
+syntax on
+" colorscheme badwolf
 
 
 " === Settings ===
