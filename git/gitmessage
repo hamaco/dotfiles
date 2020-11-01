@@ -1,14 +1,21 @@
 
-
-# fix, add, changeといった事実ではなく、このcommitで実現する要件や仕様を書きましょう。（リファクタなどは除く）
-# 
-# 例文）
-# - Fix typo in docs
-# - Remove unused code
-# - Remove use of deprecated method
-# - Update Modernizr to v1.6
-# - Make it possible to have IDs per request
-# - Make sure to reset default_url_options（必ずリセットする）
-# - Don't use "assert_not_nil"
-# - Allow the user to drag faster
-# - Remove methods to avoid warnings.
+# コミットメッセージの最初に付ける絵文字
+# 🐛  :bug: バグ修正
+# 👍  :+1: 機能改善
+# ✨  :sparkles: 部分的な機能追加
+# 🎉  :tada: 機能のリリースとか
+# 🎨  :art: デザイン変更のみ
+# 💢  :anger: コンフリクト
+# 🚧  :construction: WIP
+# 📝  :memo: 文言修正
+# ♻️   :recycle: リファクタリング
+# 🔥  :fire: 不要な機能・使われなくなった機能の削除
+# 💚  :green_heart: テストやCIの修正・改善
+# 👕  :shirt: Lintエラーの修正やコードスタイルの修正
+# 🚀  :rocket: パフォーマンス改善
+# ➕  :heavy_plus_sign: 依存パッケージなどの追加
+# 🆙  :up: 依存パッケージなどのアップデート
+# 🔒  :lock: 新機能等を一部の人に開放しているなど
+# 👮  :cop: セキュリティ関連の改善
+# 🔧  :wrench: 設定の変更
+# 📚  :books: ドキュメント
