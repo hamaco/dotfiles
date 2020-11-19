@@ -1,7 +1,4 @@
-if exists hub; then
-  fpath=($(dirname $0)/completions $fpath)
-  function git() { hub "$@" }
-fi
+fpath=($(dirname $0)/completions $fpath)
 
 alias g="git"
 alias gist="gist -cop"
