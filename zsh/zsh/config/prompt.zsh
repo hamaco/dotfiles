@@ -9,14 +9,11 @@ zstyle ":vcs_info:*" formats "(%s)-[%b]"
 zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
 zstyle ":vcs_info:(svn|bzr):*" branchformat "%b:r%r"
 zstyle ":vcs_info:bzr:*" use-simple true
-
-if is-at-least 4.3.10; then
-  zstyle ":vcs_info:git:*" formats "(%s)-[%b] %c%u" "%r" "%R"
-  zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
-  zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
-  zstyle ":vcs_info:git:*" stagedstr "<S> "
-  zstyle ":vcs_info:git:*" unstagedstr "<U> "
-fi
+zstyle ":vcs_info:git:*" formats "(%s)-[%b] %c%u" "%r" "%R"
+zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
+zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
+zstyle ":vcs_info:git:*" stagedstr "<S> "
+zstyle ":vcs_info:git:*" unstagedstr "<U> "
 
 if [ ${$(hostname)##*.} = "local" ]; then
   HOSTCOLOR="green"
