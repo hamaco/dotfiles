@@ -8,8 +8,8 @@ all: cui gui mac
 .PHONY: git mercurial tig tmux vim zsh peco common
 cui: git mercurial tig tmux vim zsh peco common
 
-.PHONY: vimperator chrome
-gui: vimperator chrome
+.PHONY: chrome
+gui: chrome
 
 .PHONY: slate homebrew
 mac: slate homebrew
@@ -32,7 +32,6 @@ common:
 dropbox:
 	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
 	ln -fns $(HOME)/Dropbox/data/linux/share/phpmanual $(INSTALL_DIR)/share/phpmanual
-	ln -fns $(HOME)/Dropbox/data/linux/share/my-vimperator-plugins $(INSTALL_DIR)/share/my-vimperator-plugins
 
 git:
 	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
@@ -75,16 +74,6 @@ vim:
 	ln -fns $(CURRENT_DIR)/vim/gvimrc $(INSTALL_DIR)/.gvimrc
 	vim -N -u $(INSTALL_DIR)/.vim/neobundle.vimrc -U NONE -i NONE -V1 -e -s \
 		-c "try | NeoBundleUpdate $* | finally | qall! | endtry"
-
-vimperator: vimperator-repo
-	ln -fns $(CURRENT_DIR)/vimperator/vimperator      $(INSTALL_DIR)/.vimperator
-	ln -fns $(CURRENT_DIR)/vimperator/vimperatorrc    $(INSTALL_DIR)/.vimperatorrc
-	ln -fns $(CURRENT_DIR)/vimperator/vimperatorrc.js $(INSTALL_DIR)/.vimperatorrc.js
-
-vimperator-repo:
-	@if [ ! -d $(INSTALL_DIR)/share/vimperator-plugins ]; then \
-		git clone git://github.com/vimpr/vimperator-plugins.git $(INSTALL_DIR)/share/vimperator-plugins; \
-	fi
 
 zsh:
 	ln -fns $(CURRENT_DIR)/zsh/zsh    $(INSTALL_DIR)/.zsh
