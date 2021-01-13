@@ -1,9 +1,3 @@
 {
-    "Keymap": {
-        "C-c": "peco.Cancel",
-        "C-g": "peco.Cancel"
-    },
-    "CustomMatcher": {
-        "Migemo": [ "migemogrep", "$QUERY" ]
-    }
+    "Prompt": "X / _ / X"
 }

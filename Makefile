@@ -1,5 +1,6 @@
 CURRENT_DIR := $(shell pwd)
 INSTALL_DIR := $(HOME)
+CONFIG_HOME := $(INSTALL_DIR)/.config
 
 OS = ${shell uname}
 
@@ -48,7 +49,7 @@ mercurial:
 	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
 
 peco:
-	ln -fns $(CURRENT_DIR)/peco $(INSTALL_DIR)/.peco
+	ln -fns $(CURRENT_DIR)/peco $(CONFIG_HOME)/peco
 
 percol:
 	ln -fns $(CURRENT_DIR)/percol/percol.d $(INSTALL_DIR)/.percol.d
