@@ -17,6 +17,8 @@ path=(
   /usr/local/bin(N-/)
   /usr/local/share/git-core/contrib/diff-highlight(N-/)
 
+  /home/linuxbrew/.linuxbrew/bin(N-/)
+
   $path
 )
 # }}}
