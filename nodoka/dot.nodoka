@@ -43,22 +43,22 @@ endif
 def option mouse-event = true
 
 # キーリピート高速化
-def option KeyboardDelay = enable 80 20
+# def option KeyboardDelay = enable 5 5
 
 # モディファイヤーキ押しっ放し検出
-def option CheckModifier = enable 4
+# def option CheckModifier = enable 6
 
-def key WinDownOver      = E1-0x19
-def key ShiftDownOver    = E1-0x1a
-def key CtrlDownOver     = E1-0x1b
-def key AltDownOver      = E1-0x1c
-def key EnterDownOver    = E1-0x1e
+# def key WinDownOver      = E1-0x19
+# def key ShiftDownOver    = E1-0x1a
+# def key CtrlDownOver     = E1-0x1b
+# def key AltDownOver      = E1-0x1c
+# def key EnterDownOver    = E1-0x1e
 
-key U-*WinDownOver   = &HelpMessage("nodoka", "Win") U-LWin U-RWin
-key U-*ShiftDownOver = &HelpMessage("nodoka", "Shift") U-LShift U-RShift
-key U-*CtrlDownOver  = &HelpMessage("nodoka", "Ctrl") U-LCtrl U-RCtrl
-key U-*AltDownOver   = &HelpMessage("nodoka", "Alt") U-LAlt U-RAlt
-key U-*EnterDownOver = &HelpMessage("nodoka", "Enter") U-Enter
+# key U-*WinDownOver   = U-LWin U-RWin
+# key U-*ShiftDownOver = U-LShift U-RShift
+# key U-*CtrlDownOver  = U-LCtrl U-RCtrl
+# key U-*AltDownOver   = U-LAlt U-RAlt
+# key U-*EnterDownOver = U-Enter
 
 keymap Global
 	key C-A-Slash = &LoadSetting() &HelpMessage("Reload", "Reload dot.nodoka")
@@ -103,19 +103,19 @@ keymap Global
 	mod shift += !!Space
 	key R-*Space = &Ignore
 
-	mod windows -= RightWindows
-	mod mod9    += RightWindows
-	key *RWin = &Ignore
-	key m9-a  = C-A-_1 &Sync
-	key m9-s  = C-A-_2 &Sync
-	key m9-d  = C-A-_3 &Sync
-	key m9-f  = C-A-_4 &Sync
-	key m9-g  = C-A-_5 &Sync
-	key m9-h  = C-A-_6 &Sync
-	key m9-j  = C-A-_7 &Sync
-	key m9-k  = C-A-_8 &Sync
-	key m9-l  = C-A-_9 &Sync
-	key m9-e  = W-e
+	# mod windows -= RightWindows
+	# mod mod9    += RightWindows
+	# key *RWin = &Ignore
+	# key m9-a  = C-A-_1 &Sync
+	# key m9-s  = C-A-_2 &Sync
+	# key m9-d  = C-A-_3 &Sync
+	# key m9-f  = C-A-_4 &Sync
+	# key m9-g  = C-A-_5 &Sync
+	# key m9-h  = C-A-_6 &Sync
+	# key m9-j  = C-A-_7 &Sync
+	# key m9-k  = C-A-_8 &Sync
+	# key m9-l  = C-A-_9 &Sync
+	# key m9-e  = W-e
 
 	# 右シフトは普段使わないので^と&に置き換え
 	# @todo できれば他のキーの場合Shiftにしたい
@@ -127,8 +127,8 @@ keymap Global
 	key *IC-C-j = &SetImeStatus(on) &Sync C-j
 
 	# Shutdown and Sleep
-	key W-u = &Sync &ShellExecute("open", "shutdown.exe", "-s -t 0",, showNormal)
-	key W-s = &Sync &ShellExecute("open", "rundll32.exe", "powrprof.dll,SetSuspendStte 0,1,0",, showNormal)
+	# key W-u = &Sync &ShellExecute("open", "shutdown.exe", "-s -t 0",, showNormal)
+	# key W-s = &Sync &ShellExecute("open", "rundll32.exe", "powrprof.dll,SetSuspendStte 0,1,0",, showNormal)
 
 	key C-m = Enter
 	key C-h = Backspace
@@ -136,11 +136,15 @@ keymap Global
 
 	key W-q = A-F4
 
+	# 変なアプリ起動してきて邪魔なのでとりあえず無効化
+	key W-i = &Ignore
+	key W-c = &Ignore
+
 	key A-h     = Left
 	key A-j     = Down
 	key A-k     = Up
 	key A-l     = Right
-	key A-Enter = F11
+	# key A-Enter = F11
 	key A-F1    = F1
 
 	# Explorer置き換え
@@ -149,10 +153,6 @@ keymap Global
 	# Launchy
 	# SandSのせいでShiftが必要
 	key S-W-Space = A-Space
-
-window Desktop /(?:Progman|WorkerW):SHELLDLL_DefView:SysListView32$/ : Global
-	key S-Down = C-Down Space
-	key S-Up   = C-Up   Space
 
 keymap Viewer : Global
 	key q = A-F4
@@ -164,83 +164,57 @@ window Explorer /explorer\.exe/ : Global
 	key W-l = A-d
 	# key W-n = W-A-Space &Sync C-n
 
-window InternetExplorer /iexplore\.exe/ : Global
-	key C-l = A-d
-
 window Excel /excel\.exe/ : Global
 	key A-Enter = A-Enter
 
 	key C-Slash = F2 &Wait(150) C-Left &Sync C-Left &Sync C-Left &Sync C-Left &Sync Backspace &Sync _0 &Sync Enter
 
-window Opera /opera\.exe/ : Global
-	key LAlt = &Ignore
-	key RAlt = &Ignore
-	key m9-_1 = C-_1
-	key m9-_2 = C-_2
-	key m9-_3 = C-_3
-	key m9-_4 = C-_4
-	key m9-_5 = C-_5
-	key m9-_6 = C-_6
-	key m9-_7 = C-_7
-	key m9-_8 = C-_8
-	key m9-_9 = C-_9
-	key m9-w = C-w
-
-window FastPictureViewer /FastPictureViewer\.exe/ : Viewer
-window AdobeReader /AcroRd32\.exe:.+:AVL_AVView$/ : Viewer
-
-window AdobeAcrobat /Acrobat\.exe/ : Global
-	key i = A-v &Sync p &Sync u
-	key s = A-v &Sync p &Sync s
-	key d = C-d &Sync S-Tab &Sync S-Tab &Sync S-Tab &Sync S-Tab &Sync S-Tab &Sync Down &Sync Enter
-	key C-d = C-S-d &Sync Enter &Sync Enter
-	key C-r = C-S-r &Sync Enter
-
-window Edit /Edit:|Edit$|EditView|Chrome_OmniboxView$/ : Global
+# window Edit /Edit:|Edit$|EditView|Chrome_OmniboxView$/ : Global
+keymap Global
 	key C-a = Home
 	key C-e = End
 	key C-d = Delete
-	key W-a = C-a
-	key W-z = C-z
-	key W-x = C-x
-	key W-c = C-c
-	#key W-v = C-v
-
-window ResophNotes /ResophNotes\.exe/ : Edit
-	key F5 = C-m
-
-window AFxW /afxw\.exe/ : Global
-	key W-j = A-j
-	key A-h = A-h
-	key A-j = A-j
-	key A-k = A-k
-	key A-l = A-l
-
-window PuTTY /putty\.exe/ : Global
-	#key C-v = S-Insert
-	key C-S-v = S-Insert
-	key W-v = S-Insert
-	key A-Left = C-t &Sync h
-	key A-Right = C-t &Sync l
-
-window VMWare /vmware\.exe/ : Global
-	key *IC-C-j  = C-j
-	key C-Space  = C-Space
-	key C-h = C-h
-
-window Launchy /Launchy\.exe/ : Global
-	key C-n = Down
 	key C-p = Up
+	key C-n = Down
+	key C-b = Left
+	key C-f = Right
+	# key W-z = C-z
+	# key W-a = C-a
+	# key W-x = C-x
+	# key W-c = C-c
+	# key W-v = C-v
+
+window WindowsTerminal /WindowsTerminal\.exe/ : Global
+	key C-f = &Default
+	key C-b = &Default
+	key C-p = &Default
+	key C-n = &Default
+
+window PhpStorm /PhpStorm64\.exe/ : Global
+	key C-a = &Default
+	key C-e = &Default
+	key C-d = &Default
+	key C-h = &Default
+	key C-f = &Default
+	key C-b = &Default
+	key C-p = &Default
+	key C-n = &Default
+	key C-w = &Default
+	key A-h     = &Default
+	key A-j     = &Default
+	key A-k     = &Default
+	key A-l     = &Default
+	key A-Enter = &Default
+	key A-F1    = &Default
+	key W-z = C-z
+
+window Lightroom /lightroom\.exe/ : Global
+	key C-a = &Default
+	key C-e = &Default
+	key A-Backspace = &Default
 
 window Vim /vim\.exe/ : Global
 	key C-h = &Default
-
-window Evernote /evernote\.exe/ : Global
-	key C-d = Delete
-
-# これJavaのアプリ全部に適用されちゃう?
-window Minecraft /SunAwtFrame/ : Global
-	mod shift -= Space
 
 keymap2 AlphaWindow
 	key _0   = &WindowSetAlpha(100)
