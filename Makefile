@@ -51,9 +51,6 @@ mercurial:
 peco:
 	ln -fns $(CURRENT_DIR)/peco $(CONFIG_HOME)/peco
 
-percol:
-	ln -fns $(CURRENT_DIR)/percol/percol.d $(INSTALL_DIR)/.percol.d
-
 slate:
 	ln -nfs $(CURRENT_DIR)/slate/slate.js $(INSTALL_DIR)/.slate.js
 
