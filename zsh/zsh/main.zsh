@@ -29,24 +29,6 @@ limit coredumpsize 102400
 ulimit -c 0  # Don't create core dumps
 
 
-# History: ============================================================= {{{
-# rootは履歴を保存しない
-if [ $UID = 0 ]; then
-    unset HISTFILE
-    SAVEHIST=0
-else
-    HISTFILE=~/.zsh_histfile
-    HISTSIZE=500000
-    SAVEHIST=500000
-fi
-
-# C-pとC-nでコマンド履歴検索
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
-
 
 # Functions: ============================================================== {{{1
 function rationalise-dot() {
