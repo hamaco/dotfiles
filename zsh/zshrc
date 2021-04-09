@@ -1,2 +1,23 @@
 source $HOME/.zsh/main.zsh
 source_if $HOME/.zshrc.local
+
+
+alias tenki="curl https://wttr.in/toshima"
+
+alias bat="bat --theme=DarkNeon"
+
+export FZF_DEFAULT_OPTS="--no-sort --exact --cycle --multi --ansi --reverse --border --sync --height 60% --bind=ctrl-k:kill-line --bind=?:toggle-preview --bind=down:preview-down --bind=up:preview-up"
+
+alias pt=rg
+
+function ssh() { # tmux起動時
+    if [[ -n $(printenv TMUX) ]] ; then
+        command tmux select-pane -P 'bg=colour52,fg=white'
+
+        command ssh $@
+
+        command tmux select-pane -P 'default'
+    else
+        command ssh $@
+    fi
+}
