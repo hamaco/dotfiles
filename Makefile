@@ -35,10 +35,7 @@ dropbox:
 	ln -fns $(HOME)/Dropbox/data/linux/share/phpmanual $(INSTALL_DIR)/share/phpmanual
 
 git:
-	ln -fns $(CURRENT_DIR)/git/gitconfig $(INSTALL_DIR)/.gitconfig
-	ln -fns $(CURRENT_DIR)/git/gitignore $(INSTALL_DIR)/.gitignore
-	ln -fns $(CURRENT_DIR)/git/gitattributes $(INSTALL_DIR)/.gitattributes
-	ln -fns $(CURRENT_DIR)/git/gitmessage $(INSTALL_DIR)/.gitmessage
+	ln -fns $(CURRENT_DIR)/git $(CONFIG_HOME)/git
 
 homebrew:
 	@if ! builtin command -v brew > /dev/null; then \

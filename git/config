@@ -1,5 +1,5 @@
 [include]
-  path = .gitconfig.local
+  path = ~/.gitconfig.local
 
 [apply]
   whitespace = nowarn
@@ -23,17 +23,16 @@
   new = green bold
 
 [commit]
-  template = ~/.gitmessage
+  template = ~/.config/git/message
 
 [core]
-  attributesfile = ~/.gitattributes
+  attributesfile = ~/.config/git/attributes
 #  commentchar = ^
-  excludesfile = ~/.gitignore
   pager = less -r
   quotepath = false
   precomposeunicode = true
   editor = vim
-	autocrlf = input
+  autocrlf = input
 
 [diff]
   renames = true
@@ -49,12 +48,9 @@
   ff = false
 
 [pager]
-#  log    = diff-so-fancy | less --tabs=1,5 -R
-#  show   = diff-so-fancy | less --tabs=1,5 -R
-#  diff   = diff-so-fancy | less --tabs=1,5 -R
-  log    = diff-highlight | less -r
-  show   = diff-highlight | less -r
-  diff   = diff-highlight | less -r
+  log    = diff-highlight | less -rF
+  show   = diff-highlight | less -rF
+  diff   = diff-highlight | less -rF
   branch = cat
 
 [pull]
