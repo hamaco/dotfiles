@@ -39,7 +39,7 @@ git:
 
 homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
-		ruby -e "$$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; \
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
 	fi
 
 mercurial:
