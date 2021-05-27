@@ -106,7 +106,7 @@
   st                  = status -sb
   sw                  = switch
   swc                 = "!sh -c 'git switch -c ${0} origin/master'"
-  swo                 = "!git switch $(git branch --contains | sed 's|.*origin/||' | sed 's/)//')"
+  swo                 = "!git switch $(git branch --contains | sed 's|.*origin/||' | head -1 | sed 's/)//')"
   sweep-branch        = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
   sweep-remote-branch = "!git branch -a --merged master | /usr/bin/egrep -v 'master|staging' | /usr/bin/grep remotes/origin | sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%"
   up = update
