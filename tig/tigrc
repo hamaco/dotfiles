@@ -1,4 +1,4 @@
-set vertical-split   = yes
+set vertical-split   = no
 set diff-context     = 5
 set split-view-width = 75%
 set wrap-lines       = no
@@ -21,6 +21,7 @@ bind main G move-last-line
 
 # copy commit_id (Mac)
 bind main c !@git pbcopy %(commit)
+bind diff c !@git pbcopy %(commit)
 
 
 bind diff ; view-next
