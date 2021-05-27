@@ -39,6 +39,8 @@ zplug "mollifier/anyframe"
 zplug "mollifier/cd-gitroot"
 alias u='cd-gitroot'
 
+zplug "kwhrtsk/docker-fzf-completion"
+
 
 if ! zplug check --verbose; then
     printf "Install zplug plugins? [y/N]: "

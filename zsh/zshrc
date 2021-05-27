@@ -6,8 +6,6 @@ alias tenki="curl https://wttr.in/toshima"
 
 alias bat="bat --theme=DarkNeon"
 
-export FZF_DEFAULT_OPTS="--no-sort --exact --cycle --multi --ansi --reverse --border --sync --height 60% --bind=ctrl-k:kill-line --bind=?:toggle-preview --bind=down:preview-down --bind=up:preview-up"
-
 alias pt=rg
 
 function ssh() { # tmux起動時

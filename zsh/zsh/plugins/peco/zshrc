@@ -36,3 +36,12 @@ if exists peco; then
   alias -g H='$(curl -sL https://api.github.com/users/hamaco/repos | jq -r ".[].full_name" | peco --prompt "GITHUB REPO>" | head -n 1)'
   alias -g LR='$(git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/[^\/]*\/\(\S*\)/\1/")'
 fi
+
+
+if exists fzf; then
+  export FZF_COMPLETION_TRIGGER=','
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+  export FZF_DEFAULT_OPTS="--no-sort --exact --cycle --multi --ansi --reverse --border --sync --height 60% --bind=ctrl-k:kill-line --bind=?:toggle-preview --bind=down:preview-down --bind=up:preview-up"
+
+  source_if ~/.fzf.zsh
+fi
