@@ -11,6 +11,7 @@ git-worktrees
 
 # for Windows
 Thumbs.db
+*:Zone.Identifier
 
 ### Vim ###
 *~
