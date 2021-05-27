@@ -154,8 +154,8 @@
   unmerged = diff --name-only --diff-filter=U
 
   # for hub commands
-  pr-open   = browse-remote --pr
-  see       = browse
+  pr-open   = "!gh pr view --web"
+  see       = "!gh repo view --web"
 
 [url "git@github.com:"]
   pushinsteadof = "https://github.com/"
