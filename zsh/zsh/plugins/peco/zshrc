@@ -7,9 +7,9 @@ if exists peco; then
   bindkey '^x;' anyframe-widget-cdr
   bindkey '^xk' anyframe-widget-kill
 
-  # git-resetn-breanches
-  bindkey '^x^b' peco-git-recent-branches
-  bindkey '^xb'  peco-git-recent-all-branches
+  # git-resent-breanches
+  # bindkey '^x^b' peco-git-recent-branches
+  # bindkey '^xb'  peco-git-recent-all-branches
   # bindkey '^x^b' anyframe-widget-checkout-git-branch
 
   # snippets
@@ -42,6 +42,17 @@ if exists fzf; then
   export FZF_COMPLETION_TRIGGER=','
   export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
   export FZF_DEFAULT_OPTS="--no-sort --exact --cycle --multi --ansi --reverse --border --sync --height 60% --bind=ctrl-k:kill-line --bind=?:toggle-preview --bind=down:preview-down --bind=up:preview-up"
+
+  zstyle ":anyframe:selector:" use fzf
+
+  # git-resent-breanches
+  bindkey '^x^b' fzf-git-recent-branches
+  bindkey '^xb'  fzf-git-recent-all-branches
+
+  function fzf-ssh() {
+    ssh `grep '^Host' $HOME/.ssh/config | grep -v '*' | cut -d' ' -f2 | fzf`
+  }
+  alias sshf=fzf-ssh
 
   source_if ~/.fzf.zsh
 fi

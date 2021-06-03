@@ -1,7 +1,7 @@
-function peco-git-recent-branches () {
+function fzf-git-recent-branches () {
     local selected_branch=$(git for-each-ref --format='%(refname:short) | %(committerdate:relative) | %(committername) | %(subject)' --sort=-committerdate refs/heads \
         | column -t -s '|' \
-        | peco \
+        | fzf \
         | head -n 1 \
         | awk '{print $1}')
     if [ -n "$selected_branch" ]; then
@@ -11,12 +11,12 @@ function peco-git-recent-branches () {
     fi
     zle clear-screen
 }
-zle -N peco-git-recent-branches
+zle -N fzf-git-recent-branches
 
-function peco-git-recent-all-branches () {
+function fzf-git-recent-all-branches () {
     local selected_branch=$(git for-each-ref --format='%(refname:short) | %(committerdate:relative) | %(committername) | %(subject)' --sort=-committerdate refs/heads refs/remotes \
         | column -t -s '|' \
-        | peco \
+        | fzf \
         | head -n 1 \
         | awk '{print $1}')
     if [ -n "$selected_branch" ]; then
@@ -26,4 +26,4 @@ function peco-git-recent-all-branches () {
     fi
     zle clear-screen
 }
-zle -N peco-git-recent-all-branches
+zle -N fzf-git-recent-all-branches
