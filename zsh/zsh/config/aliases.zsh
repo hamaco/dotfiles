@@ -53,6 +53,7 @@ phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" cloudflare/phan
 alias php7cc='docker run --rm -it -v $(pwd):/app crewbit/php7cc'
 alias phpinsights='docker run --rm -it -v $(pwd):/app crewbit/phpinsights'
 alias d-ridgepole='docker run --rm -it -v $(pwd):/provision crewbit/ridgepole'
+alias d-node='docker run --rm -it -v $(pwd):/app -w /app node node'
 alias d-npm='docker run --rm -it -v $(pwd):/app -w /app node npm'
 alias d-npm10='docker run --rm -it -v $(pwd):/app -w /app node:10 npm'
 alias d-yarn='docker run --rm -it -v $(pwd):/app -w /app node yarn'
