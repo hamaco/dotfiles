@@ -60,12 +60,17 @@ alias d-yarn10='docker run --rm -it -v $(pwd):/app -w /app node:10 yarn'
 
 alias weather="curl http://wttr.in/東京"
 
-for command in nautilus caja thunar nemo explorer.exe
+for command in nautilus caja thunar nemo
 do
     if exists $command; then
         alias open=$command
     fi
 done
+if exists explorer.exe; then
+    open () {
+        explorer.exe ${1//\//\\}
+    }
+fi
 
 case "${OSTYPE}" in
 linux*)
