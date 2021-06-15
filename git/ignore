@@ -41,3 +41,7 @@ Thumbs.db
 
 # Unknown
 .idea/cake_config_setting_v0_6.xml
+
+### for ripgrep  ###
+# tbls
+docs/
