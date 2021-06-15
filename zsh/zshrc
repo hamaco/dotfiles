@@ -19,3 +19,20 @@ function ssh() { # tmux起動時
         command ssh $@
     fi
 }
+
+function mssh() {
+    if [ $# -lt 1 ]; then
+        echo "Usage: mssh {remote_ip} {mysql_ip:127.0.0.1}"
+        exit 1
+    fi
+
+    REMOTE_SERVER=$1
+    MYSQL_SERVER=$2
+
+    if [ "${MYSQL_SERVER}" = "" ]; then
+        MYSQL_SERVER=127.0.0.1
+    fi
+
+    ssh -o ControlMaster=no -N -L 0.0.0.0:13306:${MYSQL_SERVER}:3306 $REMOTE_SERVER
+}
+compdef mssh=ssh
