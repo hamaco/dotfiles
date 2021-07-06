@@ -76,8 +76,6 @@
   cih                 = commit --amend -C HEAD
   co                  = checkout
   continue-rebase     = rebase --continue
-  #cb                  = checkout -b
-  #cob                 = "!sh -c 'git checkout -b ${0} origin/master'"
   cp                  = cherry-pick
   dc                  = diff --cached -w
   di                  = diff -w
