@@ -36,3 +36,5 @@ function mssh() {
     ssh -o ControlMaster=no -N -L 0.0.0.0:13306:${MYSQL_SERVER}:3306 $REMOTE_SERVER
 }
 compdef mssh=ssh
+
+alias remove-zone-identifier="rm ./*:Zone.Identifier"
