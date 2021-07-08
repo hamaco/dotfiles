@@ -16,12 +16,12 @@ setopt ignore_eof           # C-dでexitしない
 setopt interactive_comments # コマンドにコメントを付けられるようにする
 setopt no_list_beep         # 補完候補表示時にビープ音が鳴らないようにする
 setopt list_packed          # 補完候補をつめて表示
-setopt list_types           # 保管候補表示時にファイル種別を表示
+setopt list_types           # 補完候補表示時にファイル種別を表示
 setopt long_list_jobs       # jobsコマンドのデフォルトを jobs -l にする
 setopt magic_equal_subst    # コマンドラインの引数で --PREFIX=/USR などの = 以降でも補完できる
 setopt mark_dirs            # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
 setopt notify               # バックグラウンドジョブが終了したら(プロンプトの表示を待たずに)すぐに知らせる
-setopt nullglob             # 拡張ファイルグロブにマッチしない時にそのままコマンドを実行する
+setopt nonullglob           # 拡張ファイルグロブにマッチしない時にそのままコマンドを実行しない
 setopt numeric_glob_sort    # ファイル名を数値としてソート
 setopt print_eight_bit      # 補完候補リストの日本語を適正表示
 setopt prompt_subst         # 色を使う
