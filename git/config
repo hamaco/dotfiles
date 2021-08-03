@@ -77,10 +77,11 @@
   co                  = checkout
   continue-rebase     = rebase --continue
   cp                  = cherry-pick
+  current-branch      = rev-parse --abbrev-ref HEAD
   dc                  = diff --cached -w
   di                  = diff -w
   dic                 = diff -w --color-words
-  diff-archive        = "!f(){ git archive $(git rev-parse --abbrev-ref HEAD) --format=zip -o $(basename $(pwd)).zip --prefix=$(basename $(pwd))/ $(git diff --name-only --diff-filter=d ${1}); };f"
+  diff-archive        = "!f(){ git archive $(git current-branch) --format=zip -o $(basename $(pwd)).zip --prefix=$(basename $(pwd))/ $(git diff --name-only --diff-filter=d ${1}); };f"
   fetch-all           = "!sh -c 'git remote | xargs -L 1 git fetch'"
   fetch-pulls         = fetch origin +refs/pull/*:refs/remotes/pull/*
   first               = !"git init -q && git commit -q --allow-empty -m ':seedling: Initial commit'"
@@ -94,7 +95,7 @@
   ps                  = push
   psf                 = push --force-with-lease
   prepare             = "!git checkout master && git pull"
-  pull-dry-run        = !"git fetch origin; B=$(git rev-parse --abbrev-ref HEAD); git diff --stat --summary ${B}..origin/${B}"
+  pull-dry-run        = !"git fetch origin; B=$(git current-branch); git diff --stat --summary ${B}..origin/${B}"
   ranking             = shortlog -sn
   ranking-merge       = !"git log --merges --format='%cn' | sort | uniq -c | sort -r | head"
   ranking-file        = !"git log --name-only --pretty="format:" | grep -ve '^$' | sort | uniq -c | sort -r | head"
@@ -116,7 +117,6 @@
 
   # used?
   branch-root    = merge-base master HEAD
-  current-branch = rev-parse --abbrev-ref HEAD
   pbcopy         = !printf "$1" | pbcopy
   d1             = diff HEAD~
   d2             = diff HEAD~~
