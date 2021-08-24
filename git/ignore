@@ -2,6 +2,7 @@
 .envrc
 .ssh-config
 git-worktrees
+task
 
 # for Subversion
 .svn
