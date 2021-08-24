@@ -1,9 +1,0 @@
-# === MySQL ===
-mysql:bind "^W" ed-delete-prev-word
-
-mysql:bind -s "^Xd" "\\\\cshow databases;\n"
-mysql:bind -s "^Xt" "\\\\cshow tables;\n"
-mysql:bind -s "^Xu" "\\\\cselect user,host,password from mysql.user order by user,host;\n"
-mysql:bind -s "^Xb" "\\\\cselect user,host,db       from mysql.db   order by user,host;\n"
-mysql:bind -s "^Xc" "\\\\ccreate database  charset utf8mb4;"
-mysql:bind -s "^Xs" "\\\\cselect * from "

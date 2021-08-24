@@ -4,31 +4,13 @@ CONFIG_HOME := $(INSTALL_DIR)/.config
 
 OS = ${shell uname}
 
-all: cui gui mac
+all: cui mac
 
-.PHONY: git mercurial tig tmux vim zsh peco common
-cui: git mercurial tig tmux vim zsh peco common
-
-.PHONY: chrome
-gui: chrome
+.PHONY: git tig tmux vim zsh peco
+cui: git tig tmux vim zsh peco
 
 .PHONY: slate homebrew
 mac: slate homebrew
-
-chrome:
-ifeq ($(OS), Linux)
-	ln -fns $(CURRENT_DIR)/chrome/usercss/Custom.css $(INSTALL_DIR)/.config/chromium/Default/User\ StyleSheets/Custom.css
-endif
-ifeq ($(OS), Darwin)
-	ln -fns $(CURRENT_DIR)/chrome/usercss/Custom.css $(INSTALL_DIR)/Library/Application\ Support/Google/Chrome/Default/User\ StyleSheets/Custom.css
-endif
-
-common:
-	ln -fns $(CURRENT_DIR)/common/ackrc    $(INSTALL_DIR)/.ackrc
-	ln -fns $(CURRENT_DIR)/common/agignore $(INSTALL_DIR)/.agignore
-	ln -fns $(CURRENT_DIR)/common/editrc   $(INSTALL_DIR)/.editrc
-	ln -fns $(CURRENT_DIR)/common/gemrc    $(INSTALL_DIR)/.gemrc
-	ln -fns $(CURRENT_DIR)/common/inputrc  $(INSTALL_DIR)/.inputrc
 
 dropbox:
 	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
@@ -41,9 +23,6 @@ homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
 	fi
-
-mercurial:
-	ln -fns $(CURRENT_DIR)/mercurial/hgrc $(INSTALL_DIR)/.hgrc
 
 peco:
 	ln -fns $(CURRENT_DIR)/peco $(CONFIG_HOME)/peco
