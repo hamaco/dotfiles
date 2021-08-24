@@ -103,32 +103,14 @@ keymap Global
 	mod shift += !!Space
 	key R-*Space = &Ignore
 
-	# mod windows -= RightWindows
-	# mod mod9    += RightWindows
-	# key *RWin = &Ignore
-	# key m9-a  = C-A-_1 &Sync
-	# key m9-s  = C-A-_2 &Sync
-	# key m9-d  = C-A-_3 &Sync
-	# key m9-f  = C-A-_4 &Sync
-	# key m9-g  = C-A-_5 &Sync
-	# key m9-h  = C-A-_6 &Sync
-	# key m9-j  = C-A-_7 &Sync
-	# key m9-k  = C-A-_8 &Sync
-	# key m9-l  = C-A-_9 &Sync
-	# key m9-e  = W-e
-
 	# 右シフトは普段使わないので^と&に置き換え
-	# @todo できれば他のキーの場合Shiftにしたい
+	# @todo できれば他のキーとの組み合わせの場合 Shift にしたい
 	mod shift       -= RightShift
 	key RightShift   = $CIRCUMFLEX_ACCENT
 	key S-RightShift = $AMPERSAND
 
 	# IME
 	key *IC-C-j = &SetImeStatus(on) &Sync C-j
-
-	# Shutdown and Sleep
-	# key W-u = &Sync &ShellExecute("open", "shutdown.exe", "-s -t 0",, showNormal)
-	# key W-s = &Sync &ShellExecute("open", "rundll32.exe", "powrprof.dll,SetSuspendStte 0,1,0",, showNormal)
 
 	key C-m = Enter
 	key C-h = Backspace
@@ -139,37 +121,26 @@ keymap Global
 	# 変なアプリ起動してきて邪魔なのでとりあえず無効化
 	key W-i = &Ignore
 	key W-c = &Ignore
+	# Office の謎のエラーウィンドウ抑制
+	key S-A-C-W-LeftWindows = &Ignore
 
 	key A-h     = Left
 	key A-j     = Down
 	key A-k     = Up
 	key A-l     = Right
-	# key A-Enter = F11
 	key A-F1    = F1
+	key W-a     = C-a
 
-	# Explorer置き換え
-	#key W-e = &Sync &ShellExecute("open", "D:/software/filemanager/xf/XF.exe",,, showNormal)
-
-	# Launchy
+	# PowerToys Launcher
 	# SandSのせいでShiftが必要
 	key S-W-Space = A-Space
 
-keymap Viewer : Global
-	key q = A-F4
-	key h = Left
-	key l = Right
-
 window Explorer /explorer\.exe/ : Global
 	key C-l = A-d
-	key W-l = A-d
-	# key W-n = W-A-Space &Sync C-n
 
 window Excel /excel\.exe/ : Global
 	key A-Enter = A-Enter
 
-	key C-Slash = F2 &Wait(150) C-Left &Sync C-Left &Sync C-Left &Sync C-Left &Sync Backspace &Sync _0 &Sync Enter
-
-# window Edit /Edit:|Edit$|EditView|Chrome_OmniboxView$/ : Global
 keymap Global
 	key C-a = Home
 	key C-e = End
@@ -178,19 +149,18 @@ keymap Global
 	key C-n = Down
 	key C-b = Left
 	key C-f = Right
-	# key W-z = C-z
-	# key W-a = C-a
-	# key W-x = C-x
-	# key W-c = C-c
-	# key W-v = C-v
 
-window WindowsTerminal /WindowsTerminal\.exe/ : Global
+window Terminal /(WindowsTerminal|Terminus)\.exe/ : Global
+	key C-a = &Default
+	key C-e = &Default
+	key C-d = &Default
+	key C-h = &Default
 	key C-f = &Default
 	key C-b = &Default
 	key C-p = &Default
 	key C-n = &Default
 
-window PhpStorm /PhpStorm64\.exe/ : Global
+window Editor /(code|PhpStorm64)\.exe/ : Global
 	key C-a = &Default
 	key C-e = &Default
 	key C-d = &Default
@@ -207,6 +177,9 @@ window PhpStorm /PhpStorm64\.exe/ : Global
 	key A-Enter = &Default
 	key A-F1    = &Default
 	key W-z = C-z
+
+window Browser /(Vivaldi|brave|edge|sidekick|TablePlus)\.exe/ : Global
+	key C-Slash = C-f
 
 window Lightroom /lightroom\.exe/ : Global
 	key C-a = &Default
