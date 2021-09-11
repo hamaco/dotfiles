@@ -18,6 +18,7 @@ dropbox:
 
 git:
 	ln -fns $(CURRENT_DIR)/git $(CONFIG_HOME)/git
+	ln -fns $(CURRENT_DIR)/gh $(CONFIG_HOME)/gh
 
 homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
@@ -28,7 +29,7 @@ peco:
 	ln -fns $(CURRENT_DIR)/peco $(CONFIG_HOME)/peco
 
 slate:
-	ln -nfs $(CURRENT_DIR)/slate/slate.js $(INSTALL_DIR)/.slate.js
+	ln -fns $(CURRENT_DIR)/slate/slate.js $(INSTALL_DIR)/.slate.js
 
 tig:
 	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
