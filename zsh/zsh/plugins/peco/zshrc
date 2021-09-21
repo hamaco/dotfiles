@@ -1,11 +1,12 @@
-if exists peco; then
-  source_files $(dirname $0)/sources/*.zsh
+# anyframe
+bindkey '^r'  anyframe-widget-put-history
+bindkey '^s'  anyframe-widget-cd-ghq-repository && basename `pwd`
+bindkey '^x;' anyframe-widget-cdr
+bindkey '^xk' anyframe-widget-kill
 
-  # anyframe
-  bindkey '^r'  anyframe-widget-put-history
-  bindkey '^s'  anyframe-widget-cd-ghq-repository && basename `pwd`
-  bindkey '^x;' anyframe-widget-cdr
-  bindkey '^xk' anyframe-widget-kill
+source_files $(dirname $0)/sources/*.zsh
+
+if exists peco; then
 
   # git-resent-breanches
   # bindkey '^x^b' peco-git-recent-branches
