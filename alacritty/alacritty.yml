@@ -1,0 +1,65 @@
+window:
+  # dimensions:
+  #   columns: 180
+  #   lines: 60
+  # position:
+  #   x: 400
+  #   y: 100
+  padding:
+    x: 5
+    y: 5
+  decorations: Full
+  startup_mode: Windowed
+  title: Alacritty
+
+background_opacity: 0.75
+
+font:
+  normal:
+    # family: Iosevka Term SS05
+    # style: Bold
+    family: Fira Code Retina
+    family: agave Nerd Font Mono r
+  size: 15.0
+
+# Colors (Monokai Pro)
+colors:
+  # Default colors
+  primary:
+    background: '#2D2A2E'
+    foreground: '#FCFCFA'
+
+  # Normal colors
+  normal:
+    black:   '#403E41'
+    red:     '#FF6188'
+    green:   '#A9DC76'
+    yellow:  '#FFD866'
+
+    blue:    '#FC9867'
+    magenta: '#AB9DF2'
+    cyan:    '#78DCE8'
+    white:   '#FCFCFA'
+
+  # Bright colors
+  bright:
+    black:   '#727072'
+    red:     '#FF6188'
+    green:   '#A9DC76'
+    yellow:  '#FFD866'
+    blue:    '#FC9867'
+    magenta: '#AB9DF2'
+    cyan:    '#78DCE8'
+    white:   '#FCFCFA'
+
+scrolling:
+  history: 50000
+
+shell:
+  program: /Windows/System32/wsl.exe
+
+selection:
+  save_to_clipboard: true
+
+mouse_bindings:
+  - { mouse: Right, action: Paste }
