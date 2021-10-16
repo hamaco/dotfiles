@@ -1,13 +1,6 @@
 source $HOME/.zsh/main.zsh
 source_if $HOME/.zshrc.local
 
-
-alias tenki="curl https://wttr.in/toshima"
-
-alias bat="bat --theme=DarkNeon"
-
-alias pt=rg
-
 function ssh() { # tmux起動時
     if [[ -n $(printenv TMUX) ]] ; then
         command tmux select-pane -P 'bg=colour52,fg=white'

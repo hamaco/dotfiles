@@ -1,8 +1,10 @@
 # Alias: エイリアス ========= {{{1
 
-alias pt="pt --global-gitignore"
+alias pt="rg"
 
 alias %=" " # webにあるコマンドをコピペで実行出来るようにする
+
+alias dotfiles="git -C $(ghq list -p hamaco/dotfiles)"
 
 alias df="df -hl"
 alias wget="noglob wget --no-check-certificate"
@@ -17,9 +19,10 @@ alias ll="ls -l"
 alias la="ls -la"
 
 alias less="less --no-init --quit-if-one-screen -g -R"
+alias bat="bat --theme=DarkNeon"
 
 # for vim
-alias v="vim"
+alias v="nvim"
 alias gv="gvim"
 alias pvim="vim -u NONE -i NONE -N"
 alias pgvim="gvim -u NONE -i NONE -N"
@@ -42,13 +45,11 @@ alias be="bundle exec"
 alias vag="vagrant"
 alias c="composer"
 alias a="php artisan"
-alias oil="noglob oil"
 
 alias d="docker"
 alias dc="docker-compose"
 alias phpstan='docker run --rm -it -v $(pwd):/app phpstan/phpstan'
 alias psalm='docker run --rm -it -v $(pwd):/app crewbit/psalm'
-# alias phan="docker run --rm -it -v $(pwd):/app crewbit/phan"
 phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" cloudflare/phan:latest $@; return $?; }
 alias php7cc='docker run --rm -it -v $(pwd):/app crewbit/php7cc'
 alias phpinsights='docker run --rm -it -v $(pwd):/app crewbit/phpinsights'
@@ -56,12 +57,19 @@ alias d-ridgepole='docker run --rm -it -v $(pwd):/provision crewbit/ridgepole'
 alias d-node='docker run --rm -it -v $(pwd):/app -w /app node node'
 alias d-npm='docker run --rm -it -v $(pwd):/app -w /app node npm'
 alias d-npx='docker run --rm -it -v $(pwd):/app -w /app node npx'
+alias d-npm8='docker run --rm -it -v $(pwd):/app -w /app node:8 npm'
 alias d-npm10='docker run --rm -it -v $(pwd):/app -w /app node:10 npm'
+alias d-npm12='docker run --rm -it -v $(pwd):/app -w /app node:12 npm'
+alias d-npm14='docker run --rm -it -v $(pwd):/app -w /app node:14 npm'
 alias d-yarn='docker run --rm -it -v $(pwd):/app -w /app node yarn'
 alias d-yarn10='docker run --rm -it -v $(pwd):/app -w /app node:10 yarn'
 alias d-ruby2='docker run --rm -it -v $(pwd):/app -w /app ruby:2'
+alias d-tbls='docker run --rm -it --network crewbit_network -v $(pwd):/app -w /app ghcr.io/k1low/tbls:latest'
 
+alias tenki="curl https://wttr.in/toshima"
 alias weather="curl http://wttr.in/東京"
+
+alias dotenv-linter="dotenv-linter -s UnorderedKey"
 
 for command in nautilus caja thunar nemo
 do
