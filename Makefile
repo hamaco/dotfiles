@@ -6,8 +6,8 @@ OS = ${shell uname}
 
 all: cui mac
 
-.PHONY: git tig tmux vim zsh peco
-cui: git tig tmux vim zsh peco
+.PHONY: git tig tmux vim zsh peco ripgrep
+cui: git tig tmux vim zsh peco ripgrep
 
 .PHONY: slate homebrew
 mac: slate homebrew
@@ -30,6 +30,9 @@ homebrew:
 
 peco:
 	ln -fns $(CURRENT_DIR)/peco $(CONFIG_HOME)/peco
+
+ripgrep:
+	ln -fns $(CURRENT_DIR)/ripgrep/rgignore $(HOME)/.rgignore
 
 slate:
 	ln -fns $(CURRENT_DIR)/slate/slate.js $(INSTALL_DIR)/.slate.js
