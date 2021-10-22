@@ -9,6 +9,7 @@ alias dotfiles="git -C $(ghq list -p hamaco/dotfiles)"
 alias df="df -hl"
 alias wget="noglob wget --no-check-certificate"
 alias calc="noglob calc"
+alias find="noglob find"
 
 alias sudo="sudo -E " # sudoでもaliasが使えるようにする
 
