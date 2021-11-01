@@ -67,6 +67,8 @@ alias d-yarn10='docker run --rm -it -v $(pwd):/app -w /app node:10 yarn'
 alias d-ruby2='docker run --rm -it -v $(pwd):/app -w /app ruby:2'
 alias d-tbls='docker run --rm -it --network crewbit_network -v $(pwd):/app -w /app ghcr.io/k1low/tbls:latest'
 
+alias update-composer='composer global self-update && composer global update'
+
 alias tenki="curl https://wttr.in/toshima"
 alias weather="curl http://wttr.in/東京"
 
