@@ -55,5 +55,7 @@ if exists fzf; then
   }
   alias sshf=fzf-ssh
 
+  alias cd-temp="cd $(ls -d ~/tmp/*(/) | fzf --select-1)"
+
   source_if ~/.fzf.zsh
 fi
