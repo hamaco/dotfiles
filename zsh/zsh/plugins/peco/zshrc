@@ -1,6 +1,6 @@
 # anyframe
 bindkey '^r'  anyframe-widget-put-history
-bindkey '^s'  anyframe-widget-cd-ghq-repository && basename `pwd`
+bindkey '^s'  anyframe-widget-cd-ghq-repository
 bindkey '^x;' anyframe-widget-cdr
 bindkey '^xk' anyframe-widget-kill
 
@@ -55,7 +55,7 @@ if exists fzf; then
   }
   alias sshf=fzf-ssh
 
-  alias cd-temp="cd $(ls -d ~/tmp/*(/) | fzf --select-1)"
+  alias cd-temp='cd $(ls -d ~/tmp/*(/) | fzf --select-1)'
 
   source_if ~/.fzf.zsh
 fi
