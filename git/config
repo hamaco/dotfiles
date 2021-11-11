@@ -27,7 +27,6 @@
 
 [core]
   attributesfile = ~/.config/git/attributes
-#  commentchar = ^
   pager = less -r
   quotepath = false
   precomposeunicode = true
@@ -107,22 +106,14 @@
   sw                  = switch
   swc                 = "!sh -c 'git switch -c ${0} origin/master'"
   swo                 = "!git switch $(git branch --contains | sed 's|.*origin/||' | head -1 | sed 's/)//')"
-  # sweep-branch        = "!git branch --delete $(git branch --merged master | /usr/bin/grep -v '^*\\|  master$')"
   sweep-branch        = "!git branch --delete $(git branch --merged $(git current-branch) | /usr/bin/grep -v '^*\\|  master$')"
   sweep-remote-branch = "!git branch -a --merged master | /usr/bin/egrep -v 'master|staging' | /usr/bin/grep remotes/origin | sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%"
   up = update
   wip            = commit --allow-empty -m 'wip'
 
-  n   = now --all --stat
-  now = now --stat
-
   # used?
   branch-root    = merge-base master HEAD
   pbcopy         = !printf "$1" | pbcopy
-  d1             = diff HEAD~
-  d2             = diff HEAD~~
-  d3             = diff HEAD~~~
-  d4             = diff HEAD~~~~
   difflog        = log -p HEAD@{3.days.ago}
   find-rev       = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
   gr             = grep -H --heading --break
@@ -137,10 +128,6 @@
   pr-setup       = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
   rollback       = reset --hard HEAD~
   show-rev       = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
-  smi            = submodule init
-  smp            = submodule foreach "git pull"
-  smcp           = submodule foreach "git checkout master; git pull origin master"
-  smu            = submodule update
   so             = remote show origin
   tree           = log --graph --pretty=oneline --abbrev-commit --decorate
   unignore       = update-index --no-skip-worktree
@@ -153,10 +140,6 @@
   stashes  = stash list
   unmerged = diff --name-only --diff-filter=U
 
-  # for hub commands
-  pr-open   = "!gh pr view --web"
-  see       = "!gh repo view --web"
-
 [url "git@github.com:"]
   pushinsteadof = "https://github.com/"
   pushinsteadof = "git://github.com/"
@@ -164,13 +147,8 @@
 [url "git://github.com/"]
   insteadof = gh:
 
-[ghn]
-  followissuecomment = true
-
 [ghq]
   root = ~/src
+
 [gitget]
   root = ~/src
-
-[init]
-#  templatedir = ~/.gittemplate
