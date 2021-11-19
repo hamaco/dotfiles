@@ -32,6 +32,8 @@ bind main    R !git rebase -i %(commit)
 bind diff    R !git rebase -i %(commit)
 bind generic L !git reflog
 
+bind status  F !git fixup
+
 # open commit at github
 bind generic o @hub browse -- commit/%(commit)
 bind main    B @hub browse -- commit/%(commit)
