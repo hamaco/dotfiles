@@ -46,6 +46,7 @@ alias be="bundle exec"
 alias vag="vagrant"
 alias c="composer"
 alias a="php artisan"
+alias ts="tig status"
 
 alias d="docker"
 alias dc="docker-compose"
