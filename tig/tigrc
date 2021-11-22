@@ -1,5 +1,7 @@
 set vertical-split   = no
 set diff-context     = 5
+set diff-highlight   = true
+# set diff-highlight   = /home/linuxbrew/.linuxbrew/bin/diff-so-fancy
 set split-view-width = 75%
 set wrap-lines       = no
 set ignore-space     = all
