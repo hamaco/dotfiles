@@ -63,3 +63,6 @@ zsh:
 
 alacritty:
 	cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml
+
+karabiner:
+	ln -fns $(CURRENT_DIR)/mac/karabiner $(CONFIG_HOME)/karabiner
