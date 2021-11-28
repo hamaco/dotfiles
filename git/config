@@ -87,6 +87,7 @@
   fo                  = fetch origin --prune
   make-ignore         = !"f(){ IFS=,; curl \"https://www.gitignore.io/api/$*\"; };f"
   interactive-rebase  = rebase -i
+  irm                 = rebase -i origin/master
   l                   = log --stat --date=local
   l1                  = log --pretty=oneline --abbrev-commit
   lp                  = log --decorate --stat --patch --follow
