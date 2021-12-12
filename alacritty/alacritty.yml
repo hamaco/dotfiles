@@ -16,14 +16,23 @@ background_opacity: 0.75
 
 font:
   normal:
-    # family: Iosevka Term SS05
-    # style: Bold
     family: Fira Code Retina
-    family: agave Nerd Font Mono r
-  size: 15.0
+    family: Cascadia Mono
+    family: PlemolJP Console NF
+    # family: agave Nerd Font Mono r
+    # family: Iosevka Fixed SS05
+    # family: Cousine
+    # family: Azeret Mono
+    style: SemiBold
+  size: 14.5
+
+custom_cursor_colors: true
 
 # Colors (Monokai Pro)
 colors:
+  cursor:
+    text: '#FFFFFF'
+    cursor: '#666660'
   # Default colors
   primary:
     background: '#2D2A2E'
@@ -88,7 +97,7 @@ scrolling:
   history: 50000
 
 shell:
-  program: /Windows/System32/wsl.exe
+  program: /Windows/System32/wsl.exe --cd ~
 
 selection:
   semantic_escape_chars: " \\()\"',:;<>~!@#$%^&*|+=[]{}~?"
