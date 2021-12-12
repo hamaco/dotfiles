@@ -1,3 +1,6 @@
 *.min.js
 *.svg
+*.dump
+*.sql
+*.lock
 app.js
