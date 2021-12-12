@@ -41,6 +41,8 @@ alias u='cd-gitroot'
 
 zplug "kwhrtsk/docker-fzf-completion"
 
+zplug "zsh-users/zsh-autosuggestions"
+# bindkey '^' autosuggest-execute
 
 if ! zplug check --verbose; then
     printf "Install zplug plugins? [y/N]: "
