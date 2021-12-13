@@ -11,12 +11,13 @@ path=(
   $HOME/bin(N-/)
   $HOME/app/*/bin(N-/)
   $HOME/app/*/*/bin(N-/)
-  $HOME/.composer/vendor/bin(N-/)
   $HOME/.config/composer/vendor/bin(N-/)
 
   /usr/local/heroku/bin(N-/)
   /usr/local/bin(N-/)
   /usr/local/share/git-core/contrib/diff-highlight(N-/)
+
+  $HOME/.aqua/bin(N-/)
 
   /home/linuxbrew/.linuxbrew/bin(N-/)
   /home/linuxbrew/.linuxbrew/sbin(N-/)
