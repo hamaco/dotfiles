@@ -44,7 +44,7 @@ tmux:
 	@if [ ! -d $(INSTALL_DIR)/.tmux/plugins/tpm ]; then \
 		git clone git://github.com/tmux-plugins/tpm $(INSTALL_DIR)/.tmux/plugins/tpm; \
 	fi
-	ln -fns $(CURRENT_DIR)/tmux/tmux.conf $(INSTALL_DIR)/.tmux.conf
+	ln -fns $(CURRENT_DIR)/tmux $(CONFIG_HOME)/tmux
 
 vim:
 	@if [ ! -d $(INSTALL_DIR)/.bundle ]; then \
