@@ -26,6 +26,8 @@ font:
     style: SemiBold
   size: 14.5
 
+live_config_reload: true
+
 custom_cursor_colors: true
 
 scrolling:
@@ -35,7 +37,7 @@ shell:
   program: /Windows/System32/wsl.exe --cd ~
 
 selection:
-  semantic_escape_chars: " \\()\"',:;<>~!@#$%^&*|+=[]{}~?"
+  semantic_escape_chars: " \\()\"',:;<>~!@#$%^&*|+=[]{}~?↲"
   save_to_clipboard: true
 
 mouse_bindings:
