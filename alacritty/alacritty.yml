@@ -37,7 +37,7 @@ shell:
   program: /Windows/System32/wsl.exe --cd ~
 
 selection:
-  semantic_escape_chars: " \\()\"',:;<>~!@#$%^&*|+=[]{}~?↲"
+  semantic_escape_chars: " \\()\"',:;<>~!@#$%^&*|+=[]{}~?│↲"
   save_to_clipboard: true
 
 mouse_bindings:
