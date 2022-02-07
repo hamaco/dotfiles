@@ -8,11 +8,10 @@ window:
   padding:
     x: 5
     y: 5
+  opacity: 0.85
   decorations: Full
   startup_mode: Windowed
   title: Alacritty
-
-background_opacity: 0.75
 
 font:
   normal:
