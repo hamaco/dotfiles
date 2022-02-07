@@ -25,9 +25,8 @@ font:
     style: SemiBold
   size: 14.5
 
-live_config_reload: true
-
 custom_cursor_colors: true
+live_config_reload: true
 
 scrolling:
   history: 50000
@@ -46,6 +45,7 @@ mouse_bindings:
 schemes:
   ### Edge (Dark Default variant)
   edge_dark_default: &edge_dark_default
+    transparent_background_colors: true
     primary:
       background: "0x2c2e34"
       foreground: "0xc5cdd9"
@@ -70,6 +70,7 @@ schemes:
 
   ### Edge (Dark Aura variant)
   edge_dark_aura: &edge_dark_aura
+    transparent_background_colors: true
     primary:
       background: "0x2b2d37"
       foreground: "0xc5cdd9"
@@ -94,6 +95,7 @@ schemes:
 
   ### Monokai Pro
   monokai_pro: &monokai_pro
+    transparent_background_colors: true
     cursor:
       text: '#FFFFFF'
       cursor: '#666660'
@@ -121,6 +123,7 @@ schemes:
 
   ### afterglow
   afterglow: &afterglow
+    transparent_background_colors: true
     primary:
       background: '#2c2c2c'
       foreground: '#d6d6d6'
