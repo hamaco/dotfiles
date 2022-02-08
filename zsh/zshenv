@@ -12,12 +12,11 @@ path=(
   $HOME/app/*/bin(N-/)
   $HOME/app/*/*/bin(N-/)
   $HOME/.config/composer/vendor/bin(N-/)
+  ${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin(N-/)
 
   /usr/local/heroku/bin(N-/)
   /usr/local/bin(N-/)
   /usr/local/share/git-core/contrib/diff-highlight(N-/)
-
-  $HOME/.aqua/bin(N-/)
 
   /home/linuxbrew/.linuxbrew/bin(N-/)
   /home/linuxbrew/.linuxbrew/sbin(N-/)
@@ -40,6 +39,8 @@ export SVN_EDITOR=vim
 export MYSQL_PS1="\\u@\\h:\\d>\\_"
 export GOPATH=$HOME
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" 
+export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
+
 # }}}
 
 # END {{{1
