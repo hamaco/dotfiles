@@ -1,0 +1,86 @@
+set ignorecase
+set smartcase
+
+set clipboard+=unnamed
+set vb
+
+" Emulate Plugins
+set surround
+set commentary
+set multiple-cursors
+
+set ideajoin
+
+let mapleader=","
+
+noremap ; :
+noremap : ;
+
+noremap Y y$
+
+inoremap <C-e> <END>
+
+" Use Q for formatting the current paragraph (or visual selection)
+" TODO: mark上書きしてしまっているので解消したい
+nnoremap Q magqap'a
+
+nnoremap <leader>b :action Back<CR>
+nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>d :action GotoDeclaration<CR>
+nnoremap <leader>f :action GotoFile<CR>
+nnoremap <leader>s :action GotoSymbol<CR>
+nnoremap <leader>t :action GotoTest<CR>
+nnoremap <leader>i :action GotoImplementation<cr>
+nnoremap <leader>I :action SelectIn<cr>
+nnoremap <leader>e :action RecentFiles<cr>
+nnoremap <leader>b :action ShowBookmarks<cr>
+nnoremap <leader>; :action FileStructurePopup<cr>
+
+
+" Errors
+nnoremap <leader>x :action GotoNextError<cr>
+nnoremap <leader>X :action GotoPreviousError<cr>
+
+" Refactorings
+vnoremap T :action Refactorings.QuickListPopupAction<cr>
+nnoremap <space>rr :action RenameElement<cr>
+nnoremap <space>rg :action Generate<cr>
+nnoremap <space>rI :action OptimizeImports<cr>
+nnoremap <space>rf :action ReformatCode<cr>
+vnoremap <space>rf :action ReformatCode<cr>
+
+" VCS operations
+nnoremap <leader>yy :action Vcs.Show.Local.Changes<cr>
+nnoremap <leader>yp :action Vcs.QuickListPopupAction<cr>
+nnoremap <leader>ya :action Annotate<cr>
+nnoremap <leader>yl :action Vcs.Show.Log<cr>
+nnoremap <leader>yd :action Compare.LastVersion<cr>
+nnoremap <leader>c  :action CheckinProject<cr>
+
+" Inspection
+nnoremap <space>rc :action InspectCode<cr>
+
+" Tests
+nnoremap <leader>r :action Rerun<cr>
+nnoremap <leader>t :action RunClass<cr>
+
+" Tabs
+nnoremap <Tab>     <C-w>w
+nnoremap <C-S-Tab> :action PreviousTab<cr>
+nnoremap <C-Tab>   :action NextTab<cr>
+
+nnoremap <S-Tab>   :action MoveEditorToOppositeTabGroup<cr>
+nnoremap <A-a>     :action MoveEditorToOppositeTabGroup<cr>
+
+" Terminal
+nnoremap <leader>T :action ActivateTerminalToolWindow<cr>
+
+" Tmporary
+" unimpaired mappings - from https://github.com/saaguero/ideavimrc/blob/master/.ideavimrc
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap <C-p> :action MethodUp<cr>
+nnoremap <C-n> :action MethodDown<cr>
+
+nnoremap gn :action GotoNextError<CR>
+nnoremap gp :action GotoPreviousError<CR>

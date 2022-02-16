@@ -12,8 +12,8 @@ cui: git tig tmux vim zsh peco ripgrep
 .PHONY: slate homebrew
 mac: slate homebrew
 
-.PHONY: alacritty
-windows: alacritty
+.PHONY: alacritty ideavim
+windows: alacritty ideavim
 
 dropbox:
 	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
@@ -63,6 +63,9 @@ zsh:
 
 alacritty:
 	cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml
+
+ideavim:
+	cp $(CURRENT_DIR)/ideavim/ideavimrc /mnt/c/Users/hamaco/.ideavimrc
 
 karabiner:
 	ln -fns $(CURRENT_DIR)/mac/karabiner $(CONFIG_HOME)/karabiner
