@@ -31,7 +31,11 @@
 # # antigen bundle shrkw/zsh-notify --branch=tmux_support
 
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+if [ -e /usr/local/opt/zplug ]; then
+    export ZPLUG_HOME=/usr/local/opt/zplug
+elif [ -e /opt/homebrew/opt/zplug ]; then
+    export ZPLUG_HOME=/opt/homebrew/opt/zplug
+fi
 source $ZPLUG_HOME/init.zsh
 
 zplug "mollifier/anyframe"
