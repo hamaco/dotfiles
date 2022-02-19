@@ -62,7 +62,14 @@ zsh:
 	ln -fns $(CURRENT_DIR)/zsh/zshenv $(INSTALL_DIR)/.zshenv
 
 alacritty:
-	cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml
+	@if [ "$(OS)" = "Darwin" ]; then \
+		if [ ! -d $(CONFIG_HOME)/alacritty ]; then \
+			mkdir $(CONFIG_HOME)/alacritty; \
+		fi; \
+		ln -fns $(CURRENT_DIR)/alacritty/alacritty.yml $(CONFIG_HOME)/alacritty/alacritty.yml; \
+	else \
+		cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml; \
+	fi
 
 ideavim:
 	cp $(CURRENT_DIR)/ideavim/ideavimrc /mnt/c/Users/hamaco/.ideavimrc
