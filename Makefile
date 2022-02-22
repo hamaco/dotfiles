@@ -72,7 +72,14 @@ alacritty:
 	fi
 
 ideavim:
-	cp $(CURRENT_DIR)/ideavim/ideavimrc /mnt/c/Users/hamaco/.ideavimrc
+	@if [ "$(OS)" = "Darwin" ]; then \
+		if [ ! -d $(CONFIG_HOME)/alacritty ]; then \
+			mkdir $(CONFIG_HOME)/alacritty; \
+		fi; \
+		ln -fns $(CURRENT_DIR)/ideavim/ideavimrc $(INSTALL_DIR)/.ideavimrc; \
+	else \
+		cp $(CURRENT_DIR)/ideavim/ideavimrc /mnt/c/Users/hamaco/.ideavimrc; \
+	fi
 
 karabiner:
 	ln -fns $(CURRENT_DIR)/mac/karabiner $(CONFIG_HOME)/karabiner
