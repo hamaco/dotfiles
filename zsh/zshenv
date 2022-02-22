@@ -17,6 +17,8 @@ path=(
   /usr/local/heroku/bin(N-/)
   /usr/local/bin(N-/)
   /usr/local/share/git-core/contrib/diff-highlight(N-/)
+  /opt/homebrew/opt/git//share/git-core/contrib/diff-highlight(N-/)
+
 
   /home/linuxbrew/.linuxbrew/bin(N-/)
   /home/linuxbrew/.linuxbrew/sbin(N-/)
