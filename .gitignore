@@ -1,14 +1,10 @@
+.github-commit-status
+gh/hosts.yml
+mac/karabiner/automatic_backups
 vim/vim/.netrwhist
 vim/vim/backup
 vim/vim/save_point
 vim/vim/swap
-
-vimperator/vimperator/info
-
 zsh/zsh/cache/*
 zsh/zsh/plugins/000-antigen/antigen
 zsh/zsh/plugins/ghq/ghq
-
-mac/karabiner/automatic_backups
-
-.github-commit-status
