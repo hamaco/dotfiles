@@ -17,8 +17,7 @@ path=(
   /usr/local/heroku/bin(N-/)
   /usr/local/bin(N-/)
   /usr/local/share/git-core/contrib/diff-highlight(N-/)
-  /opt/homebrew/opt/git//share/git-core/contrib/diff-highlight(N-/)
-
+  /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight(N-/)
 
   /home/linuxbrew/.linuxbrew/bin(N-/)
   /home/linuxbrew/.linuxbrew/sbin(N-/)
@@ -44,6 +43,10 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
 
 # }}}
+
+if [ -e '/opt/homebrew/bin/brew' ]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
 # END {{{1
 # vim: foldmethod=marker
