@@ -34,10 +34,10 @@ function random-string-make() {
 
     if [ "$(uname)" != "Darwin" ]; then
         # これ mac では動かない
-        echo -n $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $STRLEN | head -n 1) | Pbcopy
+        echo -n $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $STRLEN | head -n 1) | pbcopy
         # こっちでいける？
         # LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | head -c $STRLEN
     else
-        openssl rand -base64 256 | fold -w $STRLEN | head -1 | pbcopy
+        openssl rand -base64 256 | tr -d '\n' | head -c $STRLEN | pbcopy
     fi
 }
