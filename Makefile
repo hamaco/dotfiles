@@ -67,8 +67,10 @@ alacritty:
 			mkdir $(CONFIG_HOME)/alacritty; \
 		fi; \
 		ln -fns $(CURRENT_DIR)/alacritty/alacritty.yml $(CONFIG_HOME)/alacritty/alacritty.yml; \
+		ln -fns $(CURRENT_DIR)/alacritty/alacritty.darwin.yml $(CONFIG_HOME)/alacritty/alacritty.darwin.yml; \
 	else \
 		cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml; \
+		cp $(CURRENT_DIR)/alacritty/alacritty.windows.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.windows.yml; \
 	fi
 
 ideavim:

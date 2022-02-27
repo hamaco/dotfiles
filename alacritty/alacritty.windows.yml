@@ -1,0 +1,28 @@
+window:
+  # dimensions:
+  #   columns: 180
+  #   lines: 60
+  # position:
+  #   x: 400
+  #   y: 100
+  padding:
+    x: 5
+    y: 5
+  opacity: 0.85
+  decorations: Full
+  startup_mode: Windowed
+  title: Alacritty
+
+font:
+  normal:
+    # family: Fira Code Retina
+    # family: Cascadia Mono
+    family: PlemolJP Console NF
+    # family: agave Nerd Font Mono r
+    # family: Iosevka Fixed SS05
+    # family: Cousine
+    style: SemiBold
+  size: 14.5
+
+shell:
+  program: /Windows/System32/wsl.exe --cd ~
