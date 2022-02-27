@@ -2,7 +2,7 @@
   "title": "AquaSKK",
   "rules": [
     {
-      "description": "AquaSKK for JetBrains",
+      "description": "AquaSKK for JetBrains/LINE",
       "manipulators": [
         {
           "type": "basic",
@@ -28,7 +28,8 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\."
+                "^com\\.jetbrains\\.",
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
@@ -59,7 +60,8 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\."
+                "^com\\.jetbrains\\.",
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
@@ -96,7 +98,8 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\."
+                "^com\\.jetbrains\\.",
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
@@ -127,7 +130,8 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\."
+                "^com\\.jetbrains\\.",
+                "^jp\\.naver\\.line\\."
               ]
             },
             {

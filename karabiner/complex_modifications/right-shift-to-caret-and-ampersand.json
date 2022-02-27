@@ -1,0 +1,43 @@
+{
+    "title": "Right shift to caret(^) and ampersand(&)",
+    "rules": [
+        {
+            "description": "Right shift to caret(^) and ampersand(&)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_shift"
+                    },
+                    "to": [
+                        {
+                            "key_code": 35,
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_shift",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": 36,
+                            "modifiers": [
+                                "left_shift"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
