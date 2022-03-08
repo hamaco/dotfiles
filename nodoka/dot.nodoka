@@ -110,7 +110,7 @@ keymap Global
 	key S-RightShift = $AMPERSAND
 
 	# IME
-	key *IC-C-j = &SetImeStatus(on) &Sync C-j
+	# key *IC-C-j = &SetImeStatus(on) &Sync C-j
 
 	key C-m = Enter
 	key C-h = Backspace
@@ -135,6 +135,9 @@ keymap Global
 	# SandS‚Ì‚¹‚¢‚ÅShift‚ª•K—v
 	key S-W-Space = A-Space
 
+	# Toggl
+	key W-t = S-C-W-t
+
 window Explorer /explorer\.exe/ : Global
 	key C-l = A-d
 
@@ -150,7 +153,7 @@ keymap Global
 	key C-b = Left
 	key C-f = Right
 
-window Terminal /(WindowsTerminal|Terminus)\.exe/ : Global
+window Terminal /(WindowsTerminal|Terminus|alacritty)\.exe/ : Global
 	key C-a = &Default
 	key C-e = &Default
 	key C-d = &Default
@@ -159,8 +162,12 @@ window Terminal /(WindowsTerminal|Terminus)\.exe/ : Global
 	key C-b = &Default
 	key C-p = &Default
 	key C-n = &Default
+	key A-h     = &Default
+	key A-j     = &Default
+	key A-k     = &Default
+	key A-l     = &Default
 
-window Editor /(code|PhpStorm64)\.exe/ : Global
+window Editor /(code|PhpStorm64|Excel)\.exe/ : Global
 	key C-a = &Default
 	key C-e = &Default
 	key C-d = &Default
@@ -178,8 +185,9 @@ window Editor /(code|PhpStorm64)\.exe/ : Global
 	key A-F1    = &Default
 	key W-z = C-z
 
-window Browser /(Vivaldi|brave|edge|sidekick|TablePlus)\.exe/ : Global
+window Browser /(Vivaldi|brave|chrome|edge|sidekick|TablePlus|Jasper)\.exe/ : Global
 	key C-Slash = C-f
+
 
 window Lightroom /lightroom\.exe/ : Global
 	key C-a = &Default
@@ -188,6 +196,9 @@ window Lightroom /lightroom\.exe/ : Global
 
 window Vim /vim\.exe/ : Global
 	key C-h = &Default
+
+window Toggl /TogglDesktop\.exe/ : Global
+	key C-r = F5
 
 keymap2 AlphaWindow
 	key _0   = &WindowSetAlpha(100)
