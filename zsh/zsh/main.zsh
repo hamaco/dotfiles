@@ -123,9 +123,9 @@ bindkey '^[d' _quote-previous-word-in-double
 # }}}
 
 # SSHのagent forward
-# http://www.funtoo.org/wiki/Keychain
-exists keychain && eval `keychain --eval --agents ssh id_ed25519 old.id_rsa`
-
+# http://www.funtoo.org/Keychain
+# TODO: メッセージ赤色にする
+exists keychain && eval `keychain --eval --agents ssh id_ed25519 id_rsa old.id_rsa` || echo 'keychainコマンドインストールしてください。'
 
 function chpwd() { ls_abbrev }
 typeset -ga chpwd_functions
