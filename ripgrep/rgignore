@@ -4,3 +4,4 @@
 *.sql
 *.lock
 app.js
+database/schema/*
