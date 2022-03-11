@@ -114,7 +114,6 @@
   wip            = commit --allow-empty -m 'wip'
 
   # used?
-  branch-root    = merge-base master HEAD
   pbcopy         = !printf "$1" | pbcopy
   difflog        = log -p HEAD@{3.days.ago}
   find-rev       = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
@@ -130,7 +129,6 @@
   pr-setup       = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
   rollback       = reset --hard HEAD~
   show-rev       = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
-  so             = remote show origin
   tree           = log --graph --pretty=oneline --abbrev-commit --decorate
   unignore       = update-index --no-skip-worktree
   view           = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
