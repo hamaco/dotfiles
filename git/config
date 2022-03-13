@@ -111,6 +111,7 @@
   sweep-branch        = "!git branch --delete $(git branch --merged $(git current-branch) | /usr/bin/grep -v '^*\\|  master$')"
   sweep-remote-branch = "!git branch -a --merged $(git current-branch) | /usr/bin/egrep -v 'master|staging' | /usr/bin/grep remotes/origin | sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%"
   up                  = update
+  vd                  = difftool --tool=vimdiff --no-prompt
   wip                 = commit --allow-empty -m 'wip'
 
   # used?
