@@ -26,3 +26,7 @@ font:
     family: Fira Code
     style: Medium
   size: 16.5
+
+key_bindings:
+  - {  key: U, mods: Alt,           command: {program: "/Users/hamaco/bin/alacritty-opacity-toggle"} }
+  - {  key: O, mods: Control|Shift, command: {program: "/Users/hamaco/bin/alacritty-opacity-toggle"} }
