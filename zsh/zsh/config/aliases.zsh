@@ -154,10 +154,10 @@ esac
 
 # Global: グローバルエイリアス ===== {{{1
 
-if which pbcopy >/dev/null 2>&1 ; then
+if exists pbcopy; then
     # Mac
     alias -g C='| pbcopy'
-elif which xsel >/dev/null 2>&1 ; then
+elif exists xsel; then
     # Linux
     alias -g C='| xsel --input --clipboard'
 fi
