@@ -9,5 +9,12 @@ pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
-    open: repo view --web
-    review-pr: pr list --search "status:success review:required"
+    mine: pr list -A hamaco
+    open: pr view --web
+    pr-merge: pr merge --squash --delete-branch
+    web: repo view --web
+    b: repo view --web
+# The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
+http_unix_socket:
+# What web browser gh should use when opening URLs. If blank, will refer to environment.
+browser:
