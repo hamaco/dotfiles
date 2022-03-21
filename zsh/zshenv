@@ -11,6 +11,7 @@ path=(
   $HOME/bin(N-/)
   $HOME/app/*/bin(N-/)
   $HOME/app/*/*/bin(N-/)
+  $HOME/.composer/vendor/bin(N-/)
   $HOME/.config/composer/vendor/bin(N-/)
   ${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin(N-/)
 
@@ -46,6 +47,7 @@ export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.conf
 
 if [ -e '/opt/homebrew/bin/brew' ]; then
     eval $(/opt/homebrew/bin/brew shellenv)
+    . $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
 # END {{{1
