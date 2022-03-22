@@ -41,3 +41,5 @@ function random-string-make() {
         openssl rand -base64 256 | tr -d '\n' | head -c $STRLEN | pbcopy
     fi
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
