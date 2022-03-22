@@ -173,6 +173,10 @@ bindkey -s '9~' 'f8\n' # F8
 
 # }}}
 
+if exists "/mnt/c/Program Files/1Password CLI/op.exe"; then
+    alias op="/mnt/c/Program\ Files/1Password\ CLI/op.exe"
+fi
+
 # END {{{1
 # vim: foldmethod=marker
 # }}}
