@@ -3,11 +3,11 @@ source_if $HOME/.zshrc.local
 
 function ssh() { # tmux起動時
     if [[ -n $(printenv TMUX) ]] ; then
+        local pane_id=$(tmux display -p '#{pane_id}')
+
         command tmux select-pane -P 'bg=colour52,fg=white'
-
         command ssh $@
-
-        command tmux select-pane -P 'default'
+        command tmux select-pane -t $pane_id -P 'default'
     else
         command ssh $@
     fi
