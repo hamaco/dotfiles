@@ -28,5 +28,7 @@ font:
   size: 16.5
 
 key_bindings:
+  - {  key: B, mods: Alt,           chars: "\x1bb" }
+  - {  key: F, mods: Alt,           chars: "\x1bf" }
   - {  key: U, mods: Alt,           command: {program: "/Users/hamaco/bin/alacritty-opacity-toggle"} }
   - {  key: O, mods: Control|Shift, command: {program: "/Users/hamaco/bin/alacritty-opacity-toggle"} }
