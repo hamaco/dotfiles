@@ -137,12 +137,15 @@ keymap Global
 
 	# Toggl
 	key W-t = S-C-W-t
+	# Clibor
+	key W-v = S-C-W-A-v
 
 window Explorer /explorer\.exe/ : Global
 	key C-l = A-d
 
 window Excel /excel\.exe/ : Global
 	key A-Enter = A-Enter
+	key C-Slash = C-f
 
 keymap Global
 	key C-a = Home
@@ -167,7 +170,7 @@ window Terminal /(WindowsTerminal|Terminus|alacritty)\.exe/ : Global
 	key A-k     = &Default
 	key A-l     = &Default
 
-window Editor /(code|PhpStorm64|Excel)\.exe/ : Global
+window Editor /(code|PhpStorm64)\.exe/ : Global
 	key C-a = &Default
 	key C-e = &Default
 	key C-d = &Default
@@ -188,7 +191,6 @@ window Editor /(code|PhpStorm64|Excel)\.exe/ : Global
 window Browser /(Vivaldi|brave|chrome|edge|sidekick|TablePlus|Jasper)\.exe/ : Global
 	key C-Slash = C-f
 
-
 window Lightroom /lightroom\.exe/ : Global
 	key C-a = &Default
 	key C-e = &Default
@@ -199,6 +201,7 @@ window Vim /vim\.exe/ : Global
 
 window Toggl /TogglDesktop\.exe/ : Global
 	key C-r = F5
+	key C-n = C-n
 
 keymap2 AlphaWindow
 	key _0   = &WindowSetAlpha(100)
