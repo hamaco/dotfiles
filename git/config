@@ -75,6 +75,7 @@
   cia                 = commit --amend
   cih                 = commit --amend -C HEAD
   co                  = checkout
+  com                 = !"f() { remote_head=$(git symbolic-ref --quiet refs/remotes/origin/HEAD); remote_head=${remote_head#refs/remotes/origin/}; git checkout ${remote_head:-$(git rev-parse --symbolic --verify --quiet main || git rev-parse --symbolic --verify --quiet master)}; }; f"
   continue-rebase     = rebase --continue
   cp                  = cherry-pick
   current-branch      = rev-parse --abbrev-ref HEAD
@@ -85,6 +86,7 @@
   fetch-all           = "!sh -c 'git remote | xargs -L 1 git fetch'"
   fetch-pulls         = fetch origin +refs/pull/*:refs/remotes/pull/*
   first               = !"git init -q && git commit -q --allow-empty -m ':seedling: Initial commit'"
+  fixit               = commit --amend --no-edit
   fo                  = fetch origin --prune
   make-ignore         = !"f(){ IFS=,; curl \"https://www.gitignore.io/api/$*\"; };f"
   interactive-rebase  = rebase -i
