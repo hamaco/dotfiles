@@ -3,5 +3,6 @@
 *.dump
 *.sql
 *.lock
+*.log
 app.js
 database/schema/*
