@@ -3,6 +3,7 @@
 *.dump
 *.sql
 *.lock
+package-lock.json
 *.log
 app.js
 database/schema/*
