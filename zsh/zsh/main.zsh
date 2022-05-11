@@ -191,3 +191,15 @@ autoload -Uz run-help-svn
 function title {
     echo -ne "\033]0;"$*"\007"
 }
+
+#######
+
+# homebrew-file
+
+if [ -f $(brew --prefix)/etc/brew-wrap ]; then
+    . $(brew --prefix)/etc/brew-wrap
+
+    _post_brewfile_update () {
+        brew file push
+    }
+fi
