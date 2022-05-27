@@ -38,7 +38,7 @@ function random-string-make() {
         # こっちでいける？
         # LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | head -c $STRLEN
     else
-        openssl rand -base64 256 | tr -d '\n' | head -c $STRLEN | pbcopy
+        openssl rand -base64 256 | tr -d '\n+/=' | head -c $STRLEN | pbcopy
     fi
 }
 
