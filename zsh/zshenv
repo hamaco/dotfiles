@@ -50,5 +50,8 @@ if [ -e '/opt/homebrew/bin/brew' ]; then
     . $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
+# /etc/zprofile とかを読み込まないようにする
+unsetopt GLOBAL_RCS
+
 # END {{{1
 # vim: foldmethod=marker
