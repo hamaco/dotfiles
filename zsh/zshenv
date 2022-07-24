@@ -2,8 +2,10 @@ function exists()       { command -v $1 &> /dev/null  }
 function source_if()    { [[ -f $1 ]] && source "$1" } 
 function source_files() { for file in $@; do source $file; done }
 
+# /etc/zprofile とかを読み込まないようにする
+unsetopt GLOBAL_RCS
 
-# PATH: ================== {{{1
+# PATH: ======================
 # 重複する要素を自動的に削除
 typeset -U path cdpath fpath manpath
 
@@ -28,9 +30,8 @@ path=(
 
   $path
 )
-# }}}
 
-# Export: ================ {{{1
+# EXPORT: ====================
 export TZ="Asia/Tokyo"
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -45,16 +46,3 @@ export MYSQL_PS1="\\u@\\h:\\d>\\_"
 export GOPATH=$HOME
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" 
 export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
-
-# }}}
-
-if [ -e '/opt/homebrew/bin/brew' ]; then
-    eval $(/opt/homebrew/bin/brew shellenv)
-    . $(brew --prefix asdf)/libexec/asdf.sh
-fi
-
-# /etc/zprofile とかを読み込まないようにする
-unsetopt GLOBAL_RCS
-
-# END {{{1
-# vim: foldmethod=marker
