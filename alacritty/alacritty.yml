@@ -136,4 +136,4 @@ schemes:
       cyan:    '#5c8482'
       white:   '#828282'
 
-colors: *edge_dark_aura
+colors: *monokai_pro

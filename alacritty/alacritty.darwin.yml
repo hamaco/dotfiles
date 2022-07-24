@@ -1,16 +1,9 @@
 window:
-  # dimensions:
-  #   columns: 180
-  #   lines: 60
-  # position:
-  #   x: 400
-  #   y: 100
   padding:
     x: 5
     y: 5
   opacity: 0.85
   decorations: Full
-  # startup_mode: Windowed
   startup_mode: SimpleFullscreen
   title: Alacritty
 
