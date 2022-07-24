@@ -46,3 +46,6 @@ export MYSQL_PS1="\\u@\\h:\\d>\\_"
 export GOPATH=$HOME
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" 
 export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache

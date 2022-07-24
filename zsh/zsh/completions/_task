@@ -1,0 +1,55 @@
+#compdef task
+
+_task() {
+  _arguments -C \
+      '1:: :__task_commands' \
+      '2:: :__args' \
+      &&  return 0
+
+  return 1
+}
+
+__task_commands() {
+  _values subcommands \
+    'up[docker-compose up -d]' \
+    'down[docker-compose down]' \
+    'restart[docker-compose down && docker-compose up -d]' \
+    'shell[docker-compose exec php-cli bash]' \
+    'mysql[into MySQL Container shell]' \
+    'tinker' \
+    'make\:migration' \
+    'migrate' \
+    'migrate\:fresh' \
+    'rollback' \
+    'seed' \
+    'seed\:all' \
+    'db\:import' \
+    'log' \
+    'yarn' \
+    'ide-helper' \
+    'composer' \
+    'cmd' \
+    'artisan' \
+    'phan' \
+    'phpstan' \
+    'psalm' \
+    'format' \
+    'format-preview' \
+    'phpunit'
+}
+
+__args() {
+    case $line[1] in
+        db:import)
+            _files
+            ;;
+        ide-helper)
+            _files
+            ;;
+        phpunit)
+            _files
+            ;;
+    esac
+}
+
+compdef _task task

@@ -1,6 +1,6 @@
 CURRENT_DIR := $(shell pwd)
 INSTALL_DIR := $(HOME)
-CONFIG_HOME := $(INSTALL_DIR)/.config
+XDG_CONFIG_HOME := $(HOME)/.config
 
 OS = ${shell uname}
 
@@ -20,8 +20,8 @@ dropbox:
 	ln -fns $(HOME)/Dropbox/data/linux/share/phpmanual $(INSTALL_DIR)/share/phpmanual
 
 git:
-	ln -fns $(CURRENT_DIR)/git $(CONFIG_HOME)/git
-	ln -fns $(CURRENT_DIR)/gh $(CONFIG_HOME)/gh
+	ln -fns $(CURRENT_DIR)/git $(XDG_CONFIG_HOME)/git
+	ln -fns $(CURRENT_DIR)/gh $(XDG_CONFIG_HOME)/gh
 
 homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
@@ -29,7 +29,7 @@ homebrew:
 	fi
 
 peco:
-	ln -fns $(CURRENT_DIR)/peco $(CONFIG_HOME)/peco
+	ln -fns $(CURRENT_DIR)/peco $(XDG_CONFIG_HOME)/peco
 
 ripgrep:
 	ln -fns $(CURRENT_DIR)/ripgrep/rgignore $(HOME)/.rgignore
@@ -44,7 +44,7 @@ tmux:
 	@if [ ! -d $(INSTALL_DIR)/.tmux/plugins/tpm ]; then \
 		git clone git://github.com/tmux-plugins/tpm $(INSTALL_DIR)/.tmux/plugins/tpm; \
 	fi
-	ln -fns $(CURRENT_DIR)/tmux $(CONFIG_HOME)/tmux
+	ln -fns $(CURRENT_DIR)/tmux $(XDG_CONFIG_HOME)/tmux
 
 vim:
 	@if [ ! -d $(INSTALL_DIR)/.bundle ]; then \
@@ -60,14 +60,15 @@ zsh:
 	ln -fns $(CURRENT_DIR)/zsh/zsh    $(INSTALL_DIR)/.zsh
 	ln -fns $(CURRENT_DIR)/zsh/zshrc  $(INSTALL_DIR)/.zshrc
 	ln -fns $(CURRENT_DIR)/zsh/zshenv $(INSTALL_DIR)/.zshenv
+	ln -fns $(CURRENT_DIR)/zsh/sheldon $(XDG_CONFIG_HOME)//sheldon
 
 alacritty:
 	@if [ "$(OS)" = "Darwin" ]; then \
-		if [ ! -d $(CONFIG_HOME)/alacritty ]; then \
-			mkdir $(CONFIG_HOME)/alacritty; \
+		if [ ! -d $(XDG_CONFIG_HOME)/alacritty ]; then \
+			mkdir $(XDG_CONFIG_HOME)/alacritty; \
 		fi; \
-		ln -fns $(CURRENT_DIR)/alacritty/alacritty.yml $(CONFIG_HOME)/alacritty/alacritty.yml; \
-		ln -fns $(CURRENT_DIR)/alacritty/alacritty.darwin.yml $(CONFIG_HOME)/alacritty/alacritty.darwin.yml; \
+		ln -fns $(CURRENT_DIR)/alacritty/alacritty.yml $(XDG_CONFIG_HOME)/alacritty/alacritty.yml; \
+		ln -fns $(CURRENT_DIR)/alacritty/alacritty.darwin.yml $(XDG_CONFIG_HOME)/alacritty/alacritty.darwin.yml; \
 	else \
 		cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml; \
 		cp $(CURRENT_DIR)/alacritty/alacritty.windows.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.windows.yml; \
@@ -75,13 +76,10 @@ alacritty:
 
 ideavim:
 	@if [ "$(OS)" = "Darwin" ]; then \
-		if [ ! -d $(CONFIG_HOME)/alacritty ]; then \
-			mkdir $(CONFIG_HOME)/alacritty; \
-		fi; \
 		ln -fns $(CURRENT_DIR)/ideavim/ideavimrc $(INSTALL_DIR)/.ideavimrc; \
 	else \
 		cp $(CURRENT_DIR)/ideavim/ideavimrc /mnt/c/Users/hamaco/.ideavimrc; \
 	fi
 
 karabiner:
-	ln -fns $(CURRENT_DIR)/mac/karabiner $(CONFIG_HOME)/karabiner
+	ln -fns $(CURRENT_DIR)/mac/karabiner $(XDG_CONFIG_HOME)/karabiner

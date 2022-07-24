@@ -31,29 +31,36 @@
 # # antigen bundle shrkw/zsh-notify --branch=tmux_support
 
 
-if [ -e /usr/local/opt/zplug ]; then
-    export ZPLUG_HOME=/usr/local/opt/zplug
-elif [ -e /opt/homebrew/opt/zplug ]; then
-    export ZPLUG_HOME=/opt/homebrew/opt/zplug
-fi
-source $ZPLUG_HOME/init.zsh
+# if [ -e /usr/local/opt/zplug ]; then
+#     export ZPLUG_HOME=/usr/local/opt/zplug
+# elif [ -e /opt/homebrew/opt/zplug ]; then
+#     export ZPLUG_HOME=/opt/homebrew/opt/zplug
+# fi
+# source $ZPLUG_HOME/init.zsh
+# 
+# zplug "mollifier/anyframe"
+# 
+# zplug "mollifier/cd-gitroot"
+# alias u='cd-gitroot'
+# 
+# zplug "kwhrtsk/docker-fzf-completion"
+# 
+# zplug "zsh-users/zsh-autosuggestions"
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
+# ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-beginning-search-backward-end history-beginning-search-forward-end)
+# # bindkey '^' autosuggest-execute
+# 
+# if ! zplug check --verbose; then
+#     printf "Install zplug plugins? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
+# zplug load
 
-zplug "mollifier/anyframe"
+alias u=cd-gitroot
 
-zplug "mollifier/cd-gitroot"
-alias u='cd-gitroot'
-
-zplug "kwhrtsk/docker-fzf-completion"
-
-zplug "zsh-users/zsh-autosuggestions"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=5"
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-beginning-search-backward-end history-beginning-search-forward-end)
-# bindkey '^' autosuggest-execute
 
-if ! zplug check --verbose; then
-    printf "Install zplug plugins? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-zplug load
+eval "$(sheldon source)"
