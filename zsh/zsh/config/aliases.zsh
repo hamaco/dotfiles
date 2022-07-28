@@ -64,11 +64,13 @@ alias d-npm10='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app nod
 alias d-npm12='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:12 npm'
 alias d-npm14='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:14 npm'
 alias d-npm16='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:16 npm'
+alias d-npm18='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:18 npm'
 alias d-yarn='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node yarn'
 alias d-yarn10='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:10 yarn'
 alias d-yarn12='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:12 yarn'
 alias d-yarn14='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:14 yarn'
 alias d-yarn16='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:16 yarn'
+alias d-yarn18='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app node:18 yarn'
 alias d-ruby2='docker run --rm -it -v $(pwd):/app -u `id -u`:`id -g` -w /app ruby:2'
 alias d-tbls='docker run --rm -it --network crewbit_network -v $(pwd):/app -u `id -u`:`id -g` -w /app ghcr.io/k1low/tbls:latest'
 
