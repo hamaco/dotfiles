@@ -27,7 +27,7 @@ apply = ['defer']
 
 [plugins.cd-gitroot]
 github = 'mollifier/cd-gitroot'
-apply = ['defer']
+apply = ['defer', 'fpath']
 
 [plugins.docker-fzf-completion]
 github = 'kwhrtsk/docker-fzf-completion'
