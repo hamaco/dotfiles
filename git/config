@@ -57,6 +57,7 @@
 
 [push]
   default = simple
+  autoSetupRemote = true
 
 [rebase]
   autostash = true
