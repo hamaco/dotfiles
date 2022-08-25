@@ -75,7 +75,9 @@ up() {
 }
 
 # mkdir && cd
-mcd() mkdir -p "$1" && cd "$1"
+mcd() {
+    mkdir -p "$1" && cd "$1"
+}
 compdef mcd=cd
 
 # 作業用ディレクトリ作成
@@ -93,4 +95,6 @@ temp() {
 }
 
 # 電卓
-calc() awk "BEGIN{ print $* }"
+function calc() {
+    awk "BEGIN{ print $* }"
+}
