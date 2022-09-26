@@ -42,4 +42,3 @@ shell:
 key_bindings:
   - {  key: U, mods: Alt, command: {program: "wsl", args: ["alacritty-opacity-toggle"]} }
   - {  key: O, mods: Control|Shift, command: {program: "wsl", args: ["alacritty-opacity-toggle"]} }
-  - {  key: V, mods: Control, action: Paste }
