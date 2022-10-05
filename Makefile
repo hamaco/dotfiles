@@ -9,11 +9,11 @@ all: cui mac
 .PHONY: git tig tmux vim zsh peco ripgrep
 cui: git tig tmux vim zsh peco ripgrep
 
-.PHONY: slate homebrew
-mac: slate homebrew
+.PHONY: slate homebrew karabiner
+mac: slate homebrew karabiner
 
-.PHONY: alacritty ideavim
-windows: alacritty ideavim
+.PHONY: alacritty ideavim nodoka
+windows: alacritty ideavim nodoka
 
 dropbox:
 	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
@@ -80,6 +80,9 @@ ideavim:
 	else \
 		cp $(CURRENT_DIR)/ideavim/ideavimrc /mnt/c/Users/hamaco/.ideavimrc; \
 	fi
+
+nodoka:
+	cp $(CURRENT_DIR)/nodoka/dot.nodoka /mnt/c/Users/hamaco/dot.nodoka
 
 karabiner:
 	ln -fns $(CURRENT_DIR)/mac/karabiner $(XDG_CONFIG_HOME)/karabiner
