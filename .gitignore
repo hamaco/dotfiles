@@ -1,5 +1,6 @@
 .github-commit-status
 gh/hosts.yml
+git/config.local
 mac/karabiner/automatic_backups
 vim/vim/.netrwhist
 vim/vim/backup
