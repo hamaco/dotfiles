@@ -42,7 +42,7 @@ tig:
 
 tmux:
 	@if [ ! -d $(INSTALL_DIR)/.tmux/plugins/tpm ]; then \
-		git clone git://github.com/tmux-plugins/tpm $(INSTALL_DIR)/.tmux/plugins/tpm; \
+		git clone https://github.com/tmux-plugins/tpm.git $(INSTALL_DIR)/.tmux/plugins/tpm; \
 	fi
 	ln -fns $(CURRENT_DIR)/tmux $(XDG_CONFIG_HOME)/tmux
 
