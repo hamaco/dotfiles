@@ -23,6 +23,7 @@ __task_commands() {
     'rollback' \
     'seed' \
     'seed\:all' \
+    'db\:export' \
     'db\:import' \
     'log' \
     'yarn' \
