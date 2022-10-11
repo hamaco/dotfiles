@@ -1,0 +1,86 @@
+{
+    "title": "Mouse Personal rules",
+    "rules": [
+        {
+            "description": "Use mouse buttons 4, 5, and 6!!! (available since Karabiner-Elements 11.1.8)",
+            "manipulators": [
+                {
+                    "description": "button4 -> [ + command",
+                    "from": {
+                        "pointing_button": "button4"
+                    },
+                    "to": [
+                        {
+                            "key_code": "open_bracket",
+                            "modifiers": [ 
+                                "command" 
+                            ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_unless",
+                            "bundle_identifiers": [
+                                "^com\\.vivaldi\\.Vivaldi$"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "description": "button4 -> left_arrow + command for Vivaldi",
+                    "from": {
+                        "pointing_button": "button4"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [ 
+                                "command" 
+                            ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers": [
+                                "^com\\.vivaldi\\.Vivaldi$"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "description": "button5 -> ] + command",
+                    "from": {
+                        "pointing_button": "button5"
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket",
+                            "modifiers": [ 
+                                "command" 
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "description": "button6 -> Mission Control",
+                    "from": {
+                    "pointing_button": "button6"
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow",
+                            "modifiers": [ 
+                                "control" 
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        }
+    ]
+}

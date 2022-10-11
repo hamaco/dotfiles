@@ -11,9 +11,6 @@
                         "modifiers": {
                             "mandatory": [
                                 "right_command"
-                            ],
-                            "optional": [
-                                "any"
                             ]
                         }
                     },
@@ -26,7 +23,7 @@
                         {
                             "type": "frontmost_application_unless",
                             "bundle_identifiers": [
-                                "^io\\.alacritty$"
+                                "^org\\.alacritty$"
                             ]
                         }
                     ]
@@ -59,7 +56,7 @@
                         {
                             "type": "frontmost_application_if",
                             "bundle_identifiers": [
-                                "^io\\.alacritty$"
+                                "^org\\.alacritty$"
                             ]
                         }
                     ]
