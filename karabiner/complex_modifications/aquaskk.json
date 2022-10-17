@@ -29,8 +29,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^com\\.jetbrains\\.",
-                "^jp\\.naver\\.line\\.",
-                "^org\\.alacritty"
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
@@ -62,8 +61,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^com\\.jetbrains\\.",
-                "^jp\\.naver\\.line\\.",
-                "^org\\.alacritty"
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
@@ -101,8 +99,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^com\\.jetbrains\\.",
-                "^jp\\.naver\\.line\\.",
-                "^org\\.alacritty"
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
@@ -134,8 +131,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^com\\.jetbrains\\.",
-                "^jp\\.naver\\.line\\.",
-                "^org\\.alacritty"
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
@@ -173,8 +169,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^com\\.googlecode\\.iterm2",
-                "^com\\.apple\\.Terminal",
-                "^org\\.alacritty"
+                "^com\\.apple\\.Terminal"
               ]
             }
           ]
