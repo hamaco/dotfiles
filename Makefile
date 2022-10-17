@@ -85,4 +85,7 @@ nodoka:
 	cp $(CURRENT_DIR)/nodoka/dot.nodoka /mnt/c/Users/hamaco/dot.nodoka
 
 karabiner:
-	ln -fns $(CURRENT_DIR)/mac/karabiner $(XDG_CONFIG_HOME)/karabiner
+	if [ -d $(XDG_CONFIG_HOME)/karabiner/assets/complex_modifications ]; then \
+		rmdir $(XDG_CONFIG_HOME)/karabiner/assets/complex_modifications; \
+	fi; \
+	ln -fns $(CURRENT_DIR)/karabiner/complex_modifications $(XDG_CONFIG_HOME)/karabiner/assets/complex_modifications
