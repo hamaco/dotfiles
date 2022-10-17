@@ -4,7 +4,7 @@ alias pt="rg"
 
 alias %=" " # webにあるコマンドをコピペで実行出来るようにする
 
-alias dotfiles="git -C $(ghq list -p hamaco/dotfiles)"
+alias dotfiles="git -C \$(ghq list -p hamaco/dotfiles)"
 
 alias df="df -hl"
 alias wget="noglob wget --no-check-certificate"
