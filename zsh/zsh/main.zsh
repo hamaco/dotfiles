@@ -1,16 +1,14 @@
-ZSH_HOME="$HOME/.zsh"
-
 umask 022
 autoload -Uz add-zsh-hook
 
-fpath=($ZSH_HOME/completions $fpath)
+fpath=($ZDOTDIR/completions $fpath)
 cdpath=($HOME /var/www/*(N-/))
 
 bindkey -e
 
 # load plugins
-source_files $ZSH_HOME/plugins/*/zshrc(N-.)
-source_files $ZSH_HOME/config/*.zsh(N-.)
+source_files $ZDOTDIR/plugins/*/zshrc(N-.)
+source_files $ZDOTDIR/config/*.zsh(N-.)
 
 ## 分割待ち ##
 

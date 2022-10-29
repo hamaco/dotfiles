@@ -1,4 +1,4 @@
-source $HOME/.zsh/main.zsh
+source $XDG_CONFIG_HOME/zsh/main.zsh
 source_if $HOME/.zshrc.local
 
 function ssh() { # tmux起動時
@@ -80,3 +80,5 @@ function ssl-info() {
 
     echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates
 }
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/bit bit
