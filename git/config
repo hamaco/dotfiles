@@ -63,6 +63,7 @@
   autostash = true
   autosquash = true
   abbreviateCommands = true
+  updateRefs = true
 
 [stash]
   showPatch = true
