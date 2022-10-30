@@ -1,0 +1,69 @@
+snippets:
+  # Git
+  - name: git add
+    keyword: gAdd
+    snippet: g add
+
+  - name: git commit -m
+    keyword: cm
+    snippet: ci -m '{{}}'
+    context:
+      lbuffer: ^g(it)?\s
+
+  - name: git B
+    keyword: B
+    snippet: git symbolic-ref --short HEAD
+    evaluate: true
+    context:
+      lbuffer: ^g(it)?\s
+
+  # Terraform
+  - name: terraform
+    keyword: tf
+    snippet: terraform
+
+  - name: terraform plan
+    keyword: p
+    snippet: plan
+    context:
+      lbuffer: ^terraform\s
+
+  - name: terraform apply
+    keyword: ap
+    snippet: apply
+    context:
+      lbuffer: ^terraform\s
+
+  # Others
+  - name: ymd
+    keyword: ymd
+    snippet: date "+%Y%m%d"
+    evaluate: true
+    context:
+      lbuffer: '.+\s'
+
+.default-options: &default-options
+  --exit-0: true
+  --select-1: true
+  --tiebreak: begin,index
+  --height: 60%
+  --cycle: true
+  --preview-window: right:50%
+
+.multi-options: &multi-options
+  <<: *default-options
+  --multi: true
+
+.format-options: &format-options
+  <<: *default-options
+  --nth: "3"
+
+completions:
+  - name: file
+    patterns:
+      - ^\s*(bat|cat|delta|diff|e|grep|head|hexdump|hexyl|less|nvim|sed|tail|vim|vi)(\s+\S+)*\s+$
+    sourceCommand: fd --color=always --type=f
+    options:
+      <<: *multi-options
+      --preview: fzf-preview-file {}
+    callback: sed 's/ /\\ /g' | paste -s -d ' ' -

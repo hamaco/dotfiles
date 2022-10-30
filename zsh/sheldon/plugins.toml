@@ -36,3 +36,7 @@ apply = ['defer']
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
 apply = ['defer']
+
+[plugins.zeno-zsh]
+github = 'yuki-yano/zeno.zsh'
+apply = ['defer']

@@ -10,7 +10,7 @@ all: cui mac
 cui: git tig tmux vim zsh peco ripgrep
 
 .PHONY: slate homebrew karabiner
-mac: slate homebrew karabiner
+mac: karabiner
 
 .PHONY: alacritty ideavim nodoka
 windows: alacritty ideavim nodoka
@@ -57,10 +57,10 @@ vim:
 		-c "try | NeoBundleUpdate $* | finally | qall! | endtry"
 
 zsh:
-	ln -fns $(CURRENT_DIR)/zsh/zsh    $(INSTALL_DIR)/.zsh
-	ln -fns $(CURRENT_DIR)/zsh/zshrc  $(INSTALL_DIR)/.zshrc
-	ln -fns $(CURRENT_DIR)/zsh/zshenv $(INSTALL_DIR)/.zshenv
-	ln -fns $(CURRENT_DIR)/zsh/sheldon $(XDG_CONFIG_HOME)//sheldon
+	ln -fns $(CURRENT_DIR)/zsh/zshenv  $(INSTALL_DIR)/.zshenv
+	ln -fns $(CURRENT_DIR)/zsh/zsh     $(XDG_CONFIG_HOME)/zsh
+	ln -fns $(CURRENT_DIR)/zsh/sheldon $(XDG_CONFIG_HOME)/sheldon
+	ln -fns $(CURRENT_DIR)/zsh/zeno    $(XDG_CONFIG_HOME)/zeno
 
 alacritty:
 	@if [ "$(OS)" = "Darwin" ]; then \

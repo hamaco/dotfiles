@@ -64,3 +64,15 @@ alias run-help >/dev/null 2>&1 && unalias run-help
 autoload -Uz run-help
 autoload -Uz run-help-git
 autoload -Uz run-help-svn
+
+# zeno
+export ZENO_HOME=$XDG_CONFIG_HOME/zeno
+export ZENO_ENABLE_FZF_TMUX=1
+if [[ -n $ZENO_LOADED ]]; then
+    bindkey ' ' zeno-auto-snippet
+    bindkey '^m' zeno-auto-snippet-and-accept-line
+    bindkey '^i' zeno-completion
+    bindkey '^d' zeno-completion
+
+    bindkey '^s' zeno-ghq-cd
+fi
