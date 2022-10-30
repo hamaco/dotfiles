@@ -37,10 +37,9 @@ typeset -ga chpwd_functions
 # dot repeat
 rationalise-dot() {
     if [[ $LBUFFER = *.. ]]; then
-        LBUFFER+=/..
-    else
-        LBUFFER+=.
+        LBUFFER+=/.
     fi
+    zle self-insert
 }
 zle -N rationalise-dot
 bindkey . rationalise-dot
