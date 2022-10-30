@@ -1,6 +1,3 @@
-[include]
-  path = ~/.config/git/config.local
-
 [apply]
   whitespace = nowarn
 
@@ -68,91 +65,12 @@
 [stash]
   showPatch = true
 
-[alias]
-  abort-rebase        = rebase --abort
-  b                   = branch
-  ba                  = branch -a
-  branches            = !"git branch -a | grep -v 'remotes/pr'"
-  ci                  = commit -v
-  cia                 = commit --amend
-  cih                 = commit --amend -C HEAD
-  co                  = checkout
-  com                 = !"f() { remote_head=$(git symbolic-ref --quiet refs/remotes/origin/HEAD); remote_head=${remote_head#refs/remotes/origin/}; git checkout ${remote_head:-$(git rev-parse --symbolic --verify --quiet main || git rev-parse --symbolic --verify --quiet master)}; }; f"
-  continue-rebase     = rebase --continue
-  cp                  = cherry-pick
-  current-branch      = rev-parse --abbrev-ref HEAD
-  dc                  = diff --cached -w
-  di                  = diff -w
-  dic                 = diff -w --color-words
-  diff-archive        = "!f(){ git archive $(git current-branch) --format=zip -o $(basename $(pwd)).zip --prefix=$(basename $(pwd))/ $(git diff --name-only --diff-filter=d ${1}); };f"
-  fetch-all           = "!sh -c 'git remote | xargs -L 1 git fetch'"
-  fetch-pulls         = fetch origin +refs/pull/*:refs/remotes/pull/*
-  first               = !"git init -q && git commit -q --allow-empty -m ':seedling: Initial commit'"
-  fixit               = commit --amend --no-edit
-  fo                  = fetch origin --prune
-  make-ignore         = !"f(){ IFS=,; curl \"https://www.gitignore.io/api/$*\"; };f"
-  interactive-rebase  = rebase -i
-  irm                 = rebase -i origin/master
-  l                   = log --stat --date=local
-  l1                  = log --pretty=oneline --abbrev-commit
-  lp                  = log --decorate --stat --patch --follow
-  pl                  = pull
-  ps                  = push
-  psf                 = push --force-with-lease
-  prepare             = "!git checkout master && git pull"
-  pull-dry-run        = !"git fetch origin; B=$(git current-branch); git diff --stat --summary ${B}..origin/${B}"
-  ranking             = shortlog -sn
-  ranking-merge       = !"git log --merges --format='%cn' | sort | uniq -c | sort -r | head"
-  ranking-file        = !"git log --name-only --pretty="format:" | grep -ve '^$' | sort | uniq -c | sort -r | head"
-  rc                  = rebase --continue
-  remotes             = remote -v
-  review              = !"tig --reverse -w $(git branch-root)..HEAD"
-  sl                  = stash list
-  st                  = status -sb
-  sw                  = switch
-  swc                 = "!sh -c 'git switch -c ${0} origin/master'"
-  swo                 = "!git switch $(git branch --contains | sed 's|.*origin/||' | head -1 | sed 's/)//')"
-  sweep-branch        = "!git branch --delete $(git branch --merged $(git current-branch) | /usr/bin/grep -v '^*\\|  master$')"
-  sweep-remote-branch = "!git branch -a --merged $(git current-branch) | /usr/bin/egrep -v 'master|staging' | /usr/bin/grep remotes/origin | sed -e 's% *remotes/origin/%%' | xargs -I% git push origin :%"
-  up                  = update
-  vd                  = difftool --tool=vimdiff --no-prompt
-  wip                 = commit --allow-empty -m 'wip'
-
-  # used?
-  pbcopy         = !printf "$1" | pbcopy
-  difflog        = log -p HEAD@{3.days.ago}
-  find-rev       = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" --format=%H' _"
-  gr             = grep -H --heading --break
-  gene           = log --graph --pretty='%C(yellow)%h%Creset %ai %an: %s%C(yellow)%d%Creset' --all
-  ignore         = update-index --skip-worktree
-  ignored        = !git ls-files -v | grep "^[a-z]"
-  log-graph      = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
-  log-all        = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
-  newly          = log HEAD@{1}..HEAD --reverse
-  newlyp         = log HEAD@{1}..HEAD -p --reverse
-  package        = !"git archive --format=tar --prefix=$(basename $(pwd))/ HEAD | gzip > $(basename $(pwd)).tar.gz"
-  pr-setup       = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
-  rollback       = reset --hard HEAD~
-  show-rev       = "!sh -c 'git log -1 --grep=\"^git-svn-id: [^ ]*@${1#r} \" -p' _"
-  tree           = log --graph --pretty=oneline --abbrev-commit --decorate
-  unignore       = update-index --no-skip-worktree
-  view           = log --pretty=oneline --abbrev-commit --graph --source --tags --branches
-
-  # http://postd.cc/human-git-aliases/
-  tags     = tag
-  precommit = diff --cached --diff-algorithm=minimal -w
-  dcm = diff --cached --diff-algorithm=minimal -w
-  stashes  = stash list
-  unmerged = diff --name-only --diff-filter=U
-
-[url "git@github.com:"]
-  pushinsteadof = "https://github.com/"
-
-[url "git://github.com/"]
-  insteadof = gh:
-
-[ghq]
-  root = ~/src
-
 [gitget]
   root = ~/src
+
+[include]
+  path = conf.d/alias.conf
+  path = conf.d/ghq.conf
+  path = conf.d/github.conf
+  path = conf.d/user.conf
+
