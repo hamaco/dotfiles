@@ -78,7 +78,7 @@ function ssl-info() {
         return
     fi
 
-    echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates
+    echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates -ext subjectAltName
 }
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/bit bit
