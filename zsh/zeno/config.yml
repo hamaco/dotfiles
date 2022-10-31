@@ -17,6 +17,13 @@ snippets:
     context:
       lbuffer: ^g(it)?\s
 
+  # GitHub CLI
+  - name: gh pr merge -md
+    keyword: pm
+    snippet: pr merge -md
+    context:
+      lbuffer: ^gh\s
+
   # Terraform
   - name: terraform
     keyword: tf
