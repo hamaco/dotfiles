@@ -4,6 +4,14 @@ snippets:
     keyword: gAdd
     snippet: g add
 
+  - name: git dc
+    keyword: gDc
+    snippet: g dc
+
+  - name: git fo
+    keyword: gFo
+    snippet: g fo
+
   - name: git commit -m
     keyword: cm
     snippet: ci -m '{{}}'
