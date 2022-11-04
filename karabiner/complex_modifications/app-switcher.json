@@ -10,13 +10,19 @@
                         "key_code": "1",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a Vivaldi"
+                            "key_code": "1",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -26,13 +32,19 @@
                         "key_code": "2",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a PhpStorm"
+                            "key_code": "2",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -42,13 +54,19 @@
                         "key_code": "3",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a Alacritty"
+                            "key_code": "3",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -58,13 +76,19 @@
                         "key_code": "4",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a Thunderbird"
+                            "key_code": "4",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -74,13 +98,19 @@
                         "key_code": "5",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a Slack"
+                            "key_code": "5",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -90,13 +120,19 @@
                         "key_code": "6",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a 'Brave Browser'"
+                            "key_code": "6",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -106,13 +142,19 @@
                         "key_code": "7",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a Obsidian"
+                            "key_code": "7",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -122,13 +164,19 @@
                         "key_code": "8",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a Jasper"
+                            "key_code": "8",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -138,13 +186,19 @@
                         "key_code": "9",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a OmniFocus"
+                            "key_code": "9",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 },
@@ -154,13 +208,19 @@
                         "key_code": "0",
                         "modifiers": {
                             "mandatory": [
-                                "command"
+                                "right_command"
                             ]
                         }
                     },
                     "to": [
                         {
-                            "shell_command": "open -a Linear"
+                            "key_code": "0",
+                            "modifiers": [
+                                "left_control",
+                                "left_shift",
+                                "left_option",
+                                "right_command"
+                            ]
                         }
                     ]
                 }
