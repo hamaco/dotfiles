@@ -72,7 +72,7 @@ if [[ -n $ZENO_LOADED ]]; then
     bindkey ' ' zeno-auto-snippet
     bindkey '^m' zeno-auto-snippet-and-accept-line
     bindkey '^i' zeno-completion
-    bindkey '^d' zeno-completion
+    # bindkey '^d' zeno-completion
 
     bindkey '^s' zeno-ghq-cd
 fi
