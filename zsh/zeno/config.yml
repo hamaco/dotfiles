@@ -1,5 +1,9 @@
 snippets:
   # Git
+  - name: git add(short)
+    keyword: ga
+    snippet: g add {{file}}
+
   - name: git add
     keyword: gAdd
     snippet: g add
@@ -49,6 +53,11 @@ snippets:
     context:
       lbuffer: ^terraform\s
 
+  # tmux
+  - name: tmux a
+    keyword: tm
+    snippet: tmux a || tmux
+
   # Others
   - name: ymd
     keyword: ymd
@@ -82,3 +91,12 @@ completions:
       <<: *multi-options
       --preview: fzf-preview-file {}
     callback: sed 's/ /\\ /g' | paste -s -d ' ' -
+
+  - name: kill
+    patterns:
+      - "^kill( -9)? $"
+    sourceCommand: "procs --color=always"
+    options:
+      --multi: true
+      --prompt: "'Kill Process> '"
+    callback: "awk '{print $1}'"
