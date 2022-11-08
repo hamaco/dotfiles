@@ -67,6 +67,10 @@ snippets:
     snippet: tmux a || tmux
 
   # Others
+  - name: My IP
+    keyword: myip
+    snippet: curl ifconfig.io
+
   - name: ymd
     keyword: ymd
     snippet: date "+%Y%m%d"
