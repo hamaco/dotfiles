@@ -49,7 +49,7 @@ alias a="php artisan"
 alias ts="tig status"
 
 alias d="docker"
-alias dc="docker-compose"
+alias dc="docker compose"
 alias phpstan='docker run --rm -it -v $(pwd):/app phpstan/phpstan'
 alias psalm='docker run --rm -it -v $(pwd):/app crewbit/psalm'
 phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" cloudflare/phan:latest $@; return $?; }
