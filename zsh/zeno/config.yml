@@ -12,6 +12,10 @@ snippets:
     keyword: gDc
     snippet: g dc
 
+  - name: git di
+    keyword: gDi
+    snippet: g di
+
   - name: git fo
     keyword: gFo
     snippet: g fo
@@ -21,6 +25,10 @@ snippets:
     snippet: ci -m '{{}}'
     context:
       lbuffer: ^g(it)?\s
+
+  - name: git rebase
+    keyword: gr
+    snippet: g rebase {{}}
 
   - name: git B
     keyword: B
