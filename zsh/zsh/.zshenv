@@ -2,9 +2,6 @@ function exists()       { command -v $1 &> /dev/null  }
 function source_if()    { [[ -f $1 ]] && source "$1" } 
 function source_files() { for file in $@; do source $file; done }
 
-# /etc/zprofile とかを読み込まないようにする
-unsetopt GLOBAL_RCS
-
 # EXPORT: ====================
 export TZ="Asia/Tokyo"
 export LANGUAGE=en_US.UTF-8

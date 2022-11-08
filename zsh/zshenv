@@ -1,3 +1,6 @@
+# /etc/zprofile とかを読み込まないようにする
+unsetopt GLOBAL_RCS
+
 export XDG_CONFIG_HOME=$HOME/.config
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
