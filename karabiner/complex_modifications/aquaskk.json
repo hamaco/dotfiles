@@ -28,7 +28,7 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\.",
+                "^_com\\.jetbrains\\.",
                 "^jp\\.naver\\.line\\."
               ]
             },
@@ -60,7 +60,7 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\.",
+                "^_com\\.jetbrains\\.",
                 "^jp\\.naver\\.line\\."
               ]
             },
@@ -98,7 +98,7 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\.",
+                "^_com\\.jetbrains\\.",
                 "^jp\\.naver\\.line\\."
               ]
             },
@@ -130,7 +130,7 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.jetbrains\\.",
+                "^_com\\.jetbrains\\.",
                 "^jp\\.naver\\.line\\."
               ]
             },
