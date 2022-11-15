@@ -74,5 +74,6 @@ if [[ -n $ZENO_LOADED ]]; then
     bindkey '^i' zeno-completion
     # bindkey '^d' zeno-completion
 
-    bindkey '^s' zeno-ghq-cd
+    # 遅くて若干微妙なのでOFF
+    # bindkey '^s' zeno-ghq-cd
 fi
