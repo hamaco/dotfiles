@@ -30,6 +30,12 @@ snippets:
     keyword: gr
     snippet: g rebase {{}}
 
+  - name: git interactive-rebase
+    keyword: ir
+    snippet: interactive-rebase {{master}}
+    context:
+      lbuffer: ^g(it)?\s
+
   - name: git B
     keyword: B
     snippet: git symbolic-ref --short HEAD
