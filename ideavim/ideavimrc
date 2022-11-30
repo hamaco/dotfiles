@@ -43,7 +43,9 @@ nnoremap <leader>X :action GotoPreviousError<cr>
 
 " Refactorings
 vnoremap T :action Refactorings.QuickListPopupAction<cr>
+nnoremap T :action Refactorings.QuickListPopupAction<cr>
 nnoremap <space>rr :action RenameElement<cr>
+nnoremap <space>rt :action Refactorings.QuickListPopupAction<cr>
 nnoremap <space>rg :action Generate<cr>
 nnoremap <space>rI :action OptimizeImports<cr>
 nnoremap <space>rf :action ReformatCode<cr>
@@ -73,7 +75,10 @@ nnoremap <S-Tab>   :action MoveEditorToOppositeTabGroup<cr>
 nnoremap <A-a>     :action MoveEditorToOppositeTabGroup<cr>
 
 " Terminal
-nnoremap <leader>T :action ActivateTerminalToolWindow<cr>
+nnoremap <leader>wc :action ActivateTerminalToolWindow<cr>
+nnoremap <leader>wf :action ActivateFindToolWindow<cr>
+nnoremap <leader>wt :action ActivateTODOToolWindow<cr>
+nnoremap <leader>wq :action HideActiveWindow<cr>
 
 " Tmporary
 " unimpaired mappings - from https://github.com/saaguero/ideavimrc/blob/master/.ideavimrc
