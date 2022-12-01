@@ -72,6 +72,23 @@ snippets:
     keyword: tm
     snippet: tmux a || tmux
 
+  # ls
+  - name: sl
+    keyword: sl
+    snippet: ls
+
+  - name: ls -a
+    keyword: l
+    snippet: ls -a
+
+  - name: ls -l
+    keyword: ll
+    snippet: ls -l
+
+  - name: ls -la
+    keyword: la
+    snippet: ls -al
+
   # Others
   - name: My IP
     keyword: myip

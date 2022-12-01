@@ -13,12 +13,6 @@ alias find="noglob find"
 
 alias sudo="sudo -E " # sudoでもaliasが使えるようにする
 
-# for ls
-alias sl="ls"
-alias l="ls -a"
-alias ll="ls -l"
-alias la="ls -la"
-
 alias less="less --no-init --quit-if-one-screen -g -R"
 alias bat="bat --theme=DarkNeon"
 
