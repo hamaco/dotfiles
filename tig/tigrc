@@ -37,8 +37,8 @@ bind generic L !git reflog
 bind status  F !git fixup
 
 # open commit at github
-bind generic o @hub browse -- commit/%(commit)
-bind main    B @hub browse -- commit/%(commit)
-bind diff    B @hub browse -- commit/%(commit)
-bind tree    B @hub browse -- tree/%(commit)/%(directory)
-bind blob    B @hub browse -- tree/%(commit)/%(file)
+bind generic o @gh browse -- %(commit)
+bind main    B @gh browse -- %(commit)
+bind diff    B @gh browse -- %(commit)
+# bind tree    B @gh browse -- tree/%(commit)/%(directory)
+# bind blob    B @gh browse -- tree/%(commit)/%(file)
