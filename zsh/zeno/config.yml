@@ -90,6 +90,10 @@ snippets:
     snippet: ls -al
 
   # Others
+  - name: ncu
+    keyword: ncu
+    snippet: npx npm-check-updates
+
   - name: My IP
     keyword: myip
     snippet: curl ifconfig.io
