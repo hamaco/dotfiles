@@ -10,7 +10,7 @@ window:
     y: 5
   opacity: 0.85
   decorations: Full
-  startup_mode: Windowed
+  startup_mode: Maximized
   title: Alacritty
 
 font:
