@@ -33,7 +33,7 @@ nnoremap <leader>t :action GotoTest<CR>
 nnoremap <leader>i :action GotoImplementation<cr>
 nnoremap <leader>I :action SelectIn<cr>
 nnoremap <leader>e :action RecentFiles<cr>
-nnoremap <leader>b :action ShowBookmarks<cr>
+" nnoremap <leader>b :action ShowBookmarks<cr>
 nnoremap <leader>; :action FileStructurePopup<cr>
 
 
