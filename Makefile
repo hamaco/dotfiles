@@ -89,3 +89,6 @@ karabiner:
 		rmdir $(XDG_CONFIG_HOME)/karabiner/assets/complex_modifications; \
 	fi; \
 	ln -fns $(CURRENT_DIR)/karabiner/complex_modifications $(XDG_CONFIG_HOME)/karabiner/assets/complex_modifications
+
+go:
+	go install github.com/mattn/sleepy@v0.0.3
