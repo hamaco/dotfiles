@@ -1,7 +1,7 @@
 function fzf-git-recent-branches () {
     local selected_branch=$(git for-each-ref --format='%(refname:short) | %(committerdate:relative) | %(committername) | %(subject)' --sort=-committerdate refs/heads \
         | column -t -s '|' \
-        | fzf \
+        | fzf-tmux -p80% \
         | head -n 1 \
         | awk '{print $1}')
     if [ -n "$selected_branch" ]; then
@@ -16,7 +16,7 @@ zle -N fzf-git-recent-branches
 function fzf-git-recent-all-branches () {
     local selected_branch=$(git for-each-ref --format='%(refname:short) | %(committerdate:relative) | %(committername) | %(subject)' --sort=-committerdate refs/heads refs/remotes \
         | column -t -s '|' \
-        | fzf \
+        | fzf-tmux -p80% \
         | head -n 1 \
         | awk '{print $1}')
     if [ -n "$selected_branch" ]; then

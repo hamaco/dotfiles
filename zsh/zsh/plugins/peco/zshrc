@@ -1,9 +1,3 @@
-# anyframe
-bindkey '^r'  anyframe-widget-put-history
-bindkey '^s'  anyframe-widget-cd-ghq-repository
-bindkey '^x;' anyframe-widget-cdr
-bindkey '^xk' anyframe-widget-kill
-
 source_files $(dirname $0)/sources/*.zsh
 
 if exists peco; then
@@ -43,19 +37,27 @@ if exists fzf; then
   export FZF_COMPLETION_TRIGGER=','
   export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
   export FZF_DEFAULT_OPTS="--no-sort --exact --cycle --multi --ansi --reverse --border --sync --height 60% --bind=ctrl-k:kill-line --bind=?:toggle-preview --bind=down:preview-down --bind=up:preview-up"
+  export FZF_TMUX=1
 
   zstyle ":anyframe:selector:" use fzf
+  zstyle ":anyframe:selector:fzf:" command 'fzf-tmux -p80%'
 
   # git-resent-breanches
   bindkey '^x^b' fzf-git-recent-branches
   bindkey '^xb'  fzf-git-recent-all-branches
 
   function fzf-ssh() {
-    ssh `grep '^Host' $HOME/.ssh/config | grep -v '*' | cut -d' ' -f2 | fzf`
+    ssh `grep '^Host' $HOME/.ssh/config | grep -v '*' | cut -d' ' -f2 | fzf-tmux -p80%`
   }
   alias sshf=fzf-ssh
 
-  alias cd-temp='cd $(ls -d ~/tmp/*(/) | fzf --select-1)'
+  alias cd-temp='cd $(ls -d ~/tmp/*(/) | fzf-tmux -p80% --select-1)'
 
-  source_if ~/.fzf.zsh
+  # source_if ~/.fzf.zsh
 fi
+
+# anyframe
+bindkey '^r'  anyframe-widget-put-history
+bindkey '^s'  anyframe-widget-cd-ghq-repository
+bindkey '^x;' anyframe-widget-cdr
+bindkey '^xk' anyframe-widget-kill
