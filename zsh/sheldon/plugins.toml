@@ -37,9 +37,9 @@ apply = ['defer']
 github = 'zsh-users/zsh-autosuggestions'
 apply = ['defer']
 
-[plugins.zeno-zsh]
-github = 'yuki-yano/zeno.zsh'
-# apply = ['defer']
+[plugins.zsh-autopair]
+github = 'hlissner/zsh-autopair'
+apply = ['defer']
 
 [plugins.fast-syntax-highlightingh]
 github = 'zdharma-continuum/fast-syntax-highlighting'
@@ -48,3 +48,7 @@ apply = ['defer']
 [plugins.qtmut]
 github = 'Ryooooooga/qtmut'
 apply = ['defer', 'source', 'PATH']
+
+[plugins.zeno-zsh]
+github = 'yuki-yano/zeno.zsh'
+# apply = ['defer']
