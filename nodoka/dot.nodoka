@@ -117,10 +117,12 @@ keymap Global
 	key C-OpenBracket = Escape
 
 	key W-q = A-F4
+	key W-Esc = W-_3
 
 	# 変なアプリ起動してきて邪魔なのでとりあえず無効化
 	key W-i = &Ignore
 	key W-c = &Ignore
+	key W-EqualsSign = &Ignore
 	# Office の謎のエラーウィンドウ抑制
 	key S-A-C-W-LeftWindows = &Ignore
 
@@ -131,17 +133,26 @@ keymap Global
 	key A-F1    = F1
 	key W-a     = C-a
 
+	key S-*WheelForward  = TiltLeft
+	key S-*WheelBackward = TiltRight
+
 	# PowerToys Launcher
 	# SandSのせいでShiftが必要
 	key S-W-Space = A-Space
 
 	# Toggl
-	key W-t = S-C-W-t
+	key W-t = S-C-A-t
 	# Clibor
 	key W-v = S-C-W-A-v
 
+	key W-S-C-Right = &MouseMonitorTo(current, 1)
+	key W-S-C-Left  = &MouseMonitorTo(current, -1)
+#	key W-S-C-Enter = &MouseMonitor(0)
+#	key S-A-C-LeftWindows = &MouseMonitor(0)
+
 window Explorer /explorer\.exe/ : Global
 	key C-l = A-d
+	key C-r = F2
 
 window Excel /excel\.exe/ : Global
 	key A-Enter = A-Enter
@@ -188,6 +199,13 @@ window Editor /(code|PhpStorm64)\.exe/ : Global
 	key A-F1    = &Default
 	key W-z = C-z
 
+window Obsidian /(Obsidian)\.exe/ : Global
+	key C-a = &Default
+	key C-f = PageDown
+	key C-b = PageUp
+	key C-n = &Default
+	key C-p = &Default
+
 window Browser /(Vivaldi|brave|chrome|edge|sidekick|TablePlus|Jasper)\.exe/ : Global
 	key C-Slash = C-f
 
@@ -199,7 +217,14 @@ window Lightroom /lightroom\.exe/ : Global
 window Vim /vim\.exe/ : Global
 	key C-h = &Default
 
-window Toggl /TogglDesktop\.exe/ : Global
+window Toggl /Toggl(Desktop|Track)\.exe/ : Global
+	key C-r = F5
+	key C-n = C-n
+
+window LINE /LINE\.exe/ : Global
+	key C-l = &Ignore
+
+window TickTick /TickTick\.exe/ : Global
 	key C-r = F5
 	key C-n = C-n
 
