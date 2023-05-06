@@ -32,6 +32,7 @@ peco:
 	ln -fns $(CURRENT_DIR)/peco $(XDG_CONFIG_HOME)/peco
 
 ripgrep:
+	ln -fns $(CURRENT_DIR)/ripgrep $(XDG_CONFIG_HOME)/ripgrep
 	ln -fns $(CURRENT_DIR)/ripgrep/rgignore $(HOME)/.rgignore
 
 slate:
