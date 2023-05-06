@@ -6,11 +6,11 @@ OS = ${shell uname}
 
 all: cui mac
 
-.PHONY: git tig tmux vim zsh peco ripgrep
+.PHONY: git tig tmux vim zsh peco ripgrep homebrew
 cui: git tig tmux vim zsh peco ripgrep
 
-.PHONY: slate homebrew karabiner
-mac: karabiner
+.PHONY: slate finicky karabiner
+mac: slate finicky karabiner
 
 .PHONY: alacritty ideavim nodoka
 windows: alacritty ideavim nodoka
@@ -36,6 +36,9 @@ ripgrep:
 
 slate:
 	ln -fns $(CURRENT_DIR)/slate/slate.js $(INSTALL_DIR)/.slate.js
+
+finicky:
+	ln -fns $(CURRENT_DIR)/mac/finicky.js $(INSTALL_DIR)/.finicky.js
 
 tig:
 	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
