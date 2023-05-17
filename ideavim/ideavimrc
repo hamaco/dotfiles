@@ -75,6 +75,7 @@ nnoremap <S-Tab>   :action MoveEditorToOppositeTabGroup<cr>
 nnoremap <A-a>     :action MoveEditorToOppositeTabGroup<cr>
 
 " Terminal
+nnoremap <leader>ww :action JumpToLastWindow<cr>
 nnoremap <leader>wc :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>wf :action ActivateFindToolWindow<cr>
 nnoremap <leader>wt :action ActivateTODOToolWindow<cr>
