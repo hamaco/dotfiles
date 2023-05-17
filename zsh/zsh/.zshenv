@@ -21,9 +21,10 @@ export SVN_EDITOR=vim
 export MYSQL_PS1="\\u@\\h:\\d>\\_"
 
 export GOPATH=$HOME
-export VOLTA_HOME=$XDG_CACHE_HOME/volta
+export VOLTA_HOME=${XDG_CACHE_HOME}/volta
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" 
 export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
+export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME}/ripgrep/ripgreprc
 
 # PATH: ======================
 # 重複する要素を自動的に削除
