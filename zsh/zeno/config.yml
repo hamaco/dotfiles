@@ -50,6 +50,11 @@ snippets:
     context:
       lbuffer: ^gh\s
 
+  # Docker
+  - name: docker run
+    keyword: d-run
+    snippet: docker run --rm -it -v $(pwd):/app -w /app
+
   # Terraform
   - name: terraform
     keyword: tf
