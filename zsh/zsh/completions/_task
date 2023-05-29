@@ -47,6 +47,9 @@ __args() {
         ide-helper)
             _files
             ;;
+        phpstan)
+            _files
+            ;;
         phpunit)
             _files
             ;;
