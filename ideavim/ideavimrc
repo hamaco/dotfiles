@@ -51,16 +51,18 @@ nnoremap <space>rI :action OptimizeImports<cr>
 nnoremap <space>rf :action ReformatCode<cr>
 vnoremap <space>rf :action ReformatCode<cr>
 
+nnoremap <leader>cc :action SilentCodeCleanup<CR>
+
 " VCS operations
 nnoremap <leader>yy :action Vcs.Show.Local.Changes<cr>
 nnoremap <leader>yp :action Vcs.QuickListPopupAction<cr>
 nnoremap <leader>ya :action Annotate<cr>
 nnoremap <leader>yl :action Vcs.Show.Log<cr>
 nnoremap <leader>yd :action Compare.LastVersion<cr>
-nnoremap <leader>c  :action CheckinProject<cr>
+nnoremap <leader>yc  :action CheckinProject<cr>
 
 " Inspection
-nnoremap <space>rc :action InspectCode<cr>
+nnoremap <leader>ic :action InspectCode<cr>
 
 " Tests
 nnoremap <leader>r :action Rerun<cr>
@@ -90,3 +92,5 @@ nnoremap <C-n> :action MethodDown<cr>
 
 nnoremap gn :action GotoNextError<CR>
 nnoremap gp :action GotoPreviousError<CR>
+
+nnoremap <leader>a ggVG
