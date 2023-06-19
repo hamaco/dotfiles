@@ -74,6 +74,9 @@ alacritty:
 		ln -fns $(CURRENT_DIR)/alacritty/alacritty.yml $(XDG_CONFIG_HOME)/alacritty/alacritty.yml; \
 		ln -fns $(CURRENT_DIR)/alacritty/alacritty.darwin.yml $(XDG_CONFIG_HOME)/alacritty/alacritty.darwin.yml; \
 	else \
+		if [ ! -d /mnt/c/Users/hamaco/AppData/Roaming/alacritty ]; then \
+			mkdir /mnt/c/Users/hamaco/AppData/Roaming/alacritty; \
+		fi; \
 		cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml; \
 		cp $(CURRENT_DIR)/alacritty/alacritty.windows.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.windows.yml; \
 	fi
