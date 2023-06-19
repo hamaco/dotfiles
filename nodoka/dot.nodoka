@@ -208,6 +208,10 @@ window Obsidian /(Obsidian)\.exe/ : Global
 
 window Browser /(Vivaldi|brave|chrome|edge|sidekick|TablePlus|Jasper)\.exe/ : Global
 	key C-Slash = C-f
+	key A-h     = &Default
+	key A-j     = &Default
+	key A-k     = &Default
+	key A-l     = &Default
 
 window Lightroom /lightroom\.exe/ : Global
 	key C-a = &Default
