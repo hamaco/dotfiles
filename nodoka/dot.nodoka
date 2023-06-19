@@ -155,7 +155,7 @@ window Explorer /explorer\.exe/ : Global
 	key C-r = F2
 
 window Excel /excel\.exe/ : Global
-	key A-Enter = A-Enter
+	key S-Enter = F2
 	key C-Slash = C-f
 
 keymap Global
