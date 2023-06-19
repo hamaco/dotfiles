@@ -39,6 +39,10 @@ else
 	include "104.nodoka"
 endif
 
+def key ひらがな Hiragana		=    0x70 # ひらがな カタカナ ローマ字
+def key 変換 Convert			=    0x79 # 変換(次候補) 前候補 全候補
+def key 無変換 NonConvert		=    0x7b # 無変換
+
 # マウスイベント取得可能にする
 def option mouse-event = true
 
@@ -69,6 +73,11 @@ keymap Global
 	# Applications as Windows
 	mod windows      += !!Applications
 	key *Applications = *RightWindows
+	mod windows      += !!Hiragana
+	key *Hiragana     = *RightWindows
+
+	key Convert    = Enter
+	key NonConvert = Esc
 
 	if ( USE109 )
 		mod Control += Eisuu
