@@ -11,7 +11,7 @@ module.exports = {
             match: [
                 'meet.google.com/*',
             ],
-            browser: 'Brave Browser',
+            browser: 'Google Chrome',
         },
     ],
 };
