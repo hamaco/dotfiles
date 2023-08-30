@@ -51,5 +51,8 @@ path=(
   /home/linuxbrew/.linuxbrew/bin(N-/)
   /home/linuxbrew/.linuxbrew/sbin(N-/)
 
+  $HOME/Library/Android/sdk/platform-tools(N-/)
+  $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts(N-/)
+
   $path
 )
