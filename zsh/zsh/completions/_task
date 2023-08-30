@@ -28,6 +28,7 @@ __task_commands() {
     'log' \
     'yarn' \
     'ide-helper' \
+    'ide-helper\:models' \
     'composer' \
     'cmd' \
     'artisan' \
