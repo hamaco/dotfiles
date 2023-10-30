@@ -11,44 +11,52 @@
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
 shell = "zsh"
+apply = ["defer"]
 
 [plugins.zsh-defer]
 github = 'romkatv/zsh-defer'
+apply = ["source"]
 
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file  }}\"\n{% endfor %}"
 
-# [plugins.compinit]
-# inline = 'autoload -Uz compinit && zsh-defer compinit'
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
 
 [plugins.anyframe]
 github = 'mollifier/anyframe'
-apply = ['defer']
 
 [plugins.cd-gitroot]
 github = 'mollifier/cd-gitroot'
-apply = ['defer', 'fpath']
+apply = ["fpath"]
 
 [plugins.docker-fzf-completion]
 github = 'kwhrtsk/docker-fzf-completion'
-apply = ['defer']
+
+[plugins.zsh-completions]
+github = 'zsh-users/zsh-completions'
 
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
-apply = ['defer']
 
 [plugins.zsh-autopair]
 github = 'hlissner/zsh-autopair'
-apply = ['defer']
 
 [plugins.fast-syntax-highlightingh]
 github = 'zdharma-continuum/fast-syntax-highlighting'
-apply = ['defer']
 
 [plugins.qtmut]
 github = 'Ryooooooga/qtmut'
-apply = ['defer', 'source', 'PATH']
+apply = ["source", "PATH"]
 
 [plugins.zeno-zsh]
 github = 'yuki-yano/zeno.zsh'
-# apply = ['defer']
+
+[plugins.dotfiles-sync]
+local = "~/.config/zsh/config/sync"
+use = ["*.zsh"]
+apply = ["source"]
+
+[plugins.dotfiles-defer]
+local = "~/.config/zsh/config/defer"
+use = ["*.zsh"]
