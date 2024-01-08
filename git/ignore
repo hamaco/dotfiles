@@ -3,6 +3,7 @@
 .ssh-config
 git-worktrees
 task
+Taskfile.yml
 
 # for Subversion
 .svn
