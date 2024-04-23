@@ -55,6 +55,20 @@ snippets:
     keyword: d-run
     snippet: docker run --rm -it -v $(pwd):/app -w /app
 
+  # npm
+  - name: npm
+    keyword: npm
+    snippet: zsh -c "$XDG_CONFIG_HOME/zeno/scripts/node-package-manager.ts"
+    evaluate: true
+  - name: npm i
+    keyword: i
+    snippet: install
+    context: { lbuffer: '^(npm|pnpm)\s' }
+  - name: yarn add
+    keyword: i
+    snippet: add
+    context: { lbuffer: '^yarn\s' }
+
   # Terraform
   - name: terraform
     keyword: tf
