@@ -110,6 +110,10 @@ darwin*)
     ;;
 esac
 
+copilot() {
+    gh copilot suggest -t shell "$@"
+}
+
 # }}}
 
 # Suffix: 接尾辞エイリアス ========= {{{1
