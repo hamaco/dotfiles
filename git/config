@@ -33,6 +33,7 @@
 [diff]
   renames = true
   compactionHeuristic = true
+  algorithm = histogram
 
 [fetch]
   prune = true
@@ -44,9 +45,9 @@
   ff = false
 
 [pager]
-  log    = diff-highlight | less -rF
-  show   = diff-highlight | less -rF
-  diff   = diff-highlight | less -rF
+  # log    = diff-highlight | less -rF
+  # show   = diff-highlight | less -rF
+  # diff   = diff-highlight | less -rF
   branch = cat
 
 [pull]
@@ -64,6 +65,9 @@
 
 [stash]
   showPatch = true
+
+[rerere]
+  enabled = true
 
 [gitget]
   root = ~/src
