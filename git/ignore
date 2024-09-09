@@ -2,8 +2,6 @@
 .envrc
 .ssh-config
 git-worktrees
-task
-Taskfile.yml
 
 # for Subversion
 .svn
@@ -14,6 +12,12 @@ Taskfile.yml
 # for Windows
 Thumbs.db
 *:Zone.Identifier
+
+# for self
+task
+Taskfile.yml
+.github/reviewers
+.github/pull-request-template.md
 
 ### Vim ###
 *~
