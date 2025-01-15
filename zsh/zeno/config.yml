@@ -20,6 +20,10 @@ snippets:
     keyword: gFo
     snippet: g fo
 
+  - name: git swo
+    keyword: gSwo
+    snippet: g swo
+
   - name: git commit -m
     keyword: cm
     snippet: ci -m '{{}}'
