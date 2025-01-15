@@ -47,6 +47,8 @@ Taskfile.yml
 
 # Unknown
 .idea/cake_config_setting_v0_6.xml
+.idea/git_toolbox_blame.xml
+.idea/sonarlint
 
 ### for ripgrep  ###
 # tbls
