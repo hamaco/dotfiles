@@ -9,8 +9,8 @@ all: cui mac
 .PHONY: git tig tmux vim zsh peco ripgrep homebrew
 cui: git tig tmux vim zsh peco ripgrep
 
-.PHONY: slate finicky karabiner
-mac: slate finicky karabiner
+.PHONY: slate finicky karabiner ghostty
+mac: slate finicky karabiner ghostty
 
 .PHONY: alacritty ideavim nodoka
 windows: alacritty ideavim nodoka
@@ -79,6 +79,16 @@ alacritty:
 		fi; \
 		cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml; \
 		cp $(CURRENT_DIR)/alacritty/alacritty.windows.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.windows.yml; \
+	fi
+
+ghostty:
+	@if [ "$(OS)" = "Darwin" ]; then \
+		if [ ! -d "${HOME}/Library/Application Support/com.mitchellh.ghostty" ]; then \
+			mkdir "${HOME}/Library/Application Support/com.mitchellh.ghostty"; \
+		fi; \
+		ln -fns $(CURRENT_DIR)/ghostty/config "${HOME}/Library/Application Support/com.mitchellh.ghostty/config"; \
+	else \
+		echo 'TODO: macOS以外に入れていないので入れる時に頑張る'; \
 	fi
 
 ideavim:

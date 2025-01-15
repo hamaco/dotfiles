@@ -1,0 +1,60 @@
+# フォント設定
+font-family = UDEV Gothic
+font-style = Bold
+font-size = 15
+font-thicken = true
+
+# 変なリガチャOFF
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+# adjust-underline-position = 40%
+# adjust-underline-thickness = -60%
+
+# カーソルをブロック、点滅あり、透過0.7に設定
+cursor-style = block
+cursor-style-blink = true
+cursor-opacity = 0.7
+
+# shell-integration = zsh
+# shell-integration-features = no-cursor
+
+# Keybindings
+keybind = ctrl+j=ignore
+
+### Mouse
+# 入力中にカーソルを非表示にする
+mouse-hide-while-typing = true
+copy-on-select = true
+
+window-width = 120
+window-height = 45
+window-padding-x = 4
+
+confirm-close-surface = false
+clipboard-paste-protection = false
+unfocused-split-opacity = 1.0
+
+theme = xcodedarkhc
+theme = tokyonight
+# theme = catppuccin-mocha
+# theme = catppuccin-frappe
+
+# background = #111111
+# foreground = #f4f4ff
+# cursor-color = #ff0078
+
+# selection-background = 1d3c3b
+# selection-foreground = eeeeee
+
+# palette = 4=#3D52E2
+# palette = 12=#344CFF
+
+background-opacity = 0.80
+unfocused-split-opacity = 0.825
+
+# my settings
+fullscreen = true
+macos-non-native-fullscreen = true
+macos-option-as-alt = true
