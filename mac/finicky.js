@@ -10,6 +10,7 @@ module.exports = {
         {
             match: [
                 'meet.google.com/*',
+                'teams.microsoft.com/l/meetup-join/*',
             ],
             browser: 'Google Chrome',
         },
