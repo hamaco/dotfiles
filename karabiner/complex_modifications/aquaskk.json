@@ -175,7 +175,8 @@
                 "^com\\.googlecode\\.iterm2",
                 "^com\\.apple\\.Terminal",
                 "^net\\.kovidgoya.\\.kitty",
-                "^org\\.alacritty"
+                "^org\\.alacritty",
+                "^com\\.mitchellh\\.ghostty"
               ]
             }
           ]
@@ -204,7 +205,8 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^org\\.alacritty"
+                "^org\\.alacritty",
+                "^com\\.mitchellh\\.ghostty"
               ]
             },
             {
@@ -236,7 +238,8 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^net\\.kovidgoya.\\.kitty_",
-                "^org\\.alacritty"
+                "^org\\.alacritty",
+                "^com\\.mitchellh\\.ghostty"
               ]
             },
             {
@@ -274,7 +277,8 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^net\\.kovidgoya.\\.kitty_",
-                "^org\\.alacritty"
+                "^org\\.alacritty",
+                "^com\\.mitchellh\\.ghostty"
               ]
             },
             {
@@ -306,14 +310,48 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^net\\.kovidgoya.\\.kitty_",
-                "^org\\.alacritty_"
+                "^org\\.alacritty_",
+                "^com\\.mitchellh\\.ghostty"
               ]
             },
             {
               "type": "input_source_if",
               "input_sources": [
                 {
-                  "input_source_id": "^jp\\.sourceforge\\.inputmethod\\.aquaskk\\.(Hiragana|Katakana|HalfWidthKana)$"
+                  "input_source_id": "^jp\\.sourceforge\\.inputmethod\\.aquaskk\\.Hiragana$"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "q"
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "language": "ja",
+                "input_source_id": "jp.sourceforge.inputmethod.aquaskk.Hiragana",
+                "input_mode_id": "com.apple.inputmethod.Japanese.Hiragana"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^net\\.kovidgoya.\\.kitty_",
+                "^org\\.alacritty_",
+                "^com\\.mitchellh\\.ghostty"
+              ]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_source_id": "^jp\\.sourceforge\\.inputmethod\\.aquaskk\\.(Katakana|HalfWidthKana)$"
                 }
               ]
             }
@@ -323,4 +361,3 @@
     }
   ]
 }
-
