@@ -8,7 +8,8 @@ vim/vim/save_point
 vim/vim/swap
 zsh/zsh/cache/*
 zsh/zsh/.chpwd-recent-dirs
-zsh/zsh/.zcompdump
+zsh/zsh/.zcompdump*
 zsh/zsh/.zsh_history
+zsh/zsh/.zsh_sessions
 zsh/zsh/plugins/000-antigen/antigen
 zsh/zsh/plugins/ghq/ghq
