@@ -81,7 +81,7 @@ function ssl-info() {
     if [ "$(uname)" != "Darwin" ]; then
         echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates
     else
-        echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates -ext subjectAltName
+        echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates
     fi
 }
 autoload -U +X bashcompinit && bashcompinit
