@@ -78,3 +78,5 @@
   path = conf.d/github.conf
   path = conf.d/user.conf
 
+[delta]
+  side-by-side = true
