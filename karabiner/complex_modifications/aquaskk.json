@@ -7,6 +7,31 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "japanese_kana"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.jetbrains\\.",
+                "^jp\\.naver\\.line\\."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "l",
             "modifiers": {
               "mandatory": [
@@ -29,8 +54,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^com\\.jetbrains\\.",
-                "^jp\\.naver\\.line\\.",
-                "^org\\.alacritty"
+                "^jp\\.naver\\.line\\."
               ]
             },
             {
