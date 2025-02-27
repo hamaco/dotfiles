@@ -1,5 +1,9 @@
 snippets:
   # Git
+  - name: git status
+    keyword: s
+    snippet: g status -sb
+
   - name: git add(short)
     keyword: ga
     snippet: g add {{file}}
