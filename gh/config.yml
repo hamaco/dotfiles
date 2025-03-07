@@ -15,8 +15,10 @@ aliases:
     pr-merge: pr merge --squash --delete-branch
     web: repo view --web
     b: repo view --web
+    my-pr: pr list --author '@me'
     approved-pr: pr list --author '@me' --search 'review:approved'
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
 browser:
+version: "1"
