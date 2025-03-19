@@ -26,7 +26,8 @@ keybind = ctrl+j=ignore
 ### Mouse
 # 入力中にカーソルを非表示にする
 mouse-hide-while-typing = true
-copy-on-select = true
+# copy-on-select = true
+copy-on-select = clipboard
 
 window-width = 120
 window-height = 45
@@ -51,8 +52,10 @@ theme = tokyonight
 # palette = 4=#3D52E2
 # palette = 12=#344CFF
 
-background-opacity = 0.80
-unfocused-split-opacity = 0.825
+# background = #000000
+background-opacity = 0.7
+# background-blur = 13
+unfocused-split-opacity = 0.6
 
 # my settings
 fullscreen = true
