@@ -6,8 +6,8 @@ OS = ${shell uname}
 
 all: cui mac
 
-.PHONY: git tig tmux vim zsh peco ripgrep homebrew
-cui: git tig tmux vim zsh peco ripgrep
+.PHONY: git tig lazygit tmux vim zsh peco ripgrep homebrew
+cui: git tig lazygit tmux vim zsh peco ripgrep
 
 .PHONY: slate finicky karabiner ghostty
 mac: slate finicky karabiner ghostty
@@ -43,6 +43,9 @@ finicky:
 
 tig:
 	ln -fns $(CURRENT_DIR)/tig/tigrc $(INSTALL_DIR)/.tigrc
+
+lazygit:
+	ln -fns $(CURRENT_DIR)/lazygit $(XDG_CONFIG_HOME)/lazygit
 
 tmux:
 	@if [ ! -d $(INSTALL_DIR)/.tmux/plugins/tpm ]; then \
