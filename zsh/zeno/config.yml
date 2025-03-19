@@ -105,16 +105,12 @@ snippets:
     snippet: ls
 
   - name: ls -a
-    keyword: l
+    keyword: la
     snippet: ls -a
 
   - name: ls -l
     keyword: ll
     snippet: ls -l
-
-  - name: ls -la
-    keyword: la
-    snippet: ls -al
 
   # Others
   - name: ncu

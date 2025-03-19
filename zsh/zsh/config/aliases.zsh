@@ -15,6 +15,7 @@ alias sudo="sudo -E " # sudoでもaliasが使えるようにする
 
 alias less="less --no-init --quit-if-one-screen -g -R"
 alias bat="bat --theme=DarkNeon"
+alias l=lazygit
 
 # for vim
 alias v="nvim"
