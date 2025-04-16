@@ -39,7 +39,6 @@ path=(
 
   ${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin(N-/)
   $VOLTA_HOME/bin(N-/)
-  $HOME/.asdf/shims(N-/)
 
   /opt/homebrew/bin(N-/)
   /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight(N-/)
