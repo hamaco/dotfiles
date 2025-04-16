@@ -99,6 +99,11 @@ snippets:
     keyword: tm
     snippet: tmux a || tmux
 
+  # cd
+  - name: cd -
+    keyword: "-"
+    snippet: cd -
+
   # ls
   - name: sl
     keyword: sl
