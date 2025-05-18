@@ -55,6 +55,12 @@ k.writeToProfile("Hamaco's profile", [
         .to({ key_code: 36, modifiers: ["left_shift"] }),
     ]),
 
+  k.rule("Ctrl+n/p to Cursor key at Vivaldi", k.ifApp("Vivaldi"))
+    .manipulators([
+      k.map("n", "left_control").to("down_arrow"),
+      k.map("p", "left_control").to("up_arrow"),
+    ]),
+
   k.simlayer("l", "launch-app").manipulators({
     c: k.toApp("Calendars"),
     f: k.toApp("Finder"),
@@ -65,5 +71,4 @@ k.writeToProfile("Hamaco's profile", [
 // AquaSKK for JetBrains/LINE
 // ctrl + numbers to cmd + numbers
 // ctrl + n/p to cursor key(only for Obsidian.app)
-// C-n / C-p to down and up arrow at Vivaldi
 // SandS
