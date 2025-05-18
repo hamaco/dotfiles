@@ -9,7 +9,7 @@ prompt: enabled
 pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
-    co: pr checkout
+    co: pr checkout --detach
     mine: pr list -A hamaco
     open: pr view --web
     pr-merge: pr merge --squash --delete-branch
