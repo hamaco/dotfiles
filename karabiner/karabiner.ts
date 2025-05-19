@@ -61,6 +61,11 @@ k.writeToProfile("Hamaco's profile", [
       k.map("p", "left_control").to("up_arrow"),
     ]),
 
+  k.rule("macSKK for JetBrains", k.ifApp("^com\\.jetbrains\\."))
+    .manipulators([
+      k.map("j", "control").to("japanese_kana"),
+    ]),
+
   k.simlayer("l", "launch-app").manipulators({
     c: k.toApp("Calendars"),
     f: k.toApp("Finder"),
@@ -68,7 +73,6 @@ k.writeToProfile("Hamaco's profile", [
   }),
 ]);
 
-// AquaSKK for JetBrains/LINE
 // ctrl + numbers to cmd + numbers
 // ctrl + n/p to cursor key(only for Obsidian.app)
 // SandS
