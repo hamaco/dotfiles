@@ -61,14 +61,17 @@ k.writeToProfile("Hamaco's profile", [
       k.map("p", "left_control").to("up_arrow"),
     ]),
 
-  k.rule("macSKK for JetBrains", k.ifApp("^com\\.jetbrains\\."))
+  k.rule("macSKK for JetBrains/VSCode", k.ifApp(["^com\\.jetbrains\\.", "^com\\.microsoft\\.VSCode"]))
     .manipulators([
       k.map("j", "control").to("japanese_kana"),
     ]),
 
   k.simlayer("l", "launch-app").manipulators({
     c: k.toApp("Calendars"),
+    e: k.toApp("Visual Studio Code"),
     f: k.toApp("Finder"),
+    s: k.toApp("Slack"),
+    t: k.toApp("OmniFocus"),
     v: k.toApp("Vivaldi"),
   }),
 ]);
