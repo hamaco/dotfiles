@@ -1,3 +1,6 @@
+# /etc/zprofile とかを読み込まないようにする
+unsetopt GLOBAL_RCS
+
 function exists()       { command -v $1 &> /dev/null  }
 function source_if()    { [[ -f $1 ]] && source "$1" } 
 function source_files() { for file in $@; do source $file; done }
@@ -25,6 +28,8 @@ export VOLTA_HOME=${XDG_CACHE_HOME}/volta
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" 
 export AQUA_GLOBAL_CONFIG=${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
 export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME}/ripgrep/ripgreprc
+
+export PHP_CONFIGURE_OPTIONS="--with-iconv=/opt/homebrew/opt/libiconv --with-openssl=/opt/homebrew/opt/openssl@3"
 
 # PATH: ======================
 # 重複する要素を自動的に削除
