@@ -17,6 +17,8 @@ aliases:
     b: repo view --web
     my-pr: pr list --author '@me'
     approved-pr: pr list --author '@me' --search 'review:approved'
+    pr mine: search prs --author "@me" --state open
+    pr awaiting-merge: search prs --author "@me" --state open --review approved
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
