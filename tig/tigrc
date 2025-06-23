@@ -42,3 +42,6 @@ bind main    B @gh browse -- %(commit)
 bind diff    B @gh browse -- %(commit)
 # bind tree    B @gh browse -- tree/%(commit)/%(directory)
 # bind blob    B @gh browse -- tree/%(commit)/%(file)
+
+# color cursor white pink bold
+color cursor            white             magenta bold
