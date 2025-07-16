@@ -90,6 +90,9 @@ fi
 
 case "${OSTYPE}" in
 linux*)
+    if [ -f "/mnt/c/Users/hamaco/AppData/Local/Programs/PhpStorm/bin/phpstorm64.exe" ]; then
+        alias phpstorm="/mnt/c/Users/hamaco/AppData/Local/Programs/PhpStorm/bin/phpstorm64.exe"
+    fi
     ;;
 darwin*)
     if [ -f "/Applications/Emacs.app/Contents/MacOS/Emacs" ]; then
