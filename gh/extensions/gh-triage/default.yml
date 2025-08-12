@@ -1,0 +1,18 @@
+done:
+  max: 1000
+  conditions:
+    - merged
+    - is_issue && closed
+read:
+  max: 1000
+  conditions:
+    - is_pull_request && me not in reviewers && approved # レビュワーじゃなくてApprove済のPRは既読
+open:
+  max: 1
+  conditions:
+    - "is_pull_request && me in reviewers && passed && !approved && open && !draft"
+    - is_pull_request && author == me
+list:
+  max: 1000
+  conditions:
+    - unread

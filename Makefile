@@ -22,6 +22,7 @@ dropbox:
 git:
 	ln -fns $(CURRENT_DIR)/git $(XDG_CONFIG_HOME)/git
 	ln -fns $(CURRENT_DIR)/gh $(XDG_CONFIG_HOME)/gh
+	ln -fns $(CURRENT_DIR)/gh/extensions/gh-triage $(XDG_DATA_HOME)/gh-triage
 
 homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
