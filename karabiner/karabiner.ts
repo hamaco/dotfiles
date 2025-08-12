@@ -68,8 +68,10 @@ k.writeToProfile("Hamaco's profile", [
 
   k.simlayer("l", "launch-app").manipulators({
     c: k.toApp("Calendars"),
+    d: k.toApp("Discord"),
     e: k.toApp("Visual Studio Code"),
     f: k.toApp("Finder"),
+    g: k.toApp("Jasper"),
     s: k.toApp("Slack"),
     t: k.toApp("OmniFocus"),
     v: k.toApp("Vivaldi"),
