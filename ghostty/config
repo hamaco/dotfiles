@@ -1,8 +1,8 @@
 # フォント設定
-font-family = UDEV Gothic
-font-family = Monaspace Krypton
-font-style = Bold
-font-size = 15
+# font-family = PlemolJP Console
+font-family = Mint Mono
+font-style = Regular
+font-size = 16
 font-thicken = true
 
 # 変なリガチャOFF
@@ -18,6 +18,8 @@ font-feature = -dlig
 
 # Keybindings
 keybind = ctrl+j=ignore
+# keybind = ctrl+shift+o=new_tab:bash -c "$HOME/bin/ghostty-opacity-toggle"
+# keybind = ctrl+shift+o=new_split:right
 
 ### Mouse
 # 入力中にカーソルを非表示にする
@@ -33,10 +35,11 @@ confirm-close-surface = false
 clipboard-paste-protection = false
 unfocused-split-opacity = 1.0
 
-theme = xcodedarkhc
-theme = tokyonight
-# theme = catppuccin-mocha
-# theme = catppuccin-frappe
+# theme = xcodedarkhc
+# theme = tokyonight
+# theme = tokyonight_moon
+# theme = Tomorrow Night Eighties
+theme = Tinacious Design Dark
 
 # background = #111111
 # foreground = #f4f4ff
@@ -48,14 +51,14 @@ cursor-style = block
 cursor-style-blink = true
 cursor-opacity = 0.7
 
-# selection-background = 1d3c3b
-# selection-foreground = eeeeee
+selection-foreground = #FFFFFF
+selection-background = #FF69B4
 
 # palette = 4=#3D52E2
 # palette = 12=#344CFF
 
-background = #101010
-background-opacity = 0.7
+# background = #101010
+background-opacity = 0.75
 # background-blur = 13
 unfocused-split-opacity = 0.6
 
@@ -63,3 +66,5 @@ unfocused-split-opacity = 0.6
 fullscreen = true
 macos-non-native-fullscreen = true
 macos-option-as-alt = true
+
+# command = tmux a || tmux
