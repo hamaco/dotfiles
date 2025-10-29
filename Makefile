@@ -6,14 +6,17 @@ OS = ${shell uname}
 
 all: cui mac
 
-.PHONY: git tig lazygit tmux vim zsh peco ripgrep homebrew
-cui: git tig lazygit tmux vim zsh peco ripgrep
+.PHONY: git tig lazygit tmux vim zsh peco ripgrep homebrew aqua
+cui: git tig lazygit tmux vim zsh peco ripgrep aqua
 
 .PHONY: slate finicky karabiner ghostty
 mac: slate finicky karabiner ghostty
 
 .PHONY: alacritty ideavim nodoka
 windows: alacritty ideavim nodoka
+
+aqua:
+	ln -fns $(HOME)/src/github.com/hamaco/my-aqua-config $(XDG_CONFIG_HOME)/aquaproj-aqua
 
 dropbox:
 	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
