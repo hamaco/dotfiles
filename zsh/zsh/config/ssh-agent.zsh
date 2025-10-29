@@ -1,6 +1,6 @@
 ## SSHのagent forward
 if exists keychain; then
-    eval `keychain --eval --agents ssh id_ed25519 id_rsa old.id_rsa`
+    eval `keychain --eval id_ed25519 id_rsa old.id_rsa`
 else
     echo -e "\e[31mkeychainコマンドインストールしてください。 (brew install keychain)\e[m"
 fi
