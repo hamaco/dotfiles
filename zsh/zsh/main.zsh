@@ -27,12 +27,6 @@ ulimit -c 0  # Don't create core dumps
 
 # Tmp: 一時的な設定 ======================================================= {{{1
 
-# http://d.hatena.ne.jp/mollifier/20091220 {{{
-autoload smart-insert-last-word
-zle -N insert-last-word smart-insert-last-word
-zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
-bindkey '^]' insert-last-word
-
 autoload -U modify-current-argument
 # シングルクォート用
 _quote-previous-word-in-single() {
