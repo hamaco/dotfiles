@@ -28,6 +28,10 @@ snippets:
     keyword: gSwo
     snippet: g swo
 
+  - name: git pl
+    keyword: gPl
+    snippet: g pl
+
   - name: git commit -m
     keyword: cm
     snippet: ci -m '{{}}'
