@@ -3,6 +3,8 @@
 .ssh-config
 git-worktrees
 CLAUDE.md
+**/.claude/settings.local.json
+deno.lock
 
 # for Subversion
 .svn
@@ -56,5 +58,3 @@ Taskfile.yml
 ### for ripgrep  ###
 # tbls
 docs/
-
-**/.claude/settings.local.json
