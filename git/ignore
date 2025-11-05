@@ -2,6 +2,7 @@
 .envrc
 .ssh-config
 git-worktrees
+CLAUDE.md
 
 # for Subversion
 .svn
@@ -26,6 +27,8 @@ Taskfile.yml
 .phpcomplete_extended
 
 ### PhpStorm ###
+.phpstorm
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -53,3 +56,5 @@ Taskfile.yml
 ### for ripgrep  ###
 # tbls
 docs/
+
+**/.claude/settings.local.json
