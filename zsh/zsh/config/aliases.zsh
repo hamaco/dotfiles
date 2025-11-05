@@ -72,6 +72,8 @@ alias d-tbls='docker run --rm -it --network crewbit_network -v $(pwd):/app -u `i
 
 alias update-composer='composer global self-update && composer global update'
 
+alias ccusage="mise x node@$(mise latest -i node) -- npx ccusage@latest"
+
 alias tenki="curl https://wttr.in/toshima"
 alias weather="curl http://wttr.in/東京"
 
