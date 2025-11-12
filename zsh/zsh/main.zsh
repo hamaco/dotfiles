@@ -71,3 +71,6 @@ if [[ -n $ZENO_LOADED ]]; then
     # 遅くて若干微妙なのでOFF
     # bindkey '^s' zeno-ghq-cd
 fi
+
+# mise
+eval "$(mise activate zsh)"
