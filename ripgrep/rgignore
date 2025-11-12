@@ -1,11 +1,10 @@
-*.min.js
+*.min.*
 *.svg
 *.dump
 *.sql
 *.lock
 package-lock.json
 *.log
-app.js
 database/schema/*
 **/vendor/*
 vendor/**
