@@ -12,6 +12,7 @@ if ( USE109 )
 		def key MacHiragana = 0x72 # Apple Wireless Keyboard かな
 		def key MacEisuu    = 0x71 # Apple Wireless Keyboard 英数
 	else
+		# 104on109.nodoka だと ReverseSolidus が Shift になるので自分で定義している
 		def subst ~S-*半角/全角    = $GRAVE_ACCENT
 		def subst  S-*半角/全角    = $TILDE
 		def subst  S-*_2           = $COMMERCIAL_AT
@@ -34,6 +35,8 @@ if ( USE109 )
 		def subst  S-*Colon        = $QUOTATION_MARK
 		def subst ~S-*BackSlash    = $GRAVE_ACCENT
 		def subst  S-*BackSlash    = $TILDE
+		def subst ~S-*YenSign      = $GRAVE_ACCENT
+		def subst  S-*YenSign      = $TILDE
 	endif
 else
 	include "104.nodoka"
@@ -77,13 +80,14 @@ keymap Global
 	key *Hiragana     = *RightWindows
 
 	key Convert    = Enter
+	key C-Convert  = C-Enter
 	key NonConvert = Esc
 
 	if ( USE109 )
 		mod Control += Eisuu
 		key *Eisuu = *Esc
 
-		mod mod9 += !!Hiragana
+		# mod mod9 += !!Hiragana
 		# key m9-Hiragana = A
 
 		# 無変換単体だとESC/他のキーとくみあわせるとWindowsキー
@@ -131,7 +135,9 @@ keymap Global
 	# 変なアプリ起動してきて邪魔なのでとりあえず無効化
 	key W-i = &Ignore
 	key W-c = &Ignore
-	key W-EqualsSign = &Ignore
+	if ( USE104 )
+		key W-EqualsSign = &Ignore
+	endif
 	# Office の謎のエラーウィンドウ抑制
 	key S-A-C-W-LeftWindows = &Ignore
 
@@ -185,28 +191,28 @@ window Terminal /(WindowsTerminal|Terminus|alacritty)\.exe/ : Global
 	key C-b = &Default
 	key C-p = &Default
 	key C-n = &Default
-	key A-h     = &Default
-	key A-j     = &Default
-	key A-k     = &Default
-	key A-l     = &Default
+	key A-h = &Default
+	key A-j = &Default
+	key A-k = &Default
+	key A-l = &Default
 
 window Editor /(code|PhpStorm64)\.exe/ : Global
-	key C-a = &Default
-	key C-e = &Default
-	key C-d = &Default
-	key C-h = &Default
-	key C-f = &Default
-	key C-b = &Default
-	key C-p = &Default
-	key C-n = &Default
-	key C-w = &Default
+	key C-a     = &Default
+	key C-e     = &Default
+	key C-d     = &Default
+	key C-h     = &Default
+	key C-f     = &Default
+	key C-b     = &Default
+	key C-p     = &Default
+	key C-n     = &Default
+	key C-w     = &Default
 	key A-h     = &Default
 	key A-j     = &Default
 	key A-k     = &Default
 	key A-l     = &Default
 	key A-Enter = &Default
 	key A-F1    = &Default
-	key W-z = C-z
+	key W-z     = C-z
 
 window Obsidian /(Obsidian)\.exe/ : Global
 	key C-a = &Default
@@ -215,7 +221,7 @@ window Obsidian /(Obsidian)\.exe/ : Global
 	key C-n = &Default
 	key C-p = &Default
 
-window Browser /(Vivaldi|brave|chrome|edge|sidekick|TablePlus|Jasper)\.exe/ : Global
+window Browser /(Vivaldi|brave|chrome|Firefox|edge)\.exe/ : Global
 	key C-Slash = C-f
 	key A-h     = &Default
 	key A-j     = &Default
@@ -240,6 +246,9 @@ window LINE /LINE\.exe/ : Global
 window TickTick /TickTick\.exe/ : Global
 	key C-r = F5
 	key C-n = C-n
+
+window Game /streamapps/ : Global
+	Key Space = &Default
 
 keymap2 AlphaWindow
 	key _0   = &WindowSetAlpha(100)
