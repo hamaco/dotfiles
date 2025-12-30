@@ -6,7 +6,7 @@ OS = ${shell uname}
 
 all: cui mac
 
-.PHONY: git tig lazygit tmux vim zsh peco ripgrep homebrew aqua
+.PHONY: git tig lazygit tmux vim zsh ripgrep homebrew aqua
 cui: git tig lazygit tmux vim zsh peco ripgrep aqua
 
 .PHONY: slate finicky karabiner ghostty
@@ -31,9 +31,6 @@ homebrew:
 	@if ! builtin command -v brew > /dev/null; then \
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
 	fi
-
-peco:
-	ln -fns $(CURRENT_DIR)/peco $(XDG_CONFIG_HOME)/peco
 
 ripgrep:
 	ln -fns $(CURRENT_DIR)/ripgrep $(XDG_CONFIG_HOME)/ripgrep
