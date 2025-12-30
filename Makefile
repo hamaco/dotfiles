@@ -84,8 +84,8 @@ alacritty:
 		if [ ! -d /mnt/c/Users/hamaco/AppData/Roaming/alacritty ]; then \
 			mkdir /mnt/c/Users/hamaco/AppData/Roaming/alacritty; \
 		fi; \
-		cp $(CURRENT_DIR)/alacritty/alacritty.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.yml; \
-		cp $(CURRENT_DIR)/alacritty/alacritty.windows.yml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.windows.yml; \
+		cp $(CURRENT_DIR)/alacritty/alacritty.toml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.toml; \
+		cp $(CURRENT_DIR)/alacritty/alacritty.windows.toml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.windows.toml; \
 	fi
 
 ghostty:

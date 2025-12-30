@@ -1,0 +1,39 @@
+[[keyboard.bindings]]
+key = "U"
+mods = "Alt"
+
+[keyboard.bindings.command]
+args = ["alacritty-opacity-toggle"]
+program = "wsl"
+
+[[keyboard.bindings]]
+key = "O"
+mods = "Control|Shift"
+
+[keyboard.bindings.command]
+args = ["alacritty-opacity-toggle"]
+program = "wsl"
+
+[terminal]
+
+[font]
+size = 14
+
+[font.normal]
+family = "PlemolJP Console NF"
+style = "SemiBold"
+
+[terminal.shell]
+program = "/Windows/System32/wsl.exe --cd ~"
+
+[window]
+decorations = "Full"
+opacity = 0.9
+startup_mode = "Maximized"
+title = "Alacritty"
+
+[window.padding]
+x = 5
+y = 5
+
+[keyboard]
