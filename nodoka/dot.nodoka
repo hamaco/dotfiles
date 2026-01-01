@@ -85,7 +85,7 @@ keymap Global
 
 	if ( USE109 )
 		mod Control += Eisuu
-		key *Eisuu = *Esc
+		key *Eisuu = *LeftControl
 
 		# mod mod9 += !!Hiragana
 		# key m9-Hiragana = A
