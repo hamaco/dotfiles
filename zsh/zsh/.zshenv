@@ -31,6 +31,10 @@ export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME}/ripgrep/ripgreprc
 
 export PHP_CONFIGURE_OPTIONS="--with-iconv=/opt/homebrew/opt/libiconv --with-openssl=/opt/homebrew/opt/openssl@3"
 
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  export BROWSER='/mnt/c/Windows/System32/rundll32.exe url.dll,FileProtocolHandler'
+fi
+
 # PATH: ======================
 # 重複する要素を自動的に削除
 typeset -U path cdpath fpath manpath
