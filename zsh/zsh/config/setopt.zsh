@@ -2,8 +2,9 @@ setopt always_last_prompt   # カーソル位置は保持したままファイ�
 setopt auto_cd              # cdなしでもディレクトリ移動
 setopt auto_list            # ^Iで補完可能な一覧を表示する(補完候補が複数ある時に、一覧表示)
 setopt auto_menu            # 補完キー連打で順に補完候補を自動で補完
+setopt auto_param_slash     # パラメータ補完時にディレクトリなら `/` を付ける 
 setopt auto_pushd           # cdのタイミングで自動的にpushd
-#setopt no_auto_remove_slash # パスの最後のスラッシュを自動で削除しない
+setopt no_auto_remove_slash # パスの最後のスラッシュを自動で削除しない
 setopt auto_resume          # サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
 setopt no_beep              # ビープ音の無効化
 setopt brace_ccl            # {a-c}をa b cに展開できるようにする
