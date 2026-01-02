@@ -56,17 +56,12 @@ alias weather="curl http://wttr.in/東京"
 
 alias dotenv-linter="dotenv-linter -s UnorderedKey"
 
-for command in nautilus caja thunar nemo
+for command in nautilus caja thunar nemo wslview
 do
     if exists $command; then
         alias open=$command
     fi
 done
-if exists explorer.exe; then
-    open () {
-        explorer.exe ${1//\//\\}
-    }
-fi
 
 case "${OSTYPE}" in
 linux*)
