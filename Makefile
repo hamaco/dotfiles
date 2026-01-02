@@ -24,7 +24,11 @@ dropbox:
 
 git:
 	ln -fns $(CURRENT_DIR)/git $(XDG_CONFIG_HOME)/git
-	ln -fns $(CURRENT_DIR)/gh $(XDG_CONFIG_HOME)/gh
+
+	if [ ! -d $(XDG_CONFIG_HOME)/gh ]; then \
+		mkdir $(XDG_CONFIG_HOME)/gh; \
+	fi
+	ln -fns $(CURRENT_DIR)/gh/config.yml $(XDG_CONFIG_HOME)/gh/config.yml
 	ln -fns $(CURRENT_DIR)/gh/extensions/gh-triage $(XDG_DATA_HOME)/gh-triage
 
 homebrew:
