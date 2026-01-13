@@ -4,6 +4,9 @@
 git-worktrees
 deno.lock
 
+*.dump
+*.dump.gz
+
 # for AI Tool
 CLAUDE.md
 AGENTS.md
