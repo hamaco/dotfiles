@@ -25,7 +25,7 @@ function mssh() {
 
     ssh -o ControlMaster=no -N -L 0.0.0.0:${LOCAL_PORT}:${MYSQL_IP}:3306 $REMOTE_SERVER
 }
-compdef mssh=ssh
+zsh-defer -c 'compdef mssh=ssh'
 
 alias remove-zone-identifier="rm ./*:Zone.Identifier"
 
@@ -45,16 +45,13 @@ function random-string-make() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ "$(uname -r)" == *microsoft* ]]; then
-    interop="/run/WSL/interop"
-    if [[ -S "$WSL_INTEROP" ]]; then
-        case $WSL_INTEROP in
-            /run/WSL/interop)
-                export WSL_INTEROP=$interop
-                ;;
-            /run/WSL/*_interop)
-                ln -snf "$WSL_INTEROP" $interop && export WSL_INTEROP=$interop
-                ;;
-        esac
+    if [[ -z "$WSL_INTEROP" || ! -S "$WSL_INTEROP" ]]; then
+        for socket in /run/WSL/*_interop(N); do
+            if [[ -S "$socket" ]]; then
+                export WSL_INTEROP=$socket
+                break
+            fi
+        done
     fi
     fix-wsl2-interop() {
         export WSL_INTEROP=
@@ -84,5 +81,4 @@ function ssl-info() {
         echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates
     fi
 }
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/bit bit
+zsh-defer -c 'autoload -U +X bashcompinit && bashcompinit && complete -o nospace -C /opt/homebrew/bin/bit bit'
