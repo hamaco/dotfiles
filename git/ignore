@@ -2,9 +2,13 @@
 .envrc
 .ssh-config
 git-worktrees
-CLAUDE.md
-**/.claude/settings.local.json
 deno.lock
+
+# for AI Tool
+CLAUDE.md
+AGENTS.md
+ai-docs
+**/.claude/settings.local.json
 
 # for Subversion
 .svn
@@ -57,4 +61,4 @@ Taskfile.yml
 
 ### for ripgrep  ###
 # tbls
-docs/
+# docs/
