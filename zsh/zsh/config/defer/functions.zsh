@@ -77,7 +77,7 @@ up() {
 mcd() {
     mkdir -p "$1" && cd "$1"
 }
-compdef mcd=cd
+zsh-defer -c 'compdef mcd=cd'
 
 # 作業用ディレクトリ作成
 temp() {

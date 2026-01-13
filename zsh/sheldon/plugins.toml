@@ -51,6 +51,7 @@ apply = ["source", "PATH"]
 
 [plugins.zeno-zsh]
 github = 'yuki-yano/zeno.zsh'
+apply = ["defer"]
 
 [plugins.dotfiles-sync]
 local = "~/.config/zsh/config/sync"
@@ -60,3 +61,4 @@ apply = ["source"]
 [plugins.dotfiles-defer]
 local = "~/.config/zsh/config/defer"
 use = ["*.zsh"]
+apply = ["defer"]
