@@ -76,9 +76,9 @@ function ssl-info() {
     fi
 
     if [ "$(uname)" != "Darwin" ]; then
-        echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates
+        echo | openssl s_client -connect $1:${2:-443} -servername $1 2> /dev/null | openssl x509 -noout -issuer -subject -dates
     else
-        echo | openssl s_client -connect $1:${2:-443} 2> /dev/null | openssl x509 -noout -issuer -subject -dates
+        echo | openssl s_client -connect $1:${2:-443} -servername $1 2> /dev/null | openssl x509 -noout -issuer -subject -dates
     fi
 }
 zsh-defer -c 'autoload -U +X bashcompinit && bashcompinit && complete -o nospace -C /opt/homebrew/bin/bit bit'
