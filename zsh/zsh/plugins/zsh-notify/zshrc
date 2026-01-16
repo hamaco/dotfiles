@@ -1,0 +1,26 @@
+LONG_CMD_THRESHOLD=10
+LONG_CMD_IGNORE=(v vim ssh man less tail top htop claude copilot git tig)
+
+_long_cmd_preexec() {
+    _cmd_start=$SECONDS
+    _cmd_name=${1[(w)1]} # 最初の単語（コマンド名）
+}
+
+_long_cmd_precmd() {
+    [[ -z $_cmd_start ]] && return
+    local elapsed=$(( SECONDS - _cmd_start ))
+
+    # 除外チェック
+    if (( ! ${LONG_CMD_IGNORE[(Ie)$_cmd_name]} )) && (( elapsed >= LONG_CMD_THRESHOLD )); then
+        if [ "$(uname)" = "Darwin" ]; then
+            raycast-confetti
+        else
+        fi
+    fi
+
+    unset _cmd_start _cmd_name
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _long_cmd_preexec
+add-zsh-hook precmd _long_cmd_precmd
