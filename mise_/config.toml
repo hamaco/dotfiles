@@ -1,0 +1,10 @@
+[tools]
+deno = "2.5.6"
+go = "latest"
+"go:github.com/mattn/sleepy" = "latest"
+gojq = "latest"
+php = "latest"
+qdns = "latest"
+
+[env]
+COMPOSER_HOME = "~/.config/composer"

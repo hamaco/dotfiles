@@ -18,6 +18,9 @@ windows: alacritty ideavim nodoka
 aqua:
 	ln -fns $(HOME)/src/github.com/hamaco/my-aqua-config $(XDG_CONFIG_HOME)/aquaproj-aqua
 
+mise:
+	ln -fns $(CURRENT_DIR)/mise_ $(XDG_CONFIG_HOME)/mise
+
 dropbox:
 	ln -fns $(HOME)/Dropbox/data/snippets $(INSTALL_DIR)/.snippets
 	ln -fns $(HOME)/Dropbox/data/linux/share/phpmanual $(INSTALL_DIR)/share/phpmanual
