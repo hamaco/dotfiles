@@ -1,4 +1,6 @@
 [tools]
+"aqua:itchyny/mmv" = "latest"
+awscli = { version = "latest", symlink_bins = "true" }
 deno = "2.5.6"
 go = "latest"
 "go:github.com/mattn/sleepy" = "latest"
