@@ -1,18 +1,7 @@
 [[keyboard.bindings]]
-key = "U"
-mods = "Alt"
-
-[keyboard.bindings.command]
-args = ["alacritty-opacity-toggle"]
-program = "wsl"
-
-[[keyboard.bindings]]
-key = "O"
-mods = "Control|Shift"
-
-[keyboard.bindings.command]
-args = ["alacritty-opacity-toggle"]
-program = "wsl"
+key = "Return"
+mods = "Shift"
+chars = "\u001b[13;2u"
 
 [terminal]
 
