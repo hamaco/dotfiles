@@ -61,6 +61,9 @@ snippets:
     snippet: pr merge -md
     context:
       lbuffer: ^gh\s
+  - name: gh co
+    keyword: ghCo
+    snippet: gh co
 
   # Docker
   - name: docker run
