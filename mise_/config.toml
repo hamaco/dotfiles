@@ -1,12 +1,20 @@
 [tools]
 "aqua:itchyny/mmv" = "latest"
+"aqua:k1LoW/tbls" = "latest"
 awscli = { version = "latest", symlink_bins = "true" }
 deno = "2.5.6"
+ghq = "latest"
+github-cli = "latest"
+"github:skanehira/ghost" = "latest"
 go = "latest"
 "go:github.com/mattn/sleepy" = "latest"
 gojq = "latest"
+gron = "latest"
+lazygit = "latest"
 php = "latest"
 qdns = "latest"
+ripgrep = "latest"
+rust = "latest"
 
 [env]
 COMPOSER_HOME = "~/.config/composer"
