@@ -140,6 +140,10 @@ snippets:
     context:
       lbuffer: '.+\s'
 
+  - name: mise run
+    keyword: mr
+    snippet: mise run
+
 .default-options: &default-options
   --exit-0: true
   --select-1: true
