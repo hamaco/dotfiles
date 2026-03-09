@@ -90,6 +90,7 @@ alacritty:
 		fi; \
 		cp $(CURRENT_DIR)/alacritty/alacritty.toml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.toml; \
 		cp $(CURRENT_DIR)/alacritty/alacritty.windows.toml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/alacritty.windows.toml; \
+		cp $(CURRENT_DIR)/alacritty/alacritty.themes.*.toml /mnt/c/Users/hamaco/AppData/Roaming/alacritty/; \
 	fi
 
 ghostty:

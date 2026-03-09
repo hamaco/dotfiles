@@ -5,8 +5,8 @@ mouse = "Right"
 [general]
 live_config_reload = true
 import = [
-    'C:\Users\hamaco\AppData/Roaming/alacritty/alacritty.windows.toml',
-    'C:\Users\hamaco\.config/alacritty/alacritty.darwin.yml',
+    'C:\Users\hamaco\AppData\Roaming\alacritty\alacritty.windows.toml',
+    'C:\Users\hamaco\AppData\Roaming\alacritty\alacritty.themes.0x96f.toml',
 ]
 
 [colors]
@@ -20,35 +20,3 @@ save_to_clipboard = true
 semantic_escape_chars = ''' \()"',:;<>~!@#$%^&*|+=[]{}~?│↲'''
 
 [mouse]
-
-# Colors (Ayu Mirage)
-# https://github.com/alacritty/alacritty-theme/blob/master/themes/
-
-# Default Colors
-[colors.primary]
-background = "#1f2430"
-foreground = "#cbccc6"
-bright_foreground = "#f28779"
-
-# Normal colors
-[colors.normal]
-black = "#212733"
-red = "#f08778"
-# green = "#53bf97"
-green = "#ffffff"
-yellow = "#fdcc60"
-blue = "#60b8d6"
-magenta = "#ec7171"
-cyan = "#98e6ca"
-white = "#fafafa"
-
-# Bright colors
-[colors.bright]
-black = "#686868"
-red = "#f58c7d"
-green = "#58c49c"
-yellow = "#ffd165"
-blue = "#65bddb"
-magenta = "#f17676"
-cyan = "#9debcf"
-white = "#ffffff"
