@@ -6,7 +6,7 @@ chars = "\u001b[13;2u"
 [terminal]
 
 [font]
-size = 14
+size = 12
 
 [font.normal]
 family = "PlemolJP Console NF"
