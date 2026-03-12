@@ -14,7 +14,6 @@ setopt equals               # =COMMAND を COMMAND のパス名に展開
 setopt no_flow_control      # C-s, C-qの無効化
 setopt no_hup               # ログアウト時にバックグラウンドジョブをkillしない
 setopt ignore_eof           # C-dでexitしない
-setopt interactive_comments # コマンドにコメントを付けられるようにする
 setopt no_list_beep         # 補完候補表示時にビープ音が鳴らないようにする
 setopt list_packed          # 補完候補をつめて表示
 setopt list_types           # 補完候補表示時にファイル種別を表示
