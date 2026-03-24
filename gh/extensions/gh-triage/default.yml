@@ -8,7 +8,7 @@ read:
   conditions:
     - is_pull_request && me not in reviewers && approved # レビュワーじゃなくてApprove済のPRは既読
 open:
-  max: 1
+  max: 3
   conditions:
     - "is_pull_request && me in reviewers && passed && !approved && open && !draft"
     - is_pull_request && author == me
