@@ -17,12 +17,17 @@ gron = "latest"
 hurl = "latest"
 jq = "latest"
 lazygit = "latest"
+node = "latest"
+"npm:@playwright/cli" = "latest"
+"npm:takt" = "latest"
 php = "latest"
 qdns = "latest"
 ripgrep = "latest"
 rust = "latest"
 tbls = "latest"
 "ubi:superultrainc/sup" = "latest"
+[settings]
+auto_install = false
 
 [env]
 COMPOSER_HOME = "~/.config/composer"
