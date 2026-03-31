@@ -22,7 +22,6 @@ font-feature = -dlig
 
 # Keybindings
 keybind = ctrl+j=ignore
-keybind = shift+enter=text:\n
 # keybind = ctrl+shift+o=new_tab:bash -c "$HOME/bin/ghostty-opacity-toggle"
 # keybind = ctrl+shift+o=new_split:right
 
