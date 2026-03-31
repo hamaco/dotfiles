@@ -44,7 +44,8 @@ unfocused-split-opacity = 1.0
 # theme = tokyonight
 # theme = tokyonight_moon
 # theme = Tomorrow Night Eighties
-theme = Tinacious Design Dark
+# theme = Tinacious Design Dark
+theme = 0x96f
 
 # background = #111111
 # foreground = #f4f4ff
@@ -63,7 +64,7 @@ selection-background = #FF69B4
 # palette = 12=#344CFF
 
 # background = #101010
-background-opacity = 0.75
+background-opacity = 0.85
 # background-blur = 13
 # background-blur = macos-glass-regular
 unfocused-split-opacity = 0.7
