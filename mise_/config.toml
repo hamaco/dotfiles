@@ -1,13 +1,16 @@
 [tools]
 "aqua:itchyny/mmv" = "latest"
+"aqua:k1LoW/mo" = "latest"
 "aqua:k1LoW/tbls" = "latest"
 awscli = { version = "latest", symlink_bins = "true" }
 bun = "latest"
+"cargo:filetree" = "latest"
 deno = "2.5.6"
 doggo = "latest"
 ghq = "latest"
 github-cli = "latest"
 "github:skanehira/ghost" = "latest"
+"github:trasta298/keifu" = "latest"
 "github:ushironoko/octorus" = "latest"
 go = "latest"
 "go:github.com/k1LoW/git-wt" = "latest"
