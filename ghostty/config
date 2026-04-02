@@ -1,12 +1,11 @@
 auto-update-channel = tip
 
 # フォント設定
-# font-family = IosevkaTerm Mono
 # font-family = Bizin Gothic
 # font-family = PlemolJP Console
 font-family = Mint Mono
 font-style = Regular
-font-size = 17
+font-size = 15
 font-thicken = true
 
 # 変なリガチャOFF
