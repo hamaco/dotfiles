@@ -41,8 +41,7 @@ typeset -U path cdpath fpath manpath
 
 path=(
   $HOME/bin(N-/)
-  $HOME/app/*/bin(N-/)
-  $HOME/app/*/*/bin(N-/)
+  $HOME/.local/bin(N-/)
   $HOME/.composer/vendor/bin(N-/)
   $HOME/.config/composer/vendor/bin(N-/)
 
@@ -50,12 +49,9 @@ path=(
   $VOLTA_HOME/bin(N-/)
 
   /opt/homebrew/bin(N-/)
-  /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight(N-/)
   /opt/homebrew/opt/openjdk/bin(N-/)
 
-  /usr/local/heroku/bin(N-/)
   /usr/local/bin(N-/)
-  /usr/local/share/git-core/contrib/diff-highlight(N-/)
 
   /home/linuxbrew/.linuxbrew/bin(N-/)
   /home/linuxbrew/.linuxbrew/sbin(N-/)
