@@ -14,6 +14,8 @@ github-cli = "latest"
 "github:ushironoko/octorus" = "latest"
 go = "latest"
 "go:github.com/k1LoW/git-wt" = "latest"
+"go:github.com/kqns91/redmine-go/cmd/redmine" = "latest"
+"go:github.com/kqns91/redmine-go/cmd/redmine-mcp" = "latest"
 "go:github.com/mattn/sleepy" = "latest"
 gojq = "latest"
 gron = "latest"
@@ -29,6 +31,7 @@ ripgrep = "latest"
 rust = "latest"
 tbls = "latest"
 "ubi:superultrainc/sup" = "latest"
+
 [settings]
 auto_install = false
 
