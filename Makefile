@@ -32,6 +32,7 @@ git:
 		mkdir $(XDG_CONFIG_HOME)/gh; \
 	fi
 	ln -fns $(CURRENT_DIR)/gh/config.yml $(XDG_CONFIG_HOME)/gh/config.yml
+	ln -fns $(CURRENT_DIR)/gh/extensions/gh-dash $(XDG_CONFIG_HOME)/gh-dash
 	ln -fns $(CURRENT_DIR)/gh/extensions/gh-triage $(XDG_DATA_HOME)/gh-triage
 
 homebrew:

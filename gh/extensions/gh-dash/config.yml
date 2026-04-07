@@ -1,0 +1,116 @@
+prSections:
+- title: My Pull Requests
+  filters: is:open author:@me
+- title: Needs My Review
+  filters: is:open review-requested:@me
+- title: Involved
+  filters: is:open involves:@me -author:@me
+issuesSections:
+- title: My Issues
+  filters: is:open author:@me
+- title: Assigned
+  filters: is:open assignee:@me
+- title: Involved
+  filters: is:open involves:@me -author:@me
+defaults:
+  preview:
+    open: true
+    width: 50
+  prsLimit: 20
+  issuesLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 7
+      repo:
+        width: 15
+      author:
+        width: 15
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 16
+    issues:
+      updatedAt:
+        width: 7
+      repo:
+        width: 15
+      creator:
+        width: 10
+      assignees:
+        width: 20
+        hidden: true
+  refetchIntervalMinutes: 30
+keybindings:
+  issues: []
+  prs: []
+repoPaths: {}
+theme:
+  ui:
+    table:
+      showSeparator: false
+      compact: true
+    sectionsDirection: row
+  # catppuccin-macchiato-pink
+  colors:
+    text:
+      primary: "#cad3f5"
+      secondary: "#f5bde6"
+      inverted: "#181926"
+      faint: "#b8c0e0"
+      warning: "#eed49f"
+      success: "#a6da95"
+      error: "#ed8796"
+    background:
+      selected: "#363a4f"
+    border:
+      primary: "#f5bde6"
+      secondary: "#494d64"
+      faint: "#363a4f"
+    prState:
+      open: "#a6da95"
+      closed: "#ed8796"
+      merged: "#c6a0f6"
+    issueState:
+      open: "#a6da95"
+      closed: "#ed8796"
+    reviewState:
+      approved: "#a6da95"
+      changesRequested: "#ed8796"
+      commented: "#8bd5ca"
+      pending: "#eed49f"
+  # # 0x96f
+  # colors:
+  #   text:
+  #     primary: "#FCFCFA"
+  #     secondary: "#AEE8F4"
+  #     inverted: "#262427"
+  #     faint: "#AEA3E6"
+  #     warning: "#FFCA58"
+  #     success: "#BCDF59"
+  #     error: "#FF7272"
+  #   background:
+  #     selected: "#545452"
+  #   border:
+  #     primary: "#A093E2"
+  #     secondary: "#545452"
+  #     faint: "#262427"
+  #   prState:
+  #     open: "#BCDF59"
+  #     closed: "#FF7272"
+  #     merged: "#A093E2"
+  #   issueState:
+  #     open: "#BCDF59"
+  #     closed: "#FF7272"
+  #   reviewState:
+  #     approved: "#BCDF59"
+  #     changesRequested: "#FF7272"
+  #     commented: "#49CAE4"
+  #     pending: "#FFCA58"
+pager:
+  diff: ""
