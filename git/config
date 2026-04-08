@@ -82,4 +82,4 @@
 [delta]
   side-by-side = true
 [wt]
-	basedir = .wt
+  basedir = .wt
