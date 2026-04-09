@@ -48,10 +48,9 @@ nnoremap <space>rr :action RenameElement<cr>
 nnoremap <space>rt :action Refactorings.QuickListPopupAction<cr>
 nnoremap <space>rg :action Generate<cr>
 nnoremap <space>rI :action OptimizeImports<cr>
+nnoremap <space>rc :action SilentCodeCleanup<cr>
 nnoremap <space>rf :action ReformatCode<cr>
 vnoremap <space>rf :action ReformatCode<cr>
-
-nnoremap <leader>cc :action SilentCodeCleanup<CR>
 
 " VCS operations
 nnoremap <leader>yy :action Vcs.Show.Local.Changes<cr>
@@ -59,10 +58,10 @@ nnoremap <leader>yp :action Vcs.QuickListPopupAction<cr>
 nnoremap <leader>ya :action Annotate<cr>
 nnoremap <leader>yl :action Vcs.Show.Log<cr>
 nnoremap <leader>yd :action Compare.LastVersion<cr>
-nnoremap <leader>yc  :action CheckinProject<cr>
+nnoremap <leader>c  :action CheckinProject<cr>
 
 " Inspection
-nnoremap <leader>ic :action InspectCode<cr>
+nnoremap <space>rc :action InspectCode<cr>
 
 " Tests
 nnoremap <leader>r :action Rerun<cr>
@@ -77,7 +76,6 @@ nnoremap <S-Tab>   :action MoveEditorToOppositeTabGroup<cr>
 nnoremap <A-a>     :action MoveEditorToOppositeTabGroup<cr>
 
 " Terminal
-nnoremap <leader>ww :action JumpToLastWindow<cr>
 nnoremap <leader>wc :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>wf :action ActivateFindToolWindow<cr>
 nnoremap <leader>wt :action ActivateTODOToolWindow<cr>
@@ -93,4 +91,4 @@ nnoremap <C-n> :action MethodDown<cr>
 nnoremap gn :action GotoNextError<CR>
 nnoremap gp :action GotoPreviousError<CR>
 
-nnoremap <leader>a ggVG
+nnoremap <leader>q :action CloseActiveTab<CR>
