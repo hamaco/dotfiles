@@ -74,7 +74,7 @@ theme:
       success: "#a6da95"
       error: "#ed8796"
     background:
-      selected: "#363a4f"
+      selected: "#5b6078"
     border:
       primary: "#f5bde6"
       secondary: "#494d64"
