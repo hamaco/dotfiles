@@ -82,3 +82,7 @@ function ssl-info() {
     fi
 }
 zsh-defer -c 'autoload -U +X bashcompinit && bashcompinit && complete -o nospace -C /opt/homebrew/bin/bit bit'
+
+
+# Shift+Enter を改行として送る（Windows Terminal + Claude Code用）
+# bindkey '\e[13;2u' self-insert
