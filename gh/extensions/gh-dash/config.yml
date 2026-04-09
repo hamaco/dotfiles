@@ -48,7 +48,14 @@ defaults:
   refetchIntervalMinutes: 30
 keybindings:
   issues: []
-  prs: []
+  prs:
+    - key: M
+      command: >
+        if gh pr view {{.PrNumber}} -R {{.RepoName}} --json commits -q '.commits[].messageHeadline' | grep -q '^fixup!'; then
+          echo 'fixup commit exists, aborting merge';
+        else
+          gh pr merge -md --auto {{.PrNumber}} -R {{.RepoName}};
+        fi
 repoPaths: {}
 theme:
   ui:
