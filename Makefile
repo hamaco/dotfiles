@@ -12,8 +12,8 @@ cui: git tig lazygit tmux vim zsh peco ripgrep aqua
 .PHONY: slate finicky karabiner ghostty
 mac: slate finicky karabiner ghostty
 
-.PHONY: alacritty ideavim nodoka
-windows: alacritty ideavim nodoka
+.PHONY: alacritty ideavim nodoka windows-terminal
+windows: ideavim nodoka windows-terminal
 
 aqua:
 	ln -fns $(HOME)/src/github.com/hamaco/my-aqua-config $(XDG_CONFIG_HOME)/aquaproj-aqua
@@ -102,6 +102,13 @@ ghostty:
 		ln -fns $(CURRENT_DIR)/ghostty/config "${HOME}/Library/Application Support/com.mitchellh.ghostty/config"; \
 	else \
 		echo 'TODO: macOS以外に入れていないので入れる時に頑張る'; \
+	fi
+
+windows-terminal:
+	@if [ "$(OS)" = "Darwin" ]; then \
+		echo 'Windows Terminal は Windows 専用'; \
+	else \
+		cp $(CURRENT_DIR)/windows-terminal/settings.json /mnt/c/Users/hamaco/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json; \
 	fi
 
 ideavim:
