@@ -18,6 +18,8 @@ alias bat="bat --theme=DarkNeon"
 alias l=lazygit
 alias dog=doge # Rust版dig
 
+alias tmux-reset-pane-border='tmux set-window -u pane-active-border-style \; set-window -u pane-border-style'
+
 # for vim
 alias v="nvim"
 alias gv="gvim"
