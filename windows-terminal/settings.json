@@ -5,6 +5,7 @@
   "copyFormatting": "none",
   "copyOnSelect": true,
   "defaultProfile": "{13b791cf-2103-55ae-b873-a9caefc5d50d}",
+  "wordDelimiters": " ()\"',:;<>~!@#$%^&*|+=[]{}~?│↲",
   "keybindings": [
     {
       "id": "Terminal.CopyToClipboard",
