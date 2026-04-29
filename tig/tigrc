@@ -13,11 +13,11 @@ set main-view = \
   author:full \
   commit-title:yes,graph,refs,overflow=no
 
-
 bind generic w scroll-page-up
 bind generic s scroll-page-down
 
-
+bind generic g move-first-line
+bind generic G move-last-line
 bind main g move-first-line
 bind main G move-last-line
 
