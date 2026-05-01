@@ -2,10 +2,10 @@ auto-update-channel = tip
 
 # フォント設定
 # font-family = Bizin Gothic
-# font-family = PlemolJP Console
 font-family = Mint Mono
+# font-family = PlemolJP Console
 font-style = Regular
-font-size = 15
+font-size = 14
 font-thicken = true
 
 # 変なリガチャOFF
@@ -70,7 +70,7 @@ background-opacity = 0.85
 unfocused-split-opacity = 0.7
 
 # my settings
-fullscreen = true
+fullscreen = non-native
 macos-titlebar-style = tabs
 macos-non-native-fullscreen = true
 macos-option-as-alt = true
