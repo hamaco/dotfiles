@@ -5,7 +5,7 @@
 awscli = { version = "latest", symlink_bins = "true" }
 bun = "latest"
 "cargo:filetree" = "latest"
-deno = "2.5.6"
+deno = "2.8.3"
 doggo = "latest"
 ghq = "latest"
 github-cli = "latest"
